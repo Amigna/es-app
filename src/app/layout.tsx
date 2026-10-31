@@ -13,6 +13,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const NAV = [
+  ["/", "Verbs"],
+  ["/nouns", "Nouns"],
+  ["/adjectives", "Adjectives"],
+  ["/adverbs", "Adverbs"],
+  ["/phrases", "Phrases"],
+  ["/drill", "Drills"],
+] as const;
+
 export const metadata: Metadata = {
   title: "Conjugar",
   description: "Every conjugation of every Spanish verb, in Latin American and Caribbean Spanish.",
@@ -27,13 +36,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <Link href="/" className="text-lg font-semibold tracking-tight">
               Conjugar
             </Link>
-            <nav className="flex gap-4 text-sm">
-              <Link href="/" className="hover:text-emerald-700 dark:hover:text-emerald-400">
-                Verbs
-              </Link>
-              <Link href="/drill" className="hover:text-emerald-700 dark:hover:text-emerald-400">
-                Drills
-              </Link>
+            <nav className="flex flex-wrap justify-end gap-x-4 gap-y-1 text-sm">
+              {NAV.map(([href, label]) => (
+                <Link key={href} href={href} className="hover:text-emerald-700 dark:hover:text-emerald-400">
+                  {label}
+                </Link>
+              ))}
             </nav>
           </div>
         </header>
