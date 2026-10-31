@@ -4,7 +4,11 @@ import { useRouter } from "next/navigation";
 import { useId, useState } from "react";
 import { VERB_SHAPE, searchVerbs, verbSlug } from "@/lib/verbs";
 
-export default function VerbSearch({ autoFocus = false }: { autoFocus?: boolean }) {
+export default function VerbSearch({
+  autoFocus = false,
+}: {
+  autoFocus?: boolean;
+}) {
   const router = useRouter();
   const listId = useId();
   const [query, setQuery] = useState("");
@@ -25,7 +29,9 @@ export default function VerbSearch({ autoFocus = false }: { autoFocus?: boolean 
     if (picked) return go(picked.inf);
     const typed = query.trim().toLowerCase();
     if (VERB_SHAPE.test(typed)) return go(typed);
-    setError("Type a Spanish verb ending in -ar, -er or -ir, or an English meaning like “to eat”.");
+    setError(
+      "Type a Spanish verb ending in -ar, -er or -ir, or an English meaning like “to eat”.",
+    );
   }
 
   return (
@@ -47,7 +53,9 @@ export default function VerbSearch({ autoFocus = false }: { autoFocus?: boolean 
           role="combobox"
           aria-expanded={showList}
           aria-controls={listId}
-          aria-activedescendant={active >= 0 ? `${listId}-${active}` : undefined}
+          aria-activedescendant={
+            active >= 0 ? `${listId}-${active}` : undefined
+          }
           aria-autocomplete="list"
           autoComplete="off"
           autoCapitalize="none"
@@ -79,7 +87,7 @@ export default function VerbSearch({ autoFocus = false }: { autoFocus?: boolean 
         />
         <button
           type="submit"
-          className="h-12 shrink-0 rounded-xl bg-emerald-700 px-5 font-medium text-white transition hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
+          className="h-12 shrink-0 rounded-xl bg-emerald-700 px-5 font-medium text-white cursor-pointer transition hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
         >
           Conjugate
         </button>

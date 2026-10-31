@@ -5,6 +5,7 @@ import ConjugationView from "@/components/ConjugationView";
 import VerbSearch from "@/components/VerbSearch";
 import { conjugate } from "@/lib/conjugation/engine";
 import { IRREGULARS } from "@/lib/conjugation/irregulars";
+import { getSentences } from "@/lib/sentence-data";
 import { VERBS, VERB_SHAPE, findVerb, verbSlug, type Verb } from "@/lib/verbs";
 
 export function generateStaticParams() {
@@ -64,6 +65,7 @@ async function VerbContent({ params }: { params: PageProps<"/verb/[inf]">["param
   if (!found) notFound();
   const { verb, listed } = found;
   const conjugation = conjugate(verb);
+  const sentences = getSentences(verb.inf);
   const root = verb.inf.replace(/se$/, "");
 
   return (
@@ -85,7 +87,7 @@ async function VerbContent({ params }: { params: PageProps<"/verb/[inf]">["param
         )}
       </header>
 
-      <ConjugationView conjugation={conjugation} />
+      <ConjugationView conjugation={conjugation} sentences={sentences} />
     </div>
   );
 }

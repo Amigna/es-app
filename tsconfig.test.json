@@ -17,6 +17,6 @@
   },
   "include": [
     "src/lib/**/*.ts",
-    "src/data/*.json"
+    "src/data/**/*.json"
   ]
 }

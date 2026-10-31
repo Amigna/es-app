@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { TENSES, type Conjugation, type Mood, type TenseForms, type TenseMeta } from "@/lib/conjugation/types";
+import { findForm, type RareTense, type Sentence, type VerbSentences } from "@/lib/sentences";
 
 const MOODS: { id: Mood; title: string; spanish: string }[] = [
   { id: "indicative", title: "Indicative", spanish: "Indicativo" },
@@ -24,7 +25,42 @@ function rows(meta: TenseMeta, t: TenseForms, voseo: boolean) {
   return out;
 }
 
-function TenseCard({ meta, forms, voseo }: { meta: TenseMeta; forms: TenseForms; voseo: boolean }) {
+function Example({ sentence, form }: { sentence: Sentence; form: string }) {
+  const hit = findForm(sentence.es, form);
+  return (
+    <div className="mt-3 border-t border-zinc-100 pt-3 dark:border-zinc-800">
+      <p lang="es">
+        {hit ? (
+          <>
+            {sentence.es.slice(0, hit.start)}
+            <strong className="font-semibold text-emerald-800 dark:text-emerald-300">
+              {sentence.es.slice(hit.start, hit.end)}
+            </strong>
+            {sentence.es.slice(hit.end)}
+          </>
+        ) : (
+          sentence.es
+        )}
+      </p>
+      <p className="text-sm text-zinc-500">{sentence.en}</p>
+    </div>
+  );
+}
+
+function TenseCard({
+  meta,
+  forms,
+  voseo,
+  sentence,
+}: {
+  meta: TenseMeta;
+  forms: TenseForms;
+  voseo: boolean;
+  sentence?: Sentence | RareTense;
+}) {
+  const rare = !!sentence && "rare" in sentence;
+  const example = sentence && !("rare" in sentence) ? sentence : null;
+  const exampleForm = example ? forms.forms[example.person] : null;
   const list = rows(meta, forms, voseo);
   if (list.length === 0) return null;
   return (
@@ -41,11 +77,23 @@ function TenseCard({ meta, forms, voseo }: { meta: TenseMeta; forms: TenseForms;
           </div>
         ))}
       </dl>
+      {example && exampleForm && <Example sentence={example} form={exampleForm} />}
+      {rare && (
+        <p className="mt-3 border-t border-zinc-100 pt-3 text-sm italic text-zinc-500 dark:border-zinc-800">
+          Rarely used with this verb.
+        </p>
+      )}
     </section>
   );
 }
 
-export default function ConjugationView({ conjugation }: { conjugation: Conjugation }) {
+export default function ConjugationView({
+  conjugation,
+  sentences,
+}: {
+  conjugation: Conjugation;
+  sentences: VerbSentences | null;
+}) {
   const [voseo, setVoseo] = useState(false);
 
   return (
@@ -80,7 +128,9 @@ export default function ConjugationView({ conjugation }: { conjugation: Conjugat
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {TENSES.filter((t) => t.mood === mood.id).map((meta) => {
               const forms = conjugation.tenses[meta.id];
-              return forms ? <TenseCard key={meta.id} meta={meta} forms={forms} voseo={voseo} /> : null;
+              return forms ? (
+                <TenseCard key={meta.id} meta={meta} forms={forms} voseo={voseo} sentence={sentences?.[meta.id]} />
+              ) : null;
             })}
           </div>
         </div>
