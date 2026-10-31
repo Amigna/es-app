@@ -19,6 +19,8 @@ const NAV = [
   ["/adjectives", "Adjectives"],
   ["/adverbs", "Adverbs"],
   ["/phrases", "Phrases"],
+  ["/regional", "Regional"],
+  ["/guides", "Guides"],
   ["/drill", "Drills"],
 ] as const;
 

@@ -13,21 +13,27 @@ Spanish learning app for me, friends and family. Latin American and Caribbean Sp
 - [x] Fill-in-the-blank drills using the example sentences
 - [x] Vocabulary drill filters by word type and noun topic
 - [x] Drill settings remembered between visits (per browser)
+- [x] Regional words page, including words to be careful with
+- [x] Grammar guides: ser vs. estar, por vs. para, preterite vs. imperfect, subjunctive, gender and plurals
 
-## Next
+## After accounts and a database
 
-- [ ] Spaced repetition (FSRS) so review focuses on what I keep missing
-- [ ] Progress and weak-spot stats, by tense and by verb
+Held until then so progress is saved per person instead of per browser.
+
+- [ ] Accounts and a database
+- [ ] Record answers, tracked by verb + tense and by word + question type
+- [ ] Progress page: streak, questions answered, accuracy by tense, items mastered
+- [ ] Spaced repetition (FSRS) with a "Today's review" mode and a daily limit on new items
+- [ ] Weak-spot stats by tense, verb and mistake type, each with a "Practice this" button
 
 ## Content backlog
 
 - [ ] More words in every section, especially nouns by topic
 - [ ] More verbs, including more reflexives and everyday Caribbean verbs (parquear, chequear, fregar, barrer, planchar)
 - [ ] More phrases and regional expressions, labeled by country (Cuba, Puerto Rico, Dominican Republic, Colombia, Mexico)
-- [ ] A vocabulary notes section for words that differ by country (guagua, carro, coger)
+- [ ] More regional words, and more countries in the existing entries
 - [ ] Prepositions, conjunctions, pronouns and question words
-- [ ] Grammar guides: ser vs. estar, por vs. para, preterite vs. imperfect, when to use the subjunctive
-- [ ] Gender and plural rules, with the common exceptions
+- [ ] More grammar guides: reflexive verbs, object pronouns, commands, the perfect tenses
 - [ ] Short graded reading passages
 - [ ] Better examples for verbs that are mostly "rarely used" notes (contraer, prever, errar, rogar)
 
@@ -35,8 +41,7 @@ Spanish learning app for me, friends and family. Latin American and Caribbean Sp
 
 - [ ] Audio with the browser's built-in speech, then better text-to-speech if needed
 - [ ] Sample sentence per person instead of per tense, for the most common verbs
-- [ ] Accounts and shared progress for friends and family
-- [ ] Deploy (static hosting works while there is no database)
+- [ ] Deploy (static hosting works until the database is added)
 - [ ] "Report a problem" link on sentences and forms
 - [ ] Mobile layout pass
 - [ ] Conversation or writing practice with Claude (would need an API key)
@@ -47,6 +52,8 @@ Spanish learning app for me, friends and family. Latin American and Caribbean Sp
 - [ ] Spot-check the engine against RAE for irregular verbs. One bug (rehacer) has been found so far, so others may exist
 - [ ] Skim the sentence files for natural phrasing. Tests confirm the conjugated form is present, not that the sentence sounds right or the translation is accurate
 - [ ] Try drills in a browser, including the keyboard flow and accent buttons
+- [ ] Have a native speaker check the regional words and slang. Usage varies and these come from my own knowledge, not a source
+- [ ] Read the grammar guides for accuracy
 - [ ] Unknown verb URLs returned 200 on first request and 404 after. Harmless so far
 
 ## How content gets added

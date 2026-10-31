@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "tsc -p tsconfig.test.json && node --test .test-build/lib/conjugation/engine.test.js .test-build/lib/verbs.test.js .test-build/lib/sentences.test.js .test-build/lib/drill.test.js .test-build/lib/vocab.test.js .test-build/lib/card-decks.test.js"
+    "test": "tsc -p tsconfig.test.json && node --test .test-build/lib/conjugation/engine.test.js .test-build/lib/verbs.test.js .test-build/lib/sentences.test.js .test-build/lib/drill.test.js .test-build/lib/vocab.test.js .test-build/lib/card-decks.test.js .test-build/lib/guides.test.js"
   },
   "dependencies": {
     "next": "16.4.3",
