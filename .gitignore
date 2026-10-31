@@ -42,3 +42,6 @@ next-env.d.ts
 
 # test build output
 /.test-build
+
+# local conjugation check (holds CC BY-SA Wiktionary data)
+/.verify

@@ -89,6 +89,24 @@
     "impAffirmative": {"rare":true},
     "impNegative": {"rare":true}
   },
+  "barrer": {
+    "present": {"person":0,"es":"Barro el patio por la mañana.","en":"I sweep the yard in the morning."},
+    "preterite": {"person":2,"es":"Mi madre barrió la acera.","en":"My mother swept the sidewalk."},
+    "imperfect": {"person":2,"es":"Mi abuela barría la casa todos los días.","en":"My grandmother swept the house every day."},
+    "future": {"person":0,"es":"Yo barreré la cocina.","en":"I'll sweep the kitchen."},
+    "conditional": {"person":0,"es":"Yo barrería primero.","en":"I'd sweep first."},
+    "presentPerfect": {"person":1,"es":"¿Has barrido el piso?","en":"Have you swept the floor?"},
+    "pluperfect": {"person":2,"es":"Ya había barrido la sala.","en":"She had already swept the living room."},
+    "futurePerfect": {"rare":true},
+    "conditionalPerfect": {"person":0,"es":"Yo habría barrido.","en":"I would have swept."},
+    "subjPresent": {"person":1,"es":"Quiero que barras el patio.","en":"I want you to sweep the yard."},
+    "subjImperfect": {"person":2,"es":"Le pedí que barriera la entrada.","en":"I asked him to sweep the entrance."},
+    "subjImperfectSe": {"person":4,"es":"Pedí que barriesen las hojas.","en":"I asked them to sweep up the leaves."},
+    "subjPresentPerfect": {"person":1,"es":"Espero que hayas barrido.","en":"I hope you've swept."},
+    "subjPluperfect": {"person":0,"es":"Si hubiera barrido, no habría tanta arena.","en":"If I had swept, there wouldn't be so much sand."},
+    "impAffirmative": {"person":1,"es":"Barre la cocina, por favor.","en":"Sweep the kitchen, please."},
+    "impNegative": {"rare":true}
+  },
   "beber": {
     "present": {"person":0,"es":"Bebo agua de coco en la playa.","en":"I drink coconut water at the beach."},
     "preterite": {"person":2,"es":"Mi abuelo bebió un trago de ron.","en":"My grandfather drank a shot of rum."},
@@ -304,6 +322,24 @@
     "subjPluperfect": {"person":1,"es":"Si hubieras corrido, habrías alcanzado la guagua.","en":"If you had run, you would have caught the bus."},
     "impAffirmative": {"person":1,"es":"Corre, que viene la lluvia.","en":"Run, the rain is coming."},
     "impNegative": {"person":4,"es":"No corran con las tijeras.","en":"Don't run with the scissors."}
+  },
+  "coser": {
+    "present": {"person":0,"es":"Coso mi propia ropa.","en":"I sew my own clothes."},
+    "preterite": {"person":2,"es":"Mi abuela cosió este vestido.","en":"My grandmother sewed this dress."},
+    "imperfect": {"person":2,"es":"Mi madre cosía por las noches.","en":"My mother used to sew at night."},
+    "future": {"person":0,"es":"Te coseré el botón.","en":"I'll sew the button on for you."},
+    "conditional": {"person":0,"es":"Yo cosería eso a mano.","en":"I'd sew that by hand."},
+    "presentPerfect": {"person":1,"es":"¿Has cosido alguna vez?","en":"Have you ever sewn?"},
+    "pluperfect": {"person":2,"es":"Ya había cosido el vestido.","en":"She had already sewn the dress."},
+    "futurePerfect": {"rare":true},
+    "conditionalPerfect": {"person":0,"es":"Yo te lo habría cosido.","en":"I would have sewn it for you."},
+    "subjPresent": {"person":1,"es":"Quiero que me cosas este botón.","en":"I want you to sew this button on for me."},
+    "subjImperfect": {"person":2,"es":"Le pedí que cosiera la camisa.","en":"I asked her to sew the shirt."},
+    "subjImperfectSe": {"rare":true},
+    "subjPresentPerfect": {"person":2,"es":"Espero que haya cosido el pantalón.","en":"I hope she has sewn the pants."},
+    "subjPluperfect": {"person":0,"es":"Si hubiera cosido el bolsillo, no habría perdido las llaves.","en":"If I had sewn the pocket, I wouldn't have lost the keys."},
+    "impAffirmative": {"person":1,"es":"Cose este botón, por favor.","en":"Sew this button on, please."},
+    "impNegative": {"rare":true}
   },
   "crecer": {
     "present": {"person":2,"es":"Este árbol de mango crece muy rápido.","en":"This mango tree grows very fast."},
@@ -914,6 +950,24 @@
     "subjPluperfect": {"person":2,"es":"Si me hubiera parecido mal, te lo habría dicho.","en":"If it had seemed wrong to me, I would have told you."},
     "impAffirmative": {"rare":true},
     "impNegative": {"person":1,"es":"No parezcas tan nervioso en la entrevista.","en":"Don't look so nervous in the interview."}
+  },
+  "parecerse": {
+    "present": {"person":0,"es":"Me parezco mucho a mi padre.","en":"I look a lot like my father."},
+    "preterite": {"rare":true},
+    "imperfect": {"person":4,"es":"Mis hermanas se parecían a mi madre.","en":"My sisters looked like my mother."},
+    "future": {"person":2,"es":"Tu hijo se parecerá a ti.","en":"Your son will look like you."},
+    "conditional": {"person":1,"es":"Te parecerías a tu abuela con ese pelo.","en":"You'd look like your grandmother with that hair."},
+    "presentPerfect": {"person":2,"es":"Se ha parecido siempre a su padre.","en":"He has always looked like his father."},
+    "pluperfect": {"rare":true},
+    "futurePerfect": {"rare":true},
+    "conditionalPerfect": {"rare":true},
+    "subjPresent": {"person":4,"es":"Espero que mis hijos se parezcan a mí.","en":"I hope my kids look like me."},
+    "subjImperfect": {"person":2,"es":"Quería que mi hija se pareciera a mí.","en":"I wanted my daughter to look like me."},
+    "subjImperfectSe": {"rare":true},
+    "subjPresentPerfect": {"rare":true},
+    "subjPluperfect": {"rare":true},
+    "impAffirmative": {"rare":true},
+    "impNegative": {"person":1,"es":"No te parezcas a él en eso.","en":"Don't be like him in that way."}
   },
   "perder": {
     "present": {"person":0,"es":"Siempre pierdo las llaves.","en":"I always lose my keys."},

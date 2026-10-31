@@ -251,6 +251,24 @@
     "impAffirmative": {"rare":true},
     "impNegative": {"person":1,"es":"No desoigas los consejos de tu abuela.","en":"Don't ignore your grandmother's advice."}
   },
+  "despedirse": {
+    "present": {"person":0,"es":"Me despido de mis padres en el aeropuerto.","en":"I say goodbye to my parents at the airport."},
+    "preterite": {"person":2,"es":"Mi hermano se despidió con un abrazo.","en":"My brother said goodbye with a hug."},
+    "imperfect": {"person":3,"es":"Nos despedíamos en la esquina.","en":"We used to say goodbye on the corner."},
+    "future": {"person":0,"es":"Me despediré mañana.","en":"I'll say goodbye tomorrow."},
+    "conditional": {"person":0,"es":"Yo me despediría de ella.","en":"I'd say goodbye to her."},
+    "presentPerfect": {"person":1,"es":"¿Te has despedido de tu abuela?","en":"Have you said goodbye to your grandmother?"},
+    "pluperfect": {"person":2,"es":"Ya se había despedido.","en":"She had already said goodbye."},
+    "futurePerfect": {"rare":true},
+    "conditionalPerfect": {"person":0,"es":"Yo me habría despedido.","en":"I would have said goodbye."},
+    "subjPresent": {"person":1,"es":"Quiero que te despidas de tu tía.","en":"I want you to say goodbye to your aunt."},
+    "subjImperfect": {"person":2,"es":"Esperé a que se despidiera.","en":"I waited for her to say goodbye."},
+    "subjImperfectSe": {"person":4,"es":"Me sorprendió que no se despidiesen.","en":"I was surprised they didn't say goodbye."},
+    "subjPresentPerfect": {"person":1,"es":"Me alegra que te hayas despedido.","en":"I'm glad you said goodbye."},
+    "subjPluperfect": {"person":0,"es":"Si me hubiera despedido, no me sentiría tan mal.","en":"If I had said goodbye, I wouldn't feel so bad."},
+    "impAffirmative": {"person":1,"es":"Despídete de tu abuelo.","en":"Say goodbye to your grandfather."},
+    "impNegative": {"person":1,"es":"No te despidas todavía.","en":"Don't say goodbye yet."}
+  },
   "destruir": {
     "present": {"person":2,"es":"El humo destruye los pulmones.","en":"Smoke destroys the lungs."},
     "preterite": {"person":2,"es":"El huracán destruyó muchas casas.","en":"The hurricane destroyed many houses."},
@@ -286,6 +304,24 @@
     "subjPluperfect": {"person":0,"es":"Si hubiera dirigido la empresa, habría cambiado muchas cosas.","en":"If I had run the company, I would have changed many things."},
     "impAffirmative": {"person":1,"es":"Dirige la orquesta con energía.","en":"Lead the band with energy."},
     "impNegative": {"rare":true}
+  },
+  "discutir": {
+    "present": {"person":0,"es":"Discuto mucho con mi padre sobre política.","en":"I argue a lot with my father about politics."},
+    "preterite": {"person":3,"es":"Discutimos el precio.","en":"We discussed the price."},
+    "imperfect": {"person":4,"es":"Mis tíos discutían de pelota en la mesa.","en":"My uncles used to argue about baseball at the table."},
+    "future": {"person":3,"es":"Discutiremos el contrato mañana.","en":"We'll discuss the contract tomorrow."},
+    "conditional": {"person":0,"es":"Yo no discutiría con él.","en":"I wouldn't argue with him."},
+    "presentPerfect": {"person":3,"es":"Ya hemos discutido eso.","en":"We've already discussed that."},
+    "pluperfect": {"person":4,"es":"Ya habían discutido el tema.","en":"They had already discussed the topic."},
+    "futurePerfect": {"person":3,"es":"Para el lunes habremos discutido todo.","en":"By Monday we will have discussed everything."},
+    "conditionalPerfect": {"person":0,"es":"Yo no habría discutido.","en":"I wouldn't have argued."},
+    "subjPresent": {"person":1,"es":"No quiero que discutas con tu abuela.","en":"I don't want you to argue with your grandmother."},
+    "subjImperfect": {"person":4,"es":"No me gustaba que discutieran delante de los niños.","en":"I didn't like them arguing in front of the kids."},
+    "subjImperfectSe": {"person":4,"es":"Pedí que discutiesen el asunto.","en":"I asked them to discuss the matter."},
+    "subjPresentPerfect": {"person":1,"es":"Siento que hayas discutido con tu madre.","en":"I'm sorry you've argued with your mother."},
+    "subjPluperfect": {"person":3,"es":"Si hubiéramos discutido esto antes, no habría problema.","en":"If we had discussed this earlier, there wouldn't be a problem."},
+    "impAffirmative": {"rare":true},
+    "impNegative": {"person":1,"es":"No discutas conmigo.","en":"Don't argue with me."}
   },
   "divertir": {
     "present": {"person":2,"es":"Este payaso divierte a los niños.","en":"This clown entertains the kids."},
@@ -430,6 +466,24 @@
     "subjPluperfect": {"person":0,"es":"Si hubiera freído más tostones, habrían alcanzado.","en":"If I had fried more tostones, there would have been enough."},
     "impAffirmative": {"person":1,"es":"Fríe los huevos, por favor.","en":"Fry the eggs, please."},
     "impNegative": {"person":1,"es":"No frías con tanto aceite.","en":"Don't fry with so much oil."}
+  },
+  "hervir": {
+    "present": {"person":2,"es":"El agua hierve a cien grados.","en":"Water boils at a hundred degrees."},
+    "preterite": {"person":2,"es":"El agua hirvió en dos minutos.","en":"The water boiled in two minutes."},
+    "imperfect": {"person":2,"es":"La sopa hervía en la estufa.","en":"The soup was boiling on the stove."},
+    "future": {"person":0,"es":"Herviré los huevos.","en":"I'll boil the eggs."},
+    "conditional": {"person":0,"es":"Yo herviría el agua primero.","en":"I'd boil the water first."},
+    "presentPerfect": {"person":2,"es":"El agua ya ha hervido.","en":"The water has already boiled."},
+    "pluperfect": {"person":2,"es":"El café ya había hervido.","en":"The coffee had already boiled."},
+    "futurePerfect": {"rare":true},
+    "conditionalPerfect": {"person":0,"es":"Yo habría hervido el agua.","en":"I would have boiled the water."},
+    "subjPresent": {"person":2,"es":"Espera a que hierva el agua.","en":"Wait for the water to boil."},
+    "subjImperfect": {"person":2,"es":"Esperé a que hirviera la leche.","en":"I waited for the milk to boil."},
+    "subjImperfectSe": {"person":2,"es":"Quité la olla antes de que hirviese.","en":"I took the pot off before it boiled."},
+    "subjPresentPerfect": {"person":2,"es":"Espero que haya hervido el agua.","en":"I hope the water has boiled."},
+    "subjPluperfect": {"person":0,"es":"Si hubiera hervido el agua, no estaría enfermo.","en":"If I had boiled the water, I wouldn't be sick."},
+    "impAffirmative": {"person":1,"es":"Hierve la yuca con sal.","en":"Boil the cassava with salt."},
+    "impNegative": {"rare":true}
   },
   "huir": {
     "present": {"person":0,"es":"Huyo del calor en el verano.","en":"I run away from the heat in the summer."},

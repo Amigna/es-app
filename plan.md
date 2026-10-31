@@ -32,9 +32,9 @@ Held until then so progress is saved per person instead of per browser.
 
 ## Content backlog
 
-- [ ] More words in every section, especially nouns by topic
-- [ ] More verbs, including more reflexives and everyday Caribbean verbs (parquear, chequear, fregar, barrer, planchar)
-- [ ] More phrases and regional expressions, labeled by country (Cuba, Puerto Rico, Dominican Republic, Colombia, Mexico)
+- [ ] More words in every section. Now at 542 nouns, 234 adjectives, 115 adverbs
+- [ ] More verbs. Now at 314, with room for more reflexives and regional verbs
+- [ ] More phrases and regional expressions, labeled by country. Now at 162
 - [ ] More regional words, and more countries in the existing entries
 - [ ] Prepositions, conjunctions, pronouns and question words
 - [ ] Short graded reading passages
@@ -52,7 +52,9 @@ Held until then so progress is saved per person instead of per browser.
 
 ## To verify
 
-- [ ] Spot-check the engine against RAE for irregular verbs. One bug (rehacer) has been found so far, so others may exist
+- [x] Compare the engine with Wiktionary for all verbs: no real differences (llover's unused persons only). Re-run with `npx tsc -p tsconfig.test.json && node .verify/check.mjs`. It lives in a gitignored folder, works offline, and fetches only verbs it hasn't seen
+- [ ] Spot-check reflexive forms with attached pronouns (levántate, vámonos), which the Wiktionary comparison didn't cover
+- [ ] Look up individual forms in RAE when in doubt. Its robots.txt blocks Claude's crawlers, so this means web search or checking by hand, not bulk fetching
 - [ ] Skim the sentence files for natural phrasing. Tests confirm the conjugated form is present, not that the sentence sounds right or the translation is accurate
 - [ ] Try drills in a browser, including the keyboard flow and accent buttons
 - [ ] Have a native speaker check the regional words and slang. Usage varies and these come from my own knowledge, not a source

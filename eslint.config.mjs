@@ -14,6 +14,8 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     // Compiled output of `npm test`:
     ".test-build/**",
+    // Local conjugation check, gitignored:
+    ".verify/**",
   ]),
 ]);
 
