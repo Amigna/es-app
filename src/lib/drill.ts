@@ -1,8 +1,8 @@
 import { stripAccents } from "./conjugation/accent";
 import { conjugate } from "./conjugation/engine";
 import { IRREGULARS } from "./conjugation/irregulars";
-import type { TenseId } from "./conjugation/types";
-import type { Verb } from "./verbs";
+import { TENSES, type TenseId } from "./conjugation/types";
+import { verbSlug, type Verb } from "./verbs";
 
 export type VerbPool = "common" | "irregular" | "all";
 
@@ -51,12 +51,12 @@ const rareKey = (inf: string, tense: TenseId) => `${inf}:${tense}`;
 function questionsFor(verb: Verb, tense: TenseId, rare: Set<string>): Question[] {
   if (rare.has(rareKey(verb.inf, tense))) return [];
   const forms = conjugate(verb).tenses[tense]?.forms ?? [];
-  const labels = tense.startsWith("imp") && tense !== "imperfect" ? IMPERATIVE_PERSONS : PERSONS;
   const allowed = ONLY_PERSONS[verb.inf];
   const out: Question[] = [];
   forms.forEach((answer, person) => {
-    if (!answer || !labels[person] || (allowed && !allowed.includes(person))) return;
-    out.push({ verb, tense, person, label: labels[person], answer });
+    const label = personLabel(tense, person);
+    if (!answer || !label || (allowed && !allowed.includes(person))) return;
+    out.push({ verb, tense, person, label, answer });
   });
   return out;
 }
@@ -84,6 +84,44 @@ export function makeQuestion(
   return null;
 }
 
+/** One thing to answer, whatever the drill. Accepted answers are checked in order of how well they match. */
+export interface Card {
+  id: string;
+  /** Small line above the prompt, e.g. the tense. */
+  context: string;
+  title: string;
+  titleIsSpanish: boolean;
+  subtitle?: string;
+  ask: string;
+  answers: string[];
+  /** The answer as shown after a miss. */
+  shown: string;
+  /** English answers are compared loosely, with no accent feedback. */
+  english?: boolean;
+  /** Present for multiple choice instead of typing. */
+  choices?: string[];
+  link?: { href: string; label: string };
+}
+
+export function conjugationCard(q: Question): Card {
+  const meta = TENSES.find((t) => t.id === q.tense)!;
+  return {
+    id: `${q.verb.inf}:${q.tense}:${q.person}`,
+    context: `${meta.name} · ${meta.hint}`,
+    title: q.verb.inf,
+    titleIsSpanish: true,
+    subtitle: q.verb.en,
+    ask: `Form for ${q.label}`,
+    answers: [q.answer],
+    shown: q.answer,
+    link: { href: `/verb/${verbSlug(q.verb.inf)}`, label: `See all forms of ${q.verb.inf}` },
+  };
+}
+
+export function personLabel(tense: TenseId, person: number): string {
+  return (tense === "impAffirmative" || tense === "impNegative" ? IMPERATIVE_PERSONS : PERSONS)[person] ?? "";
+}
+
 const clean = (s: string) => s.trim().toLowerCase().replace(/\s+/g, " ");
 const loose = (s: string) => stripAccents(clean(s)).replace(/ü/g, "u");
 
@@ -91,4 +129,22 @@ const loose = (s: string) => stripAccents(clean(s)).replace(/ü/g, "u");
 export function grade(input: string, answer: string): Grade {
   if (clean(input) === clean(answer)) return "correct";
   return loose(input) === loose(answer) ? "accent" : "wrong";
+}
+
+/** Reduces an English gloss or answer to its core: "to say" -> "say", "the house" -> "house". */
+export function englishCore(text: string): string {
+  return clean(text.replace(/\(.*?\)/g, " "))
+    .replace(/[.!?]/g, "")
+    .replace(/^(to|the|a|an) /, "")
+    .trim();
+}
+
+/** Every acceptable reading of a gloss like "to say, to tell" or "want; love". */
+export const englishAnswers = (gloss: string) => gloss.split(/[,;]/).map(englishCore).filter(Boolean);
+
+export function gradeCard(card: Card, input: string): Grade {
+  if (card.english) return card.answers.includes(englishCore(input)) ? "correct" : "wrong";
+  const grades = card.answers.map((a) => grade(input, a));
+  if (grades.includes("correct")) return "correct";
+  return grades.includes("accent") ? "accent" : "wrong";
 }

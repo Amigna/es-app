@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { conjugate } from "./conjugation/engine";
-import { SENTENCE_GROUPS, getSentences, sentenceGroup } from "./sentence-data";
-import { checkSentences, findForm } from "./sentences";
+import { SENTENCE_GROUPS, getSentences } from "./sentence-data";
+import { checkSentences, findForm, sentenceGroup } from "./sentences";
 import { VERBS, findVerb } from "./verbs";
 
 describe("findForm", () => {

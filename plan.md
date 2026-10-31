@@ -9,11 +9,12 @@ Spanish learning app for me, friends and family. Latin American and Caribbean Sp
 - [x] 281 verbs with a curated example sentence per tense, or a "rarely used" note
 - [x] Conjugation drills with accent-aware grading and retry of missed questions
 - [x] Nouns, adjectives, adverbs and phrases with browse and filter pages (310, 153, 75, 81)
+- [x] Vocabulary drills (meaning in both directions, noun gender, adjective agreement)
+- [x] Fill-in-the-blank drills using the example sentences
 
 ## Next
 
-- [ ] Add vocabulary to drills (gender, meaning in both directions, adjective agreement)
-- [ ] Fill-in-the-blank drills using the existing example sentences
+- [ ] Limit vocabulary drills by topic or word type
 - [ ] Remember drill settings between visits
 - [ ] Optional voseo in drills
 - [ ] Spaced repetition (FSRS) so review focuses on what I keep missing

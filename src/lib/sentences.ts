@@ -14,6 +14,11 @@ export interface RareTense {
 
 export type VerbSentences = Partial<Record<TenseId, Sentence | RareTense>>;
 
+/** Which sentence file a verb belongs in: levantarse -> ar, oír -> ir. */
+export function sentenceGroup(inf: string): string {
+  return inf.replace(/se$/, "").slice(-2).replace("ír", "ir");
+}
+
 const words = (text: string) => text.split(" ").join("\\s+");
 
 /** Locates a conjugated form in a sentence as whole words. "no digas" also matches "no me digas". */

@@ -24,7 +24,7 @@ export default function DrillPage() {
       <header className="space-y-2">
         <h1 className="text-3xl font-semibold tracking-tight">Conjugation drills</h1>
         <p className="text-zinc-600 dark:text-zinc-400">
-          Pick what to practice, then type each form. Anything you miss comes back a few questions later.
+          Pick what to practice. Anything you miss comes back a few questions later.
         </p>
       </header>
       <Drill rare={rareTenses()} />
