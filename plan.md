@@ -14,7 +14,7 @@ Spanish learning app for me, friends and family. Latin American and Caribbean Sp
 - [x] Vocabulary drill filters by word type and noun topic
 - [x] Drill settings remembered between visits (per browser)
 - [x] Regional words page, including words to be careful with
-- [x] Grammar guides: ser vs. estar, por vs. para, preterite vs. imperfect, subjunctive, gender and plurals
+- [x] Grammar guides: ser vs. estar, por vs. para, preterite vs. imperfect, subjunctive, gender and plurals, reflexive verbs, object pronouns, commands, perfect tenses
 
 ## After accounts and a database
 
@@ -33,7 +33,7 @@ Held until then so progress is saved per person instead of per browser.
 - [ ] More phrases and regional expressions, labeled by country (Cuba, Puerto Rico, Dominican Republic, Colombia, Mexico)
 - [ ] More regional words, and more countries in the existing entries
 - [ ] Prepositions, conjunctions, pronouns and question words
-- [ ] More grammar guides: reflexive verbs, object pronouns, commands, the perfect tenses
+- [ ] More grammar guides: comparisons, future with ir a, relative pronouns, numbers and dates
 - [ ] Short graded reading passages
 - [ ] Better examples for verbs that are mostly "rarely used" notes (contraer, prever, errar, rogar)
 
