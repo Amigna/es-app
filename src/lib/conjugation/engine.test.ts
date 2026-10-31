@@ -322,6 +322,14 @@ describe("derived verbs (like)", () => {
     check("dar", "subjPresent", P5("dé des dé demos den"));
   });
 
+  it("rehacer marks the stressed i after h", () => {
+    check("rehacer", "preterite", P5("rehíce rehiciste rehízo rehicimos rehicieron"));
+    check("rehacer", "present", P5("rehago rehaces rehace rehacemos rehacen"));
+    check("rehacer", "subjImperfect", P5("rehiciera rehicieras rehiciera rehiciéramos rehicieran"));
+    check("rehacer", "future", P5("reharé reharás rehará reharemos reharán"));
+    assert.equal(run("rehacer").participle, "rehecho");
+  });
+
   it("participle suffixes", () => {
     assert.equal(run("escribir").participle, "escrito");
     assert.equal(run("describir").participle, "descrito");

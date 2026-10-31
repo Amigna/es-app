@@ -85,6 +85,14 @@ export const IRREGULARS: Record<string, Spec> = {
     impTu: "haz",
     participle: "hecho",
   },
+  // Own entry: the h does not stop e + i forming a diphthong, so the stressed i needs its mark (RAE: rehíce, rehízo).
+  rehacer: {
+    yoStem: "rehag",
+    pret: ["rehíce", "rehiciste", "rehízo", "rehicimos", "rehicieron"],
+    futStem: "rehar",
+    impTu: "rehaz",
+    participle: "rehecho",
+  },
   decir: {
     boot: "e>i",
     yoStem: "dig",
