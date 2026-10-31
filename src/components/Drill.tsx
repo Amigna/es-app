@@ -2,12 +2,10 @@
 
 import { useMemo, useState } from "react";
 import DrillRunner from "@/components/DrillRunner";
-import type { VocabKind } from "@/lib/card-decks";
-import { TENSES, type Mood, type TenseId } from "@/lib/conjugation/types";
+import { TENSES, type Mood } from "@/lib/conjugation/types";
 import { conjugationCard, makeQuestion, poolVerbs, type Card, type VerbPool } from "@/lib/drill";
+import { NOUN_TOPICS, useDrillSettings, type Mode, type VocabKind, type WordType } from "@/lib/drill-settings";
 import { VERBS } from "@/lib/verbs";
-
-type Mode = "conjugation" | "vocabulary" | "blanks";
 
 const MODES: { id: Mode; title: string; hint: string }[] = [
   { id: "conjugation", title: "Conjugation", hint: "Type the verb form" },
@@ -32,6 +30,12 @@ const VOCAB_OPTIONS: { id: VocabKind; title: string; hint: string }[] = [
   { id: "toEnglish", title: "Spanish to English", hint: "See the word, type the meaning" },
   { id: "gender", title: "Noun gender", hint: "Choose el or la" },
   { id: "agreement", title: "Adjective agreement", hint: "Type the right form" },
+];
+
+const WORD_TYPES: { id: WordType; title: string; hint: string }[] = [
+  { id: "noun", title: "Nouns", hint: "Can be limited by topic" },
+  { id: "adjective", title: "Adjectives", hint: "Describing words" },
+  { id: "adverb", title: "Adverbs", hint: "Time, place and manner" },
 ];
 
 function OptionCard({
@@ -62,37 +66,29 @@ function OptionCard({
   );
 }
 
-const toggled = <T,>(set: Set<T>, value: T) => {
-  const next = new Set(set);
-  if (next.has(value)) next.delete(value);
-  else next.add(value);
-  return next;
-};
+const toggled = <T,>(list: T[], value: T) => (list.includes(value) ? list.filter((v) => v !== value) : [...list, value]);
 
 export default function Drill({ rare }: { rare: string[] }) {
   const rareSet = useMemo(() => new Set(rare), [rare]);
 
-  const [mode, setMode] = useState<Mode>("conjugation");
-  const [tenses, setTenses] = useState<Set<TenseId>>(new Set<TenseId>(["present", "preterite", "imperfect"]));
-  const [pool, setPool] = useState<VerbPool>("common");
-  const [kinds, setKinds] = useState<Set<VocabKind>>(new Set<VocabKind>(["toSpanish", "gender"]));
+  const [settings, update] = useDrillSettings();
+  const { mode, pool, tenses, kinds, wordTypes, topics } = settings;
   const [session, setSession] = useState<{ first: Card; next: () => Card | null } | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   async function buildDeck(): Promise<() => Card | null> {
     const verbs = poolVerbs(VERBS, pool);
-    const chosen = [...tenses];
     if (mode === "conjugation") {
       return () => {
-        const q = makeQuestion(verbs, chosen, rareSet);
+        const q = makeQuestion(verbs, tenses, rareSet);
         return q && conjugationCard(q);
       };
     }
     const decks = await import("@/lib/card-decks");
-    if (mode === "vocabulary") return decks.vocabDeck([...kinds]);
+    if (mode === "vocabulary") return decks.vocabDeck({ kinds, wordTypes, topics });
     const { SENTENCE_GROUPS } = await import("@/lib/sentence-data");
-    return decks.blankDeck(SENTENCE_GROUPS, verbs, chosen);
+    return decks.blankDeck(SENTENCE_GROUPS, verbs, tenses);
   }
 
   async function start() {
@@ -102,7 +98,7 @@ export default function Drill({ rare }: { rare: string[] }) {
       const next = await buildDeck();
       const first = next();
       if (first) setSession({ first, next });
-      else setError("No questions match that choice. Try adding more tenses or verbs.");
+      else setError("No questions match that choice. Try selecting more options.");
     } catch {
       setError("Couldn't load the drill. Check your connection and try again.");
     } finally {
@@ -113,7 +109,7 @@ export default function Drill({ rare }: { rare: string[] }) {
   if (session) return <DrillRunner first={session.first} next={session.next} onStop={() => setSession(null)} />;
 
   const usesVerbs = mode !== "vocabulary";
-  const ready = usesVerbs ? tenses.size > 0 : kinds.size > 0;
+  const ready = usesVerbs ? tenses.length > 0 : kinds.length > 0 && wordTypes.length > 0;
 
   return (
     <div className="space-y-8">
@@ -121,7 +117,7 @@ export default function Drill({ rare }: { rare: string[] }) {
         <h2 className="mb-3 text-xl font-semibold">What to practice</h2>
         <div className="grid gap-2 sm:grid-cols-3">
           {MODES.map((m) => (
-            <OptionCard key={m.id} name="mode" title={m.title} hint={m.hint} checked={mode === m.id} onChange={() => setMode(m.id)} />
+            <OptionCard key={m.id} name="mode" title={m.title} hint={m.hint} checked={mode === m.id} onChange={() => update({ mode: m.id })} />
           ))}
         </div>
       </section>
@@ -132,7 +128,7 @@ export default function Drill({ rare }: { rare: string[] }) {
             <h2 className="mb-3 text-xl font-semibold">Which verbs?</h2>
             <div className="grid gap-2 sm:grid-cols-3">
               {POOLS.map((p) => (
-                <OptionCard key={p.id} name="pool" title={p.title} hint={p.hint} checked={pool === p.id} onChange={() => setPool(p.id)} />
+                <OptionCard key={p.id} name="pool" title={p.title} hint={p.hint} checked={pool === p.id} onChange={() => update({ pool: p.id })} />
               ))}
             </div>
           </section>
@@ -148,8 +144,8 @@ export default function Drill({ rare }: { rare: string[] }) {
                       <label key={t.id} className="flex cursor-pointer items-center gap-2 text-sm">
                         <input
                           type="checkbox"
-                          checked={tenses.has(t.id)}
-                          onChange={() => setTenses(toggled(tenses, t.id))}
+                          checked={tenses.includes(t.id)}
+                          onChange={() => update({ tenses: toggled(tenses, t.id) })}
                           className="size-4 accent-emerald-700"
                         />
                         {t.name}
@@ -162,22 +158,65 @@ export default function Drill({ rare }: { rare: string[] }) {
           </section>
         </>
       ) : (
-        <section>
-          <h2 className="mb-3 text-xl font-semibold">Which questions?</h2>
-          <div className="grid gap-2 sm:grid-cols-2">
-            {VOCAB_OPTIONS.map((k) => (
-              <OptionCard
-                key={k.id}
-                name={k.id}
-                type="checkbox"
-                title={k.title}
-                hint={k.hint}
-                checked={kinds.has(k.id)}
-                onChange={() => setKinds(toggled(kinds, k.id))}
-              />
-            ))}
-          </div>
-        </section>
+        <>
+          <section>
+            <h2 className="mb-3 text-xl font-semibold">Which questions?</h2>
+            <div className="grid gap-2 sm:grid-cols-2">
+              {VOCAB_OPTIONS.map((k) => (
+                <OptionCard
+                  key={k.id}
+                  name={k.id}
+                  type="checkbox"
+                  title={k.title}
+                  hint={k.hint}
+                  checked={kinds.includes(k.id)}
+                  onChange={() => update({ kinds: toggled(kinds, k.id) })}
+                />
+              ))}
+            </div>
+          </section>
+
+          <section>
+            <h2 className="mb-3 text-xl font-semibold">Which words?</h2>
+            <div className="grid gap-2 sm:grid-cols-3">
+              {WORD_TYPES.map((w) => (
+                <OptionCard
+                  key={w.id}
+                  name={w.id}
+                  type="checkbox"
+                  title={w.title}
+                  hint={w.hint}
+                  checked={wordTypes.includes(w.id)}
+                  onChange={() => update({ wordTypes: toggled(wordTypes, w.id) })}
+                />
+              ))}
+            </div>
+          </section>
+
+          {wordTypes.includes("noun") && (
+            <section>
+              <h2 className="mb-1 text-xl font-semibold">Noun topics</h2>
+              <p className="mb-3 text-sm text-zinc-500">Pick any, or leave them all off for every topic.</p>
+              <div className="flex flex-wrap gap-2">
+                {NOUN_TOPICS.map((t) => (
+                  <button
+                    key={t}
+                    type="button"
+                    aria-pressed={topics.includes(t)}
+                    onClick={() => update({ topics: toggled(topics, t) })}
+                    className={`rounded-full border px-3 py-1 text-sm capitalize transition ${
+                      topics.includes(t)
+                        ? "border-emerald-700 bg-emerald-700 text-white"
+                        : "border-zinc-200 hover:border-emerald-600 dark:border-zinc-700"
+                    }`}
+                  >
+                    {t}
+                  </button>
+                ))}
+              </div>
+            </section>
+          )}
+        </>
       )}
 
       {error && (

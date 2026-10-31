@@ -11,12 +11,11 @@ Spanish learning app for me, friends and family. Latin American and Caribbean Sp
 - [x] Nouns, adjectives, adverbs and phrases with browse and filter pages (310, 153, 75, 81)
 - [x] Vocabulary drills (meaning in both directions, noun gender, adjective agreement)
 - [x] Fill-in-the-blank drills using the example sentences
+- [x] Vocabulary drill filters by word type and noun topic
+- [x] Drill settings remembered between visits (per browser)
 
 ## Next
 
-- [ ] Limit vocabulary drills by topic or word type
-- [ ] Remember drill settings between visits
-- [ ] Optional voseo in drills
 - [ ] Spaced repetition (FSRS) so review focuses on what I keep missing
 - [ ] Progress and weak-spot stats, by tense and by verb
 
@@ -41,6 +40,7 @@ Spanish learning app for me, friends and family. Latin American and Caribbean Sp
 - [ ] "Report a problem" link on sentences and forms
 - [ ] Mobile layout pass
 - [ ] Conversation or writing practice with Claude (would need an API key)
+- [ ] Optional voseo in drills
 
 ## To verify
 

@@ -1,6 +1,7 @@
 import { conjugate } from "./conjugation/engine";
 import { TENSES, type TenseId } from "./conjugation/types";
 import { englishAnswers, personLabel, type Card } from "./drill";
+import type { VocabKind, WordType } from "./drill-settings";
 import type { SentenceGroups } from "./sentence-data";
 import { findForm, sentenceGroup, type Sentence } from "./sentences";
 import { verbSlug, type Verb } from "./verbs";
@@ -8,7 +9,12 @@ import { ADJECTIVES, ADVERBS, NOUNS, adjectiveForms, isPluralOnly, nounArticle, 
 
 // Decks for the vocabulary and fill-in-the-blank drills. Imported on demand because it pulls in the word lists.
 
-export type VocabKind = "toSpanish" | "toEnglish" | "gender" | "agreement";
+export interface VocabOptions {
+  kinds: VocabKind[];
+  wordTypes: WordType[];
+  /** Noun topics to include; empty means all of them. */
+  topics: string[];
+}
 
 type Random = () => number;
 const pick = <T,>(list: T[], random: Random): T => list[Math.floor(random() * list.length)];
@@ -29,19 +35,16 @@ const nounWord = (n: Noun): Word => ({
 
 const plainWord = (w: { es: string; en: string }): Word => ({ es: w.es, en: w.en, accepted: [w.es], shown: w.es });
 
-const allWords = (): Word[] => [...NOUNS.map(nounWord), ...ADJECTIVES.map(plainWord), ...ADVERBS.map(plainWord)];
-
-const genderNouns = () => NOUNS.filter((n) => !n.article && !isPluralOnly(n));
-
 const FORM_NAMES = ["masculine singular", "feminine singular", "masculine plural", "feminine plural"];
 
 /** Adjectives worth drilling: ones where the forms actually differ. */
 const agreeingAdjectives = () => ADJECTIVES.filter((a) => new Set(adjectiveForms(a)).size > 1);
 
-function toSpanishCard(words: Word[], random: Random): Card {
+function toSpanishCard(words: Word[], everyWord: Word[], random: Random): Card {
   const word = pick(words, random);
-  // Words sharing a gloss are all correct: "house" can't tell the learner which one is meant.
-  const sameMeaning = words.filter((w) => w.en === word.en);
+  // Any word sharing a core meaning is correct: "bus" can't tell the learner whether autobús or guagua is meant.
+  const meanings = englishAnswers(word.en);
+  const sameMeaning = everyWord.filter((w) => englishAnswers(w.en).some((m) => meanings.includes(m)));
   return {
     id: `es:${word.es}`,
     context: "English to Spanish",
@@ -98,17 +101,31 @@ function agreementCard(adjectives: Adjective[], random: Random): Card {
   };
 }
 
-export function vocabDeck(kinds: VocabKind[], random: Random = Math.random): () => Card | null {
-  const words = allWords();
-  const nouns = genderNouns();
-  const adjectives = agreeingAdjectives();
+export function vocabDeck({ kinds, wordTypes, topics }: VocabOptions, random: Random = Math.random): () => Card | null {
+  const has = (type: WordType) => wordTypes.includes(type);
+  const nouns = has("noun") ? NOUNS.filter((n) => topics.length === 0 || topics.includes(n.topic)) : [];
+  const adjectives = has("adjective") ? ADJECTIVES : [];
+  const adverbs = has("adverb") ? ADVERBS : [];
+
+  const words = [...nouns.map(nounWord), ...adjectives.map(plainWord), ...adverbs.map(plainWord)];
+  const everyWord = [...NOUNS.map(nounWord), ...ADJECTIVES.map(plainWord), ...ADVERBS.map(plainWord)];
+  const genderNouns = nouns.filter((n) => !n.article && !isPluralOnly(n));
+  const agreeing = has("adjective") ? agreeingAdjectives() : [];
+
+  // Drop question types with nothing to ask, e.g. noun gender with only adverbs selected.
+  const usable = kinds.filter((k) => {
+    if (k === "gender") return genderNouns.length > 0;
+    if (k === "agreement") return agreeing.length > 0;
+    return words.length > 0;
+  });
+
   return () => {
-    if (kinds.length === 0) return null;
-    const kind = pick(kinds, random);
-    if (kind === "toSpanish") return toSpanishCard(words, random);
+    if (usable.length === 0) return null;
+    const kind = pick(usable, random);
+    if (kind === "toSpanish") return toSpanishCard(words, everyWord, random);
     if (kind === "toEnglish") return toEnglishCard(words, random);
-    if (kind === "gender") return genderCard(nouns, random);
-    return agreementCard(adjectives, random);
+    if (kind === "gender") return genderCard(genderNouns, random);
+    return agreementCard(agreeing, random);
   };
 }
 

@@ -1,15 +1,34 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { blankCard, blankDeck, vocabDeck } from "./card-decks";
-import { englishAnswers, englishCore, gradeCard } from "./drill";
+import { blankCard, blankDeck, vocabDeck, type VocabOptions } from "./card-decks";
+import { englishAnswers, englishCore, gradeCard, type Card } from "./drill";
+import { DEFAULT_SETTINGS, NOUN_TOPICS, parseSettings } from "./drill-settings";
 import { SENTENCE_GROUPS } from "./sentence-data";
 import { VERBS, findVerb } from "./verbs";
+import { ADVERBS, NOUNS } from "./vocab";
 
 const verb = (inf: string) => {
   const v = findVerb(inf);
   assert.ok(v, inf);
   return v;
 };
+
+const options = (patch: Partial<VocabOptions>): VocabOptions => ({
+  kinds: ["toSpanish", "toEnglish", "gender", "agreement"],
+  wordTypes: ["noun", "adjective", "adverb"],
+  topics: [],
+  ...patch,
+});
+
+/** Draws cards until one matches, failing if it never comes up. */
+function draw(next: () => Card | null, match: (c: Card) => boolean): Card {
+  for (let i = 0; i < 20000; i++) {
+    const card = next();
+    assert.ok(card);
+    if (match(card)) return card;
+  }
+  assert.fail("card never came up");
+}
 
 describe("English answers", () => {
   it("reduces glosses to their core", () => {
@@ -23,7 +42,7 @@ describe("English answers", () => {
 
 describe("vocabDeck", () => {
   it("makes answerable cards of every kind", () => {
-    const next = vocabDeck(["toSpanish", "toEnglish", "gender", "agreement"]);
+    const next = vocabDeck(options({}));
     for (let i = 0; i < 500; i++) {
       const card = next();
       assert.ok(card);
@@ -35,20 +54,37 @@ describe("vocabDeck", () => {
   });
 
   it("accepts a noun with or without its article", () => {
-    for (let i = 0; i < 200; i++) {
-      const card = vocabDeck(["toSpanish"])();
-      assert.ok(card);
-      if (card.shown.startsWith("la ")) {
-        assert.equal(gradeCard(card, card.shown), "correct");
-        assert.equal(gradeCard(card, card.shown.slice(3)), "correct");
-        return;
-      }
-    }
-    assert.fail("no feminine noun came up");
+    const card = draw(vocabDeck(options({ kinds: ["toSpanish"] })), (c) => c.shown.startsWith("la "));
+    assert.equal(gradeCard(card, card.shown), "correct");
+    assert.equal(gradeCard(card, card.shown.slice(3)), "correct");
   });
 
-  it("returns nothing with no kinds selected", () => {
-    assert.equal(vocabDeck([])(), null);
+  it("accepts regional synonyms in both directions", () => {
+    const next = vocabDeck(options({ kinds: ["toSpanish"], wordTypes: ["noun"], topics: ["travel"] }));
+    const bus = draw(next, (c) => c.title === "bus");
+    assert.equal(gradeCard(bus, "autobús"), "correct");
+    assert.equal(gradeCard(bus, "guagua"), "correct");
+    const guagua = draw(next, (c) => c.title === "bus (Caribbean)");
+    assert.equal(gradeCard(guagua, "guagua"), "correct");
+    assert.equal(gradeCard(guagua, "autobús"), "correct");
+  });
+
+  it("limits nouns to the chosen topics", () => {
+    const foods = new Set(NOUNS.filter((n) => n.topic === "food").map((n) => n.es));
+    const next = vocabDeck(options({ kinds: ["gender"], wordTypes: ["noun"], topics: ["food"] }));
+    for (let i = 0; i < 200; i++) assert.ok(foods.has(next()!.title));
+  });
+
+  it("respects word types", () => {
+    const next = vocabDeck(options({ kinds: ["toEnglish"], wordTypes: ["adverb"] }));
+    const adverbs = new Set(ADVERBS.map((a) => a.es));
+    for (let i = 0; i < 200; i++) assert.ok(adverbs.has(next()!.title));
+  });
+
+  it("returns nothing when no question fits", () => {
+    assert.equal(vocabDeck(options({ kinds: [] }))(), null);
+    assert.equal(vocabDeck(options({ kinds: ["gender"], wordTypes: ["adverb"] }))(), null);
+    assert.equal(vocabDeck(options({ kinds: ["agreement"], wordTypes: ["noun"] }))(), null);
   });
 });
 
@@ -82,5 +118,28 @@ describe("blankCard", () => {
     assert.ok(total > 800, `only ${total}`);
     const next = blankDeck(SENTENCE_GROUPS, VERBS.slice(0, 10), ["present"]);
     assert.ok(next()?.title.includes("_____"));
+  });
+});
+
+describe("drill settings", () => {
+  it("lists exactly the noun topics in the data", () => {
+    assert.deepEqual([...new Set(NOUNS.map((n) => n.topic))].sort(), NOUN_TOPICS);
+  });
+
+  it("falls back to defaults for missing or broken data", () => {
+    assert.deepEqual(parseSettings(null), DEFAULT_SETTINGS);
+    assert.deepEqual(parseSettings("not json"), DEFAULT_SETTINGS);
+    assert.deepEqual(parseSettings("{}"), DEFAULT_SETTINGS);
+  });
+
+  it("keeps valid choices and drops unknown ones", () => {
+    const s = parseSettings(
+      JSON.stringify({ mode: "vocabulary", pool: "nope", tenses: ["future", "madeUp"], kinds: [], topics: ["food", "zzz"] }),
+    );
+    assert.equal(s.mode, "vocabulary");
+    assert.equal(s.pool, DEFAULT_SETTINGS.pool);
+    assert.deepEqual(s.tenses, ["future"]);
+    assert.deepEqual(s.kinds, []);
+    assert.deepEqual(s.topics, ["food"]);
   });
 });
