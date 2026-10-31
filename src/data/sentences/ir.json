@@ -161,6 +161,24 @@
     "impAffirmative": {"person":1,"es":"Corrige la última línea.","en":"Correct the last line."},
     "impNegative": {"person":1,"es":"No corrijas a tu abuela delante de todos.","en":"Don't correct your grandmother in front of everyone."}
   },
+  "cubrir": {
+    "present": {"person":0,"es":"Cubro la comida para que no entren moscas.","en":"I cover the food so flies don't get in."},
+    "preterite": {"person":2,"es":"La nieve cubrió la ciudad.","en":"The snow covered the city."},
+    "imperfect": {"person":4,"es":"Las nubes cubrían las montañas.","en":"The clouds covered the mountains."},
+    "future": {"person":2,"es":"El seguro cubrirá los daños.","en":"The insurance will cover the damage."},
+    "conditional": {"person":2,"es":"Este dinero cubriría el alquiler.","en":"This money would cover the rent."},
+    "presentPerfect": {"person":2,"es":"El seguro ha cubierto todo.","en":"The insurance has covered everything."},
+    "pluperfect": {"person":2,"es":"El agua ya había cubierto la calle.","en":"The water had already covered the street."},
+    "futurePerfect": {"person":2,"es":"Para mañana el agua habrá cubierto el puente.","en":"By tomorrow the water will have covered the bridge."},
+    "conditionalPerfect": {"person":2,"es":"El seguro habría cubierto la operación.","en":"The insurance would have covered the operation."},
+    "subjPresent": {"person":2,"es":"Espero que esto cubra los gastos.","en":"I hope this covers the expenses."},
+    "subjImperfect": {"person":2,"es":"Queríamos que el seguro cubriera el carro.","en":"We wanted the insurance to cover the car."},
+    "subjImperfectSe": {"person":4,"es":"Pedí que cubriesen los muebles.","en":"I asked them to cover the furniture."},
+    "subjPresentPerfect": {"person":2,"es":"Dudo que haya cubierto el costo.","en":"I doubt it has covered the cost."},
+    "subjPluperfect": {"person":2,"es":"Si el seguro lo hubiera cubierto, no estaríamos pagando.","en":"If the insurance had covered it, we wouldn't be paying."},
+    "impAffirmative": {"person":1,"es":"Cubre la olla.","en":"Cover the pot."},
+    "impNegative": {"person":1,"es":"No cubras la ventana.","en":"Don't cover the window."}
+  },
   "cumplir": {
     "present": {"person":0,"es":"Siempre cumplo mis promesas.","en":"I always keep my promises."},
     "preterite": {"person":2,"es":"Mi abuela cumplió noventa años.","en":"My grandmother turned ninety."},
@@ -809,6 +827,24 @@
     "impAffirmative": {"person":1,"es":"Ríe, que la vida es corta.","en":"Laugh, life is short."},
     "impNegative": {"person":1,"es":"No rías tan alto.","en":"Don't laugh so loud."}
   },
+  "reírse": {
+    "present": {"person":0,"es":"Me río mucho con mi tío.","en":"I laugh a lot with my uncle."},
+    "preterite": {"person":4,"es":"Todos se rieron de mi chiste.","en":"Everyone laughed at my joke."},
+    "imperfect": {"person":3,"es":"Nos reíamos de cualquier cosa.","en":"We used to laugh at anything."},
+    "future": {"person":1,"es":"Te reirás con esta película.","en":"You'll laugh at this movie."},
+    "conditional": {"person":0,"es":"Yo me reiría de eso.","en":"I would laugh at that."},
+    "presentPerfect": {"person":3,"es":"Nos hemos reído mucho.","en":"We've laughed a lot."},
+    "pluperfect": {"person":2,"es":"Nunca se había reído tanto.","en":"She had never laughed so much."},
+    "futurePerfect": {"rare":true},
+    "conditionalPerfect": {"person":1,"es":"Te habrías reído.","en":"You would have laughed."},
+    "subjPresent": {"person":1,"es":"No quiero que te rías de mí.","en":"I don't want you to laugh at me."},
+    "subjImperfect": {"person":2,"es":"Me dolió que se riera de mí.","en":"It hurt me that she laughed at me."},
+    "subjImperfectSe": {"person":4,"es":"Temía que se riesen de mí.","en":"I was afraid they would laugh at me."},
+    "subjPresentPerfect": {"person":4,"es":"Me alegra que se hayan reído.","en":"I'm glad they laughed."},
+    "subjPluperfect": {"person":3,"es":"Si no nos hubiéramos reído, no nos habrían echado.","en":"If we hadn't laughed, they wouldn't have thrown us out."},
+    "impAffirmative": {"person":1,"es":"Ríete un poco.","en":"Laugh a little."},
+    "impNegative": {"person":1,"es":"No te rías de tu hermano.","en":"Don't laugh at your brother."}
+  },
   "reñir": {
     "present": {"person":0,"es":"Siempre riño a mi hijo por llegar tarde.","en":"I always scold my son for being late."},
     "preterite": {"person":2,"es":"Mi mamá me riñó por romper el vaso.","en":"My mom scolded me for breaking the glass."},
@@ -861,6 +897,24 @@
     "subjPresentPerfect": {"person":2,"es":"Me alegra que haya reunido a la familia.","en":"I'm glad she has brought the family together."},
     "subjPluperfect": {"person":3,"es":"Si hubiéramos reunido más dinero, habríamos viajado.","en":"If we had saved up more money, we would have traveled."},
     "impAffirmative": {"person":1,"es":"Reúne a los niños para la foto.","en":"Gather the kids for the picture."},
+    "impNegative": {"rare":true}
+  },
+  "reunirse": {
+    "present": {"person":3,"es":"Nos reunimos todos los domingos en casa de mi abuela.","en":"We get together every Sunday at my grandmother's house."},
+    "preterite": {"person":4,"es":"Los vecinos se reunieron en la plaza.","en":"The neighbors met in the square."},
+    "imperfect": {"person":3,"es":"Nos reuníamos después de la escuela.","en":"We used to get together after school."},
+    "future": {"person":3,"es":"Nos reuniremos a las tres.","en":"We'll meet at three."},
+    "conditional": {"person":3,"es":"Nos reuniríamos más si viviéramos cerca.","en":"We'd get together more if we lived nearby."},
+    "presentPerfect": {"person":1,"es":"¿Te has reunido con el jefe?","en":"Have you met with the boss?"},
+    "pluperfect": {"person":4,"es":"Ya se habían reunido.","en":"They had already met."},
+    "futurePerfect": {"rare":true},
+    "conditionalPerfect": {"person":3,"es":"Nos habríamos reunido antes.","en":"We would have gotten together sooner."},
+    "subjPresent": {"person":3,"es":"Espero que nos reunamos pronto.","en":"I hope we get together soon."},
+    "subjImperfect": {"person":4,"es":"Querían que se reunieran todos.","en":"They wanted everyone to get together."},
+    "subjImperfectSe": {"person":3,"es":"Me pidió que nos reuniésemos.","en":"She asked that we meet."},
+    "subjPresentPerfect": {"person":4,"es":"Me alegra que se hayan reunido.","en":"I'm glad they've gotten together."},
+    "subjPluperfect": {"person":3,"es":"Si nos hubiéramos reunido antes, lo habríamos resuelto.","en":"If we had met sooner, we would have sorted it out."},
+    "impAffirmative": {"person":1,"es":"Reúnete con tu familia.","en":"Get together with your family."},
     "impNegative": {"rare":true}
   },
   "salir": {
@@ -970,6 +1024,24 @@
     "subjPluperfect": {"person":1,"es":"Si hubieras sonreído, habría salido mejor la foto.","en":"If you had smiled, the photo would have turned out better."},
     "impAffirmative": {"person":1,"es":"Sonríe, te están tomando una foto.","en":"Smile, they're taking your picture."},
     "impNegative": {"rare":true}
+  },
+  "subir": {
+    "present": {"person":0,"es":"Subo las escaleras a pie.","en":"I take the stairs up."},
+    "preterite": {"person":2,"es":"El precio de la gasolina subió otra vez.","en":"The price of gas went up again."},
+    "imperfect": {"person":3,"es":"Subíamos a la azotea para ver el mar.","en":"We used to go up to the roof to see the sea."},
+    "future": {"person":3,"es":"Subiremos a la montaña mañana.","en":"We'll go up the mountain tomorrow."},
+    "conditional": {"person":0,"es":"Yo subiría por las escaleras.","en":"I'd go up the stairs."},
+    "presentPerfect": {"person":4,"es":"Los precios han subido mucho.","en":"Prices have gone up a lot."},
+    "pluperfect": {"person":2,"es":"Ya había subido a la guagua.","en":"She had already gotten on the bus."},
+    "futurePerfect": {"person":3,"es":"Para las diez habremos subido a la cima.","en":"By ten we will have gone up to the top."},
+    "conditionalPerfect": {"person":4,"es":"Habrían subido, pero el ascensor no funcionaba.","en":"They would have gone up, but the elevator wasn't working."},
+    "subjPresent": {"person":1,"es":"Quiero que subas el volumen.","en":"I want you to turn up the volume."},
+    "subjImperfect": {"person":2,"es":"Temíamos que subiera el alquiler.","en":"We were afraid the rent would go up."},
+    "subjImperfectSe": {"person":4,"es":"Esperaba que subiesen mi sueldo.","en":"I was hoping they would raise my salary."},
+    "subjPresentPerfect": {"person":2,"es":"Me sorprende que no haya subido el precio.","en":"I'm surprised the price hasn't gone up."},
+    "subjPluperfect": {"person":1,"es":"Si hubieras subido antes, habrías encontrado asiento.","en":"If you had gotten on earlier, you would have found a seat."},
+    "impAffirmative": {"person":1,"es":"Sube a la guagua.","en":"Get on the bus."},
+    "impNegative": {"person":1,"es":"No subas el volumen.","en":"Don't turn up the volume."}
   },
   "sugerir": {
     "present": {"person":0,"es":"Sugiero que salgamos temprano.","en":"I suggest we leave early."},
