@@ -21,6 +21,7 @@ const NAV = [
   ["/small-words", "Small words"],
   ["/phrases", "Phrases"],
   ["/regional", "Regional"],
+  ["/reading", "Reading"],
   ["/guides", "Guides"],
   ["/drill", "Drills"],
 ] as const;
@@ -50,13 +51,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 </Link>
               </div>
             </div>
-            {/* A tidy three-row grid on phones, a row under the title on tablets, all one line on wide screens. */}
+            {/* A tidy grid on phones with the last link centered, a row under the title on tablets, all one line on wide screens. */}
             <nav className="grid grid-cols-3 text-sm md:flex md:gap-1">
               {NAV.map(([href, label]) => (
                 <Link
                   key={href}
                   href={href}
-                  className="flex min-h-10 items-center justify-center rounded-lg md:px-2 hover:text-emerald-700 dark:hover:text-emerald-400"
+                  className="flex min-h-10 items-center justify-center rounded-lg last:col-start-2 md:px-2 hover:text-emerald-700 dark:hover:text-emerald-400"
                 >
                   {label}
                 </Link>

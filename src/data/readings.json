@@ -1,0 +1,437 @@
+[
+  {
+    "slug": "la-familia-de-ana",
+    "title": "La familia de Ana",
+    "en": "Ana's family",
+    "level": "A1",
+    "place": "México",
+    "paragraphs": [
+      {
+        "es": "Me llamo Ana y tengo veinte años. Vivo en Puebla, una ciudad de México, con mi familia. Mi casa es pequeña, pero me gusta mucho.",
+        "en": "My name is Ana and I'm twenty years old. I live in Puebla, a city in Mexico, with my family. My house is small, but I like it a lot."
+      },
+      {
+        "es": "Mi mamá es maestra y mi papá trabaja en un banco. Tengo un hermano, Luis. Él tiene doce años y le gusta el fútbol. Los domingos comemos juntos en casa de mi abuela.",
+        "en": "My mom is a teacher and my dad works at a bank. I have a brother, Luis. He's twelve and he likes soccer. On Sundays we eat together at my grandmother's house."
+      }
+    ],
+    "words": [
+      { "es": "pequeña", "en": "small" },
+      { "es": "maestra", "en": "teacher" },
+      { "es": "hermano", "en": "brother" },
+      { "es": "juntos", "en": "together" },
+      { "es": "abuela", "en": "grandmother" }
+    ],
+    "questions": [
+      { "q": "¿Dónde vive Ana?", "en": "Where does Ana live?", "choices": ["En Puebla", "En un banco", "En una escuela"], "answer": "En Puebla", "why": "Ana lives in Puebla, a city in Mexico." },
+      { "q": "¿Qué hace la mamá de Ana?", "en": "What does Ana's mom do?", "choices": ["Es maestra", "Trabaja en un banco", "Juega fútbol"], "answer": "Es maestra", "why": "Her mom is a teacher. Her dad is the one who works at a bank." },
+      { "q": "¿Cuántos años tiene Luis?", "en": "How old is Luis?", "choices": ["Doce", "Veinte", "Diez"], "answer": "Doce", "why": "Luis is twelve. Ana is the one who is twenty." },
+      { "q": "¿Cuándo comen juntos?", "en": "When do they eat together?", "choices": ["Los domingos", "Los sábados", "Todos los días"], "answer": "Los domingos", "why": "They eat at the grandmother's house on Sundays." }
+    ]
+  },
+  {
+    "slug": "en-el-mercado",
+    "title": "En el mercado",
+    "en": "At the market",
+    "level": "A1",
+    "place": "Guatemala",
+    "paragraphs": [
+      {
+        "es": "Hoy es sábado y Rosa va al mercado con su hija. El mercado está cerca de la plaza y siempre hay mucha gente. Rosa necesita tomates, cebollas y aguacates.",
+        "en": "Today is Saturday and Rosa is going to the market with her daughter. The market is near the square and there are always a lot of people. Rosa needs tomatoes, onions and avocados."
+      },
+      {
+        "es": "Rosa pregunta: «¿Cuánto cuestan los aguacates?» El vendedor dice: «Tres quetzales cada uno.» Rosa compra cuatro. Su hija quiere una fruta y Rosa le compra un mango. Esta noche van a comer guacamole en casa.",
+        "en": "Rosa asks, \"How much are the avocados?\" The seller says, \"Three quetzales each.\" Rosa buys four. Her daughter wants a piece of fruit and Rosa buys her a mango. Tonight they're going to eat guacamole at home."
+      }
+    ],
+    "words": [
+      { "es": "hija", "en": "daughter" },
+      { "es": "cerca de", "en": "near" },
+      { "es": "hay", "en": "there is, there are" },
+      { "es": "gente", "en": "people" },
+      { "es": "cebollas", "en": "onions" },
+      { "es": "aguacates", "en": "avocados" },
+      { "es": "vendedor", "en": "seller" },
+      { "es": "cada uno", "en": "each" }
+    ],
+    "questions": [
+      { "q": "¿Con quién va Rosa al mercado?", "en": "Who does Rosa go to the market with?", "choices": ["Con su hija", "Con su mamá", "Con el vendedor"], "answer": "Con su hija", "why": "Rosa goes with her daughter." },
+      { "q": "¿Cuántos aguacates compra Rosa?", "en": "How many avocados does Rosa buy?", "choices": ["Cuatro", "Tres", "Cinco"], "answer": "Cuatro", "why": "She buys four. Three is the price of each one, in quetzales." },
+      { "q": "¿Qué quiere la hija?", "en": "What does the daughter want?", "choices": ["Una fruta", "Una cebolla", "Un tomate"], "answer": "Una fruta", "why": "She wants a piece of fruit, so Rosa buys her a mango." },
+      { "q": "¿Qué van a comer esta noche?", "en": "What are they going to eat tonight?", "choices": ["Guacamole", "Sopa", "Pollo"], "answer": "Guacamole", "why": "\"Van a comer\" talks about the plan for tonight: guacamole at home." }
+    ]
+  },
+  {
+    "slug": "un-dia-de-carlos",
+    "title": "Un día de Carlos",
+    "en": "A day in Carlos's life",
+    "level": "A1",
+    "place": "Puerto Rico",
+    "paragraphs": [
+      {
+        "es": "Carlos vive en San Juan, Puerto Rico. Se levanta a las seis de la mañana y toma café con leche. Después sale a caminar por la playa con su perro, Coco.",
+        "en": "Carlos lives in San Juan, Puerto Rico. He gets up at six in the morning and has coffee with milk. Then he goes out for a walk on the beach with his dog, Coco."
+      },
+      {
+        "es": "A las ocho va a trabajar. Carlos es enfermero en un hospital grande. Trabaja mucho, pero le gusta ayudar a la gente. Por la noche está cansado. Cena, lee un poco y se acuesta a las diez.",
+        "en": "At eight he goes to work. Carlos is a nurse at a big hospital. He works a lot, but he likes helping people. At night he's tired. He has dinner, reads a little and goes to bed at ten."
+      }
+    ],
+    "words": [
+      { "es": "se levanta", "en": "he gets up" },
+      { "es": "playa", "en": "beach" },
+      { "es": "perro", "en": "dog" },
+      { "es": "enfermero", "en": "nurse" },
+      { "es": "ayudar", "en": "to help" },
+      { "es": "cansado", "en": "tired" },
+      { "es": "se acuesta", "en": "he goes to bed" }
+    ],
+    "questions": [
+      { "q": "¿A qué hora se levanta Carlos?", "en": "What time does Carlos get up?", "choices": ["A las seis", "A las ocho", "A las diez"], "answer": "A las seis", "why": "He gets up at six. He goes to work at eight and to bed at ten." },
+      { "q": "¿Quién es Coco?", "en": "Who is Coco?", "choices": ["Su perro", "Su hermano", "Un enfermero"], "answer": "Su perro", "why": "Coco is the dog Carlos walks on the beach." },
+      { "q": "¿Dónde trabaja Carlos?", "en": "Where does Carlos work?", "choices": ["En un hospital", "En una playa", "En una escuela"], "answer": "En un hospital", "why": "He's a nurse at a big hospital." },
+      { "q": "¿Cómo está Carlos por la noche?", "en": "How is Carlos at night?", "choices": ["Cansado", "Triste", "Enfermo"], "answer": "Cansado", "why": "\"Está cansado\" means he's tired." }
+    ]
+  },
+  {
+    "slug": "el-plan-del-sabado",
+    "title": "El plan del sábado",
+    "en": "The plan for Saturday",
+    "level": "A1",
+    "place": "Colombia",
+    "paragraphs": [
+      {
+        "es": "Sofía y Mateo son amigos y viven en Bogotá. Mañana es sábado y no tienen clases. Van a ir a un parque grande con sus amigos.",
+        "en": "Sofía and Mateo are friends and they live in Bogotá. Tomorrow is Saturday and they don't have classes. They're going to go to a big park with their friends."
+      },
+      {
+        "es": "Sofía va a llevar su guitarra y Mateo va a llevar la comida. En Bogotá hace frío por la mañana y a veces llueve, entonces Sofía también va a llevar una chaqueta. Por la tarde, si no llueve, todos van a jugar fútbol.",
+        "en": "Sofía is going to bring her guitar and Mateo is going to bring the food. In Bogotá it's cold in the morning and sometimes it rains, so Sofía is also going to bring a jacket. In the afternoon, if it doesn't rain, they're all going to play soccer."
+      }
+    ],
+    "words": [
+      { "es": "mañana", "en": "tomorrow" },
+      { "es": "llevar", "en": "to bring, to take" },
+      { "es": "hace frío", "en": "it's cold" },
+      { "es": "a veces", "en": "sometimes" },
+      { "es": "llueve", "en": "it rains" },
+      { "es": "chaqueta", "en": "jacket" }
+    ],
+    "questions": [
+      { "q": "¿Por qué no tienen clases mañana?", "en": "Why don't they have classes tomorrow?", "choices": ["Porque es sábado", "Porque llueve", "Porque hace frío"], "answer": "Porque es sábado", "why": "Tomorrow is Saturday, so there are no classes." },
+      { "q": "¿Qué va a llevar Mateo?", "en": "What is Mateo going to bring?", "choices": ["La comida", "Una guitarra", "Una chaqueta"], "answer": "La comida", "why": "Mateo brings the food. The guitar and the jacket are Sofía's." },
+      { "q": "¿Por qué lleva Sofía una chaqueta?", "en": "Why is Sofía bringing a jacket?", "choices": ["Porque hace frío", "Porque hace calor", "Porque va a jugar fútbol"], "answer": "Porque hace frío", "why": "Mornings in Bogotá are cold, and it sometimes rains." },
+      { "q": "¿Qué van a hacer por la tarde si no llueve?", "en": "What will they do in the afternoon if it doesn't rain?", "choices": ["Jugar fútbol", "Ir a clases", "Comer en casa"], "answer": "Jugar fútbol", "why": "\"Si no llueve, todos van a jugar fútbol.\"" }
+    ]
+  },
+  {
+    "slug": "un-viaje-a-peru",
+    "title": "Un viaje a Perú",
+    "en": "A trip to Peru",
+    "level": "A2",
+    "place": "Perú",
+    "paragraphs": [
+      {
+        "es": "El año pasado, Daniela viajó a Perú con su hermana. Primero llegaron a Lima y pasaron dos días allí. Comieron ceviche, visitaron el centro histórico y caminaron por el malecón, frente al mar.",
+        "en": "Last year, Daniela traveled to Peru with her sister. First they arrived in Lima and spent two days there. They ate ceviche, visited the historic center and walked along the seafront promenade, facing the ocean."
+      },
+      {
+        "es": "Después tomaron un avión a Cusco. La ciudad está a más de tres mil metros de altura, y el primer día Daniela se sintió mal. Le dolía la cabeza y estaba muy cansada. Una señora del hotel le preparó un té caliente y le dijo que debía descansar.",
+        "en": "Then they took a plane to Cusco. The city is more than three thousand meters high, and on the first day Daniela felt sick. Her head hurt and she was very tired. A woman at the hotel made her a hot tea and told her she should rest."
+      },
+      {
+        "es": "Al día siguiente se sentía mejor. Las dos hermanas subieron a Machu Picchu muy temprano. Había mucha niebla, pero poco a poco salió el sol y vieron las ruinas. Daniela dice que fue el mejor día de su vida.",
+        "en": "The next day she felt better. The two sisters went up to Machu Picchu very early. There was a lot of fog, but little by little the sun came out and they saw the ruins. Daniela says it was the best day of her life."
+      }
+    ],
+    "words": [
+      { "es": "el año pasado", "en": "last year" },
+      { "es": "malecón", "en": "seafront promenade" },
+      { "es": "altura", "en": "height, altitude" },
+      { "es": "se sintió mal", "en": "she felt sick" },
+      { "es": "descansar", "en": "to rest" },
+      { "es": "al día siguiente", "en": "the next day" },
+      { "es": "niebla", "en": "fog" },
+      { "es": "poco a poco", "en": "little by little" }
+    ],
+    "questions": [
+      { "q": "¿Con quién viajó Daniela?", "en": "Who did Daniela travel with?", "choices": ["Con su hermana", "Con su mamá", "Con una amiga"], "answer": "Con su hermana", "why": "She traveled with her sister." },
+      { "q": "¿Qué comieron en Lima?", "en": "What did they eat in Lima?", "choices": ["Ceviche", "Guacamole", "Tamales"], "answer": "Ceviche", "why": "They ate ceviche during their two days in Lima." },
+      { "q": "¿Por qué se sintió mal Daniela en Cusco?", "en": "Why did Daniela feel sick in Cusco?", "choices": ["Por la altura", "Por el ceviche", "Por el frío"], "answer": "Por la altura", "why": "The passage mentions Cusco is over 3,000 meters high just before she feels sick." },
+      { "q": "¿Qué pasó en Machu Picchu?", "en": "What happened at Machu Picchu?", "choices": ["Salió el sol poco a poco", "Llovió todo el día", "No pudieron ver las ruinas"], "answer": "Salió el sol poco a poco", "why": "There was fog at first, then the sun came out and they saw the ruins." }
+    ]
+  },
+  {
+    "slug": "los-guantes-de-carton",
+    "title": "Los guantes de cartón",
+    "en": "The cardboard gloves",
+    "level": "A2",
+    "place": "República Dominicana",
+    "paragraphs": [
+      {
+        "es": "Cuando mi abuelo era niño, vivía en un pueblo pequeño cerca de Santiago, en la República Dominicana. Su familia no tenía televisor ni teléfono. La casa estaba al lado de un río, y él se bañaba allí con sus hermanos casi todos los días.",
+        "en": "When my grandfather was a boy, he lived in a small town near Santiago, in the Dominican Republic. His family didn't have a TV or a telephone. The house was next to a river, and he swam there with his brothers and sisters almost every day."
+      },
+      {
+        "es": "Por la mañana ayudaba a su padre en el campo. Por la tarde jugaba béisbol con los otros niños del pueblo. No tenían guantes de verdad, así que usaban guantes hechos de cartón. Por la noche, toda la familia se sentaba afuera y escuchaba la radio.",
+        "en": "In the morning he helped his father in the fields. In the afternoon he played baseball with the other kids in town. They didn't have real gloves, so they used gloves made of cardboard. At night, the whole family sat outside and listened to the radio."
+      },
+      {
+        "es": "Una vez, cuando tenía doce años, un equipo de la capital llegó al pueblo. Les faltaba un jugador y mi abuelo jugó con ellos. Ganaron el partido, y el entrenador le regaló un guante de cuero. Todavía lo tiene.",
+        "en": "Once, when he was twelve, a team from the capital came to town. They were short a player and my grandfather played with them. They won the game, and the coach gave him a leather glove. He still has it."
+      }
+    ],
+    "words": [
+      { "es": "pueblo", "en": "town, village" },
+      { "es": "se bañaba", "en": "he swam, he bathed" },
+      { "es": "campo", "en": "fields, countryside" },
+      { "es": "cartón", "en": "cardboard" },
+      { "es": "afuera", "en": "outside" },
+      { "es": "equipo", "en": "team" },
+      { "es": "les faltaba", "en": "they were missing" },
+      { "es": "partido", "en": "game, match" },
+      { "es": "cuero", "en": "leather" }
+    ],
+    "questions": [
+      { "q": "¿Dónde estaba la casa del abuelo?", "en": "Where was the grandfather's house?", "choices": ["Al lado de un río", "En la capital", "Cerca del mar"], "answer": "Al lado de un río", "why": "The house was next to a river, in a small town near Santiago." },
+      { "q": "¿Qué hacía el abuelo por las mañanas?", "en": "What did the grandfather do in the mornings?", "choices": ["Ayudaba a su padre", "Jugaba béisbol", "Escuchaba la radio"], "answer": "Ayudaba a su padre", "why": "The imperfect shows a routine: every morning he helped his father in the fields." },
+      { "q": "¿De qué eran los guantes de los niños?", "en": "What were the kids' gloves made of?", "choices": ["De cartón", "De cuero", "De madera"], "answer": "De cartón", "why": "They had no real gloves, so they used cardboard ones." },
+      { "q": "¿Por qué jugó el abuelo con el equipo de la capital?", "en": "Why did the grandfather play with the team from the capital?", "choices": ["Porque les faltaba un jugador", "Porque era el entrenador", "Porque vivía en la capital"], "answer": "Porque les faltaba un jugador", "why": "\"Les faltaba un jugador\" means they were one player short." }
+    ]
+  },
+  {
+    "slug": "el-celular-perdido",
+    "title": "El celular perdido",
+    "en": "The lost cell phone",
+    "level": "A2",
+    "place": "Chile",
+    "paragraphs": [
+      {
+        "es": "El martes, Valentina salió tarde de su casa en Santiago de Chile. Corrió hasta la parada y subió a la micro, como le dicen al autobús en Chile. Había mucha gente y tuvo que ir de pie.",
+        "en": "On Tuesday, Valentina left her house in Santiago, Chile, late. She ran to the stop and got on the micro, as they call the bus in Chile. There were a lot of people and she had to stand."
+      },
+      {
+        "es": "Cuando llegó a la oficina, buscó su celular en la mochila, pero no estaba. Lo buscó en los bolsillos y tampoco estaba allí. Se puso muy nerviosa, porque tenía todas sus fotos y sus contactos en ese teléfono.",
+        "en": "When she got to the office, she looked for her cell phone in her backpack, but it wasn't there. She looked for it in her pockets and it wasn't there either. She got very nervous, because she had all her photos and contacts on that phone."
+      },
+      {
+        "es": "Una compañera llamó a su número. Después de varios segundos, un hombre contestó: «Hola, soy el chofer de la micro. Encontré este celular debajo de un asiento.» Esa tarde, Valentina fue a buscarlo y le dio las gracias.",
+        "en": "A coworker called her number. After several seconds, a man answered: \"Hello, I'm the driver of the micro. I found this cell phone under a seat.\" That afternoon, Valentina went to get it and thanked him."
+      }
+    ],
+    "words": [
+      { "es": "parada", "en": "bus stop" },
+      { "es": "micro", "en": "bus (Chile)" },
+      { "es": "de pie", "en": "standing" },
+      { "es": "mochila", "en": "backpack" },
+      { "es": "bolsillos", "en": "pockets" },
+      { "es": "se puso", "en": "she got, she became" },
+      { "es": "compañera", "en": "coworker" },
+      { "es": "chofer", "en": "driver" },
+      { "es": "asiento", "en": "seat" }
+    ],
+    "questions": [
+      { "q": "¿Qué es una micro en Chile?", "en": "What is a micro in Chile?", "choices": ["Un autobús", "Un teléfono", "Una oficina"], "answer": "Un autobús", "why": "\"Como le dicen al autobús en Chile\" explains the word." },
+      { "q": "¿Dónde buscó Valentina su celular?", "en": "Where did Valentina look for her cell phone?", "choices": ["En la mochila y los bolsillos", "En su casa", "En la micro"], "answer": "En la mochila y los bolsillos", "why": "She checked her backpack first, then her pockets." },
+      { "q": "¿Por qué se puso nerviosa?", "en": "Why did she get nervous?", "choices": ["Porque tenía sus fotos en el teléfono", "Porque llegó tarde", "Porque había mucha gente"], "answer": "Porque tenía sus fotos en el teléfono", "why": "Her photos and contacts were all on the phone." },
+      { "q": "¿Quién encontró el celular?", "en": "Who found the cell phone?", "choices": ["El chofer", "Una compañera", "Valentina"], "answer": "El chofer", "why": "The driver found it under a seat. The coworker only called the number." }
+    ]
+  },
+  {
+    "slug": "la-fiesta-sorpresa",
+    "title": "La fiesta sorpresa",
+    "en": "The surprise party",
+    "level": "A2",
+    "place": "Costa Rica",
+    "paragraphs": [
+      {
+        "es": "La semana pasada fue el cumpleaños de don Ernesto, un señor de setenta años que vive en Heredia, Costa Rica. Sus hijos querían hacerle una fiesta sorpresa, pero era difícil, porque él siempre sabía todo lo que pasaba en la familia.",
+        "en": "Last week was the birthday of don Ernesto, a seventy-year-old man who lives in Heredia, Costa Rica. His children wanted to throw him a surprise party, but it was hard, because he always knew everything that went on in the family."
+      },
+      {
+        "es": "Por eso, su hija Marta lo invitó a tomar café en el centro. Mientras ellos hablaban, los demás llevaron comida, flores y sillas a la casa. Todos trabajaban rápido, porque no tenían mucho tiempo.",
+        "en": "So his daughter Marta invited him for coffee downtown. While they talked, the others brought food, flowers and chairs to the house. Everyone worked fast, because they didn't have much time."
+      },
+      {
+        "es": "Cuando don Ernesto y Marta volvieron, la casa estaba oscura. Él abrió la puerta, encendió la luz y todos gritaron: «¡Sorpresa!» Don Ernesto se rio y lloró al mismo tiempo. Después comieron arroz con pollo y bailaron hasta muy tarde. «Ustedes son increíbles», les dijo a sus hijos.",
+        "en": "When don Ernesto and Marta came back, the house was dark. He opened the door, turned on the light and everyone shouted, \"Surprise!\" Don Ernesto laughed and cried at the same time. Then they ate chicken and rice and danced until very late. \"You're incredible,\" he told his children."
+      }
+    ],
+    "words": [
+      { "es": "cumpleaños", "en": "birthday" },
+      { "es": "don", "en": "respectful title used before a man's first name" },
+      { "es": "los demás", "en": "the others" },
+      { "es": "sillas", "en": "chairs" },
+      { "es": "oscura", "en": "dark" },
+      { "es": "encendió", "en": "he turned on" },
+      { "es": "gritaron", "en": "they shouted" },
+      { "es": "se rio", "en": "he laughed" },
+      { "es": "al mismo tiempo", "en": "at the same time" }
+    ],
+    "questions": [
+      { "q": "¿Por qué era difícil hacer la fiesta sorpresa?", "en": "Why was the surprise party hard to do?", "choices": ["Porque don Ernesto lo sabía todo", "Porque no tenían dinero", "Porque la casa era pequeña"], "answer": "Porque don Ernesto lo sabía todo", "why": "He always knew everything that went on in the family." },
+      { "q": "¿Qué hizo Marta?", "en": "What did Marta do?", "choices": ["Lo invitó a tomar café", "Llevó las sillas", "Encendió la luz"], "answer": "Lo invitó a tomar café", "why": "She took him out for coffee so the others could set up." },
+      { "q": "¿Cómo estaba la casa cuando volvieron?", "en": "How was the house when they came back?", "choices": ["Oscura", "Sucia", "Vacía"], "answer": "Oscura", "why": "The house was dark, so he had to turn on the light." },
+      { "q": "¿Qué hizo don Ernesto después del grito de «¡Sorpresa!»?", "en": "What did don Ernesto do after the shout of \"Surprise!\"?", "choices": ["Se rio y lloró", "Se fue a dormir", "Cerró la puerta"], "answer": "Se rio y lloró", "why": "He laughed and cried at the same time." }
+    ]
+  },
+  {
+    "slug": "carta-desde-miami",
+    "title": "Carta desde Miami",
+    "en": "A letter from Miami",
+    "level": "B1",
+    "place": "Estados Unidos y Venezuela",
+    "paragraphs": [
+      {
+        "es": "Querida Elena: Ya han pasado tres meses desde que llegué a Miami, y todavía no me acostumbro del todo. He encontrado trabajo en una panadería cubana, así que hablo español casi todo el día, pero quiero que mi inglés mejore. Por eso, me he inscrito en una clase nocturna dos veces por semana.",
+        "en": "Dear Elena: Three months have already gone by since I arrived in Miami, and I'm still not fully used to it. I've found a job at a Cuban bakery, so I speak Spanish almost all day, but I want my English to improve. That's why I've signed up for a night class twice a week."
+      },
+      {
+        "es": "Lo más difícil es estar lejos de ustedes. Extraño los almuerzos de los domingos en Caracas, las bromas de papá y hasta el tráfico. Aquí todo queda lejos y sin carro es complicado moverse. Cuando tenga un poco más de dinero, me compraré uno usado.",
+        "en": "The hardest part is being far from all of you. I miss Sunday lunches in Caracas, Dad's jokes and even the traffic. Everything is far away here, and without a car it's complicated to get around. When I have a little more money, I'll buy a used one."
+      },
+      {
+        "es": "No te preocupes por mí, porque estoy bien y he conocido a gente muy amable. Mi vecina, doña Carmen, siempre me trae comida y me pregunta por ustedes. Espero que mamá se sienta mejor y que puedan visitarme el próximo año. Si vienen, los llevaré a la playa. Te mando un abrazo muy fuerte. Tu hermano, Andrés.",
+        "en": "Don't worry about me, because I'm fine and I've met very kind people. My neighbor, doña Carmen, always brings me food and asks about you all. I hope Mom feels better and that you can visit me next year. If you come, I'll take you to the beach. I'm sending you a big hug. Your brother, Andrés."
+      }
+    ],
+    "words": [
+      { "es": "acostumbro", "en": "I get used to (with me)" },
+      { "es": "panadería", "en": "bakery" },
+      { "es": "me he inscrito", "en": "I've signed up" },
+      { "es": "extraño", "en": "I miss" },
+      { "es": "bromas", "en": "jokes" },
+      { "es": "usado", "en": "used, secondhand" },
+      { "es": "vecina", "en": "neighbor" },
+      { "es": "abrazo", "en": "hug" }
+    ],
+    "questions": [
+      { "q": "¿Por qué quiere Andrés tomar una clase nocturna?", "en": "Why does Andrés want to take a night class?", "choices": ["Para mejorar su inglés", "Para aprender a hacer pan", "Para conocer a sus vecinos"], "answer": "Para mejorar su inglés", "why": "He speaks Spanish all day at work and wants his English to improve." },
+      { "q": "¿Qué es lo más difícil para Andrés?", "en": "What is the hardest thing for Andrés?", "choices": ["Estar lejos de su familia", "Trabajar en la panadería", "Hablar español"], "answer": "Estar lejos de su familia", "why": "\"Lo más difícil es estar lejos de ustedes.\"" },
+      { "q": "¿Cuándo va a comprar un carro?", "en": "When is he going to buy a car?", "choices": ["Cuando tenga más dinero", "Cuando llegue su familia", "El próximo año"], "answer": "Cuando tenga más dinero", "why": "\"Cuando tenga\" uses the subjunctive because that moment hasn't happened yet." },
+      { "q": "¿Cómo ayuda doña Carmen a Andrés?", "en": "How does doña Carmen help Andrés?", "choices": ["Le trae comida", "Le presta su carro", "Le enseña inglés"], "answer": "Le trae comida", "why": "His neighbor always brings him food." },
+      { "q": "¿Qué espera Andrés?", "en": "What does Andrés hope for?", "choices": ["Que su familia pueda visitarlo", "Que su hermana le mande dinero", "Que su papá se mude a Miami"], "answer": "Que su familia pueda visitarlo", "why": "He hopes his mother feels better and that they can visit next year." }
+    ]
+  },
+  {
+    "slug": "el-cafe-de-la-montana",
+    "title": "El café de la montaña",
+    "en": "Coffee from the mountain",
+    "level": "B1",
+    "place": "Honduras",
+    "paragraphs": [
+      {
+        "es": "La familia Mejía ha cultivado café en las montañas de Honduras durante cuatro generaciones. Su finca es pequeña, pero produce un café excelente que se vende en tiendas de Europa y Estados Unidos. Sin embargo, en los últimos años el clima ha cambiado y las plantas se enferman con más frecuencia.",
+        "en": "The Mejía family has grown coffee in the mountains of Honduras for four generations. Their farm is small, but it produces excellent coffee that is sold in stores in Europe and the United States. However, in recent years the climate has changed and the plants get sick more often."
+      },
+      {
+        "es": "Lucía, la hija menor, estudió agronomía en la universidad y volvió a la finca con algunas ideas nuevas. Quiere que su familia plante árboles que den sombra, porque así el café estará protegido del calor. Su padre no está seguro. Le preocupa que esos cambios cuesten demasiado y tarden años en dar resultados.",
+        "en": "Lucía, the youngest daughter, studied agronomy at the university and came back to the farm with some new ideas. She wants her family to plant trees that give shade, because that way the coffee will be protected from the heat. Her father isn't sure. He worries that those changes will cost too much and take years to show results."
+      },
+      {
+        "es": "«Si no hacemos nada, perderemos la cosecha tarde o temprano», le dijo Lucía. Al final, decidieron probar en una parte de la finca. Plantarán los árboles este año, y en tres años sabrán si la idea funciona. Mientras tanto, Lucía ha empezado a vender café por internet, lo cual podría darles más ingresos.",
+        "en": "\"If we do nothing, we'll lose the harvest sooner or later,\" Lucía told him. In the end, they decided to try it on one part of the farm. They'll plant the trees this year, and in three years they'll know whether the idea works. In the meantime, Lucía has started selling coffee online, which could give them more income."
+      }
+    ],
+    "words": [
+      { "es": "finca", "en": "farm" },
+      { "es": "sin embargo", "en": "however" },
+      { "es": "se enferman", "en": "they get sick" },
+      { "es": "sombra", "en": "shade" },
+      { "es": "demasiado", "en": "too much" },
+      { "es": "cosecha", "en": "harvest" },
+      { "es": "tarde o temprano", "en": "sooner or later" },
+      { "es": "mientras tanto", "en": "in the meantime" },
+      { "es": "ingresos", "en": "income" }
+    ],
+    "questions": [
+      { "q": "¿Qué problema tiene la finca?", "en": "What problem does the farm have?", "choices": ["Las plantas se enferman más", "No tiene clientes", "La familia quiere venderla"], "answer": "Las plantas se enferman más", "why": "The climate has changed and the plants get sick more often." },
+      { "q": "¿Qué quiere hacer Lucía?", "en": "What does Lucía want to do?", "choices": ["Plantar árboles que den sombra", "Vender la finca", "Volver a la universidad"], "answer": "Plantar árboles que den sombra", "why": "Shade would protect the coffee from the heat." },
+      { "q": "¿Qué le preocupa al padre?", "en": "What worries the father?", "choices": ["Que los cambios cuesten demasiado", "Que Lucía se vaya", "Que no haya agua"], "answer": "Que los cambios cuesten demasiado", "why": "He worries about the cost and how long results will take. \"Le preocupa que\" takes the subjunctive." },
+      { "q": "¿Qué decidieron al final?", "en": "What did they decide in the end?", "choices": ["Probar en una parte de la finca", "Cambiar toda la finca", "No hacer nada"], "answer": "Probar en una parte de la finca", "why": "They'll try it on one part and see the results in three years." },
+      { "q": "¿Qué ha empezado a hacer Lucía?", "en": "What has Lucía started doing?", "choices": ["Vender café por internet", "Dar clases de agronomía", "Trabajar en una tienda"], "answer": "Vender café por internet", "why": "\"Ha empezado a\" means she has started to. Selling online could bring in more income." }
+    ]
+  },
+  {
+    "slug": "una-decision-dificil",
+    "title": "Una decisión difícil",
+    "en": "A hard decision",
+    "level": "B1",
+    "place": "Ecuador",
+    "paragraphs": [
+      {
+        "es": "Camila trabaja como diseñadora en Quito y acaba de recibir una oferta de trabajo en Panamá. Ganaría casi el doble de lo que gana ahora, y la empresa le pagaría el viaje y el primer mes de alquiler. Es una gran oportunidad, pero no sabe qué hacer.",
+        "en": "Camila works as a designer in Quito and has just received a job offer in Panama. She would earn almost double what she earns now, and the company would pay for the trip and the first month of rent. It's a great opportunity, but she doesn't know what to do."
+      },
+      {
+        "es": "Sus padres ya están mayores y ella los visita todas las semanas. Su novio, Tomás, tiene un negocio en Quito y no podría mudarse con ella. «Tal vez podríamos vernos cada dos meses», le dijo él, aunque ninguno de los dos cree que sea fácil.",
+        "en": "Her parents are getting older and she visits them every week. Her boyfriend, Tomás, has a business in Quito and couldn't move with her. \"Maybe we could see each other every two months,\" he told her, although neither of them thinks it will be easy."
+      },
+      {
+        "es": "Anoche llamó a su mejor amiga para pedirle un consejo. «Yo que tú, aceptaría», le dijo su amiga. «Puedes probar durante un año. Si no te gusta, siempre podrás volver.» Camila todavía no ha decidido. La empresa quiere que responda antes del viernes, así que hoy hablará con sus padres. No cree que le pidan que se quede, pero necesita escucharlos.",
+        "en": "Last night she called her best friend to ask for advice. \"If I were you, I'd accept,\" her friend said. \"You can try it for a year. If you don't like it, you can always come back.\" Camila still hasn't decided. The company wants her to answer before Friday, so today she'll talk to her parents. She doesn't think they'll ask her to stay, but she needs to hear them out."
+      }
+    ],
+    "words": [
+      { "es": "acaba de recibir", "en": "has just received" },
+      { "es": "oferta", "en": "offer" },
+      { "es": "el doble", "en": "double" },
+      { "es": "alquiler", "en": "rent" },
+      { "es": "negocio", "en": "business" },
+      { "es": "mudarse", "en": "to move (to a new home)" },
+      { "es": "un consejo", "en": "a piece of advice" },
+      { "es": "yo que tú", "en": "if I were you" }
+    ],
+    "questions": [
+      { "q": "¿Qué ventaja tiene el trabajo en Panamá?", "en": "What advantage does the job in Panama have?", "choices": ["Ganaría casi el doble", "Estaría cerca de sus padres", "Trabajaría con Tomás"], "answer": "Ganaría casi el doble", "why": "The conditional shows what would happen if she took the job." },
+      { "q": "¿Por qué no puede ir Tomás con Camila?", "en": "Why can't Tomás go with Camila?", "choices": ["Porque tiene un negocio en Quito", "Porque no quiere viajar", "Porque cuida a sus padres"], "answer": "Porque tiene un negocio en Quito", "why": "His business keeps him in Quito." },
+      { "q": "¿Qué piensa la amiga de Camila?", "en": "What does Camila's friend think?", "choices": ["Que debería aceptar", "Que debería quedarse", "Que debería cambiar de novio"], "answer": "Que debería aceptar", "why": "\"Yo que tú, aceptaría\" is a common way to give advice." },
+      { "q": "¿Qué quiere la empresa?", "en": "What does the company want?", "choices": ["Una respuesta antes del viernes", "Hablar con sus padres", "Que empiece el viernes"], "answer": "Una respuesta antes del viernes", "why": "\"Quiere que responda antes del viernes.\"" },
+      { "q": "¿Qué va a hacer Camila hoy?", "en": "What is Camila going to do today?", "choices": ["Hablar con sus padres", "Aceptar la oferta", "Viajar a Panamá"], "answer": "Hablar con sus padres", "why": "She hasn't decided yet, so today she'll talk to her parents." }
+    ]
+  },
+  {
+    "slug": "la-leyenda-del-maiz",
+    "title": "La leyenda del maíz",
+    "en": "The legend of corn",
+    "level": "B1",
+    "place": "México",
+    "paragraphs": [
+      {
+        "es": "Una antigua leyenda de México cuenta que, al principio, las personas solo comían raíces y animales pequeños, y muchas veces pasaban hambre. El dios Quetzalcóatl quería ayudarlas, pero no sabía dónde encontrar un alimento mejor.",
+        "en": "An old legend from Mexico says that, in the beginning, people only ate roots and small animals, and they often went hungry. The god Quetzalcóatl wanted to help them, but he didn't know where to find a better food."
+      },
+      {
+        "es": "Un día vio a una hormiga roja que llevaba un grano de maíz. Le preguntó de dónde lo había sacado, pero la hormiga no quiso contestar. Quetzalcóatl insistió tanto que, por fin, ella le mostró el camino hacia una montaña enorme, donde estaba guardado el maíz. El camino era tan estrecho que ningún dios podía pasar.",
+        "en": "One day he saw a red ant carrying a grain of corn. He asked her where she had gotten it, but the ant refused to answer. Quetzalcóatl insisted so much that, at last, she showed him the path to an enormous mountain, where the corn was stored. The path was so narrow that no god could get through."
+      },
+      {
+        "es": "Entonces Quetzalcóatl se convirtió en una hormiga negra y siguió a la hormiga roja por un túnel largo y oscuro. Cuando llegó, tomó un grano de maíz y se lo llevó a los dioses, que lo probaron y se lo dieron a las personas.",
+        "en": "So Quetzalcóatl turned himself into a black ant and followed the red ant through a long, dark tunnel. When he arrived, he took a grain of corn and carried it to the gods, who tasted it and gave it to the people."
+      },
+      {
+        "es": "Desde entonces, el maíz ha sido la base de la comida mexicana. Quizás por eso, cuando alguien prepara tortillas o tamales, sigue repitiendo una historia de miles de años, aunque no la conozca.",
+        "en": "Since then, corn has been the foundation of Mexican food. Maybe that's why, when someone makes tortillas or tamales, they're still repeating a story thousands of years old, even if they don't know it."
+      }
+    ],
+    "words": [
+      { "es": "leyenda", "en": "legend" },
+      { "es": "raíces", "en": "roots" },
+      { "es": "pasaban hambre", "en": "they went hungry" },
+      { "es": "hormiga", "en": "ant" },
+      { "es": "grano", "en": "grain" },
+      { "es": "no quiso", "en": "refused" },
+      { "es": "estrecho", "en": "narrow" },
+      { "es": "se convirtió en", "en": "turned into" },
+      { "es": "desde entonces", "en": "since then" }
+    ],
+    "questions": [
+      { "q": "¿Qué comían las personas al principio?", "en": "What did people eat in the beginning?", "choices": ["Raíces y animales pequeños", "Maíz y tortillas", "Tamales"], "answer": "Raíces y animales pequeños", "why": "They only had roots and small animals, and they often went hungry." },
+      { "q": "¿Quién le dio la pista a Quetzalcóatl?", "en": "Who gave Quetzalcóatl the clue?", "choices": ["Una hormiga roja", "Los otros dioses", "Una persona"], "answer": "Una hormiga roja", "why": "He saw a red ant carrying a grain of corn." },
+      { "q": "¿Dónde estaba guardado el maíz?", "en": "Where was the corn stored?", "choices": ["En una montaña enorme", "En un río", "En una casa"], "answer": "En una montaña enorme", "why": "The ant showed him the path to an enormous mountain." },
+      { "q": "¿Por qué se convirtió en hormiga?", "en": "Why did he turn into an ant?", "choices": ["Porque el camino era muy estrecho", "Porque le tenía miedo a la hormiga", "Porque quería comer maíz"], "answer": "Porque el camino era muy estrecho", "why": "The path was so narrow that no god could get through." },
+      { "q": "Según el texto, ¿qué ha sido el maíz desde entonces?", "en": "According to the text, what has corn been since then?", "choices": ["La base de la comida mexicana", "Un alimento solo para los dioses", "Una planta poco común"], "answer": "La base de la comida mexicana", "why": "\"Ha sido la base de la comida mexicana.\"" }
+    ]
+  }
+]

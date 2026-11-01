@@ -2,39 +2,6 @@
 
 Spanish learning app for me, friends and family. Latin American and Caribbean Spanish: ustedes instead of vosotros, voseo optional. Add to this as we go.
 
-## Done
-
-- [x] Conjugation engine with no dependencies, 16 tenses, reflexive verbs, voseo
-- [x] Verb search and full conjugation pages
-- [x] 281 verbs with a curated example sentence per tense, or a "rarely used" note
-- [x] Conjugation drills with accent-aware grading and retry of missed questions
-- [x] Nouns, adjectives, adverbs and phrases with browse and filter pages (310, 153, 75, 81)
-- [x] Vocabulary drills (meaning in both directions, noun gender, adjective agreement)
-- [x] Fill-in-the-blank drills using the example sentences
-- [x] Vocabulary drill filters by word type and noun topic
-- [x] Drill settings remembered between visits (per browser)
-- [x] Regional words page, including words to be careful with
-- [x] Grammar guides: ser vs. estar, por vs. para, preterite vs. imperfect, subjunctive, gender and plurals, reflexive verbs, object pronouns, commands, perfect tenses, comparisons, talking about the future, relative pronouns, numbers and dates
-- [x] A quiz for each grammar guide, linked from the guide and available as Grammar in Drills
-- [x] Bold label for the tense or question type on conjugation, fill-in-the-blank and vocabulary cards
-- [x] Example sentence on conjugation cards in Spanish and English with the answer blanked out, shown only when the sentence is for the person being asked
-- [x] 1,164 more sentences so the top 50 verbs have one for every person in the present, preterite, imperfect, future, conditional and present subjunctive
-- [x] Mobile layout pass, checked at 320px and 390px in headless Chrome
-- [x] Deployed on AWS Amplify (Next.js 16 with Cache Components is newer than Amplify's documented support, so recheck after upgrades)
-
-## After accounts and a database
-
-Held until then so progress is saved per person instead of per browser.
-
-- [x] Firebase sign-in (Google and email link), with invite-only saved progress and security rules in `firestore.rules`
-- [x] Save answers, tracked by verb + tense, by word + question type, and by guide question
-- [x] Progress page: streak, questions answered, accuracy by tense, items mastered
-- [x] Spaced repetition (FSRS) with a "Today's review" mode and a daily limit on new items. See below
-- [x] Request access form on the account page, for people signed in without an invite
-- [x] Weak-spot stats by tense, verb and mistake type, each with a "Practice this" link that starts a 15-question session
-- [x] "Report a problem" link on words, phrases, regional entries, verb tenses and drill answers, for invited people. Saved to `reports` in Firestore
-- [x] Vulgar words section on the regional page, shown only to invites with `vulgar: true`. Offensive words stay public with the reason explained. Vulgar ones say so publicly, and only this section says what they mean
-
 ## How spaced repetition works
 
 **No new dependency.** `src/lib/fsrs.ts` is our own, about 80 lines of pure math, checked against the expected values in py-fsrs's test suite. `ts-fsrs` is MIT, but it now brings in a dependency of its own and needs Node 24. The formulas are short and public.
@@ -65,8 +32,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - [ ] More verbs. Now at 314, with room for more reflexives and regional verbs
 - [ ] More phrases and regional expressions, labeled by country. Now at 162
 - [ ] More regional words, and more countries in the existing entries
-- [x] Prepositions, conjunctions, pronouns and question words: a Small words page and word type in vocabulary drills
-- [ ] Short graded reading passages
+- [ ] More reading passages. Now at 12, with 4 each at A1, A2 and B1
 - [ ] Better examples for verbs that are mostly "rarely used" notes (contraer, prever, errar, rogar)
 - [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 16,500 remain, so this needs batches and a usage check before each one
 
@@ -78,21 +44,15 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 
 ## To verify
 
-- [x] Compare the engine with Wiktionary for all verbs: no real differences (llover's unused persons only). Re-run with `npx tsc -p tsconfig.test.json && node .verify/check.mjs`. It lives in a gitignored folder, works offline, and fetches only verbs it hasn't seen
 - [ ] Spot-check reflexive forms with attached pronouns (levántate, vámonos), which the Wiktionary comparison didn't cover
 - [ ] Look up individual forms in RAE when in doubt. Its robots.txt blocks Claude's crawlers, so this means web search or checking by hand, not bulk fetching
 - [ ] Skim the sentence files for natural phrasing, including the new `persons.json`. Tests confirm the conjugated form is present, not that the sentence sounds right or the translation is accurate
 - [ ] Skim the 908 new vocabulary entries (the end of each file in `src/data/vocab/`), plus all of `small-words.json` and its grammar notes, for natural phrasing, translations and regional fit. Tests only confirm each word appears in its example. These come from my own knowledge, not a source. Adverbs now include set expressions like `por si acaso`
+- [ ] Skim `src/data/readings.json` for natural phrasing, translations and regional fit, especially the Chilean, Costa Rican and Venezuelan details and the retold Quetzalcóatl legend. Tests only check structure, length and that listed words appear in the passage. These come from my own knowledge, not a source
 - [ ] The haber preterite sentences (hube, hubiste) are literary, and hardly anyone says these forms. Decide whether drills should skip them
-- [x] Play through drills and a quiz in a headless browser, including the keyboard flow, accent buttons, retries and saved settings
 - [ ] Try the app on a real phone, especially the on-screen keyboard during drills
 - [ ] Have a native speaker check the regional words and slang, including `src/data/vulgar.json` and the notes on offensive words. Usage varies and these come from my own knowledge, not a source
-- [x] Publish the new `firestore.rules`, then send a report while signed in and confirm it appears in `reports`
 - [ ] Set `vulgar: true` on your invite and confirm the section appears on /regional. Confirm it doesn't show signed out or on an account without the field. It hasn't been seen signed in
-- [x] Test real sign-in (Google and email link), the invite check, and the published Firestore rules
-- [x] Saved progress up to the Firestore call: real drills in headless Chrome (what's queued, retries not counted, the save at 10 answers, answers kept when a save fails), plus unit tests for the queue
-- [x] Saved progress with a signed-in account: 64 real answers reached /progress
-- [x] Saving and scheduling across several days with the real Firestore SDK, network off (`node .verify/store-sim.cjs "$PWD"` after `npx tsc -p tsconfig.test.json`)
 - [ ] Publish the new `firestore.rules`, then request access with a second account, approve it, and confirm its progress saves. Also confirm your own invite still works. The rules can't be tested here
 - [ ] Check Weak spots on /progress with a signed-in account: miss a verb and a question type at least 5 times each, then use "Practice this". Verb and mistake-type stats only count answers from now on, and the section hasn't been seen with real data
 - [ ] Use Today's review with a signed-in account: finish a session, check an item in `users/{uid}/items` has `stability` and `due`, and check `/progress` shows what's due the next day. Real Firestore writes of schedules haven't run yet
@@ -110,6 +70,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - Sentences for the other persons of a verb: add to `src/data/sentences/persons.json`, by infinitive and tense. Name the subject when forms look alike, like yo and él in the imperfect, because the verb is blanked out on cards.
 - Words: add to the end of `src/data/vocab/*.json`, because file order sets the order new items are introduced. Noun topics must stay in step with `NOUN_TOPICS` in `src/lib/drill-settings.ts`. Give nouns shared by men and women `"article":"el"` (el dentista), which keeps them out of the gender drill. Multi-word nouns need `plural`.
 - Guides: `src/data/guides.json`, with quizzes in `src/data/guide-quizzes.json`.
+- Reading passages: add to `src/data/readings.json`, one paragraph at a time with its translation. Keep to the level's grammar and length in `LEVELS` in `src/lib/readings.ts` (tests check the length, not the grammar). Words in `words` must appear exactly as written in the passage. Questions stay in passage order, and each needs at least 3 choices.
 - Firestore rules: edit `firestore.rules`, then paste it into the Firebase console and publish.
 - Small words: add to `src/data/vocab/small-words.json`. Drills only accept the exact gloss, so make each one specific enough to pick out its word, like `you (formal)`. No commas inside brackets, because commas split glosses into answers.
 - Vulgar words: add to `src/data/vulgar.json`, with a note on what each means. Never add these to the drills or the public word lists with their meaning. Words that are offensive but not vulgar go in `regional.json` under `careful`, with the reason.
@@ -123,3 +84,51 @@ These live in `.verify/`, which is gitignored, so keep a copy if you change mach
 
 - Conjugation: `npx tsc -p tsconfig.test.json && node .verify/check.mjs`
 - Browser, with `npm run build` and `npx next start -p 3111` running: `node --experimental-websocket --no-warnings .verify/browser/flow.mjs`, also `audit.mjs`, `account.mjs`, `progress.mjs` and `report.mjs`. The browser profile isn't signed in, so none of these reach Firestore
+
+## Completed
+
+### App
+
+- [x] Conjugation engine with no dependencies, 16 tenses, reflexive verbs, voseo
+- [x] Verb search and full conjugation pages
+- [x] 281 verbs with a curated example sentence per tense, or a "rarely used" note
+- [x] Conjugation drills with accent-aware grading and retry of missed questions
+- [x] Nouns, adjectives, adverbs and phrases with browse and filter pages (310, 153, 75, 81)
+- [x] Vocabulary drills (meaning in both directions, noun gender, adjective agreement)
+- [x] Fill-in-the-blank drills using the example sentences
+- [x] Vocabulary drill filters by word type and noun topic
+- [x] Drill settings remembered between visits (per browser)
+- [x] Regional words page, including words to be careful with
+- [x] Grammar guides: ser vs. estar, por vs. para, preterite vs. imperfect, subjunctive, gender and plurals, reflexive verbs, object pronouns, commands, perfect tenses, comparisons, talking about the future, relative pronouns, numbers and dates
+- [x] A quiz for each grammar guide, linked from the guide and available as Grammar in Drills
+- [x] Bold label for the tense or question type on conjugation, fill-in-the-blank and vocabulary cards
+- [x] Example sentence on conjugation cards in Spanish and English with the answer blanked out, shown only when the sentence is for the person being asked
+- [x] 1,164 more sentences so the top 50 verbs have one for every person in the present, preterite, imperfect, future, conditional and present subjunctive
+- [x] Mobile layout pass, checked at 320px and 390px in headless Chrome
+- [x] Deployed on AWS Amplify (Next.js 16 with Cache Components is newer than Amplify's documented support, so recheck after upgrades)
+
+### Accounts and saved progress
+
+- [x] Firebase sign-in (Google and email link), with invite-only saved progress and security rules in `firestore.rules`
+- [x] Save answers, tracked by verb + tense, by word + question type, and by guide question
+- [x] Progress page: streak, questions answered, accuracy by tense, items mastered
+- [x] Spaced repetition (FSRS) with a "Today's review" mode and a daily limit on new items. See "How spaced repetition works"
+- [x] Request access form on the account page, for people signed in without an invite
+- [x] Weak-spot stats by tense, verb and mistake type, each with a "Practice this" link that starts a 15-question session
+- [x] "Report a problem" link on words, phrases, regional entries, verb tenses and drill answers, for invited people. Saved to `reports` in Firestore
+- [x] Vulgar words section on the regional page, shown only to invites with `vulgar: true`. Offensive words stay public with the reason explained. Vulgar ones say so publicly, and only this section says what they mean
+
+### Content
+
+- [x] Prepositions, conjunctions, pronouns and question words: a Small words page and word type in vocabulary drills
+- [x] Graded reading passages: 12 stories at A1, A2 and B1 on a Reading page, each with an English translation per paragraph, a word list and comprehension questions. Answers aren't saved to progress
+
+### Verification
+
+- [x] Compare the engine with Wiktionary for all verbs: no real differences (llover's unused persons only). Re-run with `npx tsc -p tsconfig.test.json && node .verify/check.mjs`. It lives in a gitignored folder, works offline, and fetches only verbs it hasn't seen
+- [x] Play through drills and a quiz in a headless browser, including the keyboard flow, accent buttons, retries and saved settings
+- [x] Publish the new `firestore.rules`, then send a report while signed in and confirm it appears in `reports`
+- [x] Test real sign-in (Google and email link), the invite check, and the published Firestore rules
+- [x] Saved progress up to the Firestore call: real drills in headless Chrome (what's queued, retries not counted, the save at 10 answers, answers kept when a save fails), plus unit tests for the queue
+- [x] Saved progress with a signed-in account: 64 real answers reached /progress
+- [x] Saving and scheduling across several days with the real Firestore SDK, network off (`node .verify/store-sim.cjs "$PWD"` after `npx tsc -p tsconfig.test.json`)
