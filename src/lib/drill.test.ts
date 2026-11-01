@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { conjugate } from "./conjugation/engine";
 import { TENSES } from "./conjugation/types";
-import { conjugationCard, grade, isIrregular, makeQuestion, poolVerbs } from "./drill";
+import { conjugationCard, grade, isIrregular, limitedDeck, makeQuestion, poolVerbs } from "./drill";
 import { SENTENCE_BANK } from "./sentence-data";
 import { findForm, sentencesFor } from "./sentences";
 import { VERBS, findVerb } from "./verbs";
@@ -70,6 +70,16 @@ describe("conjugationCard", () => {
 
   it("leaves the example off when there's no sentence", () => {
     assert.equal(conjugationCard(q).example, undefined);
+  });
+});
+
+describe("limitedDeck", () => {
+  it("stops after the given number of cards", () => {
+    const card = conjugationCard({ verb: verb("ser"), tense: "present", person: 0, label: "yo", answer: "soy" });
+    const next = limitedDeck(() => card, 2);
+    assert.equal(next(), card);
+    assert.equal(next(), card);
+    assert.equal(next(), null);
   });
 });
 

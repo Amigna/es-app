@@ -68,16 +68,25 @@ export async function saveAnswers(answers: Answer[]) {
   await batch.commit();
 }
 
-/** Leaves `tenses` out when empty: merging an empty map replaces the stored one, which would erase the tense stats. */
-export function summaryUpdate({ total, tenses }: Summary) {
-  const ids = Object.keys(tenses);
-  if (ids.length === 0) return bump(total);
-  return { ...bump(total), tenses: Object.fromEntries(ids.map((id) => [id, bump(tenses[id])])) };
+const TALLY_MAPS = ["tenses", "verbs", "kinds"] as const;
+
+type Bumped = ReturnType<typeof bump>;
+
+/** Leaves empty maps out: merging an empty map replaces the stored one, which would erase those stats. */
+export function summaryUpdate(summary: Summary) {
+  const update: Bumped & Partial<Record<(typeof TALLY_MAPS)[number], Record<string, Bumped>>> = bump(summary.total);
+  for (const name of TALLY_MAPS) {
+    const entries = Object.entries(summary[name]);
+    if (entries.length > 0) update[name] = Object.fromEntries(entries.map(([id, tally]) => [id, bump(tally)]));
+  }
+  return update;
 }
 
 export interface ProgressData {
   total: Tally;
   tenses: Record<string, Tally>;
+  verbs: Record<string, Tally>;
+  kinds: Record<string, Tally>;
   days: Record<string, Tally>;
   practiced: number;
   mastered: number;
@@ -99,6 +108,8 @@ export async function loadProgress(uid: string): Promise<ProgressData> {
   return {
     total: { right: data.right ?? 0, accent: data.accent ?? 0, wrong: data.wrong ?? 0 },
     tenses: (data.tenses ?? {}) as Record<string, Tally>,
+    verbs: (data.verbs ?? {}) as Record<string, Tally>,
+    kinds: (data.kinds ?? {}) as Record<string, Tally>,
     days: Object.fromEntries(recent.docs.map((d) => [d.id, d.data() as Tally])),
     practiced: practiced.data().count,
     mastered: mastered.data().count,

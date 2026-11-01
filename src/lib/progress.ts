@@ -24,6 +24,9 @@ export interface Summary {
   items: Record<string, Tally & { last: string }>;
   days: Record<string, Tally>;
   tenses: Record<string, Tally>;
+  verbs: Record<string, Tally>;
+  /** By question type: gender, agreement, toSpanish or toEnglish. */
+  kinds: Record<string, Tally>;
   total: Tally;
 }
 
@@ -40,7 +43,7 @@ export function localDay(date: Date = new Date()): string {
 
 /** Combines a batch of answers, so saving them takes a few writes instead of one per answer. */
 export function summarize(answers: Answer[]): Summary {
-  const out: Summary = { items: {}, days: {}, tenses: {}, total: empty() };
+  const out: Summary = { items: {}, days: {}, tenses: {}, verbs: {}, kinds: {}, total: empty() };
   for (const a of answers) {
     const field = FIELD[a.grade];
     const item = (out.items[a.item] ??= { ...empty(), last: a.day });
@@ -48,6 +51,10 @@ export function summarize(answers: Answer[]): Summary {
     if (a.day > item.last) item.last = a.day;
     (out.days[a.day] ??= empty())[field]++;
     if (a.tense) (out.tenses[a.tense] ??= empty())[field]++;
+    // Items are verb:hablar:present or vocab:noun:casa:gender.
+    const [source, first, , kind] = a.item.split(":");
+    if (source === "verb") (out.verbs[first] ??= empty())[field]++;
+    if (source === "vocab" && kind) (out.kinds[kind] ??= empty())[field]++;
     out.total[field]++;
   }
   return out;

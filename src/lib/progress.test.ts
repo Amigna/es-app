@@ -21,6 +21,17 @@ describe("summarize", () => {
     assert.deepEqual(s.total, { right: 2, accent: 1, wrong: 1 });
   });
 
+  it("adds answers up by verb and question type", () => {
+    const s = summarize([
+      answer("verb:ser:present", "correct", "2026-11-01", "present"),
+      answer("verb:ser:future", "wrong", "2026-11-01", "future"),
+      answer("vocab:noun:casa:gender", "wrong"),
+      answer("quiz:ser-estar:0", "correct"),
+    ]);
+    assert.deepEqual(s.verbs, { ser: { right: 1, accent: 0, wrong: 1 } });
+    assert.deepEqual(s.kinds, { gender: { right: 0, accent: 0, wrong: 1 } });
+  });
+
   it("keeps vocabulary out of the tense figures", () => {
     assert.deepEqual(summarize([answer("vocab:casa:gender", "correct")]).tenses, {});
   });
@@ -47,14 +58,19 @@ describe("statusOfInvite", () => {
 });
 
 describe("summaryUpdate", () => {
-  it("leaves tenses out of a batch without verbs, so stored tense stats survive", () => {
-    assert.equal("tenses" in summaryUpdate(summarize([answer("vocab:noun:casa:gender", "correct")])), false);
+  it("leaves empty maps out, so stored stats survive", () => {
+    const vocab = summaryUpdate(summarize([answer("vocab:noun:casa:gender", "correct")]));
+    assert.equal("tenses" in vocab, false);
+    assert.equal("verbs" in vocab, false);
+    assert.deepEqual(Object.keys(vocab.kinds ?? {}), ["gender"]);
+    const verb = summaryUpdate(summarize([answer("verb:ir:present", "correct", "2026-11-01", "present")]));
+    assert.equal("kinds" in verb, false);
   });
 
-  it("sends tenses when a batch has verbs", () => {
+  it("sends tenses and verbs when a batch has verbs", () => {
     const update = summaryUpdate(summarize([answer("verb:ir:present", "correct", "2026-11-01", "present")]));
-    assert.ok("tenses" in update);
-    assert.deepEqual(Object.keys(update.tenses), ["present"]);
+    assert.deepEqual(Object.keys(update.tenses ?? {}), ["present"]);
+    assert.deepEqual(Object.keys(update.verbs ?? {}), ["ir"]);
   });
 });
 

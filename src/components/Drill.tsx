@@ -3,13 +3,16 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import DrillRunner from "@/components/DrillRunner";
-import { TENSES, type Mood } from "@/lib/conjugation/types";
-import { conjugationCard, makeQuestion, poolVerbs, type Card, type VerbPool } from "@/lib/drill";
+import { TENSES, type Mood, type TenseId } from "@/lib/conjugation/types";
+import { CORE_TENSES, conjugationCard, limitedDeck, makeQuestion, poolVerbs, type Card, type VerbPool } from "@/lib/drill";
 import { NOUN_TOPICS, useDrillSettings, type Mode, type VocabKind, type WordType } from "@/lib/drill-settings";
+import { parsePractice, type PracticeTarget } from "@/lib/practice";
 import { progressEnabled } from "@/lib/progress-queue";
 import { shuffled } from "@/lib/quiz";
 import { sentencesFor } from "@/lib/sentences";
-import { VERBS } from "@/lib/verbs";
+import { VERBS, findVerb, type Verb } from "@/lib/verbs";
+
+const PRACTICE_SIZE = 15;
 
 const MODES: { id: Mode; title: string; hint: string }[] = [
   { id: "review", title: "Today's review", hint: "What's due, plus new items" },
@@ -137,6 +140,27 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
     };
   }, [mode, session, rareSet]);
 
+  async function conjugationDeck(verbs: Verb[], chosen: TenseId[]): Promise<() => Card | null> {
+    const { SENTENCE_BANK } = await import("@/lib/sentence-data");
+    return () => {
+      const q = makeQuestion(verbs, chosen, rareSet);
+      return q && conjugationCard(q, sentencesFor(SENTENCE_BANK, q.verb.inf, q.tense));
+    };
+  }
+
+  /** A short session from the progress page. It leaves the saved drill settings alone. */
+  async function practiceDeck(target: PracticeTarget): Promise<() => Card | null> {
+    if ("kind" in target) {
+      const { vocabDeck } = await import("@/lib/card-decks");
+      return vocabDeck({ kinds: [target.kind], wordTypes: ["noun", "adjective", "adverb"], topics: [] });
+    }
+    if ("verb" in target) {
+      const verb = findVerb(target.verb);
+      return conjugationDeck(verb ? [verb] : [], CORE_TENSES);
+    }
+    return conjugationDeck(poolVerbs(VERBS, pool), target.tenses);
+  }
+
   async function buildDeck(): Promise<() => Card | null> {
     if (mode === "review") {
       const plan = await loadTodayPlan(rareSet);
@@ -145,13 +169,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
       return reviewDeck([...shuffled(plan.reviews), ...plan.fresh], SENTENCE_BANK, rareSet);
     }
     const verbs = poolVerbs(VERBS, pool);
-    if (mode === "conjugation") {
-      const { SENTENCE_BANK } = await import("@/lib/sentence-data");
-      return () => {
-        const q = makeQuestion(verbs, tenses, rareSet);
-        return q && conjugationCard(q, sentencesFor(SENTENCE_BANK, q.verb.inf, q.tense));
-      };
-    }
+    if (mode === "conjugation") return conjugationDeck(verbs, tenses);
     if (mode === "grammar") {
       const [{ quizDeck }, { GUIDE_QUIZZES }] = await Promise.all([import("@/lib/quiz"), import("@/lib/quiz-data")]);
       const chosen = guides.length ? guideList.filter((g) => guides.includes(g.slug)) : guideList;
@@ -163,11 +181,11 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
     return decks.blankDeck(SENTENCE_BANK, verbs, tenses);
   }
 
-  async function start() {
+  async function start(target?: PracticeTarget) {
     setError("");
     setLoading(true);
     try {
-      const next = await buildDeck();
+      const next = target ? limitedDeck(await practiceDeck(target), PRACTICE_SIZE) : await buildDeck();
       const first = next();
       if (first) setSession({ first, next });
       else setError("No questions match that choice. Try selecting more options.");
@@ -177,6 +195,16 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
       setLoading(false);
     }
   }
+
+  // "Practice this" links land here. The address is cleared so reloading doesn't restart it, and "Done" shows the normal page.
+  useEffect(() => {
+    const target = parsePractice(window.location.search);
+    if (!target) return;
+    window.history.replaceState(null, "", "/drill");
+    queueMicrotask(() => start(target));
+    // Only on arrival.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (session) return <DrillRunner first={session.first} next={session.next} onStop={() => setSession(null)} />;
 
@@ -333,7 +361,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
 
       <button
         type="button"
-        onClick={start}
+        onClick={() => start()}
         disabled={!ready || loading}
         className="h-12 rounded-xl bg-emerald-700 px-6 font-medium text-white transition hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 disabled:cursor-not-allowed disabled:opacity-50"
       >

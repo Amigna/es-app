@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { TENSES } from "@/lib/conjugation/types";
 import { useDrillSettings } from "@/lib/drill-settings";
 import { auth, firebaseConfigured, isInvited } from "@/lib/firebase";
+import { practiceHref, weakSpots, type WeakSpot } from "@/lib/practice";
 import { accuracy, answered, currentStreak, lastSevenDays, localDay } from "@/lib/progress";
 import { saveProgress, setProgressEnabled } from "@/lib/progress-queue";
 import { loadProgress, type ProgressData } from "@/lib/progress-store";
@@ -39,6 +40,50 @@ function Message({ children }: { children: React.ReactNode }) {
 }
 
 const linkClass = "text-emerald-700 underline dark:text-emerald-400";
+
+function SpotList({ title, spots }: { title: string; spots: WeakSpot[] }) {
+  if (spots.length === 0) return null;
+  return (
+    <div>
+      <h3 className="mb-2 font-medium">{title}</h3>
+      <ul className="divide-y divide-zinc-100 overflow-hidden rounded-xl border border-zinc-200 bg-white dark:divide-zinc-800 dark:border-zinc-800 dark:bg-zinc-900">
+        {spots.map((spot) => (
+          <li key={spot.key} className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 px-4 py-2">
+            <span>
+              <span className="block">{spot.label}</span>
+              <span className="block text-sm text-zinc-500">{spot.detail}</span>
+            </span>
+            <Link
+              href={practiceHref(spot.target)}
+              aria-label={`Practice ${spot.label}`}
+              className="flex min-h-10 items-center text-sm font-medium text-emerald-700 underline dark:text-emerald-400"
+            >
+              Practice this
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function WeakSpotsSection({ data }: { data: ProgressData }) {
+  const { tenses, verbs, mistakes } = weakSpots(data);
+  return (
+    <section>
+      <h2 className="mb-3 text-xl font-semibold">Weak spots</h2>
+      {tenses.length + verbs.length + mistakes.length === 0 ? (
+        <p className="text-zinc-600 dark:text-zinc-400">None right now. Weak spots show up here after 5 or more answers on something you keep missing.</p>
+      ) : (
+        <div className="grid gap-4 md:grid-cols-3">
+          <SpotList title="Tenses" spots={tenses} />
+          <SpotList title="Verbs" spots={verbs} />
+          <SpotList title="Mistake types" spots={mistakes} />
+        </div>
+      )}
+    </section>
+  );
+}
 
 function Stats({ data }: { data: ProgressData }) {
   const [, update] = useDrillSettings();
@@ -76,6 +121,8 @@ function Stats({ data }: { data: ProgressData }) {
         <Tile label="All time" value={total.toLocaleString()} note={overall === null ? undefined : `${overall}% correct`} />
         <Tile label="Mastered" value={data.mastered.toLocaleString()} note={`of ${data.practiced.toLocaleString()} practiced`} />
       </div>
+
+      <WeakSpotsSection data={data} />
 
       {tenseRows.length > 0 ? (
         <section>

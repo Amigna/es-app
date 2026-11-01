@@ -11,6 +11,8 @@ export type VerbPool = "common" | "irregular" | "all";
 /** The seed list is ordered by frequency, so the head of it is the common set. */
 export const COMMON_COUNT = 50;
 
+export const CORE_TENSES: TenseId[] = ["present", "preterite", "imperfect", "future", "conditional", "subjPresent"];
+
 // Verbs that are only natural in the third person: nobody needs to practice "yo lluevo".
 const ONLY_PERSONS: Record<string, number[]> = {
   llover: [2],
@@ -134,6 +136,12 @@ export function conjugationCard(q: Question, sentences: Sentence[] = []): Card {
 
 /** Conjugation and fill-in-the-blank share an item, so either one counts as practicing that verb and tense. */
 export const verbTrack = (inf: string, tense: TenseId): Track => ({ item: `verb:${inf}:${tense}`, tense });
+
+/** Ends a deck that would otherwise go on forever. */
+export function limitedDeck(next: () => Card | null, size: number): () => Card | null {
+  let left = size;
+  return () => (left-- > 0 ? next() : null);
+}
 
 export function personLabel(tense: TenseId, person: number): string {
   return (tense === "impAffirmative" || tense === "impNegative" ? IMPERATIVE_PERSONS : PERSONS)[person] ?? "";
