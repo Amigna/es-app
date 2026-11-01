@@ -166,7 +166,6 @@ export default function DrillRunner({
         {card.subtitle && <p className="text-zinc-600 dark:text-zinc-400">{card.subtitle}</p>}
         {card.example && (
           <p className="mt-3 border-l-2 border-zinc-300 pl-3 text-zinc-600 dark:border-zinc-700 dark:text-zinc-400">
-            <span className="block text-sm text-zinc-500">{card.example.label}</span>
             <span lang="es" className="block font-medium text-zinc-800 dark:text-zinc-200">
               {card.example.es}
             </span>

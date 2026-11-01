@@ -31,15 +31,16 @@ describe("grade", () => {
 });
 
 describe("conjugationCard", () => {
-  const q = { verb: verb("llamar"), tense: "imperfect", person: 3, label: "nosotros", answer: "llamábamos" } as const;
+  const q = { verb: verb("llamar"), tense: "imperfect", person: 1, label: "tú", answer: "llamabas" } as const;
   const sentence = { person: 1, es: "¿Por qué me llamabas tanto ayer?", en: "Why were you calling me so much yesterday?" };
 
-  it("shows the example with its verb blanked and names its person", () => {
-    assert.deepEqual(conjugationCard(q, sentence).example, {
-      label: "Example with tú",
-      es: "¿Por qué me _____ tanto ayer?",
-      en: sentence.en,
-    });
+  it("shows the example with the answer blanked when it's for the person asked", () => {
+    assert.deepEqual(conjugationCard(q, sentence).example, { es: "¿Por qué me _____ tanto ayer?", en: sentence.en });
+  });
+
+  it("leaves the example off when it's for a different person", () => {
+    const nosotros = { ...q, person: 3, label: "nosotros", answer: "llamábamos" };
+    assert.equal(conjugationCard(nosotros, sentence).example, undefined);
   });
 
   it("blanks a verb used twice", () => {

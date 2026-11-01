@@ -96,7 +96,7 @@ export interface Card {
   title: string;
   titleIsSpanish: boolean;
   subtitle?: string;
-  example?: { label: string; es: string; en: string };
+  example?: { es: string; en: string };
   ask: string;
   answers: string[];
   /** The answer as shown after a miss. */
@@ -112,17 +112,7 @@ export interface Card {
   link?: { href: string; label: string };
 }
 
-/** The example's Spanish hides its verb, and the answer too in case the sentence uses that form elsewhere. */
-function cardExample(q: Question, sentence: Sentence): Card["example"] {
-  const form = conjugate(q.verb).tenses[q.tense]?.forms[sentence.person] ?? "";
-  // The sentence is written for one person, which may not be the one being asked for.
-  return {
-    label: `Example with ${personLabel(q.tense, sentence.person)}`,
-    es: blankOut(sentence.es, form, q.answer),
-    en: sentence.en,
-  };
-}
-
+/** Each tense has one sentence, written for one person. It's only shown for that person, so the blank is always the answer. */
 export function conjugationCard(q: Question, sentence?: Sentence | null): Card {
   const meta = TENSES.find((t) => t.id === q.tense)!;
   return {
@@ -132,7 +122,7 @@ export function conjugationCard(q: Question, sentence?: Sentence | null): Card {
     title: q.verb.inf,
     titleIsSpanish: true,
     subtitle: q.verb.en,
-    example: sentence ? cardExample(q, sentence) : undefined,
+    example: sentence?.person === q.person ? { es: blankOut(sentence.es, q.answer), en: sentence.en } : undefined,
     ask: `Form for ${q.label}`,
     answers: [q.answer],
     shown: q.answer,

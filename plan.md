@@ -17,7 +17,7 @@ Spanish learning app for me, friends and family. Latin American and Caribbean Sp
 - [x] Grammar guides: ser vs. estar, por vs. para, preterite vs. imperfect, subjunctive, gender and plurals, reflexive verbs, object pronouns, commands, perfect tenses, comparisons, talking about the future, relative pronouns, numbers and dates
 - [x] A quiz for each grammar guide, linked from the guide and available as Grammar in Drills
 - [x] Bold label for the tense or question type on conjugation, fill-in-the-blank and vocabulary cards
-- [x] Example sentence on conjugation cards in Spanish and English, labeled with its person, with the verb blanked out
+- [x] Example sentence on conjugation cards in Spanish and English with the answer blanked out, shown only when the sentence is for the person being asked
 - [x] Mobile layout pass, checked at 320px and 390px in headless Chrome
 - [x] Deployed on AWS Amplify (Next.js 16 with Cache Components is newer than Amplify's documented support, so recheck after upgrades)
 
