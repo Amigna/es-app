@@ -1,19 +1,39 @@
 {
  "usar": {
   "present": [
-   {"person":0,"es":"Uso esta aplicación para practicar.","en":"I use this app to practice."}
+   {"person":0,"es":"Uso esta aplicación para practicar.","en":"I use this app to practice."},
+   {"person":1,"es":"¿Usas lentes para leer?","en":"Do you use glasses to read?"},
+   {"person":2,"es":"Mi mamá usa mucho cilantro.","en":"My mom uses a lot of cilantro."},
+   {"person":3,"es":"Nosotros usamos el autobús.","en":"We use the bus."},
+   {"person":4,"es":"Los niños usan uniforme.","en":"The kids wear a uniform."}
   ],
   "preterite": [
-   {"person":2,"es":"Mi hermana usó mi carro ayer.","en":"My sister used my car yesterday."}
+   {"person":2,"es":"Mi hermana usó mi carro ayer.","en":"My sister used my car yesterday."},
+   {"person":0,"es":"Usé tu toalla sin querer.","en":"I used your towel by accident."},
+   {"person":1,"es":"¿Usaste mi cargador?","en":"Did you use my charger?"},
+   {"person":3,"es":"Ayer usamos la piscina.","en":"Yesterday we used the pool."},
+   {"person":4,"es":"Ellos usaron todo el azúcar.","en":"They used all the sugar."}
   ],
   "imperfect": [
-   {"person":4,"es":"Antes usaban velas cuando se iba la luz.","en":"They used to use candles when the power went out."}
+   {"person":4,"es":"Antes usaban velas cuando se iba la luz.","en":"They used to use candles when the power went out."},
+   {"person":0,"es":"Yo usaba frenos de adolescente.","en":"I wore braces as a teenager."},
+   {"person":1,"es":"Tú usabas el pelo largo.","en":"You used to wear your hair long."},
+   {"person":2,"es":"Mi abuelo usaba sombrero.","en":"My grandfather wore a hat."},
+   {"person":3,"es":"Nosotros usábamos uniforme en la escuela.","en":"We wore a uniform at school."}
   ],
   "future": [
-   {"person":1,"es":"Usarás este libro en la clase.","en":"You'll use this book in the class."}
+   {"person":1,"es":"Usarás este libro en la clase.","en":"You'll use this book in the class."},
+   {"person":0,"es":"Usaré este vestido en la boda.","en":"I'll wear this dress to the wedding."},
+   {"person":2,"es":"La maestra usará la pizarra.","en":"The teacher will use the board."},
+   {"person":3,"es":"Usaremos tu carro.","en":"We'll use your car."},
+   {"person":4,"es":"Ellos usarán el salón grande.","en":"They'll use the big room."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo usaría una camisa más ligera.","en":"I'd wear a lighter shirt."}
+   {"person":0,"es":"Yo usaría una camisa más ligera.","en":"I'd wear a lighter shirt."},
+   {"person":1,"es":"¿Usarías ese color?","en":"Would you use that color?"},
+   {"person":2,"es":"Mi hijo usaría esa chaqueta.","en":"My son would wear that jacket."},
+   {"person":3,"es":"Nosotros usaríamos la escalera.","en":"We'd use the stairs."},
+   {"person":4,"es":"Ellos usarían menos agua.","en":"They'd use less water."}
   ],
   "presentPerfect": [
    {"person":1,"es":"¿Has usado alguna vez un machete?","en":"Have you ever used a machete?"}
@@ -28,7 +48,11 @@
    {"person":3,"es":"Habríamos usado la tarjeta, pero no funcionaba.","en":"We would have used the card, but it wasn't working."}
   ],
   "subjPresent": [
-   {"person":1,"es":"Quiero que uses protector solar.","en":"I want you to wear sunscreen."}
+   {"person":1,"es":"Quiero que uses protector solar.","en":"I want you to wear sunscreen."},
+   {"person":0,"es":"Mi mamá quiere que yo use abrigo.","en":"My mom wants me to wear a coat."},
+   {"person":2,"es":"Espero que ella use mi regalo.","en":"I hope she uses my present."},
+   {"person":3,"es":"¿Quieres que usemos tu celular?","en":"Do you want us to use your phone?"},
+   {"person":4,"es":"No quiero que usen mi cuarto.","en":"I don't want them using my room."}
   ],
   "subjImperfect": [
    {"person":2,"es":"El doctor me dijo que usara estas gotas.","en":"The doctor told me to use these drops."}
@@ -51,19 +75,39 @@
  },
  "vender": {
   "present": [
-   {"person":0,"es":"Vendo frutas en el mercado.","en":"I sell fruit at the market."}
+   {"person":0,"es":"Vendo frutas en el mercado.","en":"I sell fruit at the market."},
+   {"person":1,"es":"¿Cuánto vendes en un día?","en":"How much do you sell in a day?"},
+   {"person":2,"es":"Esa señora vende empanadas.","en":"That lady sells empanadas."},
+   {"person":3,"es":"Nosotros vendemos ropa usada.","en":"We sell used clothes."},
+   {"person":4,"es":"Aquí venden buenos tacos.","en":"They sell good tacos here."}
   ],
   "preterite": [
-   {"person":2,"es":"Mi tío vendió su carro.","en":"My uncle sold his car."}
+   {"person":2,"es":"Mi tío vendió su carro.","en":"My uncle sold his car."},
+   {"person":0,"es":"Vendí mi bicicleta por poco dinero.","en":"I sold my bike for very little money."},
+   {"person":1,"es":"¿A quién le vendiste la moto?","en":"Who did you sell the motorcycle to?"},
+   {"person":3,"es":"Ayer vendimos todas las arepas.","en":"Yesterday we sold all the arepas."},
+   {"person":4,"es":"Mis vecinos vendieron su casa.","en":"My neighbors sold their house."}
   ],
   "imperfect": [
-   {"person":4,"es":"En esa esquina vendían pastelitos de guayaba.","en":"They used to sell guava pastries on that corner."}
+   {"person":4,"es":"En esa esquina vendían pastelitos de guayaba.","en":"They used to sell guava pastries on that corner."},
+   {"person":0,"es":"Yo vendía limonada de niño.","en":"I sold lemonade as a kid."},
+   {"person":1,"es":"Tú vendías libros, ¿no?","en":"You used to sell books, didn't you?"},
+   {"person":2,"es":"Mi tío vendía seguros.","en":"My uncle sold insurance."},
+   {"person":3,"es":"Nosotros vendíamos flores en la carretera.","en":"We sold flowers by the highway."}
   ],
   "future": [
-   {"person":3,"es":"Venderemos la casa el año que viene.","en":"We'll sell the house next year."}
+   {"person":3,"es":"Venderemos la casa el año que viene.","en":"We'll sell the house next year."},
+   {"person":0,"es":"Venderé el sofá esta semana.","en":"I'll sell the sofa this week."},
+   {"person":1,"es":"Venderás más en diciembre.","en":"You'll sell more in December."},
+   {"person":2,"es":"Esa panadería venderá pasteles.","en":"That bakery will sell cakes."},
+   {"person":4,"es":"Ellos venderán el negocio.","en":"They'll sell the business."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo no vendería ese terreno.","en":"I wouldn't sell that land."}
+   {"person":0,"es":"Yo no vendería ese terreno.","en":"I wouldn't sell that land."},
+   {"person":1,"es":"¿Venderías tu carro?","en":"Would you sell your car?"},
+   {"person":2,"es":"Mi abuelo nunca vendería su finca.","en":"My grandfather would never sell his farm."},
+   {"person":3,"es":"Nosotros venderíamos más por internet.","en":"We'd sell more online."},
+   {"person":4,"es":"Ellos venderían a buen precio.","en":"They'd sell at a good price."}
   ],
   "presentPerfect": [
    {"person":4,"es":"Han vendido todas las entradas.","en":"They've sold all the tickets."}
@@ -78,7 +122,11 @@
    {"person":1,"es":"Tú lo habrías vendido más caro.","en":"You would have sold it for more."}
   ],
   "subjPresent": [
-   {"person":1,"es":"No quiero que vendas la casa de la abuela.","en":"I don't want you to sell Grandma's house."}
+   {"person":1,"es":"No quiero que vendas la casa de la abuela.","en":"I don't want you to sell Grandma's house."},
+   {"person":0,"es":"Mi tío quiere que yo venda la moto.","en":"My uncle wants me to sell the motorcycle."},
+   {"person":2,"es":"Ojalá mi hermana venda su cuadro.","en":"I hope my sister sells her painting."},
+   {"person":3,"es":"Es mejor que vendamos antes de fin de año.","en":"It's better for us to sell before the end of the year."},
+   {"person":4,"es":"Espero que vendan pan aquí.","en":"I hope they sell bread here."}
   ],
   "subjImperfect": [
    {"person":2,"es":"Esperaba que mi hermano vendiera el carro.","en":"I was hoping my brother would sell the car."}
@@ -101,19 +149,39 @@
  },
  "comer": {
   "present": [
-   {"person":3,"es":"Comemos arroz con frijoles casi todos los días.","en":"We eat rice and beans almost every day."}
+   {"person":3,"es":"Comemos arroz con frijoles casi todos los días.","en":"We eat rice and beans almost every day."},
+   {"person":0,"es":"Como en casa de mi mamá los domingos.","en":"I eat at my mom's house on Sundays."},
+   {"person":1,"es":"¿Qué comes en el almuerzo?","en":"What do you eat for lunch?"},
+   {"person":2,"es":"Mi perro come de todo.","en":"My dog eats everything."},
+   {"person":4,"es":"Los niños comen en la escuela.","en":"The kids eat at school."}
   ],
   "preterite": [
-   {"person":0,"es":"Comí demasiado en la fiesta.","en":"I ate too much at the party."}
+   {"person":0,"es":"Comí demasiado en la fiesta.","en":"I ate too much at the party."},
+   {"person":1,"es":"¿Ya comiste?","en":"Have you eaten yet?"},
+   {"person":2,"es":"Mi hijo se comió todo el pollo.","en":"My son ate all the chicken."},
+   {"person":3,"es":"Anoche comimos tacos.","en":"Last night we ate tacos."},
+   {"person":4,"es":"Ellos comieron en un restaurante peruano.","en":"They ate at a Peruvian restaurant."}
   ],
   "imperfect": [
-   {"person":4,"es":"Mis abuelos comían a las doce en punto.","en":"My grandparents used to eat at twelve on the dot."}
+   {"person":4,"es":"Mis abuelos comían a las doce en punto.","en":"My grandparents used to eat at twelve on the dot."},
+   {"person":0,"es":"Yo comía mucho mango de niño.","en":"I ate a lot of mango as a kid."},
+   {"person":1,"es":"Tú comías muy rápido.","en":"You used to eat very fast."},
+   {"person":2,"es":"Mi abuelo comía siempre a la misma hora.","en":"My grandfather always ate at the same time."},
+   {"person":3,"es":"Nosotros comíamos en el patio.","en":"We used to eat in the patio."}
   ],
   "future": [
-   {"person":3,"es":"Comeremos lechón en Nochebuena.","en":"We'll eat roast pork on Christmas Eve."}
+   {"person":3,"es":"Comeremos lechón en Nochebuena.","en":"We'll eat roast pork on Christmas Eve."},
+   {"person":0,"es":"Comeré más tarde.","en":"I'll eat later."},
+   {"person":1,"es":"Comerás muy bien en Perú.","en":"You'll eat very well in Peru."},
+   {"person":2,"es":"El bebé comerá en un rato.","en":"The baby will eat in a little while."},
+   {"person":4,"es":"Los invitados comerán a las ocho.","en":"The guests will eat at eight."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo comería algo ligero.","en":"I'd eat something light."}
+   {"person":0,"es":"Yo comería algo ligero.","en":"I'd eat something light."},
+   {"person":1,"es":"¿Comerías iguana?","en":"Would you eat iguana?"},
+   {"person":2,"es":"Mi hijo comería pizza todos los días.","en":"My son would eat pizza every day."},
+   {"person":3,"es":"Nosotros comeríamos afuera, pero hace calor.","en":"We'd eat outside, but it's hot."},
+   {"person":4,"es":"Ellos comerían con nosotros con gusto.","en":"They'd gladly eat with us."}
   ],
   "presentPerfect": [
    {"person":1,"es":"¿Ya has comido?","en":"Have you eaten yet?"}
@@ -128,7 +196,11 @@
    {"person":3,"es":"Habríamos comido allí, pero estaba cerrado.","en":"We would have eaten there, but it was closed."}
   ],
   "subjPresent": [
-   {"person":1,"es":"Quiero que comas algo antes de salir.","en":"I want you to eat something before leaving."}
+   {"person":1,"es":"Quiero que comas algo antes de salir.","en":"I want you to eat something before leaving."},
+   {"person":0,"es":"Mi mamá quiere que yo coma más.","en":"My mom wants me to eat more."},
+   {"person":2,"es":"Espero que el niño coma bien.","en":"I hope the boy eats well."},
+   {"person":3,"es":"¿Quieres que comamos aquí?","en":"Do you want us to eat here?"},
+   {"person":4,"es":"No dejes que coman tanto dulce.","en":"Don't let them eat so much candy."}
   ],
   "subjImperfect": [
    {"person":2,"es":"Mi abuela insistía en que el niño comiera más.","en":"My grandmother insisted that the boy eat more."}
@@ -151,19 +223,39 @@
  },
  "beber": {
   "present": [
-   {"person":0,"es":"Bebo agua de coco en la playa.","en":"I drink coconut water at the beach."}
+   {"person":0,"es":"Bebo agua de coco en la playa.","en":"I drink coconut water at the beach."},
+   {"person":1,"es":"¿Qué bebes?","en":"What are you drinking?"},
+   {"person":2,"es":"Mi papá bebe café sin azúcar.","en":"My dad drinks coffee without sugar."},
+   {"person":3,"es":"Nosotros bebemos mucha agua en verano.","en":"We drink a lot of water in the summer."},
+   {"person":4,"es":"Los caballos beben en el río.","en":"The horses drink at the river."}
   ],
   "preterite": [
-   {"person":2,"es":"Mi abuelo bebió un trago de ron.","en":"My grandfather drank a shot of rum."}
+   {"person":2,"es":"Mi abuelo bebió un trago de ron.","en":"My grandfather drank a shot of rum."},
+   {"person":0,"es":"Bebí demasiado café hoy.","en":"I drank too much coffee today."},
+   {"person":1,"es":"¿Qué bebiste en la fiesta?","en":"What did you drink at the party?"},
+   {"person":3,"es":"Anoche bebimos chocolate caliente.","en":"Last night we drank hot chocolate."},
+   {"person":4,"es":"Ellos bebieron limonada.","en":"They drank lemonade."}
   ],
   "imperfect": [
-   {"person":4,"es":"Los viejos bebían café en la plaza.","en":"The old men used to drink coffee in the square."}
+   {"person":4,"es":"Los viejos bebían café en la plaza.","en":"The old men used to drink coffee in the square."},
+   {"person":0,"es":"Yo bebía leche todas las noches.","en":"I used to drink milk every night."},
+   {"person":1,"es":"Tú bebías jugo de tamarindo.","en":"You used to drink tamarind juice."},
+   {"person":2,"es":"Mi abuela bebía té de manzanilla.","en":"My grandmother drank chamomile tea."},
+   {"person":3,"es":"Nosotros bebíamos agua del manantial.","en":"We drank water from the spring."}
   ],
   "future": [
-   {"person":3,"es":"Beberemos a tu salud.","en":"We'll drink to your health."}
+   {"person":3,"es":"Beberemos a tu salud.","en":"We'll drink to your health."},
+   {"person":0,"es":"Beberé solo agua esta noche.","en":"I'll drink only water tonight."},
+   {"person":1,"es":"Beberás el mejor café en Colombia.","en":"You'll drink the best coffee in Colombia."},
+   {"person":2,"es":"El niño beberá su leche.","en":"The boy will drink his milk."},
+   {"person":4,"es":"Los invitados beberán ponche.","en":"The guests will drink punch."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo no bebería esa agua.","en":"I wouldn't drink that water."}
+   {"person":0,"es":"Yo no bebería esa agua.","en":"I wouldn't drink that water."},
+   {"person":1,"es":"¿Beberías eso?","en":"Would you drink that?"},
+   {"person":2,"es":"Mi abuelo bebería un café ahora.","en":"My grandfather would drink a coffee right now."},
+   {"person":3,"es":"Nosotros beberíamos algo frío.","en":"We'd drink something cold."},
+   {"person":4,"es":"Ellos no beberían tanto refresco.","en":"They wouldn't drink so much soda."}
   ],
   "presentPerfect": [
    {"person":4,"es":"Mis amigos han bebido demasiado.","en":"My friends have drunk too much."}
@@ -178,7 +270,11 @@
    {"person":1,"es":"Tú no habrías bebido eso.","en":"You wouldn't have drunk that."}
   ],
   "subjPresent": [
-   {"person":1,"es":"Es mejor que no bebas antes de manejar.","en":"It's better that you don't drink before driving."}
+   {"person":1,"es":"Es mejor que no bebas antes de manejar.","en":"It's better that you don't drink before driving."},
+   {"person":0,"es":"El médico no quiere que yo beba café.","en":"The doctor doesn't want me to drink coffee."},
+   {"person":2,"es":"Es bueno que el bebé beba agua.","en":"It's good for the baby to drink water."},
+   {"person":3,"es":"¿Quieres que bebamos algo?","en":"Do you want us to drink something?"},
+   {"person":4,"es":"Espero que beban suficiente agua.","en":"I hope they drink enough water."}
   ],
   "subjImperfect": [
    {"person":2,"es":"El médico pidió que bebiera más agua.","en":"The doctor asked him to drink more water."}
@@ -201,19 +297,39 @@
  },
  "bailar": {
   "present": [
-   {"person":0,"es":"Bailo salsa todos los viernes.","en":"I dance salsa every Friday."}
+   {"person":0,"es":"Bailo salsa todos los viernes.","en":"I dance salsa every Friday."},
+   {"person":1,"es":"Bailas muy bien.","en":"You dance very well."},
+   {"person":2,"es":"Mi abuela baila merengue.","en":"My grandmother dances merengue."},
+   {"person":3,"es":"Nosotros bailamos en la cocina.","en":"We dance in the kitchen."},
+   {"person":4,"es":"Ellos bailan cumbia en las fiestas.","en":"They dance cumbia at parties."}
   ],
   "preterite": [
-   {"person":3,"es":"Bailamos hasta la madrugada.","en":"We danced until the early morning."}
+   {"person":3,"es":"Bailamos hasta la madrugada.","en":"We danced until the early morning."},
+   {"person":0,"es":"Bailé con mi tía en la boda.","en":"I danced with my aunt at the wedding."},
+   {"person":1,"es":"¿Bailaste anoche?","en":"Did you dance last night?"},
+   {"person":2,"es":"Mi abuelo bailó toda la noche.","en":"My grandfather danced all night."},
+   {"person":4,"es":"Los novios bailaron primero.","en":"The bride and groom danced first."}
   ],
   "imperfect": [
-   {"person":4,"es":"Mis padres bailaban son en las fiestas.","en":"My parents used to dance son at parties."}
+   {"person":4,"es":"Mis padres bailaban son en las fiestas.","en":"My parents used to dance son at parties."},
+   {"person":0,"es":"Yo bailaba ballet de niña.","en":"I danced ballet as a girl."},
+   {"person":1,"es":"Tú bailabas en un grupo folclórico.","en":"You danced in a folk group."},
+   {"person":2,"es":"Mi madre bailaba con mucha gracia.","en":"My mother danced very gracefully."},
+   {"person":3,"es":"Nosotros bailábamos en el club los sábados.","en":"We danced at the club on Saturdays."}
   ],
   "future": [
-   {"person":1,"es":"En la boda bailarás con tu abuela.","en":"At the wedding you'll dance with your grandmother."}
+   {"person":1,"es":"En la boda bailarás con tu abuela.","en":"At the wedding you'll dance with your grandmother."},
+   {"person":0,"es":"Bailaré contigo más tarde.","en":"I'll dance with you later."},
+   {"person":2,"es":"La niña bailará en el festival.","en":"The girl will dance at the festival."},
+   {"person":3,"es":"Bailaremos hasta que salga el sol.","en":"We'll dance until the sun comes up."},
+   {"person":4,"es":"Ellos bailarán el vals.","en":"They'll dance the waltz."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo bailaría contigo.","en":"I'd dance with you."}
+   {"person":0,"es":"Yo bailaría contigo.","en":"I'd dance with you."},
+   {"person":1,"es":"¿Bailarías conmigo?","en":"Would you dance with me?"},
+   {"person":2,"es":"Mi esposo bailaría si supiera.","en":"My husband would dance if he knew how."},
+   {"person":3,"es":"Nosotros bailaríamos, pero la música está mala.","en":"We'd dance, but the music is bad."},
+   {"person":4,"es":"Ellos bailarían toda la noche.","en":"They'd dance all night."}
   ],
   "presentPerfect": [
    {"person":1,"es":"¿Has bailado merengue alguna vez?","en":"Have you ever danced merengue?"}
@@ -228,7 +344,11 @@
    {"person":4,"es":"Ellos habrían bailado más.","en":"They would have danced more."}
   ],
   "subjPresent": [
-   {"person":1,"es":"Quiero que bailes conmigo.","en":"I want you to dance with me."}
+   {"person":1,"es":"Quiero que bailes conmigo.","en":"I want you to dance with me."},
+   {"person":0,"es":"Mi novia quiere que yo baile con ella.","en":"My girlfriend wants me to dance with her."},
+   {"person":2,"es":"Espero que tu hermana baile en la fiesta.","en":"I hope your sister dances at the party."},
+   {"person":3,"es":"¿Quieres que bailemos?","en":"Do you want us to dance?"},
+   {"person":4,"es":"Ojalá bailen la bachata.","en":"I hope they dance bachata."}
   ],
   "subjImperfect": [
    {"person":2,"es":"Ojalá mi esposo bailara mejor.","en":"I wish my husband danced better."}
@@ -251,19 +371,39 @@
  },
  "cantar": {
   "present": [
-   {"person":2,"es":"Mi abuela canta boleros en la cocina.","en":"My grandmother sings boleros in the kitchen."}
+   {"person":2,"es":"Mi abuela canta boleros en la cocina.","en":"My grandmother sings boleros in the kitchen."},
+   {"person":0,"es":"Canto en el coro de mi barrio.","en":"I sing in my neighborhood choir."},
+   {"person":1,"es":"¿Cantas en la ducha?","en":"Do you sing in the shower?"},
+   {"person":3,"es":"Nosotros cantamos en la iglesia.","en":"We sing at church."},
+   {"person":4,"es":"Los pájaros cantan al amanecer.","en":"The birds sing at dawn."}
   ],
   "preterite": [
-   {"person":0,"es":"Canté en la boda de mi hermana.","en":"I sang at my sister's wedding."}
+   {"person":0,"es":"Canté en la boda de mi hermana.","en":"I sang at my sister's wedding."},
+   {"person":1,"es":"¿Cantaste en el karaoke?","en":"Did you sing at karaoke?"},
+   {"person":2,"es":"Mi tío cantó una ranchera.","en":"My uncle sang a ranchera."},
+   {"person":3,"es":"Anoche cantamos hasta tarde.","en":"Last night we sang until late."},
+   {"person":4,"es":"Los niños cantaron villancicos.","en":"The kids sang Christmas carols."}
   ],
   "imperfect": [
-   {"person":4,"es":"Los niños cantaban en la iglesia.","en":"The kids used to sing in church."}
+   {"person":4,"es":"Los niños cantaban en la iglesia.","en":"The kids used to sing in church."},
+   {"person":0,"es":"Yo cantaba en la ducha.","en":"I used to sing in the shower."},
+   {"person":1,"es":"Tú cantabas en el coro de la escuela.","en":"You used to sing in the school choir."},
+   {"person":2,"es":"Mi madre cantaba mientras cocinaba.","en":"My mother sang while she cooked."},
+   {"person":3,"es":"Nosotros cantábamos en el carro.","en":"We used to sing in the car."}
   ],
   "future": [
-   {"person":3,"es":"Le cantaremos cumpleaños feliz a la abuela.","en":"We'll sing happy birthday to Grandma."}
+   {"person":3,"es":"Le cantaremos cumpleaños feliz a la abuela.","en":"We'll sing happy birthday to Grandma."},
+   {"person":0,"es":"Cantaré una canción para ti.","en":"I'll sing a song for you."},
+   {"person":1,"es":"¿Cantarás en la boda?","en":"Will you sing at the wedding?"},
+   {"person":2,"es":"El coro cantará a las seis.","en":"The choir will sing at six."},
+   {"person":4,"es":"Los niños cantarán el himno.","en":"The kids will sing the anthem."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo cantaría, pero tengo muy mala voz.","en":"I'd sing, but I have a terrible voice."}
+   {"person":0,"es":"Yo cantaría, pero tengo muy mala voz.","en":"I'd sing, but I have a terrible voice."},
+   {"person":1,"es":"¿Cantarías conmigo?","en":"Would you sing with me?"},
+   {"person":2,"es":"Mi padre cantaría, pero le da pena.","en":"My father would sing, but he's embarrassed."},
+   {"person":3,"es":"Nosotros cantaríamos más bajo.","en":"We'd sing more quietly."},
+   {"person":4,"es":"Ellos cantarían gratis.","en":"They'd sing for free."}
   ],
   "presentPerfect": [
    {"person":2,"es":"Celia Cruz ha cantado en muchos países.","en":"Celia Cruz has sung in many countries."}
@@ -278,7 +418,11 @@
    {"person":0,"es":"Yo habría cantado esa canción.","en":"I would have sung that song."}
   ],
   "subjPresent": [
-   {"person":1,"es":"Quiero que cantes esa canción de Pablo Milanés.","en":"I want you to sing that Pablo Milanés song."}
+   {"person":1,"es":"Quiero que cantes esa canción de Pablo Milanés.","en":"I want you to sing that Pablo Milanés song."},
+   {"person":0,"es":"Mis amigos quieren que yo cante.","en":"My friends want me to sing."},
+   {"person":2,"es":"Ojalá mi abuela cante esta noche.","en":"I hope my grandmother sings tonight."},
+   {"person":3,"es":"¿Quieres que cantemos juntos?","en":"Do you want us to sing together?"},
+   {"person":4,"es":"Espero que canten esa ranchera.","en":"I hope they sing that ranchera."}
   ],
   "subjImperfect": [
    {"person":2,"es":"Pedimos que ella cantara otra.","en":"We asked her to sing another one."}
@@ -301,19 +445,39 @@
  },
  "cocinar": {
   "present": [
-   {"person":0,"es":"Cocino frijoles negros los domingos.","en":"I cook black beans on Sundays."}
+   {"person":0,"es":"Cocino frijoles negros los domingos.","en":"I cook black beans on Sundays."},
+   {"person":1,"es":"Cocinas mejor que yo.","en":"You cook better than I do."},
+   {"person":2,"es":"Mi esposo cocina los fines de semana.","en":"My husband cooks on weekends."},
+   {"person":3,"es":"Nosotros cocinamos con leche de coco.","en":"We cook with coconut milk."},
+   {"person":4,"es":"Ellos cocinan para toda la familia.","en":"They cook for the whole family."}
   ],
   "preterite": [
-   {"person":2,"es":"Mi tía cocinó un sancocho delicioso.","en":"My aunt cooked a delicious sancocho."}
+   {"person":2,"es":"Mi tía cocinó un sancocho delicioso.","en":"My aunt cooked a delicious sancocho."},
+   {"person":0,"es":"Cociné arroz con pollo.","en":"I cooked chicken and rice."},
+   {"person":1,"es":"¿Qué cocinaste anoche?","en":"What did you cook last night?"},
+   {"person":3,"es":"Ayer cocinamos para veinte personas.","en":"Yesterday we cooked for twenty people."},
+   {"person":4,"es":"Mis hijos cocinaron la cena.","en":"My kids cooked dinner."}
   ],
   "imperfect": [
-   {"person":2,"es":"Mi abuela cocinaba con leña.","en":"My grandmother used to cook with firewood."}
+   {"person":2,"es":"Mi abuela cocinaba con leña.","en":"My grandmother used to cook with firewood."},
+   {"person":0,"es":"Yo cocinaba para mis hermanos.","en":"I used to cook for my brothers and sisters."},
+   {"person":1,"es":"Tú cocinabas muy rico.","en":"You used to cook really well."},
+   {"person":3,"es":"Nosotros cocinábamos al aire libre.","en":"We used to cook outdoors."},
+   {"person":4,"es":"Mis tías cocinaban en Navidad.","en":"My aunts cooked at Christmas."}
   ],
   "future": [
-   {"person":3,"es":"Cocinaremos juntos esta noche.","en":"We'll cook together tonight."}
+   {"person":3,"es":"Cocinaremos juntos esta noche.","en":"We'll cook together tonight."},
+   {"person":0,"es":"Cocinaré pescado esta noche.","en":"I'll cook fish tonight."},
+   {"person":1,"es":"Cocinarás tú mañana.","en":"You'll cook tomorrow."},
+   {"person":2,"es":"Mi suegra cocinará el lechón.","en":"My mother-in-law will cook the roast pork."},
+   {"person":4,"es":"Ellos cocinarán para la fiesta.","en":"They'll cook for the party."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo cocinaría con menos sal.","en":"I'd cook with less salt."}
+   {"person":0,"es":"Yo cocinaría con menos sal.","en":"I'd cook with less salt."},
+   {"person":1,"es":"¿Cocinarías para treinta personas?","en":"Would you cook for thirty people?"},
+   {"person":2,"es":"Mi abuela cocinaría sin receta.","en":"My grandmother would cook without a recipe."},
+   {"person":3,"es":"Nosotros cocinaríamos en casa para ahorrar.","en":"We'd cook at home to save money."},
+   {"person":4,"es":"Ellos cocinarían si tuvieran tiempo.","en":"They'd cook if they had time."}
   ],
   "presentPerfect": [
    {"person":1,"es":"¿Has cocinado alguna vez ropa vieja?","en":"Have you ever cooked ropa vieja?"}
@@ -328,7 +492,11 @@
    {"person":4,"es":"Mis tías habrían cocinado para todos.","en":"My aunts would have cooked for everyone."}
   ],
   "subjPresent": [
-   {"person":1,"es":"Quiero que cocines tu famoso arroz con pollo.","en":"I want you to cook your famous chicken and rice."}
+   {"person":1,"es":"Quiero que cocines tu famoso arroz con pollo.","en":"I want you to cook your famous chicken and rice."},
+   {"person":0,"es":"Mi hermana quiere que yo cocine hoy.","en":"My sister wants me to cook today."},
+   {"person":2,"es":"Espero que tu mamá cocine tamales.","en":"I hope your mom makes tamales."},
+   {"person":3,"es":"¿Quieres que cocinemos juntos?","en":"Do you want us to cook together?"},
+   {"person":4,"es":"Ojalá cocinen sancocho.","en":"I hope they make sancocho."}
   ],
   "subjImperfect": [
    {"person":2,"es":"Ojalá mi mamá cocinara hoy.","en":"I wish my mom were cooking today."}
@@ -351,19 +519,39 @@
  },
  "comprar": {
   "present": [
-   {"person":0,"es":"Compro el pan en la esquina.","en":"I buy bread on the corner."}
+   {"person":0,"es":"Compro el pan en la esquina.","en":"I buy bread on the corner."},
+   {"person":1,"es":"¿Dónde compras la carne?","en":"Where do you buy your meat?"},
+   {"person":2,"es":"Mi tía compra fruta en el mercado.","en":"My aunt buys fruit at the market."},
+   {"person":3,"es":"Nosotros compramos café en grano.","en":"We buy whole-bean coffee."},
+   {"person":4,"es":"Ellos compran todo en línea.","en":"They buy everything online."}
   ],
   "preterite": [
-   {"person":3,"es":"Compramos una casa en Santo Domingo.","en":"We bought a house in Santo Domingo."}
+   {"person":3,"es":"Compramos una casa en Santo Domingo.","en":"We bought a house in Santo Domingo."},
+   {"person":0,"es":"Compré zapatos nuevos.","en":"I bought new shoes."},
+   {"person":1,"es":"¿Qué compraste?","en":"What did you buy?"},
+   {"person":2,"es":"Mi papá compró un televisor.","en":"My dad bought a TV."},
+   {"person":4,"es":"Ellos compraron una finca.","en":"They bought a farm."}
   ],
   "imperfect": [
-   {"person":2,"es":"Mi mamá compraba la ropa en la tienda del barrio.","en":"My mom used to buy clothes at the neighborhood store."}
+   {"person":2,"es":"Mi mamá compraba la ropa en la tienda del barrio.","en":"My mom used to buy clothes at the neighborhood store."},
+   {"person":0,"es":"Yo compraba el periódico cada mañana.","en":"I bought the newspaper every morning."},
+   {"person":1,"es":"Tú comprabas dulces en esa tienda.","en":"You used to buy candy at that store."},
+   {"person":3,"es":"Nosotros comprábamos helado en la esquina.","en":"We used to buy ice cream on the corner."},
+   {"person":4,"es":"Mis padres compraban todo a crédito.","en":"My parents bought everything on credit."}
   ],
   "future": [
-   {"person":1,"es":"Comprarás los boletos en línea.","en":"You'll buy the tickets online."}
+   {"person":1,"es":"Comprarás los boletos en línea.","en":"You'll buy the tickets online."},
+   {"person":0,"es":"Compraré las entradas hoy.","en":"I'll buy the tickets today."},
+   {"person":2,"es":"Mi jefe comprará el almuerzo.","en":"My boss will buy lunch."},
+   {"person":3,"es":"Compraremos un regalo para la abuela.","en":"We'll buy a present for Grandma."},
+   {"person":4,"es":"Ellos comprarán la casa.","en":"They'll buy the house."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo compraría un carro usado.","en":"I'd buy a used car."}
+   {"person":0,"es":"Yo compraría un carro usado.","en":"I'd buy a used car."},
+   {"person":1,"es":"¿Comprarías este sofá?","en":"Would you buy this sofa?"},
+   {"person":2,"es":"Mi hermano compraría una moto.","en":"My brother would buy a motorcycle."},
+   {"person":3,"es":"Nosotros compraríamos una casa en la playa.","en":"We'd buy a house on the beach."},
+   {"person":4,"es":"Ellos comprarían más si fuera barato.","en":"They'd buy more if it were cheap."}
   ],
   "presentPerfect": [
    {"person":4,"es":"Mis padres han comprado un apartamento.","en":"My parents have bought an apartment."}
@@ -378,7 +566,11 @@
    {"person":0,"es":"Lo habría comprado si tuviera dinero.","en":"I would have bought it if I had had money."}
   ],
   "subjPresent": [
-   {"person":1,"es":"Quiero que compres leche.","en":"I want you to buy milk."}
+   {"person":1,"es":"Quiero que compres leche.","en":"I want you to buy milk."},
+   {"person":0,"es":"Mi mamá quiere que yo compre pan.","en":"My mom wants me to buy bread."},
+   {"person":2,"es":"Espero que mi papá compre hielo.","en":"I hope my dad buys ice."},
+   {"person":3,"es":"¿Quieres que compremos algo de tomar?","en":"Do you want us to buy something to drink?"},
+   {"person":4,"es":"Diles que compren tortillas.","en":"Tell them to buy tortillas."}
   ],
   "subjImperfect": [
    {"person":2,"es":"Mi papá quería que mi hermano comprara ese carro.","en":"My dad wanted my brother to buy that car."}
@@ -401,19 +593,39 @@
  },
  "viajar": {
   "present": [
-   {"person":0,"es":"Viajo a Cuba cada dos años.","en":"I travel to Cuba every two years."}
+   {"person":0,"es":"Viajo a Cuba cada dos años.","en":"I travel to Cuba every two years."},
+   {"person":1,"es":"¿Viajas mucho por trabajo?","en":"Do you travel a lot for work?"},
+   {"person":2,"es":"Mi jefa viaja cada semana.","en":"My boss travels every week."},
+   {"person":3,"es":"Nosotros viajamos en autobús.","en":"We travel by bus."},
+   {"person":4,"es":"Mis padres viajan en diciembre.","en":"My parents are traveling in December."}
   ],
   "preterite": [
-   {"person":3,"es":"Viajamos por todo el Caribe.","en":"We traveled all over the Caribbean."}
+   {"person":3,"es":"Viajamos por todo el Caribe.","en":"We traveled all over the Caribbean."},
+   {"person":0,"es":"Viajé a Lima el año pasado.","en":"I traveled to Lima last year."},
+   {"person":1,"es":"¿Cuándo viajaste a Guatemala?","en":"When did you travel to Guatemala?"},
+   {"person":2,"es":"Mi hijo viajó solo por primera vez.","en":"My son traveled alone for the first time."},
+   {"person":4,"es":"Ellos viajaron en tren.","en":"They traveled by train."}
   ],
   "imperfect": [
-   {"person":4,"es":"Mis abuelos viajaban en barco.","en":"My grandparents used to travel by boat."}
+   {"person":4,"es":"Mis abuelos viajaban en barco.","en":"My grandparents used to travel by boat."},
+   {"person":0,"es":"Yo viajaba mucho por trabajo.","en":"I traveled a lot for work."},
+   {"person":1,"es":"Tú viajabas cada verano.","en":"You traveled every summer."},
+   {"person":2,"es":"Mi padre viajaba en barco.","en":"My father traveled by boat."},
+   {"person":3,"es":"Nosotros viajábamos en la parte de atrás del camión.","en":"We used to ride in the back of the truck."}
   ],
   "future": [
-   {"person":3,"es":"Viajaremos a Cartagena en enero.","en":"We'll travel to Cartagena in January."}
+   {"person":3,"es":"Viajaremos a Cartagena en enero.","en":"We'll travel to Cartagena in January."},
+   {"person":0,"es":"Viajaré a Panamá en marzo.","en":"I'll travel to Panama in March."},
+   {"person":1,"es":"¿Cuándo viajarás a Cuba?","en":"When will you travel to Cuba?"},
+   {"person":2,"es":"Mi prima viajará a Quito.","en":"My cousin will travel to Quito."},
+   {"person":4,"es":"Ellos viajarán en avión.","en":"They'll travel by plane."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo viajaría por toda Sudamérica.","en":"I'd travel all over South America."}
+   {"person":0,"es":"Yo viajaría por toda Sudamérica.","en":"I'd travel all over South America."},
+   {"person":1,"es":"¿Viajarías solo?","en":"Would you travel alone?"},
+   {"person":2,"es":"Mi abuela viajaría más con ayuda.","en":"My grandmother would travel more with help."},
+   {"person":3,"es":"Nosotros viajaríamos en tren.","en":"We'd travel by train."},
+   {"person":4,"es":"Ellos viajarían en Semana Santa.","en":"They'd travel during Holy Week."}
   ],
   "presentPerfect": [
    {"person":1,"es":"¿Has viajado alguna vez a Colombia?","en":"Have you ever traveled to Colombia?"}
@@ -428,7 +640,11 @@
    {"person":4,"es":"Ellos habrían viajado, pero no tenían visa.","en":"They would have traveled, but they didn't have visas."}
   ],
   "subjPresent": [
-   {"person":1,"es":"Espero que viajes seguro.","en":"I hope you travel safely."}
+   {"person":1,"es":"Espero que viajes seguro.","en":"I hope you travel safely."},
+   {"person":0,"es":"Mi mamá no quiere que yo viaje sola.","en":"My mom doesn't want me to travel alone."},
+   {"person":2,"es":"Espero que tu hermano viaje bien.","en":"I hope your brother has a good trip."},
+   {"person":3,"es":"Ojalá viajemos juntos.","en":"I hope we travel together."},
+   {"person":4,"es":"Cuando viajen, avísenme.","en":"When you travel, let me know."}
   ],
   "subjImperfect": [
    {"person":0,"es":"Si viajara más, hablaría mejor español.","en":"If I traveled more, I would speak better Spanish."}
@@ -451,19 +667,39 @@
  },
  "caminar": {
   "present": [
-   {"person":0,"es":"Camino al trabajo todos los días.","en":"I walk to work every day."}
+   {"person":0,"es":"Camino al trabajo todos los días.","en":"I walk to work every day."},
+   {"person":1,"es":"Caminas muy rápido.","en":"You walk very fast."},
+   {"person":2,"es":"Mi abuela camina con bastón.","en":"My grandmother walks with a cane."},
+   {"person":3,"es":"Nosotros caminamos por la playa.","en":"We walk along the beach."},
+   {"person":4,"es":"Ellos caminan a la escuela.","en":"They walk to school."}
   ],
   "preterite": [
-   {"person":3,"es":"Caminamos por el malecón al atardecer.","en":"We walked along the seawall at sunset."}
+   {"person":3,"es":"Caminamos por el malecón al atardecer.","en":"We walked along the seawall at sunset."},
+   {"person":0,"es":"Caminé dos horas.","en":"I walked for two hours."},
+   {"person":1,"es":"¿Caminaste hasta aquí?","en":"Did you walk all the way here?"},
+   {"person":2,"es":"El bebé caminó por primera vez.","en":"The baby walked for the first time."},
+   {"person":4,"es":"Los turistas caminaron hasta la cascada.","en":"The tourists walked to the waterfall."}
   ],
   "imperfect": [
-   {"person":2,"es":"Mi abuelo caminaba tres millas cada mañana.","en":"My grandfather used to walk three miles every morning."}
+   {"person":2,"es":"Mi abuelo caminaba tres millas cada mañana.","en":"My grandfather used to walk three miles every morning."},
+   {"person":0,"es":"Yo caminaba a la escuela todos los días.","en":"I walked to school every day."},
+   {"person":1,"es":"Tú caminabas con tu abuelo.","en":"You used to walk with your grandfather."},
+   {"person":3,"es":"Nosotros caminábamos por el parque.","en":"We used to walk through the park."},
+   {"person":4,"es":"Los niños caminaban descalzos.","en":"The kids walked barefoot."}
   ],
   "future": [
-   {"person":3,"es":"Caminaremos hasta el río.","en":"We'll walk to the river."}
+   {"person":3,"es":"Caminaremos hasta el río.","en":"We'll walk to the river."},
+   {"person":0,"es":"Caminaré un rato después de cenar.","en":"I'll walk for a while after dinner."},
+   {"person":1,"es":"Caminarás mucho en Cusco.","en":"You'll walk a lot in Cusco."},
+   {"person":2,"es":"El bebé caminará pronto.","en":"The baby will walk soon."},
+   {"person":4,"es":"Ellos caminarán por el centro.","en":"They'll walk around downtown."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo caminaría, hace buen tiempo.","en":"I'd walk, the weather is nice."}
+   {"person":0,"es":"Yo caminaría, hace buen tiempo.","en":"I'd walk, the weather is nice."},
+   {"person":1,"es":"¿Caminarías hasta allá?","en":"Would you walk all the way there?"},
+   {"person":2,"es":"Mi papá caminaría, pero le duele la rodilla.","en":"My dad would walk, but his knee hurts."},
+   {"person":3,"es":"Nosotros caminaríamos por la sombra.","en":"We'd walk in the shade."},
+   {"person":4,"es":"Ellos no caminarían con este calor.","en":"They wouldn't walk in this heat."}
   ],
   "presentPerfect": [
    {"person":4,"es":"Han caminado todo el día.","en":"They've walked all day."}
@@ -478,7 +714,11 @@
    {"person":1,"es":"Con esos zapatos, habrías caminado mejor.","en":"With those shoes, you would have walked better."}
   ],
   "subjPresent": [
-   {"person":1,"es":"Es importante que camines después de comer.","en":"It's important that you walk after eating."}
+   {"person":1,"es":"Es importante que camines después de comer.","en":"It's important that you walk after eating."},
+   {"person":0,"es":"El médico quiere que yo camine más.","en":"The doctor wants me to walk more."},
+   {"person":2,"es":"Espero que el bebé camine pronto.","en":"I hope the baby walks soon."},
+   {"person":3,"es":"¿Quieres que caminemos un rato?","en":"Do you want us to walk for a while?"},
+   {"person":4,"es":"Diles que caminen por la acera.","en":"Tell them to walk on the sidewalk."}
   ],
   "subjImperfect": [
    {"person":2,"es":"Mi doctor quería que caminara más.","en":"My doctor wanted her to walk more."}

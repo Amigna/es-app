@@ -34,7 +34,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - [ ] More regional words, and more countries in the existing entries
 - [ ] More reading passages. Now at 12, with 4 each at A1, A2 and B1
 - [ ] Better examples for verbs that are mostly "rarely used" notes (contraer, prever, errar, rogar)
-- [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 15,900 remain, so this needs batches and a usage check before each one. Each batch covers the next 12 verbs in `verbs.json`, about 280 sentences. The top 74 are done in the six core tenses
+- [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 14,800 remain, so this needs batches and a usage check before each one. Each batch covers the next 12 verbs in `verbs.json`, about 280 sentences. The top 110 are done in the six core tenses, apart from forms with no natural sentence, like `yo naceré`, which are left without one. Do the core tenses first: about 4,700 remain there, and the rest are in tenses drilled far less
 
 ## Later
 
@@ -123,7 +123,7 @@ These live in `.verify/`, which is gitignored, so keep a copy if you change mach
 
 - [x] Prepositions, conjunctions, pronouns and question words: a Small words page and word type in vocabulary drills
 - [x] Graded reading passages: 12 stories at A1, A2 and B1 on a Reading page, each with an English translation per paragraph, a word list and comprehension questions. Answers aren't saved to progress
-- [x] 558 more sentences in two batches, extending every-person coverage in the six core tenses from the top 50 verbs to the top 74
+- [x] 1,390 more sentences in five batches, extending every-person coverage in the six core tenses from the top 50 verbs to the top 110
 - [x] Sentence data split into one file per 50 verbs, so the default drill downloads about 54 KB instead of 170 KB (gzipped). Every lookup was compared before and after, with no differences
 
 ### Verification
