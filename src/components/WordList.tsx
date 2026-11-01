@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import ReportProblem from "@/components/ReportProblem";
+import SpeakButton from "@/components/SpeakButton";
 import { stripAccents } from "@/lib/conjugation/accent";
 
 export interface WordRow {
@@ -69,9 +70,12 @@ export default function WordList({ rows, placeholder }: { rows: WordRow[]; place
       <ul className="grid gap-3 md:grid-cols-2">
         {visible.map((r) => (
           <li key={r.id} className="flex flex-col rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
-            <p lang="es" className="text-lg font-semibold">
-              {r.word}
-            </p>
+            <div className="flex items-start justify-between gap-2">
+              <p lang="es" className="text-lg font-semibold">
+                {r.word}
+              </p>
+              <SpeakButton text={r.word} />
+            </div>
             {r.forms && (
               <p lang="es" className="text-sm text-zinc-500">
                 {r.forms}
@@ -81,7 +85,10 @@ export default function WordList({ rows, placeholder }: { rows: WordRow[]; place
             {r.note && <p className="mt-1 text-sm italic text-zinc-500">{r.note}</p>}
             {r.example && (
               <div className="mt-3 border-t border-zinc-100 pt-3 dark:border-zinc-800">
-                <p lang="es">{r.example.es}</p>
+                <div className="flex items-start justify-between gap-2">
+                  <p lang="es">{r.example.es}</p>
+                  <SpeakButton text={r.example.es} />
+                </div>
                 <p className="text-sm text-zinc-500">{r.example.en}</p>
               </div>
             )}

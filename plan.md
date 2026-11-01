@@ -38,7 +38,8 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 
 ## Later
 
-- [ ] Audio with the browser's built-in speech, then better text-to-speech if needed
+- [ ] More audio, after the word lists pass the phone check in "To verify": drills (after answering only, so it can't give the answer away, and speaking the full sentence, not the blank), example sentences on verb and regional pages, then reading passages a sentence at a time
+- [ ] Better text-to-speech if the device voices aren't good enough: generate audio files once and serve them as static files, so there's no runtime API key
 - [ ] Conversation or writing practice with Claude (would need an API key)
 - [ ] Optional voseo in drills
 
@@ -51,6 +52,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - [ ] Skim `src/data/readings.json` for natural phrasing, translations and regional fit, especially the Chilean, Costa Rican and Venezuelan details and the retold Quetzalcóatl legend. Tests only check structure, length and that listed words appear in the passage. These come from my own knowledge, not a source
 - [ ] The haber preterite sentences (hube, hubiste) are literary, and hardly anyone says these forms. Decide whether drills should skip them
 - [ ] Try the app on a real phone, especially the on-screen keyboard during drills
+- [ ] Listen to the speaker buttons on an iPhone, an Android phone and a computer: does sound play, does the voice sound Latin American, are single-letter words like `y` and `a` read as words and not letter names, and does the slower speed feel right? Only what gets requested has been tested, in headless Chrome with fake voices. Nobody has heard it yet
 - [ ] Have a native speaker check the regional words and slang, including `src/data/vulgar.json` and the notes on offensive words. Usage varies and these come from my own knowledge, not a source
 - [ ] Set `vulgar: true` on your invite and confirm the section appears on /regional. Confirm it doesn't show signed out or on an account without the field. It hasn't been seen signed in
 - [ ] Publish the new `firestore.rules`, then request access with a second account, approve it, and confirm its progress saves. Also confirm your own invite still works. The rules can't be tested here
@@ -84,7 +86,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 These live in `.verify/`, which is gitignored, so keep a copy if you change machines.
 
 - Conjugation: `npx tsc -p tsconfig.test.json && node .verify/check.mjs`
-- Browser, with `npm run build` and `npx next start -p 3111` running: `node --experimental-websocket --no-warnings .verify/browser/flow.mjs`, also `audit.mjs`, `account.mjs`, `progress.mjs`, `report.mjs`, `reading.mjs` and `sentence-loading.mjs`. The browser profile isn't signed in, so none of these reach Firestore
+- Browser, with `npm run build` and `npx next start -p 3111` running: `node --experimental-websocket --no-warnings .verify/browser/flow.mjs`, also `audit.mjs`, `account.mjs`, `progress.mjs`, `report.mjs`, `reading.mjs`, `sentence-loading.mjs` and `speech.mjs`. The browser profile isn't signed in, so none of these reach Firestore
 
 ## Completed
 
@@ -107,6 +109,7 @@ These live in `.verify/`, which is gitignored, so keep a copy if you change mach
 - [x] 1,164 more sentences so the top 50 verbs have one for every person in the present, preterite, imperfect, future, conditional and present subjunctive
 - [x] Mobile layout pass, checked at 320px and 390px in headless Chrome
 - [x] Deployed on AWS Amplify (Next.js 16 with Cache Components is newer than Amplify's documented support, so recheck after upgrades)
+- [x] Speaker buttons on word lists (nouns, adjectives, adverbs, small words, phrases) for each word and example, using the device's own voices. `src/lib/speech.ts` prefers Latin American voices, uses Spain's only as a last resort, and hides the button if there's no Spanish voice
 
 ### Accounts and saved progress
 
