@@ -2,7 +2,7 @@ import { useCallback, useMemo, useSyncExternalStore } from "react";
 import { TENSES, type TenseId } from "./conjugation/types";
 import type { VerbPool } from "./drill";
 
-export type Mode = "conjugation" | "vocabulary" | "blanks";
+export type Mode = "conjugation" | "vocabulary" | "blanks" | "grammar";
 export type VocabKind = "toSpanish" | "toEnglish" | "gender" | "agreement";
 export type WordType = "noun" | "adjective" | "adverb";
 
@@ -17,6 +17,8 @@ export interface DrillSettings {
   wordTypes: WordType[];
   /** Empty means every topic. */
   topics: string[];
+  /** Guide slugs for the grammar drill; empty means every guide. */
+  guides: string[];
 }
 
 export const DEFAULT_SETTINGS: DrillSettings = {
@@ -26,9 +28,10 @@ export const DEFAULT_SETTINGS: DrillSettings = {
   kinds: ["toSpanish", "gender"],
   wordTypes: ["noun", "adjective", "adverb"],
   topics: [],
+  guides: [],
 };
 
-const MODES: Mode[] = ["conjugation", "vocabulary", "blanks"];
+const MODES: Mode[] = ["conjugation", "vocabulary", "blanks", "grammar"];
 const POOLS: VerbPool[] = ["common", "irregular", "all"];
 const KINDS: VocabKind[] = ["toSpanish", "toEnglish", "gender", "agreement"];
 const WORD_TYPES: WordType[] = ["noun", "adjective", "adverb"];
@@ -52,6 +55,7 @@ export function parseSettings(raw: string | null): DrillSettings {
       kinds: someOf(saved.kinds, KINDS, DEFAULT_SETTINGS.kinds),
       wordTypes: someOf(saved.wordTypes, WORD_TYPES, DEFAULT_SETTINGS.wordTypes),
       topics: someOf(saved.topics, NOUN_TOPICS, DEFAULT_SETTINGS.topics),
+      guides: Array.isArray(saved.guides) ? saved.guides.filter((g) => typeof g === "string") : DEFAULT_SETTINGS.guides,
     };
   } catch {
     return DEFAULT_SETTINGS;

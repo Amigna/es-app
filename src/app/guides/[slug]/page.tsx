@@ -27,6 +27,17 @@ export default function GuidePage({ params }: PageProps<"/guides/[slug]">) {
   );
 }
 
+function QuizLink({ slug }: { slug: string }) {
+  return (
+    <Link
+      href={`/guides/${slug}/quiz`}
+      className="inline-block rounded-xl bg-emerald-700 px-4 py-2 font-medium text-white transition hover:bg-emerald-800"
+    >
+      Take the quiz
+    </Link>
+  );
+}
+
 async function GuideContent({ params }: { params: PageProps<"/guides/[slug]">["params"] }) {
   const guide = findGuide((await params).slug);
   if (!guide) notFound();
@@ -36,6 +47,7 @@ async function GuideContent({ params }: { params: PageProps<"/guides/[slug]">["p
       <header className="space-y-2">
         <h1 className="text-3xl font-semibold tracking-tight">{guide.title}</h1>
         <p className="text-lg text-zinc-600 dark:text-zinc-400">{guide.summary}</p>
+        <QuizLink slug={guide.slug} />
       </header>
 
       {guide.sections.map((section) => (
@@ -61,6 +73,8 @@ async function GuideContent({ params }: { params: PageProps<"/guides/[slug]">["p
           </div>
         </section>
       ))}
+
+      <QuizLink slug={guide.slug} />
     </article>
   );
 }

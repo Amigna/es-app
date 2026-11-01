@@ -32,6 +32,7 @@ function Feedback({ result, card }: { result: Grade; card: Card }) {
           will come back.
         </p>
       )}
+      {card.explain && <p className="mt-1">{card.explain}</p>}
       {card.link && (
         <Link href={card.link.href} className="mt-1 inline-block text-sm underline">
           {card.link.label}
@@ -60,6 +61,7 @@ export default function DrillRunner({
   const [total, setTotal] = useState(0);
   const [streak, setStreak] = useState(0);
   const [retries, setRetries] = useState<{ card: Card; dueAt: number }[]>([]);
+  const [finished, setFinished] = useState(false);
 
   // Keeps the keyboard flow going: type, Enter to check, Enter for the next one.
   useEffect(() => {
@@ -81,9 +83,15 @@ export default function DrillRunner({
 
   function advance() {
     const due = retries.find((r) => r.dueAt <= total);
-    if (due) setRetries(retries.filter((r) => r !== due));
-    const following = due?.card ?? next();
-    if (!following) return onStop();
+    const fresh = due ? null : next();
+    // A deck that runs out still finishes its missed questions before ending.
+    const retry = due ?? (fresh ? undefined : retries[0]);
+    if (retry) setRetries(retries.filter((r) => r !== retry));
+    const following = retry?.card ?? fresh;
+    if (!following) {
+      setFinished(true);
+      return;
+    }
     setCard(following);
     setInput("");
     setResult(null);
@@ -98,6 +106,25 @@ export default function DrillRunner({
       el?.focus();
       el?.setSelectionRange(start + 1, start + 1);
     });
+  }
+
+  if (finished) {
+    return (
+      <section className="mx-auto max-w-xl space-y-4 rounded-xl border border-zinc-200 bg-white p-6 text-center dark:border-zinc-800 dark:bg-zinc-900">
+        <h2 className="text-2xl font-semibold tracking-tight">Finished!</h2>
+        <p className="text-lg">
+          {right} of {total} answers correct
+        </p>
+        <p className="text-sm text-zinc-500">Questions you missed came back, so the total can be higher than the quiz.</p>
+        <button
+          type="button"
+          onClick={onStop}
+          className="h-11 rounded-xl bg-emerald-700 px-6 font-medium text-white transition hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
+        >
+          Done
+        </button>
+      </section>
+    );
   }
 
   return (
@@ -127,7 +154,7 @@ export default function DrillRunner({
                 type="button"
                 disabled={!!result}
                 onClick={() => submit(choice)}
-                className={`h-12 rounded-xl border text-lg font-medium transition hover:border-emerald-600 disabled:cursor-not-allowed disabled:opacity-60 dark:border-zinc-700 ${
+                className={`min-h-12 rounded-xl border px-3 py-2 text-lg font-medium transition hover:border-emerald-600 disabled:cursor-not-allowed disabled:opacity-60 dark:border-zinc-700 ${
                   input === choice ? "border-emerald-600" : "border-zinc-300"
                 }`}
               >

@@ -11,6 +11,7 @@ const MODES: { id: Mode; title: string; hint: string }[] = [
   { id: "conjugation", title: "Conjugation", hint: "Type the verb form" },
   { id: "blanks", title: "Fill in the blank", hint: "Complete a real sentence" },
   { id: "vocabulary", title: "Vocabulary", hint: "Words, gender and agreement" },
+  { id: "grammar", title: "Grammar", hint: "Quizzes from the guides" },
 ];
 
 const MOODS: { id: Mood; title: string }[] = [
@@ -68,11 +69,11 @@ function OptionCard({
 
 const toggled = <T,>(list: T[], value: T) => (list.includes(value) ? list.filter((v) => v !== value) : [...list, value]);
 
-export default function Drill({ rare }: { rare: string[] }) {
+export default function Drill({ rare, guideList }: { rare: string[]; guideList: { slug: string; title: string }[] }) {
   const rareSet = useMemo(() => new Set(rare), [rare]);
 
   const [settings, update] = useDrillSettings();
-  const { mode, pool, tenses, kinds, wordTypes, topics } = settings;
+  const { mode, pool, tenses, kinds, wordTypes, topics, guides } = settings;
   const [session, setSession] = useState<{ first: Card; next: () => Card | null } | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -84,6 +85,11 @@ export default function Drill({ rare }: { rare: string[] }) {
         const q = makeQuestion(verbs, tenses, rareSet);
         return q && conjugationCard(q);
       };
+    }
+    if (mode === "grammar") {
+      const [{ quizDeck }, { GUIDE_QUIZZES }] = await Promise.all([import("@/lib/quiz"), import("@/lib/quiz-data")]);
+      const chosen = guides.length ? guideList.filter((g) => guides.includes(g.slug)) : guideList;
+      return quizDeck(GUIDE_QUIZZES, chosen);
     }
     const decks = await import("@/lib/card-decks");
     if (mode === "vocabulary") return decks.vocabDeck({ kinds, wordTypes, topics });
@@ -108,21 +114,45 @@ export default function Drill({ rare }: { rare: string[] }) {
 
   if (session) return <DrillRunner first={session.first} next={session.next} onStop={() => setSession(null)} />;
 
-  const usesVerbs = mode !== "vocabulary";
-  const ready = usesVerbs ? tenses.length > 0 : kinds.length > 0 && wordTypes.length > 0;
+  const usesVerbs = mode === "conjugation" || mode === "blanks";
+  const ready = mode === "grammar" || (usesVerbs ? tenses.length > 0 : kinds.length > 0 && wordTypes.length > 0);
 
   return (
     <div className="space-y-8">
       <section>
         <h2 className="mb-3 text-xl font-semibold">What to practice</h2>
-        <div className="grid gap-2 sm:grid-cols-3">
+        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
           {MODES.map((m) => (
             <OptionCard key={m.id} name="mode" title={m.title} hint={m.hint} checked={mode === m.id} onChange={() => update({ mode: m.id })} />
           ))}
         </div>
       </section>
 
-      {usesVerbs ? (
+      {mode === "grammar" && (
+        <section>
+          <h2 className="mb-1 text-xl font-semibold">Which guides?</h2>
+          <p className="mb-3 text-sm text-zinc-500">Pick any, or leave them all off for every guide.</p>
+          <div className="flex flex-wrap gap-2">
+            {guideList.map((g) => (
+              <button
+                key={g.slug}
+                type="button"
+                aria-pressed={guides.includes(g.slug)}
+                onClick={() => update({ guides: toggled(guides, g.slug) })}
+                className={`rounded-full border px-3 py-1 text-sm transition ${
+                  guides.includes(g.slug)
+                    ? "border-emerald-700 bg-emerald-700 text-white"
+                    : "border-zinc-200 hover:border-emerald-600 dark:border-zinc-700"
+                }`}
+              >
+                {g.title}
+              </button>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {usesVerbs && (
         <>
           <section>
             <h2 className="mb-3 text-xl font-semibold">Which verbs?</h2>
@@ -157,7 +187,9 @@ export default function Drill({ rare }: { rare: string[] }) {
             </div>
           </section>
         </>
-      ) : (
+      )}
+
+      {mode === "vocabulary" && (
         <>
           <section>
             <h2 className="mb-3 text-xl font-semibold">Which questions?</h2>

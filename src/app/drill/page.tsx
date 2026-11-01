@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Drill from "@/components/Drill";
 import type { TenseId } from "@/lib/conjugation/types";
+import { GUIDES } from "@/lib/guides";
 import { SENTENCE_GROUPS } from "@/lib/sentence-data";
 
 export const metadata: Metadata = { title: "Drills · Conjugar" };
@@ -27,7 +28,7 @@ export default function DrillPage() {
           Pick what to practice. Anything you miss comes back a few questions later.
         </p>
       </header>
-      <Drill rare={rareTenses()} />
+      <Drill rare={rareTenses()} guideList={GUIDES.map(({ slug, title }) => ({ slug, title }))} />
     </div>
   );
 }

@@ -100,6 +100,8 @@ export interface Card {
   english?: boolean;
   /** Present for multiple choice instead of typing. */
   choices?: string[];
+  /** Why the answer is right, shown after answering. */
+  explain?: string;
   link?: { href: string; label: string };
 }
 

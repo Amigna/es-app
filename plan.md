@@ -15,10 +15,7 @@ Spanish learning app for me, friends and family. Latin American and Caribbean Sp
 - [x] Drill settings remembered between visits (per browser)
 - [x] Regional words page, including words to be careful with
 - [x] Grammar guides: ser vs. estar, por vs. para, preterite vs. imperfect, subjunctive, gender and plurals, reflexive verbs, object pronouns, commands, perfect tenses, comparisons, talking about the future, relative pronouns, numbers and dates
-
-## Next
-
-- [ ] Quizzes and drills for each grammar guide, linked from the guide and available in Drills
+- [x] A quiz for each grammar guide, linked from the guide and available as Grammar in Drills
 
 ## After accounts and a database
 
@@ -58,7 +55,7 @@ Held until then so progress is saved per person instead of per browser.
 - [ ] Skim the sentence files for natural phrasing. Tests confirm the conjugated form is present, not that the sentence sounds right or the translation is accurate
 - [ ] Try drills in a browser, including the keyboard flow and accent buttons
 - [ ] Have a native speaker check the regional words and slang. Usage varies and these come from my own knowledge, not a source
-- [ ] Read the grammar guides for accuracy
+- [ ] Read the grammar guides and their quizzes for accuracy. Tests check the structure, not the grammar
 - [ ] Unknown verb URLs returned 200 on first request and 404 after. Harmless so far
 
 ## How content gets added
