@@ -1,14 +1,18 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
 import DrillRunner from "@/components/DrillRunner";
 import { TENSES, type Mood } from "@/lib/conjugation/types";
 import { conjugationCard, makeQuestion, poolVerbs, type Card, type VerbPool } from "@/lib/drill";
 import { NOUN_TOPICS, useDrillSettings, type Mode, type VocabKind, type WordType } from "@/lib/drill-settings";
+import { progressEnabled } from "@/lib/progress-queue";
+import { shuffled } from "@/lib/quiz";
 import { sentencesFor } from "@/lib/sentences";
 import { VERBS } from "@/lib/verbs";
 
 const MODES: { id: Mode; title: string; hint: string }[] = [
+  { id: "review", title: "Today's review", hint: "What's due, plus new items" },
   { id: "conjugation", title: "Conjugation", hint: "Type the verb form" },
   { id: "blanks", title: "Fill in the blank", hint: "Complete a real sentence" },
   { id: "vocabulary", title: "Vocabulary", hint: "Words, gender and agreement" },
@@ -70,6 +74,47 @@ function OptionCard({
 
 const toggled = <T,>(list: T[], value: T) => (list.includes(value) ? list.filter((v) => v !== value) : [...list, value]);
 
+type Today = { status: "loading" } | { status: "signedOut" } | { status: "failed" } | { status: "ready"; reviews: string[]; fresh: string[] };
+
+const plural = (count: number, word: string) => `${count} ${word}${count === 1 ? "" : "s"}`;
+
+/** Firebase stays out of this page's bundle, so it only loads for invited people who open this mode. */
+async function loadTodayPlan(rare: Set<string>): Promise<Today> {
+  if (!progressEnabled()) return { status: "signedOut" };
+  try {
+    const { prepareToday } = await import("@/lib/today");
+    const plan = await prepareToday(rare);
+    return plan ? { status: "ready", ...plan } : { status: "signedOut" };
+  } catch (err) {
+    console.error("Couldn't load today's review", err);
+    return { status: "failed" };
+  }
+}
+
+function TodaySummary({ today }: { today: Today }) {
+  if (today.status === "loading") return <p className="text-zinc-500">Loading…</p>;
+  if (today.status === "failed") return <p role="alert">Couldn&apos;t load today&apos;s review. Check your connection and try again.</p>;
+  if (today.status === "signedOut") {
+    return (
+      <p className="text-zinc-600 dark:text-zinc-400">
+        Today&apos;s review needs saved progress, which is invite-only for now.{" "}
+        <Link href="/account" prefetch={false} className="text-emerald-700 underline dark:text-emerald-400">
+          Sign in
+        </Link>{" "}
+        to use it.
+      </p>
+    );
+  }
+  if (today.reviews.length + today.fresh.length === 0) {
+    return <p className="text-zinc-600 dark:text-zinc-400">All done for today. New reviews will be ready tomorrow.</p>;
+  }
+  return (
+    <p className="text-zinc-600 dark:text-zinc-400">
+      {plural(today.reviews.length, "review")} and {plural(today.fresh.length, "new item")} today.
+    </p>
+  );
+}
+
 export default function Drill({ rare, guideList }: { rare: string[]; guideList: { slug: string; title: string }[] }) {
   const rareSet = useMemo(() => new Set(rare), [rare]);
 
@@ -78,8 +123,27 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
   const [session, setSession] = useState<{ first: Card; next: () => Card | null } | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [today, setToday] = useState<Today>({ status: "loading" });
+
+  // Runs again after a session, because answering changes what's left.
+  useEffect(() => {
+    if (mode !== "review" || session) return;
+    let current = true;
+    loadTodayPlan(rareSet).then((plan) => {
+      if (current) setToday(plan);
+    });
+    return () => {
+      current = false;
+    };
+  }, [mode, session, rareSet]);
 
   async function buildDeck(): Promise<() => Card | null> {
+    if (mode === "review") {
+      const plan = await loadTodayPlan(rareSet);
+      if (plan.status !== "ready") return () => null;
+      const [{ reviewDeck }, { SENTENCE_BANK }] = await Promise.all([import("@/lib/card-decks"), import("@/lib/sentence-data")]);
+      return reviewDeck([...shuffled(plan.reviews), ...plan.fresh], SENTENCE_BANK, rareSet);
+    }
     const verbs = poolVerbs(VERBS, pool);
     if (mode === "conjugation") {
       const { SENTENCE_BANK } = await import("@/lib/sentence-data");
@@ -117,18 +181,26 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
   if (session) return <DrillRunner first={session.first} next={session.next} onStop={() => setSession(null)} />;
 
   const usesVerbs = mode === "conjugation" || mode === "blanks";
-  const ready = mode === "grammar" || (usesVerbs ? tenses.length > 0 : kinds.length > 0 && wordTypes.length > 0);
+  const todayReady = today.status === "ready" && today.reviews.length + today.fresh.length > 0;
+  const ready =
+    mode === "review" ? todayReady : mode === "grammar" || (usesVerbs ? tenses.length > 0 : kinds.length > 0 && wordTypes.length > 0);
 
   return (
     <div className="space-y-8">
       <section>
         <h2 className="mb-3 text-xl font-semibold">What to practice</h2>
-        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
           {MODES.map((m) => (
             <OptionCard key={m.id} name="mode" title={m.title} hint={m.hint} checked={mode === m.id} onChange={() => update({ mode: m.id })} />
           ))}
         </div>
       </section>
+
+      {mode === "review" && (
+        <section>
+          <TodaySummary today={today} />
+        </section>
+      )}
 
       {mode === "grammar" && (
         <section>

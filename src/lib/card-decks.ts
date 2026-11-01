@@ -1,10 +1,10 @@
 import { conjugate } from "./conjugation/engine";
 import { TENSES, type TenseId } from "./conjugation/types";
-import { englishAnswers, personLabel, verbTrack, type Card } from "./drill";
+import { COMMON_COUNT, conjugationCard, englishAnswers, makeQuestion, personLabel, rareKey, verbTrack, type Card } from "./drill";
 import type { VocabKind, WordType } from "./drill-settings";
 import type { SentenceBank } from "./sentence-data";
 import { blankOut, findForm, sentencesFor } from "./sentences";
-import { verbSlug, type Verb } from "./verbs";
+import { VERBS, findVerb, verbSlug, type Verb } from "./verbs";
 import { ADJECTIVES, ADVERBS, NOUNS, adjectiveForms, isPluralOnly, nounArticle, type Adjective, type Noun } from "./vocab";
 
 // Decks for the vocabulary and fill-in-the-blank drills. Imported on demand because it pulls in the word lists.
@@ -42,13 +42,14 @@ const plainWord =
 /** Includes the word type because some spellings are two words: mañana is both "morning" and "tomorrow". */
 const vocabTrack = (type: WordType, es: string, kind: VocabKind) => ({ item: `vocab:${type}:${es}:${kind}` });
 
+const allWords = () => [...NOUNS.map(nounWord), ...ADJECTIVES.map(plainWord("adjective")), ...ADVERBS.map(plainWord("adverb"))];
+
 const FORM_NAMES = ["masculine singular", "feminine singular", "masculine plural", "feminine plural"];
 
 /** Adjectives worth drilling: ones where the forms actually differ. */
 const agreeingAdjectives = () => ADJECTIVES.filter((a) => new Set(adjectiveForms(a)).size > 1);
 
-function toSpanishCard(words: Word[], everyWord: Word[], random: Random): Card {
-  const word = pick(words, random);
+function toSpanishCard(word: Word, everyWord: Word[]): Card {
   // Any word sharing a core meaning is correct: "bus" can't tell the learner whether autobús or guagua is meant.
   const meanings = englishAnswers(word.en);
   const sameMeaning = everyWord.filter((w) => englishAnswers(w.en).some((m) => meanings.includes(m)));
@@ -64,8 +65,7 @@ function toSpanishCard(words: Word[], everyWord: Word[], random: Random): Card {
   };
 }
 
-function toEnglishCard(words: Word[], random: Random): Card {
-  const word = pick(words, random);
+function toEnglishCard(word: Word): Card {
   return {
     id: `en:${word.es}`,
     badge: "Spanish to English",
@@ -79,8 +79,7 @@ function toEnglishCard(words: Word[], random: Random): Card {
   };
 }
 
-function genderCard(nouns: Noun[], random: Random): Card {
-  const noun = pick(nouns, random);
+function genderCard(noun: Noun): Card {
   return {
     id: `gender:${noun.es}`,
     badge: "Noun gender",
@@ -95,8 +94,7 @@ function genderCard(nouns: Noun[], random: Random): Card {
   };
 }
 
-function agreementCard(adjectives: Adjective[], random: Random): Card {
-  const adjective = pick(adjectives, random);
+function agreementCard(adjective: Adjective, random: Random): Card {
   const forms = adjectiveForms(adjective);
   const slot = Math.floor(random() * forms.length);
   return {
@@ -119,7 +117,7 @@ export function vocabDeck({ kinds, wordTypes, topics }: VocabOptions, random: Ra
   const adverbs = has("adverb") ? ADVERBS : [];
 
   const words = [...nouns.map(nounWord), ...adjectives.map(plainWord("adjective")), ...adverbs.map(plainWord("adverb"))];
-  const everyWord = [...NOUNS.map(nounWord), ...ADJECTIVES.map(plainWord("adjective")), ...ADVERBS.map(plainWord("adverb"))];
+  const everyWord = allWords();
   const genderNouns = nouns.filter((n) => !n.article && !isPluralOnly(n));
   const agreeing = has("adjective") ? agreeingAdjectives() : [];
 
@@ -133,10 +131,10 @@ export function vocabDeck({ kinds, wordTypes, topics }: VocabOptions, random: Ra
   return () => {
     if (usable.length === 0) return null;
     const kind = pick(usable, random);
-    if (kind === "toSpanish") return toSpanishCard(words, everyWord, random);
-    if (kind === "toEnglish") return toEnglishCard(words, random);
-    if (kind === "gender") return genderCard(genderNouns, random);
-    return agreementCard(agreeing, random);
+    if (kind === "toSpanish") return toSpanishCard(pick(words, random), everyWord);
+    if (kind === "toEnglish") return toEnglishCard(pick(words, random));
+    if (kind === "gender") return genderCard(pick(genderNouns, random));
+    return agreementCard(pick(agreeing, random), random);
   };
 }
 
@@ -185,4 +183,91 @@ export function blankDeck(
     }
     return null;
   };
+}
+
+function vocabReviewCard(type: string, es: string, kind: string, random: Random): Card | null {
+  const noun = type === "noun" ? NOUNS.find((n) => n.es === es) : undefined;
+  const adjective = type === "adjective" ? ADJECTIVES.find((a) => a.es === es) : undefined;
+  if (kind === "gender") return noun ? genderCard(noun) : null;
+  if (kind === "agreement") return adjective ? agreementCard(adjective, random) : null;
+  const everyWord = allWords();
+  const word = everyWord.find((w) => w.type === type && w.es === es);
+  if (!word) return null;
+  return kind === "toSpanish" ? toSpanishCard(word, everyWord) : toEnglishCard(word);
+}
+
+/** Rebuilds a card from a saved item ID, or null when its verb or word is no longer in the data. */
+export function reviewCard(item: string, bank: SentenceBank, rare: Set<string>, random: Random = Math.random): Card | null {
+  const [source, ...parts] = item.split(":");
+  if (source === "vocab") return vocabReviewCard(parts[0], parts[1], parts[2], random);
+  if (source !== "verb") return null;
+  const [inf, tense] = parts as [string, TenseId];
+  const verb = findVerb(inf);
+  if (verb?.inf !== inf) return null;
+  const question = makeQuestion([verb], [tense], rare, random);
+  if (!question) return null;
+  // Either kind of question works the same item, so mix them.
+  const blank = random() < 0.5 ? blankCard(bank, verb, tense, random) : null;
+  return blank ?? conjugationCard(question, sentencesFor(bank, inf, tense));
+}
+
+/** Skips anything that can't be rebuilt, so one removed word doesn't end the session. */
+export function reviewDeck(items: string[], bank: SentenceBank, rare: Set<string>, random: Random = Math.random): () => Card | null {
+  let next = 0;
+  return () => {
+    while (next < items.length) {
+      const card = reviewCard(items[next++], bank, rare, random);
+      if (card) return card;
+    }
+    return null;
+  };
+}
+
+const CORE_TENSES: TenseId[] = ["present", "preterite", "imperfect", "future", "conditional", "subjPresent"];
+
+/** Haber has no commands, for example, and that isn't marked rare because there's nothing to mark. */
+const drillable = (verb: Verb, tense: TenseId, rare: Set<string>) =>
+  !rare.has(rareKey(verb.inf, tense)) && !!conjugate(verb).tenses[tense]?.forms.some(Boolean);
+
+function verbItems(rare: Set<string>): string[] {
+  const otherTenses = TENSES.map((t) => t.id).filter((t) => !CORE_TENSES.includes(t));
+  const common = VERBS.slice(0, COMMON_COUNT);
+  const rest = VERBS.slice(COMMON_COUNT);
+  const stages: [Verb[], TenseId[]][] = [
+    [common, CORE_TENSES],
+    [rest, CORE_TENSES],
+    [VERBS, otherTenses],
+  ];
+  return stages.flatMap(([verbs, tenses]) =>
+    tenses.flatMap((tense) => verbs.filter((v) => drillable(v, tense, rare)).map((v) => verbTrack(v.inf, tense).item)),
+  );
+}
+
+function wordItems(): string[] {
+  const lists: [WordType, { es: string }[]][] = [
+    ["noun", NOUNS],
+    ["adjective", ADJECTIVES],
+    ["adverb", ADVERBS],
+  ];
+  const meanings = (kind: VocabKind) => {
+    const longest = Math.max(...lists.map(([, list]) => list.length));
+    return Array.from({ length: longest }, (_, i) =>
+      lists.flatMap(([type, list]) => (list[i] ? [vocabTrack(type, list[i].es, kind).item] : [])),
+    ).flat();
+  };
+  const gender = NOUNS.filter((n) => !n.article && !isPluralOnly(n)).map((n) => vocabTrack("noun", n.es, "gender").item);
+  const agreement = agreeingAdjectives().map((a) => vocabTrack("adjective", a.es, "agreement").item);
+  return [...meanings("toEnglish"), ...meanings("toSpanish"), ...gender, ...agreement];
+}
+
+/** The order new items are introduced: common verbs in the everyday tenses, taking turns with words. */
+export function newItemOrder(rare: Set<string>): string[] {
+  const verbs = verbItems(rare);
+  const words = wordItems();
+  const order: string[] = [];
+  for (let i = 0; i < Math.max(verbs.length, words.length); i++) {
+    if (verbs[i]) order.push(verbs[i]);
+    if (words[i]) order.push(words[i]);
+  }
+  return order;
 }

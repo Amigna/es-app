@@ -4,10 +4,12 @@ import { onAuthStateChanged, type User } from "firebase/auth";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { TENSES } from "@/lib/conjugation/types";
+import { useDrillSettings } from "@/lib/drill-settings";
 import { auth, firebaseConfigured, isInvited } from "@/lib/firebase";
 import { accuracy, answered, currentStreak, lastSevenDays, localDay } from "@/lib/progress";
 import { saveProgress, setProgressEnabled } from "@/lib/progress-queue";
-import { MASTERED_AT, loadProgress, type ProgressData } from "@/lib/progress-store";
+import { loadProgress, type ProgressData } from "@/lib/progress-store";
+import { MASTERED_DAYS } from "@/lib/schedule";
 
 const SAVE_WAIT_MS = 5000;
 
@@ -39,6 +41,7 @@ function Message({ children }: { children: React.ReactNode }) {
 const linkClass = "text-emerald-700 underline dark:text-emerald-400";
 
 function Stats({ data }: { data: ProgressData }) {
+  const [, update] = useDrillSettings();
   const today = localDay();
   const total = answered(data.total);
   const streak = currentStreak(Object.keys(data.days), today);
@@ -58,6 +61,15 @@ function Stats({ data }: { data: ProgressData }) {
 
   return (
     <div className="space-y-8">
+      {data.dueToday > 0 && (
+        <p>
+          {data.dueToday.toLocaleString()} {data.dueToday === 1 ? "item is" : "items are"} due today.{" "}
+          <Link href="/drill" onClick={() => update({ mode: "review" })} className={linkClass}>
+            Start today&apos;s review
+          </Link>
+        </p>
+      )}
+
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
         <Tile label="Current streak" value={`${streak} ${streak === 1 ? "day" : "days"}`} />
         <Tile label="Last 7 days" value={lastSevenDays(data.days, today).toLocaleString()} note="questions" />
@@ -94,8 +106,8 @@ function Stats({ data }: { data: ProgressData }) {
       )}
 
       <p className="text-sm text-zinc-500">
-        Correct means fully right, so accent slips aren&apos;t included. Mastered means answered correctly {MASTERED_AT} or more
-        times, and only the first try at a question counts.
+        Correct means fully right, so accent slips aren&apos;t included. Mastered means you&apos;re expected to remember it for at
+        least {MASTERED_DAYS} days, and only the first try at a question counts.
       </p>
     </div>
   );

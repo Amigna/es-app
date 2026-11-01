@@ -2,7 +2,7 @@ import { useCallback, useMemo, useSyncExternalStore } from "react";
 import { TENSES, type TenseId } from "./conjugation/types";
 import type { VerbPool } from "./drill";
 
-export type Mode = "conjugation" | "vocabulary" | "blanks" | "grammar";
+export type Mode = "review" | "conjugation" | "vocabulary" | "blanks" | "grammar";
 export type VocabKind = "toSpanish" | "toEnglish" | "gender" | "agreement";
 export type WordType = "noun" | "adjective" | "adverb";
 
@@ -31,7 +31,7 @@ export const DEFAULT_SETTINGS: DrillSettings = {
   guides: [],
 };
 
-const MODES: Mode[] = ["conjugation", "vocabulary", "blanks", "grammar"];
+const MODES: Mode[] = ["review", "conjugation", "vocabulary", "blanks", "grammar"];
 const POOLS: VerbPool[] = ["common", "irregular", "all"];
 const KINDS: VocabKind[] = ["toSpanish", "toEnglish", "gender", "agreement"];
 const WORD_TYPES: WordType[] = ["noun", "adjective", "adverb"];

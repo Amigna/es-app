@@ -51,7 +51,8 @@ export function setProgressEnabled(on: boolean) {
   if (!on) keep([]);
 }
 
-const enabled = () => read(ENABLED_KEY) === "1";
+/** Whether this person is signed in and invited, as far as this browser knows. */
+export const progressEnabled = () => read(ENABLED_KEY) === "1";
 
 type Save = (answers: Answer[]) => Promise<void>;
 
@@ -62,7 +63,7 @@ const saveToFirestore: Save = async (answers) => {
 
 async function flush(save: Save) {
   const batch = pending();
-  if (batch.length === 0 || !enabled()) return;
+  if (batch.length === 0 || !progressEnabled()) return;
   try {
     await save(batch);
     keep(pending().slice(batch.length));
@@ -82,7 +83,7 @@ export function saveProgress(save: Save = saveToFirestore): Promise<void> {
 }
 
 export function recordAnswer(track: Track, grade: Grade) {
-  if (!enabled()) return;
+  if (!progressEnabled()) return;
   if (!listening && typeof document !== "undefined") {
     listening = true;
     document.addEventListener("visibilitychange", () => {

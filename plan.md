@@ -29,14 +29,12 @@ Held until then so progress is saved per person instead of per browser.
 - [x] Firebase sign-in (Google and email link), with invite-only saved progress and security rules in `firestore.rules`
 - [x] Save answers, tracked by verb + tense, by word + question type, and by guide question
 - [x] Progress page: streak, questions answered, accuracy by tense, items mastered
-- [ ] Spaced repetition (FSRS) with a "Today's review" mode and a daily limit on new items. See the plan below
+- [x] Spaced repetition (FSRS) with a "Today's review" mode and a daily limit on new items. See below
 - [ ] Weak-spot stats by tense, verb and mistake type, each with a "Practice this" button
 
-## Spaced repetition plan
+## How spaced repetition works
 
-Start only after the two saved-progress checks under "To verify" pass, because this builds on those writes.
-
-**No new dependency.** We write `src/lib/fsrs.ts` ourselves, about 80 lines of pure math. `ts-fsrs` is MIT, but it now brings in a dependency of its own and needs Node 24. The formulas are short and public.
+**No new dependency.** `src/lib/fsrs.ts` is our own, about 80 lines of pure math, checked against the expected values in py-fsrs's test suite. `ts-fsrs` is MIT, but it now brings in a dependency of its own and needs Node 24. The formulas are short and public.
 
 Decisions:
 
@@ -48,14 +46,13 @@ Decisions:
 - **Limits:** 10 new items a day by default, per person. Reviews are capped at 100 a day, most overdue first, so a week away doesn't bury anyone.
 - **New item order:** the most common verbs and their simplest tenses first, then words. Tally-only items from before launch start fresh at their next review.
 
-Build steps, each one testable on its own:
+Where things are:
 
-1. `src/lib/fsrs.ts` and tests, checked against published FSRS-6 reference values, not just our own output.
-2. Saving: add stability, difficulty, due day and last review day to each `items` doc. A save now has to read those items first, about 10 extra reads per batch, then write. `firestore.rules` already covers this.
-3. `cardForItem(id)`: rebuild a card from an item ID, loading word lists on demand, and skip IDs whose word no longer exists. Verb items use conjugation or fill-in-the-blank.
-4. "Today's review" as a drill mode: due items first, then new ones, with a count of what's due. Signed-out and uninvited visitors see why it's unavailable.
-5. Progress page: due today, and "mastered" becomes stability of 21+ days instead of 5 correct answers.
-6. Daily new-item limit as a per-person setting on the account page.
+- Saving reads each item's schedule first, about 10 extra reads per batch, then writes stability, difficulty and due day to its `items` doc. `firestore.rules` already covers this.
+- `stats/seen` lists every scheduled item, so finding new ones takes one read. `days/{day}` counts new items and reviews against the daily limits, and `stats/settings` holds the new-item limit, set on the account page.
+- `reviewCard` in `card-decks.ts` rebuilds a card from an item ID and skips IDs whose word no longer exists. Verb items alternate between conjugation and fill-in-the-blank.
+- New items from free practice count toward the daily limit too, because they add the same review load.
+- "Mastered" is now stability of 21+ days, not 5 correct answers.
 
 Cost check: a heavy day for one person is about 100 reviews, or roughly 100 reads and 120 writes. The Spark plan allows 50,000 reads and 20,000 writes a day across everyone.
 
@@ -90,6 +87,8 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - [x] Test real sign-in (Google and email link), the invite check, and the published Firestore rules
 - [x] Saved progress up to the Firestore call: real drills in headless Chrome (what's queued, retries not counted, the save at 10 answers, answers kept when a save fails), plus unit tests for the queue
 - [x] Saved progress with a signed-in account: 64 real answers reached /progress
+- [x] Saving and scheduling across several days with the real Firestore SDK, network off (`node .verify/store-sim.cjs "$PWD"` after `npx tsc -p tsconfig.test.json`)
+- [ ] Use Today's review with a signed-in account: finish a session, check an item in `users/{uid}/items` has `stability` and `due`, and check `/progress` shows what's due the next day. Real Firestore writes of schedules haven't run yet
 - [ ] Do a verb drill, then a vocabulary drill, and confirm "Accuracy by tense" stays. A save with no verb answers used to erase it. The fix is confirmed against the Firestore SDK offline, not yet against real Firestore
 - [ ] Try a backlog of 25 different items at once, because Firestore rules allow 20 lookups per batch and the docs say repeated lookups are cached, but that isn't confirmed for our invite check
 - [ ] A save interrupted by a closed tab can be sent twice, which overcounts stats slightly. Accepted, since the alternative was losing answers

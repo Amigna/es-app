@@ -9,7 +9,7 @@ import { verbSlug, type Verb } from "./verbs";
 export type VerbPool = "common" | "irregular" | "all";
 
 /** The seed list is ordered by frequency, so the head of it is the common set. */
-const COMMON_COUNT = 50;
+export const COMMON_COUNT = 50;
 
 // Verbs that are only natural in the third person: nobody needs to practice "yo lluevo".
 const ONLY_PERSONS: Record<string, number[]> = {
@@ -47,7 +47,7 @@ export function poolVerbs(verbs: Verb[], pool: VerbPool): Verb[] {
   return verbs;
 }
 
-const rareKey = (inf: string, tense: TenseId) => `${inf}:${tense}`;
+export const rareKey = (inf: string, tense: TenseId) => `${inf}:${tense}`;
 
 /** Every drillable question for one verb and tense; empty when the tense is rare or has no forms. */
 function questionsFor(verb: Verb, tense: TenseId, rare: Set<string>): Question[] {

@@ -15,6 +15,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { auth, firebaseConfigured, isInvited } from "@/lib/firebase";
 import { setProgressEnabled } from "@/lib/progress-queue";
+import { loadNewPerDay, saveNewPerDay } from "@/lib/progress-store";
+import { DEFAULT_NEW_PER_DAY, NEW_PER_DAY_OPTIONS } from "@/lib/schedule";
 
 const EMAIL_KEY = "sign-in-email";
 
@@ -62,6 +64,61 @@ const primaryClass =
 const secondaryClass =
   "h-12 w-full rounded-xl border border-zinc-300 px-5 font-medium transition hover:border-emerald-600 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-700";
 
+function NewItemsSetting({ uid }: { uid: string }) {
+  const [value, setValue] = useState<number | null>(null);
+  const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    let current = true;
+    loadNewPerDay(uid)
+      .then((saved) => {
+        if (current) setValue(saved);
+      })
+      .catch(() => {
+        if (current) setFailed(true);
+      });
+    return () => {
+      current = false;
+    };
+  }, [uid]);
+
+  async function change(next: number) {
+    setValue(next);
+    setFailed(false);
+    try {
+      await saveNewPerDay(uid, next);
+    } catch {
+      setFailed(true);
+    }
+  }
+
+  return (
+    <div className="space-y-1">
+      <label htmlFor="new-per-day" className="block text-sm text-zinc-500">
+        New items per day in Today&apos;s review
+      </label>
+      <select
+        id="new-per-day"
+        value={value ?? DEFAULT_NEW_PER_DAY}
+        disabled={value === null}
+        onChange={(e) => change(Number(e.target.value))}
+        className={inputClass}
+      >
+        {NEW_PER_DAY_OPTIONS.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
+      {failed && (
+        <p role="alert" className="text-sm text-red-600 dark:text-red-400">
+          Couldn&apos;t save that setting. Check your connection and try again.
+        </p>
+      )}
+    </div>
+  );
+}
+
 function SignedIn({ user }: { user: User }) {
   const [invited, setInvited] = useState<boolean | null>(null);
   const [checkError, setCheckError] = useState<string | null>(null);
@@ -99,6 +156,7 @@ function SignedIn({ user }: { user: User }) {
           You&apos;re on the invite list, so your drills and quizzes are saved. See your <Link href="/progress" prefetch={false} className="underline">progress</Link>.
         </p>
       )}
+      {invited === true && <NewItemsSetting uid={user.uid} />}
       {invited === false && (
         <p className="rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-sm text-amber-900 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-200">
           Saved progress is invite-only for now, and this email isn&apos;t on the list. Everything else on the site is yours to use.

@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { blankCard, blankDeck, vocabDeck, type VocabOptions } from "./card-decks";
+import { blankCard, blankDeck, newItemOrder, reviewCard, reviewDeck, vocabDeck, type VocabOptions } from "./card-decks";
 import { englishAnswers, englishCore, gradeCard, type Card } from "./drill";
 import { DEFAULT_SETTINGS, NOUN_TOPICS, parseSettings } from "./drill-settings";
 import { SENTENCE_BANK } from "./sentence-data";
@@ -138,6 +138,47 @@ describe("blankCard", () => {
     assert.ok(total > 800, `only ${total}`);
     const next = blankDeck(SENTENCE_BANK, VERBS.slice(0, 10), ["present"]);
     assert.ok(next()?.title.includes("_____"));
+  });
+});
+
+describe("today's review", () => {
+  const rare = new Set<string>();
+  for (const verbs of Object.values(SENTENCE_BANK.groups)) {
+    for (const [inf, tenses] of Object.entries(verbs)) {
+      for (const [tense, entry] of Object.entries(tenses)) if (entry && "rare" in entry) rare.add(`${inf}:${tense}`);
+    }
+  }
+  const order = newItemOrder(rare);
+
+  it("can rebuild a card for every item it would ever introduce", () => {
+    const broken = order.filter((item) => {
+      const card = reviewCard(item, SENTENCE_BANK, rare);
+      return card?.track?.item !== item;
+    });
+    assert.deepEqual(broken, []);
+    assert.equal(new Set(order).size, order.length);
+  });
+
+  it("starts with common verbs in the present, taking turns with words", () => {
+    assert.ok(order[0].startsWith("verb:") && order[0].endsWith(":present"));
+    assert.ok(order[1].startsWith("vocab:"));
+  });
+
+  it("leaves rare tenses out", () => {
+    assert.ok(!order.some((item) => rare.has(item.slice("verb:".length))));
+  });
+
+  it("uses both kinds of verb question", () => {
+    const blank = reviewCard("verb:tener:present", SENTENCE_BANK, rare, () => 0)!;
+    const typed = reviewCard("verb:tener:present", SENTENCE_BANK, rare, () => 0.9)!;
+    assert.ok(blank.title.includes("_____"));
+    assert.equal(typed.title, "tener");
+  });
+
+  it("skips items whose word is gone instead of ending the session", () => {
+    const next = reviewDeck(["vocab:noun:nope:gender", "verb:nope:present", "quiz:ser:0", "verb:tener:present"], SENTENCE_BANK, rare);
+    assert.equal(next()?.track?.item, "verb:tener:present");
+    assert.equal(next(), null);
   });
 });
 
