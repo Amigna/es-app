@@ -3,8 +3,8 @@ import { describe, it } from "node:test";
 import { conjugate } from "./conjugation/engine";
 import { TENSES } from "./conjugation/types";
 import { conjugationCard, grade, isIrregular, makeQuestion, poolVerbs } from "./drill";
-import { SENTENCE_GROUPS } from "./sentence-data";
-import { findForm, findSentence } from "./sentences";
+import { SENTENCE_BANK } from "./sentence-data";
+import { findForm, sentencesFor } from "./sentences";
 import { VERBS, findVerb } from "./verbs";
 
 const verb = (inf: string) => {
@@ -35,28 +35,32 @@ describe("conjugationCard", () => {
   const sentence = { person: 1, es: "¿Por qué me llamabas tanto ayer?", en: "Why were you calling me so much yesterday?" };
 
   it("shows the example with the answer blanked when it's for the person asked", () => {
-    assert.deepEqual(conjugationCard(q, sentence).example, { es: "¿Por qué me _____ tanto ayer?", en: sentence.en });
+    assert.deepEqual(conjugationCard(q, [sentence]).example, { es: "¿Por qué me _____ tanto ayer?", en: sentence.en });
   });
 
   it("leaves the example off when it's for a different person", () => {
     const nosotros = { ...q, person: 3, label: "nosotros", answer: "llamábamos" };
-    assert.equal(conjugationCard(nosotros, sentence).example, undefined);
+    assert.equal(conjugationCard(nosotros, [sentence]).example, undefined);
+  });
+
+  it("picks the sentence for the person asked", () => {
+    const other = { person: 0, es: "Yo te llamaba.", en: "I used to call you." };
+    assert.equal(conjugationCard(q, [other, sentence]).example?.en, sentence.en);
   });
 
   it("blanks a verb used twice", () => {
     const twice = { person: 1, es: "Llamabas y llamabas.", en: "You kept calling." };
-    assert.equal(conjugationCard(q, twice).example?.es, "_____ y _____.");
+    assert.equal(conjugationCard(q, [twice]).example?.es, "_____ y _____.");
   });
 
   it("never gives away the answer, for any verb, tense or person", () => {
     const leaks: string[] = [];
     for (const v of VERBS) {
       for (const { id: tense } of TENSES) {
-        const sentence = findSentence(SENTENCE_GROUPS, v.inf, tense);
-        if (!sentence) continue;
+        const sentences = sentencesFor(SENTENCE_BANK, v.inf, tense);
         conjugate(v).tenses[tense]?.forms.forEach((answer, person) => {
           if (!answer) return;
-          const es = conjugationCard({ verb: v, tense, person, label: "", answer }, sentence).example?.es ?? "";
+          const es = conjugationCard({ verb: v, tense, person, label: "", answer }, sentences).example?.es ?? "";
           if (findForm(es, answer)) leaks.push(`${v.inf} ${tense} ${person}: ${es}`);
         });
       }
@@ -65,7 +69,7 @@ describe("conjugationCard", () => {
   });
 
   it("leaves the example off when there's no sentence", () => {
-    assert.equal(conjugationCard(q, null).example, undefined);
+    assert.equal(conjugationCard(q).example, undefined);
   });
 });
 

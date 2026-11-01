@@ -5,7 +5,7 @@ import DrillRunner from "@/components/DrillRunner";
 import { TENSES, type Mood } from "@/lib/conjugation/types";
 import { conjugationCard, makeQuestion, poolVerbs, type Card, type VerbPool } from "@/lib/drill";
 import { NOUN_TOPICS, useDrillSettings, type Mode, type VocabKind, type WordType } from "@/lib/drill-settings";
-import { findSentence } from "@/lib/sentences";
+import { sentencesFor } from "@/lib/sentences";
 import { VERBS } from "@/lib/verbs";
 
 const MODES: { id: Mode; title: string; hint: string }[] = [
@@ -82,10 +82,10 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
   async function buildDeck(): Promise<() => Card | null> {
     const verbs = poolVerbs(VERBS, pool);
     if (mode === "conjugation") {
-      const { SENTENCE_GROUPS } = await import("@/lib/sentence-data");
+      const { SENTENCE_BANK } = await import("@/lib/sentence-data");
       return () => {
         const q = makeQuestion(verbs, tenses, rareSet);
-        return q && conjugationCard(q, findSentence(SENTENCE_GROUPS, q.verb.inf, q.tense));
+        return q && conjugationCard(q, sentencesFor(SENTENCE_BANK, q.verb.inf, q.tense));
       };
     }
     if (mode === "grammar") {
@@ -95,8 +95,8 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
     }
     const decks = await import("@/lib/card-decks");
     if (mode === "vocabulary") return decks.vocabDeck({ kinds, wordTypes, topics });
-    const { SENTENCE_GROUPS } = await import("@/lib/sentence-data");
-    return decks.blankDeck(SENTENCE_GROUPS, verbs, tenses);
+    const { SENTENCE_BANK } = await import("@/lib/sentence-data");
+    return decks.blankDeck(SENTENCE_BANK, verbs, tenses);
   }
 
   async function start() {

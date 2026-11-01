@@ -2,8 +2,8 @@ import { conjugate } from "./conjugation/engine";
 import { TENSES, type TenseId } from "./conjugation/types";
 import { englishAnswers, personLabel, verbTrack, type Card } from "./drill";
 import type { VocabKind, WordType } from "./drill-settings";
-import type { SentenceGroups } from "./sentence-data";
-import { blankOut, findForm, findSentence } from "./sentences";
+import type { SentenceBank } from "./sentence-data";
+import { blankOut, findForm, sentencesFor } from "./sentences";
 import { verbSlug, type Verb } from "./verbs";
 import { ADJECTIVES, ADVERBS, NOUNS, adjectiveForms, isPluralOnly, nounArticle, type Adjective, type Noun } from "./vocab";
 
@@ -141,15 +141,16 @@ export function vocabDeck({ kinds, wordTypes, topics }: VocabOptions, random: Ra
 }
 
 /** The example sentence with its verb removed, or null when the tense has no usable sentence. */
-export function blankCard(groups: SentenceGroups, verb: Verb, tense: TenseId): Card | null {
-  const sentence = findSentence(groups, verb.inf, tense);
-  if (!sentence) return null;
+export function blankCard(bank: SentenceBank, verb: Verb, tense: TenseId, random: Random = Math.random): Card | null {
+  const sentences = sentencesFor(bank, verb.inf, tense);
+  if (sentences.length === 0) return null;
+  const sentence = pick(sentences, random);
   const form = conjugate(verb).tenses[tense]?.forms[sentence.person];
   const hit = form ? findForm(sentence.es, form) : null;
   if (!hit) return null;
   const meta = TENSES.find((t) => t.id === tense)!;
   return {
-    id: `blank:${verb.inf}:${tense}`,
+    id: `blank:${verb.inf}:${tense}:${sentence.person}`,
     badge: meta.name,
     context: meta.hint,
     title: blankOut(sentence.es, form!),
@@ -164,7 +165,7 @@ export function blankCard(groups: SentenceGroups, verb: Verb, tense: TenseId): C
 }
 
 export function blankDeck(
-  groups: SentenceGroups,
+  bank: SentenceBank,
   verbs: Verb[],
   tenses: TenseId[],
   random: Random = Math.random,
@@ -173,12 +174,12 @@ export function blankDeck(
     if (verbs.length === 0 || tenses.length === 0) return null;
     // Rare tenses have no sentence, so a random pick can miss.
     for (let i = 0; i < 40; i++) {
-      const card = blankCard(groups, pick(verbs, random), pick(tenses, random));
+      const card = blankCard(bank, pick(verbs, random), pick(tenses, random), random);
       if (card) return card;
     }
     for (const verb of verbs) {
       for (const tense of tenses) {
-        const card = blankCard(groups, verb, tense);
+        const card = blankCard(bank, verb, tense, random);
         if (card) return card;
       }
     }

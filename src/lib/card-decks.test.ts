@@ -3,7 +3,7 @@ import { describe, it } from "node:test";
 import { blankCard, blankDeck, vocabDeck, type VocabOptions } from "./card-decks";
 import { englishAnswers, englishCore, gradeCard, type Card } from "./drill";
 import { DEFAULT_SETTINGS, NOUN_TOPICS, parseSettings } from "./drill-settings";
-import { SENTENCE_GROUPS } from "./sentence-data";
+import { SENTENCE_BANK } from "./sentence-data";
 import { VERBS, findVerb } from "./verbs";
 import { ADJECTIVES, ADVERBS, NOUNS } from "./vocab";
 
@@ -104,33 +104,39 @@ describe("progress IDs", () => {
 
 describe("blankCard", () => {
   it("blanks out exactly the conjugated form", () => {
-    const card = blankCard(SENTENCE_GROUPS, verb("tener"), "present");
+    const card = blankCard(SENTENCE_BANK, verb("tener"), "present", () => 0);
     assert.ok(card);
     assert.equal(card.title, "_____ dos hermanas en Santo Domingo.");
     assert.equal(gradeCard(card, "tengo"), "correct");
     assert.equal(card.shown, "tengo");
   });
 
+  it("uses sentences for every person a verb has them for", () => {
+    const seen = new Set<string>();
+    for (let n = 0; n < 5; n++) seen.add(blankCard(SENTENCE_BANK, verb("tener"), "present", () => (n + 0.5) / 5)!.ask);
+    assert.equal(seen.size, 5);
+  });
+
   it("keeps a pronoun inside the blank for negative commands", () => {
-    const card = blankCard(SENTENCE_GROUPS, verb("recordar"), "impNegative");
+    const card = blankCard(SENTENCE_BANK, verb("recordar"), "impNegative");
     assert.ok(card);
     assert.ok(card.title.includes("_____"));
     assert.equal(gradeCard(card, "no me recuerdes"), "correct");
   });
 
   it("skips tenses marked rare", () => {
-    assert.equal(blankCard(SENTENCE_GROUPS, verb("saber"), "impAffirmative"), null);
+    assert.equal(blankCard(SENTENCE_BANK, verb("saber"), "impAffirmative"), null);
   });
 
   it("can blank every sentence in the data", () => {
     let total = 0;
     for (const v of VERBS) {
       for (const tense of ["present", "preterite", "subjPresent", "impNegative"] as const) {
-        if (blankCard(SENTENCE_GROUPS, v, tense)) total++;
+        if (blankCard(SENTENCE_BANK, v, tense)) total++;
       }
     }
     assert.ok(total > 800, `only ${total}`);
-    const next = blankDeck(SENTENCE_GROUPS, VERBS.slice(0, 10), ["present"]);
+    const next = blankDeck(SENTENCE_BANK, VERBS.slice(0, 10), ["present"]);
     assert.ok(next()?.title.includes("_____"));
   });
 });

@@ -112,9 +112,10 @@ export interface Card {
   link?: { href: string; label: string };
 }
 
-/** Each tense has one sentence, written for one person. It's only shown for that person, so the blank is always the answer. */
-export function conjugationCard(q: Question, sentence?: Sentence | null): Card {
+/** An example only shows when it's written for the person asked, so the blank is always the answer. */
+export function conjugationCard(q: Question, sentences: Sentence[] = []): Card {
   const meta = TENSES.find((t) => t.id === q.tense)!;
+  const sentence = sentences.find((s) => s.person === q.person);
   return {
     id: `${q.verb.inf}:${q.tense}:${q.person}`,
     badge: meta.name,
@@ -122,7 +123,7 @@ export function conjugationCard(q: Question, sentence?: Sentence | null): Card {
     title: q.verb.inf,
     titleIsSpanish: true,
     subtitle: q.verb.en,
-    example: sentence?.person === q.person ? { es: blankOut(sentence.es, q.answer), en: sentence.en } : undefined,
+    example: sentence && { es: blankOut(sentence.es, q.answer), en: sentence.en },
     ask: `Form for ${q.label}`,
     answers: [q.answer],
     shown: q.answer,

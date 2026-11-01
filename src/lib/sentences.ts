@@ -1,5 +1,5 @@
 import { TENSES, type Conjugation, type TenseId } from "./conjugation/types";
-import type { SentenceGroups } from "./sentence-data";
+import type { SentenceBank } from "./sentence-data";
 
 /** An example for one tense. `person` is the slot in TenseForms.forms (0 yo ... 4 ellos/ustedes). */
 export interface Sentence {
@@ -15,15 +15,19 @@ export interface RareTense {
 
 export type VerbSentences = Partial<Record<TenseId, Sentence | RareTense>>;
 
+/** Extra sentences by infinitive and tense, for persons the main sentence doesn't cover. */
+export type PersonSentences = Record<string, Partial<Record<TenseId, Sentence[]>>>;
+
 /** Which sentence file a verb belongs in: levantarse -> ar, oír -> ir. */
 export function sentenceGroup(inf: string): string {
   return inf.replace(/se$/, "").slice(-2).replace("ír", "ir");
 }
 
-/** The example for a verb and tense, or null when the tense is rare or has none. */
-export function findSentence(groups: SentenceGroups, inf: string, tense: TenseId): Sentence | null {
+/** Every example for a verb and tense, main sentence first; empty when the tense is rare or has none. */
+export function sentencesFor({ groups, persons }: SentenceBank, inf: string, tense: TenseId): Sentence[] {
   const entry = groups[sentenceGroup(inf)]?.[inf]?.[tense];
-  return entry && !("rare" in entry) ? entry : null;
+  if (!entry || "rare" in entry) return [];
+  return [entry, ...(persons[inf]?.[tense] ?? [])];
 }
 
 const words = (text: string) => text.split(" ").join("\\s+");

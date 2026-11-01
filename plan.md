@@ -18,6 +18,7 @@ Spanish learning app for me, friends and family. Latin American and Caribbean Sp
 - [x] A quiz for each grammar guide, linked from the guide and available as Grammar in Drills
 - [x] Bold label for the tense or question type on conjugation, fill-in-the-blank and vocabulary cards
 - [x] Example sentence on conjugation cards in Spanish and English with the answer blanked out, shown only when the sentence is for the person being asked
+- [x] 1,164 more sentences so the top 50 verbs have one for every person in the present, preterite, imperfect, future, conditional and present subjunctive
 - [x] Mobile layout pass, checked at 320px and 390px in headless Chrome
 - [x] Deployed on AWS Amplify (Next.js 16 with Cache Components is newer than Amplify's documented support, so recheck after upgrades)
 
@@ -67,11 +68,11 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - [ ] Prepositions, conjunctions, pronouns and question words
 - [ ] Short graded reading passages
 - [ ] Better examples for verbs that are mostly "rarely used" notes (contraer, prever, errar, rogar)
+- [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 16,500 remain, so this needs batches and a usage check before each one
 
 ## Later
 
 - [ ] Audio with the browser's built-in speech, then better text-to-speech if needed
-- [ ] Sample sentence per person instead of per tense, for the most common verbs
 - [ ] "Report a problem" link on sentences and forms
 - [ ] Conversation or writing practice with Claude (would need an API key)
 - [ ] Optional voseo in drills
@@ -81,7 +82,8 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - [x] Compare the engine with Wiktionary for all verbs: no real differences (llover's unused persons only). Re-run with `npx tsc -p tsconfig.test.json && node .verify/check.mjs`. It lives in a gitignored folder, works offline, and fetches only verbs it hasn't seen
 - [ ] Spot-check reflexive forms with attached pronouns (levántate, vámonos), which the Wiktionary comparison didn't cover
 - [ ] Look up individual forms in RAE when in doubt. Its robots.txt blocks Claude's crawlers, so this means web search or checking by hand, not bulk fetching
-- [ ] Skim the sentence files for natural phrasing. Tests confirm the conjugated form is present, not that the sentence sounds right or the translation is accurate
+- [ ] Skim the sentence files for natural phrasing, including the new `persons.json`. Tests confirm the conjugated form is present, not that the sentence sounds right or the translation is accurate
+- [ ] The haber preterite sentences (hube, hubiste) are literary, and hardly anyone says these forms. Decide whether drills should skip them
 - [x] Play through drills and a quiz in a headless browser, including the keyboard flow, accent buttons, retries and saved settings
 - [ ] Try the app on a real phone, especially the on-screen keyboard during drills
 - [ ] Have a native speaker check the regional words and slang. Usage varies and these come from my own knowledge, not a source
@@ -99,6 +101,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - Sentences and vocabulary are written in Claude Code sessions and committed as JSON, so the app needs no API key or database.
 - `npm test` checks the data: every example must contain the exact word form it teaches.
 - Verbs: add to `src/data/verbs.json`, then add sentences to `src/data/sentences/{ar,er,ir}.json` in tense order, one per tense or `{"rare":true}`. `person` is 0 yo, 1 tú, 2 él, 3 nosotros, 4 ellos.
+- Sentences for the other persons of a verb: add to `src/data/sentences/persons.json`, by infinitive and tense. Name the subject when forms look alike, like yo and él in the imperfect, because the verb is blanked out on cards.
 - Words: add to `src/data/vocab/*.json`. Noun topics must stay in step with `NOUN_TOPICS` in `src/lib/drill-settings.ts`.
 - Guides: `src/data/guides.json`, with quizzes in `src/data/guide-quizzes.json`.
 - Firestore rules: edit `firestore.rules`, then paste it into the Firebase console and publish.
