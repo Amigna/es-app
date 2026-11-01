@@ -40,6 +40,24 @@ service cloud.firestore {
       allow list, update, delete: if false;
     }
 
+    // "Report a problem" from invited people. Read and clear them in the Firebase console.
+    match /reports/{id} {
+      allow create: if canSaveProgress()
+        && request.resource.data.keys().hasOnly(['about', 'message', 'page', 'email', 'createdAt'])
+        && request.resource.data.keys().hasAll(['about', 'message', 'page', 'email', 'createdAt'])
+        && request.resource.data.about is string
+        && request.resource.data.about.size() > 0
+        && request.resource.data.about.size() <= 300
+        && request.resource.data.message is string
+        && request.resource.data.message.size() > 0
+        && request.resource.data.message.size() <= 500
+        && request.resource.data.page is string
+        && request.resource.data.page.size() <= 200
+        && request.resource.data.email == ownEmail()
+        && request.resource.data.createdAt == request.time;
+      allow read, update, delete: if false;
+    }
+
     // Each person's data is private to them.
     match /users/{uid}/{document=**} {
       allow read, write: if signedIn() && request.auth.uid == uid && canSaveProgress();

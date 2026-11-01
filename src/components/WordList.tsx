@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import ReportProblem from "@/components/ReportProblem";
 import { stripAccents } from "@/lib/conjugation/accent";
 
 export interface WordRow {
@@ -67,7 +68,7 @@ export default function WordList({ rows, placeholder }: { rows: WordRow[]; place
 
       <ul className="grid gap-3 md:grid-cols-2">
         {visible.map((r) => (
-          <li key={r.id} className="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
+          <li key={r.id} className="flex flex-col rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
             <p lang="es" className="text-lg font-semibold">
               {r.word}
             </p>
@@ -84,6 +85,7 @@ export default function WordList({ rows, placeholder }: { rows: WordRow[]; place
                 <p className="text-sm text-zinc-500">{r.example.en}</p>
               </div>
             )}
+            <ReportProblem about={`${r.word} (${r.en})`} />
           </li>
         ))}
       </ul>

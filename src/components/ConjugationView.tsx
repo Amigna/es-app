@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import ReportProblem from "@/components/ReportProblem";
 import { TENSES, type Conjugation, type Mood, type TenseForms, type TenseMeta } from "@/lib/conjugation/types";
 import { findForm, type RareTense, type Sentence, type VerbSentences } from "@/lib/sentences";
 
@@ -48,11 +49,13 @@ function Example({ sentence, form }: { sentence: Sentence; form: string }) {
 }
 
 function TenseCard({
+  infinitive,
   meta,
   forms,
   voseo,
   sentence,
 }: {
+  infinitive: string;
   meta: TenseMeta;
   forms: TenseForms;
   voseo: boolean;
@@ -64,7 +67,7 @@ function TenseCard({
   const list = rows(meta, forms, voseo);
   if (list.length === 0) return null;
   return (
-    <section className="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
+    <section className="flex flex-col rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
       <h3 className="font-semibold">{meta.name}</h3>
       <p className="text-sm text-zinc-500">
         {meta.spanish} · {meta.hint}
@@ -83,6 +86,7 @@ function TenseCard({
           Rarely used with this verb.
         </p>
       )}
+      <ReportProblem about={`${infinitive}, ${meta.name}${example ? `: ${example.es}` : ""}`} />
     </section>
   );
 }
@@ -144,7 +148,14 @@ export default function ConjugationView({
             {TENSES.filter((t) => t.mood === mood.id).map((meta) => {
               const forms = conjugation.tenses[meta.id];
               return forms ? (
-                <TenseCard key={meta.id} meta={meta} forms={forms} voseo={voseo} sentence={sentences?.[meta.id]} />
+                <TenseCard
+                  key={meta.id}
+                  infinitive={conjugation.infinitive}
+                  meta={meta}
+                  forms={forms}
+                  voseo={voseo}
+                  sentence={sentences?.[meta.id]}
+                />
               ) : null;
             })}
           </div>

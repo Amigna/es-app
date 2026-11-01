@@ -1,34 +1,28 @@
 "use client";
 
-import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 import RegionalCard from "@/components/RegionalCard";
-import { auth, canSeeVulgar, firebaseConfigured } from "@/lib/firebase";
 import type { RegionalEntry } from "@/lib/guides";
+import { progressEnabled } from "@/lib/progress-queue";
 
 /** Renders nothing unless the signed-in person's invite has `vulgar: true`. */
 export default function VulgarWords() {
   const [entries, setEntries] = useState<RegionalEntry[]>([]);
 
   useEffect(() => {
-    if (!firebaseConfigured) return;
-    let latest = 0;
-    const unsubscribe = onAuthStateChanged(auth(), async (user) => {
-      const check = ++latest;
-      setEntries([]);
-      if (!user?.email) return;
-      try {
-        if (!(await canSeeVulgar(user.email))) return;
-        const { VULGAR } = await import("@/lib/vulgar-data");
-        if (check === latest) setEntries(VULGAR);
-      } catch (err) {
+    if (!progressEnabled()) return;
+    let current = true;
+    import("@/lib/vulgar-access")
+      .then(({ vulgarEntries }) => vulgarEntries())
+      .then((found) => {
+        if (current) setEntries(found);
+      })
+      .catch((err: unknown) => {
         // The section just stays hidden.
         console.error("Vulgar words check failed", err);
-      }
-    });
+      });
     return () => {
-      latest++;
-      unsubscribe();
+      current = false;
     };
   }, []);
 

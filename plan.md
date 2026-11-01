@@ -32,6 +32,7 @@ Held until then so progress is saved per person instead of per browser.
 - [x] Spaced repetition (FSRS) with a "Today's review" mode and a daily limit on new items. See below
 - [x] Request access form on the account page, for people signed in without an invite
 - [x] Weak-spot stats by tense, verb and mistake type, each with a "Practice this" link that starts a 15-question session
+- [x] "Report a problem" link on words, phrases, regional entries, verb tenses and drill answers, for invited people. Saved to `reports` in Firestore
 - [x] Vulgar words section on the regional page, shown only to invites with `vulgar: true`. Offensive words stay public with the reason explained. Vulgar ones say so publicly, and only this section says what they mean
 
 ## How spaced repetition works
@@ -72,7 +73,6 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 ## Later
 
 - [ ] Audio with the browser's built-in speech, then better text-to-speech if needed
-- [ ] "Report a problem" link on sentences and forms
 - [ ] Conversation or writing practice with Claude (would need an API key)
 - [ ] Optional voseo in drills
 
@@ -87,6 +87,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - [x] Play through drills and a quiz in a headless browser, including the keyboard flow, accent buttons, retries and saved settings
 - [ ] Try the app on a real phone, especially the on-screen keyboard during drills
 - [ ] Have a native speaker check the regional words and slang, including `src/data/vulgar.json` and the notes on offensive words. Usage varies and these come from my own knowledge, not a source
+- [x] Publish the new `firestore.rules`, then send a report while signed in and confirm it appears in `reports`
 - [ ] Set `vulgar: true` on your invite and confirm the section appears on /regional. Confirm it doesn't show signed out or on an account without the field. It hasn't been seen signed in
 - [x] Test real sign-in (Google and email link), the invite check, and the published Firestore rules
 - [x] Saved progress up to the Firestore call: real drills in headless Chrome (what's queued, retries not counted, the save at 10 answers, answers kept when a save fails), plus unit tests for the queue
@@ -113,6 +114,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - Small words: add to `src/data/vocab/small-words.json`. Drills only accept the exact gloss, so make each one specific enough to pick out its word, like `you (formal)`. No commas inside brackets, because commas split glosses into answers.
 - Vulgar words: add to `src/data/vulgar.json`, with a note on what each means. Never add these to the drills or the public word lists with their meaning. Words that are offensive but not vulgar go in `regional.json` under `careful`, with the reason.
 - Vulgar section: in the Firebase console, add a boolean `vulgar` set to true on someone's document in `invites`. It's off by default and people can't change it themselves. It's a filter, not protection, because the file is a public download for anyone who goes looking.
+- Problem reports: in the Firebase console, open `reports`. Each has what it's about, the message, the page and who sent it. Delete a report once it's fixed. There's no notification, so check it now and then.
 - Access requests: in the Firebase console, open `invites`, filter for `added == false`, and set `added` to true to approve someone. Delete the document to decline. There's no notification, so check it now and then. To add someone directly, make a document keyed by their lowercase email.
 
 ## Local checks
@@ -120,4 +122,4 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 These live in `.verify/`, which is gitignored, so keep a copy if you change machines.
 
 - Conjugation: `npx tsc -p tsconfig.test.json && node .verify/check.mjs`
-- Browser, with `npm run build` and `npx next start -p 3111` running: `node --experimental-websocket --no-warnings .verify/browser/flow.mjs`, also `audit.mjs`, `account.mjs` and `progress.mjs`. The browser profile isn't signed in, so none of these reach Firestore
+- Browser, with `npm run build` and `npx next start -p 3111` running: `node --experimental-websocket --no-warnings .verify/browser/flow.mjs`, also `audit.mjs`, `account.mjs`, `progress.mjs` and `report.mjs`. The browser profile isn't signed in, so none of these reach Firestore

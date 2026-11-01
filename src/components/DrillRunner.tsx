@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import ReportProblem from "@/components/ReportProblem";
 import { gradeCard, type Card, type Grade } from "@/lib/drill";
 import { recordAnswer, saveProgress } from "@/lib/progress-queue";
 
@@ -253,6 +254,7 @@ export default function DrillRunner({
             >
               Next
             </button>
+            <ReportProblem key={card.id} about={[card.badge, card.title, card.shown].filter(Boolean).join(": ")} />
           </div>
         )}
       </section>
