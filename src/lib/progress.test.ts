@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { statusOfInvite } from "./firebase";
+import { inviteAllowsVulgar, statusOfInvite } from "./firebase";
 import { accuracy, currentStreak, lastSevenDays, localDay, summarize, type Answer } from "./progress";
 import { summaryUpdate } from "./progress-store";
 
@@ -54,6 +54,20 @@ describe("statusOfInvite", () => {
 
   it("knows when there's no invite at all", () => {
     assert.equal(statusOfInvite(undefined), "none");
+  });
+});
+
+describe("inviteAllowsVulgar", () => {
+  it("needs an approved invite with vulgar set to true", () => {
+    assert.equal(inviteAllowsVulgar({ vulgar: true }), true);
+    assert.equal(inviteAllowsVulgar({ added: true, vulgar: true }), true);
+  });
+
+  it("is off otherwise", () => {
+    assert.equal(inviteAllowsVulgar(undefined), false);
+    assert.equal(inviteAllowsVulgar({}), false);
+    assert.equal(inviteAllowsVulgar({ vulgar: false }), false);
+    assert.equal(inviteAllowsVulgar({ added: false, vulgar: true }), false);
   });
 });
 

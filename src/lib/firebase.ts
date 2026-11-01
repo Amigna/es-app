@@ -35,6 +35,15 @@ export async function inviteStatus(email: string): Promise<InviteStatus> {
   return statusOfInvite((await getDoc(doc(db(), "invites", inviteId(email)))).data());
 }
 
+/** Set `vulgar: true` on an invite in the console. Off by default, and people can't change their own invite. */
+export function inviteAllowsVulgar(invite: { added?: boolean; vulgar?: boolean } | undefined): boolean {
+  return statusOfInvite(invite) === "invited" && invite?.vulgar === true;
+}
+
+export async function canSeeVulgar(email: string): Promise<boolean> {
+  return inviteAllowsVulgar((await getDoc(doc(db(), "invites", inviteId(email)))).data());
+}
+
 export async function isInvited(email: string): Promise<boolean> {
   return (await inviteStatus(email)) === "invited";
 }

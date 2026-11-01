@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { GUIDES, REGIONAL, findGuide } from "./guides";
+import { VULGAR } from "./vulgar-data";
 
 describe("guides", () => {
   it("have unique URL-safe slugs", () => {
@@ -36,6 +37,18 @@ describe("regional words", () => {
       assert.ok(!seen.has(r.en), `duplicate ${r.en}`);
       seen.add(r.en);
       assert.ok(r.topic, r.en);
+      assert.ok(r.words.length > 0, r.en);
+      for (const w of r.words) assert.ok(w.es && w.where, r.en);
+    }
+  });
+
+  it("explain every vulgar word", () => {
+    const seen = new Set<string>();
+    for (const r of VULGAR) {
+      assert.ok(!seen.has(r.en), `duplicate ${r.en}`);
+      seen.add(r.en);
+      assert.equal(r.topic, "vulgar", r.en);
+      assert.ok(r.note, r.en);
       assert.ok(r.words.length > 0, r.en);
       for (const w of r.words) assert.ok(w.es && w.where, r.en);
     }

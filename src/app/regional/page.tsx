@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import RegionalCard from "@/components/RegionalCard";
+import VulgarWords from "@/components/VulgarWords";
 import { REGIONAL } from "@/lib/guides";
 
 export const metadata: Metadata = { title: "Regional words · Conjugar" };
@@ -29,24 +31,13 @@ export default function RegionalPage() {
           <h2 className="mb-3 text-xl font-semibold">{TITLES[topic]}</h2>
           <div className="grid gap-3 md:grid-cols-2">
             {REGIONAL.filter((r) => r.topic === topic).map((r) => (
-              <article key={r.en} className="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
-                <h3 className="font-semibold">{r.en}</h3>
-                <dl className="mt-2 space-y-1">
-                  {r.words.map((w) => (
-                    <div key={w.es} className="grid grid-cols-[8rem_1fr] gap-3">
-                      <dt lang="es" className="font-medium">
-                        {w.es}
-                      </dt>
-                      <dd className="text-sm text-zinc-500">{w.where}</dd>
-                    </div>
-                  ))}
-                </dl>
-                {r.note && <p className="mt-2 text-sm italic text-zinc-600 dark:text-zinc-400">{r.note}</p>}
-              </article>
+              <RegionalCard key={r.en} entry={r} />
             ))}
           </div>
         </section>
       ))}
+
+      <VulgarWords />
     </div>
   );
 }

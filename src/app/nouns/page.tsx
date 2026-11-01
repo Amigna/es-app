@@ -13,6 +13,7 @@ export default function NounsPage() {
       forms: isPluralOnly(n) ? undefined : `plural: ${n.gender === "m" ? "los" : "las"} ${nounPlural(n)}`,
       en: n.en,
       topic: n.topic,
+      note: n.note,
       example: n.ex,
     }));
 

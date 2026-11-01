@@ -17,8 +17,10 @@ export interface Noun {
   ex: Example;
   /** Irregular plural, or the same word for lunes-type nouns. */
   plural?: string;
-  /** El before a feminine noun with stressed a (el agua), or los for words used in the plural (los lentes). */
+  /** El before a feminine noun with stressed a (el agua), los for words used in the plural (los lentes), or the shown article where gender is no drill: el dentista is also la dentista. */
   article?: string;
+  /** Shown on the browse page, for words that mean something else in some countries. */
+  note?: string;
 }
 
 export interface Adjective {
