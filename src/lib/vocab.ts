@@ -2,6 +2,7 @@ import adjectivesRaw from "../data/vocab/adjectives.json";
 import adverbsRaw from "../data/vocab/adverbs.json";
 import nounsRaw from "../data/vocab/nouns.json";
 import phrasesRaw from "../data/vocab/phrases.json";
+import smallWordsRaw from "../data/vocab/small-words.json";
 import { nuclei, setStress, stressIndex } from "./conjugation/accent";
 
 export interface Example {
@@ -37,6 +38,17 @@ export interface Adverb {
   ex: Example;
 }
 
+/** Prepositions, conjunctions, pronouns and question words. */
+export interface SmallWord {
+  es: string;
+  en: string;
+  topic: string;
+  ex: Example;
+  note?: string;
+  /** Other forms, shown when browsing: esta, estos, estas. */
+  forms?: string;
+}
+
 export interface Phrase {
   es: string;
   en: string;
@@ -47,6 +59,7 @@ export interface Phrase {
 export const NOUNS = nounsRaw as Noun[];
 export const ADJECTIVES = adjectivesRaw as Adjective[];
 export const ADVERBS = adverbsRaw as Adverb[];
+export const SMALL_WORDS = smallWordsRaw as SmallWord[];
 export const PHRASES = phrasesRaw as Phrase[];
 
 /** Regular plural, keeping the stress on the same syllable: joven -> jóvenes, camión -> camiones, lápiz -> lápices. */

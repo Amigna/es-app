@@ -5,7 +5,7 @@ import type { VocabKind, WordType } from "./drill-settings";
 import type { SentenceBank } from "./sentence-data";
 import { blankOut, findForm, sentencesFor } from "./sentences";
 import { VERBS, findVerb, verbSlug, type Verb } from "./verbs";
-import { ADJECTIVES, ADVERBS, NOUNS, adjectiveForms, isPluralOnly, nounArticle, type Adjective, type Noun } from "./vocab";
+import { ADJECTIVES, ADVERBS, NOUNS, SMALL_WORDS, adjectiveForms, isPluralOnly, nounArticle, type Adjective, type Noun } from "./vocab";
 
 // Decks for the vocabulary and fill-in-the-blank drills. Imported on demand because it pulls in the word lists.
 
@@ -42,7 +42,12 @@ const plainWord =
 /** Includes the word type because some spellings are two words: mañana is both "morning" and "tomorrow". */
 const vocabTrack = (type: WordType, es: string, kind: VocabKind) => ({ item: `vocab:${type}:${es}:${kind}` });
 
-const allWords = () => [...NOUNS.map(nounWord), ...ADJECTIVES.map(plainWord("adjective")), ...ADVERBS.map(plainWord("adverb"))];
+const allWords = () => [
+  ...NOUNS.map(nounWord),
+  ...ADJECTIVES.map(plainWord("adjective")),
+  ...ADVERBS.map(plainWord("adverb")),
+  ...SMALL_WORDS.map(plainWord("small")),
+];
 
 const FORM_NAMES = ["masculine singular", "feminine singular", "masculine plural", "feminine plural"];
 
@@ -51,8 +56,11 @@ const agreeingAdjectives = () => ADJECTIVES.filter((a) => new Set(adjectiveForms
 
 function toSpanishCard(word: Word, everyWord: Word[]): Card {
   // Any word sharing a core meaning is correct: "bus" can't tell the learner whether autobús or guagua is meant.
+  // Small words are the exception: "you (formal)" can't take tú, and the gloss is what tells them apart.
   const meanings = englishAnswers(word.en);
-  const sameMeaning = everyWord.filter((w) => englishAnswers(w.en).some((m) => meanings.includes(m)));
+  const sameMeaning = everyWord.filter((w) =>
+    word.type === "small" ? w.type === "small" && w.en === word.en : englishAnswers(w.en).some((m) => meanings.includes(m)),
+  );
   return {
     id: `es:${word.es}`,
     badge: "English to Spanish",
@@ -115,8 +123,14 @@ export function vocabDeck({ kinds, wordTypes, topics }: VocabOptions, random: Ra
   const nouns = has("noun") ? NOUNS.filter((n) => topics.length === 0 || topics.includes(n.topic)) : [];
   const adjectives = has("adjective") ? ADJECTIVES : [];
   const adverbs = has("adverb") ? ADVERBS : [];
+  const smallWords = has("small") ? SMALL_WORDS : [];
 
-  const words = [...nouns.map(nounWord), ...adjectives.map(plainWord("adjective")), ...adverbs.map(plainWord("adverb"))];
+  const words = [
+    ...nouns.map(nounWord),
+    ...adjectives.map(plainWord("adjective")),
+    ...adverbs.map(plainWord("adverb")),
+    ...smallWords.map(plainWord("small")),
+  ];
   const everyWord = allWords();
   const genderNouns = nouns.filter((n) => !n.article && !isPluralOnly(n));
   const agreeing = has("adjective") ? agreeingAdjectives() : [];
@@ -246,6 +260,7 @@ function wordItems(): string[] {
     ["noun", NOUNS],
     ["adjective", ADJECTIVES],
     ["adverb", ADVERBS],
+    ["small", SMALL_WORDS],
   ];
   const meanings = (kind: VocabKind) => {
     const longest = Math.max(...lists.map(([, list]) => list.length));

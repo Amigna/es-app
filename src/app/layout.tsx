@@ -18,6 +18,7 @@ const NAV = [
   ["/nouns", "Nouns"],
   ["/adjectives", "Adjectives"],
   ["/adverbs", "Adverbs"],
+  ["/small-words", "Small words"],
   ["/phrases", "Phrases"],
   ["/regional", "Regional"],
   ["/guides", "Guides"],
@@ -34,13 +35,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
         <header className="border-b border-zinc-200 dark:border-zinc-800">
-          <div className="mx-auto flex max-w-5xl flex-col gap-1 px-4 py-2 md:flex-row md:items-center md:justify-between md:gap-4">
-            <div className="flex items-center justify-between md:contents">
+          <div className="mx-auto flex max-w-5xl flex-col gap-1 px-4 py-2 lg:flex-row lg:items-center lg:justify-between lg:gap-4">
+            <div className="flex items-center justify-between lg:contents">
               <Link href="/" className="py-1 text-lg font-semibold tracking-tight">
                 Conjugar
               </Link>
               {/* No prefetch: these pages bring in the Firebase SDK, which other pages shouldn't download. */}
-              <div className="flex gap-4 text-sm md:order-last">
+              <div className="flex gap-4 text-sm lg:order-last">
                 <Link href="/progress" prefetch={false} className="flex min-h-10 items-center hover:text-emerald-700 dark:hover:text-emerald-400">
                   Progress
                 </Link>
@@ -49,8 +50,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 </Link>
               </div>
             </div>
-            {/* A tidy two-row grid on phones, a single row from tablet width up. */}
-            <nav className="grid grid-cols-4 text-sm md:flex md:gap-1">
+            {/* A tidy three-row grid on phones, a row under the title on tablets, all one line on wide screens. */}
+            <nav className="grid grid-cols-3 text-sm md:flex md:gap-1">
               {NAV.map(([href, label]) => (
                 <Link
                   key={href}

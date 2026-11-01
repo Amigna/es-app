@@ -5,7 +5,7 @@ import { englishAnswers, englishCore, gradeCard, type Card } from "./drill";
 import { DEFAULT_SETTINGS, NOUN_TOPICS, parseSettings } from "./drill-settings";
 import { SENTENCE_BANK } from "./sentence-data";
 import { VERBS, findVerb } from "./verbs";
-import { ADJECTIVES, ADVERBS, NOUNS } from "./vocab";
+import { ADJECTIVES, ADVERBS, NOUNS, SMALL_WORDS } from "./vocab";
 
 const verb = (inf: string) => {
   const v = findVerb(inf);
@@ -69,6 +69,21 @@ describe("vocabDeck", () => {
     assert.equal(gradeCard(guagua, "autobús"), "correct");
   });
 
+  it("keeps small words exact, so a gloss can't take a similar word", () => {
+    const next = vocabDeck(options({ kinds: ["toSpanish"], wordTypes: ["small"] }));
+    const formal = draw(next, (c) => c.title === "you (formal)");
+    assert.equal(gradeCard(formal, "usted"), "correct");
+    assert.equal(gradeCard(formal, "tú"), "wrong");
+    const sino = draw(next, (c) => c.title === "but rather (after a negative)");
+    assert.equal(gradeCard(sino, "sino"), "correct");
+    assert.equal(gradeCard(sino, "pero"), "wrong");
+  });
+
+  it("treats a missing accent on a question word as an accent slip", () => {
+    const card = draw(vocabDeck(options({ kinds: ["toSpanish"], wordTypes: ["small"] })), (c) => c.shown === "dónde");
+    assert.equal(gradeCard(card, "donde"), "accent");
+  });
+
   it("limits nouns to the chosen topics", () => {
     const foods = new Set(NOUNS.filter((n) => n.topic === "food").map((n) => n.es));
     const next = vocabDeck(options({ kinds: ["gender"], wordTypes: ["noun"], topics: ["food"] }));
@@ -96,7 +111,12 @@ describe("progress IDs", () => {
     });
 
   it("gives every word its own ID that Firestore accepts", () => {
-    const ids = [...itemIds("noun", NOUNS.length), ...itemIds("adjective", ADJECTIVES.length), ...itemIds("adverb", ADVERBS.length)];
+    const ids = [
+      ...itemIds("noun", NOUNS.length),
+      ...itemIds("adjective", ADJECTIVES.length),
+      ...itemIds("adverb", ADVERBS.length),
+      ...itemIds("small", SMALL_WORDS.length),
+    ];
     assert.equal(new Set(ids).size, ids.length);
     assert.deepEqual(ids.filter((id) => id.includes("/")), []);
   });

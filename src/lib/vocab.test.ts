@@ -6,6 +6,7 @@ import {
   ADVERBS,
   NOUNS,
   PHRASES,
+  SMALL_WORDS,
   adjectiveForms,
   isPluralOnly,
   nounArticle,
@@ -82,11 +83,12 @@ describe("vocabulary data", () => {
     unique(NOUNS.map((n) => n.es), "noun");
     unique(ADJECTIVES.map((a) => a.es), "adjective");
     unique(ADVERBS.map((a) => a.es), "adverb");
+    unique(SMALL_WORDS.map((w) => w.es), "small word");
     unique(PHRASES.map((p) => p.es), "phrase");
   });
 
   it("uses each word in its own example", (t) => {
-    t.diagnostic(`${NOUNS.length} nouns, ${ADJECTIVES.length} adjectives, ${ADVERBS.length} adverbs, ${PHRASES.length} phrases`);
+    t.diagnostic(`${NOUNS.length} nouns, ${ADJECTIVES.length} adjectives, ${ADVERBS.length} adverbs, ${SMALL_WORDS.length} small words, ${PHRASES.length} phrases`);
     const problems: string[] = [];
     for (const n of NOUNS) {
       if (!findForm(n.ex.es, n.es) && !findForm(n.ex.es, nounPlural(n))) problems.push(`noun ${n.es}: "${n.ex.es}"`);
@@ -97,17 +99,26 @@ describe("vocabulary data", () => {
     for (const a of ADVERBS) {
       if (!findForm(a.ex.es, a.es)) problems.push(`adverb ${a.es}: "${a.ex.es}"`);
     }
+    for (const w of SMALL_WORDS) {
+      if (!findForm(w.ex.es, w.es)) problems.push(`small word ${w.es}: "${w.ex.es}"`);
+    }
     assert.deepEqual(problems, []);
   });
 
   it("has complete entries", () => {
     const sentence = /[.?!]$/;
-    for (const w of [...NOUNS, ...ADJECTIVES, ...ADVERBS]) {
+    for (const w of [...NOUNS, ...ADJECTIVES, ...ADVERBS, ...SMALL_WORDS]) {
       assert.ok(w.en, w.es);
       assert.match(w.ex.es, sentence, w.es);
       assert.match(w.ex.en, sentence, w.es);
     }
     for (const n of NOUNS) assert.ok(n.gender === "m" || n.gender === "f", n.es);
     for (const p of PHRASES) assert.ok(p.en && p.topic, p.es);
+    const topics = ["prepositions", "conjunctions", "pronouns", "question words"];
+    for (const w of SMALL_WORDS) assert.ok(topics.includes(w.topic), w.es);
+  });
+
+  it("keeps commas out of small word glosses' brackets, where they would split the answers", () => {
+    for (const w of SMALL_WORDS) assert.doesNotMatch(w.en, /\([^)]*,/, w.es);
   });
 });

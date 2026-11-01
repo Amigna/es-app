@@ -4,7 +4,7 @@ import type { VerbPool } from "./drill";
 
 export type Mode = "review" | "conjugation" | "vocabulary" | "blanks" | "grammar";
 export type VocabKind = "toSpanish" | "toEnglish" | "gender" | "agreement";
-export type WordType = "noun" | "adjective" | "adverb";
+export type WordType = "noun" | "adjective" | "adverb" | "small";
 
 /** Listed here so the setup screen doesn't have to load the word lists. A test keeps this in step with the data. */
 export const NOUN_TOPICS = ["body", "clothes", "family", "food", "home", "nature", "people", "places", "things", "time", "travel", "work"];
@@ -26,7 +26,7 @@ export const DEFAULT_SETTINGS: DrillSettings = {
   pool: "common",
   tenses: ["present", "preterite", "imperfect"],
   kinds: ["toSpanish", "gender"],
-  wordTypes: ["noun", "adjective", "adverb"],
+  wordTypes: ["noun", "adjective", "adverb", "small"],
   topics: [],
   guides: [],
 };
@@ -34,7 +34,7 @@ export const DEFAULT_SETTINGS: DrillSettings = {
 const MODES: Mode[] = ["review", "conjugation", "vocabulary", "blanks", "grammar"];
 const POOLS: VerbPool[] = ["common", "irregular", "all"];
 const KINDS: VocabKind[] = ["toSpanish", "toEnglish", "gender", "agreement"];
-const WORD_TYPES: WordType[] = ["noun", "adjective", "adverb"];
+const WORD_TYPES: WordType[] = ["noun", "adjective", "adverb", "small"];
 const TENSE_IDS = TENSES.map((t) => t.id);
 
 const oneOf = <T,>(value: unknown, allowed: readonly T[], fallback: T): T =>

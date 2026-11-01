@@ -45,6 +45,7 @@ const WORD_TYPES: { id: WordType; title: string; hint: string }[] = [
   { id: "noun", title: "Nouns", hint: "Can be limited by topic" },
   { id: "adjective", title: "Adjectives", hint: "Describing words" },
   { id: "adverb", title: "Adverbs", hint: "Time, place and manner" },
+  { id: "small", title: "Small words", hint: "Prepositions, conjunctions, pronouns, question words" },
 ];
 
 function OptionCard({
@@ -152,7 +153,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
   async function practiceDeck(target: PracticeTarget): Promise<() => Card | null> {
     if ("kind" in target) {
       const { vocabDeck } = await import("@/lib/card-decks");
-      return vocabDeck({ kinds: [target.kind], wordTypes: ["noun", "adjective", "adverb"], topics: [] });
+      return vocabDeck({ kinds: [target.kind], wordTypes: ["noun", "adjective", "adverb", "small"], topics: [] });
     }
     if ("verb" in target) {
       const verb = findVerb(target.verb);

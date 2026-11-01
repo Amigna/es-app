@@ -64,7 +64,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - [ ] More verbs. Now at 314, with room for more reflexives and regional verbs
 - [ ] More phrases and regional expressions, labeled by country. Now at 162
 - [ ] More regional words, and more countries in the existing entries
-- [ ] Prepositions, conjunctions, pronouns and question words
+- [x] Prepositions, conjunctions, pronouns and question words: a Small words page and word type in vocabulary drills
 - [ ] Short graded reading passages
 - [ ] Better examples for verbs that are mostly "rarely used" notes (contraer, prever, errar, rogar)
 - [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 16,500 remain, so this needs batches and a usage check before each one
@@ -82,7 +82,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - [ ] Spot-check reflexive forms with attached pronouns (levántate, vámonos), which the Wiktionary comparison didn't cover
 - [ ] Look up individual forms in RAE when in doubt. Its robots.txt blocks Claude's crawlers, so this means web search or checking by hand, not bulk fetching
 - [ ] Skim the sentence files for natural phrasing, including the new `persons.json`. Tests confirm the conjugated form is present, not that the sentence sounds right or the translation is accurate
-- [ ] Skim the 908 new vocabulary entries (the end of each file in `src/data/vocab/`) for natural phrasing, translations and regional fit. Tests only confirm each word appears in its example. These come from my own knowledge, not a source. Adverbs now include set expressions like `por si acaso`
+- [ ] Skim the 908 new vocabulary entries (the end of each file in `src/data/vocab/`), plus all of `small-words.json` and its grammar notes, for natural phrasing, translations and regional fit. Tests only confirm each word appears in its example. These come from my own knowledge, not a source. Adverbs now include set expressions like `por si acaso`
 - [ ] The haber preterite sentences (hube, hubiste) are literary, and hardly anyone says these forms. Decide whether drills should skip them
 - [x] Play through drills and a quiz in a headless browser, including the keyboard flow, accent buttons, retries and saved settings
 - [ ] Try the app on a real phone, especially the on-screen keyboard during drills
@@ -110,6 +110,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - Words: add to the end of `src/data/vocab/*.json`, because file order sets the order new items are introduced. Noun topics must stay in step with `NOUN_TOPICS` in `src/lib/drill-settings.ts`. Give nouns shared by men and women `"article":"el"` (el dentista), which keeps them out of the gender drill. Multi-word nouns need `plural`.
 - Guides: `src/data/guides.json`, with quizzes in `src/data/guide-quizzes.json`.
 - Firestore rules: edit `firestore.rules`, then paste it into the Firebase console and publish.
+- Small words: add to `src/data/vocab/small-words.json`. Drills only accept the exact gloss, so make each one specific enough to pick out its word, like `you (formal)`. No commas inside brackets, because commas split glosses into answers.
 - Vulgar words: add to `src/data/vulgar.json`, with a note on what each means. Never add these to the drills or the public word lists with their meaning. Words that are offensive but not vulgar go in `regional.json` under `careful`, with the reason.
 - Vulgar section: in the Firebase console, add a boolean `vulgar` set to true on someone's document in `invites`. It's off by default and people can't change it themselves. It's a filter, not protection, because the file is a public download for anyone who goes looking.
 - Access requests: in the Firebase console, open `invites`, filter for `added == false`, and set `added` to true to approve someone. Delete the document to decline. There's no notification, so check it now and then. To add someone directly, make a document keyed by their lowercase email.
