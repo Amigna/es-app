@@ -2,8 +2,9 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { conjugate } from "./conjugation/engine";
 import type { TenseId } from "./conjugation/types";
-import { SENTENCE_BANK, SENTENCE_GROUPS, getSentences } from "./sentence-data";
-import { checkSentences, findForm, sentenceGroup, sentencesFor, type Sentence } from "./sentences";
+import { SENTENCE_BANK, SENTENCE_FILES, getSentences } from "./sentence-data";
+import { VERBS_PER_FILE, filesFor, itemVerbs, loadSentences } from "./sentence-loader";
+import { checkSentences, findForm, sentencesFor, type Sentence } from "./sentences";
 import { VERBS, findVerb } from "./verbs";
 
 describe("findForm", () => {
@@ -20,28 +21,34 @@ describe("findForm", () => {
 });
 
 describe("sentence data", () => {
-  it("files each verb under its ending", () => {
-    assert.equal(sentenceGroup("hablar"), "ar");
-    assert.equal(sentenceGroup("levantarse"), "ar");
-    assert.equal(sentenceGroup("oír"), "ir");
-    assert.ok(getSentences("creer"));
+  it("looks up a verb's main sentences", () => {
+    assert.equal((getSentences("creer")?.present as Sentence).person, sentencesFor(SENTENCE_BANK, "creer", "present")[0].person);
     assert.equal(getSentences("nope"), null);
+  });
+
+  it("files each verb by its place in verbs.json", () => {
+    const problems: string[] = [];
+    SENTENCE_FILES.forEach((file, index) => {
+      for (const inf of Object.keys(file)) {
+        const verb = findVerb(inf);
+        if (verb?.inf !== inf) problems.push(`"${inf}" is not a listed verb`);
+        else if (filesFor([verb])[0] !== index) problems.push(`${inf} is in file ${index + 1}, not ${filesFor([verb])[0] + 1}`);
+      }
+    });
+    assert.deepEqual(problems, []);
+  });
+
+  it("has a file for every verb", () => {
+    assert.ok(VERBS.length <= SENTENCE_FILES.length * VERBS_PER_FILE, "add a new sentence file");
   });
 
   it("is complete and matches the engine", (t) => {
     const problems: string[] = [];
     let total = 0;
-    for (const [group, verbs] of Object.entries(SENTENCE_GROUPS)) {
-      for (const [inf, data] of Object.entries(verbs)) {
-        total++;
-        const verb = findVerb(inf);
-        if (verb?.inf !== inf) {
-          problems.push(`${group}.json: "${inf}" is not a listed verb`);
-          continue;
-        }
-        if (sentenceGroup(inf) !== group) problems.push(`${inf} belongs in ${sentenceGroup(inf)}.json`);
-        for (const p of checkSentences(conjugate(verb), data)) problems.push(`${inf} ${p}`);
-      }
+    for (const inf of Object.keys(SENTENCE_BANK)) {
+      total++;
+      const verb = findVerb(inf)!;
+      for (const p of checkSentences(conjugate(verb), getSentences(inf)!)) problems.push(`${inf} ${p}`);
     }
     t.diagnostic(`${total} of ${VERBS.length} verbs have sentences`);
     assert.deepEqual(problems, []);
@@ -50,15 +57,12 @@ describe("sentence data", () => {
   it("has valid sentences per person", (t) => {
     const problems: string[] = [];
     let total = 0;
-    for (const [inf, tenses] of Object.entries(SENTENCE_BANK.persons)) {
-      const verb = findVerb(inf);
-      if (verb?.inf !== inf) {
-        problems.push(`"${inf}" is not a listed verb`);
-        continue;
-      }
-      for (const [tense, rows] of Object.entries(tenses) as [TenseId, Sentence[]][]) {
-        const seen = sentencesFor({ ...SENTENCE_BANK, persons: {} }, inf, tense).map((s) => s.person);
-        if (seen.length === 0) problems.push(`${inf} ${tense}: no main sentence`);
+    for (const [inf, tenses] of Object.entries(SENTENCE_BANK)) {
+      const verb = findVerb(inf)!;
+      for (const tense of Object.keys(tenses) as TenseId[]) {
+        const [main, ...rows] = sentencesFor(SENTENCE_BANK, inf, tense);
+        if (!main) continue;
+        const seen = [main.person];
         const forms = conjugate(verb).tenses[tense]?.forms ?? [];
         for (const s of rows) {
           total++;
@@ -74,5 +78,26 @@ describe("sentence data", () => {
     }
     t.diagnostic(`${total} sentences per person`);
     assert.deepEqual(problems, []);
+  });
+});
+
+describe("sentence loader", () => {
+  it("needs one file for the common verbs, and all of them for every verb", () => {
+    assert.deepEqual(filesFor(VERBS.slice(0, 50)), [0]);
+    assert.deepEqual(filesFor([VERBS[0], VERBS[50]]), [0, 1]);
+    assert.deepEqual(filesFor(VERBS), SENTENCE_FILES.map((_, i) => i));
+    assert.deepEqual(filesFor([]), []);
+  });
+
+  it("loads the same data the server has, and only the files asked for", async () => {
+    assert.deepEqual(await loadSentences(VERBS), SENTENCE_BANK);
+    const common = await loadSentences(VERBS.slice(0, 50));
+    assert.ok(common.ser);
+    assert.equal(common[VERBS[50].inf], undefined);
+  });
+
+  it("finds the verbs in saved items", () => {
+    const verbs = itemVerbs(["verb:hablar:present", "verb:hablar:future", "vocab:noun:casa:gender", "verb:nope:present", "verb:oír:present"]);
+    assert.deepEqual(verbs.map((v) => v.inf), ["hablar", "oír"]);
   });
 });

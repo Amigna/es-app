@@ -2,18 +2,16 @@ import type { Metadata } from "next";
 import Drill from "@/components/Drill";
 import type { TenseId } from "@/lib/conjugation/types";
 import { GUIDES } from "@/lib/guides";
-import { SENTENCE_GROUPS } from "@/lib/sentence-data";
+import { SENTENCE_BANK } from "@/lib/sentence-data";
 
 export const metadata: Metadata = { title: "Drills · Conjugar" };
 
 /** Tenses marked rare are not worth drilling. Only these keys reach the browser, not the sentence files. */
 function rareTenses(): string[] {
   const keys: string[] = [];
-  for (const verbs of Object.values(SENTENCE_GROUPS)) {
-    for (const [inf, tenses] of Object.entries(verbs)) {
-      for (const [tense, entry] of Object.entries(tenses)) {
-        if (entry && "rare" in entry) keys.push(`${inf}:${tense as TenseId}`);
-      }
+  for (const [inf, tenses] of Object.entries(SENTENCE_BANK)) {
+    for (const [tense, entry] of Object.entries(tenses)) {
+      if (entry && "rare" in entry) keys.push(`${inf}:${tense as TenseId}`);
     }
   }
   return keys;

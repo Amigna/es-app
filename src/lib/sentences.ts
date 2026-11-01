@@ -1,5 +1,4 @@
 import { TENSES, type Conjugation, type TenseId } from "./conjugation/types";
-import type { SentenceBank } from "./sentence-data";
 
 /** An example for one tense. `person` is the slot in TenseForms.forms (0 yo ... 4 ellos/ustedes). */
 export interface Sentence {
@@ -13,21 +12,16 @@ export interface RareTense {
   rare: true;
 }
 
+/** The main sentence for each tense, which is what the verb page shows. */
 export type VerbSentences = Partial<Record<TenseId, Sentence | RareTense>>;
 
-/** Extra sentences by infinitive and tense, for persons the main sentence doesn't cover. */
-export type PersonSentences = Record<string, Partial<Record<TenseId, Sentence[]>>>;
-
-/** Which sentence file a verb belongs in: levantarse -> ar, oír -> ir. */
-export function sentenceGroup(inf: string): string {
-  return inf.replace(/se$/, "").slice(-2).replace("ír", "ir");
-}
+/** Sentences by infinitive and tense. The first in each list is the main one, and the rest cover other persons. */
+export type SentenceBank = Record<string, Partial<Record<TenseId, Sentence[] | RareTense>>>;
 
 /** Every example for a verb and tense, main sentence first; empty when the tense is rare or has none. */
-export function sentencesFor({ groups, persons }: SentenceBank, inf: string, tense: TenseId): Sentence[] {
-  const entry = groups[sentenceGroup(inf)]?.[inf]?.[tense];
-  if (!entry || "rare" in entry) return [];
-  return [entry, ...(persons[inf]?.[tense] ?? [])];
+export function sentencesFor(bank: SentenceBank, inf: string, tense: TenseId): Sentence[] {
+  const entry = bank[inf]?.[tense];
+  return Array.isArray(entry) ? entry : [];
 }
 
 const words = (text: string) => text.split(" ").join("\\s+");

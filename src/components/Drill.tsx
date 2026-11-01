@@ -9,6 +9,7 @@ import { NOUN_TOPICS, useDrillSettings, type Mode, type VocabKind, type WordType
 import { parsePractice, type PracticeTarget } from "@/lib/practice";
 import { progressEnabled } from "@/lib/progress-queue";
 import { shuffled } from "@/lib/quiz";
+import { itemVerbs, loadSentences } from "@/lib/sentence-loader";
 import { sentencesFor } from "@/lib/sentences";
 import { VERBS, findVerb, type Verb } from "@/lib/verbs";
 
@@ -142,10 +143,10 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
   }, [mode, session, rareSet]);
 
   async function conjugationDeck(verbs: Verb[], chosen: TenseId[]): Promise<() => Card | null> {
-    const { SENTENCE_BANK } = await import("@/lib/sentence-data");
+    const bank = await loadSentences(verbs);
     return () => {
       const q = makeQuestion(verbs, chosen, rareSet);
-      return q && conjugationCard(q, sentencesFor(SENTENCE_BANK, q.verb.inf, q.tense));
+      return q && conjugationCard(q, sentencesFor(bank, q.verb.inf, q.tense));
     };
   }
 
@@ -166,8 +167,9 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
     if (mode === "review") {
       const plan = await loadTodayPlan(rareSet);
       if (plan.status !== "ready") return () => null;
-      const [{ reviewDeck }, { SENTENCE_BANK }] = await Promise.all([import("@/lib/card-decks"), import("@/lib/sentence-data")]);
-      return reviewDeck([...shuffled(plan.reviews), ...plan.fresh], SENTENCE_BANK, rareSet);
+      const items = [...shuffled(plan.reviews), ...plan.fresh];
+      const [{ reviewDeck }, bank] = await Promise.all([import("@/lib/card-decks"), loadSentences(itemVerbs(items))]);
+      return reviewDeck(items, bank, rareSet);
     }
     const verbs = poolVerbs(VERBS, pool);
     if (mode === "conjugation") return conjugationDeck(verbs, tenses);
@@ -178,8 +180,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
     }
     const decks = await import("@/lib/card-decks");
     if (mode === "vocabulary") return decks.vocabDeck({ kinds, wordTypes, topics });
-    const { SENTENCE_BANK } = await import("@/lib/sentence-data");
-    return decks.blankDeck(SENTENCE_BANK, verbs, tenses);
+    return decks.blankDeck(await loadSentences(verbs), verbs, tenses);
   }
 
   async function start(target?: PracticeTarget) {

@@ -163,10 +163,8 @@ describe("blankCard", () => {
 
 describe("today's review", () => {
   const rare = new Set<string>();
-  for (const verbs of Object.values(SENTENCE_BANK.groups)) {
-    for (const [inf, tenses] of Object.entries(verbs)) {
-      for (const [tense, entry] of Object.entries(tenses)) if (entry && "rare" in entry) rare.add(`${inf}:${tense}`);
-    }
+  for (const [inf, tenses] of Object.entries(SENTENCE_BANK)) {
+    for (const [tense, entry] of Object.entries(tenses)) if (entry && "rare" in entry) rare.add(`${inf}:${tense}`);
   }
   const order = newItemOrder(rare);
 

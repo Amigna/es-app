@@ -1,24 +1,20 @@
-import ar from "../data/sentences/ar.json";
-import er from "../data/sentences/er.json";
-import ir from "../data/sentences/ir.json";
-import persons from "../data/sentences/persons.json";
-import { sentenceGroup, type PersonSentences, type VerbSentences } from "./sentences";
+import file1 from "../data/sentences/verbs-001-050.json";
+import file2 from "../data/sentences/verbs-051-100.json";
+import file3 from "../data/sentences/verbs-101-150.json";
+import file4 from "../data/sentences/verbs-151-200.json";
+import file5 from "../data/sentences/verbs-201-250.json";
+import file6 from "../data/sentences/verbs-251-300.json";
+import file7 from "../data/sentences/verbs-301-350.json";
+import type { SentenceBank, VerbSentences } from "./sentences";
 
-// Example sentences, grouped by verb ending and keyed by infinitive (reflexives file under their ending: levantarse -> ar).
-// Large: import this on the server, or dynamically from the browser.
+// Every example sentence. Large: server only. The browser uses sentence-loader.ts, which fetches only what a drill needs.
 
-export type SentenceGroups = Record<string, Record<string, VerbSentences>>;
+export const SENTENCE_FILES = [file1, file2, file3, file4, file5, file6, file7] as SentenceBank[];
 
-export const SENTENCE_GROUPS = { ar, er, ir } as SentenceGroups;
-
-/** The sentences above plus, for common verbs, one for each other person. */
-export interface SentenceBank {
-  groups: SentenceGroups;
-  persons: PersonSentences;
-}
-
-export const SENTENCE_BANK: SentenceBank = { groups: SENTENCE_GROUPS, persons: persons as PersonSentences };
+export const SENTENCE_BANK: SentenceBank = Object.assign({}, ...SENTENCE_FILES);
 
 export function getSentences(inf: string): VerbSentences | null {
-  return SENTENCE_GROUPS[sentenceGroup(inf)]?.[inf] ?? null;
+  const entry = SENTENCE_BANK[inf];
+  if (!entry) return null;
+  return Object.fromEntries(Object.entries(entry).map(([tense, value]) => [tense, Array.isArray(value) ? value[0] : value]));
 }

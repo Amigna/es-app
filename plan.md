@@ -34,7 +34,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - [ ] More regional words, and more countries in the existing entries
 - [ ] More reading passages. Now at 12, with 4 each at A1, A2 and B1
 - [ ] Better examples for verbs that are mostly "rarely used" notes (contraer, prever, errar, rogar)
-- [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 16,500 remain, so this needs batches and a usage check before each one
+- [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 15,900 remain, so this needs batches and a usage check before each one. Each batch covers the next 12 verbs in `verbs.json`, about 280 sentences. The top 74 are done in the six core tenses
 
 ## Later
 
@@ -46,7 +46,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 
 - [ ] Spot-check reflexive forms with attached pronouns (levántate, vámonos), which the Wiktionary comparison didn't cover
 - [ ] Look up individual forms in RAE when in doubt. Its robots.txt blocks Claude's crawlers, so this means web search or checking by hand, not bulk fetching
-- [ ] Skim the sentence files for natural phrasing, including the new `persons.json`. Tests confirm the conjugated form is present, not that the sentence sounds right or the translation is accurate
+- [ ] Skim the sentence files for natural phrasing, including the per-person sentences in `src/data/sentences/`. Tests confirm the conjugated form is present, not that the sentence sounds right or the translation is accurate
 - [ ] Skim the 908 new vocabulary entries (the end of each file in `src/data/vocab/`), plus all of `small-words.json` and its grammar notes, for natural phrasing, translations and regional fit. Tests only confirm each word appears in its example. These come from my own knowledge, not a source. Adverbs now include set expressions like `por si acaso`
 - [ ] Skim `src/data/readings.json` for natural phrasing, translations and regional fit, especially the Chilean, Costa Rican and Venezuelan details and the retold Quetzalcóatl legend. Tests only check structure, length and that listed words appear in the passage. These come from my own knowledge, not a source
 - [ ] The haber preterite sentences (hube, hubiste) are literary, and hardly anyone says these forms. Decide whether drills should skip them
@@ -55,7 +55,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - [ ] Set `vulgar: true` on your invite and confirm the section appears on /regional. Confirm it doesn't show signed out or on an account without the field. It hasn't been seen signed in
 - [ ] Publish the new `firestore.rules`, then request access with a second account, approve it, and confirm its progress saves. Also confirm your own invite still works. The rules can't be tested here
 - [ ] Check Weak spots on /progress with a signed-in account: miss a verb and a question type at least 5 times each, then use "Practice this". Verb and mistake-type stats only count answers from now on, and the section hasn't been seen with real data
-- [ ] Use Today's review with a signed-in account: finish a session, check an item in `users/{uid}/items` has `stability` and `due`, and check `/progress` shows what's due the next day. Real Firestore writes of schedules haven't run yet
+- [ ] Use Today's review with a signed-in account: confirm its cards still show sentences now that it loads only the sentence files for its verbs. Finish a session, check an item in `users/{uid}/items` has `stability` and `due`, and check `/progress` shows what's due the next day. Real Firestore writes of schedules haven't run yet
 - [ ] Do a verb drill, then a vocabulary drill, and confirm "Accuracy by tense" stays. A save with no verb answers used to erase it. The fix is confirmed against the Firestore SDK offline, not yet against real Firestore
 - [ ] Try a backlog of 25 different items at once, because Firestore rules allow 20 lookups per batch and the docs say repeated lookups are cached, but that isn't confirmed for our invite check
 - [ ] A save interrupted by a closed tab can be sent twice, which overcounts stats slightly. Accepted, since the alternative was losing answers
@@ -66,8 +66,9 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 
 - Sentences and vocabulary are written in Claude Code sessions and committed as JSON, so the app needs no API key or database.
 - `npm test` checks the data: every example must contain the exact word form it teaches.
-- Verbs: add to `src/data/verbs.json`, then add sentences to `src/data/sentences/{ar,er,ir}.json` in tense order, one per tense or `{"rare":true}`. `person` is 0 yo, 1 tú, 2 él, 3 nosotros, 4 ellos.
-- Sentences for the other persons of a verb: add to `src/data/sentences/persons.json`, by infinitive and tense. Name the subject when forms look alike, like yo and él in the imperfect, because the verb is blanked out on cards.
+- Verbs: add to the end of `src/data/verbs.json`, because a verb's position decides its sentence file. Then add its sentences to the matching `src/data/sentences/verbs-*.json` in tense order, with a list for each tense or `{"rare":true}`. `person` is 0 yo, 1 tú, 2 él, 3 nosotros, 4 ellos. After verb 350, add a new file to `sentence-data.ts` and `sentence-loader.ts`.
+- Sentences for the other persons of a verb: add to the verb's tense list in the same file, after the main sentence, which stays first. Name the subject when forms look alike, like yo and él in the imperfect, because the verb is blanked out on cards.
+- Sentence files hold 50 verbs each in `verbs.json` order, so a drill downloads only the files for its verbs, and adding to one file leaves the others cached.
 - Words: add to the end of `src/data/vocab/*.json`, because file order sets the order new items are introduced. Noun topics must stay in step with `NOUN_TOPICS` in `src/lib/drill-settings.ts`. Give nouns shared by men and women `"article":"el"` (el dentista), which keeps them out of the gender drill. Multi-word nouns need `plural`.
 - Guides: `src/data/guides.json`, with quizzes in `src/data/guide-quizzes.json`.
 - Reading passages: add to `src/data/readings.json`, one paragraph at a time with its translation. Keep to the level's grammar and length in `LEVELS` in `src/lib/readings.ts` (tests check the length, not the grammar). Words in `words` must appear exactly as written in the passage. Questions stay in passage order, and each needs at least 3 choices.
@@ -83,7 +84,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 These live in `.verify/`, which is gitignored, so keep a copy if you change machines.
 
 - Conjugation: `npx tsc -p tsconfig.test.json && node .verify/check.mjs`
-- Browser, with `npm run build` and `npx next start -p 3111` running: `node --experimental-websocket --no-warnings .verify/browser/flow.mjs`, also `audit.mjs`, `account.mjs`, `progress.mjs` and `report.mjs`. The browser profile isn't signed in, so none of these reach Firestore
+- Browser, with `npm run build` and `npx next start -p 3111` running: `node --experimental-websocket --no-warnings .verify/browser/flow.mjs`, also `audit.mjs`, `account.mjs`, `progress.mjs`, `report.mjs`, `reading.mjs` and `sentence-loading.mjs`. The browser profile isn't signed in, so none of these reach Firestore
 
 ## Completed
 
@@ -122,6 +123,8 @@ These live in `.verify/`, which is gitignored, so keep a copy if you change mach
 
 - [x] Prepositions, conjunctions, pronouns and question words: a Small words page and word type in vocabulary drills
 - [x] Graded reading passages: 12 stories at A1, A2 and B1 on a Reading page, each with an English translation per paragraph, a word list and comprehension questions. Answers aren't saved to progress
+- [x] 558 more sentences in two batches, extending every-person coverage in the six core tenses from the top 50 verbs to the top 74
+- [x] Sentence data split into one file per 50 verbs, so the default drill downloads about 54 KB instead of 170 KB (gzipped). Every lookup was compared before and after, with no differences
 
 ### Verification
 

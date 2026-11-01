@@ -2,8 +2,7 @@ import { conjugate } from "./conjugation/engine";
 import { TENSES, type TenseId } from "./conjugation/types";
 import { COMMON_COUNT, CORE_TENSES, conjugationCard, englishAnswers, makeQuestion, personLabel, rareKey, verbTrack, type Card } from "./drill";
 import type { VocabKind, WordType } from "./drill-settings";
-import type { SentenceBank } from "./sentence-data";
-import { blankOut, findForm, sentencesFor } from "./sentences";
+import { blankOut, findForm, sentencesFor, type SentenceBank } from "./sentences";
 import { VERBS, findVerb, verbSlug, type Verb } from "./verbs";
 import { ADJECTIVES, ADVERBS, NOUNS, SMALL_WORDS, adjectiveForms, isPluralOnly, nounArticle, type Adjective, type Noun } from "./vocab";
 
