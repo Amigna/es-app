@@ -1,4 +1,5 @@
 import { TENSES, type Conjugation, type TenseId } from "./conjugation/types";
+import type { SentenceGroups } from "./sentence-data";
 
 /** An example for one tense. `person` is the slot in TenseForms.forms (0 yo ... 4 ellos/ustedes). */
 export interface Sentence {
@@ -19,6 +20,12 @@ export function sentenceGroup(inf: string): string {
   return inf.replace(/se$/, "").slice(-2).replace("ír", "ir");
 }
 
+/** The example for a verb and tense, or null when the tense is rare or has none. */
+export function findSentence(groups: SentenceGroups, inf: string, tense: TenseId): Sentence | null {
+  const entry = groups[sentenceGroup(inf)]?.[inf]?.[tense];
+  return entry && !("rare" in entry) ? entry : null;
+}
+
 const words = (text: string) => text.split(" ").join("\\s+");
 
 /** Locates a conjugated form in a sentence as whole words. "no digas" also matches "no me digas". */
@@ -28,6 +35,19 @@ export function findForm(sentence: string, form: string): { start: number; end: 
     : words(form);
   const match = new RegExp(`(?<!\\p{L})${body}(?!\\p{L})`, "iu").exec(sentence);
   return match ? { start: match.index, end: match.index + match[0].length } : null;
+}
+
+export const BLANK = "_____";
+
+/** Blanks every copy of the given forms, so a verb used twice can't give the answer away. */
+export function blankOut(sentence: string, ...forms: string[]): string {
+  let out = sentence;
+  for (const form of forms) {
+    for (let hit = findForm(out, form); hit; hit = findForm(out, form)) {
+      out = out.slice(0, hit.start) + BLANK + out.slice(hit.end);
+    }
+  }
+  return out;
 }
 
 /** Everything wrong with a verb's sentence file; empty means it is complete and consistent with the engine. */

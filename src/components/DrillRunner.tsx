@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { gradeCard, type Card, type Grade } from "@/lib/drill";
+import { recordAnswer, saveProgress } from "@/lib/progress-queue";
 
 const SPECIAL_LETTERS = ["á", "é", "í", "ó", "ú", "ñ", "ü"];
 
@@ -62,12 +63,16 @@ export default function DrillRunner({
   const [streak, setStreak] = useState(0);
   const [retries, setRetries] = useState<{ card: Card; dueAt: number }[]>([]);
   const [finished, setFinished] = useState(false);
+  const [isRetry, setIsRetry] = useState(false);
 
   // Keeps the keyboard flow going: type, Enter to check, Enter for the next one.
   useEffect(() => {
     if (result) nextRef.current?.focus();
     else inputRef.current?.focus();
   }, [card, result]);
+
+  // Save what's left when the session ends.
+  useEffect(() => () => void saveProgress(), []);
 
   function submit(value: string) {
     if (result || !value.trim()) return;
@@ -76,6 +81,8 @@ export default function DrillRunner({
     setInput(value);
     setResult(g);
     setTotal(total + 1);
+    // Only the first try counts, so a retry can't inflate progress.
+    if (card.track && !isRetry) recordAnswer(card.track, g);
     if (good) setRight(right + 1);
     setStreak(good ? streak + 1 : 0);
     if (!good) setRetries([...retries, { card, dueAt: total + 1 + RETRY_GAP }]);
@@ -90,8 +97,10 @@ export default function DrillRunner({
     const following = retry?.card ?? fresh;
     if (!following) {
       setFinished(true);
+      saveProgress();
       return;
     }
+    setIsRetry(!!retry);
     setCard(following);
     setInput("");
     setResult(null);
@@ -141,11 +150,29 @@ export default function DrillRunner({
       </div>
 
       <section className="rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
-        <p className="text-sm text-zinc-500">{card.context}</p>
+        {card.badge ? (
+          <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-zinc-500">
+            <span className="rounded-md bg-emerald-100 px-2.5 py-1 text-lg font-bold text-emerald-900 dark:bg-emerald-950 dark:text-emerald-200">
+              {card.badge}
+            </span>
+            {card.context}
+          </p>
+        ) : (
+          <p className="text-sm text-zinc-500">{card.context}</p>
+        )}
         <h2 lang={card.titleIsSpanish ? "es" : "en"} className="mt-3 text-2xl font-semibold tracking-tight">
           {card.title}
         </h2>
         {card.subtitle && <p className="text-zinc-600 dark:text-zinc-400">{card.subtitle}</p>}
+        {card.example && (
+          <p className="mt-3 border-l-2 border-zinc-300 pl-3 text-zinc-600 dark:border-zinc-700 dark:text-zinc-400">
+            <span className="block text-sm text-zinc-500">{card.example.label}</span>
+            <span lang="es" className="block font-medium text-zinc-800 dark:text-zinc-200">
+              {card.example.es}
+            </span>
+            {card.example.en}
+          </p>
+        )}
         <p className="mt-4 text-lg font-medium">{card.ask}</p>
 
         {card.choices ? (

@@ -5,6 +5,7 @@ import DrillRunner from "@/components/DrillRunner";
 import { TENSES, type Mood } from "@/lib/conjugation/types";
 import { conjugationCard, makeQuestion, poolVerbs, type Card, type VerbPool } from "@/lib/drill";
 import { NOUN_TOPICS, useDrillSettings, type Mode, type VocabKind, type WordType } from "@/lib/drill-settings";
+import { findSentence } from "@/lib/sentences";
 import { VERBS } from "@/lib/verbs";
 
 const MODES: { id: Mode; title: string; hint: string }[] = [
@@ -81,9 +82,10 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
   async function buildDeck(): Promise<() => Card | null> {
     const verbs = poolVerbs(VERBS, pool);
     if (mode === "conjugation") {
+      const { SENTENCE_GROUPS } = await import("@/lib/sentence-data");
       return () => {
         const q = makeQuestion(verbs, tenses, rareSet);
-        return q && conjugationCard(q);
+        return q && conjugationCard(q, findSentence(SENTENCE_GROUPS, q.verb.inf, q.tense));
       };
     }
     if (mode === "grammar") {

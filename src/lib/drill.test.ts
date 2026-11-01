@@ -1,6 +1,10 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { grade, isIrregular, makeQuestion, poolVerbs } from "./drill";
+import { conjugate } from "./conjugation/engine";
+import { TENSES } from "./conjugation/types";
+import { conjugationCard, grade, isIrregular, makeQuestion, poolVerbs } from "./drill";
+import { SENTENCE_GROUPS } from "./sentence-data";
+import { findForm, findSentence } from "./sentences";
 import { VERBS, findVerb } from "./verbs";
 
 const verb = (inf: string) => {
@@ -23,6 +27,44 @@ describe("grade", () => {
 
   it("treats ñ as a different letter", () => {
     assert.equal(grade("sueno", "sueño"), "wrong");
+  });
+});
+
+describe("conjugationCard", () => {
+  const q = { verb: verb("llamar"), tense: "imperfect", person: 3, label: "nosotros", answer: "llamábamos" } as const;
+  const sentence = { person: 1, es: "¿Por qué me llamabas tanto ayer?", en: "Why were you calling me so much yesterday?" };
+
+  it("shows the example with its verb blanked and names its person", () => {
+    assert.deepEqual(conjugationCard(q, sentence).example, {
+      label: "Example with tú",
+      es: "¿Por qué me _____ tanto ayer?",
+      en: sentence.en,
+    });
+  });
+
+  it("blanks a verb used twice", () => {
+    const twice = { person: 1, es: "Llamabas y llamabas.", en: "You kept calling." };
+    assert.equal(conjugationCard(q, twice).example?.es, "_____ y _____.");
+  });
+
+  it("never gives away the answer, for any verb, tense or person", () => {
+    const leaks: string[] = [];
+    for (const v of VERBS) {
+      for (const { id: tense } of TENSES) {
+        const sentence = findSentence(SENTENCE_GROUPS, v.inf, tense);
+        if (!sentence) continue;
+        conjugate(v).tenses[tense]?.forms.forEach((answer, person) => {
+          if (!answer) return;
+          const es = conjugationCard({ verb: v, tense, person, label: "", answer }, sentence).example?.es ?? "";
+          if (findForm(es, answer)) leaks.push(`${v.inf} ${tense} ${person}: ${es}`);
+        });
+      }
+    }
+    assert.deepEqual(leaks, []);
+  });
+
+  it("leaves the example off when there's no sentence", () => {
+    assert.equal(conjugationCard(q, null).example, undefined);
   });
 });
 

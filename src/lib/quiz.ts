@@ -33,6 +33,7 @@ export function quizCard(slug: string, index: number, guideTitle: string, q: Qui
     choices: q.choices && shuffled(q.choices, random),
     explain: q.why,
     link: { href: `/guides/${slug}`, label: `Read the guide: ${guideTitle}` },
+    track: { item: `quiz:${slug}:${index}` },
   };
 }
 

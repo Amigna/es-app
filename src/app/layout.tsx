@@ -39,14 +39,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <Link href="/" className="py-1 text-lg font-semibold tracking-tight">
                 Conjugar
               </Link>
-              {/* No prefetch: this page brings in the Firebase SDK, which other pages shouldn't download. */}
-              <Link
-                href="/account"
-                prefetch={false}
-                className="flex min-h-10 items-center text-sm hover:text-emerald-700 md:order-last dark:hover:text-emerald-400"
-              >
-                Account
-              </Link>
+              {/* No prefetch: these pages bring in the Firebase SDK, which other pages shouldn't download. */}
+              <div className="flex gap-4 text-sm md:order-last">
+                <Link href="/progress" prefetch={false} className="flex min-h-10 items-center hover:text-emerald-700 dark:hover:text-emerald-400">
+                  Progress
+                </Link>
+                <Link href="/account" prefetch={false} className="flex min-h-10 items-center hover:text-emerald-700 dark:hover:text-emerald-400">
+                  Account
+                </Link>
+              </div>
             </div>
             {/* A tidy two-row grid on phones, a single row from tablet width up. */}
             <nav className="grid grid-cols-4 text-sm md:flex md:gap-1">

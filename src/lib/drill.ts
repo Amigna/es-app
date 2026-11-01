@@ -2,6 +2,8 @@ import { stripAccents } from "./conjugation/accent";
 import { conjugate } from "./conjugation/engine";
 import { IRREGULARS } from "./conjugation/irregulars";
 import { TENSES, type TenseId } from "./conjugation/types";
+import type { Track } from "./progress";
+import { blankOut, type Sentence } from "./sentences";
 import { verbSlug, type Verb } from "./verbs";
 
 export type VerbPool = "common" | "irregular" | "all";
@@ -87,11 +89,14 @@ export function makeQuestion(
 /** One thing to answer, whatever the drill. Accepted answers are checked in order of how well they match. */
 export interface Card {
   id: string;
-  /** Small line above the prompt, e.g. the tense. */
-  context: string;
+  /** Bold label above the prompt for what's being asked, e.g. the tense or question type. */
+  badge?: string;
+  /** Small text above the prompt, beside the badge when there is one. */
+  context?: string;
   title: string;
   titleIsSpanish: boolean;
   subtitle?: string;
+  example?: { label: string; es: string; en: string };
   ask: string;
   answers: string[];
   /** The answer as shown after a miss. */
@@ -102,23 +107,42 @@ export interface Card {
   choices?: string[];
   /** Why the answer is right, shown after answering. */
   explain?: string;
+  /** What this question counts toward in saved progress. */
+  track?: Track;
   link?: { href: string; label: string };
 }
 
-export function conjugationCard(q: Question): Card {
+/** The example's Spanish hides its verb, and the answer too in case the sentence uses that form elsewhere. */
+function cardExample(q: Question, sentence: Sentence): Card["example"] {
+  const form = conjugate(q.verb).tenses[q.tense]?.forms[sentence.person] ?? "";
+  // The sentence is written for one person, which may not be the one being asked for.
+  return {
+    label: `Example with ${personLabel(q.tense, sentence.person)}`,
+    es: blankOut(sentence.es, form, q.answer),
+    en: sentence.en,
+  };
+}
+
+export function conjugationCard(q: Question, sentence?: Sentence | null): Card {
   const meta = TENSES.find((t) => t.id === q.tense)!;
   return {
     id: `${q.verb.inf}:${q.tense}:${q.person}`,
-    context: `${meta.name} · ${meta.hint}`,
+    badge: meta.name,
+    context: meta.hint,
     title: q.verb.inf,
     titleIsSpanish: true,
     subtitle: q.verb.en,
+    example: sentence ? cardExample(q, sentence) : undefined,
     ask: `Form for ${q.label}`,
     answers: [q.answer],
     shown: q.answer,
     link: { href: `/verb/${verbSlug(q.verb.inf)}`, label: `See all forms of ${q.verb.inf}` },
+    track: verbTrack(q.verb.inf, q.tense),
   };
 }
+
+/** Conjugation and fill-in-the-blank share an item, so either one counts as practicing that verb and tense. */
+export const verbTrack = (inf: string, tense: TenseId): Track => ({ item: `verb:${inf}:${tense}`, tense });
 
 export function personLabel(tense: TenseId, person: number): string {
   return (tense === "impAffirmative" || tense === "impNegative" ? IMPERATIVE_PERSONS : PERSONS)[person] ?? "";

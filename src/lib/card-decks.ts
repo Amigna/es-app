@@ -1,9 +1,9 @@
 import { conjugate } from "./conjugation/engine";
 import { TENSES, type TenseId } from "./conjugation/types";
-import { englishAnswers, personLabel, type Card } from "./drill";
+import { englishAnswers, personLabel, verbTrack, type Card } from "./drill";
 import type { VocabKind, WordType } from "./drill-settings";
 import type { SentenceGroups } from "./sentence-data";
-import { findForm, sentenceGroup, type Sentence } from "./sentences";
+import { blankOut, findForm, findSentence } from "./sentences";
 import { verbSlug, type Verb } from "./verbs";
 import { ADJECTIVES, ADVERBS, NOUNS, adjectiveForms, isPluralOnly, nounArticle, type Adjective, type Noun } from "./vocab";
 
@@ -22,6 +22,7 @@ const pick = <T,>(list: T[], random: Random): T => list[Math.floor(random() * li
 interface Word {
   es: string;
   en: string;
+  type: WordType;
   accepted: string[];
   shown: string;
 }
@@ -29,11 +30,17 @@ interface Word {
 const nounWord = (n: Noun): Word => ({
   es: n.es,
   en: n.en,
+  type: "noun",
   accepted: [n.es, `${nounArticle(n)} ${n.es}`],
   shown: `${nounArticle(n)} ${n.es}`,
 });
 
-const plainWord = (w: { es: string; en: string }): Word => ({ es: w.es, en: w.en, accepted: [w.es], shown: w.es });
+const plainWord =
+  (type: WordType) =>
+  (w: { es: string; en: string }): Word => ({ es: w.es, en: w.en, type, accepted: [w.es], shown: w.es });
+
+/** Includes the word type because some spellings are two words: mañana is both "morning" and "tomorrow". */
+const vocabTrack = (type: WordType, es: string, kind: VocabKind) => ({ item: `vocab:${type}:${es}:${kind}` });
 
 const FORM_NAMES = ["masculine singular", "feminine singular", "masculine plural", "feminine plural"];
 
@@ -47,12 +54,13 @@ function toSpanishCard(words: Word[], everyWord: Word[], random: Random): Card {
   const sameMeaning = everyWord.filter((w) => englishAnswers(w.en).some((m) => meanings.includes(m)));
   return {
     id: `es:${word.es}`,
-    context: "English to Spanish",
+    badge: "English to Spanish",
     title: word.en,
     titleIsSpanish: false,
     ask: "In Spanish",
     answers: sameMeaning.flatMap((w) => w.accepted),
     shown: word.shown,
+    track: vocabTrack(word.type, word.es, "toSpanish"),
   };
 }
 
@@ -60,13 +68,14 @@ function toEnglishCard(words: Word[], random: Random): Card {
   const word = pick(words, random);
   return {
     id: `en:${word.es}`,
-    context: "Spanish to English",
+    badge: "Spanish to English",
     title: word.es,
     titleIsSpanish: true,
     ask: "In English",
     answers: englishAnswers(word.en),
     shown: word.en,
     english: true,
+    track: vocabTrack(word.type, word.es, "toEnglish"),
   };
 }
 
@@ -74,7 +83,7 @@ function genderCard(nouns: Noun[], random: Random): Card {
   const noun = pick(nouns, random);
   return {
     id: `gender:${noun.es}`,
-    context: "Noun gender",
+    badge: "Noun gender",
     title: noun.es,
     titleIsSpanish: true,
     subtitle: noun.en,
@@ -82,6 +91,7 @@ function genderCard(nouns: Noun[], random: Random): Card {
     answers: [nounArticle(noun)],
     shown: `${nounArticle(noun)} ${noun.es}`,
     choices: ["el", "la"],
+    track: vocabTrack("noun", noun.es, "gender"),
   };
 }
 
@@ -91,13 +101,14 @@ function agreementCard(adjectives: Adjective[], random: Random): Card {
   const slot = Math.floor(random() * forms.length);
   return {
     id: `agree:${adjective.es}:${slot}`,
-    context: "Adjective agreement",
+    badge: "Adjective agreement",
     title: adjective.es,
     titleIsSpanish: true,
     subtitle: adjective.en,
     ask: `Form for ${FORM_NAMES[slot]}`,
     answers: [forms[slot]],
     shown: forms[slot],
+    track: vocabTrack("adjective", adjective.es, "agreement"),
   };
 }
 
@@ -107,8 +118,8 @@ export function vocabDeck({ kinds, wordTypes, topics }: VocabOptions, random: Ra
   const adjectives = has("adjective") ? ADJECTIVES : [];
   const adverbs = has("adverb") ? ADVERBS : [];
 
-  const words = [...nouns.map(nounWord), ...adjectives.map(plainWord), ...adverbs.map(plainWord)];
-  const everyWord = [...NOUNS.map(nounWord), ...ADJECTIVES.map(plainWord), ...ADVERBS.map(plainWord)];
+  const words = [...nouns.map(nounWord), ...adjectives.map(plainWord("adjective")), ...adverbs.map(plainWord("adverb"))];
+  const everyWord = [...NOUNS.map(nounWord), ...ADJECTIVES.map(plainWord("adjective")), ...ADVERBS.map(plainWord("adverb"))];
   const genderNouns = nouns.filter((n) => !n.article && !isPluralOnly(n));
   const agreeing = has("adjective") ? agreeingAdjectives() : [];
 
@@ -129,27 +140,26 @@ export function vocabDeck({ kinds, wordTypes, topics }: VocabOptions, random: Ra
   };
 }
 
-const BLANK = "_____";
-
 /** The example sentence with its verb removed, or null when the tense has no usable sentence. */
 export function blankCard(groups: SentenceGroups, verb: Verb, tense: TenseId): Card | null {
-  const entry = groups[sentenceGroup(verb.inf)]?.[verb.inf]?.[tense];
-  if (!entry || "rare" in entry) return null;
-  const sentence: Sentence = entry;
+  const sentence = findSentence(groups, verb.inf, tense);
+  if (!sentence) return null;
   const form = conjugate(verb).tenses[tense]?.forms[sentence.person];
   const hit = form ? findForm(sentence.es, form) : null;
   if (!hit) return null;
   const meta = TENSES.find((t) => t.id === tense)!;
   return {
     id: `blank:${verb.inf}:${tense}`,
-    context: `${meta.name} · ${meta.hint}`,
-    title: sentence.es.slice(0, hit.start) + BLANK + sentence.es.slice(hit.end),
+    badge: meta.name,
+    context: meta.hint,
+    title: blankOut(sentence.es, form!),
     titleIsSpanish: true,
     subtitle: sentence.en,
     ask: `${verb.inf}, ${personLabel(tense, sentence.person)}`,
     answers: [sentence.es.slice(hit.start, hit.end)],
     shown: sentence.es.slice(hit.start, hit.end).toLowerCase(),
     link: { href: `/verb/${verbSlug(verb.inf)}`, label: `See all forms of ${verb.inf}` },
+    track: verbTrack(verb.inf, tense),
   };
 }
 

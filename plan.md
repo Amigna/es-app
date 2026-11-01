@@ -16,6 +16,8 @@ Spanish learning app for me, friends and family. Latin American and Caribbean Sp
 - [x] Regional words page, including words to be careful with
 - [x] Grammar guides: ser vs. estar, por vs. para, preterite vs. imperfect, subjunctive, gender and plurals, reflexive verbs, object pronouns, commands, perfect tenses, comparisons, talking about the future, relative pronouns, numbers and dates
 - [x] A quiz for each grammar guide, linked from the guide and available as Grammar in Drills
+- [x] Bold label for the tense or question type on conjugation, fill-in-the-blank and vocabulary cards
+- [x] Example sentence on conjugation cards in Spanish and English, labeled with its person, with the verb blanked out
 - [x] Mobile layout pass, checked at 320px and 390px in headless Chrome
 - [x] Deployed on AWS Amplify (Next.js 16 with Cache Components is newer than Amplify's documented support, so recheck after upgrades)
 
@@ -24,10 +26,37 @@ Spanish learning app for me, friends and family. Latin American and Caribbean Sp
 Held until then so progress is saved per person instead of per browser.
 
 - [x] Firebase sign-in (Google and email link), with invite-only saved progress and security rules in `firestore.rules`
-- [ ] Record answers, tracked by verb + tense and by word + question type
-- [ ] Progress page: streak, questions answered, accuracy by tense, items mastered
-- [ ] Spaced repetition (FSRS) with a "Today's review" mode and a daily limit on new items
+- [x] Save answers, tracked by verb + tense, by word + question type, and by guide question
+- [x] Progress page: streak, questions answered, accuracy by tense, items mastered
+- [ ] Spaced repetition (FSRS) with a "Today's review" mode and a daily limit on new items. See the plan below
 - [ ] Weak-spot stats by tense, verb and mistake type, each with a "Practice this" button
+
+## Spaced repetition plan
+
+Start only after the two saved-progress checks under "To verify" pass, because this builds on those writes.
+
+**No new dependency.** We write `src/lib/fsrs.ts` ourselves, about 80 lines of pure math. `ts-fsrs` is MIT, but it now brings in a dependency of its own and needs Node 24. The formulas are short and public.
+
+Decisions:
+
+- **Algorithm:** FSRS-6 with its 21 default parameters and 90% target recall. No optimizer, since we won't have enough reviews to tune it. `ts-fsrs` now defaults to FSRS-7, but FSRS-6 is what I've confirmed the formulas for.
+- **What gets scheduled:** the existing tracked items, so `verb:hablar:preterite` or `vocab:noun:casa:gender`. Verbs are scheduled per tense, and each review picks a person. Guide quizzes stay out at first, because their IDs are question positions that shift when a quiz is edited.
+- **Grades:** correct is Good, accent slip is Hard, wrong is Again. No Easy, because nobody self-rates here.
+- **Days, not minutes:** the first answer to an item each day moves its schedule, and later ones only count toward stats. This matches "only the first try counts", drops FSRS's minute-based learning steps, and means a re-sent batch can't move a schedule twice. A missed item comes back in the session as it does now, then the next day.
+- **Every drill feeds the schedule:** free practice updates an item too, so Today's review stays honest.
+- **Limits:** 10 new items a day by default, per person. Reviews are capped at 100 a day, most overdue first, so a week away doesn't bury anyone.
+- **New item order:** the most common verbs and their simplest tenses first, then words. Tally-only items from before launch start fresh at their next review.
+
+Build steps, each one testable on its own:
+
+1. `src/lib/fsrs.ts` and tests, checked against published FSRS-6 reference values, not just our own output.
+2. Saving: add stability, difficulty, due day and last review day to each `items` doc. A save now has to read those items first, about 10 extra reads per batch, then write. `firestore.rules` already covers this.
+3. `cardForItem(id)`: rebuild a card from an item ID, loading word lists on demand, and skip IDs whose word no longer exists. Verb items use conjugation or fill-in-the-blank.
+4. "Today's review" as a drill mode: due items first, then new ones, with a count of what's due. Signed-out and uninvited visitors see why it's unavailable.
+5. Progress page: due today, and "mastered" becomes stability of 21+ days instead of 5 correct answers.
+6. Daily new-item limit as a per-person setting on the account page.
+
+Cost check: a heavy day for one person is about 100 reviews, or roughly 100 reads and 120 writes. The Spark plan allows 50,000 reads and 20,000 writes a day across everyone.
 
 ## Content backlog
 
@@ -56,7 +85,12 @@ Held until then so progress is saved per person instead of per browser.
 - [x] Play through drills and a quiz in a headless browser, including the keyboard flow, accent buttons, retries and saved settings
 - [ ] Try the app on a real phone, especially the on-screen keyboard during drills
 - [ ] Have a native speaker check the regional words and slang. Usage varies and these come from my own knowledge, not a source
-- [ ] Test real sign-in (Google and email link), the invite check, and the published Firestore rules
+- [x] Test real sign-in (Google and email link), the invite check, and the published Firestore rules
+- [x] Saved progress up to the Firestore call: real drills in headless Chrome (what's queued, retries not counted, the save at 10 answers, answers kept when a save fails), plus unit tests for the queue
+- [x] Saved progress with a signed-in account: 64 real answers reached /progress
+- [ ] Do a verb drill, then a vocabulary drill, and confirm "Accuracy by tense" stays. A save with no verb answers used to erase it. The fix is confirmed against the Firestore SDK offline, not yet against real Firestore
+- [ ] Try a backlog of 25 different items at once, because Firestore rules allow 20 lookups per batch and the docs say repeated lookups are cached, but that isn't confirmed for our invite check
+- [ ] A save interrupted by a closed tab can be sent twice, which overcounts stats slightly. Accepted, since the alternative was losing answers
 - [ ] Read the grammar guides and their quizzes for accuracy. Tests check the structure, not the grammar
 - [ ] Unknown verb URLs returned 200 on first request and 404 after. Harmless so far
 
@@ -64,3 +98,14 @@ Held until then so progress is saved per person instead of per browser.
 
 - Sentences and vocabulary are written in Claude Code sessions and committed as JSON, so the app needs no API key or database.
 - `npm test` checks the data: every example must contain the exact word form it teaches.
+- Verbs: add to `src/data/verbs.json`, then add sentences to `src/data/sentences/{ar,er,ir}.json` in tense order, one per tense or `{"rare":true}`. `person` is 0 yo, 1 tú, 2 él, 3 nosotros, 4 ellos.
+- Words: add to `src/data/vocab/*.json`. Noun topics must stay in step with `NOUN_TOPICS` in `src/lib/drill-settings.ts`.
+- Guides: `src/data/guides.json`, with quizzes in `src/data/guide-quizzes.json`.
+- Firestore rules: edit `firestore.rules`, then paste it into the Firebase console and publish.
+
+## Local checks
+
+These live in `.verify/`, which is gitignored, so keep a copy if you change machines.
+
+- Conjugation: `npx tsc -p tsconfig.test.json && node .verify/check.mjs`
+- Browser, with `npm run build` and `npx next start -p 3111` running: `node --experimental-websocket --no-warnings .verify/browser/flow.mjs`, also `audit.mjs`, `account.mjs` and `progress.mjs`. The browser profile isn't signed in, so none of these reach Firestore

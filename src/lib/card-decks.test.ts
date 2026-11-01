@@ -5,7 +5,7 @@ import { englishAnswers, englishCore, gradeCard, type Card } from "./drill";
 import { DEFAULT_SETTINGS, NOUN_TOPICS, parseSettings } from "./drill-settings";
 import { SENTENCE_GROUPS } from "./sentence-data";
 import { VERBS, findVerb } from "./verbs";
-import { ADVERBS, NOUNS } from "./vocab";
+import { ADJECTIVES, ADVERBS, NOUNS } from "./vocab";
 
 const verb = (inf: string) => {
   const v = findVerb(inf);
@@ -85,6 +85,20 @@ describe("vocabDeck", () => {
     assert.equal(vocabDeck(options({ kinds: [] }))(), null);
     assert.equal(vocabDeck(options({ kinds: ["gender"], wordTypes: ["adverb"] }))(), null);
     assert.equal(vocabDeck(options({ kinds: ["agreement"], wordTypes: ["noun"] }))(), null);
+  });
+});
+
+describe("progress IDs", () => {
+  const itemIds = (type: VocabOptions["wordTypes"][number], count: number) =>
+    Array.from({ length: count }, (_, n) => {
+      const next = vocabDeck({ kinds: ["toEnglish"], wordTypes: [type], topics: [] }, () => (n + 0.5) / count);
+      return next()!.track!.item;
+    });
+
+  it("gives every word its own ID that Firestore accepts", () => {
+    const ids = [...itemIds("noun", NOUNS.length), ...itemIds("adjective", ADJECTIVES.length), ...itemIds("adverb", ADVERBS.length)];
+    assert.equal(new Set(ids).size, ids.length);
+    assert.deepEqual(ids.filter((id) => id.includes("/")), []);
   });
 });
 

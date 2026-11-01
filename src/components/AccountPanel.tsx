@@ -11,8 +11,10 @@ import {
   signOut,
   type User,
 } from "firebase/auth";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { auth, firebaseConfigured, isInvited } from "@/lib/firebase";
+import { setProgressEnabled } from "@/lib/progress-queue";
 
 const EMAIL_KEY = "sign-in-email";
 
@@ -68,6 +70,7 @@ function SignedIn({ user }: { user: User }) {
     let current = true;
     isInvited(user.email ?? "")
       .then((result) => {
+        setProgressEnabled(result);
         if (current) setInvited(result);
       })
       .catch((err: unknown) => {
@@ -93,7 +96,7 @@ function SignedIn({ user }: { user: User }) {
       )}
       {invited === true && (
         <p className="rounded-lg border border-emerald-300 bg-emerald-50 px-3 py-2 text-sm text-emerald-900 dark:border-emerald-800 dark:bg-emerald-950 dark:text-emerald-200">
-          You&apos;re on the invite list. Saved progress is on the way.
+          You&apos;re on the invite list, so your drills and quizzes are saved. See your <Link href="/progress" prefetch={false} className="underline">progress</Link>.
         </p>
       )}
       {invited === false && (
@@ -102,7 +105,14 @@ function SignedIn({ user }: { user: User }) {
         </p>
       )}
 
-      <button type="button" onClick={() => signOut(auth())} className={secondaryClass}>
+      <button
+        type="button"
+        onClick={() => {
+          setProgressEnabled(false);
+          signOut(auth());
+        }}
+        className={secondaryClass}
+      >
         Sign out
       </button>
     </div>
