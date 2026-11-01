@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
+import { statusOfInvite } from "./firebase";
 import { accuracy, currentStreak, lastSevenDays, localDay, summarize, type Answer } from "./progress";
 import { summaryUpdate } from "./progress-store";
 
@@ -27,6 +28,21 @@ describe("summarize", () => {
   it("remembers the latest day for an item", () => {
     const s = summarize([answer("a", "correct", "2026-11-03"), answer("a", "correct", "2026-11-01")]);
     assert.equal(s.items.a.last, "2026-11-03");
+  });
+});
+
+describe("statusOfInvite", () => {
+  it("treats hand-made invites with no added field as approved", () => {
+    assert.equal(statusOfInvite({}), "invited");
+    assert.equal(statusOfInvite({ added: true }), "invited");
+  });
+
+  it("keeps requests waiting until added is true", () => {
+    assert.equal(statusOfInvite({ added: false }), "requested");
+  });
+
+  it("knows when there's no invite at all", () => {
+    assert.equal(statusOfInvite(undefined), "none");
   });
 });
 

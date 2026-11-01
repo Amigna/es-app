@@ -13,7 +13,7 @@ import {
 } from "firebase/auth";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { auth, firebaseConfigured, isInvited } from "@/lib/firebase";
+import { auth, firebaseConfigured, inviteStatus, requestInvite, type InviteStatus } from "@/lib/firebase";
 import { setProgressEnabled } from "@/lib/progress-queue";
 import { loadNewPerDay, saveNewPerDay } from "@/lib/progress-store";
 import { DEFAULT_NEW_PER_DAY, NEW_PER_DAY_OPTIONS } from "@/lib/schedule";
@@ -119,16 +119,85 @@ function NewItemsSetting({ uid }: { uid: string }) {
   );
 }
 
+function RequestInvite({ user, onSent }: { user: User; onSent: () => void }) {
+  const [firstFromAccount, ...restFromAccount] = (user.displayName ?? "").split(" ");
+  const [firstName, setFirstName] = useState(firstFromAccount);
+  const [lastName, setLastName] = useState(restFromAccount.join(" "));
+  const [busy, setBusy] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const first = firstName.trim();
+  const last = lastName.trim();
+
+  async function send() {
+    setBusy(true);
+    setFailed(false);
+    try {
+      await requestInvite(user.email ?? "", first, last);
+      onSent();
+    } catch (err) {
+      console.error("Invite request failed", err);
+      setFailed(true);
+      setBusy(false);
+    }
+  }
+
+  return (
+    <form
+      className="space-y-3"
+      onSubmit={(e) => {
+        e.preventDefault();
+        send();
+      }}
+    >
+      <p className="text-sm text-zinc-600 dark:text-zinc-400">
+        Saved progress is invite-only for now. Everything else on the site is yours to use, or you can request access.
+      </p>
+      <label htmlFor="request-first" className="block text-sm text-zinc-500">
+        First name
+      </label>
+      <input
+        id="request-first"
+        autoComplete="given-name"
+        required
+        maxLength={80}
+        value={firstName}
+        onChange={(e) => setFirstName(e.target.value)}
+        className={inputClass}
+      />
+      <label htmlFor="request-last" className="block text-sm text-zinc-500">
+        Last name
+      </label>
+      <input
+        id="request-last"
+        autoComplete="family-name"
+        required
+        maxLength={80}
+        value={lastName}
+        onChange={(e) => setLastName(e.target.value)}
+        className={inputClass}
+      />
+      {failed && (
+        <p role="alert" className="text-sm text-red-600 dark:text-red-400">
+          Couldn&apos;t send your request. Please try again.
+        </p>
+      )}
+      <button type="submit" disabled={busy || !first || !last} className={primaryClass}>
+        Request access
+      </button>
+    </form>
+  );
+}
+
 function SignedIn({ user }: { user: User }) {
-  const [invited, setInvited] = useState<boolean | null>(null);
+  const [status, setStatus] = useState<InviteStatus | null>(null);
   const [checkError, setCheckError] = useState<string | null>(null);
 
   useEffect(() => {
     let current = true;
-    isInvited(user.email ?? "")
+    inviteStatus(user.email ?? "")
       .then((result) => {
-        setProgressEnabled(result);
-        if (current) setInvited(result);
+        setProgressEnabled(result === "invited");
+        if (current) setStatus(result);
       })
       .catch((err: unknown) => {
         console.error("Invite check failed", err);
@@ -151,17 +220,18 @@ function SignedIn({ user }: { user: User }) {
           Couldn&apos;t check your invite ({checkError}). Everything else still works, so try again later.
         </p>
       )}
-      {invited === true && (
+      {status === "invited" && (
         <p className="rounded-lg border border-emerald-300 bg-emerald-50 px-3 py-2 text-sm text-emerald-900 dark:border-emerald-800 dark:bg-emerald-950 dark:text-emerald-200">
           You&apos;re on the invite list, so your drills and quizzes are saved. See your <Link href="/progress" prefetch={false} className="underline">progress</Link>.
         </p>
       )}
-      {invited === true && <NewItemsSetting uid={user.uid} />}
-      {invited === false && (
-        <p className="rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-sm text-amber-900 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-200">
-          Saved progress is invite-only for now, and this email isn&apos;t on the list. Everything else on the site is yours to use.
+      {status === "invited" && <NewItemsSetting uid={user.uid} />}
+      {status === "requested" && (
+        <p role="status" className="rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-sm text-amber-900 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-200">
+          Your request is in. Your progress will start saving once it&apos;s approved, and until then everything else on the site is yours to use.
         </p>
       )}
+      {status === "none" && <RequestInvite user={user} onSent={() => setStatus("requested")} />}
 
       <button
         type="button"
@@ -253,6 +323,8 @@ function SignInForm({ onError }: { onError: (message: string | null) => void }) 
           Email me a link
         </button>
       </form>
+
+      <p className="text-center text-sm text-zinc-500">New here? Sign in first, then you can request access to saved progress.</p>
     </div>
   );
 }

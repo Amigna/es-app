@@ -150,7 +150,14 @@ export default function ProgressView() {
       </Message>
     );
   }
-  if (state.status === "notInvited") return <Message>Saved progress is invite-only for now, and this email isn&apos;t on the list.</Message>;
+  if (state.status === "notInvited") {
+    return (
+      <Message>
+        Saved progress is invite-only for now. <Link href="/account" prefetch={false} className={linkClass}>Check your account</Link> to request
+        access or see your request.
+      </Message>
+    );
+  }
   if (state.status === "failed") return <Message>Couldn&apos;t load your progress. Check your connection and try again.</Message>;
   return <Stats data={state.data} />;
 }

@@ -16,13 +16,28 @@ service cloud.firestore {
     function canSaveProgress() {
       return signedIn()
         && request.auth.token.email_verified == true
-        && exists(/databases/$(database)/documents/invites/$(ownEmail()));
+        && get(/databases/$(database)/documents/invites/$(ownEmail())).data.get('added', true) == true;
     }
 
-    // Managed by hand in the Firebase console. People can only check their own invite.
+    function validName(name) {
+      return name is string && name.size() > 0 && name.size() <= 80;
+    }
+
+    // People can check their own invite and ask for one, with `added: false`. Approving is done by hand in the Firebase
+    // console by setting `added` to true. Invites made by hand with no `added` field count as approved.
     match /invites/{email} {
       allow get: if signedIn() && ownEmail() == email;
-      allow list, write: if false;
+      allow create: if signedIn()
+        && request.auth.token.email_verified == true
+        && ownEmail() == email
+        && request.resource.data.keys().hasOnly(['firstName', 'lastName', 'email', 'added', 'requestedAt'])
+        && request.resource.data.keys().hasAll(['firstName', 'lastName', 'email', 'added', 'requestedAt'])
+        && validName(request.resource.data.firstName)
+        && validName(request.resource.data.lastName)
+        && request.resource.data.email == email
+        && request.resource.data.added == false
+        && request.resource.data.requestedAt == request.time;
+      allow list, update, delete: if false;
     }
 
     // Each person's data is private to them.

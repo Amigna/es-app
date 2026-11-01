@@ -30,6 +30,7 @@ Held until then so progress is saved per person instead of per browser.
 - [x] Save answers, tracked by verb + tense, by word + question type, and by guide question
 - [x] Progress page: streak, questions answered, accuracy by tense, items mastered
 - [x] Spaced repetition (FSRS) with a "Today's review" mode and a daily limit on new items. See below
+- [x] Request access form on the account page, for people signed in without an invite
 - [ ] Weak-spot stats by tense, verb and mistake type, each with a "Practice this" button
 
 ## How spaced repetition works
@@ -88,6 +89,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - [x] Saved progress up to the Firestore call: real drills in headless Chrome (what's queued, retries not counted, the save at 10 answers, answers kept when a save fails), plus unit tests for the queue
 - [x] Saved progress with a signed-in account: 64 real answers reached /progress
 - [x] Saving and scheduling across several days with the real Firestore SDK, network off (`node .verify/store-sim.cjs "$PWD"` after `npx tsc -p tsconfig.test.json`)
+- [ ] Publish the new `firestore.rules`, then request access with a second account, approve it, and confirm its progress saves. Also confirm your own invite still works. The rules can't be tested here
 - [ ] Use Today's review with a signed-in account: finish a session, check an item in `users/{uid}/items` has `stability` and `due`, and check `/progress` shows what's due the next day. Real Firestore writes of schedules haven't run yet
 - [ ] Do a verb drill, then a vocabulary drill, and confirm "Accuracy by tense" stays. A save with no verb answers used to erase it. The fix is confirmed against the Firestore SDK offline, not yet against real Firestore
 - [ ] Try a backlog of 25 different items at once, because Firestore rules allow 20 lookups per batch and the docs say repeated lookups are cached, but that isn't confirmed for our invite check
@@ -104,6 +106,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - Words: add to `src/data/vocab/*.json`. Noun topics must stay in step with `NOUN_TOPICS` in `src/lib/drill-settings.ts`.
 - Guides: `src/data/guides.json`, with quizzes in `src/data/guide-quizzes.json`.
 - Firestore rules: edit `firestore.rules`, then paste it into the Firebase console and publish.
+- Access requests: in the Firebase console, open `invites`, filter for `added == false`, and set `added` to true to approve someone. Delete the document to decline. There's no notification, so check it now and then. To add someone directly, make a document keyed by their lowercase email.
 
 ## Local checks
 
