@@ -115,7 +115,9 @@ export default function DrillRunner({
         <p className="text-lg">
           {right} of {total} answers correct
         </p>
-        <p className="text-sm text-zinc-500">Questions you missed came back, so the total can be higher than the quiz.</p>
+        {right < total && (
+          <p className="text-sm text-zinc-500">Questions you missed came back, so they count more than once.</p>
+        )}
         <button
           type="button"
           onClick={onStop}
@@ -133,7 +135,7 @@ export default function DrillRunner({
         <span>
           {right} of {total} correct · streak {streak}
         </span>
-        <button type="button" onClick={onStop} className="underline">
+        <button type="button" onClick={onStop} className="min-h-10 underline">
           Change settings
         </button>
       </div>
@@ -187,7 +189,7 @@ export default function DrillRunner({
               className="h-12 w-full rounded-xl border border-zinc-300 bg-white px-4 text-lg outline-none transition focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/30 dark:border-zinc-700 dark:bg-zinc-950"
             />
             {!card.english && (
-              <div className="flex flex-wrap gap-1.5">
+              <div className="grid grid-cols-7 gap-1.5">
                 {SPECIAL_LETTERS.map((letter) => (
                   <button
                     key={letter}
@@ -195,7 +197,7 @@ export default function DrillRunner({
                     disabled={!!result}
                     onClick={() => insertLetter(letter)}
                     aria-label={`Insert ${letter}`}
-                    className="size-9 rounded-lg border border-zinc-200 font-medium transition hover:border-emerald-600 disabled:opacity-40 dark:border-zinc-700"
+                    className="h-11 rounded-lg border border-zinc-200 font-medium transition hover:border-emerald-600 disabled:opacity-40 dark:border-zinc-700"
                   >
                     {letter}
                   </button>

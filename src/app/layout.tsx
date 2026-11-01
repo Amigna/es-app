@@ -34,13 +34,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
         <header className="border-b border-zinc-200 dark:border-zinc-800">
-          <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3">
-            <Link href="/" className="text-lg font-semibold tracking-tight">
+          <div className="mx-auto flex max-w-5xl flex-col gap-1 px-4 py-2 md:flex-row md:items-center md:justify-between md:gap-4">
+            <Link href="/" className="py-1 text-lg font-semibold tracking-tight">
               Conjugar
             </Link>
-            <nav className="flex flex-wrap justify-end gap-x-4 gap-y-1 text-sm">
+            {/* A tidy two-row grid on phones, a single row from tablet width up. */}
+            <nav className="grid grid-cols-4 text-sm md:flex md:gap-1">
               {NAV.map(([href, label]) => (
-                <Link key={href} href={href} className="hover:text-emerald-700 dark:hover:text-emerald-400">
+                <Link
+                  key={href}
+                  href={href}
+                  className="flex min-h-10 items-center justify-center rounded-lg md:px-2 hover:text-emerald-700 dark:hover:text-emerald-400"
+                >
                   {label}
                 </Link>
               ))}

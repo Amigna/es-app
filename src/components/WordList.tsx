@@ -49,7 +49,7 @@ export default function WordList({ rows, placeholder }: { rows: WordRow[]; place
               type="button"
               aria-pressed={topic === t}
               onClick={() => setTopic(t)}
-              className={`rounded-full border px-3 py-1 text-sm capitalize transition ${
+              className={`min-h-10 rounded-full border px-3 py-1 text-sm capitalize transition ${
                 topic === t
                   ? "border-emerald-700 bg-emerald-700 text-white"
                   : "border-zinc-200 hover:border-emerald-600 dark:border-zinc-700"

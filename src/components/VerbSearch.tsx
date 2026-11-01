@@ -61,7 +61,7 @@ export default function VerbSearch({
           autoCapitalize="none"
           spellCheck={false}
           autoFocus={autoFocus}
-          placeholder="Type a verb… hablar, tener, or “to eat”"
+          placeholder="hablar, or to eat"
           value={query}
           onChange={(e) => {
             setQuery(e.target.value);

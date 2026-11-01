@@ -71,7 +71,7 @@ function TenseCard({
       </p>
       <dl className="mt-3 divide-y divide-zinc-100 dark:divide-zinc-800">
         {list.map((r) => (
-          <div key={r.label} className="grid grid-cols-[9rem_1fr] gap-3 py-1.5">
+          <div key={r.label} className="grid grid-cols-[6.5rem_1fr] gap-3 py-1.5">
             <dt className={`text-sm ${r.vos ? "text-emerald-700 dark:text-emerald-400" : "text-zinc-500"}`}>{r.label}</dt>
             <dd className={`font-medium ${r.vos ? "text-emerald-800 dark:text-emerald-300" : ""}`}>{r.form}</dd>
           </div>
@@ -109,19 +109,34 @@ export default function ConjugationView({
             <dd className="text-lg font-medium">{conjugation.participle}</dd>
           </div>
         </dl>
-        <label className="flex cursor-pointer items-center gap-2 text-sm">
+        <label className="flex min-h-10 cursor-pointer items-center gap-2 text-sm">
           <input
             type="checkbox"
             checked={voseo}
             onChange={(e) => setVoseo(e.target.checked)}
             className="size-4 accent-emerald-700"
           />
-          Show voseo (<span className="italic">vos</span>)
+          <span>
+            Show voseo (<span className="italic">vos</span>)
+          </span>
         </label>
       </div>
 
+      {/* Verb pages are long on a phone, so jump straight to a mood. */}
+      <nav aria-label="Jump to a mood" className="flex flex-wrap gap-2">
+        {MOODS.map((mood) => (
+          <a
+            key={mood.id}
+            href={`#${mood.id}`}
+            className="flex min-h-10 items-center rounded-full border border-zinc-200 px-4 text-sm transition hover:border-emerald-600 dark:border-zinc-700"
+          >
+            {mood.title}
+          </a>
+        ))}
+      </nav>
+
       {MOODS.map((mood) => (
-        <div key={mood.id}>
+        <div key={mood.id} id={mood.id} className="scroll-mt-4">
           <h2 className="mb-4 text-xl font-semibold">
             {mood.title} <span className="font-normal text-zinc-500">· {mood.spanish}</span>
           </h2>

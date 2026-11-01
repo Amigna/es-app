@@ -17,14 +17,14 @@ export default function Home() {
 
       <section>
         <h2 className="mb-4 text-xl font-semibold">Browse verbs</h2>
-        <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {sorted.map((v) => (
-            <li key={v.inf}>
+            <li key={v.inf} className="min-w-0">
               <Link
                 href={`/verb/${verbSlug(v.inf)}`}
                 className="flex items-baseline justify-between gap-3 rounded-lg border border-zinc-200 px-3 py-2 transition hover:border-emerald-600 dark:border-zinc-800"
               >
-                <span className="font-medium">{v.inf}</span>
+                <span className="shrink-0 font-medium">{v.inf}</span>
                 <span className="truncate text-sm text-zinc-500">{v.en.replace(/^to /, "")}</span>
               </Link>
             </li>

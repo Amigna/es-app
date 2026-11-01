@@ -139,7 +139,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
                 type="button"
                 aria-pressed={guides.includes(g.slug)}
                 onClick={() => update({ guides: toggled(guides, g.slug) })}
-                className={`rounded-full border px-3 py-1 text-sm transition ${
+                className={`min-h-10 rounded-full border px-3 py-1 text-sm transition ${
                   guides.includes(g.slug)
                     ? "border-emerald-700 bg-emerald-700 text-white"
                     : "border-zinc-200 hover:border-emerald-600 dark:border-zinc-700"
@@ -169,9 +169,9 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
               {MOODS.map((mood) => (
                 <fieldset key={mood.id}>
                   <legend className="mb-2 font-medium">{mood.title}</legend>
-                  <div className="space-y-1.5">
+                  <div>
                     {TENSES.filter((t) => t.mood === mood.id).map((t) => (
-                      <label key={t.id} className="flex cursor-pointer items-center gap-2 text-sm">
+                      <label key={t.id} className="flex min-h-10 cursor-pointer items-center gap-2 text-sm">
                         <input
                           type="checkbox"
                           checked={tenses.includes(t.id)}
@@ -236,7 +236,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
                     type="button"
                     aria-pressed={topics.includes(t)}
                     onClick={() => update({ topics: toggled(topics, t) })}
-                    className={`rounded-full border px-3 py-1 text-sm capitalize transition ${
+                    className={`min-h-10 rounded-full border px-3 py-1 text-sm capitalize transition ${
                       topics.includes(t)
                         ? "border-emerald-700 bg-emerald-700 text-white"
                         : "border-zinc-200 hover:border-emerald-600 dark:border-zinc-700"

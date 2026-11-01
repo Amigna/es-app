@@ -16,6 +16,7 @@ Spanish learning app for me, friends and family. Latin American and Caribbean Sp
 - [x] Regional words page, including words to be careful with
 - [x] Grammar guides: ser vs. estar, por vs. para, preterite vs. imperfect, subjunctive, gender and plurals, reflexive verbs, object pronouns, commands, perfect tenses, comparisons, talking about the future, relative pronouns, numbers and dates
 - [x] A quiz for each grammar guide, linked from the guide and available as Grammar in Drills
+- [x] Mobile layout pass, checked at 320px and 390px in headless Chrome
 
 ## After accounts and a database
 
@@ -43,7 +44,6 @@ Held until then so progress is saved per person instead of per browser.
 - [ ] Sample sentence per person instead of per tense, for the most common verbs
 - [ ] Deploy (static hosting works until the database is added)
 - [ ] "Report a problem" link on sentences and forms
-- [ ] Mobile layout pass
 - [ ] Conversation or writing practice with Claude (would need an API key)
 - [ ] Optional voseo in drills
 
@@ -53,7 +53,8 @@ Held until then so progress is saved per person instead of per browser.
 - [ ] Spot-check reflexive forms with attached pronouns (levántate, vámonos), which the Wiktionary comparison didn't cover
 - [ ] Look up individual forms in RAE when in doubt. Its robots.txt blocks Claude's crawlers, so this means web search or checking by hand, not bulk fetching
 - [ ] Skim the sentence files for natural phrasing. Tests confirm the conjugated form is present, not that the sentence sounds right or the translation is accurate
-- [ ] Try drills in a browser, including the keyboard flow and accent buttons
+- [x] Play through drills and a quiz in a headless browser, including the keyboard flow, accent buttons, retries and saved settings
+- [ ] Try the app on a real phone, especially the on-screen keyboard during drills
 - [ ] Have a native speaker check the regional words and slang. Usage varies and these come from my own knowledge, not a source
 - [ ] Read the grammar guides and their quizzes for accuracy. Tests check the structure, not the grammar
 - [ ] Unknown verb URLs returned 200 on first request and 404 after. Harmless so far
