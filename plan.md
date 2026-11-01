@@ -17,12 +17,13 @@ Spanish learning app for me, friends and family. Latin American and Caribbean Sp
 - [x] Grammar guides: ser vs. estar, por vs. para, preterite vs. imperfect, subjunctive, gender and plurals, reflexive verbs, object pronouns, commands, perfect tenses, comparisons, talking about the future, relative pronouns, numbers and dates
 - [x] A quiz for each grammar guide, linked from the guide and available as Grammar in Drills
 - [x] Mobile layout pass, checked at 320px and 390px in headless Chrome
+- [x] Deployed on AWS Amplify (Next.js 16 with Cache Components is newer than Amplify's documented support, so recheck after upgrades)
 
 ## After accounts and a database
 
 Held until then so progress is saved per person instead of per browser.
 
-- [ ] Accounts and a database
+- [x] Firebase sign-in (Google and email link), with invite-only saved progress and security rules in `firestore.rules`
 - [ ] Record answers, tracked by verb + tense and by word + question type
 - [ ] Progress page: streak, questions answered, accuracy by tense, items mastered
 - [ ] Spaced repetition (FSRS) with a "Today's review" mode and a daily limit on new items
@@ -42,7 +43,6 @@ Held until then so progress is saved per person instead of per browser.
 
 - [ ] Audio with the browser's built-in speech, then better text-to-speech if needed
 - [ ] Sample sentence per person instead of per tense, for the most common verbs
-- [ ] Deploy (static hosting works until the database is added)
 - [ ] "Report a problem" link on sentences and forms
 - [ ] Conversation or writing practice with Claude (would need an API key)
 - [ ] Optional voseo in drills
@@ -56,6 +56,7 @@ Held until then so progress is saved per person instead of per browser.
 - [x] Play through drills and a quiz in a headless browser, including the keyboard flow, accent buttons, retries and saved settings
 - [ ] Try the app on a real phone, especially the on-screen keyboard during drills
 - [ ] Have a native speaker check the regional words and slang. Usage varies and these come from my own knowledge, not a source
+- [ ] Test real sign-in (Google and email link), the invite check, and the published Firestore rules
 - [ ] Read the grammar guides and their quizzes for accuracy. Tests check the structure, not the grammar
 - [ ] Unknown verb URLs returned 200 on first request and 404 after. Harmless so far
 

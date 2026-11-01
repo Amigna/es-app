@@ -1,0 +1,33 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function ownEmail() {
+      return request.auth.token.email.lower();
+    }
+
+    // To open the app to everyone, make this function just: return signedIn();
+    // Nothing else needs to change.
+    function canSaveProgress() {
+      return signedIn()
+        && request.auth.token.email_verified == true
+        && exists(/databases/$(database)/documents/invites/$(ownEmail()));
+    }
+
+    // Managed by hand in the Firebase console. People can only check their own invite.
+    match /invites/{email} {
+      allow get: if signedIn() && ownEmail() == email;
+      allow list, write: if false;
+    }
+
+    // Each person's data is private to them.
+    match /users/{uid}/{document=**} {
+      allow read, write: if signedIn() && request.auth.uid == uid && canSaveProgress();
+    }
+  }
+}
