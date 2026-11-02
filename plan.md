@@ -59,6 +59,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - [ ] Check Weak spots on /progress with a signed-in account: miss a verb and a question type at least 5 times each, then use "Practice this". Verb and mistake-type stats only count answers from now on, and the section hasn't been seen with real data
 - [ ] Use Today's review with a signed-in account: confirm its cards still show sentences now that it loads only the sentence files for its verbs. Finish a session, check an item in `users/{uid}/items` has `stability` and `due`, and check `/progress` shows what's due the next day. Real Firestore writes of schedules haven't run yet
 - [ ] Signed in, do a flashcard session with some phrases and tap "I don't know this" on a typed card. Confirm the Vocabulary numbers on /progress go up, a phrase comes back in Today's review as a flashcard, and it's due sooner after "Didn't know" than after "Knew it". None of this has run against real Firestore, and the Vocabulary section has only been seen with made-up data
+- [ ] Signed in, do a writing session in each direction. Confirm the Writing section appears on /progress with the right counts, and that "Accuracy by week" looks right against your history. Neither has run against real Firestore
 - [ ] Do a verb drill, then a vocabulary drill, and confirm "Accuracy by tense" stays. A save with no verb answers used to erase it. The fix is confirmed against the Firestore SDK offline, not yet against real Firestore
 - [ ] Try a backlog of 25 different items at once, because Firestore rules allow 20 lookups per batch and the docs say repeated lookups are cached, but that isn't confirmed for our invite check
 - [ ] A save interrupted by a closed tab can be sent twice, which overcounts stats slightly. Accepted, since the alternative was losing answers
@@ -87,7 +88,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 These live in `.verify/`, which is gitignored, so keep a copy if you change machines.
 
 - Conjugation: `npx tsc -p tsconfig.test.json && node .verify/check.mjs`
-- Browser, with `npm run build` and `npx next start -p 3111` running: `node --experimental-websocket --no-warnings .verify/browser/flow.mjs`, also `audit.mjs`, `account.mjs`, `progress.mjs`, `report.mjs`, `reading.mjs`, `sentence-loading.mjs`, `speech.mjs` and `flashcards.mjs`. The browser profile isn't signed in, so none of these reach Firestore
+- Browser, with `npm run build` and `npx next start -p 3111` running: `node --experimental-websocket --no-warnings .verify/browser/flow.mjs`, also `audit.mjs`, `account.mjs`, `progress.mjs`, `report.mjs`, `reading.mjs`, `sentence-loading.mjs`, `speech.mjs`, `flashcards.mjs` and `writing.mjs`. The browser profile isn't signed in, so none of these reach Firestore
 
 ## Completed
 
@@ -138,6 +139,8 @@ These live in `.verify/`, which is gitignored, so keep a copy if you change mach
 - [x] Phrases are tracked as `vocab:phrase:<es>:<kind>`. They're flashcards only, even in Today's review, and only enter the schedule once you've seen them on a card, so Today's review never introduces one
 - [x] "I don't know this" on typed vocabulary cards, gender and agreement included. It counts as a wrong answer and the word comes back
 - [x] Speaker button on vocabulary cards: right away when the Spanish is already on screen, and only after answering when it's the answer
+- [x] Writing drill: translate 10 sentences from the verb sentence files, either way, using the usual verb and tense choices. A match grades itself, ignoring punctuation and case. Anything else shows a model answer and the learner decides, because many translations can be right and there's no AI at runtime. Answers count toward totals and the streak, with one saved item per direction. They aren't scheduled
+- [x] Improvement on /progress: "Accuracy by week" for all questions, from the day totals already loaded, and a Writing section with accuracy by direction and by week. Writing is saved per day in `days/{day}`, under `writing`, so neither adds a read. Rolling seven-day stretches from today, last six shown. Mix affects the overall figure: a week of harder drills can look like a dip
 - [x] Sentence data split into one file per 50 verbs, so the default drill downloads about 54 KB instead of 170 KB (gzipped). Every lookup was compared before and after, with no differences
 
 ### Verification

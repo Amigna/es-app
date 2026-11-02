@@ -114,6 +114,8 @@ export interface Card {
   link?: { href: string; label: string };
   /** Present on a card you flip and grade yourself instead of answering. Shown with the answer. */
   flashcard?: { example?: { es: string; en: string }; note?: string };
+  /** A sentence to translate. Many answers can be right, so one that doesn't match is compared by the learner. */
+  writing?: boolean;
 }
 
 /** An example only shows when it's written for the person asked, so the blank is always the answer. */
@@ -169,7 +171,14 @@ export function englishCore(text: string): string {
 /** Every acceptable reading of a gloss like "to say, to tell" or "want; love". */
 export const englishAnswers = (gloss: string) => gloss.split(/[,;]/).map(englishCore).filter(Boolean);
 
+/** Sentences are compared on their words, so a missing period or a phone's curly apostrophe doesn't matter. */
+const wordsOnly = (s: string) => s.replace(/[’‘]/g, "'").replace(/[.,;:!?¿¡"“”]/g, " ");
+
 export function gradeCard(card: Card, input: string): Grade {
+  if (card.writing) {
+    const result = grade(wordsOnly(input), wordsOnly(card.answers[0]));
+    return card.english && result === "accent" ? "correct" : result;
+  }
   if (card.english) return card.answers.includes(englishCore(input)) ? "correct" : "wrong";
   const grades = card.answers.map((a) => grade(input, a));
   if (grades.includes("correct")) return "correct";

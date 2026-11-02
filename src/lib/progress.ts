@@ -20,6 +20,9 @@ export interface Tally {
   wrong: number;
 }
 
+/** A saved day. `writing` is by direction, kept per day so translations can be compared over time. */
+export type DayTally = Tally & { writing?: Record<string, Tally> };
+
 export interface Summary {
   items: Record<string, Tally & { last: string }>;
   days: Record<string, Tally>;
@@ -27,6 +30,10 @@ export interface Summary {
   verbs: Record<string, Tally>;
   /** By question type: gender, agreement, toSpanish or toEnglish. */
   kinds: Record<string, Tally>;
+  /** By direction: toEnglish or toSpanish. */
+  writing: Record<string, Tally>;
+  /** The same, by day. */
+  writingDays: Record<string, Record<string, Tally>>;
   total: Tally;
 }
 
@@ -43,7 +50,7 @@ export function localDay(date: Date = new Date()): string {
 
 /** Combines a batch of answers, so saving them takes a few writes instead of one per answer. */
 export function summarize(answers: Answer[]): Summary {
-  const out: Summary = { items: {}, days: {}, tenses: {}, verbs: {}, kinds: {}, total: empty() };
+  const out: Summary = { items: {}, days: {}, tenses: {}, verbs: {}, kinds: {}, writing: {}, writingDays: {}, total: empty() };
   for (const a of answers) {
     const field = FIELD[a.grade];
     const item = (out.items[a.item] ??= { ...empty(), last: a.day });
@@ -55,6 +62,10 @@ export function summarize(answers: Answer[]): Summary {
     const [source, first, , kind] = a.item.split(":");
     if (source === "verb") (out.verbs[first] ??= empty())[field]++;
     if (source === "vocab" && kind) (out.kinds[kind] ??= empty())[field]++;
+    if (source === "writing") {
+      (out.writing[first] ??= empty())[field]++;
+      ((out.writingDays[a.day] ??= {})[first] ??= empty())[field]++;
+    }
     out.total[field]++;
   }
   return out;
@@ -94,6 +105,24 @@ export function currentStreak(days: string[], today: string): number {
     cursor = previousDay(cursor);
   }
   return streak;
+}
+
+/** Tallies for seven-day stretches going back from today, newest first. Empty stretches are kept so the positions mean something. */
+export function recentWeeks<T>(days: Record<string, T>, today: string, pick: (day: T) => Tally | undefined, count: number): Tally[] {
+  let cursor = today;
+  return Array.from({ length: count }, () => {
+    const week = empty();
+    for (let i = 0; i < 7; i++) {
+      const tally = days[cursor] && pick(days[cursor]);
+      if (tally) {
+        week.right += tally.right;
+        week.accent += tally.accent;
+        week.wrong += tally.wrong;
+      }
+      cursor = previousDay(cursor);
+    }
+    return week;
+  });
 }
 
 /** Answers across the seven days ending today. */

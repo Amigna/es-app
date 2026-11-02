@@ -220,27 +220,55 @@ export function blankCard(bank: SentenceBank, verb: Verb, tense: TenseId, random
   };
 }
 
-export function blankDeck(
-  bank: SentenceBank,
-  verbs: Verb[],
-  tenses: TenseId[],
-  random: Random = Math.random,
-): () => Card | null {
+/** Cards built from a verb and tense, which can come back null for a tense with no sentence. */
+function sentenceDeck(verbs: Verb[], tenses: TenseId[], build: (verb: Verb, tense: TenseId) => Card | null, random: Random): () => Card | null {
   return () => {
     if (verbs.length === 0 || tenses.length === 0) return null;
     // Rare tenses have no sentence, so a random pick can miss.
     for (let i = 0; i < 40; i++) {
-      const card = blankCard(bank, pick(verbs, random), pick(tenses, random), random);
+      const card = build(pick(verbs, random), pick(tenses, random));
       if (card) return card;
     }
     for (const verb of verbs) {
       for (const tense of tenses) {
-        const card = blankCard(bank, verb, tense, random);
+        const card = build(verb, tense);
         if (card) return card;
       }
     }
     return null;
   };
+}
+
+export function blankDeck(bank: SentenceBank, verbs: Verb[], tenses: TenseId[], random: Random = Math.random): () => Card | null {
+  return sentenceDeck(verbs, tenses, (verb, tense) => blankCard(bank, verb, tense, random), random);
+}
+
+/** One saved item per direction: translations aren't scheduled, so there's nothing to keep per sentence. */
+export function writingCard(bank: SentenceBank, verb: Verb, tense: TenseId, side: FlashSide, random: Random = Math.random): Card | null {
+  const sentences = sentencesFor(bank, verb.inf, tense);
+  if (sentences.length === 0) return null;
+  const sentence = pick(sentences, random);
+  const toEnglish = side === "toEnglish";
+  const shown = toEnglish ? sentence.en : sentence.es;
+  return {
+    id: `write:${side}:${verb.inf}:${tense}:${sentence.person}`,
+    badge: toEnglish ? "Spanish to English" : "English to Spanish",
+    context: TENSES.find((t) => t.id === tense)!.name,
+    title: toEnglish ? sentence.es : sentence.en,
+    titleIsSpanish: toEnglish,
+    ask: toEnglish ? "Write it in English" : "Write it in Spanish",
+    answers: [shown],
+    shown,
+    english: toEnglish,
+    writing: true,
+    link: { href: `/verb/${verbSlug(verb.inf)}`, label: `See all forms of ${verb.inf}` },
+    track: { item: `writing:${side}` },
+  };
+}
+
+export function writingDeck(bank: SentenceBank, verbs: Verb[], tenses: TenseId[], sides: FlashSide[], random: Random = Math.random): () => Card | null {
+  if (sides.length === 0) return () => null;
+  return sentenceDeck(verbs, tenses, (verb, tense) => writingCard(bank, verb, tense, pick(sides, random), random), random);
 }
 
 function vocabReviewCard(type: string, es: string, kind: string, random: Random): Card | null {

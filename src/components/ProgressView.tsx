@@ -7,12 +7,13 @@ import { TENSES } from "@/lib/conjugation/types";
 import { useDrillSettings } from "@/lib/drill-settings";
 import { auth, firebaseConfigured, isInvited } from "@/lib/firebase";
 import { practiceHref, weakSpots, type WeakSpot } from "@/lib/practice";
-import { accuracy, answered, currentStreak, lastSevenDays, localDay, wordsPracticed } from "@/lib/progress";
+import { accuracy, answered, currentStreak, lastSevenDays, localDay, recentWeeks, wordsPracticed, type Tally } from "@/lib/progress";
 import { saveProgress, setProgressEnabled } from "@/lib/progress-queue";
 import { loadProgress, type ProgressData } from "@/lib/progress-store";
 import { MASTERED_DAYS } from "@/lib/schedule";
 
 const SAVE_WAIT_MS = 5000;
+const WEEKS_SHOWN = 6;
 
 interface WordListTotal {
   type: string;
@@ -91,6 +92,73 @@ function WeakSpotsSection({ data }: { data: ProgressData }) {
   );
 }
 
+const weekLabel = (ago: number) => (ago === 0 ? "Last 7 days" : ago === 1 ? "1 week ago" : `${ago} weeks ago`);
+
+const weekCell = (tally: Tally) => (answered(tally) === 0 ? "–" : `${accuracy(tally)}% of ${answered(tally).toLocaleString()}`);
+
+/** Newest first. Weeks with nothing in any column are left out. */
+function WeekTable({ columns }: { columns: { title: string; weeks: Tally[] }[] }) {
+  const shown = Array.from({ length: WEEKS_SHOWN }, (_, ago) => ago).filter((ago) => columns.some((c) => answered(c.weeks[ago]) > 0));
+  return (
+    <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
+      <table className="w-full text-left">
+        <thead>
+          <tr className="border-b border-zinc-200 text-sm text-zinc-500 dark:border-zinc-800">
+            <th scope="col" className="px-4 py-2 font-medium">Week</th>
+            {columns.map((c) => (
+              <th key={c.title} scope="col" className="px-4 py-2 text-right font-medium">{c.title}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {shown.map((ago) => (
+            <tr key={ago} className="border-b border-zinc-100 last:border-0 dark:border-zinc-800">
+              <th scope="row" className="px-4 py-2 font-normal">{weekLabel(ago)}</th>
+              {columns.map((c) => (
+                <td key={c.title} className="px-4 py-2 text-right tabular-nums">{weekCell(c.weeks[ago])}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function WritingSection({ data }: { data: ProgressData }) {
+  const [, update] = useDrillSettings();
+  const today = localDay();
+  const sides = [
+    { id: "toEnglish", title: "Spanish to English" },
+    { id: "toSpanish", title: "English to Spanish" },
+  ];
+  const started = sides.some((s) => data.writing[s.id]);
+  return (
+    <section>
+      <h2 className="mb-3 text-xl font-semibold">Writing</h2>
+      {started ? (
+        <div className="space-y-3">
+          <div className="grid grid-cols-2 gap-3">
+            {sides.map(({ id, title }) => {
+              const tally = data.writing[id];
+              return <Tile key={id} label={title} value={tally ? `${accuracy(tally)}%` : "–"} note={tally ? `of ${answered(tally).toLocaleString()} sentences` : "None yet"} />;
+            })}
+          </div>
+          <WeekTable columns={sides.map(({ id, title }) => ({ title, weeks: recentWeeks(data.days, today, (day) => day.writing?.[id], WEEKS_SHOWN) }))} />
+          <p className="text-sm text-zinc-500">Includes the sentences you marked as right yourself.</p>
+        </div>
+      ) : (
+        <p className="text-zinc-600 dark:text-zinc-400">
+          <Link href="/drill" onClick={() => update({ mode: "writing" })} className={linkClass}>
+            Try a writing drill
+          </Link>{" "}
+          and your results will show up here.
+        </p>
+      )}
+    </section>
+  );
+}
+
 function VocabularySection({ data, wordLists }: { data: ProgressData; wordLists: WordListTotal[] }) {
   const [, update] = useDrillSettings();
   const practiced = wordsPracticed(data.seen);
@@ -148,9 +216,16 @@ function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTot
         <Tile label="Mastered" value={data.mastered.toLocaleString()} note={`of ${data.practiced.toLocaleString()} practiced`} />
       </div>
 
+      <section>
+        <h2 className="mb-3 text-xl font-semibold">Accuracy by week</h2>
+        <WeekTable columns={[{ title: "All questions", weeks: recentWeeks(data.days, today, (day) => day, WEEKS_SHOWN) }]} />
+      </section>
+
       <WeakSpotsSection data={data} />
 
       <VocabularySection data={data} wordLists={wordLists} />
+
+      <WritingSection data={data} />
 
       {tenseRows.length > 0 ? (
         <section>

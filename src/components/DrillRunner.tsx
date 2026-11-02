@@ -75,10 +75,13 @@ export default function DrillRunner({
   const [isRetry, setIsRetry] = useState(false);
   const [revealed, setRevealed] = useState(false);
   const isVocab = !!card.track?.item.startsWith("vocab:");
+  const canGiveUp = isVocab || !!card.writing;
 
   // Keeps the keyboard flow going: type, Enter to check, Enter for the next one.
   useEffect(() => {
     if (card.flashcard) (revealed ? knewRef : showRef).current?.focus();
+    // Stays put while comparing a translation, so a second Enter can't count it before it's been read.
+    else if (revealed) return;
     else if (result) nextRef.current?.focus();
     else inputRef.current?.focus();
   }, [card, result, revealed]);
@@ -102,9 +105,12 @@ export default function DrillRunner({
   }
 
   function submit(value: string) {
-    if (result || !value.trim()) return;
+    if (result || revealed || !value.trim()) return;
+    const g = gradeCard(card, value);
     setInput(value);
-    record(gradeCard(card, value));
+    // A translation that doesn't match may still be right, so the learner decides.
+    if (card.writing && g === "wrong") setRevealed(true);
+    else record(g);
   }
 
   function selfGrade(knew: boolean) {
@@ -190,7 +196,7 @@ export default function DrillRunner({
             {card.title}
           </h2>
           {/* Only Spanish that's already on screen: speaking the answer early would give it away. */}
-          {isVocab && card.titleIsSpanish && <SpeakButton text={card.title} />}
+          {canGiveUp && card.titleIsSpanish && <SpeakButton text={card.title} />}
         </div>
         {card.subtitle && <p className="text-zinc-600 dark:text-zinc-400">{card.subtitle}</p>}
         {card.example && (
@@ -290,7 +296,7 @@ export default function DrillRunner({
               autoCapitalize="none"
               spellCheck={false}
               value={input}
-              readOnly={!!result}
+              readOnly={!!result || revealed}
               onChange={(e) => setInput(e.target.value)}
               className="h-12 w-full rounded-xl border border-zinc-300 bg-white px-4 text-lg outline-none transition focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/30 dark:border-zinc-700 dark:bg-zinc-950"
             />
@@ -300,7 +306,7 @@ export default function DrillRunner({
                   <button
                     key={letter}
                     type="button"
-                    disabled={!!result}
+                    disabled={!!result || revealed}
                     onClick={() => insertLetter(letter)}
                     aria-label={`Insert ${letter}`}
                     className="h-11 rounded-lg border border-zinc-200 font-medium transition hover:border-emerald-600 disabled:opacity-40 dark:border-zinc-700"
@@ -310,7 +316,7 @@ export default function DrillRunner({
                 ))}
               </div>
             )}
-            {!result && (
+            {!result && !revealed && (
               <button
                 type="submit"
                 disabled={!input.trim()}
@@ -322,7 +328,39 @@ export default function DrillRunner({
           </form>
         )}
 
-        {!result && !card.flashcard && isVocab && (
+        {card.writing && revealed && (
+          <div className="mt-4 space-y-3">
+            <div role="status" className="rounded-lg border border-zinc-200 px-4 py-3 dark:border-zinc-700">
+              <p className="text-sm text-zinc-500">One good answer</p>
+              <p className="flex items-start justify-between gap-2">
+                <span lang={card.english ? "en" : "es"} className="text-lg font-semibold">
+                  {card.shown}
+                </span>
+                {!card.english && <SpeakButton text={card.shown} />}
+              </p>
+            </div>
+            <p className="text-sm text-zinc-600 dark:text-zinc-400">Yours doesn&apos;t match exactly, but it can still be right. Count it if it means the same thing.</p>
+            <div className="grid grid-cols-2 gap-3">
+              <button
+                type="button"
+                onClick={() => selfGrade(false)}
+                className="h-11 rounded-xl border border-zinc-300 font-medium transition hover:border-emerald-600 dark:border-zinc-700"
+              >
+                Missed it
+              </button>
+              <button
+                type="button"
+                onClick={() => selfGrade(true)}
+                className="h-11 rounded-xl bg-emerald-700 font-medium text-white transition hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
+              >
+                Mine works
+              </button>
+            </div>
+            <ReportProblem key={card.id} about={[card.badge, card.title, card.shown].filter(Boolean).join(": ")} />
+          </div>
+        )}
+
+        {!result && !revealed && !card.flashcard && canGiveUp && (
           <button type="button" onClick={() => record("wrong")} className="mt-3 min-h-10 w-full text-sm text-zinc-600 underline dark:text-zinc-400">
             I don&apos;t know this
           </button>
@@ -330,7 +368,7 @@ export default function DrillRunner({
 
         {result && (
           <div className="mt-4 space-y-3">
-            <Feedback result={result} card={card} speak={isVocab && !card.english ? card.shown : undefined} />
+            <Feedback result={result} card={card} speak={canGiveUp && !card.english ? card.shown : undefined} />
             <button
               ref={nextRef}
               type="button"

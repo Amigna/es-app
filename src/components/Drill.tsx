@@ -15,6 +15,7 @@ import { VERBS, findVerb, type Verb } from "@/lib/verbs";
 
 const PRACTICE_SIZE = 15;
 const FLASHCARD_SESSION = 20;
+const WRITING_SESSION = 10;
 
 const MODES: { id: Mode; title: string; hint: string }[] = [
   { id: "review", title: "Today's review", hint: "What's due, plus new items" },
@@ -22,6 +23,7 @@ const MODES: { id: Mode; title: string; hint: string }[] = [
   { id: "blanks", title: "Fill in the blank", hint: "Complete a real sentence" },
   { id: "vocabulary", title: "Vocabulary", hint: "Words, gender and agreement" },
   { id: "flashcards", title: "Flashcards", hint: "Flip words and phrases" },
+  { id: "writing", title: "Writing", hint: "Translate whole sentences" },
   { id: "grammar", title: "Grammar", hint: "Quizzes from the guides" },
 ];
 
@@ -54,6 +56,11 @@ const WORD_TYPES: { id: WordType; title: string; hint: string }[] = [
 const FLASH_SIDES: { id: FlashSide; title: string; hint: string }[] = [
   { id: "toEnglish", title: "Spanish to English", hint: "See the Spanish, recall the meaning" },
   { id: "toSpanish", title: "English to Spanish", hint: "See the meaning, recall the Spanish" },
+];
+
+const WRITING_SIDES: { id: FlashSide; title: string; hint: string }[] = [
+  { id: "toEnglish", title: "Spanish to English", hint: "Read the Spanish, write the English" },
+  { id: "toSpanish", title: "English to Spanish", hint: "Read the English, write the Spanish" },
 ];
 
 const FLASH_TYPES: { id: CardType; title: string; hint: string }[] = [
@@ -136,7 +143,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
   const rareSet = useMemo(() => new Set(rare), [rare]);
 
   const [settings, update] = useDrillSettings();
-  const { mode, pool, tenses, kinds, wordTypes, topics, guides, flashSide, flashTypes } = settings;
+  const { mode, pool, tenses, kinds, wordTypes, topics, guides, flashSide, flashTypes, writingSides } = settings;
   const [session, setSession] = useState<{ first: Card; next: () => Card | null } | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -193,6 +200,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
     const decks = await import("@/lib/card-decks");
     if (mode === "vocabulary") return decks.vocabDeck({ kinds, wordTypes, topics });
     if (mode === "flashcards") return limitedDeck(decks.flashcardDeck({ side: flashSide, types: flashTypes, topics }), FLASHCARD_SESSION);
+    if (mode === "writing") return limitedDeck(decks.writingDeck(await loadSentences(verbs), verbs, tenses, writingSides), WRITING_SESSION);
     return decks.blankDeck(await loadSentences(verbs), verbs, tenses);
   }
 
@@ -223,11 +231,12 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
 
   if (session) return <DrillRunner first={session.first} next={session.next} onStop={() => setSession(null)} />;
 
-  const usesVerbs = mode === "conjugation" || mode === "blanks";
+  const usesVerbs = mode === "conjugation" || mode === "blanks" || mode === "writing";
   const todayReady = today.status === "ready" && today.reviews.length + today.fresh.length > 0;
   const vocabReady = kinds.length > 0 && wordTypes.length > 0;
+  const verbsReady = tenses.length > 0 && (mode !== "writing" || writingSides.length > 0);
   const ready =
-    mode === "review" ? todayReady : mode === "flashcards" ? flashTypes.length > 0 : mode === "grammar" || (usesVerbs ? tenses.length > 0 : vocabReady);
+    mode === "review" ? todayReady : mode === "flashcards" ? flashTypes.length > 0 : mode === "grammar" || (usesVerbs ? verbsReady : vocabReady);
   const showTopics = (mode === "vocabulary" && wordTypes.includes("noun")) || (mode === "flashcards" && flashTypes.includes("noun"));
 
   return (
@@ -266,6 +275,29 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
               >
                 {g.title}
               </button>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {mode === "writing" && (
+        <section>
+          <h2 className="mb-1 text-xl font-semibold">Which way?</h2>
+          <p className="mb-3 text-sm text-zinc-500">
+            Each session is {WRITING_SESSION} sentences. If yours doesn&apos;t match the model answer, you decide whether it counts. These add to your
+            totals but not to your review schedule.
+          </p>
+          <div className="grid gap-2 sm:grid-cols-2">
+            {WRITING_SIDES.map((s) => (
+              <OptionCard
+                key={s.id}
+                name={`writing-${s.id}`}
+                type="checkbox"
+                title={s.title}
+                hint={s.hint}
+                checked={writingSides.includes(s.id)}
+                onChange={() => update({ writingSides: toggled(writingSides, s.id) })}
+              />
             ))}
           </div>
         </section>

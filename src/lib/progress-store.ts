@@ -15,7 +15,7 @@ import {
   writeBatch,
 } from "firebase/firestore";
 import { auth, db } from "./firebase";
-import { localDay, summarize, type Answer, type Summary, type Tally } from "./progress";
+import { localDay, summarize, type Answer, type DayTally, type Summary, type Tally } from "./progress";
 import { DEFAULT_NEW_PER_DAY, MASTERED_DAYS, REVIEWS_PER_DAY, planReviews, schedulable, type Schedule, type TodayData } from "./schedule";
 
 // Everything lives under users/{uid}: `items` per thing practiced, `days` per calendar day, and `stats` for the
@@ -61,14 +61,16 @@ export async function saveAnswers(answers: Answer[]) {
   for (const [day, tally] of Object.entries(days)) {
     const counts = plan.perDay[day];
     const scheduled = counts ? { newItems: increment(counts.newItems), reviews: increment(counts.reviews) } : {};
-    batch.set(doc(db(), "users", uid, "days", day), { ...bump(tally), ...scheduled }, { merge: true });
+    const writing = summary.writingDays[day];
+    const translated = writing ? { writing: Object.fromEntries(Object.entries(writing).map(([side, t]) => [side, bump(t)])) } : {};
+    batch.set(doc(db(), "users", uid, "days", day), { ...bump(tally), ...scheduled, ...translated }, { merge: true });
   }
   batch.set(statsDoc(uid, "summary"), summaryUpdate(summary), { merge: true });
   if (plan.fresh.length > 0) batch.set(statsDoc(uid, "seen"), { items: arrayUnion(...plan.fresh) }, { merge: true });
   await batch.commit();
 }
 
-const TALLY_MAPS = ["tenses", "verbs", "kinds"] as const;
+const TALLY_MAPS = ["tenses", "verbs", "kinds", "writing"] as const;
 
 type Bumped = ReturnType<typeof bump>;
 
@@ -87,7 +89,8 @@ export interface ProgressData {
   tenses: Record<string, Tally>;
   verbs: Record<string, Tally>;
   kinds: Record<string, Tally>;
-  days: Record<string, Tally>;
+  writing: Record<string, Tally>;
+  days: Record<string, DayTally>;
   practiced: number;
   mastered: number;
   dueToday: number;
@@ -113,7 +116,8 @@ export async function loadProgress(uid: string): Promise<ProgressData> {
     tenses: (data.tenses ?? {}) as Record<string, Tally>,
     verbs: (data.verbs ?? {}) as Record<string, Tally>,
     kinds: (data.kinds ?? {}) as Record<string, Tally>,
-    days: Object.fromEntries(recent.docs.map((d) => [d.id, d.data() as Tally])),
+    writing: (data.writing ?? {}) as Record<string, Tally>,
+    days: Object.fromEntries(recent.docs.map((d) => [d.id, d.data() as DayTally])),
     practiced: practiced.data().count,
     mastered: mastered.data().count,
     dueToday: dueToday.data().count,

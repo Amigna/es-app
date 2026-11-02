@@ -1,8 +1,9 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { blankCard, blankDeck, flashcardDeck, newItemOrder, reviewCard, reviewDeck, vocabDeck, type VocabOptions } from "./card-decks";
+import { blankCard, blankDeck, flashcardDeck, newItemOrder, reviewCard, reviewDeck, vocabDeck, writingCard, writingDeck, type VocabOptions } from "./card-decks";
 import { englishAnswers, englishCore, gradeCard, type Card } from "./drill";
 import { DEFAULT_SETTINGS, NOUN_TOPICS, parseSettings } from "./drill-settings";
+import { schedulable } from "./schedule";
 import { SENTENCE_BANK } from "./sentence-data";
 import { VERBS, findVerb } from "./verbs";
 import { ADJECTIVES, ADVERBS, NOUNS, PHRASES, SMALL_WORDS } from "./vocab";
@@ -228,6 +229,12 @@ describe("drill settings", () => {
     assert.equal(s.flashSide, DEFAULT_SETTINGS.flashSide);
     assert.deepEqual(s.flashTypes, ["phrase"]);
   });
+
+  it("keeps writing directions and drops unknown ones", () => {
+    assert.deepEqual(parseSettings(JSON.stringify({ writingSides: ["toSpanish", "nope"] })).writingSides, ["toSpanish"]);
+    assert.deepEqual(parseSettings(JSON.stringify({ writingSides: [] })).writingSides, []);
+    assert.equal(parseSettings(JSON.stringify({ mode: "writing" })).mode, "writing");
+  });
 });
 
 describe("flashcardDeck", () => {
@@ -282,5 +289,67 @@ describe("flashcardDeck", () => {
   it("carries a phrase's note to the answer side", () => {
     const card = all(flashcardDeck({ side: "toEnglish", types: ["phrase"], topics: [] })).find((c) => c.title === "¿Qué bolá?");
     assert.equal(card?.flashcard?.note, "Cuban slang, very informal");
+  });
+});
+
+describe("writingDeck", () => {
+  const verbs = VERBS.slice(0, 10);
+  const toSpanish = writingCard(SENTENCE_BANK, verb("tener"), "present", "toSpanish", () => 0)!;
+  const toEnglish = writingCard(SENTENCE_BANK, verb("tener"), "present", "toEnglish", () => 0)!;
+
+  it("shows one language and expects the other", () => {
+    assert.equal(toSpanish.title, toEnglish.shown);
+    assert.equal(toEnglish.title, toSpanish.shown);
+    assert.equal(toSpanish.titleIsSpanish, false);
+    assert.equal(toEnglish.titleIsSpanish, true);
+    assert.ok(toSpanish.writing && toEnglish.writing);
+  });
+
+  it("accepts the model answer, with or without punctuation", () => {
+    assert.equal(gradeCard(toSpanish, toSpanish.shown), "correct");
+    assert.equal(gradeCard(toSpanish, toSpanish.shown.replace(/[.?!¿¡]/g, "").toUpperCase()), "correct");
+    assert.equal(gradeCard(toEnglish, toEnglish.shown.replace(/[.?!]/g, "")), "correct");
+  });
+
+  it("treats a phone's curly apostrophe as a plain one", () => {
+    const card = { ...toEnglish, answers: ["I'm tired."], shown: "I'm tired." };
+    assert.equal(gradeCard(card, "I’m tired"), "correct");
+  });
+
+  it("flags a missing accent in Spanish, and doesn't care in English", () => {
+    const spanish = { ...toSpanish, answers: ["Ella está aquí."] };
+    assert.equal(gradeCard(spanish, "Ella esta aqui."), "accent");
+    const english = { ...toEnglish, answers: ["We drove to Bogotá."] };
+    assert.equal(gradeCard(english, "We drove to Bogota"), "correct");
+  });
+
+  it("leaves a different wording to the learner", () => {
+    assert.equal(gradeCard(toEnglish, "something else entirely"), "wrong");
+  });
+
+  it("stays out of the schedule, and saves one item per direction", () => {
+    assert.equal(toSpanish.track?.item, "writing:toSpanish");
+    assert.equal(toEnglish.track?.item, "writing:toEnglish");
+    assert.equal(schedulable(toSpanish.track!.item), false);
+    assert.equal(toSpanish.track?.tense, undefined);
+  });
+
+  it("uses both directions when both are chosen, and only one otherwise", () => {
+    const seen = new Set<string>();
+    const next = writingDeck(SENTENCE_BANK, verbs, ["present"], ["toEnglish", "toSpanish"]);
+    for (let i = 0; i < 100; i++) seen.add(next()?.badge ?? "");
+    assert.deepEqual([...seen].sort(), ["English to Spanish", "Spanish to English"]);
+    assert.equal(writingDeck(SENTENCE_BANK, verbs, ["present"], ["toSpanish"])()?.badge, "English to Spanish");
+  });
+
+  it("is empty with nothing to ask", () => {
+    assert.equal(writingDeck(SENTENCE_BANK, verbs, ["present"], [])(), null);
+    assert.equal(writingDeck(SENTENCE_BANK, verbs, [], ["toEnglish"])(), null);
+    assert.equal(writingDeck(SENTENCE_BANK, [], ["present"], ["toEnglish"])(), null);
+  });
+
+  it("skips tenses with no sentence", () => {
+    assert.equal(writingCard(SENTENCE_BANK, verb("oponer"), "present", "toEnglish"), null);
+    assert.ok(writingDeck(SENTENCE_BANK, [verb("oponer")], ["present", "preterite"], ["toEnglish"])());
   });
 });

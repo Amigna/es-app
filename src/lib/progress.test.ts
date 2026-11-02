@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { inviteAllowsVulgar, statusOfInvite } from "./firebase";
-import { accuracy, currentStreak, lastSevenDays, localDay, summarize, wordsPracticed, type Answer } from "./progress";
+import { accuracy, currentStreak, lastSevenDays, localDay, recentWeeks, summarize, wordsPracticed, type Answer, type Tally } from "./progress";
 import { summaryUpdate } from "./progress-store";
 
 const answer = (item: string, grade: Answer["grade"], day = "2026-11-01", tense?: Answer["tense"]): Answer => ({ item, grade, day, tense });
@@ -79,6 +79,12 @@ describe("summaryUpdate", () => {
     assert.deepEqual(Object.keys(vocab.kinds ?? {}), ["gender"]);
     const verb = summaryUpdate(summarize([answer("verb:ir:present", "correct", "2026-11-01", "present")]));
     assert.equal("kinds" in verb, false);
+    assert.equal("writing" in verb, false);
+  });
+
+  it("sends writing when a batch has translations", () => {
+    const update = summaryUpdate(summarize([answer("writing:toSpanish", "correct")]));
+    assert.deepEqual(Object.keys(update.writing ?? {}), ["toSpanish"]);
   });
 
   it("sends tenses and verbs when a batch has verbs", () => {
@@ -158,5 +164,57 @@ describe("wordsPracticed", () => {
 
   it("adds phrases to the question type figures like any other word", () => {
     assert.equal(summarize([answer("vocab:phrase:Mucho gusto.:toEnglish", "wrong")]).kinds.toEnglish.wrong, 1);
+  });
+});
+
+describe("writing answers", () => {
+  it("adds up by direction and by day", () => {
+    const s = summarize([
+      answer("writing:toSpanish", "correct", "2026-11-01"),
+      answer("writing:toSpanish", "wrong", "2026-11-01"),
+      answer("writing:toEnglish", "correct", "2026-11-02"),
+    ]);
+    assert.deepEqual(s.writing.toSpanish, { right: 1, accent: 0, wrong: 1 });
+    assert.deepEqual(s.writingDays["2026-11-01"], { toSpanish: { right: 1, accent: 0, wrong: 1 } });
+    assert.deepEqual(s.writingDays["2026-11-02"], { toEnglish: { right: 1, accent: 0, wrong: 0 } });
+  });
+
+  it("still counts toward the totals, and stays out of tenses and vocabulary", () => {
+    const s = summarize([answer("writing:toEnglish", "correct")]);
+    assert.equal(s.total.right, 1);
+    assert.equal(s.days["2026-11-01"].right, 1);
+    assert.deepEqual(s.tenses, {});
+    assert.deepEqual(s.verbs, {});
+    assert.deepEqual(s.kinds, {});
+  });
+
+  it("leaves other answers out", () => {
+    assert.deepEqual(summarize([answer("verb:ser:present", "correct")]).writingDays, {});
+  });
+});
+
+describe("recentWeeks", () => {
+  const right = (n: number): Tally => ({ right: n, accent: 0, wrong: 0 });
+
+  it("groups seven days at a time, going back from today", () => {
+    const days = { "2026-11-14": right(1), "2026-11-08": right(2), "2026-11-07": right(4), "2026-11-01": right(8), "2026-10-31": right(16) };
+    const weeks = recentWeeks(days, "2026-11-14", (d) => d, 3);
+    assert.deepEqual(weeks.map((w) => w.right), [3, 12, 16]);
+  });
+
+  it("keeps empty weeks in place", () => {
+    const weeks = recentWeeks({ "2026-10-30": right(5) }, "2026-11-14", (d) => d, 3);
+    assert.deepEqual(weeks.map((w) => w.right), [0, 0, 5]);
+  });
+
+  it("reads just the part asked for", () => {
+    const days = { "2026-11-14": { ...right(9), writing: { toSpanish: { right: 1, accent: 0, wrong: 1 } } }, "2026-11-13": right(9) };
+    const [week] = recentWeeks(days, "2026-11-14", (d: Tally & { writing?: Record<string, Tally> }) => d.writing?.toSpanish, 1);
+    assert.deepEqual(week, { right: 1, accent: 0, wrong: 1 });
+  });
+
+  it("crosses a month and a year", () => {
+    const weeks = recentWeeks({ "2025-12-31": right(1), "2026-01-01": right(2) }, "2026-01-03", (d) => d, 1);
+    assert.equal(weeks[0].right, 3);
   });
 });

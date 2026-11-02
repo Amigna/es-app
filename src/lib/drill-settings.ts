@@ -2,7 +2,7 @@ import { useCallback, useMemo, useSyncExternalStore } from "react";
 import { TENSES, type TenseId } from "./conjugation/types";
 import type { VerbPool } from "./drill";
 
-export type Mode = "review" | "conjugation" | "vocabulary" | "flashcards" | "blanks" | "grammar";
+export type Mode = "review" | "conjugation" | "vocabulary" | "flashcards" | "writing" | "blanks" | "grammar";
 export type VocabKind = "toSpanish" | "toEnglish" | "gender" | "agreement";
 export type WordType = "noun" | "adjective" | "adverb" | "small";
 /** Phrases are flashcards only: typing a whole sentence exactly is a test of punctuation more than memory. */
@@ -25,6 +25,8 @@ export interface DrillSettings {
   /** Which way flashcards are asked. */
   flashSide: FlashSide;
   flashTypes: CardType[];
+  /** Which ways sentences are translated in the writing drill. */
+  writingSides: FlashSide[];
 }
 
 export const DEFAULT_SETTINGS: DrillSettings = {
@@ -37,9 +39,10 @@ export const DEFAULT_SETTINGS: DrillSettings = {
   guides: [],
   flashSide: "toEnglish",
   flashTypes: ["noun", "adjective", "adverb", "small", "phrase"],
+  writingSides: ["toEnglish", "toSpanish"],
 };
 
-const MODES: Mode[] = ["review", "conjugation", "vocabulary", "flashcards", "blanks", "grammar"];
+const MODES: Mode[] = ["review", "conjugation", "vocabulary", "flashcards", "writing", "blanks", "grammar"];
 const POOLS: VerbPool[] = ["common", "irregular", "all"];
 const KINDS: VocabKind[] = ["toSpanish", "toEnglish", "gender", "agreement"];
 const WORD_TYPES: WordType[] = ["noun", "adjective", "adverb", "small"];
@@ -68,6 +71,7 @@ export function parseSettings(raw: string | null): DrillSettings {
       guides: Array.isArray(saved.guides) ? saved.guides.filter((g) => typeof g === "string") : DEFAULT_SETTINGS.guides,
       flashSide: oneOf(saved.flashSide, FLASH_SIDES, DEFAULT_SETTINGS.flashSide),
       flashTypes: someOf(saved.flashTypes, CARD_TYPES, DEFAULT_SETTINGS.flashTypes),
+      writingSides: someOf(saved.writingSides, FLASH_SIDES, DEFAULT_SETTINGS.writingSides),
     };
   } catch {
     return DEFAULT_SETTINGS;
