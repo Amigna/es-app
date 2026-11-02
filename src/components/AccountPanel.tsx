@@ -63,6 +63,8 @@ const primaryClass =
   "h-12 w-full rounded-xl bg-emerald-700 px-5 font-medium text-white transition hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 disabled:cursor-not-allowed disabled:opacity-50";
 const secondaryClass =
   "h-12 w-full rounded-xl border border-zinc-300 px-5 font-medium transition hover:border-emerald-600 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-700";
+const noticeClass =
+  "rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-sm text-amber-900 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-200";
 
 function NewItemsSetting({ uid }: { uid: string }) {
   const [value, setValue] = useState<number | null>(null);
@@ -149,9 +151,13 @@ function RequestInvite({ user, onSent }: { user: User; onSent: () => void }) {
         send();
       }}
     >
-      <p className="text-sm text-zinc-600 dark:text-zinc-400">
-        Saved progress is invite-only for now. Everything else on the site is yours to use, or you can request access.
-      </p>
+      <div className={noticeClass}>
+        <h2 className="font-medium">One more step to save your progress</h2>
+        <p>
+          You&apos;re signed in, but saved progress is invite-only for now. Add your name and send this request. Everything else on the
+          site is yours to use either way.
+        </p>
+      </div>
       <label htmlFor="request-first" className="block text-sm text-zinc-500">
         First name
       </label>
@@ -227,7 +233,7 @@ function SignedIn({ user }: { user: User }) {
       )}
       {status === "invited" && <NewItemsSetting uid={user.uid} />}
       {status === "requested" && (
-        <p role="status" className="rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-sm text-amber-900 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-200">
+        <p role="status" className={noticeClass}>
           Your request is in. Your progress will start saving once it&apos;s approved, and until then everything else on the site is yours to use.
         </p>
       )}
@@ -287,6 +293,9 @@ function SignInForm({ onError }: { onError: (message: string | null) => void }) 
           We sent a sign-in link to <span className="break-all">{sentTo}</span>. Open it on this device to finish, and check your
           spam folder if it doesn&apos;t arrive.
         </p>
+        <p className="text-zinc-600 dark:text-zinc-400">
+          New here? There&apos;s one more step after the link: request access on the page it opens.
+        </p>
       </div>
     );
   }
@@ -324,7 +333,7 @@ function SignInForm({ onError }: { onError: (message: string | null) => void }) 
         </button>
       </form>
 
-      <p className="text-center text-sm text-zinc-500">New here? Sign in first, then you can request access to saved progress.</p>
+      <p className="text-center text-sm text-zinc-500">New here? There are two steps: sign in, then request access on this page to save your progress.</p>
     </div>
   );
 }
@@ -343,10 +352,15 @@ function ConfirmEmail({ onConfirm }: { onConfirm: (email: string) => void }) {
       <label htmlFor="confirm-email" className="block font-medium">
         Confirm your email to finish signing in
       </label>
+      <p id="confirm-email-why" className="text-sm text-zinc-600 dark:text-zinc-400">
+        You&apos;re not signed in yet. This happens when a link opens in a different browser or in your email app. Enter the same address
+        you used.
+      </p>
       <input
         id="confirm-email"
         type="email"
         autoComplete="email"
+        aria-describedby="confirm-email-why"
         required
         value={email}
         onChange={(e) => setEmail(e.target.value)}

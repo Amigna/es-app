@@ -131,6 +131,7 @@ These live in `.verify/`, which is gitignored, so keep a copy if you change mach
 - [x] 1,097 more sentences in four batches, extending that coverage to the top 206 verbs
 - [x] 1,676 more sentences in six batches, extending that coverage to the top 278 verbs
 - [x] 856 more sentences in three batches, finishing that coverage for all 314 verbs
+- [x] Harder-to-miss request step on the account page: a "one more step" notice on the form, the two steps explained before signing in, and an explanation on the confirm-email screen
 - [x] Sentence data split into one file per 50 verbs, so the default drill downloads about 54 KB instead of 170 KB (gzipped). Every lookup was compared before and after, with no differences
 
 ### Verification
