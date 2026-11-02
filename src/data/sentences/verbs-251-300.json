@@ -2005,19 +2005,39 @@
  },
  "alegrarse": {
   "present": [
-   {"person":0,"es":"Me alegro de verte.","en":"I'm glad to see you."}
+   {"person":0,"es":"Me alegro de verte.","en":"I'm glad to see you."},
+   {"person":1,"es":"¿Te alegras de haber venido?","en":"Are you glad you came?"},
+   {"person":2,"es":"Mi abuela se alegra con cualquier llamada.","en":"My grandmother is happy with any phone call."},
+   {"person":3,"es":"Nos alegramos mucho por ti.","en":"We're very happy for you."},
+   {"person":4,"es":"Los niños se alegran cuando llega el verano.","en":"The kids are happy when summer comes."}
   ],
   "preterite": [
-   {"person":2,"es":"Mi madre se alegró mucho con la noticia.","en":"My mother was very glad about the news."}
+   {"person":2,"es":"Mi madre se alegró mucho con la noticia.","en":"My mother was very glad about the news."},
+   {"person":0,"es":"Me alegré de encontrarte en el mercado.","en":"I was glad to run into you at the market."},
+   {"person":1,"es":"¿Te alegraste con el resultado?","en":"Were you happy with the result?"},
+   {"person":3,"es":"Nos alegramos de la buena noticia.","en":"We were happy about the good news."},
+   {"person":4,"es":"Mis tíos se alegraron de vernos.","en":"My aunt and uncle were glad to see us."}
   ],
   "imperfect": [
-   {"person":3,"es":"Nos alegrábamos de cada carta.","en":"We were happy about every letter."}
+   {"person":3,"es":"Nos alegrábamos de cada carta.","en":"We were happy about every letter."},
+   {"person":0,"es":"Yo me alegraba cuando llegaba el cartero.","en":"I used to be happy when the mailman came."},
+   {"person":1,"es":"Tú te alegrabas con muy poco.","en":"It took very little to make you happy."},
+   {"person":2,"es":"Mi abuelo se alegraba de vernos en la puerta.","en":"My grandfather was glad to see us at the door."},
+   {"person":4,"es":"Los pescadores se alegraban con la lluvia.","en":"The fishermen were happy with the rain."}
   ],
   "future": [
-   {"person":1,"es":"Te alegrarás de haber venido.","en":"You'll be glad you came."}
+   {"person":1,"es":"Te alegrarás de haber venido.","en":"You'll be glad you came."},
+   {"person":0,"es":"Me alegraré si consigues ese trabajo.","en":"I'll be glad if you get that job."},
+   {"person":2,"es":"Tu madre se alegrará de oír tu voz.","en":"Your mother will be glad to hear your voice."},
+   {"person":3,"es":"Nos alegraremos cuando termine la obra.","en":"We'll be glad when the construction ends."},
+   {"person":4,"es":"Tus primos se alegrarán con la visita.","en":"Your cousins will be happy with the visit."}
   ],
   "conditional": [
-   {"person":3,"es":"Nos alegraríamos mucho de verte.","en":"We'd be very glad to see you."}
+   {"person":3,"es":"Nos alegraríamos mucho de verte.","en":"We'd be very glad to see you."},
+   {"person":0,"es":"Yo me alegraría por ella.","en":"I'd be happy for her."},
+   {"person":1,"es":"¿Te alegrarías de volver a tu pueblo?","en":"Would you be glad to go back to your hometown?"},
+   {"person":2,"es":"Mi padre se alegraría mucho con esta foto.","en":"My father would be very happy with this picture."},
+   {"person":4,"es":"Tus abuelos se alegrarían de conocerla.","en":"Your grandparents would be glad to meet her."}
   ],
   "presentPerfect": [
    {"person":3,"es":"Nos hemos alegrado mucho.","en":"We've been very glad."}
@@ -2030,7 +2050,11 @@
    {"person":1,"es":"Te habrías alegrado de verla.","en":"You would have been glad to see her."}
   ],
   "subjPresent": [
-   {"person":1,"es":"Espero que te alegres con la sorpresa.","en":"I hope you're happy about the surprise."}
+   {"person":1,"es":"Espero que te alegres con la sorpresa.","en":"I hope you're happy about the surprise."},
+   {"person":0,"es":"Mis amigos esperan que yo me alegre con la noticia.","en":"My friends expect me to be happy about the news."},
+   {"person":2,"es":"Ojalá tu mamá se alegre con el regalo.","en":"I hope your mom is happy with the gift."},
+   {"person":3,"es":"Es lógico que nos alegremos.","en":"It makes sense for us to be glad."},
+   {"person":4,"es":"Quiero que los niños se alegren en Navidad.","en":"I want the kids to be happy at Christmas."}
   ],
   "subjImperfect": [
    {"person":2,"es":"Quería que mi madre se alegrara.","en":"I wanted my mother to be happy."}
@@ -2045,19 +2069,39 @@
  },
  "reunirse": {
   "present": [
-   {"person":3,"es":"Nos reunimos todos los domingos en casa de mi abuela.","en":"We get together every Sunday at my grandmother's house."}
+   {"person":3,"es":"Nos reunimos todos los domingos en casa de mi abuela.","en":"We get together every Sunday at my grandmother's house."},
+   {"person":0,"es":"Me reúno con mi jefe a las diez.","en":"I'm meeting with my boss at ten."},
+   {"person":1,"es":"¿Te reúnes con tus amigos este sábado?","en":"Are you getting together with your friends this Saturday?"},
+   {"person":2,"es":"El club se reúne los martes.","en":"The club meets on Tuesdays."},
+   {"person":4,"es":"Los vecinos se reúnen en el parque.","en":"The neighbors get together in the park."}
   ],
   "preterite": [
-   {"person":4,"es":"Los vecinos se reunieron en la plaza.","en":"The neighbors met in the square."}
+   {"person":4,"es":"Los vecinos se reunieron en la plaza.","en":"The neighbors met in the square."},
+   {"person":0,"es":"Me reuní con el abogado ayer.","en":"I met with the lawyer yesterday."},
+   {"person":1,"es":"¿Te reuniste con la maestra?","en":"Did you meet with the teacher?"},
+   {"person":2,"es":"La familia se reunió para la cena.","en":"The family got together for dinner."},
+   {"person":3,"es":"Nos reunimos después de muchos años.","en":"We got together after many years."}
   ],
   "imperfect": [
-   {"person":3,"es":"Nos reuníamos después de la escuela.","en":"We used to get together after school."}
+   {"person":3,"es":"Nos reuníamos después de la escuela.","en":"We used to get together after school."},
+   {"person":0,"es":"Yo me reunía con mis primos en la finca.","en":"I used to get together with my cousins on the farm."},
+   {"person":1,"es":"Tú te reunías con tus compañeros en la biblioteca.","en":"You used to meet your classmates at the library."},
+   {"person":2,"es":"El comité se reunía cada mes.","en":"The committee met every month."},
+   {"person":4,"es":"Las mujeres se reunían a coser.","en":"The women used to get together to sew."}
   ],
   "future": [
-   {"person":3,"es":"Nos reuniremos a las tres.","en":"We'll meet at three."}
+   {"person":3,"es":"Nos reuniremos a las tres.","en":"We'll meet at three."},
+   {"person":0,"es":"Me reuniré contigo después del trabajo.","en":"I'll meet you after work."},
+   {"person":1,"es":"Te reunirás con el director mañana.","en":"You'll meet with the principal tomorrow."},
+   {"person":2,"es":"La junta se reunirá el jueves.","en":"The board will meet on Thursday."},
+   {"person":4,"es":"Los dos presidentes se reunirán en Lima.","en":"The two presidents will meet in Lima."}
   ],
   "conditional": [
-   {"person":3,"es":"Nos reuniríamos más si viviéramos cerca.","en":"We'd get together more if we lived nearby."}
+   {"person":3,"es":"Nos reuniríamos más si viviéramos cerca.","en":"We'd get together more if we lived nearby."},
+   {"person":0,"es":"Yo me reuniría con ellos si tuviera tiempo.","en":"I'd meet with them if I had time."},
+   {"person":1,"es":"¿Te reunirías con tu antiguo jefe?","en":"Would you meet with your old boss?"},
+   {"person":2,"es":"Mi familia se reuniría más en la casa de campo.","en":"My family would get together more at the country house."},
+   {"person":4,"es":"Ellos se reunirían contigo en el hotel.","en":"They would meet you at the hotel."}
   ],
   "presentPerfect": [
    {"person":1,"es":"¿Te has reunido con el jefe?","en":"Have you met with the boss?"}
@@ -2070,7 +2114,11 @@
    {"person":3,"es":"Nos habríamos reunido antes.","en":"We would have gotten together sooner."}
   ],
   "subjPresent": [
-   {"person":3,"es":"Espero que nos reunamos pronto.","en":"I hope we get together soon."}
+   {"person":3,"es":"Espero que nos reunamos pronto.","en":"I hope we get together soon."},
+   {"person":0,"es":"Mi jefa quiere que yo me reúna con los clientes.","en":"My boss wants me to meet with the clients."},
+   {"person":1,"es":"Es importante que te reúnas con tu abogado.","en":"It's important for you to meet with your lawyer."},
+   {"person":2,"es":"Espero que el equipo se reúna antes del partido.","en":"I hope the team gets together before the game."},
+   {"person":4,"es":"Ojalá mis hermanos se reúnan en Navidad.","en":"I hope my brothers and sisters get together at Christmas."}
   ],
   "subjImperfect": [
    {"person":4,"es":"Querían que se reunieran todos.","en":"They wanted everyone to get together."}
@@ -2091,19 +2139,39 @@
  },
  "graduarse": {
   "present": [
-   {"person":0,"es":"Me gradúo en mayo.","en":"I graduate in May."}
+   {"person":0,"es":"Me gradúo en mayo.","en":"I graduate in May."},
+   {"person":1,"es":"¿De qué te gradúas?","en":"What are you graduating in?"},
+   {"person":2,"es":"Mi novia se gradúa de abogada.","en":"My girlfriend is graduating as a lawyer."},
+   {"person":3,"es":"Nos graduamos este viernes.","en":"We graduate this Friday."},
+   {"person":4,"es":"Los cadetes se gradúan en julio.","en":"The cadets graduate in July."}
   ],
   "preterite": [
-   {"person":2,"es":"Mi hija se graduó de médica.","en":"My daughter graduated as a doctor."}
+   {"person":2,"es":"Mi hija se graduó de médica.","en":"My daughter graduated as a doctor."},
+   {"person":0,"es":"Me gradué en 2010.","en":"I graduated in 2010."},
+   {"person":1,"es":"¿Dónde te graduaste?","en":"Where did you graduate?"},
+   {"person":3,"es":"Nos graduamos de la misma escuela.","en":"We graduated from the same school."},
+   {"person":4,"es":"Mis hermanos se graduaron de ingenieros.","en":"My brothers graduated as engineers."}
   ],
   "imperfect": [
-   {"person":4,"es":"Los estudiantes se graduaban en junio.","en":"The students used to graduate in June."}
+   {"person":4,"es":"Los estudiantes se graduaban en junio.","en":"The students used to graduate in June."},
+   {"person":0,"es":"Yo me graduaba ese año y buscaba trabajo.","en":"I was graduating that year and looking for a job."},
+   {"person":1,"es":"Tú te graduabas cuando te conocí.","en":"You were graduating when I met you."},
+   {"person":2,"es":"Mi hermana se graduaba el día del huracán.","en":"My sister was graduating the day of the hurricane."},
+   {"person":3,"es":"Nos graduábamos en junio, pero todo cambió.","en":"We were going to graduate in June, but everything changed."}
   ],
   "future": [
-   {"person":1,"es":"Te graduarás el año que viene.","en":"You'll graduate next year."}
+   {"person":1,"es":"Te graduarás el año que viene.","en":"You'll graduate next year."},
+   {"person":0,"es":"Me graduaré después de cuatro años.","en":"I'll graduate after four years."},
+   {"person":2,"es":"Mi nieta se graduará de doctora.","en":"My granddaughter will graduate as a doctor."},
+   {"person":3,"es":"Nos graduaremos en la misma ceremonia.","en":"We'll graduate in the same ceremony."},
+   {"person":4,"es":"Más de cien alumnos se graduarán este año.","en":"More than a hundred students will graduate this year."}
   ],
   "conditional": [
-   {"person":0,"es":"Me graduaría antes si tomara más clases.","en":"I'd graduate sooner if I took more classes."}
+   {"person":0,"es":"Me graduaría antes si tomara más clases.","en":"I'd graduate sooner if I took more classes."},
+   {"person":1,"es":"Te graduarías antes con clases de verano.","en":"You'd graduate sooner with summer classes."},
+   {"person":2,"es":"Mi hijo se graduaría en mayo si aprobara esta clase.","en":"My son would graduate in May if he passed this class."},
+   {"person":3,"es":"Nos graduaríamos juntos si estudiáramos lo mismo.","en":"We'd graduate together if we studied the same thing."},
+   {"person":4,"es":"Ellos se graduarían con honores.","en":"They would graduate with honors."}
   ],
   "presentPerfect": [
    {"person":2,"es":"Mi hijo se ha graduado de ingeniero.","en":"My son has graduated as an engineer."}
@@ -2118,7 +2186,11 @@
    {"person":0,"es":"Yo me habría graduado antes.","en":"I would have graduated sooner."}
   ],
   "subjPresent": [
-   {"person":1,"es":"Espero que te gradúes pronto.","en":"I hope you graduate soon."}
+   {"person":1,"es":"Espero que te gradúes pronto.","en":"I hope you graduate soon."},
+   {"person":0,"es":"Mi abuela quiere verme antes de que yo me gradúe.","en":"My grandmother wants to see me before I graduate."},
+   {"person":2,"es":"Ojalá mi nieto se gradúe este semestre.","en":"I hope my grandson graduates this semester."},
+   {"person":3,"es":"Cuando nos graduemos, haremos un viaje.","en":"When we graduate, we'll take a trip."},
+   {"person":4,"es":"Espero que todos mis alumnos se gradúen.","en":"I hope all my students graduate."}
   ],
   "subjImperfect": [
    {"person":0,"es":"Mi padre quería que me graduara.","en":"My father wanted me to graduate."}
@@ -2137,19 +2209,39 @@
  },
  "parquear": {
   "present": [
-   {"person":0,"es":"Parqueo el carro detrás de la casa.","en":"I park the car behind the house."}
+   {"person":0,"es":"Parqueo el carro detrás de la casa.","en":"I park the car behind the house."},
+   {"person":1,"es":"¿Dónde parqueas el carro?","en":"Where do you park the car?"},
+   {"person":2,"es":"Mi vecino parquea en mi lugar.","en":"My neighbor parks in my spot."},
+   {"person":3,"es":"Parqueamos detrás del supermercado.","en":"We park behind the supermarket."},
+   {"person":4,"es":"Los turistas parquean frente a la playa.","en":"The tourists park in front of the beach."}
   ],
   "preterite": [
-   {"person":0,"es":"Parqueé en la esquina.","en":"I parked on the corner."}
+   {"person":0,"es":"Parqueé en la esquina.","en":"I parked on the corner."},
+   {"person":1,"es":"¿Dónde parqueaste?","en":"Where did you park?"},
+   {"person":2,"es":"Mi hermana parqueó muy lejos.","en":"My sister parked very far away."},
+   {"person":3,"es":"Parqueamos a dos cuadras del teatro.","en":"We parked two blocks from the theater."},
+   {"person":4,"es":"Los invitados parquearon en la calle.","en":"The guests parked on the street."}
   ],
   "imperfect": [
-   {"person":2,"es":"Mi papá siempre parqueaba frente al banco.","en":"My dad always parked in front of the bank."}
+   {"person":2,"es":"Mi papá siempre parqueaba frente al banco.","en":"My dad always parked in front of the bank."},
+   {"person":0,"es":"Yo parqueaba debajo de un árbol.","en":"I used to park under a tree."},
+   {"person":1,"es":"Tú parqueabas en la entrada del garaje.","en":"You used to park in the driveway."},
+   {"person":3,"es":"Parqueábamos gratis detrás de la iglesia.","en":"We used to park for free behind the church."},
+   {"person":4,"es":"Los taxistas parqueaban en la plaza.","en":"The taxi drivers used to park in the square."}
   ],
   "future": [
-   {"person":3,"es":"Parquearemos cerca del estadio.","en":"We'll park near the stadium."}
+   {"person":3,"es":"Parquearemos cerca del estadio.","en":"We'll park near the stadium."},
+   {"person":0,"es":"Parquearé en el garaje del hotel.","en":"I'll park in the hotel garage."},
+   {"person":1,"es":"Parquearás al lado de mi carro.","en":"You'll park next to my car."},
+   {"person":2,"es":"El camión parqueará detrás de la tienda.","en":"The truck will park behind the store."},
+   {"person":4,"es":"Los visitantes parquearán en el lote de atrás.","en":"The visitors will park in the back lot."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo parquearía allá, hay sombra.","en":"I'd park over there, there's shade."}
+   {"person":0,"es":"Yo parquearía allá, hay sombra.","en":"I'd park over there, there's shade."},
+   {"person":1,"es":"¿Parquearías en ese lugar tan oscuro?","en":"Would you park in such a dark place?"},
+   {"person":2,"es":"Mi esposo parquearía más cerca.","en":"My husband would park closer."},
+   {"person":3,"es":"Parquearíamos aquí, pero está prohibido.","en":"We'd park here, but it's not allowed."},
+   {"person":4,"es":"Ellos parquearían en la sombra.","en":"They would park in the shade."}
   ],
   "presentPerfect": [
    {"person":1,"es":"¿Dónde has parqueado?","en":"Where have you parked?"}
@@ -2162,7 +2254,11 @@
    {"person":0,"es":"Yo habría parqueado más cerca.","en":"I would have parked closer."}
   ],
   "subjPresent": [
-   {"person":1,"es":"No quiero que parquees aquí.","en":"I don't want you to park here."}
+   {"person":1,"es":"No quiero que parquees aquí.","en":"I don't want you to park here."},
+   {"person":0,"es":"Mi vecino no quiere que yo parquee frente a su casa.","en":"My neighbor doesn't want me to park in front of his house."},
+   {"person":2,"es":"Espero que nadie parquee en mi lugar.","en":"I hope nobody parks in my spot."},
+   {"person":3,"es":"Es mejor que parqueemos cerca de la salida.","en":"It's better if we park near the exit."},
+   {"person":4,"es":"No dejes que parqueen en la acera.","en":"Don't let them park on the sidewalk."}
   ],
   "subjImperfect": [
    {"person":2,"es":"Le pedí que parqueara en la sombra.","en":"I asked him to park in the shade."}
@@ -2185,19 +2281,39 @@
  },
  "chequear": {
   "present": [
-   {"person":0,"es":"Chequeo el correo por la mañana.","en":"I check my email in the morning."}
+   {"person":0,"es":"Chequeo el correo por la mañana.","en":"I check my email in the morning."},
+   {"person":1,"es":"¿Chequeas tu teléfono antes de dormir?","en":"Do you check your phone before going to sleep?"},
+   {"person":2,"es":"La enfermera chequea la presión a los pacientes.","en":"The nurse checks the patients' blood pressure."},
+   {"person":3,"es":"Chequeamos los precios en internet.","en":"We check the prices on the internet."},
+   {"person":4,"es":"Los mecánicos chequean los frenos.","en":"The mechanics check the brakes."}
   ],
   "preterite": [
-   {"person":2,"es":"El médico me chequeó la presión.","en":"The doctor checked my blood pressure."}
+   {"person":2,"es":"El médico me chequeó la presión.","en":"The doctor checked my blood pressure."},
+   {"person":0,"es":"Chequeé el horario del vuelo.","en":"I checked the flight schedule."},
+   {"person":1,"es":"¿Chequeaste la dirección?","en":"Did you check the address?"},
+   {"person":3,"es":"Chequeamos las llantas antes de salir.","en":"We checked the tires before leaving."},
+   {"person":4,"es":"En el aeropuerto chequearon mi maleta.","en":"At the airport they checked my suitcase."}
   ],
   "imperfect": [
-   {"person":2,"es":"Mi madre chequeaba la tarea todas las noches.","en":"My mother checked our homework every night."}
+   {"person":2,"es":"Mi madre chequeaba la tarea todas las noches.","en":"My mother checked our homework every night."},
+   {"person":0,"es":"Yo chequeaba las cuentas cada noche.","en":"I used to check the accounts every night."},
+   {"person":1,"es":"Tú chequeabas el pronóstico del tiempo.","en":"You used to check the weather forecast."},
+   {"person":3,"es":"Chequeábamos el mapa en cada esquina.","en":"We checked the map at every corner."},
+   {"person":4,"es":"Los guardias chequeaban los documentos.","en":"The guards checked the documents."}
   ],
   "future": [
-   {"person":3,"es":"Chequearemos el aceite antes de salir.","en":"We'll check the oil before leaving."}
+   {"person":3,"es":"Chequearemos el aceite antes de salir.","en":"We'll check the oil before leaving."},
+   {"person":0,"es":"Chequearé el carro mañana.","en":"I'll check the car tomorrow."},
+   {"person":1,"es":"Chequearás tu correo cuando llegues.","en":"You'll check your email when you arrive."},
+   {"person":2,"es":"El doctor chequeará tu oído.","en":"The doctor will check your ear."},
+   {"person":4,"es":"Los técnicos chequearán la conexión.","en":"The technicians will check the connection."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo chequearía las gomas.","en":"I'd check the tires."}
+   {"person":0,"es":"Yo chequearía las gomas.","en":"I'd check the tires."},
+   {"person":1,"es":"¿Chequearías este documento?","en":"Would you check this document?"},
+   {"person":2,"es":"Mi hermano chequearía los frenos primero.","en":"My brother would check the brakes first."},
+   {"person":3,"es":"Chequearíamos todo dos veces.","en":"We'd check everything twice."},
+   {"person":4,"es":"Ellos chequearían la cuenta antes de pagar.","en":"They would check the bill before paying."}
   ],
   "presentPerfect": [
    {"person":1,"es":"¿Has chequeado el vuelo?","en":"Have you checked the flight?"}
@@ -2210,7 +2326,11 @@
    {"person":0,"es":"Yo habría chequeado el precio.","en":"I would have checked the price."}
   ],
   "subjPresent": [
-   {"person":1,"es":"Quiero que chequees la puerta.","en":"I want you to check the door."}
+   {"person":1,"es":"Quiero que chequees la puerta.","en":"I want you to check the door."},
+   {"person":0,"es":"Mi mamá quiere que yo chequee las ventanas.","en":"My mom wants me to check the windows."},
+   {"person":2,"es":"Prefiero que un mecánico chequee el motor.","en":"I'd rather a mechanic check the engine."},
+   {"person":3,"es":"Es mejor que chequeemos el aceite.","en":"It's better if we check the oil."},
+   {"person":4,"es":"Espero que chequeen bien la cuenta.","en":"I hope they check the bill carefully."}
   ],
   "subjImperfect": [
    {"person":2,"es":"Le pedí que chequeara el motor.","en":"I asked him to check the engine."}
@@ -2231,19 +2351,39 @@
  },
  "fregar": {
   "present": [
-   {"person":0,"es":"Friego los platos después de la cena.","en":"I wash the dishes after dinner."}
+   {"person":0,"es":"Friego los platos después de la cena.","en":"I wash the dishes after dinner."},
+   {"person":1,"es":"Friegas muy bien las ollas.","en":"You scrub the pots very well."},
+   {"person":2,"es":"Mi hermano friega después del almuerzo.","en":"My brother does the dishes after lunch."},
+   {"person":3,"es":"Fregamos por turnos.","en":"We take turns doing the dishes."},
+   {"person":4,"es":"Los niños friegan el piso de la cocina.","en":"The kids scrub the kitchen floor."}
   ],
   "preterite": [
-   {"person":0,"es":"Fregué toda la cocina.","en":"I scrubbed the whole kitchen."}
+   {"person":0,"es":"Fregué toda la cocina.","en":"I scrubbed the whole kitchen."},
+   {"person":1,"es":"¿Fregaste la olla del arroz?","en":"Did you scrub the rice pot?"},
+   {"person":2,"es":"Mi hijo fregó los platos sin que se lo pidieran.","en":"My son did the dishes without being asked."},
+   {"person":3,"es":"Fregamos el baño entre los dos.","en":"We scrubbed the bathroom between the two of us."},
+   {"person":4,"es":"Los invitados fregaron después de la cena.","en":"The guests did the dishes after dinner."}
   ],
   "imperfect": [
-   {"person":2,"es":"Mi abuela fregaba el piso de rodillas.","en":"My grandmother used to scrub the floor on her knees."}
+   {"person":2,"es":"Mi abuela fregaba el piso de rodillas.","en":"My grandmother used to scrub the floor on her knees."},
+   {"person":0,"es":"Yo fregaba los platos en el patio.","en":"I used to wash the dishes in the yard."},
+   {"person":1,"es":"Tú fregabas mientras yo cocinaba.","en":"You did the dishes while I cooked."},
+   {"person":3,"es":"Fregábamos la ropa en el río.","en":"We used to scrub the clothes in the river."},
+   {"person":4,"es":"Las muchachas fregaban los pisos del hotel.","en":"The young women used to scrub the hotel floors."}
   ],
   "future": [
-   {"person":0,"es":"Yo fregaré hoy.","en":"I'll do the dishes today."}
+   {"person":0,"es":"Yo fregaré hoy.","en":"I'll do the dishes today."},
+   {"person":1,"es":"Fregarás los platos esta noche.","en":"You'll do the dishes tonight."},
+   {"person":2,"es":"Mi hermana fregará mañana.","en":"My sister will do the dishes tomorrow."},
+   {"person":3,"es":"Fregaremos después de ver la película.","en":"We'll do the dishes after watching the movie."},
+   {"person":4,"es":"Los niños fregarán sus platos.","en":"The kids will wash their own plates."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo fregaría, pero no hay agua.","en":"I'd do the dishes, but there's no water."}
+   {"person":0,"es":"Yo fregaría, pero no hay agua.","en":"I'd do the dishes, but there's no water."},
+   {"person":1,"es":"¿Fregarías si yo cocino?","en":"Would you do the dishes if I cook?"},
+   {"person":2,"es":"Mi hijo fregaría si no tuviera tarea.","en":"My son would do the dishes if he didn't have homework."},
+   {"person":3,"es":"Fregaríamos ahora, pero estamos muy cansados.","en":"We'd do the dishes now, but we're too tired."},
+   {"person":4,"es":"Ellos fregarían el piso con más jabón.","en":"They would scrub the floor with more soap."}
   ],
   "presentPerfect": [
    {"person":1,"es":"¿Has fregado los platos?","en":"Have you washed the dishes?"}
@@ -2256,7 +2396,11 @@
    {"person":0,"es":"Yo habría fregado.","en":"I would have done the dishes."}
   ],
   "subjPresent": [
-   {"person":1,"es":"Quiero que friegues los platos.","en":"I want you to wash the dishes."}
+   {"person":1,"es":"Quiero que friegues los platos.","en":"I want you to wash the dishes."},
+   {"person":0,"es":"Mi mamá quiere que yo friegue la olla.","en":"My mom wants me to scrub the pot."},
+   {"person":2,"es":"Espero que alguien friegue estos vasos.","en":"I hope someone washes these glasses."},
+   {"person":3,"es":"Es justo que freguemos nosotros hoy.","en":"It's fair for us to do the dishes today."},
+   {"person":4,"es":"Quiero que los niños frieguen sus platos.","en":"I want the kids to wash their own plates."}
   ],
   "subjImperfect": [
    {"person":2,"es":"Le pedí que fregara el piso.","en":"I asked him to scrub the floor."}
@@ -2277,19 +2421,39 @@
  },
  "barrer": {
   "present": [
-   {"person":0,"es":"Barro el patio por la mañana.","en":"I sweep the yard in the morning."}
+   {"person":0,"es":"Barro el patio por la mañana.","en":"I sweep the yard in the morning."},
+   {"person":1,"es":"Barres la cocina y yo saco la basura.","en":"You sweep the kitchen and I'll take out the trash."},
+   {"person":2,"es":"El conserje barre el pasillo todas las noches.","en":"The janitor sweeps the hallway every night."},
+   {"person":3,"es":"Barremos las hojas del patio.","en":"We sweep the leaves in the yard."},
+   {"person":4,"es":"Los vecinos barren la acera los sábados.","en":"The neighbors sweep the sidewalk on Saturdays."}
   ],
   "preterite": [
-   {"person":2,"es":"Mi madre barrió la acera.","en":"My mother swept the sidewalk."}
+   {"person":2,"es":"Mi madre barrió la acera.","en":"My mother swept the sidewalk."},
+   {"person":0,"es":"Barrí el garaje esta mañana.","en":"I swept the garage this morning."},
+   {"person":1,"es":"¿Barriste debajo de la cama?","en":"Did you sweep under the bed?"},
+   {"person":3,"es":"Barrimos la iglesia antes de la misa.","en":"We swept the church before Mass."},
+   {"person":4,"es":"Las olas barrieron la arena de la playa.","en":"The waves swept the sand off the beach."}
   ],
   "imperfect": [
-   {"person":2,"es":"Mi abuela barría la casa todos los días.","en":"My grandmother swept the house every day."}
+   {"person":2,"es":"Mi abuela barría la casa todos los días.","en":"My grandmother swept the house every day."},
+   {"person":0,"es":"Yo barría el patio antes de la escuela.","en":"I used to sweep the yard before school."},
+   {"person":1,"es":"Tú barrías la tienda de tu padre.","en":"You used to sweep your father's store."},
+   {"person":3,"es":"Barríamos el salón al terminar la clase.","en":"We used to sweep the classroom at the end of class."},
+   {"person":4,"es":"Los niños barrían el portal por una moneda.","en":"The kids used to sweep the porch for a coin."}
   ],
   "future": [
-   {"person":0,"es":"Yo barreré la cocina.","en":"I'll sweep the kitchen."}
+   {"person":0,"es":"Yo barreré la cocina.","en":"I'll sweep the kitchen."},
+   {"person":1,"es":"Barrerás la sala antes de que lleguen.","en":"You'll sweep the living room before they arrive."},
+   {"person":2,"es":"El viento barrerá las nubes.","en":"The wind will sweep away the clouds."},
+   {"person":3,"es":"Barreremos el taller el viernes.","en":"We'll sweep the workshop on Friday."},
+   {"person":4,"es":"Los empleados barrerán la entrada.","en":"The employees will sweep the entrance."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo barrería primero.","en":"I'd sweep first."}
+   {"person":0,"es":"Yo barrería primero.","en":"I'd sweep first."},
+   {"person":1,"es":"¿Barrerías la escalera por mí?","en":"Would you sweep the stairs for me?"},
+   {"person":2,"es":"Mi abuela barrería toda la calle si pudiera.","en":"My grandmother would sweep the whole street if she could."},
+   {"person":3,"es":"Barreríamos, pero se rompió la escoba.","en":"We'd sweep, but the broom broke."},
+   {"person":4,"es":"Ellos barrerían el patio por unos pesos.","en":"They would sweep the yard for a few pesos."}
   ],
   "presentPerfect": [
    {"person":1,"es":"¿Has barrido el piso?","en":"Have you swept the floor?"}
@@ -2302,7 +2466,11 @@
    {"person":0,"es":"Yo habría barrido.","en":"I would have swept."}
   ],
   "subjPresent": [
-   {"person":1,"es":"Quiero que barras el patio.","en":"I want you to sweep the yard."}
+   {"person":1,"es":"Quiero que barras el patio.","en":"I want you to sweep the yard."},
+   {"person":0,"es":"Mi abuela quiere que yo barra el portal.","en":"My grandmother wants me to sweep the porch."},
+   {"person":2,"es":"Espero que tu hermano barra la cocina.","en":"I hope your brother sweeps the kitchen."},
+   {"person":3,"es":"Es mejor que barramos antes de trapear.","en":"It's better if we sweep before mopping."},
+   {"person":4,"es":"Quiero que los niños barran su cuarto.","en":"I want the kids to sweep their room."}
   ],
   "subjImperfect": [
    {"person":2,"es":"Le pedí que barriera la entrada.","en":"I asked him to sweep the entrance."}
@@ -2323,19 +2491,39 @@
  },
  "planchar": {
   "present": [
-   {"person":0,"es":"Plancho las camisas los domingos.","en":"I iron the shirts on Sundays."}
+   {"person":0,"es":"Plancho las camisas los domingos.","en":"I iron the shirts on Sundays."},
+   {"person":1,"es":"¿Planchas tus camisas?","en":"Do you iron your shirts?"},
+   {"person":2,"es":"Mi madre plancha mientras oye la radio.","en":"My mother irons while listening to the radio."},
+   {"person":3,"es":"Planchamos los uniformes los domingos.","en":"We iron the uniforms on Sundays."},
+   {"person":4,"es":"En esa tintorería planchan muy bien.","en":"They iron very well at that dry cleaner's."}
   ],
   "preterite": [
-   {"person":2,"es":"Mi esposa planchó mi guayabera.","en":"My wife ironed my guayabera."}
+   {"person":2,"es":"Mi esposa planchó mi guayabera.","en":"My wife ironed my guayabera."},
+   {"person":0,"es":"Planché el vestido para la fiesta.","en":"I ironed the dress for the party."},
+   {"person":1,"es":"¿Planchaste mi camisa blanca?","en":"Did you iron my white shirt?"},
+   {"person":3,"es":"Planchamos toda la ropa de la semana.","en":"We ironed all the week's clothes."},
+   {"person":4,"es":"Las hermanas plancharon los manteles.","en":"The sisters ironed the tablecloths."}
   ],
   "imperfect": [
-   {"person":2,"es":"Mi abuela planchaba con carbón.","en":"My grandmother used to iron with a charcoal iron."}
+   {"person":2,"es":"Mi abuela planchaba con carbón.","en":"My grandmother used to iron with a charcoal iron."},
+   {"person":0,"es":"Yo planchaba la ropa de mis hermanos.","en":"I used to iron my brothers' clothes."},
+   {"person":1,"es":"Tú planchabas hasta los calcetines.","en":"You used to iron even your socks."},
+   {"person":3,"es":"Planchábamos con una plancha de hierro.","en":"We used to iron with a heavy flatiron."},
+   {"person":4,"es":"Las mujeres planchaban en la cocina.","en":"The women used to iron in the kitchen."}
   ],
   "future": [
-   {"person":0,"es":"Yo plancharé tu camisa.","en":"I'll iron your shirt."}
+   {"person":0,"es":"Yo plancharé tu camisa.","en":"I'll iron your shirt."},
+   {"person":1,"es":"Plancharás la camisa antes de la entrevista.","en":"You'll iron your shirt before the interview."},
+   {"person":2,"es":"Mi tía planchará el vestido de la novia.","en":"My aunt will iron the bride's dress."},
+   {"person":3,"es":"Plancharemos los manteles para la cena.","en":"We'll iron the tablecloths for the dinner."},
+   {"person":4,"es":"En el hotel plancharán tu traje.","en":"At the hotel they'll iron your suit."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo plancharía esa falda.","en":"I'd iron that skirt."}
+   {"person":0,"es":"Yo plancharía esa falda.","en":"I'd iron that skirt."},
+   {"person":1,"es":"¿Plancharías esta blusa, por favor?","en":"Would you iron this blouse, please?"},
+   {"person":2,"es":"Mi esposo plancharía, pero no sabe.","en":"My husband would iron, but he doesn't know how."},
+   {"person":3,"es":"Plancharíamos la ropa si hubiera luz.","en":"We'd iron the clothes if there were power."},
+   {"person":4,"es":"Ellos plancharían los pantalones con raya.","en":"They would iron the pants with a crease."}
   ],
   "presentPerfect": [
    {"person":1,"es":"¿Has planchado mi pantalón?","en":"Have you ironed my pants?"}
@@ -2348,7 +2536,11 @@
    {"person":0,"es":"Yo te habría planchado la camisa.","en":"I would have ironed your shirt."}
   ],
   "subjPresent": [
-   {"person":1,"es":"Quiero que planches tu ropa.","en":"I want you to iron your clothes."}
+   {"person":1,"es":"Quiero que planches tu ropa.","en":"I want you to iron your clothes."},
+   {"person":0,"es":"Mi madre quiere que yo planche mi uniforme.","en":"My mother wants me to iron my uniform."},
+   {"person":2,"es":"Espero que la tintorería planche bien el traje.","en":"I hope the dry cleaner irons the suit well."},
+   {"person":3,"es":"Es mejor que planchemos antes de que se vaya la luz.","en":"It's better if we iron before the power goes out."},
+   {"person":4,"es":"Prefiero que planchen esta camisa a mano.","en":"I prefer that they iron this shirt by hand."}
   ],
   "subjImperfect": [
    {"person":2,"es":"Le pedí que planchara el vestido.","en":"I asked her to iron the dress."}
@@ -2367,19 +2559,39 @@
  },
  "coser": {
   "present": [
-   {"person":0,"es":"Coso mi propia ropa.","en":"I sew my own clothes."}
+   {"person":0,"es":"Coso mi propia ropa.","en":"I sew my own clothes."},
+   {"person":1,"es":"¿Coses a mano o a máquina?","en":"Do you sew by hand or by machine?"},
+   {"person":2,"es":"Mi tía cose vestidos para las quinceañeras.","en":"My aunt sews dresses for quinceañeras."},
+   {"person":3,"es":"Cosemos los botones que se caen.","en":"We sew on the buttons that fall off."},
+   {"person":4,"es":"Las abuelas cosen en el portal.","en":"The grandmothers sew on the porch."}
   ],
   "preterite": [
-   {"person":2,"es":"Mi abuela cosió este vestido.","en":"My grandmother sewed this dress."}
+   {"person":2,"es":"Mi abuela cosió este vestido.","en":"My grandmother sewed this dress."},
+   {"person":0,"es":"Cosí el bolsillo de mi pantalón.","en":"I sewed up my pants pocket."},
+   {"person":1,"es":"¿Cosiste tú ese disfraz?","en":"Did you sew that costume?"},
+   {"person":3,"es":"Cosimos las banderas para el desfile.","en":"We sewed the flags for the parade."},
+   {"person":4,"es":"Los médicos le cosieron la herida.","en":"The doctors stitched up his wound."}
   ],
   "imperfect": [
-   {"person":2,"es":"Mi madre cosía por las noches.","en":"My mother used to sew at night."}
+   {"person":2,"es":"Mi madre cosía por las noches.","en":"My mother used to sew at night."},
+   {"person":0,"es":"Yo cosía mis propias faldas.","en":"I used to sew my own skirts."},
+   {"person":1,"es":"Tú cosías muy bien de joven.","en":"You sewed very well when you were young."},
+   {"person":3,"es":"Cosíamos por encargo para los vecinos.","en":"We used to sew to order for the neighbors."},
+   {"person":4,"es":"Las hermanas cosían hasta muy tarde.","en":"The sisters sewed until very late."}
   ],
   "future": [
-   {"person":0,"es":"Te coseré el botón.","en":"I'll sew the button on for you."}
+   {"person":0,"es":"Te coseré el botón.","en":"I'll sew the button on for you."},
+   {"person":1,"es":"Coserás el botón tú misma.","en":"You'll sew on the button yourself."},
+   {"person":2,"es":"Mi abuela coserá las cortinas.","en":"My grandmother will sew the curtains."},
+   {"person":3,"es":"Coseremos los trajes para la obra.","en":"We'll sew the costumes for the play."},
+   {"person":4,"es":"Las alumnas coserán una colcha.","en":"The students will sew a quilt."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo cosería eso a mano.","en":"I'd sew that by hand."}
+   {"person":0,"es":"Yo cosería eso a mano.","en":"I'd sew that by hand."},
+   {"person":1,"es":"¿Coserías mi disfraz?","en":"Would you sew my costume?"},
+   {"person":2,"es":"Mi madre cosería ese vestido en un día.","en":"My mother would sew that dress in a day."},
+   {"person":3,"es":"Coseríamos más con una máquina nueva.","en":"We'd sew more with a new machine."},
+   {"person":4,"es":"Ellas coserían toda la noche por la boda.","en":"They would sew all night for the wedding."}
   ],
   "presentPerfect": [
    {"person":1,"es":"¿Has cosido alguna vez?","en":"Have you ever sewn?"}
@@ -2392,7 +2604,11 @@
    {"person":0,"es":"Yo te lo habría cosido.","en":"I would have sewn it for you."}
   ],
   "subjPresent": [
-   {"person":1,"es":"Quiero que me cosas este botón.","en":"I want you to sew this button on for me."}
+   {"person":1,"es":"Quiero que me cosas este botón.","en":"I want you to sew this button on for me."},
+   {"person":0,"es":"Mi hija quiere que yo cosa su disfraz.","en":"My daughter wants me to sew her costume."},
+   {"person":2,"es":"Espero que la costurera cosa el vestido a tiempo.","en":"I hope the seamstress sews the dress in time."},
+   {"person":3,"es":"Es mejor que cosamos esto a mano.","en":"It's better if we sew this by hand."},
+   {"person":4,"es":"Quiero que los alumnos cosan su propia bandera.","en":"I want the students to sew their own flag."}
   ],
   "subjImperfect": [
    {"person":2,"es":"Le pedí que cosiera la camisa.","en":"I asked her to sew the shirt."}
@@ -2411,19 +2627,39 @@
  },
  "sembrar": {
   "present": [
-   {"person":0,"es":"Siembro tomates en el patio.","en":"I plant tomatoes in the yard."}
+   {"person":0,"es":"Siembro tomates en el patio.","en":"I plant tomatoes in the yard."},
+   {"person":1,"es":"¿Qué siembras en tu jardín?","en":"What do you plant in your garden?"},
+   {"person":2,"es":"Mi abuelo siembra maíz en la loma.","en":"My grandfather plants corn on the hillside."},
+   {"person":3,"es":"Sembramos árboles en la escuela.","en":"We plant trees at the school."},
+   {"person":4,"es":"Los campesinos siembran antes de las lluvias.","en":"The farmers plant before the rains."}
   ],
   "preterite": [
-   {"person":2,"es":"Mi abuelo sembró ese mango.","en":"My grandfather planted that mango tree."}
+   {"person":2,"es":"Mi abuelo sembró ese mango.","en":"My grandfather planted that mango tree."},
+   {"person":0,"es":"Sembré rosas junto a la cerca.","en":"I planted roses next to the fence."},
+   {"person":1,"es":"¿Sembraste los frijoles?","en":"Did you plant the beans?"},
+   {"person":3,"es":"Sembramos un árbol por cada niño.","en":"We planted a tree for each child."},
+   {"person":4,"es":"Los vecinos sembraron flores en la plaza.","en":"The neighbors planted flowers in the square."}
   ],
   "imperfect": [
-   {"person":4,"es":"Los campesinos sembraban yuca.","en":"The farmers used to plant cassava."}
+   {"person":4,"es":"Los campesinos sembraban yuca.","en":"The farmers used to plant cassava."},
+   {"person":0,"es":"Yo sembraba tomates con mi padre.","en":"I used to plant tomatoes with my father."},
+   {"person":1,"es":"Tú sembrabas cilantro en macetas.","en":"You used to plant cilantro in pots."},
+   {"person":2,"es":"Mi abuela sembraba flores en latas viejas.","en":"My grandmother used to plant flowers in old cans."},
+   {"person":3,"es":"Sembrábamos café en la montaña.","en":"We used to plant coffee in the mountains."}
   ],
   "future": [
-   {"person":3,"es":"Sembraremos frijoles este año.","en":"We'll plant beans this year."}
+   {"person":3,"es":"Sembraremos frijoles este año.","en":"We'll plant beans this year."},
+   {"person":0,"es":"Sembraré ajíes en la primavera.","en":"I'll plant peppers in the spring."},
+   {"person":1,"es":"Sembrarás calabazas en esa tierra.","en":"You'll plant pumpkins in that soil."},
+   {"person":2,"es":"Mi tío sembrará plátanos en la finca.","en":"My uncle will plant plantains on the farm."},
+   {"person":4,"es":"Los alumnos sembrarán un huerto.","en":"The students will plant a vegetable garden."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo sembraría aguacates.","en":"I'd plant avocados."}
+   {"person":0,"es":"Yo sembraría aguacates.","en":"I'd plant avocados."},
+   {"person":1,"es":"¿Sembrarías un mango en ese patio?","en":"Would you plant a mango tree in that yard?"},
+   {"person":2,"es":"Mi padre sembraría caña en esas tierras.","en":"My father would plant sugarcane on that land."},
+   {"person":3,"es":"Sembraríamos más si lloviera.","en":"We'd plant more if it rained."},
+   {"person":4,"es":"Ellos sembrarían árboles en toda la calle.","en":"They would plant trees along the whole street."}
   ],
   "presentPerfect": [
    {"person":1,"es":"¿Has sembrado algo este año?","en":"Have you planted anything this year?"}
@@ -2438,7 +2674,11 @@
    {"person":0,"es":"Yo habría sembrado más.","en":"I would have planted more."}
   ],
   "subjPresent": [
-   {"person":1,"es":"Quiero que siembres este árbol.","en":"I want you to plant this tree."}
+   {"person":1,"es":"Quiero que siembres este árbol.","en":"I want you to plant this tree."},
+   {"person":0,"es":"Mi abuelo quiere que yo siembre con él.","en":"My grandfather wants me to plant with him."},
+   {"person":2,"es":"Espero que el vecino siembre ese terreno.","en":"I hope the neighbor plants that lot."},
+   {"person":3,"es":"Es hora de que sembremos el maíz.","en":"It's time for us to plant the corn."},
+   {"person":4,"es":"Quiero que mis nietos siembren su propio árbol.","en":"I want my grandchildren to plant their own tree."}
   ],
   "subjImperfect": [
    {"person":2,"es":"Mi abuela quería que mi tío sembrara café.","en":"My grandmother wanted my uncle to plant coffee."}
@@ -2459,19 +2699,39 @@
  },
  "pescar": {
   "present": [
-   {"person":0,"es":"Pesco en el río los domingos.","en":"I fish in the river on Sundays."}
+   {"person":0,"es":"Pesco en el río los domingos.","en":"I fish in the river on Sundays."},
+   {"person":1,"es":"¿Pescas con caña o con red?","en":"Do you fish with a rod or a net?"},
+   {"person":2,"es":"Mi tío pesca langostas en Baracoa.","en":"My uncle catches lobsters in Baracoa."},
+   {"person":3,"es":"Pescamos cuando el mar está tranquilo.","en":"We fish when the sea is calm."},
+   {"person":4,"es":"Los niños pescan en el muelle.","en":"The kids fish off the dock."}
   ],
   "preterite": [
-   {"person":0,"es":"Pesqué un pargo grande.","en":"I caught a big snapper."}
+   {"person":0,"es":"Pesqué un pargo grande.","en":"I caught a big snapper."},
+   {"person":1,"es":"¿Qué pescaste hoy?","en":"What did you catch today?"},
+   {"person":2,"es":"Mi hija pescó su primer pez.","en":"My daughter caught her first fish."},
+   {"person":3,"es":"Pescamos toda la tarde y no sacamos nada.","en":"We fished all afternoon and didn't catch anything."},
+   {"person":4,"es":"Los hombres pescaron un atún enorme.","en":"The men caught a huge tuna."}
   ],
   "imperfect": [
-   {"person":2,"es":"Mi abuelo pescaba todas las mañanas.","en":"My grandfather used to fish every morning."}
+   {"person":2,"es":"Mi abuelo pescaba todas las mañanas.","en":"My grandfather used to fish every morning."},
+   {"person":0,"es":"Yo pescaba con mi abuelo en el lago.","en":"I used to fish with my grandfather at the lake."},
+   {"person":1,"es":"Tú pescabas cangrejos en las rocas.","en":"You used to catch crabs on the rocks."},
+   {"person":3,"es":"Pescábamos de noche con una linterna.","en":"We used to fish at night with a flashlight."},
+   {"person":4,"es":"Los indígenas pescaban con lanzas.","en":"The native people used to fish with spears."}
   ],
   "future": [
-   {"person":3,"es":"Pescaremos cerca del muelle.","en":"We'll fish near the pier."}
+   {"person":3,"es":"Pescaremos cerca del muelle.","en":"We'll fish near the pier."},
+   {"person":0,"es":"Pescaré algo para la cena.","en":"I'll catch something for dinner."},
+   {"person":1,"es":"Pescarás más con esta carnada.","en":"You'll catch more with this bait."},
+   {"person":2,"es":"Mi hermano pescará en alta mar.","en":"My brother will fish on the high seas."},
+   {"person":4,"es":"Los turistas pescarán desde la lancha.","en":"The tourists will fish from the boat."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo pescaría desde las rocas.","en":"I'd fish from the rocks."}
+   {"person":0,"es":"Yo pescaría desde las rocas.","en":"I'd fish from the rocks."},
+   {"person":1,"es":"¿Pescarías con este frío?","en":"Would you fish in this cold?"},
+   {"person":2,"es":"Mi padre pescaría todos los días.","en":"My father would fish every day."},
+   {"person":3,"es":"Pescaríamos más lejos con una lancha mejor.","en":"We'd fish farther out with a better boat."},
+   {"person":4,"es":"Ellos pescarían aquí si hubiera peces.","en":"They would fish here if there were fish."}
   ],
   "presentPerfect": [
    {"person":1,"es":"¿Has pescado alguna vez?","en":"Have you ever fished?"}
@@ -2484,7 +2744,11 @@
    {"person":3,"es":"Habríamos pescado más con otra carnada.","en":"We would have caught more with different bait."}
   ],
   "subjPresent": [
-   {"person":1,"es":"Quiero que pesques conmigo.","en":"I want you to fish with me."}
+   {"person":1,"es":"Quiero que pesques conmigo.","en":"I want you to fish with me."},
+   {"person":0,"es":"Mi abuelo espera que yo pesque algo grande.","en":"My grandfather hopes I catch something big."},
+   {"person":2,"es":"Ojalá tu papá pesque algo para hoy.","en":"I hope your dad catches something for today."},
+   {"person":3,"es":"Es mejor que pesquemos al amanecer.","en":"It's better if we fish at dawn."},
+   {"person":4,"es":"No quieren que los turistas pesquen en esta bahía.","en":"They don't want tourists fishing in this bay."}
   ],
   "subjImperfect": [
    {"person":2,"es":"Esperaba que mi hijo pescara algo.","en":"I was hoping my son would catch something."}
@@ -2503,19 +2767,39 @@
  },
  "tirar": {
   "present": [
-   {"person":0,"es":"Siempre tiro la basura en el tanque.","en":"I always throw the trash in the bin."}
+   {"person":0,"es":"Siempre tiro la basura en el tanque.","en":"I always throw the trash in the bin."},
+   {"person":1,"es":"Tiras muy lejos la pelota.","en":"You throw the ball very far."},
+   {"person":2,"es":"Este carro tira mucho humo.","en":"This car gives off a lot of smoke."},
+   {"person":3,"es":"Tiramos arroz a los novios.","en":"We throw rice at the bride and groom."},
+   {"person":4,"es":"Los niños tiran piedras al lago.","en":"The kids throw rocks into the lake."}
   ],
   "preterite": [
-   {"person":2,"es":"El niño tiró la pelota.","en":"The boy threw the ball."}
+   {"person":2,"es":"El niño tiró la pelota.","en":"The boy threw the ball."},
+   {"person":0,"es":"Tiré la moneda a la fuente.","en":"I threw the coin into the fountain."},
+   {"person":1,"es":"¿Tiraste el recibo?","en":"Did you throw out the receipt?"},
+   {"person":3,"es":"Tiramos la cuerda desde el barco.","en":"We threw the rope from the boat."},
+   {"person":4,"es":"Los fans tiraron flores al escenario.","en":"The fans threw flowers onto the stage."}
   ],
   "imperfect": [
-   {"person":4,"es":"Los niños tiraban piedras al mar.","en":"The kids used to throw stones into the sea."}
+   {"person":4,"es":"Los niños tiraban piedras al mar.","en":"The kids used to throw stones into the sea."},
+   {"person":0,"es":"Yo tiraba la pelota contra la pared.","en":"I used to throw the ball against the wall."},
+   {"person":1,"es":"Tú tirabas papelitos en clase.","en":"You used to throw little pieces of paper in class."},
+   {"person":2,"es":"El lanzador tiraba muy rápido.","en":"The pitcher threw very fast."},
+   {"person":3,"es":"Tirábamos migas a los patos.","en":"We used to throw crumbs to the ducks."}
   ],
   "future": [
-   {"person":0,"es":"Tiraré estas revistas viejas.","en":"I'll throw out these old magazines."}
+   {"person":0,"es":"Tiraré estas revistas viejas.","en":"I'll throw out these old magazines."},
+   {"person":1,"es":"Tirarás la basura antes de salir.","en":"You'll throw out the trash before leaving."},
+   {"person":2,"es":"Mi hijo tirará el primer lanzamiento.","en":"My son will throw the first pitch."},
+   {"person":3,"es":"Tiraremos fuegos artificiales a medianoche.","en":"We'll set off fireworks at midnight."},
+   {"person":4,"es":"Los niños tirarán confeti en el desfile.","en":"The kids will throw confetti in the parade."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo no tiraría eso.","en":"I wouldn't throw that away."}
+   {"person":0,"es":"Yo no tiraría eso.","en":"I wouldn't throw that away."},
+   {"person":1,"es":"¿Tirarías esta silla vieja?","en":"Would you throw out this old chair?"},
+   {"person":2,"es":"Mi esposa tiraría todas estas cajas.","en":"My wife would throw out all these boxes."},
+   {"person":3,"es":"Tiraríamos la pelota, pero está lloviendo.","en":"We'd throw the ball, but it's raining."},
+   {"person":4,"es":"Ellos tirarían la puerta abajo.","en":"They would knock the door down."}
   ],
   "presentPerfect": [
    {"person":1,"es":"¿Has tirado la leche?","en":"Have you thrown out the milk?"}
@@ -2528,7 +2812,11 @@
    {"person":0,"es":"Yo no lo habría tirado.","en":"I wouldn't have thrown it away."}
   ],
   "subjPresent": [
-   {"person":1,"es":"No quiero que tires esa foto.","en":"I don't want you to throw out that photo."}
+   {"person":1,"es":"No quiero que tires esa foto.","en":"I don't want you to throw out that photo."},
+   {"person":0,"es":"Mi mamá no quiere que yo tire esta ropa.","en":"My mom doesn't want me to throw out these clothes."},
+   {"person":2,"es":"Espero que nadie tire basura en la playa.","en":"I hope nobody throws trash on the beach."},
+   {"person":3,"es":"Es mejor que no tiremos la comida.","en":"It's better if we don't throw out food."},
+   {"person":4,"es":"No dejes que los niños tiren piedras.","en":"Don't let the kids throw rocks."}
   ],
   "subjImperfect": [
    {"person":2,"es":"Le pedí que no tirara nada.","en":"I asked him not to throw anything away."}
@@ -2549,19 +2837,39 @@
  },
  "empujar": {
   "present": [
-   {"person":0,"es":"Empujo el carro hasta el taller.","en":"I push the car to the shop."}
+   {"person":0,"es":"Empujo el carro hasta el taller.","en":"I push the car to the shop."},
+   {"person":1,"es":"Empujas el coche del bebé por el parque.","en":"You push the baby's stroller through the park."},
+   {"person":2,"es":"El viento empuja el barco.","en":"The wind pushes the boat."},
+   {"person":3,"es":"Empujamos la mesa contra la pared.","en":"We push the table against the wall."},
+   {"person":4,"es":"Los niños empujan para subir primero.","en":"The kids push to get on first."}
   ],
   "preterite": [
-   {"person":2,"es":"Alguien me empujó en la guagua.","en":"Someone pushed me on the bus."}
+   {"person":2,"es":"Alguien me empujó en la guagua.","en":"Someone pushed me on the bus."},
+   {"person":0,"es":"Empujé la puerta y se abrió.","en":"I pushed the door and it opened."},
+   {"person":1,"es":"¿Empujaste a tu hermano?","en":"Did you push your brother?"},
+   {"person":3,"es":"Empujamos el sofá hasta la sala.","en":"We pushed the sofa to the living room."},
+   {"person":4,"es":"Las olas empujaron la lancha a la orilla.","en":"The waves pushed the boat to the shore."}
   ],
   "imperfect": [
-   {"person":4,"es":"Los niños se empujaban en la fila.","en":"The kids were pushing each other in line."}
+   {"person":4,"es":"Los niños se empujaban en la fila.","en":"The kids were pushing each other in line."},
+   {"person":0,"es":"Yo empujaba la carretilla por el camino.","en":"I used to push the wheelbarrow along the road."},
+   {"person":1,"es":"Tú empujabas el columpio de tu hermana.","en":"You used to push your sister's swing."},
+   {"person":2,"es":"El viento empujaba las nubes.","en":"The wind was pushing the clouds."},
+   {"person":3,"es":"Empujábamos el carro para que arrancara.","en":"We used to push the car so it would start."}
   ],
   "future": [
-   {"person":3,"es":"Empujaremos el carro.","en":"We'll push the car."}
+   {"person":3,"es":"Empujaremos el carro.","en":"We'll push the car."},
+   {"person":0,"es":"Empujaré la silla de ruedas de mi abuelo.","en":"I'll push my grandfather's wheelchair."},
+   {"person":1,"es":"Empujarás con fuerza cuando yo te avise.","en":"You'll push hard when I tell you."},
+   {"person":2,"es":"La corriente empujará el bote hacia el sur.","en":"The current will push the boat south."},
+   {"person":4,"es":"Los vecinos empujarán el camión.","en":"The neighbors will push the truck."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo no empujaría esa puerta.","en":"I wouldn't push that door."}
+   {"person":0,"es":"Yo no empujaría esa puerta.","en":"I wouldn't push that door."},
+   {"person":1,"es":"¿Empujarías mi carro hasta la gasolinera?","en":"Would you push my car to the gas station?"},
+   {"person":2,"es":"Mi hermano empujaría ese mueble solo.","en":"My brother would push that piece of furniture by himself."},
+   {"person":3,"es":"Empujaríamos más fuerte, pero estamos cansados.","en":"We'd push harder, but we're tired."},
+   {"person":4,"es":"Ellos empujarían si les pidieras ayuda.","en":"They would push if you asked them for help."}
   ],
   "presentPerfect": [
    {"person":4,"es":"Me han empujado.","en":"They've pushed me."}
@@ -2574,7 +2882,11 @@
    {"person":3,"es":"Habríamos empujado, pero pesaba mucho.","en":"We would have pushed, but it was very heavy."}
   ],
   "subjPresent": [
-   {"person":1,"es":"Quiero que empujes la puerta.","en":"I want you to push the door."}
+   {"person":1,"es":"Quiero que empujes la puerta.","en":"I want you to push the door."},
+   {"person":0,"es":"Mi amigo quiere que yo empuje el carro.","en":"My friend wants me to push the car."},
+   {"person":2,"es":"No quiero que nadie me empuje en la fila.","en":"I don't want anyone pushing me in line."},
+   {"person":3,"es":"Es mejor que empujemos entre todos.","en":"It's better if we all push together."},
+   {"person":4,"es":"Pídeles que no empujen a los más pequeños.","en":"Ask them not to push the little ones."}
   ],
   "subjImperfect": [
    {"person":2,"es":"Le pedí que empujara el carro.","en":"I asked him to push the car."}
@@ -2597,19 +2909,39 @@
  },
  "halar": {
   "present": [
-   {"person":0,"es":"Halo la cuerda con fuerza.","en":"I pull the rope hard."}
+   {"person":0,"es":"Halo la cuerda con fuerza.","en":"I pull the rope hard."},
+   {"person":1,"es":"Halas la cadena y se enciende la luz.","en":"You pull the chain and the light comes on."},
+   {"person":2,"es":"Mi hermano me hala el pelo.","en":"My brother pulls my hair."},
+   {"person":3,"es":"Halamos el bote hasta la arena.","en":"We pull the boat up onto the sand."},
+   {"person":4,"es":"Los caballos halan el coche por el centro.","en":"The horses pull the carriage through downtown."}
   ],
   "preterite": [
-   {"person":2,"es":"El pescador haló la red.","en":"The fisherman pulled in the net."}
+   {"person":2,"es":"El pescador haló la red.","en":"The fisherman pulled in the net."},
+   {"person":0,"es":"Halé la cuerda y sonó la campana.","en":"I pulled the rope and the bell rang."},
+   {"person":1,"es":"¿Halaste la puerta o la empujaste?","en":"Did you pull the door or push it?"},
+   {"person":3,"es":"Halamos la red entre todos.","en":"We all pulled the net in together."},
+   {"person":4,"es":"Los pescadores halaron el pargo hasta el bote.","en":"The fishermen pulled the snapper up to the boat."}
   ],
   "imperfect": [
-   {"person":4,"es":"Los bueyes halaban la carreta.","en":"The oxen pulled the cart."}
+   {"person":4,"es":"Los bueyes halaban la carreta.","en":"The oxen pulled the cart."},
+   {"person":0,"es":"Yo halaba la soga del pozo.","en":"I used to pull the well rope."},
+   {"person":1,"es":"Tú halabas el carretón de tu tío.","en":"You used to pull your uncle's cart."},
+   {"person":2,"es":"El perro halaba el trineo.","en":"The dog used to pull the sled."},
+   {"person":3,"es":"Halábamos las redes al amanecer.","en":"We used to pull in the nets at dawn."}
   ],
   "future": [
-   {"person":3,"es":"Halaremos la lancha hasta la orilla.","en":"We'll pull the boat up to the shore."}
+   {"person":3,"es":"Halaremos la lancha hasta la orilla.","en":"We'll pull the boat up to the shore."},
+   {"person":0,"es":"Halaré de la cuerda cuando digas.","en":"I'll pull on the rope when you say."},
+   {"person":1,"es":"Halarás la palanca con cuidado.","en":"You'll pull the lever carefully."},
+   {"person":2,"es":"El tractor halará el carro fuera del lodo.","en":"The tractor will pull the car out of the mud."},
+   {"person":4,"es":"Los remolcadores halarán el barco.","en":"The tugboats will pull the ship."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo halaría más fuerte.","en":"I'd pull harder."}
+   {"person":0,"es":"Yo halaría más fuerte.","en":"I'd pull harder."},
+   {"person":1,"es":"¿Halarías esta caja conmigo?","en":"Would you pull this box with me?"},
+   {"person":2,"es":"Mi caballo halaría esa carreta sin problema.","en":"My horse would pull that cart with no trouble."},
+   {"person":3,"es":"Halaríamos la lancha si no pesara tanto.","en":"We'd pull the boat if it weren't so heavy."},
+   {"person":4,"es":"Ellos halarían la soga hasta romperla.","en":"They would pull the rope until it broke."}
   ],
   "presentPerfect": [
    {"person":4,"es":"Han halado la cuerda.","en":"They've pulled the rope."}
@@ -2618,7 +2950,11 @@
   "futurePerfect": {"rare":true},
   "conditionalPerfect": {"rare":true},
   "subjPresent": [
-   {"person":1,"es":"Quiero que hales la puerta.","en":"I want you to pull the door."}
+   {"person":1,"es":"Quiero que hales la puerta.","en":"I want you to pull the door."},
+   {"person":0,"es":"El pescador quiere que yo hale la red.","en":"The fisherman wants me to pull in the net."},
+   {"person":2,"es":"No dejes que el niño te hale el pelo.","en":"Don't let the boy pull your hair."},
+   {"person":3,"es":"Es mejor que halemos todos a la vez.","en":"It's better if we all pull at the same time."},
+   {"person":4,"es":"Diles que halen despacio.","en":"Tell them to pull slowly."}
   ],
   "subjImperfect": [
    {"person":2,"es":"Le dije que halara la cuerda.","en":"I told him to pull the rope."}
@@ -2635,19 +2971,39 @@
  },
  "cargar": {
   "present": [
-   {"person":0,"es":"Cargo las maletas hasta el carro.","en":"I carry the suitcases to the car."}
+   {"person":0,"es":"Cargo las maletas hasta el carro.","en":"I carry the suitcases to the car."},
+   {"person":1,"es":"¿Cargas a tu hija en los hombros?","en":"Do you carry your daughter on your shoulders?"},
+   {"person":2,"es":"Este teléfono carga muy rápido.","en":"This phone charges very fast."},
+   {"person":3,"es":"Cargamos la camioneta para la mudanza.","en":"We load the van for the move."},
+   {"person":4,"es":"Los obreros cargan sacos de cemento.","en":"The workers carry sacks of cement."}
   ],
   "preterite": [
-   {"person":0,"es":"Cargué el celular en el carro.","en":"I charged my phone in the car."}
+   {"person":0,"es":"Cargué el celular en el carro.","en":"I charged my phone in the car."},
+   {"person":1,"es":"¿Cargaste la computadora?","en":"Did you charge the computer?"},
+   {"person":2,"es":"Mi hijo cargó la mochila de su hermana.","en":"My son carried his sister's backpack."},
+   {"person":3,"es":"Cargamos el camión en una hora.","en":"We loaded the truck in an hour."},
+   {"person":4,"es":"Los vecinos cargaron al herido hasta el carro.","en":"The neighbors carried the injured man to the car."}
   ],
   "imperfect": [
-   {"person":2,"es":"Mi padre me cargaba en los hombros.","en":"My father used to carry me on his shoulders."}
+   {"person":2,"es":"Mi padre me cargaba en los hombros.","en":"My father used to carry me on his shoulders."},
+   {"person":0,"es":"Yo cargaba agua desde el río.","en":"I used to carry water from the river."},
+   {"person":1,"es":"Tú cargabas al bebé todo el día.","en":"You carried the baby all day."},
+   {"person":3,"es":"Cargábamos los libros en una bolsa.","en":"We used to carry our books in a bag."},
+   {"person":4,"es":"Las mulas cargaban el café.","en":"The mules carried the coffee."}
   ],
   "future": [
-   {"person":0,"es":"Yo cargaré las bolsas.","en":"I'll carry the bags."}
+   {"person":0,"es":"Yo cargaré las bolsas.","en":"I'll carry the bags."},
+   {"person":1,"es":"Cargarás el teléfono antes de salir.","en":"You'll charge your phone before leaving."},
+   {"person":2,"es":"El chofer cargará las maletas.","en":"The driver will load the suitcases."},
+   {"person":3,"es":"Cargaremos las sillas hasta el salón.","en":"We'll carry the chairs to the hall."},
+   {"person":4,"es":"Los soldados cargarán los sacos de arena.","en":"The soldiers will carry the sandbags."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo cargaría esa caja.","en":"I'd carry that box."}
+   {"person":0,"es":"Yo cargaría esa caja.","en":"I'd carry that box."},
+   {"person":1,"es":"¿Cargarías al niño un momento?","en":"Would you carry the boy for a moment?"},
+   {"person":2,"es":"Mi hermano cargaría esa caja sin ayuda.","en":"My brother would carry that box without help."},
+   {"person":3,"es":"Cargaríamos el carro esta noche.","en":"We'd load the car tonight."},
+   {"person":4,"es":"Ellos cargarían los muebles por poco dinero.","en":"They would carry the furniture for a little money."}
   ],
   "presentPerfect": [
    {"person":1,"es":"¿Has cargado el celular?","en":"Have you charged your phone?"}
@@ -2662,7 +3018,11 @@
    {"person":0,"es":"Te habría cargado las bolsas.","en":"I would have carried your bags for you."}
   ],
   "subjPresent": [
-   {"person":1,"es":"Quiero que cargues tu celular.","en":"I want you to charge your phone."}
+   {"person":1,"es":"Quiero que cargues tu celular.","en":"I want you to charge your phone."},
+   {"person":0,"es":"Mi abuela quiere que yo cargue sus bolsas.","en":"My grandmother wants me to carry her bags."},
+   {"person":2,"es":"Espero que la batería cargue rápido.","en":"I hope the battery charges quickly."},
+   {"person":3,"es":"Es mejor que carguemos el carro temprano.","en":"It's better if we load the car early."},
+   {"person":4,"es":"No dejes que los niños carguen tanto peso.","en":"Don't let the kids carry so much weight."}
   ],
   "subjImperfect": [
    {"person":2,"es":"Le pedí que cargara la maleta.","en":"I asked him to carry the suitcase."}
@@ -2685,19 +3045,39 @@
  },
  "doblar": {
   "present": [
-   {"person":0,"es":"Doblo la ropa después de lavarla.","en":"I fold the clothes after washing them."}
+   {"person":0,"es":"Doblo la ropa después de lavarla.","en":"I fold the clothes after washing them."},
+   {"person":1,"es":"Doblas en la esquina y sigues recto.","en":"You turn at the corner and keep going straight."},
+   {"person":2,"es":"El río dobla hacia el sur.","en":"The river bends to the south."},
+   {"person":3,"es":"Doblamos las toallas después de secarlas.","en":"We fold the towels after drying them."},
+   {"person":4,"es":"Las campanas doblan por el alcalde.","en":"The bells toll for the mayor."}
   ],
   "preterite": [
-   {"person":0,"es":"Doblé a la derecha en el semáforo.","en":"I turned right at the traffic light."}
+   {"person":0,"es":"Doblé a la derecha en el semáforo.","en":"I turned right at the traffic light."},
+   {"person":1,"es":"¿Doblaste a la izquierda?","en":"Did you turn left?"},
+   {"person":2,"es":"El taxi dobló por la calle equivocada.","en":"The taxi turned onto the wrong street."},
+   {"person":3,"es":"Doblamos el mapa y seguimos caminando.","en":"We folded the map and kept walking."},
+   {"person":4,"es":"Los actores doblaron la película al español.","en":"The actors dubbed the movie into Spanish."}
   ],
   "imperfect": [
-   {"person":2,"es":"Mi madre doblaba las sábanas con cuidado.","en":"My mother folded the sheets carefully."}
+   {"person":2,"es":"Mi madre doblaba las sábanas con cuidado.","en":"My mother folded the sheets carefully."},
+   {"person":0,"es":"Yo doblaba las servilletas para la cena.","en":"I used to fold the napkins for dinner."},
+   {"person":1,"es":"Tú doblabas las cartas en forma de avión.","en":"You used to fold letters into airplanes."},
+   {"person":3,"es":"Doblábamos las sillas al final de la misa.","en":"We used to fold up the chairs at the end of Mass."},
+   {"person":4,"es":"Las campanas doblaban cada domingo.","en":"The bells rang every Sunday."}
   ],
   "future": [
-   {"person":3,"es":"Doblaremos en la próxima calle.","en":"We'll turn at the next street."}
+   {"person":3,"es":"Doblaremos en la próxima calle.","en":"We'll turn at the next street."},
+   {"person":0,"es":"Doblaré la ropa después de almorzar.","en":"I'll fold the clothes after lunch."},
+   {"person":1,"es":"Doblarás a la derecha en la farmacia.","en":"You'll turn right at the pharmacy."},
+   {"person":2,"es":"El autobús doblará en la próxima avenida.","en":"The bus will turn at the next avenue."},
+   {"person":4,"es":"Los niños doblarán las hojas por la mitad.","en":"The kids will fold the sheets of paper in half."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo doblaría aquí.","en":"I'd turn here."}
+   {"person":0,"es":"Yo doblaría aquí.","en":"I'd turn here."},
+   {"person":1,"es":"¿Doblarías estas camisas?","en":"Would you fold these shirts?"},
+   {"person":2,"es":"Mi mamá doblaría esa sábana de otra manera.","en":"My mom would fold that sheet another way."},
+   {"person":3,"es":"Doblaríamos en esta calle, pero está cerrada.","en":"We'd turn onto this street, but it's closed."},
+   {"person":4,"es":"Ellos doblarían la apuesta.","en":"They would double the bet."}
   ],
   "presentPerfect": [
    {"person":1,"es":"¿Has doblado la ropa?","en":"Have you folded the clothes?"}
@@ -2710,7 +3090,11 @@
    {"person":3,"es":"Habríamos doblado antes.","en":"We would have turned sooner."}
   ],
   "subjPresent": [
-   {"person":1,"es":"Quiero que dobles tu ropa.","en":"I want you to fold your clothes."}
+   {"person":1,"es":"Quiero que dobles tu ropa.","en":"I want you to fold your clothes."},
+   {"person":0,"es":"Mi mamá quiere que yo doble las toallas.","en":"My mom wants me to fold the towels."},
+   {"person":2,"es":"Espero que el chofer doble aquí.","en":"I hope the driver turns here."},
+   {"person":3,"es":"Es mejor que doblemos antes del puente.","en":"It's better if we turn before the bridge."},
+   {"person":4,"es":"Quiero que los niños doblen su ropa.","en":"I want the kids to fold their clothes."}
   ],
   "subjImperfect": [
    {"person":2,"es":"Le dije al chofer que doblara a la izquierda.","en":"I told the driver to turn left."}
@@ -2733,19 +3117,39 @@
  },
  "regalar": {
   "present": [
-   {"person":0,"es":"Te regalo este libro.","en":"I'm giving you this book as a gift."}
+   {"person":0,"es":"Te regalo este libro.","en":"I'm giving you this book as a gift."},
+   {"person":1,"es":"¿Qué le regalas a tu madre?","en":"What are you giving your mother?"},
+   {"person":2,"es":"Mi tío regala mangos a todos los vecinos.","en":"My uncle gives mangoes to all the neighbors."},
+   {"person":3,"es":"Regalamos los juguetes viejos a la iglesia.","en":"We give the old toys to the church."},
+   {"person":4,"es":"En esa tienda regalan globos a los niños.","en":"At that store they give balloons to the kids."}
   ],
   "preterite": [
-   {"person":2,"es":"Mi tía me regaló un reloj.","en":"My aunt gave me a watch."}
+   {"person":2,"es":"Mi tía me regaló un reloj.","en":"My aunt gave me a watch."},
+   {"person":0,"es":"Le regalé un perfume a mi hermana.","en":"I gave my sister a perfume."},
+   {"person":1,"es":"¿Qué me regalaste?","en":"What did you give me?"},
+   {"person":3,"es":"Le regalamos una bicicleta a nuestro hijo.","en":"We gave our son a bike."},
+   {"person":4,"es":"Mis compañeros me regalaron un pastel.","en":"My coworkers gave me a cake."}
   ],
   "imperfect": [
-   {"person":4,"es":"Mis abuelos nos regalaban dulces.","en":"My grandparents used to give us candy."}
+   {"person":4,"es":"Mis abuelos nos regalaban dulces.","en":"My grandparents used to give us candy."},
+   {"person":0,"es":"Yo le regalaba flores a mi maestra.","en":"I used to give flowers to my teacher."},
+   {"person":1,"es":"Tú me regalabas libros cada Navidad.","en":"You used to give me books every Christmas."},
+   {"person":2,"es":"Mi abuela regalaba pasteles a los vecinos.","en":"My grandmother used to give cakes to the neighbors."},
+   {"person":3,"es":"Regalábamos dulces el Día de Reyes.","en":"We used to give candy on Three Kings Day."}
   ],
   "future": [
-   {"person":3,"es":"Le regalaremos flores a mamá.","en":"We'll give Mom flowers."}
+   {"person":3,"es":"Le regalaremos flores a mamá.","en":"We'll give Mom flowers."},
+   {"person":0,"es":"Te regalaré un collar.","en":"I'll give you a necklace."},
+   {"person":1,"es":"¿Qué le regalarás a tu novia?","en":"What will you give your girlfriend?"},
+   {"person":2,"es":"La escuela regalará libros a los alumnos.","en":"The school will give books to the students."},
+   {"person":4,"es":"Sus padres le regalarán un carro.","en":"Her parents will give her a car."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo le regalaría un libro.","en":"I'd give him a book."}
+   {"person":0,"es":"Yo le regalaría un libro.","en":"I'd give him a book."},
+   {"person":1,"es":"¿Qué le regalarías a tu papá?","en":"What would you give your dad?"},
+   {"person":2,"es":"Mi hermana te regalaría ese vestido.","en":"My sister would give you that dress."},
+   {"person":3,"es":"Te regalaríamos el viaje si pudiéramos.","en":"We'd give you the trip if we could."},
+   {"person":4,"es":"Ellos regalarían esos muebles.","en":"They would give away that furniture."}
   ],
   "presentPerfect": [
    {"person":4,"es":"Me han regalado una guitarra.","en":"They've given me a guitar."}
@@ -2758,7 +3162,11 @@
    {"person":0,"es":"Te habría regalado algo.","en":"I would have gotten you something."}
   ],
   "subjPresent": [
-   {"person":1,"es":"Quiero que me regales una canción.","en":"I want you to give me a song."}
+   {"person":1,"es":"Quiero que me regales una canción.","en":"I want you to give me a song."},
+   {"person":0,"es":"Mi hija quiere que yo le regale un perrito.","en":"My daughter wants me to give her a puppy."},
+   {"person":2,"es":"Espero que Papá Noel me regale un reloj.","en":"I hope Santa gives me a watch."},
+   {"person":3,"es":"Es bonito que regalemos algo hecho a mano.","en":"It's nice for us to give something handmade."},
+   {"person":4,"es":"Ojalá me regalen un libro.","en":"I hope they give me a book."}
   ],
   "subjImperfect": [
    {"person":2,"es":"Esperaba que mi novio me regalara flores.","en":"I was hoping my boyfriend would give me flowers."}
@@ -2779,19 +3187,39 @@
  },
  "saludar": {
   "present": [
-   {"person":0,"es":"Saludo a mis vecinos todas las mañanas.","en":"I greet my neighbors every morning."}
+   {"person":0,"es":"Saludo a mis vecinos todas las mañanas.","en":"I greet my neighbors every morning."},
+   {"person":1,"es":"¿Por qué no saludas a la vecina?","en":"Why don't you say hello to the neighbor?"},
+   {"person":2,"es":"El presidente saluda desde el balcón.","en":"The president waves from the balcony."},
+   {"person":3,"es":"Saludamos a todos al entrar.","en":"We say hello to everyone when we come in."},
+   {"person":4,"es":"Los niños saludan a la maestra.","en":"The kids say hello to the teacher."}
   ],
   "preterite": [
-   {"person":2,"es":"El niño saludó a su abuela.","en":"The boy said hello to his grandmother."}
+   {"person":2,"es":"El niño saludó a su abuela.","en":"The boy said hello to his grandmother."},
+   {"person":0,"es":"Saludé a tu mamá en el mercado.","en":"I said hello to your mom at the market."},
+   {"person":1,"es":"¿Saludaste a tus tíos?","en":"Did you say hello to your aunt and uncle?"},
+   {"person":3,"es":"Saludamos al cura al salir de la iglesia.","en":"We greeted the priest when we left the church."},
+   {"person":4,"es":"Los soldados saludaron la bandera.","en":"The soldiers saluted the flag."}
   ],
   "imperfect": [
-   {"person":4,"es":"Los vecinos nos saludaban desde el balcón.","en":"The neighbors used to wave to us from the balcony."}
+   {"person":4,"es":"Los vecinos nos saludaban desde el balcón.","en":"The neighbors used to wave to us from the balcony."},
+   {"person":0,"es":"Yo saludaba al panadero cada mañana.","en":"I used to say hello to the baker every morning."},
+   {"person":1,"es":"Tú saludabas a todo el mundo en la calle.","en":"You used to say hello to everyone on the street."},
+   {"person":2,"es":"El viejo saludaba con el sombrero.","en":"The old man greeted people by tipping his hat."},
+   {"person":3,"es":"Saludábamos al tren desde el puente.","en":"We used to wave at the train from the bridge."}
   ],
   "future": [
-   {"person":0,"es":"Te saludaré cuando te vea.","en":"I'll say hello when I see you."}
+   {"person":0,"es":"Te saludaré cuando te vea.","en":"I'll say hello when I see you."},
+   {"person":1,"es":"Saludarás a tu abuela de mi parte.","en":"You'll say hello to your grandmother for me."},
+   {"person":2,"es":"El alcalde saludará a los vecinos.","en":"The mayor will greet the neighbors."},
+   {"person":3,"es":"Saludaremos a los invitados en la puerta.","en":"We'll greet the guests at the door."},
+   {"person":4,"es":"Los niños saludarán con la mano.","en":"The kids will wave hello."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo la saludaría.","en":"I'd say hello to her."}
+   {"person":0,"es":"Yo la saludaría.","en":"I'd say hello to her."},
+   {"person":1,"es":"¿Saludarías a tu ex?","en":"Would you say hello to your ex?"},
+   {"person":2,"es":"Mi padre saludaría a todos uno por uno.","en":"My father would greet everyone one by one."},
+   {"person":3,"es":"Te saludaríamos, pero vas muy rápido.","en":"We'd say hello, but you're going too fast."},
+   {"person":4,"es":"Ellos saludarían a la maestra si la vieran.","en":"They would say hello to the teacher if they saw her."}
   ],
   "presentPerfect": [
    {"person":2,"es":"El jefe me ha saludado.","en":"The boss has greeted me."}
@@ -2804,7 +3232,11 @@
    {"person":0,"es":"Te habría saludado.","en":"I would have said hello to you."}
   ],
   "subjPresent": [
-   {"person":1,"es":"Quiero que saludes a tus tíos.","en":"I want you to say hello to your aunt and uncle."}
+   {"person":1,"es":"Quiero que saludes a tus tíos.","en":"I want you to say hello to your aunt and uncle."},
+   {"person":0,"es":"Mi mamá quiere que yo salude a la visita.","en":"My mom wants me to say hello to the guests."},
+   {"person":2,"es":"Espero que el niño salude con respeto.","en":"I hope the boy greets people respectfully."},
+   {"person":3,"es":"Es de buena educación que saludemos.","en":"It's good manners for us to say hello."},
+   {"person":4,"es":"Quiero que mis hijos saluden a sus mayores.","en":"I want my kids to greet their elders."}
   ],
   "subjImperfect": [
    {"person":2,"es":"Le dije al niño que saludara.","en":"I told the boy to say hello."}
@@ -2825,19 +3257,39 @@
  },
  "acompañar": {
   "present": [
-   {"person":0,"es":"Te acompaño al médico.","en":"I'll go with you to the doctor."}
+   {"person":0,"es":"Te acompaño al médico.","en":"I'll go with you to the doctor."},
+   {"person":1,"es":"¿Me acompañas a la tienda?","en":"Will you come with me to the store?"},
+   {"person":2,"es":"El arroz acompaña bien el pescado.","en":"Rice goes well with fish."},
+   {"person":3,"es":"Te acompañamos en tu dolor.","en":"We share in your grief."},
+   {"person":4,"es":"Los padres acompañan a sus hijos a la escuela.","en":"The parents walk their kids to school."}
   ],
   "preterite": [
-   {"person":2,"es":"Mi hermana me acompañó al aeropuerto.","en":"My sister went with me to the airport."}
+   {"person":2,"es":"Mi hermana me acompañó al aeropuerto.","en":"My sister went with me to the airport."},
+   {"person":0,"es":"Acompañé a mi abuela a la iglesia.","en":"I went with my grandmother to church."},
+   {"person":1,"es":"Me acompañaste en los peores momentos.","en":"You stood by me in the worst moments."},
+   {"person":3,"es":"Acompañamos a los novios hasta el carro.","en":"We walked the couple to the car."},
+   {"person":4,"es":"Mis amigos me acompañaron al hospital.","en":"My friends went with me to the hospital."}
   ],
   "imperfect": [
-   {"person":2,"es":"Mi perro me acompañaba a todas partes.","en":"My dog went everywhere with me."}
+   {"person":2,"es":"Mi perro me acompañaba a todas partes.","en":"My dog went everywhere with me."},
+   {"person":0,"es":"Yo acompañaba a mi padre al mercado.","en":"I used to go with my father to the market."},
+   {"person":1,"es":"Tú acompañabas a tu hermana a clase de baile.","en":"You used to go with your sister to dance class."},
+   {"person":3,"es":"Acompañábamos a la abuela a misa.","en":"We used to go with grandma to Mass."},
+   {"person":4,"es":"Los perros acompañaban a los pastores.","en":"The dogs used to go along with the shepherds."}
   ],
   "future": [
-   {"person":0,"es":"Yo te acompañaré.","en":"I'll go with you."}
+   {"person":0,"es":"Yo te acompañaré.","en":"I'll go with you."},
+   {"person":1,"es":"Acompañarás a tu tía al doctor.","en":"You'll go with your aunt to the doctor."},
+   {"person":2,"es":"Mi hermano te acompañará a la estación.","en":"My brother will go with you to the station."},
+   {"person":3,"es":"Te acompañaremos en este viaje.","en":"We'll go with you on this trip."},
+   {"person":4,"es":"Dos guías acompañarán al grupo.","en":"Two guides will accompany the group."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo te acompañaría, pero tengo trabajo.","en":"I'd go with you, but I have work."}
+   {"person":0,"es":"Yo te acompañaría, pero tengo trabajo.","en":"I'd go with you, but I have work."},
+   {"person":1,"es":"¿Me acompañarías a la boda?","en":"Would you go with me to the wedding?"},
+   {"person":2,"es":"Mi prima te acompañaría con la guitarra.","en":"My cousin would accompany you on the guitar."},
+   {"person":3,"es":"Te acompañaríamos, pero tenemos que trabajar.","en":"We'd go with you, but we have to work."},
+   {"person":4,"es":"Ellos nos acompañarían si no estuvieran enfermos.","en":"They would go with us if they weren't sick."}
   ],
   "presentPerfect": [
    {"person":2,"es":"Mi madre me ha acompañado siempre.","en":"My mother has always been there with me."}
@@ -2850,7 +3302,11 @@
    {"person":0,"es":"Te habría acompañado.","en":"I would have gone with you."}
   ],
   "subjPresent": [
-   {"person":1,"es":"Quiero que me acompañes.","en":"I want you to come with me."}
+   {"person":1,"es":"Quiero que me acompañes.","en":"I want you to come with me."},
+   {"person":0,"es":"Mi madre quiere que yo la acompañe al banco.","en":"My mother wants me to go with her to the bank."},
+   {"person":2,"es":"Espero que tu padre te acompañe.","en":"I hope your father goes with you."},
+   {"person":3,"es":"Es mejor que los acompañemos hasta la casa.","en":"It's better if we walk them home."},
+   {"person":4,"es":"Ojalá mis hijos me acompañen en este viaje.","en":"I hope my kids come with me on this trip."}
   ],
   "subjImperfect": [
    {"person":2,"es":"Le pedí que me acompañara.","en":"I asked her to go with me."}
@@ -2871,17 +3327,33 @@
  },
  "odiar": {
   "present": [
-   {"person":0,"es":"Odio el tráfico.","en":"I hate traffic."}
+   {"person":0,"es":"Odio el tráfico.","en":"I hate traffic."},
+   {"person":1,"es":"¿Odias el frío tanto como yo?","en":"Do you hate the cold as much as I do?"},
+   {"person":2,"es":"Mi hija odia las espinacas.","en":"My daughter hates spinach."},
+   {"person":3,"es":"Odiamos madrugar.","en":"We hate getting up early."},
+   {"person":4,"es":"Los gatos odian el agua.","en":"Cats hate water."}
   ],
   "preterite": {"rare":true},
   "imperfect": [
-   {"person":2,"es":"Mi hermano odiaba la escuela.","en":"My brother hated school."}
+   {"person":2,"es":"Mi hermano odiaba la escuela.","en":"My brother hated school."},
+   {"person":0,"es":"Yo odiaba las matemáticas.","en":"I hated math."},
+   {"person":1,"es":"Tú odiabas ese uniforme.","en":"You hated that uniform."},
+   {"person":3,"es":"Odiábamos los lunes.","en":"We hated Mondays."},
+   {"person":4,"es":"Mis hermanos odiaban las sopas de la abuela.","en":"My brothers hated grandma's soups."}
   ],
   "future": [
-   {"person":1,"es":"Odiarás este calor.","en":"You'll hate this heat."}
+   {"person":1,"es":"Odiarás este calor.","en":"You'll hate this heat."},
+   {"person":0,"es":"Odiaré dejar esta casa.","en":"I'll hate leaving this house."},
+   {"person":2,"es":"Tu hijo odiará ese corte de pelo.","en":"Your son will hate that haircut."},
+   {"person":3,"es":"Odiaremos levantarnos tan temprano.","en":"We'll hate getting up so early."},
+   {"person":4,"es":"Los niños odiarán esa medicina.","en":"The kids will hate that medicine."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo odiaría vivir allí.","en":"I'd hate to live there."}
+   {"person":0,"es":"Yo odiaría vivir allí.","en":"I'd hate to live there."},
+   {"person":1,"es":"¿Odiarías vivir en el campo?","en":"Would you hate living in the country?"},
+   {"person":2,"es":"Mi esposa odiaría ese color.","en":"My wife would hate that color."},
+   {"person":3,"es":"Odiaríamos perder esta oportunidad.","en":"We'd hate to lose this opportunity."},
+   {"person":4,"es":"Ellos odiarían trabajar los domingos.","en":"They would hate working on Sundays."}
   ],
   "presentPerfect": [
    {"person":0,"es":"Siempre he odiado las cucarachas.","en":"I've always hated cockroaches."}
@@ -2894,7 +3366,11 @@
    {"person":0,"es":"Yo habría odiado ese trabajo.","en":"I would have hated that job."}
   ],
   "subjPresent": [
-   {"person":1,"es":"No quiero que me odies.","en":"I don't want you to hate me."}
+   {"person":1,"es":"No quiero que me odies.","en":"I don't want you to hate me."},
+   {"person":0,"es":"No creo que yo odie a nadie.","en":"I don't think I hate anyone."},
+   {"person":2,"es":"No me sorprende que tu gato odie al perro.","en":"I'm not surprised your cat hates the dog."},
+   {"person":3,"es":"No quiero que nos odiemos por esto.","en":"I don't want us to hate each other over this."},
+   {"person":4,"es":"Espero que los vecinos no nos odien.","en":"I hope the neighbors don't hate us."}
   ],
   "subjImperfect": [
    {"person":2,"es":"Temía que mi hija me odiara.","en":"I was afraid my daughter would hate me."}
@@ -2909,19 +3385,39 @@
  },
  "gritar": {
   "present": [
-   {"person":0,"es":"No grito nunca a mis hijos.","en":"I never shout at my kids."}
+   {"person":0,"es":"No grito nunca a mis hijos.","en":"I never shout at my kids."},
+   {"person":1,"es":"¿Por qué gritas?","en":"Why are you shouting?"},
+   {"person":2,"es":"Mi abuelo grita porque no oye bien.","en":"My grandfather shouts because he doesn't hear well."},
+   {"person":3,"es":"Gritamos de emoción en cada gol.","en":"We shout with excitement at every goal."},
+   {"person":4,"es":"Los niños gritan en el recreo.","en":"The kids shout at recess."}
   ],
   "preterite": [
-   {"person":2,"es":"El niño gritó de alegría.","en":"The boy shouted with joy."}
+   {"person":2,"es":"El niño gritó de alegría.","en":"The boy shouted with joy."},
+   {"person":0,"es":"Grité al ver la cucaracha.","en":"I screamed when I saw the cockroach."},
+   {"person":1,"es":"¿Le gritaste al árbitro?","en":"Did you yell at the referee?"},
+   {"person":3,"es":"Gritamos desde la orilla.","en":"We shouted from the shore."},
+   {"person":4,"es":"Todos gritaron cuando se fue la luz.","en":"Everyone screamed when the power went out."}
   ],
   "imperfect": [
-   {"person":4,"es":"Los vendedores gritaban en la calle.","en":"The vendors were shouting in the street."}
+   {"person":4,"es":"Los vendedores gritaban en la calle.","en":"The vendors were shouting in the street."},
+   {"person":0,"es":"Yo gritaba en todos los partidos.","en":"I used to shout at every game."},
+   {"person":1,"es":"Tú gritabas cuando veías una araña.","en":"You used to scream when you saw a spider."},
+   {"person":2,"es":"El vendedor gritaba los precios.","en":"The vendor would shout out the prices."},
+   {"person":3,"es":"Gritábamos desde el balcón.","en":"We used to shout from the balcony."}
   ],
   "future": [
-   {"person":1,"es":"Gritarás cuando veas la sorpresa.","en":"You'll shout when you see the surprise."}
+   {"person":1,"es":"Gritarás cuando veas la sorpresa.","en":"You'll shout when you see the surprise."},
+   {"person":0,"es":"Gritaré tu nombre en la graduación.","en":"I'll shout your name at the graduation."},
+   {"person":2,"es":"El público gritará al ver a la cantante.","en":"The audience will scream when they see the singer."},
+   {"person":3,"es":"Gritaremos de alegría si ganamos.","en":"We'll shout with joy if we win."},
+   {"person":4,"es":"Los fanáticos gritarán en el estadio.","en":"The fans will shout in the stadium."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo gritaría de alegría.","en":"I'd shout with joy."}
+   {"person":0,"es":"Yo gritaría de alegría.","en":"I'd shout with joy."},
+   {"person":1,"es":"¿Gritarías en la montaña rusa?","en":"Would you scream on the roller coaster?"},
+   {"person":2,"es":"Mi mamá gritaría al ver este cuarto.","en":"My mom would scream if she saw this room."},
+   {"person":3,"es":"Gritaríamos, pero nadie nos oiría.","en":"We'd shout, but nobody would hear us."},
+   {"person":4,"es":"Ellos gritarían de miedo en esa casa.","en":"They would scream with fear in that house."}
   ],
   "presentPerfect": [
    {"person":2,"es":"Mi vecino ha gritado toda la noche.","en":"My neighbor has been shouting all night."}
@@ -2934,7 +3430,11 @@
    {"person":0,"es":"Yo habría gritado.","en":"I would have shouted."}
   ],
   "subjPresent": [
-   {"person":1,"es":"No quiero que grites.","en":"I don't want you to shout."}
+   {"person":1,"es":"No quiero que grites.","en":"I don't want you to shout."},
+   {"person":0,"es":"Mis hijos no quieren que yo grite.","en":"My kids don't want me to shout."},
+   {"person":2,"es":"Espero que el bebé no grite en el avión.","en":"I hope the baby doesn't scream on the plane."},
+   {"person":3,"es":"Es mejor que no gritemos en el hospital.","en":"It's better if we don't shout in the hospital."},
+   {"person":4,"es":"No me gusta que los maestros griten.","en":"I don't like it when teachers shout."}
   ],
   "subjImperfect": [
    {"person":2,"es":"Le pedí que no gritara.","en":"I asked him not to shout."}
@@ -2957,19 +3457,39 @@
  },
  "secar": {
   "present": [
-   {"person":0,"es":"Seco la ropa al sol.","en":"I dry the clothes in the sun."}
+   {"person":0,"es":"Seco la ropa al sol.","en":"I dry the clothes in the sun."},
+   {"person":1,"es":"Secas los platos y yo los guardo.","en":"You dry the dishes and I'll put them away."},
+   {"person":2,"es":"El sol seca la ropa en una hora.","en":"The sun dries the clothes in an hour."},
+   {"person":3,"es":"Secamos el café en el patio.","en":"We dry the coffee in the yard."},
+   {"person":4,"es":"Las toallas no secan bien si están viejas.","en":"Towels don't dry well if they're old."}
   ],
   "preterite": [
-   {"person":0,"es":"Sequé los platos.","en":"I dried the dishes."}
+   {"person":0,"es":"Sequé los platos.","en":"I dried the dishes."},
+   {"person":1,"es":"¿Secaste las sábanas?","en":"Did you dry the sheets?"},
+   {"person":2,"es":"El viento secó el piso.","en":"The wind dried the floor."},
+   {"person":3,"es":"Secamos las sillas después de la lluvia.","en":"We dried off the chairs after the rain."},
+   {"person":4,"es":"Los niños secaron los vasos.","en":"The kids dried the glasses."}
   ],
   "imperfect": [
-   {"person":2,"es":"Mi madre secaba el pescado al sol.","en":"My mother used to dry fish in the sun."}
+   {"person":2,"es":"Mi madre secaba el pescado al sol.","en":"My mother used to dry fish in the sun."},
+   {"person":0,"es":"Yo secaba los platos con un paño.","en":"I used to dry the dishes with a cloth."},
+   {"person":1,"es":"Tú secabas el pelo con una toalla.","en":"You used to dry your hair with a towel."},
+   {"person":3,"es":"Secábamos las hojas de tabaco.","en":"We used to dry the tobacco leaves."},
+   {"person":4,"es":"Los pescadores secaban las redes en la playa.","en":"The fishermen dried their nets on the beach."}
   ],
   "future": [
-   {"person":3,"es":"Secaremos la ropa en el patio.","en":"We'll dry the clothes in the yard."}
+   {"person":3,"es":"Secaremos la ropa en el patio.","en":"We'll dry the clothes in the yard."},
+   {"person":0,"es":"Secaré el baño después de la ducha.","en":"I'll dry the bathroom after the shower."},
+   {"person":1,"es":"Secarás al perro con esta toalla.","en":"You'll dry the dog with this towel."},
+   {"person":2,"es":"El aire secará la pintura.","en":"The air will dry the paint."},
+   {"person":4,"es":"Las sequías secarán el río.","en":"The droughts will dry up the river."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo secaría eso primero.","en":"I'd dry that first."}
+   {"person":0,"es":"Yo secaría eso primero.","en":"I'd dry that first."},
+   {"person":1,"es":"¿Secarías estos platos?","en":"Would you dry these dishes?"},
+   {"person":2,"es":"Mi madre secaría las hierbas al sol.","en":"My mother would dry the herbs in the sun."},
+   {"person":3,"es":"Secaríamos la ropa adentro si lloviera.","en":"We'd dry the clothes inside if it rained."},
+   {"person":4,"es":"Ellos secarían el pescado con sal.","en":"They would dry the fish with salt."}
   ],
   "presentPerfect": [
    {"person":1,"es":"¿Has secado los platos?","en":"Have you dried the dishes?"}
@@ -2982,7 +3502,11 @@
    {"person":2,"es":"El sol lo habría secado.","en":"The sun would have dried it."}
   ],
   "subjPresent": [
-   {"person":1,"es":"Quiero que seques el piso.","en":"I want you to dry the floor."}
+   {"person":1,"es":"Quiero que seques el piso.","en":"I want you to dry the floor."},
+   {"person":0,"es":"Mi mamá quiere que yo seque el baño.","en":"My mom wants me to dry the bathroom."},
+   {"person":2,"es":"Espero que el sol seque el lodo.","en":"I hope the sun dries the mud."},
+   {"person":3,"es":"Es mejor que sequemos el piso antes de salir.","en":"It's better if we dry the floor before leaving."},
+   {"person":4,"es":"Diles a los niños que sequen sus zapatos.","en":"Tell the kids to dry their shoes."}
   ],
   "subjImperfect": [
    {"person":2,"es":"Le pedí que secara los platos.","en":"I asked him to dry the dishes."}

@@ -34,7 +34,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - [ ] More regional words, and more countries in the existing entries
 - [ ] More reading passages. Now at 12, with 4 each at A1, A2 and B1
 - [ ] Better examples for verbs that are mostly "rarely used" notes (contraer, prever, errar, rogar)
-- [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 11,300 remain, so this needs batches and a usage check before each one. Each batch covers the next 12 verbs in `verbs.json`, about 280 sentences. The top 278 are done in the six core tenses, apart from forms with no natural sentence, like `yo naceré` or all of `nevar` beyond él, which are left without one, and tenses marked rare, like most of `errar`, `oponer`, `prever`, `contraer` and `desoír`. Do the core tenses first: about 1,200 remain there, three more batches plus those left-out forms, and the rest are in tenses drilled far less
+- [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 10,100 remain, all in tenses drilled far less, so this needs batches and a usage check before each one. All 314 verbs are done in the six core tenses, apart from 329 forms left out on purpose: forms with no natural sentence, like `yo naceré` or all of `nevar` beyond él, and tenses marked rare, like most of `errar`, `oponer`, `prever`, `contraer` and `desoír`. Next would be the present perfect and the -ra imperfect subjunctive, about 2,470 sentences between them, starting from the most common verbs
 
 ## Later
 
@@ -130,6 +130,7 @@ These live in `.verify/`, which is gitignored, so keep a copy if you change mach
 - [x] 1,059 more sentences in four batches, extending that coverage to the top 158 verbs
 - [x] 1,097 more sentences in four batches, extending that coverage to the top 206 verbs
 - [x] 1,676 more sentences in six batches, extending that coverage to the top 278 verbs
+- [x] 856 more sentences in three batches, finishing that coverage for all 314 verbs
 - [x] Sentence data split into one file per 50 verbs, so the default drill downloads about 54 KB instead of 170 KB (gzipped). Every lookup was compared before and after, with no differences
 
 ### Verification
