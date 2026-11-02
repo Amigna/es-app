@@ -1,11 +1,11 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { blankCard, blankDeck, newItemOrder, reviewCard, reviewDeck, vocabDeck, type VocabOptions } from "./card-decks";
+import { blankCard, blankDeck, flashcardDeck, newItemOrder, reviewCard, reviewDeck, vocabDeck, type VocabOptions } from "./card-decks";
 import { englishAnswers, englishCore, gradeCard, type Card } from "./drill";
 import { DEFAULT_SETTINGS, NOUN_TOPICS, parseSettings } from "./drill-settings";
 import { SENTENCE_BANK } from "./sentence-data";
 import { VERBS, findVerb } from "./verbs";
-import { ADJECTIVES, ADVERBS, NOUNS, SMALL_WORDS } from "./vocab";
+import { ADJECTIVES, ADVERBS, NOUNS, PHRASES, SMALL_WORDS } from "./vocab";
 
 const verb = (inf: string) => {
   const v = findVerb(inf);
@@ -220,5 +220,67 @@ describe("drill settings", () => {
     assert.deepEqual(s.tenses, ["future"]);
     assert.deepEqual(s.kinds, []);
     assert.deepEqual(s.topics, ["food"]);
+  });
+
+  it("keeps flashcard choices and drops unknown ones", () => {
+    const s = parseSettings(JSON.stringify({ mode: "flashcards", flashSide: "sideways", flashTypes: ["phrase", "verb"] }));
+    assert.equal(s.mode, "flashcards");
+    assert.equal(s.flashSide, DEFAULT_SETTINGS.flashSide);
+    assert.deepEqual(s.flashTypes, ["phrase"]);
+  });
+});
+
+describe("flashcardDeck", () => {
+  const all = (next: () => Card | null) => {
+    const cards: Card[] = [];
+    for (let card = next(); card; card = next()) cards.push(card);
+    return cards;
+  };
+
+  it("asks each chosen word once, then runs out", () => {
+    const cards = all(flashcardDeck({ side: "toEnglish", types: ["phrase"], topics: [] }));
+    assert.equal(cards.length, PHRASES.length);
+    assert.equal(new Set(cards.map((c) => c.id)).size, PHRASES.length);
+  });
+
+  it("shares its item with the typed question", () => {
+    const card = flashcardDeck({ side: "toSpanish", types: ["noun"], topics: [] })();
+    assert.ok(card?.flashcard);
+    assert.match(card.track?.item ?? "", /^vocab:noun:.+:toSpanish$/);
+    assert.equal(reviewCard(card.track!.item, SENTENCE_BANK, new Set())?.flashcard, undefined);
+  });
+
+  it("hides the Spanish on the front going to Spanish, and shows it going to English", () => {
+    const toSpanish = all(flashcardDeck({ side: "toSpanish", types: ["noun"], topics: ["family"] })).find((c) => c.shown === "la madre");
+    assert.equal(toSpanish?.title, "mother");
+    assert.equal(toSpanish?.flashcard?.example?.es, "Mi madre vive en Santiago.");
+    const toEnglish = all(flashcardDeck({ side: "toEnglish", types: ["noun"], topics: ["family"] })).find((c) => c.shown === "mother");
+    assert.equal(toEnglish?.title, "la madre");
+  });
+
+  it("limits nouns by topic and leaves other word types alone", () => {
+    const cards = all(flashcardDeck({ side: "toEnglish", types: ["noun", "adverb"], topics: ["family"] }));
+    const family = NOUNS.filter((n) => n.topic === "family").length;
+    assert.equal(cards.length, family + ADVERBS.length);
+  });
+
+  it("is empty with nothing chosen", () => {
+    assert.equal(flashcardDeck({ side: "toEnglish", types: [], topics: [] })(), null);
+  });
+
+  it("brings phrases back as flashcards, because they aren't typed", () => {
+    for (const side of ["toEnglish", "toSpanish"] as const) {
+      for (const card of all(flashcardDeck({ side, types: ["phrase"], topics: [] }))) {
+        const rebuilt = reviewCard(card.track!.item, SENTENCE_BANK, new Set());
+        assert.ok(rebuilt?.flashcard, card.id);
+        assert.equal(rebuilt.id, card.id);
+      }
+    }
+    assert.equal(reviewCard("vocab:phrase:gone:toEnglish", SENTENCE_BANK, new Set()), null);
+  });
+
+  it("carries a phrase's note to the answer side", () => {
+    const card = all(flashcardDeck({ side: "toEnglish", types: ["phrase"], topics: [] })).find((c) => c.title === "¿Qué bolá?");
+    assert.equal(card?.flashcard?.note, "Cuban slang, very informal");
   });
 });

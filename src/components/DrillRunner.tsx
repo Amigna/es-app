@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import ReportProblem from "@/components/ReportProblem";
+import SpeakButton from "@/components/SpeakButton";
 import { gradeCard, type Card, type Grade } from "@/lib/drill";
 import { recordAnswer, saveProgress } from "@/lib/progress-queue";
 
@@ -11,7 +12,7 @@ const SPECIAL_LETTERS = ["á", "é", "í", "ó", "ú", "ñ", "ü"];
 // A missed question comes back after this many others.
 const RETRY_GAP = 3;
 
-function Feedback({ result, card }: { result: Grade; card: Card }) {
+function Feedback({ result, card, speak }: { result: Grade; card: Card; speak?: string }) {
   const styles = {
     correct: "border-emerald-300 bg-emerald-50 text-emerald-900 dark:border-emerald-800 dark:bg-emerald-950 dark:text-emerald-200",
     accent: "border-amber-300 bg-amber-50 text-amber-900 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-200",
@@ -19,21 +20,26 @@ function Feedback({ result, card }: { result: Grade; card: Card }) {
   };
   return (
     <div role="status" className={`rounded-lg border px-4 py-3 ${styles[result]}`}>
-      {result === "correct" && <p className="font-medium">Correct!</p>}
-      {result === "accent" && (
-        <p>
-          <span className="font-medium">Right letters, mind the accent:</span>{" "}
-          <span lang="es" className="font-semibold">
-            {card.shown}
-          </span>
-        </p>
-      )}
-      {result === "wrong" && (
-        <p>
-          <span className="font-medium">The answer is</span> <span className="font-semibold">{card.shown}</span>. This one
-          will come back.
-        </p>
-      )}
+      <div className="flex items-start justify-between gap-2">
+        <div>
+          {result === "correct" && <p className="font-medium">Correct!</p>}
+          {result === "accent" && (
+            <p>
+              <span className="font-medium">Right letters, mind the accent:</span>{" "}
+              <span lang="es" className="font-semibold">
+                {card.shown}
+              </span>
+            </p>
+          )}
+          {result === "wrong" && (
+            <p>
+              <span className="font-medium">The answer is</span> <span className="font-semibold">{card.shown}</span>. This one
+              will come back.
+            </p>
+          )}
+        </div>
+        {speak && <SpeakButton text={speak} />}
+      </div>
       {card.explain && <p className="mt-1">{card.explain}</p>}
       {card.link && (
         <Link href={card.link.href} className="mt-1 inline-block text-sm underline">
@@ -55,6 +61,8 @@ export default function DrillRunner({
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
+  const showRef = useRef<HTMLButtonElement>(null);
+  const knewRef = useRef<HTMLButtonElement>(null);
 
   const [card, setCard] = useState(first);
   const [input, setInput] = useState("");
@@ -65,36 +73,51 @@ export default function DrillRunner({
   const [retries, setRetries] = useState<{ card: Card; dueAt: number }[]>([]);
   const [finished, setFinished] = useState(false);
   const [isRetry, setIsRetry] = useState(false);
+  const [revealed, setRevealed] = useState(false);
+  const isVocab = !!card.track?.item.startsWith("vocab:");
 
   // Keeps the keyboard flow going: type, Enter to check, Enter for the next one.
   useEffect(() => {
-    if (result) nextRef.current?.focus();
+    if (card.flashcard) (revealed ? knewRef : showRef).current?.focus();
+    else if (result) nextRef.current?.focus();
     else inputRef.current?.focus();
-  }, [card, result]);
+  }, [card, result, revealed]);
 
   // Save what's left when the session ends.
   useEffect(() => () => void saveProgress(), []);
 
-  function submit(value: string) {
-    if (result || !value.trim()) return;
-    const g = gradeCard(card, value);
+  /** Returns the new counts, for a flashcard that moves straight on before state updates. */
+  function record(g: Grade) {
     const good = g === "correct";
-    setInput(value);
+    const answeredNow = total + 1;
+    const missed = good ? retries : [...retries, { card, dueAt: answeredNow + RETRY_GAP }];
     setResult(g);
-    setTotal(total + 1);
+    setTotal(answeredNow);
     // Only the first try counts, so a retry can't inflate progress.
     if (card.track && !isRetry) recordAnswer(card.track, g);
     if (good) setRight(right + 1);
     setStreak(good ? streak + 1 : 0);
-    if (!good) setRetries([...retries, { card, dueAt: total + 1 + RETRY_GAP }]);
+    setRetries(missed);
+    return { answeredNow, missed };
   }
 
-  function advance() {
-    const due = retries.find((r) => r.dueAt <= total);
+  function submit(value: string) {
+    if (result || !value.trim()) return;
+    setInput(value);
+    record(gradeCard(card, value));
+  }
+
+  function selfGrade(knew: boolean) {
+    const { answeredNow, missed } = record(knew ? "correct" : "wrong");
+    advance(answeredNow, missed);
+  }
+
+  function advance(done = total, waiting = retries) {
+    const due = waiting.find((r) => r.dueAt <= done);
     const fresh = due ? null : next();
     // A deck that runs out still finishes its missed questions before ending.
-    const retry = due ?? (fresh ? undefined : retries[0]);
-    if (retry) setRetries(retries.filter((r) => r !== retry));
+    const retry = due ?? (fresh ? undefined : waiting[0]);
+    if (retry) setRetries(waiting.filter((r) => r !== retry));
     const following = retry?.card ?? fresh;
     if (!following) {
       setFinished(true);
@@ -105,6 +128,7 @@ export default function DrillRunner({
     setCard(following);
     setInput("");
     setResult(null);
+    setRevealed(false);
   }
 
   function insertLetter(letter: string) {
@@ -161,9 +185,13 @@ export default function DrillRunner({
         ) : (
           <p className="text-sm text-zinc-500">{card.context}</p>
         )}
-        <h2 lang={card.titleIsSpanish ? "es" : "en"} className="mt-3 text-2xl font-semibold tracking-tight">
-          {card.title}
-        </h2>
+        <div className="mt-3 flex items-start justify-between gap-2">
+          <h2 lang={card.titleIsSpanish ? "es" : "en"} className="text-2xl font-semibold tracking-tight">
+            {card.title}
+          </h2>
+          {/* Only Spanish that's already on screen: speaking the answer early would give it away. */}
+          {isVocab && card.titleIsSpanish && <SpeakButton text={card.title} />}
+        </div>
         {card.subtitle && <p className="text-zinc-600 dark:text-zinc-400">{card.subtitle}</p>}
         {card.example && (
           <p className="mt-3 border-l-2 border-zinc-300 pl-3 text-zinc-600 dark:border-zinc-700 dark:text-zinc-400">
@@ -175,7 +203,58 @@ export default function DrillRunner({
         )}
         <p className="mt-4 text-lg font-medium">{card.ask}</p>
 
-        {card.choices ? (
+        {card.flashcard ? (
+          <div className="mt-4 space-y-3">
+            {revealed ? (
+              <>
+                <div role="status" className="rounded-lg border border-zinc-200 px-4 py-3 dark:border-zinc-700">
+                  <p className="flex items-center justify-between gap-2">
+                    <span lang={card.english ? "en" : "es"} className="text-xl font-semibold">
+                      {card.shown}
+                    </span>
+                    {!card.english && <SpeakButton text={card.shown} />}
+                  </p>
+                  {card.flashcard.note && <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">{card.flashcard.note}</p>}
+                  {card.flashcard.example && (
+                    <p className="mt-3 border-l-2 border-zinc-300 pl-3 text-zinc-600 dark:border-zinc-700 dark:text-zinc-400">
+                      <span lang="es" className="block font-medium text-zinc-800 dark:text-zinc-200">
+                        {card.flashcard.example.es}
+                      </span>
+                      {card.flashcard.example.en}
+                    </p>
+                  )}
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <button
+                    type="button"
+                    onClick={() => selfGrade(false)}
+                    className="h-11 rounded-xl border border-zinc-300 font-medium transition hover:border-emerald-600 dark:border-zinc-700"
+                  >
+                    Didn&apos;t know
+                  </button>
+                  <button
+                    ref={knewRef}
+                    type="button"
+                    onClick={() => selfGrade(true)}
+                    className="h-11 rounded-xl bg-emerald-700 font-medium text-white transition hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
+                  >
+                    Knew it
+                  </button>
+                </div>
+                <ReportProblem key={card.id} about={[card.badge, card.title, card.shown].filter(Boolean).join(": ")} />
+              </>
+            ) : (
+              <button
+                ref={showRef}
+                type="button"
+                onClick={() => setRevealed(true)}
+                className="h-11 w-full rounded-xl bg-emerald-700 font-medium text-white transition hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
+              >
+                Show answer
+              </button>
+            )}
+          </div>
+        ) : card.choices ? (
           <div className="mt-4 grid grid-cols-2 gap-3">
             {card.choices.map((choice) => (
               <button
@@ -243,13 +322,19 @@ export default function DrillRunner({
           </form>
         )}
 
+        {!result && !card.flashcard && isVocab && (
+          <button type="button" onClick={() => record("wrong")} className="mt-3 min-h-10 w-full text-sm text-zinc-600 underline dark:text-zinc-400">
+            I don&apos;t know this
+          </button>
+        )}
+
         {result && (
           <div className="mt-4 space-y-3">
-            <Feedback result={result} card={card} />
+            <Feedback result={result} card={card} speak={isVocab && !card.english ? card.shown : undefined} />
             <button
               ref={nextRef}
               type="button"
-              onClick={advance}
+              onClick={() => advance()}
               className="h-11 w-full rounded-xl bg-emerald-700 font-medium text-white transition hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
             >
               Next

@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import DrillRunner from "@/components/DrillRunner";
 import { TENSES, type Mood, type TenseId } from "@/lib/conjugation/types";
 import { CORE_TENSES, conjugationCard, limitedDeck, makeQuestion, poolVerbs, type Card, type VerbPool } from "@/lib/drill";
-import { NOUN_TOPICS, useDrillSettings, type Mode, type VocabKind, type WordType } from "@/lib/drill-settings";
+import { NOUN_TOPICS, useDrillSettings, type CardType, type FlashSide, type Mode, type VocabKind, type WordType } from "@/lib/drill-settings";
 import { parsePractice, type PracticeTarget } from "@/lib/practice";
 import { progressEnabled } from "@/lib/progress-queue";
 import { shuffled } from "@/lib/quiz";
@@ -14,12 +14,14 @@ import { sentencesFor } from "@/lib/sentences";
 import { VERBS, findVerb, type Verb } from "@/lib/verbs";
 
 const PRACTICE_SIZE = 15;
+const FLASHCARD_SESSION = 20;
 
 const MODES: { id: Mode; title: string; hint: string }[] = [
   { id: "review", title: "Today's review", hint: "What's due, plus new items" },
   { id: "conjugation", title: "Conjugation", hint: "Type the verb form" },
   { id: "blanks", title: "Fill in the blank", hint: "Complete a real sentence" },
   { id: "vocabulary", title: "Vocabulary", hint: "Words, gender and agreement" },
+  { id: "flashcards", title: "Flashcards", hint: "Flip words and phrases" },
   { id: "grammar", title: "Grammar", hint: "Quizzes from the guides" },
 ];
 
@@ -47,6 +49,16 @@ const WORD_TYPES: { id: WordType; title: string; hint: string }[] = [
   { id: "adjective", title: "Adjectives", hint: "Describing words" },
   { id: "adverb", title: "Adverbs", hint: "Time, place and manner" },
   { id: "small", title: "Small words", hint: "Prepositions, conjunctions, pronouns, question words" },
+];
+
+const FLASH_SIDES: { id: FlashSide; title: string; hint: string }[] = [
+  { id: "toEnglish", title: "Spanish to English", hint: "See the Spanish, recall the meaning" },
+  { id: "toSpanish", title: "English to Spanish", hint: "See the meaning, recall the Spanish" },
+];
+
+const FLASH_TYPES: { id: CardType; title: string; hint: string }[] = [
+  ...WORD_TYPES,
+  { id: "phrase", title: "Phrases", hint: "Everyday expressions" },
 ];
 
 function OptionCard({
@@ -124,7 +136,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
   const rareSet = useMemo(() => new Set(rare), [rare]);
 
   const [settings, update] = useDrillSettings();
-  const { mode, pool, tenses, kinds, wordTypes, topics, guides } = settings;
+  const { mode, pool, tenses, kinds, wordTypes, topics, guides, flashSide, flashTypes } = settings;
   const [session, setSession] = useState<{ first: Card; next: () => Card | null } | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -180,6 +192,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
     }
     const decks = await import("@/lib/card-decks");
     if (mode === "vocabulary") return decks.vocabDeck({ kinds, wordTypes, topics });
+    if (mode === "flashcards") return limitedDeck(decks.flashcardDeck({ side: flashSide, types: flashTypes, topics }), FLASHCARD_SESSION);
     return decks.blankDeck(await loadSentences(verbs), verbs, tenses);
   }
 
@@ -212,14 +225,16 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
 
   const usesVerbs = mode === "conjugation" || mode === "blanks";
   const todayReady = today.status === "ready" && today.reviews.length + today.fresh.length > 0;
+  const vocabReady = kinds.length > 0 && wordTypes.length > 0;
   const ready =
-    mode === "review" ? todayReady : mode === "grammar" || (usesVerbs ? tenses.length > 0 : kinds.length > 0 && wordTypes.length > 0);
+    mode === "review" ? todayReady : mode === "flashcards" ? flashTypes.length > 0 : mode === "grammar" || (usesVerbs ? tenses.length > 0 : vocabReady);
+  const showTopics = (mode === "vocabulary" && wordTypes.includes("noun")) || (mode === "flashcards" && flashTypes.includes("noun"));
 
   return (
     <div className="space-y-8">
       <section>
         <h2 className="mb-3 text-xl font-semibold">What to practice</h2>
-        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {MODES.map((m) => (
             <OptionCard key={m.id} name="mode" title={m.title} hint={m.hint} checked={mode === m.id} onChange={() => update({ mode: m.id })} />
           ))}
@@ -328,31 +343,62 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
               ))}
             </div>
           </section>
-
-          {wordTypes.includes("noun") && (
-            <section>
-              <h2 className="mb-1 text-xl font-semibold">Noun topics</h2>
-              <p className="mb-3 text-sm text-zinc-500">Pick any, or leave them all off for every topic.</p>
-              <div className="flex flex-wrap gap-2">
-                {NOUN_TOPICS.map((t) => (
-                  <button
-                    key={t}
-                    type="button"
-                    aria-pressed={topics.includes(t)}
-                    onClick={() => update({ topics: toggled(topics, t) })}
-                    className={`min-h-10 rounded-full border px-3 py-1 text-sm capitalize transition ${
-                      topics.includes(t)
-                        ? "border-emerald-700 bg-emerald-700 text-white"
-                        : "border-zinc-200 hover:border-emerald-600 dark:border-zinc-700"
-                    }`}
-                  >
-                    {t}
-                  </button>
-                ))}
-              </div>
-            </section>
-          )}
         </>
+      )}
+
+      {mode === "flashcards" && (
+        <>
+          <section>
+            <h2 className="mb-1 text-xl font-semibold">Which way?</h2>
+            <p className="mb-3 text-sm text-zinc-500">Each session is {FLASHCARD_SESSION} cards, and they count toward your review schedule.</p>
+            <div className="grid gap-2 sm:grid-cols-2">
+              {FLASH_SIDES.map((s) => (
+                <OptionCard key={s.id} name="flashSide" title={s.title} hint={s.hint} checked={flashSide === s.id} onChange={() => update({ flashSide: s.id })} />
+              ))}
+            </div>
+          </section>
+
+          <section>
+            <h2 className="mb-3 text-xl font-semibold">Which words?</h2>
+            <div className="grid gap-2 sm:grid-cols-3">
+              {FLASH_TYPES.map((t) => (
+                <OptionCard
+                  key={t.id}
+                  name={`flash-${t.id}`}
+                  type="checkbox"
+                  title={t.title}
+                  hint={t.hint}
+                  checked={flashTypes.includes(t.id)}
+                  onChange={() => update({ flashTypes: toggled(flashTypes, t.id) })}
+                />
+              ))}
+            </div>
+          </section>
+        </>
+      )}
+
+      {showTopics && (
+        <section>
+          <h2 className="mb-1 text-xl font-semibold">Noun topics</h2>
+          <p className="mb-3 text-sm text-zinc-500">Pick any, or leave them all off for every topic.</p>
+          <div className="flex flex-wrap gap-2">
+            {NOUN_TOPICS.map((t) => (
+              <button
+                key={t}
+                type="button"
+                aria-pressed={topics.includes(t)}
+                onClick={() => update({ topics: toggled(topics, t) })}
+                className={`min-h-10 rounded-full border px-3 py-1 text-sm capitalize transition ${
+                  topics.includes(t)
+                    ? "border-emerald-700 bg-emerald-700 text-white"
+                    : "border-zinc-200 hover:border-emerald-600 dark:border-zinc-700"
+                }`}
+              >
+                {t}
+              </button>
+            ))}
+          </div>
+        </section>
       )}
 
       {error && (

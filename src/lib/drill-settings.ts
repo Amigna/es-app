@@ -2,9 +2,12 @@ import { useCallback, useMemo, useSyncExternalStore } from "react";
 import { TENSES, type TenseId } from "./conjugation/types";
 import type { VerbPool } from "./drill";
 
-export type Mode = "review" | "conjugation" | "vocabulary" | "blanks" | "grammar";
+export type Mode = "review" | "conjugation" | "vocabulary" | "flashcards" | "blanks" | "grammar";
 export type VocabKind = "toSpanish" | "toEnglish" | "gender" | "agreement";
 export type WordType = "noun" | "adjective" | "adverb" | "small";
+/** Phrases are flashcards only: typing a whole sentence exactly is a test of punctuation more than memory. */
+export type CardType = WordType | "phrase";
+export type FlashSide = "toEnglish" | "toSpanish";
 
 /** Listed here so the setup screen doesn't have to load the word lists. A test keeps this in step with the data. */
 export const NOUN_TOPICS = ["body", "clothes", "family", "food", "home", "nature", "people", "places", "things", "time", "travel", "work"];
@@ -19,6 +22,9 @@ export interface DrillSettings {
   topics: string[];
   /** Guide slugs for the grammar drill; empty means every guide. */
   guides: string[];
+  /** Which way flashcards are asked. */
+  flashSide: FlashSide;
+  flashTypes: CardType[];
 }
 
 export const DEFAULT_SETTINGS: DrillSettings = {
@@ -29,12 +35,16 @@ export const DEFAULT_SETTINGS: DrillSettings = {
   wordTypes: ["noun", "adjective", "adverb", "small"],
   topics: [],
   guides: [],
+  flashSide: "toEnglish",
+  flashTypes: ["noun", "adjective", "adverb", "small", "phrase"],
 };
 
-const MODES: Mode[] = ["review", "conjugation", "vocabulary", "blanks", "grammar"];
+const MODES: Mode[] = ["review", "conjugation", "vocabulary", "flashcards", "blanks", "grammar"];
 const POOLS: VerbPool[] = ["common", "irregular", "all"];
 const KINDS: VocabKind[] = ["toSpanish", "toEnglish", "gender", "agreement"];
 const WORD_TYPES: WordType[] = ["noun", "adjective", "adverb", "small"];
+const FLASH_SIDES: FlashSide[] = ["toEnglish", "toSpanish"];
+const CARD_TYPES: CardType[] = [...WORD_TYPES, "phrase"];
 const TENSE_IDS = TENSES.map((t) => t.id);
 
 const oneOf = <T,>(value: unknown, allowed: readonly T[], fallback: T): T =>
@@ -56,6 +66,8 @@ export function parseSettings(raw: string | null): DrillSettings {
       wordTypes: someOf(saved.wordTypes, WORD_TYPES, DEFAULT_SETTINGS.wordTypes),
       topics: someOf(saved.topics, NOUN_TOPICS, DEFAULT_SETTINGS.topics),
       guides: Array.isArray(saved.guides) ? saved.guides.filter((g) => typeof g === "string") : DEFAULT_SETTINGS.guides,
+      flashSide: oneOf(saved.flashSide, FLASH_SIDES, DEFAULT_SETTINGS.flashSide),
+      flashTypes: someOf(saved.flashTypes, CARD_TYPES, DEFAULT_SETTINGS.flashTypes),
     };
   } catch {
     return DEFAULT_SETTINGS;

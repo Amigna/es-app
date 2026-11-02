@@ -122,3 +122,13 @@ describe("vocabulary data", () => {
     for (const w of SMALL_WORDS) assert.doesNotMatch(w.en, /\([^)]*,/, w.es);
   });
 });
+
+describe("saved item IDs", () => {
+  it("can be built from every word and phrase", () => {
+    // Firestore IDs can't contain a slash, and items are split on colons.
+    for (const { es } of [...NOUNS, ...ADJECTIVES, ...ADVERBS, ...SMALL_WORDS, ...PHRASES]) {
+      assert.ok(!/[/:]/.test(es), es);
+      assert.ok(Buffer.byteLength(`vocab:phrase:${es}:toEnglish`) < 1500, es);
+    }
+  });
+});

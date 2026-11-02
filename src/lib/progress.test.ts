@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { inviteAllowsVulgar, statusOfInvite } from "./firebase";
-import { accuracy, currentStreak, lastSevenDays, localDay, summarize, type Answer } from "./progress";
+import { accuracy, currentStreak, lastSevenDays, localDay, summarize, wordsPracticed, type Answer } from "./progress";
 import { summaryUpdate } from "./progress-store";
 
 const answer = (item: string, grade: Answer["grade"], day = "2026-11-01", tense?: Answer["tense"]): Answer => ({ item, grade, day, tense });
@@ -131,5 +131,32 @@ describe("dates", () => {
       "2026-10-25": { right: 9, accent: 0, wrong: 0 },
     };
     assert.equal(lastSevenDays(days, "2026-11-01"), 4);
+  });
+});
+
+describe("wordsPracticed", () => {
+  it("counts each word once by type, whatever was asked about it", () => {
+    assert.deepEqual(
+      wordsPracticed([
+        "vocab:noun:casa:gender",
+        "vocab:noun:casa:toSpanish",
+        "vocab:noun:perro:toEnglish",
+        "vocab:adverb:mañana:toEnglish",
+        "vocab:phrase:Mucho gusto.:toEnglish",
+      ]),
+      { noun: 2, adverb: 1, phrase: 1 },
+    );
+  });
+
+  it("keeps a word separate from the same spelling in another list", () => {
+    assert.deepEqual(wordsPracticed(["vocab:noun:mañana:toEnglish", "vocab:adverb:mañana:toEnglish"]), { noun: 1, adverb: 1 });
+  });
+
+  it("ignores verbs and guide questions", () => {
+    assert.deepEqual(wordsPracticed(["verb:ser:present", "quiz:ser-estar:0"]), {});
+  });
+
+  it("adds phrases to the question type figures like any other word", () => {
+    assert.equal(summarize([answer("vocab:phrase:Mucho gusto.:toEnglish", "wrong")]).kinds.toEnglish.wrong, 1);
   });
 });

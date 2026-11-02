@@ -7,12 +7,18 @@ import { TENSES } from "@/lib/conjugation/types";
 import { useDrillSettings } from "@/lib/drill-settings";
 import { auth, firebaseConfigured, isInvited } from "@/lib/firebase";
 import { practiceHref, weakSpots, type WeakSpot } from "@/lib/practice";
-import { accuracy, answered, currentStreak, lastSevenDays, localDay } from "@/lib/progress";
+import { accuracy, answered, currentStreak, lastSevenDays, localDay, wordsPracticed } from "@/lib/progress";
 import { saveProgress, setProgressEnabled } from "@/lib/progress-queue";
 import { loadProgress, type ProgressData } from "@/lib/progress-store";
 import { MASTERED_DAYS } from "@/lib/schedule";
 
 const SAVE_WAIT_MS = 5000;
+
+interface WordListTotal {
+  type: string;
+  title: string;
+  total: number;
+}
 
 type State =
   | { status: "loading" }
@@ -85,7 +91,27 @@ function WeakSpotsSection({ data }: { data: ProgressData }) {
   );
 }
 
-function Stats({ data }: { data: ProgressData }) {
+function VocabularySection({ data, wordLists }: { data: ProgressData; wordLists: WordListTotal[] }) {
+  const [, update] = useDrillSettings();
+  const practiced = wordsPracticed(data.seen);
+  return (
+    <section>
+      <h2 className="mb-3 text-xl font-semibold">Vocabulary</h2>
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-5">
+        {wordLists.map(({ type, title, total }) => (
+          <Tile key={type} label={title} value={(practiced[type] ?? 0).toLocaleString()} note={`of ${total.toLocaleString()} practiced`} />
+        ))}
+      </div>
+      <p className="mt-3">
+        <Link href="/drill" onClick={() => update({ mode: "flashcards" })} className={linkClass}>
+          Practice with flashcards
+        </Link>
+      </p>
+    </section>
+  );
+}
+
+function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTotal[] }) {
   const [, update] = useDrillSettings();
   const today = localDay();
   const total = answered(data.total);
@@ -124,6 +150,8 @@ function Stats({ data }: { data: ProgressData }) {
 
       <WeakSpotsSection data={data} />
 
+      <VocabularySection data={data} wordLists={wordLists} />
+
       {tenseRows.length > 0 ? (
         <section>
           <h2 className="mb-3 text-xl font-semibold">Accuracy by tense</h2>
@@ -154,13 +182,13 @@ function Stats({ data }: { data: ProgressData }) {
 
       <p className="text-sm text-zinc-500">
         Correct means fully right, so accent slips aren&apos;t included. Mastered means you&apos;re expected to remember it for at
-        least {MASTERED_DAYS} days, and only the first try at a question counts.
+        least {MASTERED_DAYS} days, and only the first try at a question counts. A word counts as practiced after any question about it.
       </p>
     </div>
   );
 }
 
-export default function ProgressView() {
+export default function ProgressView({ wordLists }: { wordLists: WordListTotal[] }) {
   const [state, setState] = useState<State>({ status: "loading" });
 
   useEffect(() => {
@@ -206,5 +234,5 @@ export default function ProgressView() {
     );
   }
   if (state.status === "failed") return <Message>Couldn&apos;t load your progress. Check your connection and try again.</Message>;
-  return <Stats data={state.data} />;
+  return <Stats data={state.data} wordLists={wordLists} />;
 }

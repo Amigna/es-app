@@ -10,7 +10,7 @@ Decisions:
 
 - **Algorithm:** FSRS-6 with its 21 default parameters and 90% target recall. No optimizer, since we won't have enough reviews to tune it. `ts-fsrs` now defaults to FSRS-7, but FSRS-6 is what I've confirmed the formulas for.
 - **What gets scheduled:** the existing tracked items, so `verb:hablar:preterite` or `vocab:noun:casa:gender`. Verbs are scheduled per tense, and each review picks a person. Guide quizzes stay out at first, because their IDs are question positions that shift when a quiz is edited.
-- **Grades:** correct is Good, accent slip is Hard, wrong is Again. No Easy, because nobody self-rates here.
+- **Grades:** correct is Good, accent slip is Hard, wrong is Again. Flashcards are the one place people grade themselves: "Knew it" is Good and "Didn't know" is Again, on the same item as the typed question. That can flatter a word, and typed drills stay the stricter test. There's no Easy.
 - **Days, not minutes:** the first answer to an item each day moves its schedule, and later ones only count toward stats. This matches "only the first try counts", drops FSRS's minute-based learning steps, and means a re-sent batch can't move a schedule twice. A missed item comes back in the session as it does now, then the next day.
 - **Every drill feeds the schedule:** free practice updates an item too, so Today's review stays honest.
 - **Limits:** 10 new items a day by default, per person. Reviews are capped at 100 a day, most overdue first, so a week away doesn't bury anyone.
@@ -58,6 +58,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - [ ] Publish the new `firestore.rules`, then request access with a second account, approve it, and confirm its progress saves. Also confirm your own invite still works. The rules can't be tested here
 - [ ] Check Weak spots on /progress with a signed-in account: miss a verb and a question type at least 5 times each, then use "Practice this". Verb and mistake-type stats only count answers from now on, and the section hasn't been seen with real data
 - [ ] Use Today's review with a signed-in account: confirm its cards still show sentences now that it loads only the sentence files for its verbs. Finish a session, check an item in `users/{uid}/items` has `stability` and `due`, and check `/progress` shows what's due the next day. Real Firestore writes of schedules haven't run yet
+- [ ] Signed in, do a flashcard session with some phrases and tap "I don't know this" on a typed card. Confirm the Vocabulary numbers on /progress go up, a phrase comes back in Today's review as a flashcard, and it's due sooner after "Didn't know" than after "Knew it". None of this has run against real Firestore, and the Vocabulary section has only been seen with made-up data
 - [ ] Do a verb drill, then a vocabulary drill, and confirm "Accuracy by tense" stays. A save with no verb answers used to erase it. The fix is confirmed against the Firestore SDK offline, not yet against real Firestore
 - [ ] Try a backlog of 25 different items at once, because Firestore rules allow 20 lookups per batch and the docs say repeated lookups are cached, but that isn't confirmed for our invite check
 - [ ] A save interrupted by a closed tab can be sent twice, which overcounts stats slightly. Accepted, since the alternative was losing answers
@@ -86,7 +87,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 These live in `.verify/`, which is gitignored, so keep a copy if you change machines.
 
 - Conjugation: `npx tsc -p tsconfig.test.json && node .verify/check.mjs`
-- Browser, with `npm run build` and `npx next start -p 3111` running: `node --experimental-websocket --no-warnings .verify/browser/flow.mjs`, also `audit.mjs`, `account.mjs`, `progress.mjs`, `report.mjs`, `reading.mjs`, `sentence-loading.mjs` and `speech.mjs`. The browser profile isn't signed in, so none of these reach Firestore
+- Browser, with `npm run build` and `npx next start -p 3111` running: `node --experimental-websocket --no-warnings .verify/browser/flow.mjs`, also `audit.mjs`, `account.mjs`, `progress.mjs`, `report.mjs`, `reading.mjs`, `sentence-loading.mjs`, `speech.mjs` and `flashcards.mjs`. The browser profile isn't signed in, so none of these reach Firestore
 
 ## Completed
 
@@ -132,6 +133,11 @@ These live in `.verify/`, which is gitignored, so keep a copy if you change mach
 - [x] 1,676 more sentences in six batches, extending that coverage to the top 278 verbs
 - [x] 856 more sentences in three batches, finishing that coverage for all 314 verbs
 - [x] Harder-to-miss request step on the account page: a "one more step" notice on the form, the two steps explained before signing in, and an explanation on the confirm-email screen
+- [x] Vocabulary section on /progress: words started per list, from `stats/seen`, so it adds one read. Mastered per list would need reading every item or new counters, so it's left out
+- [x] Flashcards: a drill mode of 20 cards at a time, in either direction, for all word lists and phrases, with noun topics. They count toward the schedule
+- [x] Phrases are tracked as `vocab:phrase:<es>:<kind>`. They're flashcards only, even in Today's review, and only enter the schedule once you've seen them on a card, so Today's review never introduces one
+- [x] "I don't know this" on typed vocabulary cards, gender and agreement included. It counts as a wrong answer and the word comes back
+- [x] Speaker button on vocabulary cards: right away when the Spanish is already on screen, and only after answering when it's the answer
 - [x] Sentence data split into one file per 50 verbs, so the default drill downloads about 54 KB instead of 170 KB (gzipped). Every lookup was compared before and after, with no differences
 
 ### Verification

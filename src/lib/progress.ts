@@ -51,7 +51,7 @@ export function summarize(answers: Answer[]): Summary {
     if (a.day > item.last) item.last = a.day;
     (out.days[a.day] ??= empty())[field]++;
     if (a.tense) (out.tenses[a.tense] ??= empty())[field]++;
-    // Items are verb:hablar:present or vocab:noun:casa:gender.
+    // Items are verb:hablar:present or vocab:noun:casa:gender. Words and phrases can't contain a colon; a test checks that.
     const [source, first, , kind] = a.item.split(":");
     if (source === "verb") (out.verbs[first] ??= empty())[field]++;
     if (source === "vocab" && kind) (out.kinds[kind] ??= empty())[field]++;
@@ -61,6 +61,17 @@ export function summarize(answers: Answer[]): Summary {
 }
 
 export const answered = (t: Tally) => t.right + t.accent + t.wrong;
+
+/** Different words started, by type. A word counts once whatever question was asked about it. */
+export function wordsPracticed(items: string[]): Record<string, number> {
+  const counts: Record<string, number> = {};
+  const words = new Set(items.filter((item) => item.startsWith("vocab:")).map((item) => item.split(":").slice(1, 3).join(":")));
+  for (const word of words) {
+    const [type] = word.split(":");
+    counts[type] = (counts[type] ?? 0) + 1;
+  }
+  return counts;
+}
 
 /** Share answered fully correctly. An accent slip doesn't count as correct. */
 export function accuracy(t: Tally): number | null {

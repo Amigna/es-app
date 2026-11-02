@@ -112,6 +112,8 @@ export interface Card {
   /** What this question counts toward in saved progress. */
   track?: Track;
   link?: { href: string; label: string };
+  /** Present on a card you flip and grade yourself instead of answering. Shown with the answer. */
+  flashcard?: { example?: { es: string; en: string }; note?: string };
 }
 
 /** An example only shows when it's written for the person asked, so the blank is always the answer. */

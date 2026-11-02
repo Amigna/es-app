@@ -96,3 +96,13 @@ describe("pickToday", () => {
     assert.deepEqual(pickToday({ ...data, reviewsDone: 100 }, order).reviews, []);
   });
 });
+
+describe("flashcards on the schedule", () => {
+  it("schedules a phrase like a word, so knowing it pushes it further out than missing it", () => {
+    const item = "vocab:phrase:Mucho gusto.:toEnglish";
+    const knew = planReviews([{ item, grade: "correct", day: "2026-11-01" }], {});
+    const missed = planReviews([{ item, grade: "wrong", day: "2026-11-01" }], {});
+    assert.deepEqual(knew.fresh, [item]);
+    assert.ok(knew.schedules[item].due > missed.schedules[item].due);
+  });
+});

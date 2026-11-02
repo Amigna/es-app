@@ -1,10 +1,11 @@
 import { conjugate } from "./conjugation/engine";
 import { TENSES, type TenseId } from "./conjugation/types";
 import { COMMON_COUNT, CORE_TENSES, conjugationCard, englishAnswers, makeQuestion, personLabel, rareKey, verbTrack, type Card } from "./drill";
-import type { VocabKind, WordType } from "./drill-settings";
+import type { CardType, FlashSide, VocabKind, WordType } from "./drill-settings";
+import { shuffled } from "./quiz";
 import { blankOut, findForm, sentencesFor, type SentenceBank } from "./sentences";
 import { VERBS, findVerb, verbSlug, type Verb } from "./verbs";
-import { ADJECTIVES, ADVERBS, NOUNS, SMALL_WORDS, adjectiveForms, isPluralOnly, nounArticle, type Adjective, type Noun } from "./vocab";
+import { ADJECTIVES, ADVERBS, NOUNS, PHRASES, SMALL_WORDS, adjectiveForms, isPluralOnly, nounArticle, type Adjective, type Example, type Noun } from "./vocab";
 
 // Decks for the vocabulary and fill-in-the-blank drills. Imported on demand because it pulls in the word lists.
 
@@ -21,9 +22,11 @@ const pick = <T,>(list: T[], random: Random): T => list[Math.floor(random() * li
 interface Word {
   es: string;
   en: string;
-  type: WordType;
+  type: CardType;
   accepted: string[];
   shown: string;
+  ex?: Example;
+  note?: string;
 }
 
 const nounWord = (n: Noun): Word => ({
@@ -32,14 +35,16 @@ const nounWord = (n: Noun): Word => ({
   type: "noun",
   accepted: [n.es, `${nounArticle(n)} ${n.es}`],
   shown: `${nounArticle(n)} ${n.es}`,
+  ex: n.ex,
+  note: n.note,
 });
 
 const plainWord =
-  (type: WordType) =>
-  (w: { es: string; en: string }): Word => ({ es: w.es, en: w.en, type, accepted: [w.es], shown: w.es });
+  (type: CardType) =>
+  (w: { es: string; en: string; ex?: Example; note?: string }): Word => ({ es: w.es, en: w.en, type, accepted: [w.es], shown: w.es, ex: w.ex, note: w.note });
 
 /** Includes the word type because some spellings are two words: mañana is both "morning" and "tomorrow". */
-const vocabTrack = (type: WordType, es: string, kind: VocabKind) => ({ item: `vocab:${type}:${es}:${kind}` });
+const vocabTrack = (type: CardType, es: string, kind: VocabKind) => ({ item: `vocab:${type}:${es}:${kind}` });
 
 const allWords = () => [
   ...NOUNS.map(nounWord),
@@ -151,6 +156,46 @@ export function vocabDeck({ kinds, wordTypes, topics }: VocabOptions, random: Ra
   };
 }
 
+/** Shares its item with the typed question, so either one moves the same schedule. */
+function flashcard(word: Word, side: FlashSide): Card {
+  const toEnglish = side === "toEnglish";
+  const shown = toEnglish ? word.en : word.shown;
+  return {
+    id: `flash:${side}:${word.type}:${word.es}`,
+    badge: "Flashcard",
+    title: toEnglish ? word.shown : word.en,
+    titleIsSpanish: toEnglish,
+    ask: toEnglish ? "What does it mean?" : "How do you say it in Spanish?",
+    answers: [shown],
+    shown,
+    english: toEnglish,
+    flashcard: { example: word.ex, note: word.note },
+    track: vocabTrack(word.type, word.es, side),
+  };
+}
+
+export interface FlashcardOptions {
+  side: FlashSide;
+  types: CardType[];
+  /** Noun topics to include; empty means all of them. */
+  topics: string[];
+}
+
+/** Each chosen word once, in random order. The deck runs out, which ends the session. */
+export function flashcardDeck({ side, types, topics }: FlashcardOptions, random: Random = Math.random): () => Card | null {
+  const has = (type: CardType) => types.includes(type);
+  const words = [
+    ...(has("noun") ? NOUNS.filter((n) => topics.length === 0 || topics.includes(n.topic)).map(nounWord) : []),
+    ...(has("adjective") ? ADJECTIVES.map(plainWord("adjective")) : []),
+    ...(has("adverb") ? ADVERBS.map(plainWord("adverb")) : []),
+    ...(has("small") ? SMALL_WORDS.map(plainWord("small")) : []),
+    ...(has("phrase") ? PHRASES.map(plainWord("phrase")) : []),
+  ];
+  const order = shuffled(words, random);
+  let next = 0;
+  return () => (next < order.length ? flashcard(order[next++], side) : null);
+}
+
 /** The example sentence with its verb removed, or null when the tense has no usable sentence. */
 export function blankCard(bank: SentenceBank, verb: Verb, tense: TenseId, random: Random = Math.random): Card | null {
   const sentences = sentencesFor(bank, verb.inf, tense);
@@ -199,6 +244,10 @@ export function blankDeck(
 }
 
 function vocabReviewCard(type: string, es: string, kind: string, random: Random): Card | null {
+  if (type === "phrase") {
+    const phrase = PHRASES.find((p) => p.es === es);
+    return phrase ? flashcard(plainWord("phrase")(phrase), kind === "toSpanish" ? "toSpanish" : "toEnglish") : null;
+  }
   const noun = type === "noun" ? NOUNS.find((n) => n.es === es) : undefined;
   const adjective = type === "adjective" ? ADJECTIVES.find((a) => a.es === es) : undefined;
   if (kind === "gender") return noun ? genderCard(noun) : null;

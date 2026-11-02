@@ -91,18 +91,21 @@ export interface ProgressData {
   practiced: number;
   mastered: number;
   dueToday: number;
+  /** Every item that has a schedule. */
+  seen: string[];
 }
 
 export async function loadProgress(uid: string): Promise<ProgressData> {
   const items = collection(db(), "users", uid, "items");
   const cutoff = localDay(new Date(Date.now() - DAYS_TO_LOAD * 24 * 60 * 60 * 1000));
-  const [summary, recent, practiced, mastered, dueToday] = await Promise.all([
+  const [summary, recent, practiced, mastered, dueToday, seen] = await Promise.all([
     getDoc(statsDoc(uid, "summary")),
     // Days are keyed by date, so a range on the ID needs no custom index, unlike sorting it descending.
     getDocs(query(collection(db(), "users", uid, "days"), where(documentId(), ">=", cutoff))),
     getCountFromServer(items),
     getCountFromServer(query(items, where("stability", ">=", MASTERED_DAYS))),
     getCountFromServer(query(items, where("due", "<=", localDay()))),
+    getDoc(statsDoc(uid, "seen")),
   ]);
   const data = summary.data() ?? {};
   return {
@@ -114,6 +117,7 @@ export async function loadProgress(uid: string): Promise<ProgressData> {
     practiced: practiced.data().count,
     mastered: mastered.data().count,
     dueToday: dueToday.data().count,
+    seen: seen.data()?.items ?? [],
   };
 }
 
