@@ -130,7 +130,7 @@ export function conjugationCard(q: Question, sentences: Sentence[] = []): Card {
     titleIsSpanish: true,
     subtitle: q.verb.en,
     example: sentence && { es: blankOut(sentence.es, q.answer), en: sentence.en },
-    ask: `Form for ${q.label}`,
+    ask: `${meta.name} · ${q.label}`,
     answers: [q.answer],
     shown: q.answer,
     link: { href: `/verb/${verbSlug(q.verb.inf)}`, label: `See all forms of ${q.verb.inf}` },
