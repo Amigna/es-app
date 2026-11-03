@@ -16,7 +16,7 @@ export default function SpeakButton({ text }: { text: string }) {
       onClick={() => speak(text)}
       aria-label={`Listen: ${text}`}
       title="Listen"
-      className="-my-1 inline-flex size-10 shrink-0 items-center justify-center rounded-full text-zinc-400 transition hover:text-emerald-700 dark:text-zinc-500 dark:hover:text-emerald-400"
+      className="-my-1 inline-flex size-10 shrink-0 items-center justify-center rounded-full text-stone-400 transition hover:text-accent-700 dark:text-stone-500 dark:hover:text-accent-400"
     >
       <svg
         aria-hidden="true"

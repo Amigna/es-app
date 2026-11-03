@@ -3,6 +3,7 @@
 import { onAuthStateChanged, type User } from "firebase/auth";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { AccuracyTrend, PracticeCalendar } from "@/components/ProgressCharts";
 import { TENSES } from "@/lib/conjugation/types";
 import { useDrillSettings } from "@/lib/drill-settings";
 import { auth, firebaseConfigured, isInvited } from "@/lib/firebase";
@@ -14,6 +15,8 @@ import { MASTERED_DAYS } from "@/lib/schedule";
 
 const SAVE_WAIT_MS = 5000;
 const WEEKS_SHOWN = 6;
+// Days are loaded about 17 weeks back, so the trend covers 12 of them.
+const TREND_WEEKS = 12;
 
 interface WordListTotal {
   type: string;
@@ -30,40 +33,40 @@ type State =
 
 function Tile({ label, value, note }: { label: string; value: string; note?: string }) {
   return (
-    <div className="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
-      <p className="text-sm text-zinc-500">{label}</p>
+    <div className="rounded-xl border border-stone-200 bg-white p-4 dark:border-stone-800 dark:bg-stone-900">
+      <p className="text-sm text-stone-500">{label}</p>
       <p className="mt-1 text-3xl font-semibold tracking-tight">{value}</p>
-      {note && <p className="mt-1 text-sm text-zinc-500">{note}</p>}
+      {note && <p className="mt-1 text-sm text-stone-500">{note}</p>}
     </div>
   );
 }
 
 function Message({ children }: { children: React.ReactNode }) {
   return (
-    <div className="rounded-xl border border-zinc-200 bg-white p-6 text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
+    <div className="rounded-xl border border-stone-200 bg-white p-6 text-stone-600 dark:border-stone-800 dark:bg-stone-900 dark:text-stone-400">
       {children}
     </div>
   );
 }
 
-const linkClass = "text-emerald-700 underline dark:text-emerald-400";
+const linkClass = "text-accent-700 underline dark:text-accent-400";
 
 function SpotList({ title, spots }: { title: string; spots: WeakSpot[] }) {
   if (spots.length === 0) return null;
   return (
     <div>
       <h3 className="mb-2 font-medium">{title}</h3>
-      <ul className="divide-y divide-zinc-100 overflow-hidden rounded-xl border border-zinc-200 bg-white dark:divide-zinc-800 dark:border-zinc-800 dark:bg-zinc-900">
+      <ul className="divide-y divide-stone-100 overflow-hidden rounded-xl border border-stone-200 bg-white dark:divide-stone-800 dark:border-stone-800 dark:bg-stone-900">
         {spots.map((spot) => (
           <li key={spot.key} className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 px-4 py-2">
             <span>
               <span className="block">{spot.label}</span>
-              <span className="block text-sm text-zinc-500">{spot.detail}</span>
+              <span className="block text-sm text-stone-500">{spot.detail}</span>
             </span>
             <Link
               href={practiceHref(spot.target)}
               aria-label={`Practice ${spot.label}`}
-              className="flex min-h-10 items-center text-sm font-medium text-emerald-700 underline dark:text-emerald-400"
+              className="flex min-h-10 items-center text-sm font-medium text-accent-700 underline dark:text-accent-400"
             >
               Practice this
             </Link>
@@ -80,7 +83,7 @@ function WeakSpotsSection({ data }: { data: ProgressData }) {
     <section>
       <h2 className="mb-3 text-xl font-semibold">Weak spots</h2>
       {tenses.length + verbs.length + mistakes.length === 0 ? (
-        <p className="text-zinc-600 dark:text-zinc-400">None right now. Weak spots show up here after 5 or more answers on something you keep missing.</p>
+        <p className="text-stone-600 dark:text-stone-400">None right now. Weak spots show up here after 5 or more answers on something you keep missing.</p>
       ) : (
         <div className="grid gap-4 md:grid-cols-3">
           <SpotList title="Tenses" spots={tenses} />
@@ -100,10 +103,10 @@ const weekCell = (tally: Tally) => (answered(tally) === 0 ? "–" : `${accuracy(
 function WeekTable({ columns }: { columns: { title: string; weeks: Tally[] }[] }) {
   const shown = Array.from({ length: WEEKS_SHOWN }, (_, ago) => ago).filter((ago) => columns.some((c) => answered(c.weeks[ago]) > 0));
   return (
-    <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
+    <div className="overflow-hidden rounded-xl border border-stone-200 bg-white dark:border-stone-800 dark:bg-stone-900">
       <table className="w-full text-left">
         <thead>
-          <tr className="border-b border-zinc-200 text-sm text-zinc-500 dark:border-zinc-800">
+          <tr className="border-b border-stone-200 text-sm text-stone-500 dark:border-stone-800">
             <th scope="col" className="px-4 py-2 font-medium">Week</th>
             {columns.map((c) => (
               <th key={c.title} scope="col" className="px-4 py-2 text-right font-medium">{c.title}</th>
@@ -112,7 +115,7 @@ function WeekTable({ columns }: { columns: { title: string; weeks: Tally[] }[] }
         </thead>
         <tbody>
           {shown.map((ago) => (
-            <tr key={ago} className="border-b border-zinc-100 last:border-0 dark:border-zinc-800">
+            <tr key={ago} className="border-b border-stone-100 last:border-0 dark:border-stone-800">
               <th scope="row" className="px-4 py-2 font-normal">{weekLabel(ago)}</th>
               {columns.map((c) => (
                 <td key={c.title} className="px-4 py-2 text-right tabular-nums">{weekCell(c.weeks[ago])}</td>
@@ -145,10 +148,10 @@ function WritingSection({ data }: { data: ProgressData }) {
             })}
           </div>
           <WeekTable columns={sides.map(({ id, title }) => ({ title, weeks: recentWeeks(data.days, today, (day) => day.writing?.[id], WEEKS_SHOWN) }))} />
-          <p className="text-sm text-zinc-500">Includes the sentences you marked as right yourself.</p>
+          <p className="text-sm text-stone-500">Includes the sentences you marked as right yourself.</p>
         </div>
       ) : (
-        <p className="text-zinc-600 dark:text-zinc-400">
+        <p className="text-stone-600 dark:text-stone-400">
           <Link href="/drill" onClick={() => update({ mode: "writing" })} className={linkClass}>
             Try a writing drill
           </Link>{" "}
@@ -216,10 +219,19 @@ function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTot
         <Tile label="Mastered" value={data.mastered.toLocaleString()} note={`of ${data.practiced.toLocaleString()} practiced`} />
       </div>
 
-      <section>
-        <h2 className="mb-3 text-xl font-semibold">Accuracy by week</h2>
-        <WeekTable columns={[{ title: "All questions", weeks: recentWeeks(data.days, today, (day) => day, WEEKS_SHOWN) }]} />
-      </section>
+      {/* Side by side on wide screens, where the calendar alone would leave most of the row empty. */}
+      <div className="grid gap-8 lg:grid-cols-[auto_minmax(0,1fr)]">
+        <section>
+          <h2 className="mb-3 font-display text-2xl font-semibold">Practice calendar</h2>
+          <PracticeCalendar days={data.days} today={today} />
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="font-display text-2xl font-semibold">Accuracy by week</h2>
+          <AccuracyTrend weeks={recentWeeks(data.days, today, (day) => day, TREND_WEEKS)} />
+          <WeekTable columns={[{ title: "All questions", weeks: recentWeeks(data.days, today, (day) => day, WEEKS_SHOWN) }]} />
+        </section>
+      </div>
 
       <WeakSpotsSection data={data} />
 
@@ -230,10 +242,10 @@ function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTot
       {tenseRows.length > 0 ? (
         <section>
           <h2 className="mb-3 text-xl font-semibold">Accuracy by tense</h2>
-          <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
+          <div className="overflow-hidden rounded-xl border border-stone-200 bg-white dark:border-stone-800 dark:bg-stone-900">
             <table className="w-full text-left">
               <thead>
-                <tr className="border-b border-zinc-200 text-sm text-zinc-500 dark:border-zinc-800">
+                <tr className="border-b border-stone-200 text-sm text-stone-500 dark:border-stone-800">
                   <th scope="col" className="px-4 py-2 font-medium">Tense</th>
                   <th scope="col" className="px-4 py-2 text-right font-medium">Answered</th>
                   <th scope="col" className="px-4 py-2 text-right font-medium">Correct</th>
@@ -241,7 +253,7 @@ function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTot
               </thead>
               <tbody>
                 {tenseRows.map(({ meta, tally }) => (
-                  <tr key={meta.id} className="border-b border-zinc-100 last:border-0 dark:border-zinc-800">
+                  <tr key={meta.id} className="border-b border-stone-100 last:border-0 dark:border-stone-800">
                     <th scope="row" className="px-4 py-2 font-normal">{meta.name}</th>
                     <td className="px-4 py-2 text-right tabular-nums">{answered(tally).toLocaleString()}</td>
                     <td className="px-4 py-2 text-right tabular-nums">{accuracy(tally)}%</td>
@@ -252,10 +264,10 @@ function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTot
           </div>
         </section>
       ) : (
-        <p className="text-zinc-600 dark:text-zinc-400">Accuracy by tense shows up after a conjugation or fill-in-the-blank drill.</p>
+        <p className="text-stone-600 dark:text-stone-400">Accuracy by tense shows up after a conjugation or fill-in-the-blank drill.</p>
       )}
 
-      <p className="text-sm text-zinc-500">
+      <p className="text-sm text-stone-500">
         Correct means fully right, so accent slips aren&apos;t included. Mastered means you&apos;re expected to remember it for at
         least {MASTERED_DAYS} days, and only the first try at a question counts. A word counts as practiced after any question about it.
       </p>
@@ -292,7 +304,7 @@ export default function ProgressView({ wordLists }: { wordLists: WordListTotal[]
   }, []);
 
   if (!firebaseConfigured) return <Message>Progress isn&apos;t available right now.</Message>;
-  if (state.status === "loading") return <p className="text-zinc-500">Loading…</p>;
+  if (state.status === "loading") return <p className="text-stone-500">Loading…</p>;
   if (state.status === "signedOut") {
     return (
       <Message>

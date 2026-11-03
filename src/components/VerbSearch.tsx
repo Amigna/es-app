@@ -83,11 +83,11 @@ export default function VerbSearch({
               setOpen(false);
             }
           }}
-          className="h-12 w-full rounded-xl border border-zinc-300 bg-white px-4 text-lg outline-none transition focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/30 dark:border-zinc-700 dark:bg-zinc-900"
+          className="h-12 w-full rounded-xl border border-stone-300 bg-white px-4 text-lg outline-none transition focus:border-accent-600 focus:ring-2 focus:ring-accent-600/30 dark:border-stone-700 dark:bg-stone-900"
         />
         <button
           type="submit"
-          className="h-12 shrink-0 rounded-xl bg-emerald-700 px-5 font-medium text-white cursor-pointer transition hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
+          className="h-12 shrink-0 rounded-xl bg-accent-700 px-5 font-medium text-white cursor-pointer transition hover:bg-accent-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-600"
         >
           Conjugate
         </button>
@@ -97,7 +97,7 @@ export default function VerbSearch({
         <ul
           id={listId}
           role="listbox"
-          className="absolute z-10 mt-2 max-h-80 w-full overflow-auto rounded-xl border border-zinc-200 bg-white py-1 shadow-lg dark:border-zinc-700 dark:bg-zinc-900"
+          className="absolute z-10 mt-2 max-h-80 w-full overflow-auto rounded-xl border border-stone-200 bg-white py-1 shadow-lg dark:border-stone-700 dark:bg-stone-900"
         >
           {results.map((v, i) => (
             <li
@@ -112,11 +112,11 @@ export default function VerbSearch({
               }}
               onMouseEnter={() => setActive(i)}
               className={`flex cursor-pointer items-baseline justify-between gap-4 px-4 py-2 ${
-                i === active ? "bg-emerald-50 dark:bg-emerald-950" : ""
+                i === active ? "bg-accent-50 dark:bg-accent-950" : ""
               }`}
             >
               <span className="font-medium">{v.inf}</span>
-              <span className="truncate text-sm text-zinc-500">{v.en}</span>
+              <span className="truncate text-sm text-stone-500">{v.en}</span>
             </li>
           ))}
         </ul>

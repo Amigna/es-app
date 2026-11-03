@@ -10,6 +10,7 @@ export default function NounsPage() {
     .map((n) => ({
       id: n.es,
       word: `${nounArticle(n)} ${n.es}`,
+      gender: n.gender,
       forms: isPluralOnly(n) ? undefined : `plural: ${n.gender === "m" ? "los" : "las"} ${nounPlural(n)}`,
       en: n.en,
       topic: n.topic,

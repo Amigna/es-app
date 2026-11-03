@@ -19,13 +19,13 @@ export default function GuideQuiz({ slug, title, questions }: { slug: string; ti
 
   return (
     <div className="space-y-4">
-      <p className="text-zinc-600 dark:text-zinc-400">
+      <p className="text-stone-600 dark:text-stone-400">
         {questions.length} questions. Each answer comes with a short explanation, and anything you miss comes back.
       </p>
       <button
         type="button"
         onClick={start}
-        className="h-12 rounded-xl bg-emerald-700 px-6 font-medium text-white transition hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
+        className="h-12 rounded-xl bg-accent-700 px-6 font-medium text-white transition hover:bg-accent-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-600"
       >
         Start quiz
       </button>

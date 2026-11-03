@@ -20,7 +20,7 @@ export default function RegionalPage() {
     <div className="space-y-8">
       <header className="space-y-2">
         <h1 className="text-3xl font-semibold tracking-tight">Regional words</h1>
-        <p className="text-zinc-600 dark:text-zinc-400">
+        <p className="text-stone-600 dark:text-stone-400">
           The same thing can have a different name from country to country, and a word that&apos;s fine in one place can be
           rude in another.
         </p>

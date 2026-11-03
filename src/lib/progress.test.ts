@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { inviteAllowsVulgar, statusOfInvite } from "./firebase";
-import { accuracy, currentStreak, lastSevenDays, localDay, recentWeeks, summarize, wordsPracticed, type Answer, type Tally } from "./progress";
+import { accuracy, calendarWeeks, currentStreak, lastSevenDays, localDay, recentWeeks, summarize, wordsPracticed, type Answer, type Tally } from "./progress";
 import { summaryUpdate } from "./progress-store";
 
 const answer = (item: string, grade: Answer["grade"], day = "2026-11-01", tense?: Answer["tense"]): Answer => ({ item, grade, day, tense });
@@ -216,5 +216,25 @@ describe("recentWeeks", () => {
   it("crosses a month and a year", () => {
     const weeks = recentWeeks({ "2025-12-31": right(1), "2026-01-01": right(2) }, "2026-01-03", (d) => d, 1);
     assert.equal(weeks[0].right, 3);
+  });
+});
+
+describe("calendarWeeks", () => {
+  const right = (n: number): Tally => ({ right: n, accent: 0, wrong: 0 });
+
+  it("runs Monday to Sunday with today in the last week", () => {
+    // 2026-11-04 is a Wednesday.
+    const weeks = calendarWeeks({ "2026-11-02": right(4), "2026-10-26": right(1) }, "2026-11-04", 2);
+    assert.equal(weeks.length, 2);
+    assert.deepEqual(weeks.map((w) => [w[0].day, w[6].day]), [["2026-10-26", "2026-11-01"], ["2026-11-02", "2026-11-08"]]);
+    assert.equal(weeks[0][0].answered, 1);
+    assert.equal(weeks[1][0].answered, 4);
+    assert.deepEqual(weeks[1].map((d) => d.future), [false, false, false, true, true, true, true]);
+  });
+
+  it("puts a Sunday at the end of the last week", () => {
+    const weeks = calendarWeeks({}, "2026-11-08", 1);
+    assert.equal(weeks[0][6].day, "2026-11-08");
+    assert.ok(weeks[0].every((d) => !d.future));
   });
 });

@@ -17,10 +17,10 @@ export async function generateMetadata({ params }: PageProps<"/guides/[slug]">):
 export default function GuidePage({ params }: PageProps<"/guides/[slug]">) {
   return (
     <div className="space-y-6">
-      <Link href="/guides" className="text-sm text-emerald-700 underline dark:text-emerald-400">
+      <Link href="/guides" className="text-sm text-accent-700 underline dark:text-accent-400">
         All guides
       </Link>
-      <Suspense fallback={<div className="h-10 w-64 animate-pulse rounded-lg bg-zinc-100 dark:bg-zinc-800" aria-busy="true" />}>
+      <Suspense fallback={<div className="h-10 w-64 animate-pulse rounded-lg bg-stone-100 dark:bg-stone-800" aria-busy="true" />}>
         <GuideContent params={params} />
       </Suspense>
     </div>
@@ -31,7 +31,7 @@ function QuizLink({ slug }: { slug: string }) {
   return (
     <Link
       href={`/guides/${slug}/quiz`}
-      className="inline-block rounded-xl bg-emerald-700 px-4 py-2 font-medium text-white transition hover:bg-emerald-800"
+      className="inline-block rounded-xl bg-accent-700 px-4 py-2 font-medium text-white transition hover:bg-accent-800"
     >
       Take the quiz
     </Link>
@@ -46,7 +46,7 @@ async function GuideContent({ params }: { params: PageProps<"/guides/[slug]">["p
     <article className="space-y-8">
       <header className="space-y-2">
         <h1 className="text-3xl font-semibold tracking-tight">{guide.title}</h1>
-        <p className="text-lg text-zinc-600 dark:text-zinc-400">{guide.summary}</p>
+        <p className="text-lg text-stone-600 dark:text-stone-400">{guide.summary}</p>
         <QuizLink slug={guide.slug} />
       </header>
 
@@ -55,19 +55,19 @@ async function GuideContent({ params }: { params: PageProps<"/guides/[slug]">["p
           <h2 className="mb-3 text-xl font-semibold">{section.heading}</h2>
           <div className="space-y-3">
             {section.rules.map((r) => (
-              <div key={r.rule} className="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
+              <div key={r.rule} className="rounded-xl border border-stone-200 bg-white p-4 dark:border-stone-800 dark:bg-stone-900">
                 <h3 className="font-medium">{r.rule}</h3>
                 <ul className="mt-2 space-y-1.5">
                   {r.examples.map((e) => (
                     <li key={e.es}>
-                      <span lang="es" className="text-emerald-800 dark:text-emerald-300">
+                      <span lang="es" className="text-accent-800 dark:text-accent-300">
                         {e.es}
                       </span>
-                      <span className="block text-sm text-zinc-500">{e.en}</span>
+                      <span className="block text-sm text-stone-500">{e.en}</span>
                     </li>
                   ))}
                 </ul>
-                {r.note && <p className="mt-2 text-sm italic text-zinc-600 dark:text-zinc-400">{r.note}</p>}
+                {r.note && <p className="mt-2 text-sm italic text-stone-600 dark:text-stone-400">{r.note}</p>}
               </div>
             ))}
           </div>

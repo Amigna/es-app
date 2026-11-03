@@ -5,6 +5,7 @@ import ConjugationView from "@/components/ConjugationView";
 import VerbSearch from "@/components/VerbSearch";
 import { conjugate } from "@/lib/conjugation/engine";
 import { IRREGULARS } from "@/lib/conjugation/irregulars";
+import { markForms } from "@/lib/conjugation/regular";
 import { getSentences } from "@/lib/sentence-data";
 import { VERBS, VERB_SHAPE, findVerb, verbSlug, type Verb } from "@/lib/verbs";
 
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: PageProps<"/verb/[inf]">): Pr
 
 function Chip({ children }: { children: React.ReactNode }) {
   return (
-    <span className="rounded-full bg-zinc-100 px-2.5 py-0.5 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
+    <span className="rounded-full bg-stone-100 px-2.5 py-0.5 text-xs font-medium text-stone-700 dark:bg-stone-800 dark:text-stone-300">
       {children}
     </span>
   );
@@ -54,8 +55,8 @@ export default function VerbPage({ params }: PageProps<"/verb/[inf]">) {
 function VerbSkeleton() {
   return (
     <div className="space-y-3" aria-busy="true">
-      <div className="h-10 w-48 animate-pulse rounded-lg bg-zinc-100 dark:bg-zinc-800" />
-      <div className="h-5 w-32 animate-pulse rounded bg-zinc-100 dark:bg-zinc-800" />
+      <div className="h-10 w-48 animate-pulse rounded-lg bg-stone-100 dark:bg-stone-800" />
+      <div className="h-5 w-32 animate-pulse rounded bg-stone-100 dark:bg-stone-800" />
     </div>
   );
 }
@@ -72,7 +73,7 @@ async function VerbContent({ params }: { params: PageProps<"/verb/[inf]">["param
     <div className="space-y-8">
       <header className="space-y-3">
         <h1 className="text-4xl font-semibold tracking-tight">{conjugation.infinitive}</h1>
-        {verb.en && <p className="text-lg text-zinc-600 dark:text-zinc-400">{verb.en}</p>}
+        {verb.en && <p className="text-lg text-stone-600 dark:text-stone-400">{verb.en}</p>}
         <div className="flex flex-wrap gap-2">
           {conjugation.reflexive && <Chip>reflexive</Chip>}
           {(verb.like || IRREGULARS[root]) && <Chip>irregular{verb.like ? ` · like ${verb.like}` : ""}</Chip>}
@@ -87,7 +88,11 @@ async function VerbContent({ params }: { params: PageProps<"/verb/[inf]">["param
         )}
       </header>
 
-      <ConjugationView conjugation={conjugation} sentences={sentences} />
+      <ConjugationView
+        conjugation={conjugation}
+        marks={markForms(conjugation, verb.boot ?? IRREGULARS[verb.like ?? root]?.boot)}
+        sentences={sentences}
+      />
     </div>
   );
 }

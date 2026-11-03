@@ -35,10 +35,10 @@ const SUBJ_VOS_END: Record<Kind, string> = { ar: "és", er: "ás", ir: "ás" };
 const CLITICS = ["me", "te", "se", "nos", "se"];
 
 // The -ir stem changes of the preterite, gerund and nosotros subjunctive (dormir -> durmió).
-const IR_CHANGE: Partial<Record<Boot, string>> = { "e>ie": "e>i", "e>i": "e>i", "o>ue": "o>u" };
+export const IR_CHANGE: Partial<Record<Boot, string>> = { "e>ie": "e>i", "e>i": "e>i", "o>ue": "o>u" };
 const NO_ZC = new Set(["mecer", "remecer", "cocer", "escocer", "recocer"]);
 
-function applyChange(stem: string, change: string): string {
+export function applyChange(stem: string, change: string): string {
   const [from, to] = change.split(">");
   const i = stem.lastIndexOf(from);
   return i < 0 ? stem : stem.slice(0, i) + to + stem.slice(i + 1);

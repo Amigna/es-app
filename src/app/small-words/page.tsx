@@ -13,7 +13,7 @@ export default function SmallWordsPage() {
     <div className="space-y-6">
       <header className="space-y-2">
         <h1 className="text-3xl font-semibold tracking-tight">Small words</h1>
-        <p className="text-zinc-600 dark:text-zinc-400">Prepositions, conjunctions, pronouns and question words.</p>
+        <p className="text-stone-600 dark:text-stone-400">Prepositions, conjunctions, pronouns and question words.</p>
       </header>
       <WordList rows={rows} placeholder="Filter by Spanish or English…" />
     </div>

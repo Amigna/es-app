@@ -13,10 +13,10 @@ export default function GuidesPage() {
           <li key={g.slug}>
             <Link
               href={`/guides/${g.slug}`}
-              className="block h-full rounded-xl border border-zinc-200 bg-white p-4 transition hover:border-emerald-600 dark:border-zinc-800 dark:bg-zinc-900"
+              className="block h-full rounded-xl border border-stone-200 bg-white p-4 transition hover:border-accent-600 dark:border-stone-800 dark:bg-stone-900"
             >
               <span className="block text-lg font-semibold">{g.title}</span>
-              <span className="mt-1 block text-zinc-600 dark:text-zinc-400">{g.summary}</span>
+              <span className="mt-1 block text-stone-600 dark:text-stone-400">{g.summary}</span>
             </Link>
           </li>
         ))}

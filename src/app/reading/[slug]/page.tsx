@@ -19,10 +19,10 @@ export async function generateMetadata({ params }: PageProps<"/reading/[slug]">)
 export default function ReadingPassagePage({ params }: PageProps<"/reading/[slug]">) {
   return (
     <div className="space-y-6">
-      <Link href="/reading" className="text-sm text-emerald-700 underline dark:text-emerald-400">
+      <Link href="/reading" className="text-sm text-accent-700 underline dark:text-accent-400">
         All readings
       </Link>
-      <Suspense fallback={<div className="h-10 w-64 animate-pulse rounded-lg bg-zinc-100 dark:bg-zinc-800" aria-busy="true" />}>
+      <Suspense fallback={<div className="h-10 w-64 animate-pulse rounded-lg bg-stone-100 dark:bg-stone-800" aria-busy="true" />}>
         <ReadingContent params={params} />
       </Suspense>
     </div>
@@ -36,13 +36,13 @@ async function ReadingContent({ params }: { params: PageProps<"/reading/[slug]">
   return (
     <article className="max-w-2xl space-y-8">
       <header className="space-y-1">
-        <p className="text-sm text-zinc-500">
+        <p className="text-sm text-stone-500">
           {reading.level} · <span lang="es">{reading.place}</span>
         </p>
         <h1 lang="es" className="text-3xl font-semibold tracking-tight">
           {reading.title}
         </h1>
-        <p className="text-lg text-zinc-600 dark:text-zinc-400">{reading.en}</p>
+        <p className="text-lg text-stone-600 dark:text-stone-400">{reading.en}</p>
       </header>
 
       <section className="space-y-4">
@@ -51,9 +51,9 @@ async function ReadingContent({ params }: { params: PageProps<"/reading/[slug]">
             <p lang="es" className="text-lg leading-relaxed">
               {p.es}
             </p>
-            <details className="text-zinc-600 dark:text-zinc-400">
-              <summary className="w-fit cursor-pointer py-2.5 text-sm text-emerald-700 dark:text-emerald-400">Show English</summary>
-              <p className="border-l-2 border-zinc-300 pl-3 dark:border-zinc-700">{p.en}</p>
+            <details className="text-stone-600 dark:text-stone-400">
+              <summary className="w-fit cursor-pointer py-2.5 text-sm text-accent-700 dark:text-accent-400">Show English</summary>
+              <p className="border-l-2 border-stone-300 pl-3 dark:border-stone-700">{p.en}</p>
             </details>
           </div>
         ))}
@@ -65,10 +65,10 @@ async function ReadingContent({ params }: { params: PageProps<"/reading/[slug]">
         <dl className="grid gap-x-6 gap-y-2 sm:grid-cols-2">
           {reading.words.map((w) => (
             <div key={w.es}>
-              <dt lang="es" className="font-medium text-emerald-800 dark:text-emerald-300">
+              <dt lang="es" className="font-medium text-accent-800 dark:text-accent-300">
                 {w.es}
               </dt>
-              <dd className="text-sm text-zinc-500">{w.en}</dd>
+              <dd className="text-sm text-stone-500">{w.en}</dd>
             </div>
           ))}
         </dl>

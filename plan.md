@@ -42,6 +42,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - [ ] Better text-to-speech if the device voices aren't good enough: generate audio files once and serve them as static files, so there's no runtime API key
 - [ ] Conversation or writing practice with Claude (would need an API key)
 - [ ] Optional voseo in drills
+- [ ] Verb of the day on the home page. Left out of the color pass because the home page is prerendered, so it would need to be picked in the browser
 
 ## To verify
 
@@ -65,6 +66,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - [ ] A save interrupted by a closed tab can be sent twice, which overcounts stats slightly. Accepted, since the alternative was losing answers
 - [ ] Read the grammar guides and their quizzes for accuracy. Tests check the structure, not the grammar
 - [ ] Unknown verb URLs returned 200 on first request and 404 after. Harmless so far
+- [ ] Signed in, open /progress and check the practice calendar and the accuracy line against your real history, including tapping a week on a phone. They've only been seen with made-up data
 
 ## How content gets added
 
@@ -111,6 +113,13 @@ These live in `.verify/`, which is gitignored, so keep a copy if you change mach
 - [x] 1,164 more sentences so the top 50 verbs have one for every person in the present, preterite, imperfect, future, conditional and present subjunctive
 - [x] Mobile layout pass, checked at 320px and 390px in headless Chrome
 - [x] Deployed on AWS Amplify (Next.js 16 with Cache Components is newer than Amplify's documented support, so recheck after upgrades)
+- [x] Color pass: a warm background and stone grays, and a hue per section that colors its nav link, header, page title, buttons and focus rings. The accent-* colors in `globals.css` are built from `--hue`, set by `SiteShell.tsx`. Green still means correct in drills. Checked at 390 to 1280px, light and dark, in headless Chrome
+- [x] Second color pass:
+  - Verb tables color each regular ending and mark the rest as a stem change (blue), irregular (gold) or spelling change (dotted underline). `src/lib/conjugation/regular.ts` compares each form with hablar, comer or vivir, ignoring written accents. Spelling changes are the sound-keeping ones (busqué, llegue, cojo, sigo, leyó). Stem changes come from the verb's `boot`, or its irregular root's, so tener's tienes counts. A form with both, like empiece, shows as a stem change. Yo forms in -zco and -uir verbs' y (construyo) stay irregular
+  - A color per mood on verb pages, an edge color per -ar, -er and -ir verb on the home page, and a gender color on noun articles
+  - Drills: a pop or shake on feedback, a streak chip and confetti with a score when you finish. All CSS, and turned off for people who ask for reduced motion
+  - Progress: a practice calendar and a weekly accuracy line. Only seen with made-up data on a temporary page, since the real page needs sign-in
+  - Fraunces for titles, and a new home page header with shortcuts
 - [x] Speaker buttons on word lists (nouns, adjectives, adverbs, small words, phrases) for each word and example, using the device's own voices. `src/lib/speech.ts` prefers Latin American voices, uses Spain's only as a last resort, and hides the button if there's no Spanish voice
 
 ### Accounts and saved progress

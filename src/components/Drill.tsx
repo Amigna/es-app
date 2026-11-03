@@ -86,12 +86,12 @@ function OptionCard({
   return (
     <label
       className={`cursor-pointer rounded-lg border px-3 py-2 transition ${
-        checked ? "border-emerald-600 bg-emerald-50 dark:bg-emerald-950" : "border-zinc-200 dark:border-zinc-800"
+        checked ? "border-accent-600 bg-accent-50 dark:bg-accent-950" : "border-stone-200 dark:border-stone-800"
       }`}
     >
       <input type={type} name={name} checked={checked} onChange={onChange} className="sr-only" />
       <span className="block font-medium">{title}</span>
-      <span className="block text-sm text-zinc-500">{hint}</span>
+      <span className="block text-sm text-stone-500">{hint}</span>
     </label>
   );
 }
@@ -116,13 +116,13 @@ async function loadTodayPlan(rare: Set<string>): Promise<Today> {
 }
 
 function TodaySummary({ today }: { today: Today }) {
-  if (today.status === "loading") return <p className="text-zinc-500">Loading…</p>;
+  if (today.status === "loading") return <p className="text-stone-500">Loading…</p>;
   if (today.status === "failed") return <p role="alert">Couldn&apos;t load today&apos;s review. Check your connection and try again.</p>;
   if (today.status === "signedOut") {
     return (
-      <p className="text-zinc-600 dark:text-zinc-400">
+      <p className="text-stone-600 dark:text-stone-400">
         Today&apos;s review needs saved progress, which is invite-only for now.{" "}
-        <Link href="/account" prefetch={false} className="text-emerald-700 underline dark:text-emerald-400">
+        <Link href="/account" prefetch={false} className="text-accent-700 underline dark:text-accent-400">
           Sign in
         </Link>{" "}
         to use it.
@@ -130,10 +130,10 @@ function TodaySummary({ today }: { today: Today }) {
     );
   }
   if (today.reviews.length + today.fresh.length === 0) {
-    return <p className="text-zinc-600 dark:text-zinc-400">All done for today. New reviews will be ready tomorrow.</p>;
+    return <p className="text-stone-600 dark:text-stone-400">All done for today. New reviews will be ready tomorrow.</p>;
   }
   return (
-    <p className="text-zinc-600 dark:text-zinc-400">
+    <p className="text-stone-600 dark:text-stone-400">
       {plural(today.reviews.length, "review")} and {plural(today.fresh.length, "new item")} today.
     </p>
   );
@@ -259,7 +259,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
       {mode === "grammar" && (
         <section>
           <h2 className="mb-1 text-xl font-semibold">Which guides?</h2>
-          <p className="mb-3 text-sm text-zinc-500">Pick any, or leave them all off for every guide.</p>
+          <p className="mb-3 text-sm text-stone-500">Pick any, or leave them all off for every guide.</p>
           <div className="flex flex-wrap gap-2">
             {guideList.map((g) => (
               <button
@@ -269,8 +269,8 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
                 onClick={() => update({ guides: toggled(guides, g.slug) })}
                 className={`min-h-10 rounded-full border px-3 py-1 text-sm transition ${
                   guides.includes(g.slug)
-                    ? "border-emerald-700 bg-emerald-700 text-white"
-                    : "border-zinc-200 hover:border-emerald-600 dark:border-zinc-700"
+                    ? "border-accent-700 bg-accent-700 text-white"
+                    : "border-stone-200 hover:border-accent-600 dark:border-stone-700"
                 }`}
               >
                 {g.title}
@@ -283,7 +283,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
       {mode === "writing" && (
         <section>
           <h2 className="mb-1 text-xl font-semibold">Which way?</h2>
-          <p className="mb-3 text-sm text-zinc-500">
+          <p className="mb-3 text-sm text-stone-500">
             Each session is {WRITING_SESSION} sentences. If yours doesn&apos;t match the model answer, you decide whether it counts. These add to your
             totals but not to your review schedule.
           </p>
@@ -327,7 +327,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
                           type="checkbox"
                           checked={tenses.includes(t.id)}
                           onChange={() => update({ tenses: toggled(tenses, t.id) })}
-                          className="size-4 accent-emerald-700"
+                          className="size-4 accent-accent-700"
                         />
                         {t.name}
                       </label>
@@ -382,7 +382,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
         <>
           <section>
             <h2 className="mb-1 text-xl font-semibold">Which way?</h2>
-            <p className="mb-3 text-sm text-zinc-500">Each session is {FLASHCARD_SESSION} cards, and they count toward your review schedule.</p>
+            <p className="mb-3 text-sm text-stone-500">Each session is {FLASHCARD_SESSION} cards, and they count toward your review schedule.</p>
             <div className="grid gap-2 sm:grid-cols-2">
               {FLASH_SIDES.map((s) => (
                 <OptionCard key={s.id} name="flashSide" title={s.title} hint={s.hint} checked={flashSide === s.id} onChange={() => update({ flashSide: s.id })} />
@@ -412,7 +412,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
       {showTopics && (
         <section>
           <h2 className="mb-1 text-xl font-semibold">Noun topics</h2>
-          <p className="mb-3 text-sm text-zinc-500">Pick any, or leave them all off for every topic.</p>
+          <p className="mb-3 text-sm text-stone-500">Pick any, or leave them all off for every topic.</p>
           <div className="flex flex-wrap gap-2">
             {NOUN_TOPICS.map((t) => (
               <button
@@ -422,8 +422,8 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
                 onClick={() => update({ topics: toggled(topics, t) })}
                 className={`min-h-10 rounded-full border px-3 py-1 text-sm capitalize transition ${
                   topics.includes(t)
-                    ? "border-emerald-700 bg-emerald-700 text-white"
-                    : "border-zinc-200 hover:border-emerald-600 dark:border-zinc-700"
+                    ? "border-accent-700 bg-accent-700 text-white"
+                    : "border-stone-200 hover:border-accent-600 dark:border-stone-700"
                 }`}
               >
                 {t}
@@ -443,7 +443,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
         type="button"
         onClick={() => start()}
         disabled={!ready || loading}
-        className="h-12 rounded-xl bg-emerald-700 px-6 font-medium text-white transition hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 disabled:cursor-not-allowed disabled:opacity-50"
+        className="h-12 rounded-xl bg-accent-700 px-6 font-medium text-white transition hover:bg-accent-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-600 disabled:cursor-not-allowed disabled:opacity-50"
       >
         {loading ? "Loading…" : "Start drilling"}
       </button>

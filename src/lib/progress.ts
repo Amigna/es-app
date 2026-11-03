@@ -125,6 +125,26 @@ export function recentWeeks<T>(days: Record<string, T>, today: string, pick: (da
   });
 }
 
+export interface CalendarDay {
+  day: string;
+  answered: number;
+  /** Later than today, in the current week's column. */
+  future: boolean;
+}
+
+/** Weeks for a practice calendar, oldest first, each running Monday to Sunday. The last one holds today. */
+export function calendarWeeks(days: Record<string, Tally>, today: string, count: number): CalendarDay[][] {
+  const [y, m, d] = today.split("-").map(Number);
+  const mondayOffset = (new Date(y, m - 1, d).getDay() + 6) % 7;
+  const start = d - mondayOffset - 7 * (count - 1);
+  return Array.from({ length: count }, (_, w) =>
+    Array.from({ length: 7 }, (_, i) => {
+      const day = localDay(new Date(y, m - 1, start + w * 7 + i));
+      return { day, answered: days[day] ? answered(days[day]) : 0, future: day > today };
+    }),
+  );
+}
+
 /** Answers across the seven days ending today. */
 export function lastSevenDays(days: Record<string, Tally>, today: string): number {
   let total = 0;

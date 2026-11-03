@@ -58,11 +58,11 @@ function storeEmail(email: string | null) {
 }
 
 const inputClass =
-  "h-12 w-full rounded-xl border border-zinc-300 bg-white px-4 outline-none transition focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/30 dark:border-zinc-700 dark:bg-zinc-900";
+  "h-12 w-full rounded-xl border border-stone-300 bg-white px-4 outline-none transition focus:border-accent-600 focus:ring-2 focus:ring-accent-600/30 dark:border-stone-700 dark:bg-stone-900";
 const primaryClass =
-  "h-12 w-full rounded-xl bg-emerald-700 px-5 font-medium text-white transition hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 disabled:cursor-not-allowed disabled:opacity-50";
+  "h-12 w-full rounded-xl bg-accent-700 px-5 font-medium text-white transition hover:bg-accent-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-600 disabled:cursor-not-allowed disabled:opacity-50";
 const secondaryClass =
-  "h-12 w-full rounded-xl border border-zinc-300 px-5 font-medium transition hover:border-emerald-600 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-700";
+  "h-12 w-full rounded-xl border border-stone-300 px-5 font-medium transition hover:border-accent-600 disabled:cursor-not-allowed disabled:opacity-50 dark:border-stone-700";
 const noticeClass =
   "rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-sm text-amber-900 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-200";
 
@@ -96,7 +96,7 @@ function NewItemsSetting({ uid }: { uid: string }) {
 
   return (
     <div className="space-y-1">
-      <label htmlFor="new-per-day" className="block text-sm text-zinc-500">
+      <label htmlFor="new-per-day" className="block text-sm text-stone-500">
         New items per day in Today&apos;s review
       </label>
       <select
@@ -158,7 +158,7 @@ function RequestInvite({ user, onSent }: { user: User; onSent: () => void }) {
           site is yours to use either way.
         </p>
       </div>
-      <label htmlFor="request-first" className="block text-sm text-zinc-500">
+      <label htmlFor="request-first" className="block text-sm text-stone-500">
         First name
       </label>
       <input
@@ -170,7 +170,7 @@ function RequestInvite({ user, onSent }: { user: User; onSent: () => void }) {
         onChange={(e) => setFirstName(e.target.value)}
         className={inputClass}
       />
-      <label htmlFor="request-last" className="block text-sm text-zinc-500">
+      <label htmlFor="request-last" className="block text-sm text-stone-500">
         Last name
       </label>
       <input
@@ -217,7 +217,7 @@ function SignedIn({ user }: { user: User }) {
   return (
     <div className="space-y-4">
       <div>
-        <p className="text-sm text-zinc-500">Signed in as</p>
+        <p className="text-sm text-stone-500">Signed in as</p>
         <p className="text-lg font-medium break-all">{user.email}</p>
       </div>
 
@@ -289,11 +289,11 @@ function SignInForm({ onError }: { onError: (message: string | null) => void }) 
     return (
       <div role="status" className="space-y-2">
         <p className="font-medium">Check your email</p>
-        <p className="text-zinc-600 dark:text-zinc-400">
+        <p className="text-stone-600 dark:text-stone-400">
           We sent a sign-in link to <span className="break-all">{sentTo}</span>. Open it on this device to finish, and check your
           spam folder if it doesn&apos;t arrive.
         </p>
-        <p className="text-zinc-600 dark:text-zinc-400">
+        <p className="text-stone-600 dark:text-stone-400">
           New here? There&apos;s one more step after the link: request access on the page it opens.
         </p>
       </div>
@@ -306,7 +306,7 @@ function SignInForm({ onError }: { onError: (message: string | null) => void }) 
         Continue with Google
       </button>
 
-      <p className="text-center text-sm text-zinc-500">or get a sign-in link by email</p>
+      <p className="text-center text-sm text-stone-500">or get a sign-in link by email</p>
 
       <form
         className="space-y-3"
@@ -333,7 +333,7 @@ function SignInForm({ onError }: { onError: (message: string | null) => void }) 
         </button>
       </form>
 
-      <p className="text-center text-sm text-zinc-500">New here? There are two steps: sign in, then request access on this page to save your progress.</p>
+      <p className="text-center text-sm text-stone-500">New here? There are two steps: sign in, then request access on this page to save your progress.</p>
     </div>
   );
 }
@@ -352,7 +352,7 @@ function ConfirmEmail({ onConfirm }: { onConfirm: (email: string) => void }) {
       <label htmlFor="confirm-email" className="block font-medium">
         Confirm your email to finish signing in
       </label>
-      <p id="confirm-email-why" className="text-sm text-zinc-600 dark:text-zinc-400">
+      <p id="confirm-email-why" className="text-sm text-stone-600 dark:text-stone-400">
         You&apos;re not signed in yet. This happens when a link opens in a different browser or in your email app. Enter the same address
         you used.
       </p>
@@ -404,17 +404,17 @@ export default function AccountPanel() {
   }, []);
 
   if (!firebaseConfigured) {
-    return <p className="text-zinc-600 dark:text-zinc-400">Sign-in isn&apos;t available right now.</p>;
+    return <p className="text-stone-600 dark:text-stone-400">Sign-in isn&apos;t available right now.</p>;
   }
 
   return (
-    <div className="mx-auto max-w-md space-y-4 rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+    <div className="mx-auto max-w-md space-y-4 rounded-xl border border-stone-200 bg-white p-6 dark:border-stone-800 dark:bg-stone-900">
       {error && (
         <p role="alert" className="text-sm text-red-600 dark:text-red-400">
           {error}
         </p>
       )}
-      {user === undefined && <p className="text-zinc-500">Loading…</p>}
+      {user === undefined && <p className="text-stone-500">Loading…</p>}
       {user && <SignedIn user={user} />}
       {user === null && (needsEmail ? <ConfirmEmail onConfirm={finishLink} /> : <SignInForm onError={setError} />)}
     </div>

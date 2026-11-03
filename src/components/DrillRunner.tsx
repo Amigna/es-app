@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import ReportProblem from "@/components/ReportProblem";
 import SpeakButton from "@/components/SpeakButton";
 import { gradeCard, type Card, type Grade } from "@/lib/drill";
@@ -19,7 +19,7 @@ function Feedback({ result, card, speak }: { result: Grade; card: Card; speak?: 
     wrong: "border-red-300 bg-red-50 text-red-900 dark:border-red-800 dark:bg-red-950 dark:text-red-200",
   };
   return (
-    <div role="status" className={`rounded-lg border px-4 py-3 ${styles[result]}`}>
+    <div role="status" className={`rounded-lg border px-4 py-3 ${styles[result]} ${result === "wrong" ? "animate-shake" : "animate-pop-in"}`}>
       <div className="flex items-start justify-between gap-2">
         <div>
           {result === "correct" && <p className="font-medium">Correct!</p>}
@@ -50,6 +50,41 @@ function Feedback({ result, card, speak }: { result: Grade; card: Card; speak?: 
   );
 }
 
+/** Warms from marigold to red as the streak grows. */
+function StreakChip({ streak }: { streak: number }) {
+  const hue = Math.max(25, 85 - streak * 6);
+  return (
+    <span
+      key={streak}
+      style={{ "--hue": hue } as CSSProperties}
+      className={`inline-flex items-center rounded-full px-2.5 py-0.5 font-medium tabular-nums ${
+        streak === 0 ? "bg-stone-100 text-stone-500 dark:bg-stone-800" : "animate-bump bg-accent-100 text-accent-800 dark:bg-accent-950 dark:text-accent-200"
+      }`}
+    >
+      Streak {streak}
+    </span>
+  );
+}
+
+// Spread out by index rather than at random, so every render places them the same way.
+const CONFETTI = Array.from({ length: 48 }, (_, i) => ({
+  "--x": `${(i * 37) % 100}%`,
+  "--drift": `${((i * 53) % 21) - 10}vw`,
+  "--delay": `${((i * 29) % 12) / 10}s`,
+  "--spin": `${((i * 71) % 4) * 180 + 180}deg`,
+  "--hue": [180, 35, 75, 135, 235, 350, 300, 270, 205, 325][i % 10],
+})) as CSSProperties[];
+
+function Confetti() {
+  return (
+    <div aria-hidden className="confetti">
+      {CONFETTI.map((style, i) => (
+        <span key={i} style={style} />
+      ))}
+    </div>
+  );
+}
+
 export default function DrillRunner({
   first,
   next,
@@ -70,6 +105,7 @@ export default function DrillRunner({
   const [right, setRight] = useState(0);
   const [total, setTotal] = useState(0);
   const [streak, setStreak] = useState(0);
+  const [bestStreak, setBestStreak] = useState(0);
   const [retries, setRetries] = useState<{ card: Card; dueAt: number }[]>([]);
   const [finished, setFinished] = useState(false);
   const [isRetry, setIsRetry] = useState(false);
@@ -100,6 +136,7 @@ export default function DrillRunner({
     if (card.track && !isRetry) recordAnswer(card.track, g);
     if (good) setRight(right + 1);
     setStreak(good ? streak + 1 : 0);
+    if (good) setBestStreak(Math.max(bestStreak, streak + 1));
     setRetries(missed);
     return { answeredNow, missed };
   }
@@ -149,47 +186,57 @@ export default function DrillRunner({
   }
 
   if (finished) {
+    const score = total ? Math.round((right / total) * 100) : 0;
+    // The confetti sits outside the card: the card's pop-in transform would otherwise trap it inside.
     return (
-      <section className="mx-auto max-w-xl space-y-4 rounded-xl border border-zinc-200 bg-white p-6 text-center dark:border-zinc-800 dark:bg-zinc-900">
-        <h2 className="text-2xl font-semibold tracking-tight">Finished!</h2>
-        <p className="text-lg">
-          {right} of {total} answers correct
-        </p>
-        {right < total && (
-          <p className="text-sm text-zinc-500">Questions you missed came back, so they count more than once.</p>
-        )}
-        <button
-          type="button"
-          onClick={onStop}
-          className="h-11 rounded-xl bg-emerald-700 px-6 font-medium text-white transition hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
-        >
-          Done
-        </button>
-      </section>
+      <>
+        <Confetti />
+        <section className="animate-pop-in mx-auto max-w-xl space-y-4 rounded-xl border border-t-4 border-stone-200 border-t-accent-500 bg-white p-6 text-center dark:border-stone-800 dark:bg-stone-900">
+          <h2 className="font-display text-3xl font-semibold tracking-tight text-accent-800 dark:text-accent-300">
+            {score >= 80 ? "¡Excelente!" : score >= 50 ? "¡Bien hecho!" : "¡Sigue así!"}
+          </h2>
+          <p className="font-display text-5xl font-semibold tabular-nums text-accent-700 dark:text-accent-300">{score}%</p>
+          <p className="text-lg">
+            {right} of {total} answers correct
+          </p>
+          {bestStreak >= 3 && <p className="text-stone-600 dark:text-stone-400">Best streak: {bestStreak} in a row</p>}
+          {right < total && (
+            <p className="text-sm text-stone-500">Questions you missed came back, so they count more than once.</p>
+          )}
+          <button
+            type="button"
+            onClick={onStop}
+            className="h-11 rounded-xl bg-accent-700 px-6 font-medium text-white transition hover:bg-accent-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-600"
+          >
+            Done
+          </button>
+        </section>
+      </>
     );
   }
 
   return (
     <div className="mx-auto max-w-xl space-y-6">
-      <div className="flex items-center justify-between text-sm text-zinc-500">
-        <span>
-          {right} of {total} correct · streak {streak}
+      <div className="flex items-center justify-between text-sm text-stone-500">
+        <span className="flex items-center gap-2">
+          {right} of {total} correct
+          <StreakChip streak={streak} />
         </span>
         <button type="button" onClick={onStop} className="min-h-10 underline">
           Change settings
         </button>
       </div>
 
-      <section className="rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+      <section className="rounded-xl border border-stone-200 bg-white p-6 dark:border-stone-800 dark:bg-stone-900">
         {card.badge ? (
-          <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-zinc-500">
-            <span className="rounded-md bg-emerald-100 px-2.5 py-1 text-lg font-bold text-emerald-900 dark:bg-emerald-950 dark:text-emerald-200">
+          <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-stone-500">
+            <span className="rounded-md bg-accent-100 px-2.5 py-1 text-lg font-bold text-accent-900 dark:bg-accent-950 dark:text-accent-200">
               {card.badge}
             </span>
             {card.context}
           </p>
         ) : (
-          <p className="text-sm text-zinc-500">{card.context}</p>
+          <p className="text-sm text-stone-500">{card.context}</p>
         )}
         <div className="mt-3 flex items-start justify-between gap-2">
           <h2 lang={card.titleIsSpanish ? "es" : "en"} className="text-2xl font-semibold tracking-tight">
@@ -198,10 +245,10 @@ export default function DrillRunner({
           {/* Only Spanish that's already on screen: speaking the answer early would give it away. */}
           {canGiveUp && card.titleIsSpanish && <SpeakButton text={card.title} />}
         </div>
-        {card.subtitle && <p className="text-zinc-600 dark:text-zinc-400">{card.subtitle}</p>}
+        {card.subtitle && <p className="text-stone-600 dark:text-stone-400">{card.subtitle}</p>}
         {card.example && (
-          <p className="mt-3 border-l-2 border-zinc-300 pl-3 text-zinc-600 dark:border-zinc-700 dark:text-zinc-400">
-            <span lang="es" className="block font-medium text-zinc-800 dark:text-zinc-200">
+          <p className="mt-3 border-l-2 border-stone-300 pl-3 text-stone-600 dark:border-stone-700 dark:text-stone-400">
+            <span lang="es" className="block font-medium text-stone-800 dark:text-stone-200">
               {card.example.es}
             </span>
             {card.example.en}
@@ -213,17 +260,17 @@ export default function DrillRunner({
           <div className="mt-4 space-y-3">
             {revealed ? (
               <>
-                <div role="status" className="rounded-lg border border-zinc-200 px-4 py-3 dark:border-zinc-700">
+                <div role="status" className="rounded-lg border border-stone-200 px-4 py-3 dark:border-stone-700">
                   <p className="flex items-center justify-between gap-2">
                     <span lang={card.english ? "en" : "es"} className="text-xl font-semibold">
                       {card.shown}
                     </span>
                     {!card.english && <SpeakButton text={card.shown} />}
                   </p>
-                  {card.flashcard.note && <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">{card.flashcard.note}</p>}
+                  {card.flashcard.note && <p className="mt-1 text-sm text-stone-600 dark:text-stone-400">{card.flashcard.note}</p>}
                   {card.flashcard.example && (
-                    <p className="mt-3 border-l-2 border-zinc-300 pl-3 text-zinc-600 dark:border-zinc-700 dark:text-zinc-400">
-                      <span lang="es" className="block font-medium text-zinc-800 dark:text-zinc-200">
+                    <p className="mt-3 border-l-2 border-stone-300 pl-3 text-stone-600 dark:border-stone-700 dark:text-stone-400">
+                      <span lang="es" className="block font-medium text-stone-800 dark:text-stone-200">
                         {card.flashcard.example.es}
                       </span>
                       {card.flashcard.example.en}
@@ -234,7 +281,7 @@ export default function DrillRunner({
                   <button
                     type="button"
                     onClick={() => selfGrade(false)}
-                    className="h-11 rounded-xl border border-zinc-300 font-medium transition hover:border-emerald-600 dark:border-zinc-700"
+                    className="h-11 rounded-xl border border-stone-300 font-medium transition hover:border-accent-600 dark:border-stone-700"
                   >
                     Didn&apos;t know
                   </button>
@@ -242,7 +289,7 @@ export default function DrillRunner({
                     ref={knewRef}
                     type="button"
                     onClick={() => selfGrade(true)}
-                    className="h-11 rounded-xl bg-emerald-700 font-medium text-white transition hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
+                    className="h-11 rounded-xl bg-accent-700 font-medium text-white transition hover:bg-accent-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-600"
                   >
                     Knew it
                   </button>
@@ -254,7 +301,7 @@ export default function DrillRunner({
                 ref={showRef}
                 type="button"
                 onClick={() => setRevealed(true)}
-                className="h-11 w-full rounded-xl bg-emerald-700 font-medium text-white transition hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
+                className="h-11 w-full rounded-xl bg-accent-700 font-medium text-white transition hover:bg-accent-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-600"
               >
                 Show answer
               </button>
@@ -268,8 +315,8 @@ export default function DrillRunner({
                 type="button"
                 disabled={!!result}
                 onClick={() => submit(choice)}
-                className={`min-h-12 rounded-xl border px-3 py-2 text-lg font-medium transition hover:border-emerald-600 disabled:cursor-not-allowed disabled:opacity-60 dark:border-zinc-700 ${
-                  input === choice ? "border-emerald-600" : "border-zinc-300"
+                className={`min-h-12 rounded-xl border px-3 py-2 text-lg font-medium transition hover:border-accent-600 disabled:cursor-not-allowed disabled:opacity-60 dark:border-stone-700 ${
+                  input === choice ? "border-accent-600" : "border-stone-300"
                 }`}
               >
                 {choice}
@@ -298,7 +345,7 @@ export default function DrillRunner({
               value={input}
               readOnly={!!result || revealed}
               onChange={(e) => setInput(e.target.value)}
-              className="h-12 w-full rounded-xl border border-zinc-300 bg-white px-4 text-lg outline-none transition focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/30 dark:border-zinc-700 dark:bg-zinc-950"
+              className="h-12 w-full rounded-xl border border-stone-300 bg-white px-4 text-lg outline-none transition focus:border-accent-600 focus:ring-2 focus:ring-accent-600/30 dark:border-stone-700 dark:bg-stone-950"
             />
             {!card.english && (
               <div className="grid grid-cols-7 gap-1.5">
@@ -309,7 +356,7 @@ export default function DrillRunner({
                     disabled={!!result || revealed}
                     onClick={() => insertLetter(letter)}
                     aria-label={`Insert ${letter}`}
-                    className="h-11 rounded-lg border border-zinc-200 font-medium transition hover:border-emerald-600 disabled:opacity-40 dark:border-zinc-700"
+                    className="h-11 rounded-lg border border-stone-200 font-medium transition hover:border-accent-600 disabled:opacity-40 dark:border-stone-700"
                   >
                     {letter}
                   </button>
@@ -320,7 +367,7 @@ export default function DrillRunner({
               <button
                 type="submit"
                 disabled={!input.trim()}
-                className="h-11 w-full rounded-xl bg-emerald-700 font-medium text-white transition hover:bg-emerald-800 disabled:cursor-not-allowed disabled:opacity-50"
+                className="h-11 w-full rounded-xl bg-accent-700 font-medium text-white transition hover:bg-accent-800 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 Check
               </button>
@@ -330,8 +377,8 @@ export default function DrillRunner({
 
         {card.writing && revealed && (
           <div className="mt-4 space-y-3">
-            <div role="status" className="rounded-lg border border-zinc-200 px-4 py-3 dark:border-zinc-700">
-              <p className="text-sm text-zinc-500">One good answer</p>
+            <div role="status" className="rounded-lg border border-stone-200 px-4 py-3 dark:border-stone-700">
+              <p className="text-sm text-stone-500">One good answer</p>
               <p className="flex items-start justify-between gap-2">
                 <span lang={card.english ? "en" : "es"} className="text-lg font-semibold">
                   {card.shown}
@@ -339,19 +386,19 @@ export default function DrillRunner({
                 {!card.english && <SpeakButton text={card.shown} />}
               </p>
             </div>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400">Yours doesn&apos;t match exactly, but it can still be right. Count it if it means the same thing.</p>
+            <p className="text-sm text-stone-600 dark:text-stone-400">Yours doesn&apos;t match exactly, but it can still be right. Count it if it means the same thing.</p>
             <div className="grid grid-cols-2 gap-3">
               <button
                 type="button"
                 onClick={() => selfGrade(false)}
-                className="h-11 rounded-xl border border-zinc-300 font-medium transition hover:border-emerald-600 dark:border-zinc-700"
+                className="h-11 rounded-xl border border-stone-300 font-medium transition hover:border-accent-600 dark:border-stone-700"
               >
                 Missed it
               </button>
               <button
                 type="button"
                 onClick={() => selfGrade(true)}
-                className="h-11 rounded-xl bg-emerald-700 font-medium text-white transition hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
+                className="h-11 rounded-xl bg-accent-700 font-medium text-white transition hover:bg-accent-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-600"
               >
                 Mine works
               </button>
@@ -361,7 +408,7 @@ export default function DrillRunner({
         )}
 
         {!result && !revealed && !card.flashcard && canGiveUp && (
-          <button type="button" onClick={() => record("wrong")} className="mt-3 min-h-10 w-full text-sm text-zinc-600 underline dark:text-zinc-400">
+          <button type="button" onClick={() => record("wrong")} className="mt-3 min-h-10 w-full text-sm text-stone-600 underline dark:text-stone-400">
             I don&apos;t know this
           </button>
         )}
@@ -373,7 +420,7 @@ export default function DrillRunner({
               ref={nextRef}
               type="button"
               onClick={() => advance()}
-              className="h-11 w-full rounded-xl bg-emerald-700 font-medium text-white transition hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
+              className="h-11 w-full rounded-xl bg-accent-700 font-medium text-white transition hover:bg-accent-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-600"
             >
               Next
             </button>

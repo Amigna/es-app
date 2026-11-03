@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: PageProps<"/guides/[slug]/qui
 
 export default function QuizPage({ params }: PageProps<"/guides/[slug]/quiz">) {
   return (
-    <Suspense fallback={<div className="h-10 w-64 animate-pulse rounded-lg bg-zinc-100 dark:bg-zinc-800" aria-busy="true" />}>
+    <Suspense fallback={<div className="h-10 w-64 animate-pulse rounded-lg bg-stone-100 dark:bg-stone-800" aria-busy="true" />}>
       <QuizContent params={params} />
     </Suspense>
   );
