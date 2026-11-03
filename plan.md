@@ -28,7 +28,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 
 ## Content backlog
 
-- [ ] More words in every section. Now at 1,087 nouns, 475 adjectives, 237 adverbs
+- [ ] More words in every section. Now at 1,387 nouns, 580 adjectives, 282 adverbs. Smallest noun topics: family (76), clothes (85), travel (86), time (87)
 - [ ] More verbs. Now at 314, with room for more reflexives and regional verbs
 - [ ] More phrases and regional expressions, labeled by country. Now at 162
 - [ ] More regional words, and more countries in the existing entries
@@ -49,7 +49,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - [ ] Spot-check reflexive forms with attached pronouns (levántate, vámonos), which the Wiktionary comparison didn't cover
 - [ ] Look up individual forms in RAE when in doubt. Its robots.txt blocks Claude's crawlers, so this means web search or checking by hand, not bulk fetching
 - [ ] Skim the sentence files for natural phrasing, including the per-person sentences in `src/data/sentences/`. Tests confirm the conjugated form is present, not that the sentence sounds right or the translation is accurate
-- [ ] Skim the 908 new vocabulary entries (the end of each file in `src/data/vocab/`), plus all of `small-words.json` and its grammar notes, for natural phrasing, translations and regional fit. Tests only confirm each word appears in its example. These come from my own knowledge, not a source. Adverbs now include set expressions like `por si acaso`
+- [ ] Skim the 1,358 new vocabulary entries (the end of each file in `src/data/vocab/`), plus all of `small-words.json` and its grammar notes, for natural phrasing, translations and regional fit. Tests only confirm each word appears in its example. These come from my own knowledge, not a source. Adverbs now include set expressions like `por si acaso`. The latest 450 include regional words worth a native check: `chévere`, `friolento`, `adolorido`, `habichuela` and `bizcocho` (both with notes), `quincena`, `hoja de vida`, `posada`, `parranda`
 - [ ] Skim `src/data/readings.json` for natural phrasing, translations and regional fit, especially the Chilean, Costa Rican and Venezuelan details and the retold Quetzalcóatl legend. Tests only check structure, length and that listed words appear in the passage. These come from my own knowledge, not a source
 - [ ] The haber preterite sentences (hube, hubiste) are literary, and hardly anyone says these forms. Decide whether drills should skip them
 - [ ] Try the app on a real phone, especially the on-screen keyboard during drills
