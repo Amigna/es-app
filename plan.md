@@ -28,8 +28,9 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 
 ## Content backlog
 
-- [ ] More words in every section. Now at 1,387 nouns, 580 adjectives, 282 adverbs. Smallest noun topics: family (76), clothes (85), travel (86), time (87)
-- [ ] More verbs. Now at 314, with room for more reflexives and regional verbs
+- [ ] Goal: about 5,000 words in all, roughly 2,300 nouns, 1,000 adjectives and 1,000 verbs, with adverbs already enough at about 250. The split is a rough estimate of how a list of the 5,000 most common words breaks down, from memory and not checked against a source. Common words come first, so regional and specialist words don't count for as much as their number suggests. Now about 3,260: 1,758 nouns, 745 adjectives, 282 adverbs, 159 small words, 314 verbs
+- [ ] More nouns and adjectives toward the goal: about 540 nouns and 255 adjectives left, roughly 4 batches of 125 nouns and 55 adjectives. Smallest noun topics: family (92), clothes (95), time (99), travel (99)
+- [ ] More verbs toward the goal: about 690 left. Slower than words, because each needs sentences for every tense. Room for more reflexives and regional verbs
 - [ ] More phrases and regional expressions, labeled by country. Now at 162
 - [ ] More regional words, and more countries in the existing entries
 - [ ] More reading passages. Now at 12, with 4 each at A1, A2 and B1
@@ -49,7 +50,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - [ ] Spot-check reflexive forms with attached pronouns (levántate, vámonos), which the Wiktionary comparison didn't cover
 - [ ] Look up individual forms in RAE when in doubt. Its robots.txt blocks Claude's crawlers, so this means web search or checking by hand, not bulk fetching
 - [ ] Skim the sentence files for natural phrasing, including the per-person sentences in `src/data/sentences/`. Tests confirm the conjugated form is present, not that the sentence sounds right or the translation is accurate
-- [ ] Skim the 1,358 new vocabulary entries (the end of each file in `src/data/vocab/`), plus all of `small-words.json` and its grammar notes, for natural phrasing, translations and regional fit. Tests only confirm each word appears in its example. These come from my own knowledge, not a source. Adverbs now include set expressions like `por si acaso`. The latest 450 include regional words worth a native check: `chévere`, `friolento`, `adolorido`, `habichuela` and `bizcocho` (both with notes), `quincena`, `hoja de vida`, `posada`, `parranda`
+- [ ] Skim the 1,893 new vocabulary entries (the end of each file in `src/data/vocab/`), plus all of `small-words.json` and its grammar notes, for natural phrasing, translations and regional fit. Tests only confirm each word appears in its example. These come from my own knowledge, not a source. Adverbs now include set expressions like `por si acaso`. The latest 985 include regional words worth a native check: `chévere`, `friolento`, `adolorido`, `chaparro`, `necio`, `habichuela`, `bizcocho`, `aventón`, `colmado` and `resaca` (the last five with notes), `quincena`, `hoja de vida`, `posada`, `parranda`
 - [ ] Skim `src/data/readings.json` for natural phrasing, translations and regional fit, especially the Chilean, Costa Rican and Venezuelan details and the retold Quetzalcóatl legend. Tests only check structure, length and that listed words appear in the passage. These come from my own knowledge, not a source
 - [ ] The haber preterite sentences (hube, hubiste) are literary, and hardly anyone says these forms. Decide whether drills should skip them
 - [ ] Try the app on a real phone, especially the on-screen keyboard during drills
