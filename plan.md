@@ -28,8 +28,8 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 
 ## Content backlog
 
-- [ ] Goal: about 5,000 words in all, roughly 2,300 nouns, 1,000 adjectives and 1,000 verbs, with adverbs already enough at about 250. The split is a rough estimate of how a list of the 5,000 most common words breaks down, from memory and not checked against a source. Common words come first, so regional and specialist words don't count for as much as their number suggests. Now about 3,260: 1,758 nouns, 745 adjectives, 282 adverbs, 159 small words, 314 verbs
-- [ ] More nouns and adjectives toward the goal: about 540 nouns and 255 adjectives left, roughly 4 batches of 125 nouns and 55 adjectives. Smallest noun topics: family (92), clothes (95), time (99), travel (99)
+- [ ] Goal: about 5,000 words in all, roughly 2,300 nouns, 1,000 adjectives and 1,000 verbs, with adverbs already enough at about 250. The split is a rough estimate of how a list of the 5,000 most common words breaks down, from memory and not checked against a source. Common words come first, so regional and specialist words don't count for as much as their number suggests. Now about 4,060: 2,300 nouns, 1,001 adjectives, 282 adverbs, 159 small words, 314 verbs
+- [ ] Insults and words for disabilities (idiota, estúpido, imbécil, cojo, manco, enano), left out of the word batches on purpose. Add them with a note on why they offend, per the vulgar and offensive word rules in "How content gets added"
 - [ ] More verbs toward the goal: about 690 left. Slower than words, because each needs sentences for every tense. Room for more reflexives and regional verbs
 - [ ] More phrases and regional expressions, labeled by country. Now at 162
 - [ ] More regional words, and more countries in the existing entries
@@ -43,6 +43,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - [ ] Better text-to-speech if the device voices aren't good enough: generate audio files once and serve them as static files, so there's no runtime API key
 - [ ] Conversation or writing practice with Claude (would need an API key)
 - [ ] Optional voseo in drills
+- [ ] Split the word lists like the sentence files if vocabulary drills feel slow to start on a phone. Starting a vocabulary, flashcard or review drill now downloads all of them, about 140 KB gzipped (nouns 96, adjectives 35, adverbs 10), up from about 65 KB
 - [ ] Verb of the day on the home page. Left out of the color pass because the home page is prerendered, so it would need to be picked in the browser
 
 ## To verify
@@ -50,7 +51,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - [ ] Spot-check reflexive forms with attached pronouns (levántate, vámonos), which the Wiktionary comparison didn't cover
 - [ ] Look up individual forms in RAE when in doubt. Its robots.txt blocks Claude's crawlers, so this means web search or checking by hand, not bulk fetching
 - [ ] Skim the sentence files for natural phrasing, including the per-person sentences in `src/data/sentences/`. Tests confirm the conjugated form is present, not that the sentence sounds right or the translation is accurate
-- [ ] Skim the 1,893 new vocabulary entries (the end of each file in `src/data/vocab/`), plus all of `small-words.json` and its grammar notes, for natural phrasing, translations and regional fit. Tests only confirm each word appears in its example. These come from my own knowledge, not a source. Adverbs now include set expressions like `por si acaso`. The latest 985 include regional words worth a native check: `chévere`, `friolento`, `adolorido`, `chaparro`, `necio`, `habichuela`, `bizcocho`, `aventón`, `colmado` and `resaca` (the last five with notes), `quincena`, `hoja de vida`, `posada`, `parranda`
+- [ ] Skim the 2,688 new vocabulary entries (the end of each file in `src/data/vocab/`), plus all of `small-words.json` and its grammar notes, for natural phrasing, translations and regional fit. Tests only confirm each word appears in its example. These come from my own knowledge, not a source. Adverbs now include set expressions like `por si acaso`. The latest 1,780 include regional words worth a native check: `chévere`, `friolento`, `adolorido`, `chaparro`, `necio`, `habichuela`, `bizcocho`, `aventón`, `colmado`, `resaca`, `botana`, `tinto`, `chamarra`, `colectivo`, `coche` and `maletero` (the last eleven with notes), `quincena`, `hoja de vida`, `posada`, `parranda`
 - [ ] Skim `src/data/readings.json` for natural phrasing, translations and regional fit, especially the Chilean, Costa Rican and Venezuelan details and the retold Quetzalcóatl legend. Tests only check structure, length and that listed words appear in the passage. These come from my own knowledge, not a source
 - [ ] The haber preterite sentences (hube, hubiste) are literary, and hardly anyone says these forms. Decide whether drills should skip them
 - [ ] Try the app on a real phone, especially the on-screen keyboard during drills
@@ -136,6 +137,7 @@ These live in `.verify/`, which is gitignored, so keep a copy if you change mach
 
 ### Content
 
+- [x] Core nouns and adjectives toward the 5,000-word goal: 1,213 nouns, 526 adjectives and 45 adverbs in ten batches, reaching 2,300 nouns, 1,001 adjectives and 282 adverbs. Common words first, picked by checking candidate lists against the files
 - [x] Prepositions, conjunctions, pronouns and question words: a Small words page and word type in vocabulary drills
 - [x] Graded reading passages: 12 stories at A1, A2 and B1 on a Reading page, each with an English translation per paragraph, a word list and comprehension questions. Answers aren't saved to progress
 - [x] 1,390 more sentences in five batches, extending every-person coverage in the six core tenses from the top 50 verbs to the top 110
