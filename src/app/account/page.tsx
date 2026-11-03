@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import AccountPanel from "@/components/AccountPanel";
 
-export const metadata: Metadata = { title: "Account · Conjugar" };
+export const metadata: Metadata = { title: "Account" };
 
 export default function AccountPage() {
   return (

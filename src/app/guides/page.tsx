@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { GUIDES } from "@/lib/guides";
 
-export const metadata: Metadata = { title: "Grammar guides · Conjugar" };
+export const metadata: Metadata = { title: "Grammar guides" };
 
 export default function GuidesPage() {
   return (

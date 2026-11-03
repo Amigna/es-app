@@ -19,9 +19,15 @@ const fraunces = Fraunces({
   subsets: ["latin"],
 });
 
+const NAME = "Aprendalgo";
+const DESCRIPTION = "Learn Latin American and Caribbean Spanish: every verb conjugated, thousands of words, short stories, grammar guides and drills.";
+
+// Pages give only their own part of the title, and the template adds the name.
 export const metadata: Metadata = {
-  title: "Conjugar",
-  description: "Every conjugation of every Spanish verb, in Latin American and Caribbean Spanish.",
+  title: { default: NAME, template: `%s · ${NAME}` },
+  description: DESCRIPTION,
+  // For the preview when a link is shared in a message.
+  openGraph: { title: NAME, description: DESCRIPTION, siteName: NAME, type: "website" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

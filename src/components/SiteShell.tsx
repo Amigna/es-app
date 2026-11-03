@@ -50,7 +50,7 @@ export default function SiteShell({ children }: { children: ReactNode }) {
           <div className="flex items-center justify-between xl:contents">
             <Link href="/" className="flex items-center gap-2 py-1 font-display text-xl font-semibold tracking-tight">
               <span aria-hidden className="section-stripe size-5 rounded-md" />
-              Conjugar
+              Aprendalgo
             </Link>
             {/* No prefetch: these pages bring in the Firebase SDK, which other pages shouldn't download. */}
             <div className="flex gap-1 text-sm xl:order-last">

@@ -10,7 +10,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps<"/guides/[slug]">): Promise<Metadata> {
   const guide = findGuide((await params).slug);
-  return { title: guide ? `${guide.title} · Conjugar` : "Guide not found · Conjugar" };
+  return { title: guide ? guide.title : "Guide not found" };
 }
 
 // The back link is shared by every guide; the URL-specific part streams in behind Suspense.

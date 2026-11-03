@@ -3,7 +3,7 @@ import RegionalCard from "@/components/RegionalCard";
 import VulgarWords from "@/components/VulgarWords";
 import { REGIONAL } from "@/lib/guides";
 
-export const metadata: Metadata = { title: "Regional words · Conjugar" };
+export const metadata: Metadata = { title: "Regional words" };
 
 const TOPICS = ["careful", "getting around", "food", "home", "everyday things", "slang"];
 const TITLES: Record<string, string> = {

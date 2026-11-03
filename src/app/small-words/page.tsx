@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import WordList from "@/components/WordList";
 import { SMALL_WORDS } from "@/lib/vocab";
 
-export const metadata: Metadata = { title: "Small words · Conjugar" };
+export const metadata: Metadata = { title: "Small words" };
 
 export default function SmallWordsPage() {
   const rows = [...SMALL_WORDS]

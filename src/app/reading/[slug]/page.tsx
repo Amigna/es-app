@@ -13,7 +13,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps<"/reading/[slug]">): Promise<Metadata> {
   const reading = findReading((await params).slug);
-  return { title: reading ? `${reading.title} · Conjugar` : "Reading not found · Conjugar" };
+  return { title: reading ? reading.title : "Reading not found" };
 }
 
 // The back link is shared by every passage; the URL-specific part streams in behind Suspense.

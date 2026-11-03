@@ -1,6 +1,6 @@
 # Plan
 
-Spanish learning app for me, friends and family. Latin American and Caribbean Spanish: ustedes instead of vosotros, voseo optional. Add to this as we go.
+Aprendalgo (aprendalgo.com), a Spanish learning app for me, friends and family. Latin American and Caribbean Spanish: ustedes instead of vosotros, voseo optional. Add to this as we go.
 
 ## How spaced repetition works
 
@@ -119,6 +119,7 @@ These live in `.verify/`, which is gitignored, so keep a copy if you change mach
 - [x] 1,164 more sentences so the top 50 verbs have one for every person in the present, preterite, imperfect, future, conditional and present subjunctive
 - [x] Mobile layout pass, checked at 320px and 390px in headless Chrome
 - [x] Deployed on AWS Amplify (Next.js 16 with Cache Components is newer than Amplify's documented support, so recheck after upgrades)
+- [x] Renamed from Conjugar to Aprendalgo, on aprendalgo.com through Amplify's custom domains. The name is set once in `layout.tsx`, where a title template adds it to every page's title, plus the header in `SiteShell.tsx`. Shared links preview with the name and a description. A new domain must also be added to Firebase's authorized domains, or sign-in fails there
 - [x] Color pass: a warm background and stone grays, and a hue per section that colors its nav link, header, page title, buttons and focus rings. The accent-* colors in `globals.css` are built from `--hue`, set by `SiteShell.tsx`. Green still means correct in drills. Checked at 390 to 1280px, light and dark, in headless Chrome
 - [x] Second color pass:
   - Verb tables color each regular ending and mark the rest as a stem change (blue), irregular (gold) or spelling change (dotted underline). `src/lib/conjugation/regular.ts` compares each form with hablar, comer or vivir, ignoring written accents. Spelling changes are the sound-keeping ones (busqué, llegue, cojo, sigo, leyó). Stem changes come from the verb's `boot`, or its irregular root's, so tener's tienes counts. A form with both, like empiece, shows as a stem change. Yo forms in -zco and -uir verbs' y (construyo) stay irregular

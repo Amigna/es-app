@@ -29,7 +29,7 @@ function resolve(slug: string): { verb: Verb; listed: boolean } | null {
 
 export async function generateMetadata({ params }: PageProps<"/verb/[inf]">): Promise<Metadata> {
   const found = resolve((await params).inf);
-  return { title: found ? `${found.verb.inf} · Conjugar` : "Verb not found · Conjugar" };
+  return { title: found ? found.verb.inf : "Verb not found" };
 }
 
 function Chip({ children }: { children: React.ReactNode }) {

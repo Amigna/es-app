@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ProgressView from "@/components/ProgressView";
 import { ADJECTIVES, ADVERBS, NOUNS, PHRASES, SMALL_WORDS } from "@/lib/vocab";
 
-export const metadata: Metadata = { title: "Progress · Conjugar" };
+export const metadata: Metadata = { title: "Progress" };
 
 // Only the counts reach the browser, so this page doesn't download the word lists.
 const WORD_LISTS = [

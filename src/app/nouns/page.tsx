@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import WordList from "@/components/WordList";
 import { NOUNS, isPluralOnly, nounArticle, nounPlural } from "@/lib/vocab";
 
-export const metadata: Metadata = { title: "Nouns · Conjugar" };
+export const metadata: Metadata = { title: "Nouns" };
 
 export default function NounsPage() {
   const rows = [...NOUNS]

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { READINGS } from "@/lib/reading-data";
 import { LEVELS } from "@/lib/readings";
 
-export const metadata: Metadata = { title: "Reading · Conjugar" };
+export const metadata: Metadata = { title: "Reading" };
 
 export default function ReadingPage() {
   return (

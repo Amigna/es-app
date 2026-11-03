@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import WordList from "@/components/WordList";
 import { ADVERBS } from "@/lib/vocab";
 
-export const metadata: Metadata = { title: "Adverbs · Conjugar" };
+export const metadata: Metadata = { title: "Adverbs" };
 
 export default function AdverbsPage() {
   const rows = [...ADVERBS]

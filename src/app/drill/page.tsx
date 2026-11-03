@@ -4,7 +4,7 @@ import type { TenseId } from "@/lib/conjugation/types";
 import { GUIDES } from "@/lib/guides";
 import { SENTENCE_BANK } from "@/lib/sentence-data";
 
-export const metadata: Metadata = { title: "Drills · Conjugar" };
+export const metadata: Metadata = { title: "Drills" };
 
 /** Tenses marked rare are not worth drilling. Only these keys reach the browser, not the sentence files. */
 function rareTenses(): string[] {

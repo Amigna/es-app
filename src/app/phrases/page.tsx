@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import WordList from "@/components/WordList";
 import { PHRASES } from "@/lib/vocab";
 
-export const metadata: Metadata = { title: "Phrases · Conjugar" };
+export const metadata: Metadata = { title: "Phrases" };
 
 export default function PhrasesPage() {
   const rows = PHRASES.map((p) => ({ id: p.es, word: p.es, en: p.en, topic: p.topic, note: p.note }));

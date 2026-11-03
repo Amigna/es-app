@@ -11,7 +11,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps<"/guides/[slug]/quiz">): Promise<Metadata> {
   const guide = findGuide((await params).slug);
-  return { title: guide ? `${guide.title} quiz · Conjugar` : "Quiz not found · Conjugar" };
+  return { title: guide ? `${guide.title} quiz` : "Quiz not found" };
 }
 
 export default function QuizPage({ params }: PageProps<"/guides/[slug]/quiz">) {
