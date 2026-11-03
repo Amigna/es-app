@@ -905,7 +905,13 @@
    {"person":3,"es":"Nos parecemos en todo.","en":"We're alike in everything."},
    {"person":4,"es":"Las gemelas se parecen muchísimo.","en":"The twins look very much alike."}
   ],
-  "preterite": {"rare":true},
+  "preterite": [
+   {"person":2,"es":"La fiesta se pareció mucho a la del año pasado.","en":"The party was a lot like last year's."},
+   {"person":0,"es":"Por un momento me parecí a mi padre.","en":"For a moment I was just like my father."},
+   {"person":1,"es":"En la obra de teatro te pareciste muchísimo a tu abuela.","en":"In the play you looked a lot like your grandmother."},
+   {"person":3,"es":"Ese día nos parecimos más que nunca.","en":"That day we looked more alike than ever."},
+   {"person":4,"es":"Los dos discursos se parecieron demasiado.","en":"The two speeches were too similar."}
+  ],
   "imperfect": [
    {"person":4,"es":"Mis hermanas se parecían a mi madre.","en":"My sisters looked like my mother."},
    {"person":0,"es":"De niño yo me parecía a mi tío.","en":"As a child I looked like my uncle."},

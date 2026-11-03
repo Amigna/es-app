@@ -2592,7 +2592,12 @@
   "impNegative": {"rare":true}
  },
  "nacer": {
-  "present": {"rare":true},
+  "present": [
+   {"person":2,"es":"El río Amazonas nace en los Andes.","en":"The Amazon River starts in the Andes."},
+   {"person":1,"es":"Naces, creces y un día te das cuenta de que el tiempo vuela.","en":"You're born, you grow up, and one day you realize time flies."},
+   {"person":3,"es":"Todos nacemos sin saber hablar.","en":"We're all born without knowing how to talk."},
+   {"person":4,"es":"En este hospital nacen veinte bebés al día.","en":"Twenty babies are born in this hospital every day."}
+  ],
   "preterite": [
    {"person":0,"es":"Nací en Santiago de Cuba.","en":"I was born in Santiago de Cuba."},
    {"person":1,"es":"¿En qué año naciste?","en":"What year were you born?"},

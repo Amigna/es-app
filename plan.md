@@ -30,12 +30,12 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 
 - [ ] Goal: about 5,000 words in all, roughly 2,300 nouns, 1,000 adjectives and 1,000 verbs, with adverbs already enough at about 250. The split is a rough estimate of how a list of the 5,000 most common words breaks down, from memory and not checked against a source. Common words come first, so regional and specialist words don't count for as much as their number suggests. Now about 4,060: 2,300 nouns, 1,001 adjectives, 282 adverbs, 159 small words, 314 verbs
 - [ ] Insults and words for disabilities (idiota, estúpido, imbécil, cojo, manco, enano), left out of the word batches on purpose. Add them with a note on why they offend, per the vulgar and offensive word rules in "How content gets added"
-- [ ] More verbs toward the goal: about 690 left. Slower than words, because each needs sentences for every tense. Room for more reflexives and regional verbs
+- [ ] More verbs toward the goal: about 690 left. Slower than words, because each needs sentences for every tense. Work from `verb-backlog.md`, which lists 730 candidates in 30 batches of 25, already checked against `verbs.json`, including more reflexives and regional verbs
 - [ ] More phrases and regional expressions, labeled by country. Now at 162
 - [ ] More regional words, and more countries in the existing entries
 - [ ] More reading passages. Now at 12, with 4 each at A1, A2 and B1
-- [ ] Better examples for verbs that are mostly "rarely used" notes (contraer, prever, errar, rogar)
-- [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 10,100 remain, all in tenses drilled far less, so this needs batches and a usage check before each one. All 314 verbs are done in the six core tenses, apart from 329 forms left out on purpose: forms with no natural sentence, like `yo naceré` or all of `nevar` beyond él, and tenses marked rare, like most of `errar`, `oponer`, `prever`, `contraer` and `desoír`. Next would be the present perfect and the -ra imperfect subjunctive, about 2,470 sentences between them, starting from the most common verbs
+- [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 10,100 remain, all in tenses drilled far less, so this needs batches and a usage check before each one. All 314 verbs are done in the six core tenses, apart from about 272 forms left out on purpose: forms with no natural sentence, like `yo naceré` or all of `nevar` beyond él, and tenses marked rare, like most of `oponer` and `desoír`. Next would be the present perfect and the -ra imperfect subjunctive, about 2,470 sentences between them, starting from the most common verbs
+- [ ] Add proverb of the day
 
 ## Later
 
@@ -78,7 +78,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 
 - Sentences and vocabulary are written in Claude Code sessions and committed as JSON, so the app needs no API key or database.
 - `npm test` checks the data: every example must contain the exact word form it teaches.
-- Verbs: add to the end of `src/data/verbs.json`, because a verb's position decides its sentence file. Then add its sentences to the matching `src/data/sentences/verbs-*.json` in tense order, with a list for each tense or `{"rare":true}`. `person` is 0 yo, 1 tú, 2 él, 3 nosotros, 4 ellos. After verb 350, add a new file to `sentence-data.ts` and `sentence-loader.ts`.
+- Verbs: take the next batch from `verb-backlog.md` and delete it there once added. Add to the end of `src/data/verbs.json`, because a verb's position decides its sentence file. Then add its sentences to the matching `src/data/sentences/verbs-*.json` in tense order, with a list for each tense or `{"rare":true}`. `person` is 0 yo, 1 tú, 2 él, 3 nosotros, 4 ellos. After verb 350, add a new file to `sentence-data.ts` and `sentence-loader.ts`.
 - Sentences for the other persons of a verb: add to the verb's tense list in the same file, after the main sentence, which stays first. Name the subject when forms look alike, like yo and él in the imperfect, because the verb is blanked out on cards.
 - Sentence files hold 50 verbs each in `verbs.json` order, so a drill downloads only the files for its verbs, and adding to one file leaves the others cached.
 - Words: add to the end of `src/data/vocab/*.json`, because file order sets the order new items are introduced. Noun topics must stay in step with `NOUN_TOPICS` in `src/lib/drill-settings.ts`. Give nouns shared by men and women `"article":"el"` (el dentista), which keeps them out of the gender drill. Multi-word nouns need `plural`.
@@ -120,7 +120,7 @@ These live in `.verify/`, which is gitignored, so keep a copy if you change mach
 - [x] Mobile layout pass, checked at 320px and 390px in headless Chrome
 - [x] Deployed on AWS Amplify (Next.js 16 with Cache Components is newer than Amplify's documented support, so recheck after upgrades)
 - [x] Renamed from Conjugar to Aprendalgo, on aprendalgo.com through Amplify's custom domains. The name is set once in `layout.tsx`, where a title template adds it to every page's title, plus the header in `SiteShell.tsx`. Shared links preview with the name and a description. A new domain must also be added to Firebase's authorized domains, or sign-in fails there
-- [x] Color pass: a warm background and stone grays, and a hue per section that colors its nav link, header, page title, buttons and focus rings. The accent-* colors in `globals.css` are built from `--hue`, set by `SiteShell.tsx`. Green still means correct in drills. Checked at 390 to 1280px, light and dark, in headless Chrome
+- [x] Color pass: a warm background and stone grays, and a hue per section that colors its nav link, header, page title, buttons and focus rings. The accent-\* colors in `globals.css` are built from `--hue`, set by `SiteShell.tsx`. Green still means correct in drills. Checked at 390 to 1280px, light and dark, in headless Chrome
 - [x] Second color pass:
   - Verb tables color each regular ending and mark the rest as a stem change (blue), irregular (gold) or spelling change (dotted underline). `src/lib/conjugation/regular.ts` compares each form with hablar, comer or vivir, ignoring written accents. Spelling changes are the sound-keeping ones (busqué, llegue, cojo, sigo, leyó). Stem changes come from the verb's `boot`, or its irregular root's, so tener's tienes counts. A form with both, like empiece, shows as a stem change. Yo forms in -zco and -uir verbs' y (construyo) stay irregular
   - A color per mood on verb pages, an edge color per -ar, -er and -ir verb on the home page, and a gender color on noun articles
@@ -150,6 +150,7 @@ These live in `.verify/`, which is gitignored, so keep a copy if you change mach
 - [x] 1,097 more sentences in four batches, extending that coverage to the top 206 verbs
 - [x] 1,676 more sentences in six batches, extending that coverage to the top 278 verbs
 - [x] 856 more sentences in three batches, finishing that coverage for all 314 verbs
+- [x] 62 sentences replacing "rarely used" notes that were too cautious: the preterite of `odiar` and `parecerse`, the future of `merecer` and `rogar`, the present of `nacer` (no yo) and the conditional of `graduar`, plus better coverage for `errar`, `prever`, `contraer` and `rogar`. Their remaining rare tenses and persons are left out on purpose
 - [x] Harder-to-miss request step on the account page: a "one more step" notice on the form, the two steps explained before signing in, and an explanation on the confirm-email screen
 - [x] Vocabulary section on /progress: words started per list, from `stats/seen`, so it adds one read. Mastered per list would need reading every item or new counters, so it's left out
 - [x] Flashcards: a drill mode of 20 cards at a time, in either direction, for all word lists and phrases, with noun topics. They count toward the schedule

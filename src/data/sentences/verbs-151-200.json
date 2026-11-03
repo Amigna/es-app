@@ -163,7 +163,13 @@
    {"person":3,"es":"Rogábamos que no lloviera el día de la excursión.","en":"We prayed it wouldn't rain on the day of the trip."},
    {"person":4,"es":"Los niños rogaban por cinco minutos más.","en":"The kids used to beg for five more minutes."}
   ],
-  "future": {"rare":true},
+  "future": [
+   {"person":0,"es":"Le rogaré a mi jefe que me dé el viernes libre.","en":"I'll beg my boss to give me Friday off."},
+   {"person":1,"es":"Ya verás, mañana me rogarás que te lleve.","en":"You'll see, tomorrow you'll beg me to take you."},
+   {"person":2,"es":"Mi hija le rogará a su papá que la deje ir a la fiesta.","en":"My daughter will beg her dad to let her go to the party."},
+   {"person":3,"es":"Le rogaremos al dueño que nos baje el alquiler.","en":"We'll beg the owner to lower our rent."},
+   {"person":4,"es":"Los niños te rogarán que te quedes.","en":"The kids will beg you to stay."}
+  ],
   "conditional": [
    {"person":0,"es":"Yo no le rogaría a nadie.","en":"I wouldn't beg anyone."},
    {"person":1,"es":"¿Le rogarías que volviera?","en":"Would you beg her to come back?"},
@@ -179,7 +185,13 @@
   ],
   "futurePerfect": {"rare":true},
   "conditionalPerfect": {"rare":true},
-  "subjPresent": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"No quiero que me ruegues.","en":"I don't want you to beg me."},
+   {"person":0,"es":"No es necesario que yo le ruegue a nadie.","en":"There's no need for me to beg anyone."},
+   {"person":2,"es":"No me gusta que mi hijo me ruegue por todo.","en":"I don't like my son begging me for everything."},
+   {"person":3,"es":"Es mejor que roguemos por buen tiempo.","en":"We'd better pray for good weather."},
+   {"person":4,"es":"No dejes que te rueguen dos veces.","en":"Don't make them beg you twice."}
+  ],
   "subjImperfect": [
    {"person":2,"es":"Le molestó que le rogara tanto.","en":"It bothered him that she begged him so much."}
   ],
@@ -624,7 +636,10 @@
   ]
  },
  "errar": {
-  "present": {"rare":true},
+  "present": [
+   {"person":2,"es":"Quien mucho habla, mucho yerra.","en":"Whoever talks a lot gets a lot wrong."},
+   {"person":3,"es":"Todos erramos alguna vez.","en":"We all make mistakes sometimes."}
+  ],
   "preterite": [
    {"person":4,"es":"Los médicos erraron en el diagnóstico.","en":"The doctors were wrong in their diagnosis."},
    {"person":0,"es":"Erré el tiro por muy poco.","en":"I missed the shot by very little."},
@@ -639,8 +654,14 @@
    {"person":2,"es":"El viejo marinero erraba por el puerto.","en":"The old sailor wandered around the port."},
    {"person":3,"es":"Errábamos por el bosque sin mapa.","en":"We were wandering through the forest without a map."}
   ],
-  "future": {"rare":true},
-  "conditional": {"rare":true},
+  "future": [
+   {"person":2,"es":"Si no se concentra, el delantero errará el penal.","en":"If he doesn't focus, the forward will miss the penalty."},
+   {"person":1,"es":"Si apuntas con prisa, errarás el tiro.","en":"If you aim in a hurry, you'll miss the shot."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Sin el mapa, el viajero erraría por el desierto durante días.","en":"Without the map, the traveler would wander the desert for days."},
+   {"person":0,"es":"Yo nunca erraría un tiro tan fácil.","en":"I would never miss such an easy shot."}
+  ],
   "presentPerfect": [
    {"person":2,"es":"El jugador ha errado el tiro.","en":"The player has missed the shot."}
   ],
@@ -648,9 +669,16 @@
    {"person":2,"es":"Ya había errado dos penales.","en":"He had already missed two penalty kicks."}
   ],
   "futurePerfect": {"rare":true},
-  "conditionalPerfect": {"rare":true},
-  "subjPresent": {"rare":true},
-  "subjImperfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":0,"es":"Sin tu ayuda, habría errado el camino.","en":"Without your help, I would have taken the wrong road."}
+  ],
+  "subjPresent": [
+   {"person":2,"es":"Ojalá el delantero no yerre el penal.","en":"Let's hope the forward doesn't miss the penalty."},
+   {"person":1,"es":"Aunque yerres, sigue intentándolo.","en":"Even if you get it wrong, keep trying."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Temíamos que el médico errara en el diagnóstico.","en":"We were afraid the doctor would get the diagnosis wrong."}
+  ],
   "subjImperfectSe": {"rare":true},
   "subjPresentPerfect": {"rare":true},
   "subjPluperfect": {"rare":true},
@@ -1250,7 +1278,13 @@
    {"person":3,"es":"Nos graduaremos en diciembre.","en":"We'll graduate in December."},
    {"person":4,"es":"Mis sobrinos se graduarán en mayo.","en":"My nephews will graduate in May."}
   ],
-  "conditional": {"rare":true},
+  "conditional": [
+   {"person":2,"es":"Sin más profesores, la escuela no graduaría a tantos alumnos.","en":"Without more teachers, the school wouldn't graduate so many students."},
+   {"person":0,"es":"Yo graduaría la temperatura un poco más baja.","en":"I would set the temperature a little lower."},
+   {"person":1,"es":"¿Te graduarías antes si tomaras clases en verano?","en":"Would you graduate sooner if you took summer classes?"},
+   {"person":3,"es":"Nos graduaríamos en junio si aprobáramos todo.","en":"We would graduate in June if we passed everything."},
+   {"person":4,"es":"Mis primos ya se graduarían este año si no hubieran cambiado de carrera.","en":"My cousins would be graduating this year if they hadn't changed majors."}
+  ],
   "presentPerfect": [
    {"person":2,"es":"Esa escuela ha graduado a muchos médicos.","en":"That school has graduated many doctors."}
   ],
@@ -1266,7 +1300,9 @@
    {"person":3,"es":"Ojalá nos graduemos juntos.","en":"I hope we graduate together."},
    {"person":4,"es":"Queremos que todos se gradúen.","en":"We want everyone to graduate."}
   ],
-  "subjImperfect": {"rare":true},
+  "subjImperfect": [
+   {"person":2,"es":"Le pedí al técnico que graduara la presión del agua.","en":"I asked the technician to adjust the water pressure."}
+  ],
   "subjImperfectSe": {"rare":true},
   "subjPresentPerfect": {"rare":true},
   "subjPluperfect": {"rare":true},
@@ -1931,7 +1967,13 @@
    {"person":2,"es":"El cuadro merecía un lugar en el museo.","en":"The painting deserved a place in the museum."},
    {"person":3,"es":"Merecíamos una oportunidad.","en":"We deserved a chance."}
   ],
-  "future": {"rare":true},
+  "future": [
+   {"person":2,"es":"Si sigue así, tu hijo merecerá una beca.","en":"If he keeps this up, your son will deserve a scholarship."},
+   {"person":0,"es":"Si termino a tiempo, mereceré un descanso.","en":"If I finish on time, I'll deserve a break."},
+   {"person":1,"es":"Con ese esfuerzo, merecerás el ascenso.","en":"With that effort, you'll deserve the promotion."},
+   {"person":3,"es":"Si ganamos el domingo, mereceremos el campeonato.","en":"If we win on Sunday, we'll deserve the championship."},
+   {"person":4,"es":"Los voluntarios merecerán un reconocimiento al final del año.","en":"The volunteers will deserve recognition at the end of the year."}
+  ],
   "conditional": [
    {"person":1,"es":"Merecerías un premio.","en":"You'd deserve a prize."},
    {"person":0,"es":"Yo merecería un aumento con tantas horas extras.","en":"I'd deserve a raise with so much overtime."},

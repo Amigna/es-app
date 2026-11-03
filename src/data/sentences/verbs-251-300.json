@@ -3333,7 +3333,13 @@
    {"person":3,"es":"Odiamos madrugar.","en":"We hate getting up early."},
    {"person":4,"es":"Los gatos odian el agua.","en":"Cats hate water."}
   ],
-  "preterite": {"rare":true},
+  "preterite": [
+   {"person":0,"es":"Odié esa película, era demasiado larga.","en":"I hated that movie, it was way too long."},
+   {"person":1,"es":"¿Odiaste vivir en la ciudad?","en":"Did you hate living in the city?"},
+   {"person":2,"es":"Mi hermano odió ese trabajo desde el primer día.","en":"My brother hated that job from day one."},
+   {"person":3,"es":"Odiamos cada minuto de ese viaje en bus.","en":"We hated every minute of that bus trip."},
+   {"person":4,"es":"Los vecinos odiaron el ruido de la obra.","en":"The neighbors hated the noise from the construction."}
+  ],
   "imperfect": [
    {"person":2,"es":"Mi hermano odiaba la escuela.","en":"My brother hated school."},
    {"person":0,"es":"Yo odiaba las matemáticas.","en":"I hated math."},

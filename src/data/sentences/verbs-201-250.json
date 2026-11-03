@@ -327,18 +327,36 @@
    {"person":2,"es":"El capitán preveía mal tiempo.","en":"The captain foresaw bad weather."},
    {"person":4,"es":"Los agricultores preveían una buena cosecha.","en":"The farmers were expecting a good harvest."}
   ],
-  "future": {"rare":true},
-  "conditional": {"rare":true},
-  "presentPerfect": {"rare":true},
-  "pluperfect": {"rare":true},
+  "future": [
+   {"person":2,"es":"El presupuesto del próximo año preverá más dinero para la salud.","en":"Next year's budget will set aside more money for health."}
+  ],
+  "conditional": [
+   {"person":2,"es":"¿Quién prevería una tormenta así en pleno verano?","en":"Who would expect a storm like that in the middle of summer?"}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"La ley ha previsto multas para quienes no reciclen.","en":"The law provides for fines for people who don't recycle."}
+  ],
+  "pluperfect": [
+   {"person":0,"es":"No había previsto tanto tráfico.","en":"I hadn't expected so much traffic."}
+  ],
   "futurePerfect": {"rare":true},
-  "conditionalPerfect": {"rare":true},
-  "subjPresent": {"rare":true},
-  "subjImperfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":2,"es":"Nadie habría previsto ese resultado.","en":"Nobody would have predicted that result."}
+  ],
+  "subjPresent": [
+   {"person":2,"es":"Es importante que el plan prevea los gastos del viaje.","en":"It's important for the plan to account for the travel costs."},
+   {"person":1,"es":"Es bueno que preveas algo de dinero para emergencias.","en":"It's good for you to set aside some money for emergencies."},
+   {"person":3,"es":"Es mejor que preveamos los problemas desde ahora.","en":"It's better if we anticipate the problems now."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Nadie esperaba que el gobierno previera esa crisis.","en":"Nobody expected the government to see that crisis coming."}
+  ],
   "subjImperfectSe": {"rare":true},
   "subjPresentPerfect": {"rare":true},
   "subjPluperfect": {"rare":true},
-  "impAffirmative": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Prevé algo de dinero extra para el viaje.","en":"Plan for some extra money for the trip."}
+  ],
   "impNegative": {"rare":true}
  },
  "atraer": {
@@ -482,7 +500,11 @@
   ]
  },
  "contraer": {
-  "present": {"rare":true},
+  "present": [
+   {"person":4,"es":"Muchos viajeros contraen dengue en la temporada de lluvias.","en":"Many travelers catch dengue in the rainy season."},
+   {"person":0,"es":"Cuando tengo frío, contraigo los hombros sin darme cuenta.","en":"When I'm cold, I tense my shoulders without noticing."},
+   {"person":2,"es":"El músculo se contrae con el frío.","en":"The muscle contracts in the cold."}
+  ],
   "preterite": [
    {"person":2,"es":"Mi tío contrajo malaria en África.","en":"My uncle caught malaria in Africa."},
    {"person":0,"es":"Contraje dengue en ese viaje.","en":"I caught dengue on that trip."},
@@ -490,9 +512,16 @@
    {"person":3,"es":"Contrajimos muchas deudas para abrir el negocio.","en":"We took on a lot of debt to open the business."},
    {"person":4,"es":"Mis abuelos contrajeron matrimonio en 1960.","en":"My grandparents got married in 1960."}
   ],
-  "imperfect": {"rare":true},
-  "future": {"rare":true},
-  "conditional": {"rare":true},
+  "imperfect": [
+   {"person":4,"es":"Antes, muchos niños contraían sarampión.","en":"In the past, many children caught measles."},
+   {"person":2,"es":"Mi abuelo contraía deudas que nunca pagaba.","en":"My grandfather used to run up debts he never paid."}
+  ],
+  "future": [
+   {"person":1,"es":"Si no te vacunas, contraerás la enfermedad.","en":"If you don't get vaccinated, you'll catch the disease."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Sin la vacuna, el niño contraería la enfermedad.","en":"Without the vaccine, the child would catch the disease."}
+  ],
   "presentPerfect": [
    {"person":2,"es":"Mi hermana ha contraído matrimonio.","en":"My sister has gotten married."}
   ],
@@ -500,9 +529,17 @@
    {"person":2,"es":"Ya había contraído esa deuda.","en":"He had already taken on that debt."}
   ],
   "futurePerfect": {"rare":true},
-  "conditionalPerfect": {"rare":true},
-  "subjPresent": {"rare":true},
-  "subjImperfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":0,"es":"Sin la vacuna, habría contraído el virus.","en":"Without the vaccine, I would have caught the virus."}
+  ],
+  "subjPresent": [
+   {"person":2,"es":"El médico teme que el paciente contraiga una infección.","en":"The doctor is afraid the patient will get an infection."},
+   {"person":1,"es":"Lávate las manos para que no contraigas nada.","en":"Wash your hands so you don't catch anything."},
+   {"person":4,"es":"Es importante que los viajeros no contraigan malaria.","en":"It's important for travelers not to catch malaria."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Me preocupaba que mi hijo contrajera dengue.","en":"I was worried my son would catch dengue."}
+  ],
   "subjImperfectSe": {"rare":true},
   "subjPresentPerfect": [
    {"person":2,"es":"Temo que haya contraído dengue.","en":"I'm afraid he has caught dengue."}
