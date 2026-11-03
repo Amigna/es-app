@@ -144,7 +144,18 @@ body {
   animation: fall 2.6s cubic-bezier(0.3, 0.5, 0.6, 1) var(--delay) both;
 }
 
+/* Learning cards: only one face is ever on the page, and it turns in when shown. */
+@keyframes flip-in {
+  from {
+    transform: perspective(1200px) rotateY(90deg);
+  }
+}
+.animate-flip-in {
+  animation: flip-in 0.3s ease-out;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .animate-flip-in,
   .animate-pop-in,
   .animate-shake,
   .animate-bump {

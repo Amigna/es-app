@@ -4,7 +4,13 @@ import { accuracy, answered, type Tally } from "./progress";
 
 // Finds what someone keeps missing, and links each one to a short drill. No Firebase here, so it's safe to load anywhere.
 
-export type PracticeTarget = { tenses: TenseId[] } | { verb: string } | { kind: VocabKind };
+/** `items` are saved item IDs, like the ones in a list of recent mistakes. */
+export type PracticeTarget = { tenses: TenseId[] } | { verb: string } | { kind: VocabKind } | { items: string[] };
+
+/** Item IDs hold colons and spaces but never this, so it separates them in an address. */
+const ITEM_SEPARATOR = "|";
+/** Keeps the address short. A practice session is 15 questions anyway. */
+export const MAX_PRACTICE_ITEMS = 15;
 
 export interface WeakSpot {
   key: string;
@@ -85,6 +91,7 @@ export function weakSpots(stats: Stats): WeakSpots {
 }
 
 export function practiceHref(target: PracticeTarget): string {
+  if ("items" in target) return `/drill?items=${encodeURIComponent(target.items.slice(0, MAX_PRACTICE_ITEMS).join(ITEM_SEPARATOR))}`;
   if ("verb" in target) return `/drill?verb=${encodeURIComponent(target.verb)}`;
   if ("kind" in target) return `/drill?kind=${target.kind}`;
   return `/drill?tenses=${target.tenses.join(",")}`;
@@ -93,6 +100,11 @@ export function practiceHref(target: PracticeTarget): string {
 /** Addresses can be old or hand-typed, so anything unrecognized means a normal visit to the drill page. */
 export function parsePractice(search: string): PracticeTarget | null {
   const params = new URLSearchParams(search);
+  const items = (params.get("items") ?? "")
+    .split(ITEM_SEPARATOR)
+    .filter((item) => item.startsWith("verb:") || item.startsWith("vocab:"))
+    .slice(0, MAX_PRACTICE_ITEMS);
+  if (items.length > 0) return { items };
   const verb = params.get("verb");
   if (verb) return { verb };
   const kind = params.get("kind");

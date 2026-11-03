@@ -21,7 +21,7 @@ import { DEFAULT_NEW_PER_DAY, MASTERED_DAYS, REVIEWS_PER_DAY, planReviews, sched
 // Everything lives under users/{uid}: `items` per thing practiced, `days` per calendar day, and `stats` for the
 // summary, the list of scheduled items and settings. Pages read those instead of scanning items.
 
-const DAYS_TO_LOAD = 120;
+export const DAYS_TO_LOAD = 120;
 
 const bump = (t: Tally) => ({ right: increment(t.right), accent: increment(t.accent), wrong: increment(t.wrong) });
 
@@ -61,16 +61,22 @@ export async function saveAnswers(answers: Answer[]) {
   for (const [day, tally] of Object.entries(days)) {
     const counts = plan.perDay[day];
     const scheduled = counts ? { newItems: increment(counts.newItems), reviews: increment(counts.reviews) } : {};
-    const writing = summary.writingDays[day];
-    const translated = writing ? { writing: Object.fromEntries(Object.entries(writing).map(([side, t]) => [side, bump(t)])) } : {};
-    batch.set(doc(db(), "users", uid, "days", day), { ...bump(tally), ...scheduled, ...translated }, { merge: true });
+    const byKind = (name: "writing" | "listening", kinds: Record<string, Tally> | undefined) =>
+      kinds ? { [name]: Object.fromEntries(Object.entries(kinds).map(([kind, t]) => [kind, bump(t)])) } : {};
+    // A re-sent batch adds the same mistakes, and arrayUnion skips exact copies.
+    const missed = summary.mistakes[day] ? { mistakes: arrayUnion(...summary.mistakes[day]) } : {};
+    batch.set(
+      doc(db(), "users", uid, "days", day),
+      { ...bump(tally), ...scheduled, ...byKind("writing", summary.writingDays[day]), ...byKind("listening", summary.listeningDays[day]), ...missed },
+      { merge: true },
+    );
   }
   batch.set(statsDoc(uid, "summary"), summaryUpdate(summary), { merge: true });
   if (plan.fresh.length > 0) batch.set(statsDoc(uid, "seen"), { items: arrayUnion(...plan.fresh) }, { merge: true });
   await batch.commit();
 }
 
-const TALLY_MAPS = ["tenses", "verbs", "kinds", "writing"] as const;
+const TALLY_MAPS = ["tenses", "verbs", "kinds", "writing", "listening"] as const;
 
 type Bumped = ReturnType<typeof bump>;
 
@@ -90,6 +96,7 @@ export interface ProgressData {
   verbs: Record<string, Tally>;
   kinds: Record<string, Tally>;
   writing: Record<string, Tally>;
+  listening: Record<string, Tally>;
   days: Record<string, DayTally>;
   practiced: number;
   mastered: number;
@@ -117,6 +124,7 @@ export async function loadProgress(uid: string): Promise<ProgressData> {
     verbs: (data.verbs ?? {}) as Record<string, Tally>,
     kinds: (data.kinds ?? {}) as Record<string, Tally>,
     writing: (data.writing ?? {}) as Record<string, Tally>,
+    listening: (data.listening ?? {}) as Record<string, Tally>,
     days: Object.fromEntries(recent.docs.map((d) => [d.id, d.data() as DayTally])),
     practiced: practiced.data().count,
     mastered: mastered.data().count,
@@ -131,11 +139,12 @@ export async function loadToday(): Promise<TodayData | null> {
   if (!uid) return null;
   const today = localDay();
   const items = collection(db(), "users", uid, "items");
-  const [due, seen, day, settings] = await Promise.all([
+  const [due, seen, day, settings, wanted] = await Promise.all([
     getDocs(query(items, where("due", "<=", today), orderBy("due"), limit(REVIEWS_PER_DAY))),
     getDoc(statsDoc(uid, "seen")),
     getDoc(doc(db(), "users", uid, "days", today)),
     getDoc(statsDoc(uid, "settings")),
+    getDoc(statsDoc(uid, "wanted")),
   ]);
   return {
     due: due.docs.map((d) => d.id),
@@ -143,7 +152,23 @@ export async function loadToday(): Promise<TodayData | null> {
     newDone: day.data()?.newItems ?? 0,
     reviewsDone: day.data()?.reviews ?? 0,
     newPerDay: settings.data()?.newPerDay ?? DEFAULT_NEW_PER_DAY,
+    wanted: wanted.data()?.items ?? [],
   };
+}
+
+/** What's already scheduled or asked for, so a word looked up while reading can say so. Null when nobody is signed in. */
+export async function loadReviewState(): Promise<{ seen: string[]; wanted: string[] } | null> {
+  const uid = await currentUid();
+  if (!uid) return null;
+  const [seen, wanted] = await Promise.all([getDoc(statsDoc(uid, "seen")), getDoc(statsDoc(uid, "wanted"))]);
+  return { seen: seen.data()?.items ?? [], wanted: wanted.data()?.items ?? [] };
+}
+
+/** Puts an item at the front of the new ones in Today's review. It stays on the list after that: Today's review skips started items. */
+export async function addWanted(item: string) {
+  const uid = await currentUid();
+  if (!uid) throw new Error("Not signed in");
+  await setDoc(statsDoc(uid, "wanted"), { items: arrayUnion(item) }, { merge: true });
 }
 
 export async function loadNewPerDay(uid: string): Promise<number> {

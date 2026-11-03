@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import ReadingPassage from "@/components/ReadingPassage";
 import ReadingQuiz from "@/components/ReadingQuiz";
 import ReportProblem from "@/components/ReportProblem";
 import { READINGS, findReading } from "@/lib/reading-data";
@@ -46,17 +47,7 @@ async function ReadingContent({ params }: { params: PageProps<"/reading/[slug]">
       </header>
 
       <section className="space-y-4">
-        {reading.paragraphs.map((p) => (
-          <div key={p.es}>
-            <p lang="es" className="text-lg leading-relaxed">
-              {p.es}
-            </p>
-            <details className="text-stone-600 dark:text-stone-400">
-              <summary className="w-fit cursor-pointer py-2.5 text-sm text-accent-700 dark:text-accent-400">Show English</summary>
-              <p className="border-l-2 border-stone-300 pl-3 dark:border-stone-700">{p.en}</p>
-            </details>
-          </div>
-        ))}
+        <ReadingPassage paragraphs={reading.paragraphs} words={reading.words} />
         <ReportProblem about={`Reading: ${reading.title}`} />
       </section>
 

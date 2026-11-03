@@ -1,7 +1,7 @@
 import { conjugate } from "./conjugation/engine";
 import { TENSES, type TenseId } from "./conjugation/types";
 import { COMMON_COUNT, CORE_TENSES, conjugationCard, englishAnswers, makeQuestion, personLabel, rareKey, verbTrack, type Card } from "./drill";
-import type { CardType, FlashSide, VocabKind, WordType } from "./drill-settings";
+import type { CardType, FlashSide, StudySide, VocabKind, WordType } from "./drill-settings";
 import { shuffled } from "./quiz";
 import { blankOut, findForm, sentencesFor, type SentenceBank } from "./sentences";
 import { VERBS, findVerb, verbSlug, type Verb } from "./verbs";
@@ -181,19 +181,58 @@ export interface FlashcardOptions {
   topics: string[];
 }
 
-/** Each chosen word once, in random order. The deck runs out, which ends the session. */
-export function flashcardDeck({ side, types, topics }: FlashcardOptions, random: Random = Math.random): () => Card | null {
+function chosenWords(types: CardType[], topics: string[]): Word[] {
   const has = (type: CardType) => types.includes(type);
-  const words = [
+  return [
     ...(has("noun") ? NOUNS.filter((n) => topics.length === 0 || topics.includes(n.topic)).map(nounWord) : []),
     ...(has("adjective") ? ADJECTIVES.map(plainWord("adjective")) : []),
     ...(has("adverb") ? ADVERBS.map(plainWord("adverb")) : []),
     ...(has("small") ? SMALL_WORDS.map(plainWord("small")) : []),
     ...(has("phrase") ? PHRASES.map(plainWord("phrase")) : []),
   ];
-  const order = shuffled(words, random);
+}
+
+/** Each chosen word once, in random order. The deck runs out, which ends the session. */
+export function flashcardDeck({ side, types, topics }: FlashcardOptions, random: Random = Math.random): () => Card | null {
+  const order = shuffled(chosenWords(types, topics), random);
   let next = 0;
   return () => (next < order.length ? flashcard(order[next++], side) : null);
+}
+
+const TYPE_NAMES: Record<CardType, string> = { noun: "Noun", adjective: "Adjective", adverb: "Adverb", small: "Small word", phrase: "Phrase" };
+
+/** A card to flip with nothing graded or saved. Either side can come first. */
+export interface StudyCard {
+  id: string;
+  type: string;
+  front: { text: string; spanish: boolean };
+  back: { text: string; spanish: boolean };
+  example?: Example;
+  note?: string;
+}
+
+export interface StudyOptions {
+  side: StudySide;
+  types: CardType[];
+  /** Noun topics to include; empty means all of them. */
+  topics: string[];
+}
+
+/** Every chosen word in random order. The learner pages through them, so the whole list is handed over. */
+export function studyCards({ side, types, topics }: StudyOptions, random: Random = Math.random): StudyCard[] {
+  return shuffled(chosenWords(types, topics), random).map((word) => {
+    const spanish = { text: word.shown, spanish: true };
+    const english = { text: word.en, spanish: false };
+    const spanishFirst = side === "mixed" ? random() < 0.5 : side === "toEnglish";
+    return {
+      id: `study:${word.type}:${word.es}`,
+      type: TYPE_NAMES[word.type],
+      front: spanishFirst ? spanish : english,
+      back: spanishFirst ? english : spanish,
+      example: word.ex,
+      note: word.note,
+    };
+  });
 }
 
 /** The example sentence with its verb removed, or null when the tense has no usable sentence. */
@@ -269,6 +308,33 @@ export function writingCard(bank: SentenceBank, verb: Verb, tense: TenseId, side
 export function writingDeck(bank: SentenceBank, verbs: Verb[], tenses: TenseId[], sides: FlashSide[], random: Random = Math.random): () => Card | null {
   if (sides.length === 0) return () => null;
   return sentenceDeck(verbs, tenses, (verb, tense) => writingCard(bank, verb, tense, pick(sides, random), random), random);
+}
+
+/** A spoken number can be typed as a word or as digits, so those sentences are left out. */
+const dictationSentences = (bank: SentenceBank, inf: string, tense: TenseId) => sentencesFor(bank, inf, tense).filter((s) => !/\d/.test(s.es));
+
+/** One saved item for all of dictation: like writing, the sentences aren't scheduled. */
+export function dictationCard(bank: SentenceBank, verb: Verb, tense: TenseId, random: Random = Math.random): Card | null {
+  const sentences = dictationSentences(bank, verb.inf, tense);
+  if (sentences.length === 0) return null;
+  const sentence = pick(sentences, random);
+  return {
+    id: `listen:${verb.inf}:${tense}:${sentence.person}`,
+    badge: "Dictation",
+    context: TENSES.find((t) => t.id === tense)!.name,
+    title: "Listen, then type what you hear",
+    titleIsSpanish: false,
+    ask: "In Spanish, as you heard it",
+    answers: [sentence.es],
+    shown: sentence.es,
+    dictation: { en: sentence.en },
+    link: { href: `/verb/${verbSlug(verb.inf)}`, label: `See all forms of ${verb.inf}` },
+    track: { item: "listening:dictation" },
+  };
+}
+
+export function dictationDeck(bank: SentenceBank, verbs: Verb[], tenses: TenseId[], random: Random = Math.random): () => Card | null {
+  return sentenceDeck(verbs, tenses, (verb, tense) => dictationCard(bank, verb, tense, random), random);
 }
 
 function vocabReviewCard(type: string, es: string, kind: string, random: Random): Card | null {

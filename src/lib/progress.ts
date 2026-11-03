@@ -9,9 +9,24 @@ export interface Track {
   tense?: TenseId;
 }
 
+/** What was typed on a miss, so the progress page can show real mistakes and not only rates. */
+export interface Mistake {
+  item: string;
+  /** The question type or tense, like "Preterite". */
+  label: string;
+  /** What was asked, like "hablar · Preterite · yo". */
+  prompt: string;
+  /** Empty when they said they didn't know. */
+  given: string;
+  answer: string;
+  grade: "accent" | "wrong";
+}
+
 export interface Answer extends Track {
   grade: Grade;
   day: string;
+  /** Typed answers that weren't fully right. Absent for self-graded cards, where nothing was typed. */
+  mistake?: Omit<Mistake, "item" | "grade">;
 }
 
 export interface Tally {
@@ -20,8 +35,8 @@ export interface Tally {
   wrong: number;
 }
 
-/** A saved day. `writing` is by direction, kept per day so translations can be compared over time. */
-export type DayTally = Tally & { writing?: Record<string, Tally> };
+/** A saved day. `writing` is by direction and `listening` by kind, kept per day so they can be compared over time. */
+export type DayTally = Tally & { writing?: Record<string, Tally>; listening?: Record<string, Tally>; mistakes?: Mistake[] };
 
 export interface Summary {
   items: Record<string, Tally & { last: string }>;
@@ -34,8 +49,16 @@ export interface Summary {
   writing: Record<string, Tally>;
   /** The same, by day. */
   writingDays: Record<string, Record<string, Tally>>;
+  /** Dictation and any later listening drills, by kind. */
+  listening: Record<string, Tally>;
+  listeningDays: Record<string, Record<string, Tally>>;
+  /** By day. */
+  mistakes: Record<string, Mistake[]>;
   total: Tally;
 }
+
+/** Long prompts like a whole sentence are cut, to keep a day's saved list small. */
+const MAX_MISTAKE_TEXT = 300;
 
 const FIELD: Record<Grade, keyof Tally> = { correct: "right", accent: "accent", wrong: "wrong" };
 
@@ -50,7 +73,19 @@ export function localDay(date: Date = new Date()): string {
 
 /** Combines a batch of answers, so saving them takes a few writes instead of one per answer. */
 export function summarize(answers: Answer[]): Summary {
-  const out: Summary = { items: {}, days: {}, tenses: {}, verbs: {}, kinds: {}, writing: {}, writingDays: {}, total: empty() };
+  const out: Summary = {
+    items: {},
+    days: {},
+    tenses: {},
+    verbs: {},
+    kinds: {},
+    writing: {},
+    writingDays: {},
+    listening: {},
+    listeningDays: {},
+    mistakes: {},
+    total: empty(),
+  };
   for (const a of answers) {
     const field = FIELD[a.grade];
     const item = (out.items[a.item] ??= { ...empty(), last: a.day });
@@ -65,6 +100,23 @@ export function summarize(answers: Answer[]): Summary {
     if (source === "writing") {
       (out.writing[first] ??= empty())[field]++;
       ((out.writingDays[a.day] ??= {})[first] ??= empty())[field]++;
+    }
+    if (source === "listening") {
+      (out.listening[first] ??= empty())[field]++;
+      ((out.listeningDays[a.day] ??= {})[first] ??= empty())[field]++;
+    }
+    if (a.mistake && a.grade !== "correct") {
+      const m = a.mistake;
+      const cut = (s: string) => s.slice(0, MAX_MISTAKE_TEXT);
+      // Every field is a plain string, because Firestore refuses undefined values.
+      (out.mistakes[a.day] ??= []).push({
+        item: a.item,
+        label: cut(m.label ?? ""),
+        prompt: cut(m.prompt ?? ""),
+        given: cut(m.given ?? ""),
+        answer: cut(m.answer ?? ""),
+        grade: a.grade,
+      });
     }
     out.total[field]++;
   }

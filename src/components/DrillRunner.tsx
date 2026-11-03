@@ -4,15 +4,35 @@ import Link from "next/link";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import ReportProblem from "@/components/ReportProblem";
 import SpeakButton from "@/components/SpeakButton";
-import { gradeCard, type Card, type Grade } from "@/lib/drill";
+import { gradeCard, wordDiff, type Card, type Grade } from "@/lib/drill";
 import { recordAnswer, saveProgress } from "@/lib/progress-queue";
+import { SLOW_RATE, speak } from "@/lib/speech";
 
 const SPECIAL_LETTERS = ["á", "é", "í", "ó", "ú", "ñ", "ü"];
 
 // A missed question comes back after this many others.
 const RETRY_GAP = 3;
 
-function Feedback({ result, card, speak }: { result: Grade; card: Card; speak?: string }) {
+/** The sentence with each word marked by whether it was caught. */
+function DictationAnswer({ input, card }: { input: string; card: Card }) {
+  const marks = {
+    ok: "",
+    accent: "underline decoration-amber-500 decoration-2 underline-offset-4",
+    missed: "font-bold underline decoration-red-500 decoration-wavy decoration-2 underline-offset-4",
+  };
+  return (
+    <p lang="es" className="mt-1 text-lg">
+      {wordDiff(input, card.shown).map((w, i) => (
+        <span key={i}>
+          {i > 0 && " "}
+          <span className={marks[w.mark]}>{w.word}</span>
+        </span>
+      ))}
+    </p>
+  );
+}
+
+function Feedback({ result, card, input, speak }: { result: Grade; card: Card; input: string; speak?: string }) {
   const styles = {
     correct: "border-emerald-300 bg-emerald-50 text-emerald-900 dark:border-emerald-800 dark:bg-emerald-950 dark:text-emerald-200",
     accent: "border-amber-300 bg-amber-50 text-amber-900 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-200",
@@ -21,23 +41,37 @@ function Feedback({ result, card, speak }: { result: Grade; card: Card; speak?: 
   return (
     <div role="status" className={`rounded-lg border px-4 py-3 ${styles[result]} ${result === "wrong" ? "animate-shake" : "animate-pop-in"}`}>
       <div className="flex items-start justify-between gap-2">
-        <div>
-          {result === "correct" && <p className="font-medium">Correct!</p>}
-          {result === "accent" && (
-            <p>
-              <span className="font-medium">Right letters, mind the accent:</span>{" "}
-              <span lang="es" className="font-semibold">
-                {card.shown}
-              </span>
+        {card.dictation ? (
+          <div>
+            <p className="font-medium">
+              {result === "correct"
+                ? "Correct!"
+                : result === "accent"
+                  ? "Right words, mind the accents underlined:"
+                  : "Not quite. Words you missed are underlined. This one will come back."}
             </p>
-          )}
-          {result === "wrong" && (
-            <p>
-              <span className="font-medium">The answer is</span> <span className="font-semibold">{card.shown}</span>. This one
-              will come back.
-            </p>
-          )}
-        </div>
+            <DictationAnswer input={input} card={card} />
+            <p className="mt-1 opacity-80">{card.dictation.en}</p>
+          </div>
+        ) : (
+          <div>
+            {result === "correct" && <p className="font-medium">Correct!</p>}
+            {result === "accent" && (
+              <p>
+                <span className="font-medium">Right letters, mind the accent:</span>{" "}
+                <span lang="es" className="font-semibold">
+                  {card.shown}
+                </span>
+              </p>
+            )}
+            {result === "wrong" && (
+              <p>
+                <span className="font-medium">The answer is</span> <span className="font-semibold">{card.shown}</span>. This one
+                will come back.
+              </p>
+            )}
+          </div>
+        )}
         {speak && <SpeakButton text={speak} />}
       </div>
       {card.explain && <p className="mt-1">{card.explain}</p>}
@@ -110,8 +144,15 @@ export default function DrillRunner({
   const [finished, setFinished] = useState(false);
   const [isRetry, setIsRetry] = useState(false);
   const [revealed, setRevealed] = useState(false);
+  // Counts cards shown, so a card that comes straight back still plays its sentence again.
+  const [turn, setTurn] = useState(0);
   const isVocab = !!card.track?.item.startsWith("vocab:");
   const canGiveUp = isVocab || !!card.writing;
+
+  // A dictation card starts by playing its sentence. Some phones only allow that after a first tap on Play.
+  useEffect(() => {
+    if (card.dictation) speak(card.answers[0]);
+  }, [card, turn]);
 
   // Keeps the keyboard flow going: type, Enter to check, Enter for the next one.
   useEffect(() => {
@@ -125,15 +166,24 @@ export default function DrillRunner({
   // Save what's left when the session ends.
   useEffect(() => () => void saveProgress(), []);
 
-  /** Returns the new counts, for a flashcard that moves straight on before state updates. */
-  function record(g: Grade) {
+  /** What gets saved about a miss. Dictation leaves the prompt out, since the sentence is the answer. */
+  function mistake(given: string) {
+    const prompt = card.dictation ? "" : [card.title, card.ask].filter(Boolean).join(" · ");
+    return { label: card.badge ?? "", prompt, given: given.trim(), answer: card.shown };
+  }
+
+  /**
+   * Returns the new counts, for a flashcard that moves straight on before state updates. `given` is what was typed,
+   * and is left out for self-graded cards where nothing was.
+   */
+  function record(g: Grade, given?: string) {
     const good = g === "correct";
     const answeredNow = total + 1;
     const missed = good ? retries : [...retries, { card, dueAt: answeredNow + RETRY_GAP }];
     setResult(g);
     setTotal(answeredNow);
     // Only the first try counts, so a retry can't inflate progress.
-    if (card.track && !isRetry) recordAnswer(card.track, g);
+    if (card.track && !isRetry) recordAnswer(card.track, g, given === undefined ? undefined : mistake(given));
     if (good) setRight(right + 1);
     setStreak(good ? streak + 1 : 0);
     if (good) setBestStreak(Math.max(bestStreak, streak + 1));
@@ -147,11 +197,11 @@ export default function DrillRunner({
     setInput(value);
     // A translation that doesn't match may still be right, so the learner decides.
     if (card.writing && g === "wrong") setRevealed(true);
-    else record(g);
+    else record(g, value);
   }
 
   function selfGrade(knew: boolean) {
-    const { answeredNow, missed } = record(knew ? "correct" : "wrong");
+    const { answeredNow, missed } = record(knew ? "correct" : "wrong", card.writing ? input : undefined);
     advance(answeredNow, missed);
   }
 
@@ -168,6 +218,7 @@ export default function DrillRunner({
       return;
     }
     setIsRetry(!!retry);
+    setTurn(turn + 1);
     setCard(following);
     setInput("");
     setResult(null);
@@ -246,6 +297,27 @@ export default function DrillRunner({
           {canGiveUp && card.titleIsSpanish && <SpeakButton text={card.title} />}
         </div>
         {card.subtitle && <p className="text-stone-600 dark:text-stone-400">{card.subtitle}</p>}
+        {card.dictation && (
+          <div className="mt-4 flex flex-wrap gap-3">
+            <button
+              type="button"
+              onClick={() => speak(card.answers[0])}
+              className="inline-flex h-11 items-center gap-2 rounded-xl border border-accent-600 px-5 font-medium text-accent-800 transition hover:bg-accent-50 dark:text-accent-300 dark:hover:bg-accent-950"
+            >
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" className="size-4">
+                <path d="M7 4v16l13-8z" />
+              </svg>
+              Play
+            </button>
+            <button
+              type="button"
+              onClick={() => speak(card.answers[0], SLOW_RATE)}
+              className="inline-flex h-11 items-center gap-2 rounded-xl border border-stone-300 px-5 font-medium transition hover:border-accent-600 dark:border-stone-700"
+            >
+              Slower
+            </button>
+          </div>
+        )}
         {card.example && (
           <p className="mt-3 border-l-2 border-stone-300 pl-3 text-stone-600 dark:border-stone-700 dark:text-stone-400">
             <span lang="es" className="block font-medium text-stone-800 dark:text-stone-200">
@@ -269,12 +341,15 @@ export default function DrillRunner({
                   </p>
                   {card.flashcard.note && <p className="mt-1 text-sm text-stone-600 dark:text-stone-400">{card.flashcard.note}</p>}
                   {card.flashcard.example && (
-                    <p className="mt-3 border-l-2 border-stone-300 pl-3 text-stone-600 dark:border-stone-700 dark:text-stone-400">
-                      <span lang="es" className="block font-medium text-stone-800 dark:text-stone-200">
-                        {card.flashcard.example.es}
-                      </span>
-                      {card.flashcard.example.en}
-                    </p>
+                    <div className="mt-3 flex items-start justify-between gap-2 border-l-2 border-stone-300 pl-3 text-stone-600 dark:border-stone-700 dark:text-stone-400">
+                      <p>
+                        <span lang="es" className="block font-medium text-stone-800 dark:text-stone-200">
+                          {card.flashcard.example.es}
+                        </span>
+                        {card.flashcard.example.en}
+                      </p>
+                      <SpeakButton text={card.flashcard.example.es} />
+                    </div>
                   )}
                 </div>
                 <div className="grid grid-cols-2 gap-3">
@@ -408,14 +483,14 @@ export default function DrillRunner({
         )}
 
         {!result && !revealed && !card.flashcard && canGiveUp && (
-          <button type="button" onClick={() => record("wrong")} className="mt-3 min-h-10 w-full text-sm text-stone-600 underline dark:text-stone-400">
+          <button type="button" onClick={() => record("wrong", "")} className="mt-3 min-h-10 w-full text-sm text-stone-600 underline dark:text-stone-400">
             I don&apos;t know this
           </button>
         )}
 
         {result && (
           <div className="mt-4 space-y-3">
-            <Feedback result={result} card={card} speak={canGiveUp && !card.english ? card.shown : undefined} />
+            <Feedback result={result} card={card} input={input} speak={(canGiveUp || card.dictation) && !card.english ? card.shown : undefined} />
             <button
               ref={nextRef}
               type="button"

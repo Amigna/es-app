@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { parsePractice, practiceHref, weakSpots } from "./practice";
+import { MAX_PRACTICE_ITEMS, parsePractice, practiceHref, weakSpots } from "./practice";
 import type { Tally } from "./progress";
 
 const tally = (right: number, wrong: number, accent = 0): Tally => ({ right, accent, wrong });
@@ -75,5 +75,20 @@ describe("practice links", () => {
 
   it("drops unknown tenses and keeps the rest", () => {
     assert.deepEqual(parsePractice("?tenses=nope,present"), { tenses: ["present"] });
+  });
+});
+
+describe("practicing saved items", () => {
+  it("round-trips item IDs with spaces and accents", () => {
+    const items = ["verb:hablar:preterite", "vocab:adverb:por si acaso:toEnglish", "vocab:noun:canción:gender"];
+    assert.deepEqual(parsePractice(practiceHref({ items }).split("?")[1]), { items });
+  });
+
+  it("keeps only scheduled kinds of item, and caps how many", () => {
+    assert.deepEqual(parsePractice("?items=listening:dictation|verb:ir:present"), { items: ["verb:ir:present"] });
+    assert.equal(parsePractice("?items=writing:toEnglish"), null);
+    const many = Array.from({ length: 40 }, (_, i) => `verb:v${i}:present`);
+    const parsed = parsePractice(practiceHref({ items: many }).split("?")[1]);
+    assert.ok(parsed && "items" in parsed && parsed.items.length === MAX_PRACTICE_ITEMS);
   });
 });

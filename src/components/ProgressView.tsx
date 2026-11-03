@@ -7,10 +7,10 @@ import { AccuracyTrend, PracticeCalendar } from "@/components/ProgressCharts";
 import { TENSES } from "@/lib/conjugation/types";
 import { useDrillSettings } from "@/lib/drill-settings";
 import { auth, firebaseConfigured, isInvited } from "@/lib/firebase";
-import { practiceHref, weakSpots, type WeakSpot } from "@/lib/practice";
+import { MAX_PRACTICE_ITEMS, practiceHref, weakSpots, type WeakSpot } from "@/lib/practice";
 import { accuracy, answered, currentStreak, lastSevenDays, localDay, recentWeeks, wordsPracticed, type Tally } from "@/lib/progress";
 import { saveProgress, setProgressEnabled } from "@/lib/progress-queue";
-import { loadProgress, type ProgressData } from "@/lib/progress-store";
+import { DAYS_TO_LOAD, loadProgress, type ProgressData } from "@/lib/progress-store";
 import { MASTERED_DAYS } from "@/lib/schedule";
 
 const SAVE_WAIT_MS = 5000;
@@ -162,6 +162,115 @@ function WritingSection({ data }: { data: ProgressData }) {
   );
 }
 
+function ListeningSection({ data }: { data: ProgressData }) {
+  const [, update] = useDrillSettings();
+  const tally = data.listening.dictation;
+  return (
+    <section>
+      <h2 className="mb-3 text-xl font-semibold">Listening</h2>
+      {tally ? (
+        <div className="space-y-3">
+          <div className="grid grid-cols-2 gap-3">
+            <Tile label="Dictation" value={`${accuracy(tally)}%`} note={`of ${answered(tally).toLocaleString()} sentences`} />
+          </div>
+          <WeekTable columns={[{ title: "Dictation", weeks: recentWeeks(data.days, localDay(), (day) => day.listening?.dictation, WEEKS_SHOWN) }]} />
+          <p className="text-sm text-stone-500">Correct means every word, accents included.</p>
+        </div>
+      ) : (
+        <p className="text-stone-600 dark:text-stone-400">
+          <Link href="/drill" onClick={() => update({ mode: "listening" })} className={linkClass}>
+            Try a dictation drill
+          </Link>{" "}
+          and your results will show up here.
+        </p>
+      )}
+    </section>
+  );
+}
+
+const MISTAKES_SHOWN = 20;
+
+function dayLabel(day: string, today: string): string {
+  if (day === today) return "Today";
+  const [y, m, d] = day.split("-").map(Number);
+  const date = new Date(y, m - 1, d);
+  if (localDay(new Date(y, m - 1, d + 1)) === today) return "Yesterday";
+  return date.toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
+}
+
+/** What was actually typed, newest first. Seeing the wrong forms side by side shows patterns a percentage hides. */
+function MistakesSection({ data }: { data: ProgressData }) {
+  const [showAll, setShowAll] = useState(false);
+  const today = localDay();
+  // A day's list is saved in the order answered, so it's reversed for newest first.
+  const all = Object.keys(data.days)
+    .sort()
+    .reverse()
+    .flatMap((day) => [...(data.days[day].mistakes ?? [])].reverse().map((m) => ({ ...m, day })));
+  if (all.length === 0) return null;
+
+  // By answer as well as item: every dictation sentence shares one item, and a verb's tense covers five forms.
+  const key = (m: { item: string; answer: string }) => `${m.item}|${m.answer}`;
+  const times = new Map<string, number>();
+  for (const m of all) times.set(key(m), (times.get(key(m)) ?? 0) + 1);
+  const practice = [...new Set(all.map((m) => m.item).filter((item) => item.startsWith("verb:") || item.startsWith("vocab:")))];
+  const shown = showAll ? all : all.slice(0, MISTAKES_SHOWN);
+
+  return (
+    <section>
+      <div className="mb-3 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <h2 className="text-xl font-semibold">Recent mistakes</h2>
+        {practice.length > 0 && (
+          <Link href={practiceHref({ items: practice })} className={`text-sm font-medium ${linkClass}`}>
+            Practice the latest {Math.min(practice.length, MAX_PRACTICE_ITEMS)}
+          </Link>
+        )}
+      </div>
+      <ul className="divide-y divide-stone-100 overflow-hidden rounded-xl border border-stone-200 bg-white dark:divide-stone-800 dark:border-stone-800 dark:bg-stone-900">
+        {shown.map((m, i) => {
+          const count = times.get(key(m)) ?? 1;
+          return (
+            <li key={i} className="space-y-1 px-4 py-3">
+              <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-stone-500">
+                {m.label && !m.prompt.includes(m.label) && (
+                  <span className="rounded-md bg-accent-100 px-2 py-0.5 font-medium text-accent-900 dark:bg-accent-950 dark:text-accent-200">{m.label}</span>
+                )}
+                <span>{dayLabel(m.day, today)}</span>
+                {count > 1 && <span className="font-medium text-red-700 dark:text-red-400">Missed {count} times</span>}
+              </p>
+              {m.prompt && <p className="text-stone-700 dark:text-stone-300">{m.prompt}</p>}
+              <p className="flex flex-wrap gap-x-4 gap-y-1">
+                <span>
+                  <span className="text-sm text-stone-500">You: </span>
+                  {m.given ? (
+                    <span className={`font-medium ${m.grade === "accent" ? "text-amber-700 dark:text-amber-400" : "text-red-700 line-through dark:text-red-400"}`}>
+                      {m.given}
+                    </span>
+                  ) : (
+                    <span className="italic text-stone-500">didn&apos;t know</span>
+                  )}
+                </span>
+                <span>
+                  <span className="text-sm text-stone-500">Answer: </span>
+                  <span className="font-medium text-emerald-700 dark:text-emerald-400">{m.answer}</span>
+                </span>
+              </p>
+            </li>
+          );
+        })}
+      </ul>
+      {all.length > MISTAKES_SHOWN && (
+        <button type="button" onClick={() => setShowAll(!showAll)} className={`mt-2 min-h-10 text-sm ${linkClass}`}>
+          {showAll ? "Show fewer" : `Show all ${all.length.toLocaleString()}`}
+        </button>
+      )}
+      <p className="mt-2 text-sm text-stone-500">
+        From the last {DAYS_TO_LOAD} days. Only first tries are kept, and flashcards aren&apos;t, since nothing is typed on them.
+      </p>
+    </section>
+  );
+}
+
 function VocabularySection({ data, wordLists }: { data: ProgressData; wordLists: WordListTotal[] }) {
   const [, update] = useDrillSettings();
   const practiced = wordsPracticed(data.seen);
@@ -235,9 +344,13 @@ function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTot
 
       <WeakSpotsSection data={data} />
 
+      <MistakesSection data={data} />
+
       <VocabularySection data={data} wordLists={wordLists} />
 
       <WritingSection data={data} />
+
+      <ListeningSection data={data} />
 
       {tenseRows.length > 0 ? (
         <section>

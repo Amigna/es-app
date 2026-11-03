@@ -238,3 +238,36 @@ describe("calendarWeeks", () => {
     assert.ok(weeks[0].every((d) => !d.future));
   });
 });
+
+describe("listening and mistakes", () => {
+  it("adds dictation up by kind and day, apart from writing", () => {
+    const s = summarize([answer("listening:dictation", "correct", "2026-11-02"), answer("listening:dictation", "wrong", "2026-11-02")]);
+    assert.deepEqual(s.listening, { dictation: { right: 1, accent: 0, wrong: 1 } });
+    assert.deepEqual(s.listeningDays["2026-11-02"], { dictation: { right: 1, accent: 0, wrong: 1 } });
+    assert.deepEqual(s.writing, {});
+  });
+
+  it("keeps what was typed on a miss, by day, as plain strings", () => {
+    const mistake = { label: "Preterite", prompt: "hablar · Preterite · yo", given: "hablé", answer: "hablé" };
+    const s = summarize([
+      { ...answer("verb:hablar:preterite", "wrong", "2026-11-02", "preterite"), mistake: { ...mistake, given: "hablo" } },
+      { ...answer("verb:ir:present", "correct", "2026-11-02", "present"), mistake },
+      answer("vocab:noun:casa:toEnglish", "wrong", "2026-11-02"),
+    ]);
+    assert.deepEqual(s.mistakes, {
+      "2026-11-02": [{ item: "verb:hablar:preterite", label: "Preterite", prompt: "hablar · Preterite · yo", given: "hablo", answer: "hablé", grade: "wrong" }],
+    });
+  });
+
+  it("cuts long text", () => {
+    const long = "a".repeat(1000);
+    const s = summarize([{ ...answer("writing:toEnglish", "wrong"), mistake: { label: "", prompt: long, given: long, answer: long } }]);
+    assert.equal(s.mistakes["2026-11-01"][0].prompt.length, 300);
+  });
+
+  it("saves dictation totals next to the others", () => {
+    const update = summaryUpdate(summarize([answer("listening:dictation", "correct")])) as Record<string, unknown>;
+    assert.ok(update.listening);
+    assert.equal(update.writing, undefined);
+  });
+});

@@ -23,6 +23,14 @@ export const LEVELS: { id: ReadingLevel; name: string; grammar: string; minWords
 
 export const wordCount = (r: Reading) => r.paragraphs.flatMap((p) => p.es.split(/\s+/)).length;
 
+/** Splits text into words and what's between them, keeping everything, so the passage reads the same with each word tappable. */
+export function tokenize(text: string): { text: string; word: boolean }[] {
+  return text
+    .split(/(\p{L}+)/u)
+    .filter(Boolean)
+    .map((part) => ({ text: part, word: /^\p{L}+$/u.test(part) }));
+}
+
 /** The questions follow the passage, so they stay in order. Not saved to progress, like the rest of this page. */
 export function readingDeck(reading: Reading, random: () => number = Math.random): () => Card | null {
   const cards = reading.questions.map((q, i): Card => ({

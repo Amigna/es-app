@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { conjugate } from "./conjugation/engine";
 import { TENSES } from "./conjugation/types";
-import { conjugationCard, grade, isIrregular, limitedDeck, makeQuestion, poolVerbs } from "./drill";
+import { conjugationCard, grade, isIrregular, limitedDeck, makeQuestion, poolVerbs, wordDiff } from "./drill";
 import { SENTENCE_BANK } from "./sentence-data";
 import { findForm, sentencesFor } from "./sentences";
 import { VERBS, findVerb } from "./verbs";
@@ -128,5 +128,24 @@ describe("makeQuestion", () => {
     const q = makeQuestion([verb("hablar")], ["imperfect"], none, () => 0);
     assert.equal(q?.label, "yo");
     assert.equal(q?.answer, "hablaba");
+  });
+});
+
+describe("wordDiff", () => {
+  const marks = (input: string, answer: string) => wordDiff(input, answer).map((w) => `${w.word}:${w.mark}`);
+
+  it("marks every word caught, ignoring punctuation and capitals", () => {
+    assert.deepEqual(marks("de donde eres", "¿De dónde eres?"), ["¿De:ok", "dónde:accent", "eres?:ok"]);
+    assert.deepEqual(marks("De dónde eres", "¿De dónde eres?"), ["¿De:ok", "dónde:ok", "eres?:ok"]);
+  });
+
+  it("finds missed words wherever they are", () => {
+    assert.deepEqual(marks("mi hermana enfermera", "Mi hermana es enfermera."), ["Mi:ok", "hermana:ok", "es:missed", "enfermera.:ok"]);
+    assert.deepEqual(marks("", "Hola amigo."), ["Hola:missed", "amigo.:missed"]);
+  });
+
+  it("doesn't let extra or wrong words shift the rest", () => {
+    assert.deepEqual(marks("la la fiesta fue muy increíble", "La fiesta fue increíble."), ["La:ok", "fiesta:ok", "fue:ok", "increíble.:ok"]);
+    assert.deepEqual(marks("la fiesta era increíble", "La fiesta fue increíble."), ["La:ok", "fiesta:ok", "fue:missed", "increíble.:ok"]);
   });
 });

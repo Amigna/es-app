@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { blankCard, blankDeck, flashcardDeck, newItemOrder, reviewCard, reviewDeck, vocabDeck, writingCard, writingDeck, type VocabOptions } from "./card-decks";
+import { blankCard, blankDeck, dictationCard, dictationDeck, flashcardDeck, studyCards, newItemOrder, reviewCard, reviewDeck, vocabDeck, writingCard, writingDeck, type VocabOptions } from "./card-decks";
 import { englishAnswers, englishCore, gradeCard, type Card } from "./drill";
 import { DEFAULT_SETTINGS, NOUN_TOPICS, parseSettings } from "./drill-settings";
 import { schedulable } from "./schedule";
@@ -351,5 +351,68 @@ describe("writingDeck", () => {
   it("skips tenses with no sentence", () => {
     assert.equal(writingCard(SENTENCE_BANK, verb("oponer"), "present", "toEnglish"), null);
     assert.ok(writingDeck(SENTENCE_BANK, [verb("oponer")], ["present", "preterite"], ["toEnglish"])());
+  });
+});
+
+describe("dictation", () => {
+  const verbs = VERBS.slice(0, 20);
+
+  it("plays a whole sentence and takes it back typed loosely", () => {
+    const next = dictationDeck(SENTENCE_BANK, verbs, ["present", "preterite"]);
+    for (let i = 0; i < 100; i++) {
+      const card = next();
+      assert.ok(card?.dictation, "dictation card");
+      assert.equal(gradeCard(card, card.answers[0]), "correct", card.id);
+      // Punctuation and capitals don't count.
+      assert.equal(gradeCard(card, card.answers[0].replace(/[¿¡.,!?]/g, "").toUpperCase()), "correct", card.id);
+      assert.ok(!/\d/.test(card.answers[0]), card.id);
+    }
+  });
+
+  it("tells an accent slip from a wrong word", () => {
+    const card = dictationCard(SENTENCE_BANK, verb("ser"), "present", () => 0.3);
+    assert.ok(card);
+    assert.equal(card.answers[0], "¿De dónde eres?");
+    assert.equal(gradeCard(card, "de donde eres"), "accent");
+    assert.equal(gradeCard(card, "de dónde es"), "wrong");
+  });
+
+  it("stays out of the schedule", () => {
+    const card = dictationDeck(SENTENCE_BANK, verbs, ["present"])();
+    assert.equal(card?.track?.item, "listening:dictation");
+    assert.equal(schedulable(card!.track!.item), false);
+  });
+});
+
+describe("studyCards", () => {
+  it("shows each chosen word once, with its two sides", () => {
+    const cards = studyCards({ side: "toEnglish", types: ["adverb"], topics: [] });
+    assert.equal(cards.length, ADVERBS.length);
+    assert.equal(new Set(cards.map((c) => c.id)).size, cards.length);
+    assert.ok(cards.every((c) => c.front.spanish && !c.back.spanish));
+  });
+
+  it("puts English first, or mixes", () => {
+    assert.ok(studyCards({ side: "toSpanish", types: ["adverb"], topics: [] }).every((c) => !c.front.spanish && c.back.spanish));
+    const mixed = studyCards({ side: "mixed", types: ["noun", "adjective"], topics: [] });
+    assert.ok(mixed.some((c) => c.front.spanish) && mixed.some((c) => !c.front.spanish));
+  });
+
+  it("shows nouns with their article, and keeps to the chosen topics", () => {
+    const cards = studyCards({ side: "toEnglish", types: ["noun"], topics: ["food"] });
+    assert.equal(cards.length, NOUNS.filter((n) => n.topic === "food").length);
+    assert.ok(cards.every((c) => /^(el|la|los|las) /.test(c.front.text)), "articles");
+  });
+
+  it("is empty with nothing chosen", () => {
+    assert.deepEqual(studyCards({ side: "mixed", types: [], topics: [] }), []);
+  });
+});
+
+describe("settings for the new modes", () => {
+  it("keeps a saved learning side and falls back from a bad one", () => {
+    assert.equal(parseSettings(JSON.stringify({ mode: "study", studySide: "toSpanish" })).studySide, "toSpanish");
+    assert.equal(parseSettings(JSON.stringify({ mode: "listening" })).mode, "listening");
+    assert.equal(parseSettings(JSON.stringify({ studySide: "sideways" })).studySide, DEFAULT_SETTINGS.studySide);
   });
 });

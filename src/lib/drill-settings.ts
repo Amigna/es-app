@@ -2,12 +2,14 @@ import { useCallback, useMemo, useSyncExternalStore } from "react";
 import { TENSES, type TenseId } from "./conjugation/types";
 import type { VerbPool } from "./drill";
 
-export type Mode = "review" | "conjugation" | "vocabulary" | "flashcards" | "writing" | "blanks" | "grammar";
+export type Mode = "review" | "conjugation" | "vocabulary" | "flashcards" | "study" | "writing" | "listening" | "blanks" | "grammar";
 export type VocabKind = "toSpanish" | "toEnglish" | "gender" | "agreement";
 export type WordType = "noun" | "adjective" | "adverb" | "small";
 /** Phrases are flashcards only: typing a whole sentence exactly is a test of punctuation more than memory. */
 export type CardType = WordType | "phrase";
 export type FlashSide = "toEnglish" | "toSpanish";
+/** Learning cards can also mix which side comes first. */
+export type StudySide = FlashSide | "mixed";
 
 /** Listed here so the setup screen doesn't have to load the word lists. A test keeps this in step with the data. */
 export const NOUN_TOPICS = ["body", "clothes", "family", "food", "home", "nature", "people", "places", "things", "time", "travel", "work"];
@@ -27,6 +29,8 @@ export interface DrillSettings {
   flashTypes: CardType[];
   /** Which ways sentences are translated in the writing drill. */
   writingSides: FlashSide[];
+  /** Which side of a learning card shows first. */
+  studySide: StudySide;
 }
 
 export const DEFAULT_SETTINGS: DrillSettings = {
@@ -40,13 +44,15 @@ export const DEFAULT_SETTINGS: DrillSettings = {
   flashSide: "toEnglish",
   flashTypes: ["noun", "adjective", "adverb", "small", "phrase"],
   writingSides: ["toEnglish", "toSpanish"],
+  studySide: "mixed",
 };
 
-const MODES: Mode[] = ["review", "conjugation", "vocabulary", "flashcards", "writing", "blanks", "grammar"];
+const MODES: Mode[] = ["review", "conjugation", "vocabulary", "flashcards", "study", "writing", "listening", "blanks", "grammar"];
 const POOLS: VerbPool[] = ["common", "irregular", "all"];
 const KINDS: VocabKind[] = ["toSpanish", "toEnglish", "gender", "agreement"];
 const WORD_TYPES: WordType[] = ["noun", "adjective", "adverb", "small"];
 const FLASH_SIDES: FlashSide[] = ["toEnglish", "toSpanish"];
+const STUDY_SIDES: StudySide[] = [...FLASH_SIDES, "mixed"];
 const CARD_TYPES: CardType[] = [...WORD_TYPES, "phrase"];
 const TENSE_IDS = TENSES.map((t) => t.id);
 
@@ -72,6 +78,7 @@ export function parseSettings(raw: string | null): DrillSettings {
       flashSide: oneOf(saved.flashSide, FLASH_SIDES, DEFAULT_SETTINGS.flashSide),
       flashTypes: someOf(saved.flashTypes, CARD_TYPES, DEFAULT_SETTINGS.flashTypes),
       writingSides: someOf(saved.writingSides, FLASH_SIDES, DEFAULT_SETTINGS.writingSides),
+      studySide: oneOf(saved.studySide, STUDY_SIDES, DEFAULT_SETTINGS.studySide),
     };
   } catch {
     return DEFAULT_SETTINGS;

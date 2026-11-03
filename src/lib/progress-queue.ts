@@ -82,7 +82,7 @@ export function saveProgress(save: Save = saveToFirestore): Promise<void> {
   return saving;
 }
 
-export function recordAnswer(track: Track, grade: Grade) {
+export function recordAnswer(track: Track, grade: Grade, mistake?: Answer["mistake"]) {
   if (!progressEnabled()) return;
   if (!listening && typeof document !== "undefined") {
     listening = true;
@@ -90,6 +90,6 @@ export function recordAnswer(track: Track, grade: Grade) {
       if (document.visibilityState === "hidden") saveProgress();
     });
   }
-  keep([...pending(), { ...track, grade, day: localDay() }]);
+  keep([...pending(), { ...track, grade, day: localDay(), ...(mistake && grade !== "correct" ? { mistake } : {}) }]);
   if (pending().length >= SAVE_EVERY) saveProgress();
 }

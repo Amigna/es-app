@@ -6,6 +6,8 @@ const LATIN_AMERICAN = new Set(
 
 /** A little slower than normal, for learners. */
 const RATE = 0.9;
+/** For catching every word of a whole sentence. */
+export const SLOW_RATE = 0.6;
 
 /** Lower is better, null means it can't speak Spanish. Android writes these as es_MX. */
 export function voiceRank(lang: string): number | null {
@@ -50,7 +52,7 @@ function spanishVoice() {
 
 export const canSpeak = () => spanishVoice() !== null;
 
-export function speak(text: string) {
+export function speak(text: string, rate = RATE) {
   const speech = synth();
   const chosen = spanishVoice();
   if (!speech || !chosen) return;
@@ -59,7 +61,7 @@ export function speak(text: string) {
   current.voice = chosen;
   // Some Android browsers ignore the voice unless the language matches it.
   current.lang = chosen.lang.replace("_", "-");
-  current.rate = RATE;
+  current.rate = rate;
   speech.speak(current);
 }
 

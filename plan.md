@@ -69,6 +69,10 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - [ ] Read the grammar guides and their quizzes for accuracy. Tests check the structure, not the grammar
 - [ ] Unknown verb URLs returned 200 on first request and 404 after. Harmless so far
 - [ ] Signed in, open /progress and check the practice calendar and the accuracy line against your real history, including tapping a week on a phone. They've only been seen with made-up data
+- [ ] Signed in, tap a word in a reading and use "Add to my reviews". Confirm `stats/wanted` gets the item, the panel then says it's added, and the word comes up first among new items in Today's review. Only seen signed out
+- [ ] Signed in, miss a few typed answers (one with "I don't know this", one in dictation), then check "Recent mistakes" on /progress and its "Practice the latest" link. Mistakes are saved on `days/{day}` under `mistakes`, and none has reached real Firestore yet. Also check the Listening section after a dictation session
+- [ ] Try dictation on a real phone. On iPhone, the first sentence may not play until you tap Play once, because Safari can block speech that isn't started by a tap. Note whether it then plays on its own for the rest of the session
+- [ ] Dictation counts a word spelled differently but sounding the same (tuvo and tubo, haber and a ver) as wrong. That's the point of dictation, but decide whether it feels unfair in practice
 
 ## How content gets added
 
@@ -92,7 +96,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 These live in `.verify/`, which is gitignored, so keep a copy if you change machines.
 
 - Conjugation: `npx tsc -p tsconfig.test.json && node .verify/check.mjs`
-- Browser, with `npm run build` and `npx next start -p 3111` running: `node --experimental-websocket --no-warnings .verify/browser/flow.mjs`, also `audit.mjs`, `account.mjs`, `progress.mjs`, `report.mjs`, `reading.mjs`, `sentence-loading.mjs`, `speech.mjs`, `flashcards.mjs` and `writing.mjs`. The browser profile isn't signed in, so none of these reach Firestore
+- Browser, with `npm run build` and `npx next start -p 3111` running: `node --experimental-websocket --no-warnings .verify/browser/flow.mjs`, also `audit.mjs`, `account.mjs`, `progress.mjs`, `report.mjs`, `reading.mjs`, `sentence-loading.mjs`, `speech.mjs`, `flashcards.mjs`, `writing.mjs` and `new-modes.mjs` (learn words, dictation, tapping words in a reading). The browser profile isn't signed in, so none of these reach Firestore
 
 ## Completed
 
@@ -153,6 +157,10 @@ These live in `.verify/`, which is gitignored, so keep a copy if you change mach
 - [x] Speaker button on vocabulary cards: right away when the Spanish is already on screen, and only after answering when it's the answer
 - [x] Writing drill: translate 10 sentences from the verb sentence files, either way, using the usual verb and tense choices. A match grades itself, ignoring punctuation and case. Anything else shows a model answer and the learner decides, because many translations can be right and there's no AI at runtime. Answers count toward totals and the streak, with one saved item per direction. They aren't scheduled
 - [x] Improvement on /progress: "Accuracy by week" for all questions, from the day totals already loaded, and a Writing section with accuracy by direction and by week. Writing is saved per day in `days/{day}`, under `writing`, so neither adds a read. Rolling seven-day stretches from today, last six shown. Mix affects the overall figure: a week of harder drills can look like a dip
+- [x] Dictation drill: hear a sentence from the verb sentence files and type it, with Play and Slower buttons. It plays on arrival, which is the one place speech comes before the answer, because the audio is the question. Punctuation and capitals don't count, accents do, and afterwards the missed words are underlined next to the translation. Sentences with digits are left out. Saved like writing, under `listening:dictation`, per day under `listening`, and not scheduled. Needs a Spanish voice, and the setup says so when there isn't one
+- [x] Tap any word in a reading passage to look it up: the noun, adjective, adverb, small word or verb form it could be (every match, so "como" shows both), the story's own gloss, and a speaker. Verb forms name the tense and persons, and forms with attached pronouns (dime, decirlo) are found too. Invited people can add a match to their reviews: it goes in `stats/wanted` and comes first among new items in Today's review, still within the daily new-item limit. Verbs add the tense seen, and infinitives and gerunds add the present. The lookup loads on the first tap, not with the page
+- [x] Recent mistakes on /progress: what you typed next to the answer, newest first, with "Missed N times" for repeats and a link to practice the latest 15. Kept on the day documents already loaded there, so it adds no reads. Only first tries and typed answers count, and long text is cut to 300 characters
+- [x] Learn words: an ungraded flashcard mode next to Flashcards. Spanish first, English first or mixed, with the same word and topic choices. Back, Flip and Next, rounds of 20 with the option to carry on, and nothing saved. One face is shown at a time, because the first version stacked both faces in some browsers. The back has a speaker for the example sentence, and so does the back of a graded flashcard now
 - [x] Sentence data split into one file per 50 verbs, so the default drill downloads about 54 KB instead of 170 KB (gzipped). Every lookup was compared before and after, with no differences
 
 ### Verification

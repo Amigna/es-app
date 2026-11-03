@@ -116,6 +116,8 @@ export interface Card {
   flashcard?: { example?: { es: string; en: string }; note?: string };
   /** A sentence to translate. Many answers can be right, so one that doesn't match is compared by the learner. */
   writing?: boolean;
+  /** A sentence to hear and type. The audio is the prompt, so it's spoken from the start; `en` shows after answering. */
+  dictation?: { en: string };
 }
 
 /** An example only shows when it's written for the person asked, so the blank is always the answer. */
@@ -174,7 +176,39 @@ export const englishAnswers = (gloss: string) => gloss.split(/[,;]/).map(english
 /** Sentences are compared on their words, so a missing period or a phone's curly apostrophe doesn't matter. */
 const wordsOnly = (s: string) => s.replace(/[’‘]/g, "'").replace(/[.,;:!?¿¡"“”]/g, " ");
 
+export type WordMark = "ok" | "accent" | "missed";
+
+/**
+ * The answer's words, each marked by whether the input had it: a longest common run of words, compared loosely so an
+ * accent slip still lines up. Words the learner added don't show, since the point is what they didn't catch.
+ */
+export function wordDiff(input: string, answer: string): { word: string; mark: WordMark }[] {
+  const shown = answer.split(/\s+/).filter(Boolean);
+  const key = (w: string) => clean(wordsOnly(w)).replace(/\s+/g, "");
+  const want = shown.map(key);
+  const got = clean(wordsOnly(input)).split(" ").filter(Boolean);
+  const [a, b] = [want.map((w) => loose(w)), got.map((w) => loose(w))];
+  // lengths[i][j]: longest common run of a[i..] and b[j..].
+  const lengths = Array.from({ length: a.length + 1 }, () => new Array<number>(b.length + 1).fill(0));
+  for (let i = a.length - 1; i >= 0; i--) {
+    for (let j = b.length - 1; j >= 0; j--) {
+      lengths[i][j] = a[i] === b[j] ? lengths[i + 1][j + 1] + 1 : Math.max(lengths[i + 1][j], lengths[i][j + 1]);
+    }
+  }
+  const marks: WordMark[] = new Array(a.length).fill("missed");
+  for (let i = 0, j = 0; i < a.length && j < b.length; ) {
+    if (a[i] === b[j]) {
+      marks[i] = want[i] === got[j] ? "ok" : "accent";
+      i++;
+      j++;
+    } else if (lengths[i + 1][j] >= lengths[i][j + 1]) i++;
+    else j++;
+  }
+  return shown.map((word, i) => ({ word, mark: marks[i] }));
+}
+
 export function gradeCard(card: Card, input: string): Grade {
+  if (card.dictation) return grade(wordsOnly(input), wordsOnly(card.answers[0]));
   if (card.writing) {
     const result = grade(wordsOnly(input), wordsOnly(card.answers[0]));
     return card.english && result === "accent" ? "correct" : result;

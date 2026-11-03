@@ -73,12 +73,20 @@ export interface TodayData {
   newDone: number;
   reviewsDone: number;
   newPerDay: number;
+  /** Items the learner asked for, like a word tapped while reading. They come first among new items. */
+  wanted: string[];
 }
 
-export function pickToday({ due, seen, newDone, reviewsDone, newPerDay }: TodayData, order: string[]) {
+/**
+ * Wanted items still count toward the new-item limit, because they add the same review load. Only items in the usual
+ * order are taken, which leaves out rare tenses and words no longer in the data.
+ */
+export function pickToday({ due, seen, newDone, reviewsDone, newPerDay, wanted }: TodayData, order: string[]) {
   const started = new Set(seen);
+  const known = new Set(order);
+  const queue = [...new Set([...wanted.filter((item) => known.has(item)), ...order])];
   return {
     reviews: due.slice(0, Math.max(0, REVIEWS_PER_DAY - reviewsDone)),
-    fresh: order.filter((item) => !started.has(item)).slice(0, Math.max(0, newPerDay - newDone)),
+    fresh: queue.filter((item) => !started.has(item)).slice(0, Math.max(0, newPerDay - newDone)),
   };
 }

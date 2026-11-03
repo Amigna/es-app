@@ -1,29 +1,46 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import DrillRunner from "@/components/DrillRunner";
 import { TENSES, type Mood, type TenseId } from "@/lib/conjugation/types";
 import { CORE_TENSES, conjugationCard, limitedDeck, makeQuestion, poolVerbs, type Card, type VerbPool } from "@/lib/drill";
-import { NOUN_TOPICS, useDrillSettings, type CardType, type FlashSide, type Mode, type VocabKind, type WordType } from "@/lib/drill-settings";
+import StudyRunner from "@/components/StudyRunner";
+import type { StudyCard } from "@/lib/card-decks";
+import {
+  NOUN_TOPICS,
+  useDrillSettings,
+  type CardType,
+  type FlashSide,
+  type Mode,
+  type StudySide,
+  type VocabKind,
+  type WordType,
+} from "@/lib/drill-settings";
 import { parsePractice, type PracticeTarget } from "@/lib/practice";
 import { progressEnabled } from "@/lib/progress-queue";
 import { shuffled } from "@/lib/quiz";
 import { itemVerbs, loadSentences } from "@/lib/sentence-loader";
 import { sentencesFor } from "@/lib/sentences";
+import { canSpeak, subscribeToVoices } from "@/lib/speech";
 import { VERBS, findVerb, type Verb } from "@/lib/verbs";
 
 const PRACTICE_SIZE = 15;
 const FLASHCARD_SESSION = 20;
 const WRITING_SESSION = 10;
+const DICTATION_SESSION = 10;
+
+const noVoiceOnServer = () => false;
 
 const MODES: { id: Mode; title: string; hint: string }[] = [
   { id: "review", title: "Today's review", hint: "What's due, plus new items" },
   { id: "conjugation", title: "Conjugation", hint: "Type the verb form" },
   { id: "blanks", title: "Fill in the blank", hint: "Complete a real sentence" },
   { id: "vocabulary", title: "Vocabulary", hint: "Words, gender and agreement" },
-  { id: "flashcards", title: "Flashcards", hint: "Flip words and phrases" },
+  { id: "flashcards", title: "Flashcards", hint: "Flip and grade yourself" },
+  { id: "study", title: "Learn words", hint: "Flip cards, nothing graded" },
   { id: "writing", title: "Writing", hint: "Translate whole sentences" },
+  { id: "listening", title: "Dictation", hint: "Hear a sentence, type it" },
   { id: "grammar", title: "Grammar", hint: "Quizzes from the guides" },
 ];
 
@@ -56,6 +73,12 @@ const WORD_TYPES: { id: WordType; title: string; hint: string }[] = [
 const FLASH_SIDES: { id: FlashSide; title: string; hint: string }[] = [
   { id: "toEnglish", title: "Spanish to English", hint: "See the Spanish, recall the meaning" },
   { id: "toSpanish", title: "English to Spanish", hint: "See the meaning, recall the Spanish" },
+];
+
+const STUDY_SIDES: { id: StudySide; title: string; hint: string }[] = [
+  { id: "mixed", title: "Mixed", hint: "Some cards start in Spanish, some in English" },
+  { id: "toEnglish", title: "Spanish first", hint: "Flip for the meaning" },
+  { id: "toSpanish", title: "English first", hint: "Flip for the Spanish" },
 ];
 
 const WRITING_SIDES: { id: FlashSide; title: string; hint: string }[] = [
@@ -143,8 +166,10 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
   const rareSet = useMemo(() => new Set(rare), [rare]);
 
   const [settings, update] = useDrillSettings();
-  const { mode, pool, tenses, kinds, wordTypes, topics, guides, flashSide, flashTypes, writingSides } = settings;
+  const { mode, pool, tenses, kinds, wordTypes, topics, guides, flashSide, flashTypes, writingSides, studySide } = settings;
   const [session, setSession] = useState<{ first: Card; next: () => Card | null } | null>(null);
+  const [study, setStudy] = useState<StudyCard[] | null>(null);
+  const hasVoice = useSyncExternalStore(subscribeToVoices, canSpeak, noVoiceOnServer);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [today, setToday] = useState<Today>({ status: "loading" });
@@ -171,6 +196,10 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
 
   /** A short session from the progress page. It leaves the saved drill settings alone. */
   async function practiceDeck(target: PracticeTarget): Promise<() => Card | null> {
+    if ("items" in target) {
+      const [{ reviewDeck }, bank] = await Promise.all([import("@/lib/card-decks"), loadSentences(itemVerbs(target.items))]);
+      return reviewDeck(target.items, bank, rareSet);
+    }
     if ("kind" in target) {
       const { vocabDeck } = await import("@/lib/card-decks");
       return vocabDeck({ kinds: [target.kind], wordTypes: ["noun", "adjective", "adverb", "small"], topics: [] });
@@ -201,6 +230,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
     if (mode === "vocabulary") return decks.vocabDeck({ kinds, wordTypes, topics });
     if (mode === "flashcards") return limitedDeck(decks.flashcardDeck({ side: flashSide, types: flashTypes, topics }), FLASHCARD_SESSION);
     if (mode === "writing") return limitedDeck(decks.writingDeck(await loadSentences(verbs), verbs, tenses, writingSides), WRITING_SESSION);
+    if (mode === "listening") return limitedDeck(decks.dictationDeck(await loadSentences(verbs), verbs, tenses), DICTATION_SESSION);
     return decks.blankDeck(await loadSentences(verbs), verbs, tenses);
   }
 
@@ -208,6 +238,13 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
     setError("");
     setLoading(true);
     try {
+      if (mode === "study" && !target) {
+        const { studyCards } = await import("@/lib/card-decks");
+        const cards = studyCards({ side: studySide, types: flashTypes, topics });
+        if (cards.length > 0) setStudy(cards);
+        else setError("No words match that choice. Try selecting more options.");
+        return;
+      }
       const next = target ? limitedDeck(await practiceDeck(target), PRACTICE_SIZE) : await buildDeck();
       const first = next();
       if (first) setSession({ first, next });
@@ -230,14 +267,16 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
   }, []);
 
   if (session) return <DrillRunner first={session.first} next={session.next} onStop={() => setSession(null)} />;
+  if (study) return <StudyRunner cards={study} onStop={() => setStudy(null)} />;
 
-  const usesVerbs = mode === "conjugation" || mode === "blanks" || mode === "writing";
+  const usesVerbs = mode === "conjugation" || mode === "blanks" || mode === "writing" || mode === "listening";
+  const usesCards = mode === "flashcards" || mode === "study";
   const todayReady = today.status === "ready" && today.reviews.length + today.fresh.length > 0;
   const vocabReady = kinds.length > 0 && wordTypes.length > 0;
-  const verbsReady = tenses.length > 0 && (mode !== "writing" || writingSides.length > 0);
+  const verbsReady = tenses.length > 0 && (mode !== "writing" || writingSides.length > 0) && (mode !== "listening" || hasVoice);
   const ready =
-    mode === "review" ? todayReady : mode === "flashcards" ? flashTypes.length > 0 : mode === "grammar" || (usesVerbs ? verbsReady : vocabReady);
-  const showTopics = (mode === "vocabulary" && wordTypes.includes("noun")) || (mode === "flashcards" && flashTypes.includes("noun"));
+    mode === "review" ? todayReady : usesCards ? flashTypes.length > 0 : mode === "grammar" || (usesVerbs ? verbsReady : vocabReady);
+  const showTopics = (mode === "vocabulary" && wordTypes.includes("noun")) || (usesCards && flashTypes.includes("noun"));
 
   return (
     <div className="space-y-8">
@@ -378,18 +417,50 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
         </>
       )}
 
-      {mode === "flashcards" && (
-        <>
-          <section>
-            <h2 className="mb-1 text-xl font-semibold">Which way?</h2>
-            <p className="mb-3 text-sm text-stone-500">Each session is {FLASHCARD_SESSION} cards, and they count toward your review schedule.</p>
-            <div className="grid gap-2 sm:grid-cols-2">
-              {FLASH_SIDES.map((s) => (
-                <OptionCard key={s.id} name="flashSide" title={s.title} hint={s.hint} checked={flashSide === s.id} onChange={() => update({ flashSide: s.id })} />
-              ))}
-            </div>
-          </section>
+      {mode === "listening" && (
+        <section>
+          <h2 className="mb-1 text-xl font-semibold">How it works</h2>
+          <p className="text-sm text-stone-500">
+            Each session is {DICTATION_SESSION} sentences from the verbs and tenses below. Listen, then type the sentence in Spanish. Punctuation and capitals
+            don&apos;t matter, accents do. These add to your totals but not to your review schedule.
+          </p>
+          {!hasVoice && (
+            <p role="alert" className="mt-3 text-sm text-red-600 dark:text-red-400">
+              This device doesn&apos;t seem to have a Spanish voice, so dictation can&apos;t play. Voices sometimes take a moment to load. If this stays,
+              add a Spanish voice in your device&apos;s speech settings.
+            </p>
+          )}
+        </section>
+      )}
 
+      {mode === "flashcards" && (
+        <section>
+          <h2 className="mb-1 text-xl font-semibold">Which way?</h2>
+          <p className="mb-3 text-sm text-stone-500">Each session is {FLASHCARD_SESSION} cards, and they count toward your review schedule.</p>
+          <div className="grid gap-2 sm:grid-cols-2">
+            {FLASH_SIDES.map((s) => (
+              <OptionCard key={s.id} name="flashSide" title={s.title} hint={s.hint} checked={flashSide === s.id} onChange={() => update({ flashSide: s.id })} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {mode === "study" && (
+        <section>
+          <h2 className="mb-1 text-xl font-semibold">Which side first?</h2>
+          <p className="mb-3 text-sm text-stone-500">
+            Flip each card to see the other side. Nothing is graded or saved, so go at your own pace.
+          </p>
+          <div className="grid gap-2 sm:grid-cols-3">
+            {STUDY_SIDES.map((s) => (
+              <OptionCard key={s.id} name="studySide" title={s.title} hint={s.hint} checked={studySide === s.id} onChange={() => update({ studySide: s.id })} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {usesCards && (
+        <>
           <section>
             <h2 className="mb-3 text-xl font-semibold">Which words?</h2>
             <div className="grid gap-2 sm:grid-cols-3">
@@ -445,7 +516,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
         disabled={!ready || loading}
         className="h-12 rounded-xl bg-accent-700 px-6 font-medium text-white transition hover:bg-accent-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-600 disabled:cursor-not-allowed disabled:opacity-50"
       >
-        {loading ? "Loading…" : "Start drilling"}
+        {loading ? "Loading…" : mode === "study" ? "Start learning" : "Start drilling"}
       </button>
     </div>
   );
