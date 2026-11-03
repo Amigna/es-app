@@ -1,6 +1,6 @@
 import { conjugate } from "./conjugation/engine";
 import { TENSES, type TenseId } from "./conjugation/types";
-import { COMMON_COUNT, CORE_TENSES, conjugationCard, englishAnswers, makeQuestion, personLabel, rareKey, verbTrack, type Card } from "./drill";
+import { COMMON_COUNT, CORE_TENSES, conjugationCard, englishAnswers, makeQuestion, personLabel, rareKey, verbForms, verbTrack, type Card } from "./drill";
 import type { CardType, FlashSide, StudySide, VocabKind, WordType } from "./drill-settings";
 import { shuffled } from "./quiz";
 import { blankOut, findForm, sentencesFor, type SentenceBank } from "./sentences";
@@ -74,7 +74,21 @@ function toSpanishCard(word: Word, everyWord: Word[]): Card {
     answers: sameMeaning.flatMap((w) => w.accepted),
     shown: word.shown,
     track: vocabTrack(word.type, word.es, "toSpanish"),
+    lookalikes: allSpellings(),
   };
+}
+
+let spellings: string[] | null = null;
+
+/** Every word in the lists, built once and shared by every card: papa is a word, so it isn't a slip for papá. */
+function allSpellings(): string[] {
+  spellings ??= [
+    ...NOUNS.map((n) => n.es),
+    ...ADJECTIVES.flatMap(adjectiveForms),
+    ...ADVERBS.map((a) => a.es),
+    ...SMALL_WORDS.flatMap((w) => [w.es, ...(w.forms ?? "").split(",").map((f) => f.trim())]),
+  ].filter(Boolean);
+  return spellings;
 }
 
 function toEnglishCard(word: Word): Card {
@@ -256,6 +270,7 @@ export function blankCard(bank: SentenceBank, verb: Verb, tense: TenseId, random
     shown: sentence.es.slice(hit.start, hit.end).toLowerCase(),
     link: { href: `/verb/${verbSlug(verb.inf)}`, label: `See all forms of ${verb.inf}` },
     track: verbTrack(verb.inf, tense),
+    lookalikes: verbForms(verb),
   };
 }
 
@@ -302,6 +317,7 @@ export function writingCard(bank: SentenceBank, verb: Verb, tense: TenseId, side
     writing: true,
     link: { href: `/verb/${verbSlug(verb.inf)}`, label: `See all forms of ${verb.inf}` },
     track: { item: `writing:${side}` },
+    ...(toEnglish ? {} : { lookalikes: verbForms(verb) }),
   };
 }
 
@@ -330,6 +346,7 @@ export function dictationCard(bank: SentenceBank, verb: Verb, tense: TenseId, ra
     dictation: { en: sentence.en },
     link: { href: `/verb/${verbSlug(verb.inf)}`, label: `See all forms of ${verb.inf}` },
     track: { item: "listening:dictation" },
+    lookalikes: verbForms(verb),
   };
 }
 

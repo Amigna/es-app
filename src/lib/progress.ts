@@ -136,10 +136,19 @@ export function wordsPracticed(items: string[]): Record<string, number> {
   return counts;
 }
 
-/** Share answered fully correctly. An accent slip doesn't count as correct. */
+/**
+ * Share right out of right and wrong. Accent slips are left out of both, so they neither lower nor pad it, and are
+ * counted on their own by accentRate. Null when there's nothing to count.
+ */
 export function accuracy(t: Tally): number | null {
-  const n = answered(t);
+  const n = t.right + t.wrong;
   return n === 0 ? null : Math.round((t.right / n) * 100);
+}
+
+/** Share of all answers that were accent slips: right letters, wrong or missing accent. */
+export function accentRate(t: Tally): number | null {
+  const n = answered(t);
+  return n === 0 ? null : Math.round((t.accent / n) * 100);
 }
 
 function previousDay(day: string): string {

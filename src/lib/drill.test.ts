@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { conjugate } from "./conjugation/engine";
 import { TENSES } from "./conjugation/types";
-import { conjugationCard, grade, isIrregular, limitedDeck, makeQuestion, poolVerbs, wordDiff } from "./drill";
+import { accentTrap, conjugationCard, grade, gradeCard, isIrregular, limitedDeck, makeQuestion, poolVerbs, wordDiff } from "./drill";
 import { SENTENCE_BANK } from "./sentence-data";
 import { findForm, sentencesFor } from "./sentences";
 import { VERBS, findVerb } from "./verbs";
@@ -147,5 +147,48 @@ describe("wordDiff", () => {
   it("doesn't let extra or wrong words shift the rest", () => {
     assert.deepEqual(marks("la la fiesta fue muy increíble", "La fiesta fue increíble."), ["La:ok", "fiesta:ok", "fue:ok", "increíble.:ok"]);
     assert.deepEqual(marks("la fiesta era increíble", "La fiesta fue increíble."), ["La:ok", "fiesta:ok", "fue:missed", "increíble.:ok"]);
+  });
+});
+
+describe("accent slips that make another word", () => {
+  const card = (inf: string, tense: Parameters<typeof conjugationCard>[0]["tense"], person: number) => {
+    const verb = findVerb(inf)!;
+    const answer = conjugate(verb).tenses[tense]!.forms[person]!;
+    return conjugationCard({ verb, tense, person, label: "", answer });
+  };
+
+  it("lets an extra accent stay a slip", () => {
+    assert.equal(gradeCard(card("ser", "subjImperfect", 2), "fuéra"), "accent");
+  });
+
+  it("lets a plain slip stay a slip", () => {
+    const c = card("continuar", "impNegative", 1);
+    assert.equal(c.answers[0], "no continúes");
+    assert.equal(gradeCard(c, "No continues"), "accent");
+    assert.equal(accentTrap(c, "no continues"), null);
+  });
+
+  it("marks another form of the same verb wrong", () => {
+    const c = card("hablar", "preterite", 2);
+    assert.equal(gradeCard(c, "hablo"), "wrong");
+    assert.equal(accentTrap(c, "hablo"), "hablo");
+    assert.equal(gradeCard(c, "habló"), "correct");
+  });
+
+  it("marks a different common word wrong", () => {
+    const c = card("estar", "present", 2);
+    assert.equal(gradeCard(c, "esta"), "wrong");
+    assert.equal(accentTrap(c, "esta"), "esta");
+  });
+
+  it("finds the trap word inside a sentence", () => {
+    const c = { ...card("estar", "present", 2), answers: ["Mi mamá está en casa."], shown: "Mi mamá está en casa.", dictation: { en: "" } };
+    assert.equal(gradeCard(c, "mi mama está en casa"), "accent");
+    assert.equal(gradeCard(c, "mi mamá esta en casa"), "wrong");
+  });
+
+  it("leaves English answers alone", () => {
+    const c = { ...card("hablar", "present", 0), english: true, answers: ["speak"] };
+    assert.equal(accentTrap(c, "speak"), null);
   });
 });

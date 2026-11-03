@@ -8,7 +8,7 @@ import { TENSES } from "@/lib/conjugation/types";
 import { useDrillSettings } from "@/lib/drill-settings";
 import { auth, firebaseConfigured, isInvited } from "@/lib/firebase";
 import { MAX_PRACTICE_ITEMS, practiceHref, weakSpots, type WeakSpot } from "@/lib/practice";
-import { accuracy, answered, currentStreak, lastSevenDays, localDay, recentWeeks, wordsPracticed, type Tally } from "@/lib/progress";
+import { accentRate, accuracy, answered, currentStreak, lastSevenDays, localDay, recentWeeks, wordsPracticed, type Tally } from "@/lib/progress";
 import { saveProgress, setProgressEnabled } from "@/lib/progress-queue";
 import { DAYS_TO_LOAD, loadProgress, type ProgressData } from "@/lib/progress-store";
 import { MASTERED_DAYS } from "@/lib/schedule";
@@ -97,10 +97,12 @@ function WeakSpotsSection({ data }: { data: ProgressData }) {
 
 const weekLabel = (ago: number) => (ago === 0 ? "Last 7 days" : ago === 1 ? "1 week ago" : `${ago} weeks ago`);
 
-const weekCell = (tally: Tally) => (answered(tally) === 0 ? "–" : `${accuracy(tally)}% of ${answered(tally).toLocaleString()}`);
+const weekCell = (tally: Tally) => (answered(tally) === 0 ? "–" : `${accuracy(tally) ?? "–"}% of ${answered(tally).toLocaleString()}`);
+
+const slipCell = (tally: Tally) => (answered(tally) === 0 ? "–" : `${accentRate(tally)}% (${tally.accent.toLocaleString()})`);
 
 /** Newest first. Weeks with nothing in any column are left out. */
-function WeekTable({ columns }: { columns: { title: string; weeks: Tally[] }[] }) {
+function WeekTable({ columns }: { columns: { title: string; weeks: Tally[]; cell?: (tally: Tally) => string }[] }) {
   const shown = Array.from({ length: WEEKS_SHOWN }, (_, ago) => ago).filter((ago) => columns.some((c) => answered(c.weeks[ago]) > 0));
   return (
     <div className="overflow-hidden rounded-xl border border-stone-200 bg-white dark:border-stone-800 dark:bg-stone-900">
@@ -118,7 +120,7 @@ function WeekTable({ columns }: { columns: { title: string; weeks: Tally[] }[] }
             <tr key={ago} className="border-b border-stone-100 last:border-0 dark:border-stone-800">
               <th scope="row" className="px-4 py-2 font-normal">{weekLabel(ago)}</th>
               {columns.map((c) => (
-                <td key={c.title} className="px-4 py-2 text-right tabular-nums">{weekCell(c.weeks[ago])}</td>
+                <td key={c.title} className="px-4 py-2 text-right tabular-nums">{(c.cell ?? weekCell)(c.weeks[ago])}</td>
               ))}
             </tr>
           ))}
@@ -174,7 +176,7 @@ function ListeningSection({ data }: { data: ProgressData }) {
             <Tile label="Dictation" value={`${accuracy(tally)}%`} note={`of ${answered(tally).toLocaleString()} sentences`} />
           </div>
           <WeekTable columns={[{ title: "Dictation", weeks: recentWeeks(data.days, localDay(), (day) => day.listening?.dictation, WEEKS_SHOWN) }]} />
-          <p className="text-sm text-stone-500">Correct means every word, accents included.</p>
+          <p className="text-sm text-stone-500">Correct means every word. Sentences with only accent slips are left out of the percentage.</p>
         </div>
       ) : (
         <p className="text-stone-600 dark:text-stone-400">
@@ -321,10 +323,11 @@ function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTot
         </p>
       )}
 
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-5">
         <Tile label="Current streak" value={`${streak} ${streak === 1 ? "day" : "days"}`} />
         <Tile label="Last 7 days" value={lastSevenDays(data.days, today).toLocaleString()} note="questions" />
         <Tile label="All time" value={total.toLocaleString()} note={overall === null ? undefined : `${overall}% correct`} />
+        <Tile label="Accent slips" value={`${accentRate(data.total) ?? 0}%`} note={`${data.total.accent.toLocaleString()} answers`} />
         <Tile label="Mastered" value={data.mastered.toLocaleString()} note={`of ${data.practiced.toLocaleString()} practiced`} />
       </div>
 
@@ -338,7 +341,12 @@ function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTot
         <section className="space-y-3">
           <h2 className="font-display text-2xl font-semibold">Accuracy by week</h2>
           <AccuracyTrend weeks={recentWeeks(data.days, today, (day) => day, TREND_WEEKS)} />
-          <WeekTable columns={[{ title: "All questions", weeks: recentWeeks(data.days, today, (day) => day, WEEKS_SHOWN) }]} />
+          <WeekTable
+            columns={[
+              { title: "All questions", weeks: recentWeeks(data.days, today, (day) => day, WEEKS_SHOWN) },
+              { title: "Accent slips", weeks: recentWeeks(data.days, today, (day) => day, WEEKS_SHOWN), cell: slipCell },
+            ]}
+          />
         </section>
       </div>
 
@@ -381,7 +389,9 @@ function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTot
       )}
 
       <p className="text-sm text-stone-500">
-        Correct means fully right, so accent slips aren&apos;t included. Mastered means you&apos;re expected to remember it for at
+        Accent slips, where the letters are right but an accent is missing or wrong, are counted on their own and left out of
+        the correct percentages, so they neither lower nor raise them. When the accent turns the answer into a different word, like
+        hablo for habló, it counts as wrong. Mastered means you&apos;re expected to remember it for at
         least {MASTERED_DAYS} days, and only the first try at a question counts. A word counts as practiced after any question about it.
       </p>
     </div>

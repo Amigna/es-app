@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { blankCard, blankDeck, dictationCard, dictationDeck, flashcardDeck, studyCards, newItemOrder, reviewCard, reviewDeck, vocabDeck, writingCard, writingDeck, type VocabOptions } from "./card-decks";
-import { englishAnswers, englishCore, gradeCard, type Card } from "./drill";
+import { accentTrap, englishAnswers, englishCore, gradeCard, type Card } from "./drill";
 import { DEFAULT_SETTINGS, NOUN_TOPICS, parseSettings } from "./drill-settings";
 import { schedulable } from "./schedule";
 import { SENTENCE_BANK } from "./sentence-data";
@@ -80,9 +80,10 @@ describe("vocabDeck", () => {
     assert.equal(gradeCard(sino, "pero"), "wrong");
   });
 
-  it("treats a missing accent on a question word as an accent slip", () => {
+  it("treats a question word without its accent as a different word", () => {
     const card = draw(vocabDeck(options({ kinds: ["toSpanish"], wordTypes: ["small"] })), (c) => c.shown === "dónde");
-    assert.equal(gradeCard(card, "donde"), "accent");
+    assert.equal(gradeCard(card, "donde"), "wrong");
+    assert.equal(accentTrap(card, "donde"), "donde");
   });
 
   it("limits nouns to the chosen topics", () => {
@@ -318,7 +319,9 @@ describe("writingDeck", () => {
 
   it("flags a missing accent in Spanish, and doesn't care in English", () => {
     const spanish = { ...toSpanish, answers: ["Ella está aquí."] };
-    assert.equal(gradeCard(spanish, "Ella esta aqui."), "accent");
+    assert.equal(gradeCard(spanish, "Ella está aqui."), "accent");
+    // Esta is a word of its own, so that one is a different word.
+    assert.equal(gradeCard(spanish, "Ella esta aquí."), "wrong");
     const english = { ...toEnglish, answers: ["We drove to Bogotá."] };
     assert.equal(gradeCard(english, "We drove to Bogota"), "correct");
   });
@@ -373,7 +376,8 @@ describe("dictation", () => {
     const card = dictationCard(SENTENCE_BANK, verb("ser"), "present", () => 0.3);
     assert.ok(card);
     assert.equal(card.answers[0], "¿De dónde eres?");
-    assert.equal(gradeCard(card, "de donde eres"), "accent");
+    assert.equal(gradeCard(card, "de dónde éres"), "accent");
+    assert.equal(gradeCard(card, "de donde eres"), "wrong");
     assert.equal(gradeCard(card, "de dónde es"), "wrong");
   });
 
@@ -414,5 +418,15 @@ describe("settings for the new modes", () => {
     assert.equal(parseSettings(JSON.stringify({ mode: "study", studySide: "toSpanish" })).studySide, "toSpanish");
     assert.equal(parseSettings(JSON.stringify({ mode: "listening" })).mode, "listening");
     assert.equal(parseSettings(JSON.stringify({ studySide: "sideways" })).studySide, DEFAULT_SETTINGS.studySide);
+  });
+});
+
+describe("accent slips in vocabulary", () => {
+  it("counts a different word as wrong and a slip as a slip", () => {
+    const papa = draw(vocabDeck(options({ kinds: ["toSpanish"], wordTypes: ["noun"] })), (c) => c.answers.includes("papá"));
+    assert.equal(gradeCard(papa, "papa"), "wrong");
+    assert.equal(gradeCard(papa, "el papa"), "wrong");
+    const cancion = draw(vocabDeck(options({ kinds: ["toSpanish"], wordTypes: ["noun"] })), (c) => c.answers.includes("canción"));
+    assert.equal(gradeCard(cancion, "cancion"), "accent");
   });
 });

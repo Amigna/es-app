@@ -118,6 +118,26 @@ export interface Card {
   writing?: boolean;
   /** A sentence to hear and type. The audio is the prompt, so it's spoken from the start; `en` shows after answering. */
   dictation?: { en: string };
+  /**
+   * Real words that an accent slip could turn the answer into, like hablo for habló. Typing one is a wrong answer, not
+   * a slip. Usually every form of the card's verb, or every word in the lists.
+   */
+  lookalikes?: readonly string[];
+}
+
+/** Pairs where the accent alone tells two common words apart: tú and tu, qué and que, está and esta. */
+const ACCENT_PAIRS = [
+  "tu tú", "el él", "si sí", "mi mí", "te té", "de dé", "se sé", "mas más", "aun aún",
+  "que qué", "como cómo", "donde dónde", "cuando cuándo", "quien quién", "quienes quiénes", "cual cuál", "cuales cuáles",
+  "cuanto cuánto", "cuanta cuánta", "cuantos cuántos", "cuantas cuántas", "adonde adónde", "esta está", "estas estás", "este esté",
+];
+const PAIRED_WORDS = new Set(ACCENT_PAIRS.flatMap((pair) => pair.split(" ")));
+
+/** Every form of a verb in every tense, for `lookalikes`. Voseo is left out, since it's optional. */
+export function verbForms(verb: Verb): string[] {
+  const out = new Set<string>();
+  for (const forms of Object.values(conjugate(verb).tenses)) for (const form of forms?.forms ?? []) if (form) out.add(form);
+  return [...out];
 }
 
 /** An example only shows when it's written for the person asked, so the blank is always the answer. */
@@ -137,6 +157,7 @@ export function conjugationCard(q: Question, sentences: Sentence[] = []): Card {
     shown: q.answer,
     link: { href: `/verb/${verbSlug(q.verb.inf)}`, label: `See all forms of ${q.verb.inf}` },
     track: verbTrack(q.verb.inf, q.tense),
+    lookalikes: verbForms(q.verb),
   };
 }
 
@@ -182,7 +203,7 @@ export type WordMark = "ok" | "accent" | "missed";
  * The answer's words, each marked by whether the input had it: a longest common run of words, compared loosely so an
  * accent slip still lines up. Words the learner added don't show, since the point is what they didn't catch.
  */
-export function wordDiff(input: string, answer: string): { word: string; mark: WordMark }[] {
+export function wordDiff(input: string, answer: string): { word: string; mark: WordMark; typed?: string }[] {
   const shown = answer.split(/\s+/).filter(Boolean);
   const key = (w: string) => clean(wordsOnly(w)).replace(/\s+/g, "");
   const want = shown.map(key);
@@ -196,21 +217,45 @@ export function wordDiff(input: string, answer: string): { word: string; mark: W
     }
   }
   const marks: WordMark[] = new Array(a.length).fill("missed");
+  const typed: (string | undefined)[] = new Array(a.length).fill(undefined);
   for (let i = 0, j = 0; i < a.length && j < b.length; ) {
     if (a[i] === b[j]) {
       marks[i] = want[i] === got[j] ? "ok" : "accent";
+      typed[i] = got[j];
       i++;
       j++;
     } else if (lengths[i + 1][j] >= lengths[i][j + 1]) i++;
     else j++;
   }
-  return shown.map((word, i) => ({ word, mark: marks[i] }));
+  return shown.map((word, i) => ({ word, mark: marks[i], ...(typed[i] === undefined ? {} : { typed: typed[i] }) }));
+}
+
+/** The answer's words against what was typed. Single answers are compared as one string; sentences ignore punctuation. */
+const compare = (card: Card, input: string, answer: string): Grade =>
+  card.dictation || card.writing ? grade(wordsOnly(input), wordsOnly(answer)) : grade(input, answer);
+
+/**
+ * A typed word that differs from the answer only by its accent and is a real word in its own right, like hablo for
+ * habló or esta for está. That's a different word, not a slip. Null when every accent slip is just a slip.
+ */
+export function accentTrap(card: Card, input: string): string | null {
+  if (card.english) return null;
+  const answer = card.answers.find((a) => compare(card, input, a) === "accent");
+  if (!answer) return null;
+  const known = new Set([...PAIRED_WORDS, ...(card.lookalikes ?? []).flatMap((f) => clean(f).split(" "))]);
+  const trap = wordDiff(input, answer).find((w) => w.mark === "accent" && w.typed && known.has(w.typed));
+  return trap?.typed ?? null;
 }
 
 export function gradeCard(card: Card, input: string): Grade {
-  if (card.dictation) return grade(wordsOnly(input), wordsOnly(card.answers[0]));
+  const result = gradeLoosely(card, input);
+  return result === "accent" && accentTrap(card, input) ? "wrong" : result;
+}
+
+function gradeLoosely(card: Card, input: string): Grade {
+  if (card.dictation) return compare(card, input, card.answers[0]);
   if (card.writing) {
-    const result = grade(wordsOnly(input), wordsOnly(card.answers[0]));
+    const result = compare(card, input, card.answers[0]);
     return card.english && result === "accent" ? "correct" : result;
   }
   if (card.english) return card.answers.includes(englishCore(input)) ? "correct" : "wrong";

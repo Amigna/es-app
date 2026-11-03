@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import ReportProblem from "@/components/ReportProblem";
 import SpeakButton from "@/components/SpeakButton";
-import { gradeCard, wordDiff, type Card, type Grade } from "@/lib/drill";
+import { accentTrap, gradeCard, wordDiff, type Card, type Grade } from "@/lib/drill";
 import { recordAnswer, saveProgress } from "@/lib/progress-queue";
 import { SLOW_RATE, speak } from "@/lib/speech";
 
@@ -38,6 +38,16 @@ function Feedback({ result, card, input, speak }: { result: Grade; card: Card; i
     accent: "border-amber-300 bg-amber-50 text-amber-900 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-200",
     wrong: "border-red-300 bg-red-50 text-red-900 dark:border-red-800 dark:bg-red-950 dark:text-red-200",
   };
+  // Only on a miss: an accent that turns the answer into another real word is why it's wrong.
+  const trap = result === "wrong" ? accentTrap(card, input) : null;
+  const trapNote = trap && (
+    <p className="mt-1">
+      <span lang="es" className="font-semibold">
+        {trap}
+      </span>{" "}
+      is a different word, so here the accent changes the meaning.
+    </p>
+  );
   return (
     <div role="status" className={`rounded-lg border px-4 py-3 ${styles[result]} ${result === "wrong" ? "animate-shake" : "animate-pop-in"}`}>
       <div className="flex items-start justify-between gap-2">
@@ -47,11 +57,12 @@ function Feedback({ result, card, input, speak }: { result: Grade; card: Card; i
               {result === "correct"
                 ? "Correct!"
                 : result === "accent"
-                  ? "Right words, mind the accents underlined:"
+                  ? "Right words, mind the accents underlined. This doesn't count against you."
                   : "Not quite. Words you missed are underlined. This one will come back."}
             </p>
             <DictationAnswer input={input} card={card} />
             <p className="mt-1 opacity-80">{card.dictation.en}</p>
+            {trapNote}
           </div>
         ) : (
           <div>
@@ -62,6 +73,7 @@ function Feedback({ result, card, input, speak }: { result: Grade; card: Card; i
                 <span lang="es" className="font-semibold">
                   {card.shown}
                 </span>
+                . This doesn&apos;t count against you.
               </p>
             )}
             {result === "wrong" && (
@@ -70,6 +82,7 @@ function Feedback({ result, card, input, speak }: { result: Grade; card: Card; i
                 will come back.
               </p>
             )}
+            {trapNote}
           </div>
         )}
         {speak && <SpeakButton text={speak} />}
@@ -137,6 +150,7 @@ export default function DrillRunner({
   const [input, setInput] = useState("");
   const [result, setResult] = useState<Grade | null>(null);
   const [right, setRight] = useState(0);
+  const [slips, setSlips] = useState(0);
   const [total, setTotal] = useState(0);
   const [streak, setStreak] = useState(0);
   const [bestStreak, setBestStreak] = useState(0);
@@ -177,16 +191,18 @@ export default function DrillRunner({
    * and is left out for self-graded cards where nothing was.
    */
   function record(g: Grade, given?: string) {
-    const good = g === "correct";
+    // An accent slip shows the right spelling but doesn't come back or end the streak. It's counted on its own.
+    const ok = g !== "wrong";
     const answeredNow = total + 1;
-    const missed = good ? retries : [...retries, { card, dueAt: answeredNow + RETRY_GAP }];
+    const missed = ok ? retries : [...retries, { card, dueAt: answeredNow + RETRY_GAP }];
     setResult(g);
     setTotal(answeredNow);
     // Only the first try counts, so a retry can't inflate progress.
     if (card.track && !isRetry) recordAnswer(card.track, g, given === undefined ? undefined : mistake(given));
-    if (good) setRight(right + 1);
-    setStreak(good ? streak + 1 : 0);
-    if (good) setBestStreak(Math.max(bestStreak, streak + 1));
+    if (g === "correct") setRight(right + 1);
+    if (g === "accent") setSlips(slips + 1);
+    setStreak(ok ? streak + 1 : 0);
+    if (ok) setBestStreak(Math.max(bestStreak, streak + 1));
     setRetries(missed);
     return { answeredNow, missed };
   }
@@ -237,7 +253,9 @@ export default function DrillRunner({
   }
 
   if (finished) {
-    const score = total ? Math.round((right / total) * 100) : 0;
+    // Accent slips are left out of the score, the same way /progress counts accuracy.
+    const counted = total - slips;
+    const score = counted ? Math.round((right / counted) * 100) : 100;
     // The confetti sits outside the card: the card's pop-in transform would otherwise trap it inside.
     return (
       <>
@@ -248,10 +266,15 @@ export default function DrillRunner({
           </h2>
           <p className="font-display text-5xl font-semibold tabular-nums text-accent-700 dark:text-accent-300">{score}%</p>
           <p className="text-lg">
-            {right} of {total} answers correct
+            {right} of {counted} answers correct
           </p>
+          {slips > 0 && (
+            <p className="text-amber-800 dark:text-amber-300">
+              {slips} accent {slips === 1 ? "slip" : "slips"}, not counted in the score
+            </p>
+          )}
           {bestStreak >= 3 && <p className="text-stone-600 dark:text-stone-400">Best streak: {bestStreak} in a row</p>}
-          {right < total && (
+          {right < counted && (
             <p className="text-sm text-stone-500">Questions you missed came back, so they count more than once.</p>
           )}
           <button
@@ -270,7 +293,8 @@ export default function DrillRunner({
     <div className="mx-auto max-w-xl space-y-6">
       <div className="flex items-center justify-between text-sm text-stone-500">
         <span className="flex items-center gap-2">
-          {right} of {total} correct
+          {right} of {total - slips} correct
+          {slips > 0 && <span className="text-amber-800 dark:text-amber-300">· {slips} accent</span>}
           <StreakChip streak={streak} />
         </span>
         <button type="button" onClick={onStop} className="min-h-10 underline">

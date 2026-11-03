@@ -154,7 +154,7 @@ export function AccuracyTrend({ weeks }: { weeks: Tally[] }) {
       <p className="mt-2 min-h-5 text-sm text-stone-600 dark:text-stone-400" aria-live="polite">
         {active
           ? `${weekName(active.ago)}: ${active.value === null ? "no practice" : `${active.value}% correct of ${answered(active.tally).toLocaleString()} questions`}`
-          : "Share answered fully correctly each week. Hover a week for details."}
+          : "Share answered correctly each week, leaving accent slips out. Hover a week for details."}
       </p>
     </div>
   );

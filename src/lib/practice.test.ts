@@ -23,8 +23,9 @@ describe("weakSpots", () => {
     assert.deepEqual(weakSpots({ ...none, verbs: { ir: tally(19, 1), ser: tally(9, 1) } }).verbs, []);
   });
 
-  it("counts an accent slip as a miss", () => {
-    assert.equal(weakSpots({ ...none, verbs: { ir: tally(3, 0, 2) } }).verbs[0].detail, "60% correct of 5");
+  it("leaves accent slips out of the rate", () => {
+    assert.equal(weakSpots({ ...none, verbs: { ir: tally(3, 2, 4) } }).verbs[0].detail, "60% correct of 9");
+    assert.deepEqual(weakSpots({ ...none, verbs: { ir: tally(3, 0, 4) } }).verbs, []);
   });
 
   it("shows five at most", () => {

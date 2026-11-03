@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { inviteAllowsVulgar, statusOfInvite } from "./firebase";
-import { accuracy, calendarWeeks, currentStreak, lastSevenDays, localDay, recentWeeks, summarize, wordsPracticed, type Answer, type Tally } from "./progress";
+import { accentRate, accuracy, calendarWeeks, currentStreak, lastSevenDays, localDay, recentWeeks, summarize, wordsPracticed, type Answer, type Tally } from "./progress";
 import { summaryUpdate } from "./progress-store";
 
 const answer = (item: string, grade: Answer["grade"], day = "2026-11-01", tense?: Answer["tense"]): Answer => ({ item, grade, day, tense });
@@ -95,12 +95,19 @@ describe("summaryUpdate", () => {
 });
 
 describe("accuracy", () => {
-  it("counts accent slips as not fully correct", () => {
-    assert.equal(accuracy({ right: 3, accent: 1, wrong: 0 }), 75);
+  it("leaves accent slips out, so they neither lower nor pad it", () => {
+    assert.equal(accuracy({ right: 3, accent: 1, wrong: 0 }), 100);
+    assert.equal(accuracy({ right: 3, accent: 5, wrong: 1 }), 75);
   });
 
-  it("has no value before anything is answered", () => {
+  it("counts accent slips on their own", () => {
+    assert.equal(accentRate({ right: 3, accent: 1, wrong: 0 }), 25);
+    assert.equal(accentRate({ right: 0, accent: 0, wrong: 0 }), null);
+  });
+
+  it("has no value before anything is answered, or with only slips", () => {
     assert.equal(accuracy({ right: 0, accent: 0, wrong: 0 }), null);
+    assert.equal(accuracy({ right: 0, accent: 2, wrong: 0 }), null);
   });
 });
 
