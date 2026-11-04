@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { beforeEach, describe, it, mock } from "node:test";
-import type { Answer } from "./progress";
-import { recordAnswer, saveProgress, setProgressEnabled } from "./progress-queue";
+import type { Answer, StreakRecord } from "./progress";
+import { recordAnswer, recordStreak, saveProgress, setProgressEnabled } from "./progress-queue";
 
 const stored = new Map<string, string>();
 Object.defineProperty(globalThis, "localStorage", {
@@ -76,5 +76,61 @@ describe("progress queue", () => {
     write.resolve();
     await Promise.all([first, second]);
     assert.equal(calls, 1);
+  });
+});
+
+describe("best drill streak", () => {
+  const best = () => JSON.parse(stored.get("progress-best-streak") ?? "null")?.streak ?? null;
+
+  beforeEach(() => {
+    setProgressEnabled(false);
+    setProgressEnabled(true);
+  });
+
+  it("keeps only a new high", () => {
+    recordStreak(3);
+    recordStreak(5);
+    recordStreak(2);
+    assert.equal(best(), 5);
+  });
+
+  it("ignores streaks when saving is off", () => {
+    setProgressEnabled(false);
+    recordStreak(4);
+    assert.equal(best(), null);
+  });
+
+  it("is sent even with no answers, then cleared", async () => {
+    recordStreak(7);
+    let sent: StreakRecord | null = null;
+    await saveProgress(async (_answers, streak) => {
+      sent = streak;
+    });
+    assert.equal(sent!.streak, 7);
+    assert.equal(best(), null);
+  });
+
+  it("stays queued when a save fails", async () => {
+    const logged = mock.method(console, "error", () => {});
+    recordStreak(6);
+    await saveProgress(() => Promise.reject(new Error("offline")));
+    logged.mock.restore();
+    assert.equal(best(), 6);
+  });
+
+  it("keeps a longer streak reached during a save", async () => {
+    recordStreak(4);
+    const write = deferred();
+    const saved = saveProgress(() => write.promise);
+    recordStreak(9);
+    write.resolve();
+    await saved;
+    assert.equal(best(), 9);
+  });
+
+  it("is cleared on sign out", () => {
+    recordStreak(4);
+    setProgressEnabled(false);
+    assert.equal(best(), null);
   });
 });

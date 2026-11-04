@@ -9,7 +9,7 @@ import { conjugate } from "@/lib/conjugation/engine";
 import { markVerb } from "@/lib/conjugation/regular";
 import { TENSES } from "@/lib/conjugation/types";
 import { accentTrap, gradeCard, wordDiff, type Card, type Grade, type TenseTable } from "@/lib/drill";
-import { recordAnswer, saveProgress } from "@/lib/progress-queue";
+import { recordAnswer, recordStreak, saveProgress } from "@/lib/progress-queue";
 import { SLOW_RATE, speak } from "@/lib/speech";
 
 const SPECIAL_LETTERS = ["á", "é", "í", "ó", "ú", "ñ", "ü"];
@@ -230,6 +230,8 @@ export default function DrillRunner({
     if (g === "accent") setSlips(slips + 1);
     setStreak(ok ? streak + 1 : 0);
     if (ok) setBestStreak(Math.max(bestStreak, streak + 1));
+    // Drills that save progress count toward the record, the same streak that's on screen.
+    if (ok && card.track) recordStreak(streak + 1);
     setRetries(missed);
     return { answeredNow, missed };
   }

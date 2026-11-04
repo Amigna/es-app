@@ -331,8 +331,17 @@ function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTot
         </p>
       )}
 
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-5">
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
         <Tile label="Current streak" value={`${streak} ${streak === 1 ? "day" : "days"}`} />
+        <Tile
+          label="Longest drill streak"
+          value={data.drillStreak ? data.drillStreak.streak.toLocaleString() : "–"}
+          note={
+            data.drillStreak
+              ? `in a row, set ${dayLabel(data.drillStreak.day, today).replace(/^(Today|Yesterday)$/, (w) => w.toLowerCase())}`
+              : "None saved yet"
+          }
+        />
         <Tile label="Last 7 days" value={lastSevenDays(data.days, today).toLocaleString()} note="questions" />
         <Tile label="All time" value={total.toLocaleString()} note={overall === null ? undefined : `${overall}% correct`} />
         <Tile label="Accent slips" value={`${accentRate(data.total) ?? 0}%`} note={`${data.total.accent.toLocaleString()} answers`} />

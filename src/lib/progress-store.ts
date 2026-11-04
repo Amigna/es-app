@@ -10,12 +10,13 @@ import {
   limit,
   orderBy,
   query,
+  runTransaction,
   setDoc,
   where,
   writeBatch,
 } from "firebase/firestore";
 import { auth, db } from "./firebase";
-import { localDay, summarize, type Answer, type DayTally, type Summary, type Tally } from "./progress";
+import { localDay, summarize, type Answer, type DayTally, type StreakRecord, type Summary, type Tally } from "./progress";
 import {
   DEFAULT_NEW_PER_DAY,
   DEFAULT_REVIEWS_PER_DAY,
@@ -28,7 +29,7 @@ import {
 } from "./schedule";
 
 // Everything lives under users/{uid}: `items` per thing practiced, `days` per calendar day, and `stats` for the
-// summary, the list of scheduled items and settings. Pages read those instead of scanning items.
+// summary, the list of scheduled items, settings and personal records. Pages read those instead of scanning items.
 
 export const DAYS_TO_LOAD = 120;
 
@@ -85,7 +86,18 @@ export async function saveAnswers(answers: Answer[]) {
   await batch.commit();
 }
 
-const TALLY_MAPS = ["tenses", "verbs", "kinds", "writing", "listening"] as const;
+/** Keeps the higher of this and the saved record. A write can't take a maximum, so it's read first in a transaction. */
+export async function saveBestStreak(best: StreakRecord) {
+  const uid = await currentUid();
+  if (!uid) throw new Error("Not signed in");
+  const ref = statsDoc(uid, "records");
+  await runTransaction(db(), async (t) => {
+    const saved = (await t.get(ref)).data()?.drillStreak?.streak ?? 0;
+    if (best.streak > saved) t.set(ref, { drillStreak: best }, { merge: true });
+  });
+}
+
+const TALLY_MAPS =["tenses", "verbs", "kinds", "writing", "listening"] as const;
 
 type Bumped = ReturnType<typeof bump>;
 
@@ -113,12 +125,14 @@ export interface ProgressData {
   reviewsPerDay: number;
   /** Every item that has a schedule. */
   seen: string[];
+  /** Null until a drill streak has been saved. */
+  drillStreak: StreakRecord | null;
 }
 
 export async function loadProgress(uid: string): Promise<ProgressData> {
   const items = collection(db(), "users", uid, "items");
   const cutoff = localDay(new Date(Date.now() - DAYS_TO_LOAD * 24 * 60 * 60 * 1000));
-  const [summary, recent, practiced, mastered, dueToday, seen, settings] = await Promise.all([
+  const [summary, recent, practiced, mastered, dueToday, seen, settings, records] = await Promise.all([
     getDoc(statsDoc(uid, "summary")),
     // Days are keyed by date, so a range on the ID needs no custom index, unlike sorting it descending.
     getDocs(query(collection(db(), "users", uid, "days"), where(documentId(), ">=", cutoff))),
@@ -127,6 +141,7 @@ export async function loadProgress(uid: string): Promise<ProgressData> {
     getCountFromServer(query(items, where("due", "<=", localDay()))),
     getDoc(statsDoc(uid, "seen")),
     loadReviewSettings(uid),
+    getDoc(statsDoc(uid, "records")),
   ]);
   const data = summary.data() ?? {};
   return {
@@ -142,6 +157,7 @@ export async function loadProgress(uid: string): Promise<ProgressData> {
     dueToday: dueToday.data().count,
     reviewsPerDay: settings.reviewsPerDay,
     seen: seen.data()?.items ?? [],
+    drillStreak: (records.data()?.drillStreak as StreakRecord | undefined) ?? null,
   };
 }
 

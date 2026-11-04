@@ -46,7 +46,13 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - [ ] Split the word lists like the sentence files if vocabulary drills feel slow to start on a phone. Starting a vocabulary, flashcard or review drill now downloads all of them, about 140 KB gzipped (nouns 96, adjectives 35, adverbs 10), up from about 65 KB
 - [ ] Verb of the day on the home page. Left out of the color pass because the home page is prerendered, so it would need to be picked in the browser
 
+## Waiting on feedback
+
+- [ ] Should the drill streak carry over between drills? Now it resets on a miss and also whenever a drill ends or changes: finishing a deck, "Change settings", switching drill type or reloading. I'm leaning towards keeping it going, because that encourages people to keep practicing. Ask: "Right now your drill streak resets when you finish or switch drills. Would you rather it kept going until you get one wrong, even across drills and days?" There are two options: carry it across drills but reset at midnight, or carry it until a miss, even across days. The second can blur into the days streak tile, and someone who rarely practices could build a big number slowly. The on-screen chip and the saved record should follow the same rule. Switching only changes when the streak resets in `DrillRunner.tsx`. The saved record keeps the higher number either way, so earlier records stay valid
+
 ## To verify
+
+- [ ] Signed in, get a streak going in a drill, end it, and check "Longest drill streak" on /progress shows it with today's date. Then do a shorter streak and confirm the record doesn't drop. It's saved to `stats/records` with a transaction that keeps the higher number, and that hasn't run against real Firestore
 
 - [ ] Spot-check reflexive forms with attached pronouns (levántate, vámonos), which the Wiktionary comparison didn't cover
 - [ ] Look up individual forms in RAE when in doubt. Its robots.txt blocks Claude's crawlers, so this means web search or checking by hand, not bulk fetching
@@ -97,7 +103,7 @@ These live in `.verify/`, which is gitignored, so keep a copy if you change mach
 
 - Conjugation: `npx tsc -p tsconfig.test.json && node .verify/check.mjs`
 - New verb sentences: write them in the short text format of `.verify/sentences/example.txt` (`@verb`, `#tense` or `#tense rare`, then `person Spanish | English`), then after `npx tsc -p tsconfig.test.json` run `node .verify/sentences/build.js "$PWD" verbs-351-400.json file.txt...`. It checks every form against the engine and the tense order, and `--write` adds the verbs to that sentence file without changing the rest of its layout
-- Browser, with `npm run build` and `npx next start -p 3111` running: `node --experimental-websocket --no-warnings .verify/browser/flow.mjs`, also `audit.mjs`, `account.mjs`, `progress.mjs`, `report.mjs`, `reading.mjs`, `sentence-loading.mjs`, `speech.mjs`, `flashcards.mjs`, `writing.mjs`, `new-modes.mjs` (learn words, dictation, tapping words in a reading) and `accents.mjs` (slips against accents that make another word, in a real conjugation drill). The browser profile isn't signed in, so none of these reach Firestore
+- Browser, with `npm run build` and `npx next start -p 3111` running: `node --experimental-websocket --no-warnings .verify/browser/flow.mjs`, also `audit.mjs`, `account.mjs`, `progress.mjs`, `report.mjs`, `reading.mjs`, `sentence-loading.mjs`, `speech.mjs`, `flashcards.mjs`, `writing.mjs`, `new-modes.mjs` (learn words, dictation, tapping words in a reading), `missed-table.mjs` (the tense table after a miss) and `accents.mjs` (slips against accents that make another word, in a real conjugation drill). The browser profile isn't signed in, so none of these reach Firestore
 
 ## Completed
 
@@ -128,6 +134,7 @@ These live in `.verify/`, which is gitignored, so keep a copy if you change mach
   - Drills: a pop or shake on feedback, a streak chip and confetti with a score when you finish. All CSS, and turned off for people who ask for reduced motion
   - Progress: a practice calendar and a weekly accuracy line. Only seen with made-up data on a temporary page, since the real page needs sign-in
   - Fraunces for titles, and a new home page header with shortcuts
+- [x] A missed conjugation or fill-in-the-blank answer shows that tense's table under the card, as on the verb page, with the person asked marked. Drill feedback no longer links to the verb page, because it was easy to tap by mistake and leave the drill. Example sentences on tense tables have a speaker button, on verb pages too
 - [x] Speaker buttons on word lists (nouns, adjectives, adverbs, small words, phrases) for each word and example, using the device's own voices. `src/lib/speech.ts` prefers Latin American voices, uses Spain's only as a last resort, and hides the button if there's no Spanish voice
 
 ### Accounts and saved progress
@@ -137,6 +144,7 @@ These live in `.verify/`, which is gitignored, so keep a copy if you change mach
 - [x] Progress page: streak, questions answered, accuracy by tense, items mastered
 - [x] Spaced repetition (FSRS) with a "Today's review" mode and a daily limit on new items. See "How spaced repetition works"
 - [x] Request access form on the account page, for people signed in without an invite
+- [x] "Longest drill streak" tile on /progress: the best on-screen drill streak, with the day it was set. Queued in the browser like answers and saved to `stats/records`, where the higher number wins. Only drills that save progress count
 - [x] Weak-spot stats by tense, verb and mistake type, each with a "Practice this" link that starts a 15-question session
 - [x] "Report a problem" link on words, phrases, regional entries, verb tenses and drill answers, for invited people. Saved to `reports` in Firestore
 - [x] Vulgar words section on the regional page, shown only to invites with `vulgar: true`. Offensive words stay public with the reason explained. Vulgar ones say so publicly, and only this section says what they mean

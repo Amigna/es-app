@@ -29,6 +29,12 @@ export interface Answer extends Track {
   mistake?: Omit<Mistake, "item" | "grade">;
 }
 
+/** The most answers in a row a drill has counted, and the day it was reached. */
+export interface StreakRecord {
+  streak: number;
+  day: string;
+}
+
 export interface Tally {
   right: number;
   accent: number;
