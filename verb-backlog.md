@@ -12,34 +12,6 @@ When adding a batch:
 - Delete the batch from this file once it's in `verbs.json`, and update the verb count in `plan.md`.
 - If a verb is dropped, move it to "Dropped" at the bottom with the reason, so it isn't suggested again.
 
-## Batch 2
-
-- sufrir: to suffer
-- imaginar: to imagine
-- plantear: to raise, to propose
-- aprovechar: to take advantage of, to make the most of
-- afirmar: to state, to affirm
-- mandar: to send; to order
-- faltar: to be missing, to be lacking
-- importar: to matter; to import
-- interesar: to interest
-- encantar: to delight, to love (something)
-- molestar: to bother
-- preocupar: to worry
-- marcar: to mark; to dial; to score
-- tardar: to take (time), to be long
-- describir: to describe
-- apoyar: to support; to lean
-- aplicar: to apply
-- participar: to participate, to take part
-- compartir: to share
-- superar: to overcome, to exceed
-- proteger: to protect
-- recoger: to pick up, to collect
-- acercar: to bring closer
-- abandonar: to abandon, to leave
-- acudir: to go (to), to turn to
-
 ## Batch 3
 
 - aguantar: to put up with, to hold on
