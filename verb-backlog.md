@@ -12,34 +12,6 @@ When adding a batch:
 - Delete the batch from this file once it's in `verbs.json`, and update the verb count in `plan.md`.
 - If a verb is dropped, move it to "Dropped" at the bottom with the reason, so it isn't suggested again.
 
-## Batch 5
-
-- identificar: to identify
-- ignorar: to ignore; not to know
-- imprimir: to print
-- informar: to inform
-- iniciar: to start, to begin
-- insistir: to insist
-- instalar: to install
-- investigar: to investigate, to research
-- juntar: to put together, to gather
-- lanzar: to throw, to launch
-- llenar: to fill
-- luchar: to fight, to struggle
-- mejorar: to improve
-- mencionar: to mention
-- meter: to put in
-- montar: to ride; to set up
-- negociar: to negotiate
-- nombrar: to name, to appoint
-- obligar: to force, to oblige
-- ocultar: to hide, to conceal
-- ofender: to offend
-- opinar: to think, to have an opinion
-- ordenar: to order; to tidy up
-- organizar: to organize
-- parar: to stop
-
 ## Batch 6
 
 - pegar: to stick; to hit

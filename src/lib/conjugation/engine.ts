@@ -1,5 +1,5 @@
 import { accentLastVowel, attachEnclitic, tidy } from "./accent";
-import { IRREGULARS, PARTICIPLE_SUFFIXES, applyPrefix } from "./irregulars";
+import { DOUBLE_PARTICIPLES, IRREGULARS, PARTICIPLE_SUFFIXES, applyPrefix } from "./irregulars";
 import type { Boot, Conjugation, Spec, TenseForms, TenseId, VerbInput } from "./types";
 
 // Regional target: Latin American / Caribbean Spanish. "ustedes" shares the 3rd-person plural
@@ -94,6 +94,7 @@ interface Simple {
   impNegative: TenseForms;
   gerund: string;
   participle: string;
+  participleAlt?: string;
 }
 
 function simple(input: VerbInput): Simple {
@@ -212,6 +213,15 @@ function simple(input: VerbInput): Simple {
     }
   }
   participle ??= type === "ar" ? base + "ado" : base + ("aeo".includes(base[base.length - 1]) ? "ído" : "ido");
+  let participleAlt: string | undefined;
+  for (const [suffix, [main, also]] of Object.entries(DOUBLE_PARTICIPLES)) {
+    if (inf.endsWith(suffix)) {
+      const prefix = inf.slice(0, inf.length - suffix.length);
+      participle = prefix + main;
+      participleAlt = prefix + also;
+      break;
+    }
+  }
 
   // ---- imperative
   const none: TenseForms = { forms: [null, null, null, null, null], vos: null };
@@ -242,6 +252,7 @@ function simple(input: VerbInput): Simple {
     impNegative,
     gerund,
     participle,
+    ...(participleAlt ? { participleAlt } : {}),
   };
 }
 
@@ -327,6 +338,15 @@ export function conjugate(input: VerbInput): Conjugation {
     reflexive,
     gerund: tidy(reflexive ? attachEnclitic(s.gerund, "se") : s.gerund),
     participle: tidy(s.participle),
+    ...(s.participleAlt ? { participleAlt: tidy(s.participleAlt) } : {}),
     tenses,
   };
+}
+
+/** The same compound form with the other accepted participle (había impreso -> había imprimido), or nothing. */
+export function alsoAccepted(c: Conjugation, form: string): string[] {
+  if (!c.participleAlt) return [];
+  const words = form.split(" ");
+  if (words.length < 2 || words[words.length - 1].toLowerCase() !== c.participle) return [];
+  return [[...words.slice(0, -1), c.participleAlt].join(" ")];
 }

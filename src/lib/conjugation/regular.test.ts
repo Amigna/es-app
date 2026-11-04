@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { conjugate } from "./engine";
 import { IRREGULARS } from "./irregulars";
-import { markForms, type FormMark } from "./regular";
+import { markForms, verbGroup, type FormMark } from "./regular";
 import type { Boot, TenseId } from "./types";
 
 const SIGN = { stem: "~", spelling: "+", irregular: "*" } as const;
@@ -79,5 +79,24 @@ describe("spelling changes and irregulars", () => {
     assert.deepEqual(show("tener", "preterite"), ["*tuve*", "*tuviste*", "*tuvo*", "*tuvimos*", "*tuvieron*"]);
     assert.deepEqual(show("escribir", "presentPerfect")[0], "*he escrito*");
     assert.deepEqual(show("conocer", "present")[0], "*conozco*");
+  });
+});
+
+describe("verbGroup", () => {
+  it("puts any irregular form first, including a yo form or a participle", () => {
+    assert.equal(verbGroup({ inf: "tener", en: "" }), "irregular");
+    assert.equal(verbGroup({ inf: "conocer", en: "" }), "irregular");
+    assert.equal(verbGroup({ inf: "escribir", en: "" }), "irregular");
+  });
+
+  it("keeps stem changes apart, reflexives included", () => {
+    assert.equal(verbGroup({ inf: "pedir", en: "", boot: "e>i" }), "stem");
+    assert.equal(verbGroup({ inf: "acostarse", en: "", boot: "o>ue" }), "stem");
+  });
+
+  it("counts spelling and accent changes as regular", () => {
+    assert.equal(verbGroup({ inf: "buscar", en: "" }), "regular");
+    assert.equal(verbGroup({ inf: "enviar", en: "", accent: "i" }), "regular");
+    assert.equal(verbGroup({ inf: "levantarse", en: "" }), "regular");
   });
 });

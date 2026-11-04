@@ -115,6 +115,7 @@ function buildIndex(): Index {
       [base, "Infinitive"],
       [c.gerund, "Gerund (-ing form)"],
       [c.participle, "Past participle"],
+      ...(c.participleAlt ? [[c.participleAlt, "Past participle"] as [string, string]] : []),
     ];
     for (const [form, name] of nonfinite) {
       if (!form || !oneWord(form)) continue;

@@ -1,4 +1,4 @@
-import { conjugate } from "./conjugation/engine";
+import { alsoAccepted, conjugate } from "./conjugation/engine";
 import { TENSES, type TenseId } from "./conjugation/types";
 import { COMMON_COUNT, CORE_TENSES, conjugationCard, englishAnswers, makeQuestion, personLabel, rareKey, tenseTable, verbForms, verbTrack, type Card } from "./drill";
 import type { CardType, FlashSide, StudySide, VocabKind, WordType } from "./drill-settings";
@@ -254,10 +254,12 @@ export function blankCard(bank: SentenceBank, verb: Verb, tense: TenseId, random
   const sentences = sentencesFor(bank, verb.inf, tense);
   if (sentences.length === 0) return null;
   const sentence = pick(sentences, random);
-  const form = conjugate(verb).tenses[tense]?.forms[sentence.person];
+  const conjugation = conjugate(verb);
+  const form = conjugation.tenses[tense]?.forms[sentence.person];
   const hit = form ? findForm(sentence.es, form) : null;
   if (!hit) return null;
   const meta = TENSES.find((t) => t.id === tense)!;
+  const answer = sentence.es.slice(hit.start, hit.end);
   return {
     id: `blank:${verb.inf}:${tense}:${sentence.person}`,
     badge: meta.name,
@@ -265,9 +267,10 @@ export function blankCard(bank: SentenceBank, verb: Verb, tense: TenseId, random
     title: blankOut(sentence.es, form!),
     titleIsSpanish: true,
     subtitle: sentence.en,
+    sentence: sentence.es,
     ask: `${verb.inf}, ${personLabel(tense, sentence.person)}`,
-    answers: [sentence.es.slice(hit.start, hit.end)],
-    shown: sentence.es.slice(hit.start, hit.end).toLowerCase(),
+    answers: [answer, ...alsoAccepted(conjugation, answer)],
+    shown: answer.toLowerCase(),
     table: tenseTable(verb, tense, sentence.person, sentences, sentence),
     track: verbTrack(verb.inf, tense),
     lookalikes: verbForms(verb),

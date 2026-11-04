@@ -189,6 +189,10 @@ export default function DrillRunner({
   const [turn, setTurn] = useState(0);
   const isVocab = !!card.track?.item.startsWith("vocab:");
   const canGiveUp = isVocab || !!card.writing;
+  // The whole sentence replaces the blanked one only once the card is answered, so hearing it can't give the answer away.
+  const answeredSentence = result ? card.sentence : undefined;
+  const exampleSentence = card.example ? answeredSentence : undefined;
+  const titleSentence = card.example ? undefined : answeredSentence;
 
   // A dictation card starts by playing its sentence. Some phones only allow that after a first tap on Play.
   useEffect(() => {
@@ -344,10 +348,10 @@ export default function DrillRunner({
         )}
         <div className="mt-3 flex items-start justify-between gap-2">
           <h2 lang={card.titleIsSpanish ? "es" : "en"} className="text-2xl font-semibold tracking-tight">
-            {card.title}
+            {titleSentence ?? card.title}
           </h2>
           {/* Only Spanish that's already on screen: speaking the answer early would give it away. */}
-          {canGiveUp && card.titleIsSpanish && <SpeakButton text={card.title} />}
+          {titleSentence ? <SpeakButton text={titleSentence} /> : canGiveUp && card.titleIsSpanish && <SpeakButton text={card.title} />}
         </div>
         {card.subtitle && <p className="text-stone-600 dark:text-stone-400">{card.subtitle}</p>}
         {card.dictation && (
@@ -372,12 +376,15 @@ export default function DrillRunner({
           </div>
         )}
         {card.example && (
-          <p className="mt-3 border-l-2 border-stone-300 pl-3 text-stone-600 dark:border-stone-700 dark:text-stone-400">
-            <span lang="es" className="block font-medium text-stone-800 dark:text-stone-200">
-              {card.example.es}
-            </span>
-            {card.example.en}
-          </p>
+          <div className="mt-3 flex items-start justify-between gap-2 border-l-2 border-stone-300 pl-3 text-stone-600 dark:border-stone-700 dark:text-stone-400">
+            <p>
+              <span lang="es" className="block font-medium text-stone-800 dark:text-stone-200">
+                {exampleSentence ?? card.example.es}
+              </span>
+              {card.example.en}
+            </p>
+            {exampleSentence && <SpeakButton text={exampleSentence} />}
+          </div>
         )}
         <p className="mt-4 text-lg font-medium">{card.ask}</p>
 

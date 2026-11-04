@@ -92,3 +92,18 @@ export function markForms(conjugation: Conjugation, boot?: Boot): Partial<Record
 export function markVerb(verb: Verb, conjugation: Conjugation = conjugate(verb)): Partial<Record<TenseId, TenseMarks>> {
   return markForms(conjugation, verb.boot ?? IRREGULARS[verb.like ?? verb.inf.replace(/se$/, "")]?.boot);
 }
+
+/** A verb's group in the verb list: any irregular form wins, then any stem change. Spelling changes count as regular. */
+export type VerbGroup = "irregular" | "stem" | "regular";
+
+export function verbGroup(verb: Verb): VerbGroup {
+  let stem = false;
+  for (const t of Object.values(markVerb(verb))) {
+    for (const m of [...t.forms, t.vos]) {
+      if (!m || !("change" in m)) continue;
+      if (m.change === "irregular") return "irregular";
+      if (m.change === "stem") stem = true;
+    }
+  }
+  return stem ? "stem" : "regular";
+}

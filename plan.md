@@ -28,18 +28,19 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 
 ## Content backlog
 
-- [ ] Goal: about 5,000 words in all, roughly 2,300 nouns, 1,000 adjectives and 1,000 verbs, with adverbs already enough at about 250. The split is a rough estimate of how a list of the 5,000 most common words breaks down, from memory and not checked against a source. Common words come first, so regional and specialist words don't count for as much as their number suggests. Now about 4,160: 2,300 nouns, 1,001 adjectives, 282 adverbs, 159 small words, 414 verbs
+- [ ] Goal: about 5,000 words in all, roughly 2,300 nouns, 1,000 adjectives and 1,000 verbs, with adverbs already enough at about 250. The split is a rough estimate of how a list of the 5,000 most common words breaks down, from memory and not checked against a source. Common words come first, so regional and specialist words don't count for as much as their number suggests. Now about 4,185: 2,300 nouns, 1,001 adjectives, 282 adverbs, 159 small words, 439 verbs
 - [ ] Insults and words for disabilities (idiota, estúpido, imbécil, cojo, manco, enano), left out of the word batches on purpose. Add them with a note on why they offend, per the vulgar and offensive word rules in "How content gets added"
-- [ ] More verbs toward the goal: about 590 left. Slower than words, because each needs sentences for every tense. Work from `verb-backlog.md`, which lists 630 candidates in 26 batches of 25, already checked against `verbs.json`, including more reflexives and regional verbs. A batch takes about 900 sentences. Batch 5 goes into `verbs-401-450.json`, and batch 6 crosses verb 450
+- [ ] More verbs toward the goal: about 560 left. Slower than words, because each needs sentences for every tense. Work from `verb-backlog.md`, which lists 605 candidates in 25 batches of 25, already checked against `verbs.json`, including more reflexives and regional verbs. A batch takes about 900 sentences. Batch 6 crosses verb 450, so it needs `verbs-451-500.json`
+- [ ] Audit English glosses for common synonyms. A typed English answer only counts if it matches a listed meaning, so `basura` = "trash" marked "garbage" wrong, and `abuelito` = "grandpa" didn't accept abuelo, since abuelo was only "grandfather". Fixed so far: basura and basurero (garbage), abuelo and abuela (grandpa, grandma), mamá and papá (mother, father). The rest of the word lists likely have more
 - [ ] More phrases and regional expressions, labeled by country. Now at 162
 - [ ] More regional words, and more countries in the existing entries
 - [ ] More reading passages. Now at 12, with 4 each at A1, A2 and B1
-- [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 13,200 remain, all in tenses drilled far less, so this needs batches and a usage check before each one. All 414 verbs are done in the six core tenses, apart from about 411 forms left out on purpose: forms with no natural sentence, like `yo naceré`, all of `nevar` beyond él, `suceder`, `surgir`, `bastar`, `durar` and `corresponder` beyond él and ellos, or the yo and nosotros forms of `interesar`, `encantar` and `preocupar` where they'd sound forced, and tenses marked rare, like most of `oponer` and `desoír`. Next would be the present perfect and the -ra imperfect subjunctive, about 2,470 sentences between them, starting from the most common verbs
+- [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 13,900 remain, all in tenses drilled far less, so this needs batches and a usage check before each one. All 439 verbs are done in the six core tenses, apart from about 411 forms left out on purpose: forms with no natural sentence, like `yo naceré`, all of `nevar` beyond él, `suceder`, `surgir`, `bastar`, `durar` and `corresponder` beyond él and ellos, or the yo and nosotros forms of `interesar`, `encantar` and `preocupar` where they'd sound forced, and tenses marked rare, like most of `oponer` and `desoír`. Next would be the present perfect and the -ra imperfect subjunctive, about 2,470 sentences between them, starting from the most common verbs
 - [ ] Add proverb of the day
 
 ## Later
 
-- [ ] More audio, after the word lists pass the phone check in "To verify": drills (after answering only, so it can't give the answer away, and speaking the full sentence, not the blank), example sentences on verb and regional pages, then reading passages a sentence at a time
+- [ ] More audio, after the word lists pass the phone check in "To verify": example sentences on regional pages, then reading passages a sentence at a time. Verb page sentences and drill sentences have it already
 - [ ] Better text-to-speech if the device voices aren't good enough: generate audio files once and serve them as static files, so there's no runtime API key
 - [ ] Conversation or writing practice with Claude (would need an API key)
 - [ ] Optional voseo in drills
@@ -146,6 +147,8 @@ These live in `.verify/`, which is gitignored, so keep a copy if you change mach
 
 - [x] Conjugation engine with no dependencies, 16 tenses, reflexive verbs, voseo
 - [x] Verb search and full conjugation pages
+- [x] Speaker on conjugation and fill-in-the-blank cards, once answered: the blanked sentence turns into the whole sentence with a speaker next to it, whether the answer was right or not. Before answering there's nothing to play, so it can't give the answer away. Cards carry the full sentence in `sentence`. Checked in headless Chrome with fake voices: 10 cards across both modes, silent before answering, and speaking the whole sentence after
+- [x] Home page verb list split into Irregular, Stem-changing and Regular, with jump links and counts. `verbGroup` in `regular.ts` decides from the same marks as the colored verb tables: any irregular form wins (so conocer, construir and verbs with a participle like escrito or vuelto count as irregular), then any stem change. Spelling changes like busqué and accent changes like envío count as regular. Checked at 390 and 1280px, light and dark, in headless Chrome
 - [x] 281 verbs with a curated example sentence per tense, or a "rarely used" note
 - [x] Conjugation drills with accent-aware grading and retry of missed questions
 - [x] Nouns, adjectives, adverbs and phrases with browse and filter pages (310, 153, 75, 81)
@@ -194,6 +197,8 @@ These live in `.verify/`, which is gitignored, so keep a copy if you change mach
 - [x] 1,097 more sentences in four batches, extending that coverage to the top 206 verbs
 - [x] 1,676 more sentences in six batches, extending that coverage to the top 278 verbs
 - [x] 856 more sentences in three batches, finishing that coverage for all 314 verbs
+- [x] Two accepted participles: `imprimir` shows impreso and `freír` shows frito, the forms Latin America mostly uses, and drills also accept imprimido and freído in the perfect tenses, in both conjugation and fill-in-the-blank. The verb page shows the other form as "also", and tapping either in a reading finds the verb. They live in `DOUBLE_PARTICIPLES` in `irregulars.ts`, matched by ending, so a prefixed verb like reimprimir follows
+- [x] Verb backlog batch 5: 25 verbs (`identificar` to `parar`) with 938 sentences
 - [x] Verb backlog batch 4: 25 verbs (`controlar` to `grabar`) with 893 sentences. Verbs 401 on go in the new `verbs-401-450.json`
 - [x] Verb backlog batch 3: 25 verbs (`aguantar` to `contratar`) with 906 sentences
 - [x] Verb backlog batch 2: 25 verbs (`sufrir` to `acudir`) with 902 sentences, including the gustar-type verbs `faltar`, `importar`, `interesar`, `encantar`, `molestar` and `preocupar`. Verbs 351 on go in the new `verbs-351-400.json`

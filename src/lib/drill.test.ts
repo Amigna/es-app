@@ -85,6 +85,32 @@ describe("conjugationCard", () => {
   });
 });
 
+describe("the full sentence for after answering", () => {
+  it("rides along with a blanked example, and only then", () => {
+    const sentence = { person: 1, es: "Tú hablas muy rápido.", en: "You talk really fast." };
+    const q = { verb: verb("hablar"), tense: "present", person: 1, label: "tú", answer: "hablas" } as const;
+    const card = conjugationCard(q, [sentence]);
+    assert.equal(card.sentence, "Tú hablas muy rápido.");
+    assert.ok(!card.example?.es.includes("hablas"));
+    assert.equal(conjugationCard(q, []).sentence, undefined);
+  });
+});
+
+describe("verbs with two participles", () => {
+  it("shows the common one and accepts both", () => {
+    const card = conjugationCard({ verb: verb("imprimir"), tense: "pluperfect", person: 0, label: "yo", answer: "había impreso" });
+    assert.equal(card.shown, "había impreso");
+    assert.equal(gradeCard(card, "había impreso"), "correct");
+    assert.equal(gradeCard(card, "había imprimido"), "correct");
+    assert.equal(gradeCard(card, "habia imprimido"), "accent");
+  });
+
+  it("accepts only one form where there's only one participle", () => {
+    const card = conjugationCard({ verb: verb("hablar"), tense: "presentPerfect", person: 0, label: "yo", answer: "he hablado" });
+    assert.deepEqual(card.answers, ["he hablado"]);
+  });
+});
+
 describe("limitedDeck", () => {
   it("stops after the given number of cards", () => {
     const card = conjugationCard({ verb: verb("ser"), tense: "present", person: 0, label: "yo", answer: "soy" });

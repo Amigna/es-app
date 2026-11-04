@@ -171,7 +171,14 @@ export default function ConjugationView({
           </div>
           <div>
             <dt className="text-xs uppercase tracking-wide text-stone-500">Past participle</dt>
-            <dd className="text-lg font-medium">{conjugation.participle}</dd>
+            <dd className="text-lg font-medium">
+              {conjugation.participle}
+              {conjugation.participleAlt && (
+                <span className="ml-2 text-sm font-normal text-stone-500">
+                  also <span className="italic">{conjugation.participleAlt}</span>
+                </span>
+              )}
+            </dd>
           </div>
         </dl>
         <label className="flex min-h-10 cursor-pointer items-center gap-2 text-sm">

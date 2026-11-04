@@ -70,6 +70,19 @@ describe("vocabDeck", () => {
     assert.equal(gradeCard(guagua, "autobús"), "correct");
   });
 
+  it("accepts the plain word for an affectionate one, and the other way round", () => {
+    const people = vocabDeck(options({ kinds: ["toSpanish"], wordTypes: ["noun"], topics: ["people"] }));
+    const grandpa = draw(people, (c) => c.title === "grandpa, grandfather");
+    assert.equal(gradeCard(grandpa, "abuelito"), "correct");
+    assert.equal(gradeCard(grandpa, "abuelo"), "correct");
+    const abuelito = draw(vocabDeck(options({ kinds: ["toEnglish"], wordTypes: ["noun"], topics: ["people"] })), (c) => c.title === "abuelito");
+    assert.equal(gradeCard(abuelito, "grandpa"), "correct");
+    assert.equal(gradeCard(abuelito, "grandfather"), "correct");
+    const family = vocabDeck(options({ kinds: ["toSpanish"], wordTypes: ["noun"], topics: ["family"] }));
+    assert.equal(gradeCard(draw(family, (c) => c.title === "mother"), "mamá"), "correct");
+    assert.equal(gradeCard(draw(family, (c) => c.title === "mom, mother"), "madre"), "correct");
+  });
+
   it("keeps small words exact, so a gloss can't take a similar word", () => {
     const next = vocabDeck(options({ kinds: ["toSpanish"], wordTypes: ["small"] }));
     const formal = draw(next, (c) => c.title === "you (formal)");
@@ -131,6 +144,14 @@ describe("blankCard", () => {
     assert.equal(card.title, "_____ dos hermanas en Santo Domingo.");
     assert.equal(gradeCard(card, "tengo"), "correct");
     assert.equal(card.shown, "tengo");
+    assert.equal(card.sentence, "Tengo dos hermanas en Santo Domingo.");
+  });
+
+  it("accepts the other participle in a fill-in-the-blank", () => {
+    const card = blankCard(SENTENCE_BANK, verb("imprimir"), "pluperfect", () => 0);
+    assert.ok(card);
+    assert.equal(card.shown, "había impreso");
+    assert.equal(gradeCard(card, "había imprimido"), "correct");
   });
 
   it("uses sentences for every person a verb has them for", () => {

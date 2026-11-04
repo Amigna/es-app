@@ -1,5 +1,5 @@
 import { stripAccents } from "./conjugation/accent";
-import { conjugate } from "./conjugation/engine";
+import { alsoAccepted, conjugate } from "./conjugation/engine";
 import { IRREGULARS } from "./conjugation/irregulars";
 import { TENSES, type TenseId } from "./conjugation/types";
 import type { Track } from "./progress";
@@ -99,6 +99,8 @@ export interface Card {
   titleIsSpanish: boolean;
   subtitle?: string;
   example?: { es: string; en: string };
+  /** The whole Spanish sentence behind a blanked example or title. Shown and spoken only once the card is answered. */
+  sentence?: string;
   ask: string;
   answers: string[];
   /** The answer as shown after a miss. */
@@ -167,8 +169,9 @@ export function conjugationCard(q: Question, sentences: Sentence[] = []): Card {
     titleIsSpanish: true,
     subtitle: q.verb.en,
     example: sentence && { es: blankOut(sentence.es, q.answer), en: sentence.en },
-    ask: `${meta.name} · ${q.label}`,
-    answers: [q.answer],
+    ...(sentence ? { sentence: sentence.es } : {}),
+    ask:`${meta.name} · ${q.label}`,
+    answers: [q.answer, ...alsoAccepted(conjugate(q.verb), q.answer)],
     shown: q.answer,
     table: tenseTable(q.verb, q.tense, q.person, sentences, sentence),
     track: verbTrack(q.verb.inf, q.tense),

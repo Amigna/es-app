@@ -61,6 +61,8 @@ export interface Conjugation {
   reflexive: boolean;
   gerund: string;
   participle: string;
+  /** A second participle that's also correct, like imprimido beside impreso. Shown as an aside and accepted in drills. */
+  participleAlt?: string;
   tenses: Partial<Record<TenseId, TenseForms>>;
 }
 

@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { conjugate } from "./engine";
+import { alsoAccepted, conjugate } from "./engine";
 import type { TenseId, VerbInput } from "./types";
 
 const cache = new Map<string, ReturnType<typeof conjugate>>();
@@ -320,6 +320,24 @@ describe("derived verbs (like)", () => {
     check("huir", "impAffirmative", [null, "huye", "huya", "huyamos", "huyan"], "hui");
     check({ inf: "confiar", accent: "i" }, "preterite", P5("confié confiaste confió confiamos confiaron"));
     check("dar", "subjPresent", P5("dé des dé demos den"));
+  });
+
+  it("uses the common participle and keeps the other one accepted", () => {
+    assert.equal(run("imprimir").participle, "impreso");
+    assert.equal(run("imprimir").participleAlt, "imprimido");
+    check("imprimir", "presentPerfect", ["he impreso", "has impreso", "ha impreso", "hemos impreso", "han impreso"]);
+    assert.equal(run({ inf: "freír", like: "reír" }).participle, "frito");
+    assert.equal(run({ inf: "freír", like: "reír" }).participleAlt, "freído");
+    assert.equal(run({ inf: "sonreír", like: "reír" }).participle, "sonreído");
+    assert.equal(run({ inf: "sonreír", like: "reír" }).participleAlt, undefined);
+    assert.equal(run("reimprimir").participle, "reimpreso");
+  });
+
+  it("swaps in the other participle only at the end of a compound form", () => {
+    assert.deepEqual(alsoAccepted(run("imprimir"), "había impreso"), ["había imprimido"]);
+    assert.deepEqual(alsoAccepted(run("imprimir"), "Hubiera impreso"), ["Hubiera imprimido"]);
+    assert.deepEqual(alsoAccepted(run("imprimir"), "imprimo"), []);
+    assert.deepEqual(alsoAccepted(run("hablar"), "he hablado"), []);
   });
 
   it("rehacer marks the stressed i after h", () => {

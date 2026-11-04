@@ -44,6 +44,11 @@ describe("lookupWord", () => {
     assert.match(find("decirlo", "decir").detail, /Infinitive/);
   });
 
+  it("finds both participles of a verb that has two", () => {
+    assert.equal(find("impreso", "imprimir").detail, "Past participle");
+    assert.equal(find("imprimido", "imprimir").detail, "Past participle");
+  });
+
   it("finds nothing for names", () => {
     assert.deepEqual(lookupWord("Xochimilco"), []);
   });

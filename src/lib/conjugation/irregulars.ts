@@ -132,7 +132,14 @@ export const PARTICIPLE_SUFFIXES: Record<string, string> = {
   morir: "muerto",
 };
 
-const STEM_FIELDS = ["yoStem", "pretStem", "futStem"] as const;
+// Verbs with two accepted participles (RAE): the one Latin America mostly uses, then the other. Matched by ending, so
+// reimprimir and sofreír follow. These take over from `participle` in the verb's spec.
+export const DOUBLE_PARTICIPLES: Record<string, [main: string, also: string]> = {
+  imprimir: ["impreso", "imprimido"],
+  freír: ["frito", "freído"],
+};
+
+const STEM_FIELDS =["yoStem", "pretStem", "futStem"] as const;
 const WORD_FIELDS = ["impTu", "impVos", "impNos", "gerund", "participle", "presentVos", "subjVos"] as const;
 const LIST_FIELDS = ["present", "pret", "imperfect", "subj"] as const;
 
