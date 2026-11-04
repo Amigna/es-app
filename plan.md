@@ -28,13 +28,13 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 
 ## Content backlog
 
-- [ ] Goal: about 5,000 words in all, roughly 2,300 nouns, 1,000 adjectives and 1,000 verbs, with adverbs already enough at about 250. The split is a rough estimate of how a list of the 5,000 most common words breaks down, from memory and not checked against a source. Common words come first, so regional and specialist words don't count for as much as their number suggests. Now about 4,110: 2,300 nouns, 1,001 adjectives, 282 adverbs, 159 small words, 364 verbs
+- [ ] Goal: about 5,000 words in all, roughly 2,300 nouns, 1,000 adjectives and 1,000 verbs, with adverbs already enough at about 250. The split is a rough estimate of how a list of the 5,000 most common words breaks down, from memory and not checked against a source. Common words come first, so regional and specialist words don't count for as much as their number suggests. Now about 4,135: 2,300 nouns, 1,001 adjectives, 282 adverbs, 159 small words, 389 verbs
 - [ ] Insults and words for disabilities (idiota, estúpido, imbécil, cojo, manco, enano), left out of the word batches on purpose. Add them with a note on why they offend, per the vulgar and offensive word rules in "How content gets added"
-- [ ] More verbs toward the goal: about 640 left. Slower than words, because each needs sentences for every tense. Work from `verb-backlog.md`, which lists 680 candidates in 28 batches of 25, already checked against `verbs.json`, including more reflexives and regional verbs. A batch takes about 900 sentences. Batch 3 fills `verbs-351-400.json` up to verb 389
+- [ ] More verbs toward the goal: about 610 left. Slower than words, because each needs sentences for every tense. Work from `verb-backlog.md`, which lists 655 candidates in 27 batches of 25, already checked against `verbs.json`, including more reflexives and regional verbs. A batch takes about 900 sentences. Batch 4 crosses verb 400, so it needs `verbs-401-450.json`
 - [ ] More phrases and regional expressions, labeled by country. Now at 162
 - [ ] More regional words, and more countries in the existing entries
 - [ ] More reading passages. Now at 12, with 4 each at A1, A2 and B1
-- [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 11,800 remain, all in tenses drilled far less, so this needs batches and a usage check before each one. All 364 verbs are done in the six core tenses, apart from about 345 forms left out on purpose: forms with no natural sentence, like `yo naceré`, all of `nevar` beyond él, `suceder` and `surgir` beyond él and ellos, or the yo and nosotros forms of `interesar`, `encantar` and `preocupar` where they'd sound forced, and tenses marked rare, like most of `oponer` and `desoír`. Next would be the present perfect and the -ra imperfect subjunctive, about 2,470 sentences between them, starting from the most common verbs
+- [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 12,500 remain, all in tenses drilled far less, so this needs batches and a usage check before each one. All 389 verbs are done in the six core tenses, apart from about 372 forms left out on purpose: forms with no natural sentence, like `yo naceré`, all of `nevar` beyond él, `suceder`, `surgir` and `bastar` beyond él and ellos, or the yo and nosotros forms of `interesar`, `encantar` and `preocupar` where they'd sound forced, and tenses marked rare, like most of `oponer` and `desoír`. Next would be the present perfect and the -ra imperfect subjunctive, about 2,470 sentences between them, starting from the most common verbs
 - [ ] Add proverb of the day
 
 ## Later
@@ -151,6 +151,7 @@ These live in `.verify/`, which is gitignored, so keep a copy if you change mach
 - [x] 1,097 more sentences in four batches, extending that coverage to the top 206 verbs
 - [x] 1,676 more sentences in six batches, extending that coverage to the top 278 verbs
 - [x] 856 more sentences in three batches, finishing that coverage for all 314 verbs
+- [x] Verb backlog batch 3: 25 verbs (`aguantar` to `contratar`) with 906 sentences
 - [x] Verb backlog batch 2: 25 verbs (`sufrir` to `acudir`) with 902 sentences, including the gustar-type verbs `faltar`, `importar`, `interesar`, `encantar`, `molestar` and `preocupar`. Verbs 351 on go in the new `verbs-351-400.json`
 - [x] Verb backlog batch 1: 25 common verbs (`desarrollar` to `avanzar`) with 904 sentences, every person in the six core tenses and one sentence or a "rarely used" note for the rest
 - [x] 62 sentences replacing "rarely used" notes that were too cautious: the preterite of `odiar` and `parecerse`, the future of `merecer` and `rogar`, the present of `nacer` (no yo) and the conditional of `graduar`, plus better coverage for `errar`, `prever`, `contraer` and `rogar`. Their remaining rare tenses and persons are left out on purpose

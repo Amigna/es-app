@@ -12,34 +12,6 @@ When adding a batch:
 - Delete the batch from this file once it's in `verbs.json`, and update the verb count in `plan.md`.
 - If a verb is dropped, move it to "Dropped" at the bottom with the reason, so it isn't suggested again.
 
-## Batch 3
-
-- aguantar: to put up with, to hold on
-- amenazar: to threaten
-- anunciar: to announce
-- apostar: to bet
-- apreciar: to appreciate
-- aprobar: to approve; to pass (a test)
-- asistir: to attend
-- asumir: to assume, to take on
-- atacar: to attack
-- avisar: to let know, to warn
-- bastar: to be enough
-- brillar: to shine
-- calcular: to calculate
-- causar: to cause
-- cobrar: to charge; to get paid
-- colocar: to place, to put
-- comentar: to comment, to mention
-- comparar: to compare
-- completar: to complete
-- comunicar: to communicate
-- confesar: to confess
-- confirmar: to confirm
-- conservar: to keep, to preserve
-- consultar: to consult, to look up
-- contratar: to hire
-
 ## Batch 4
 
 - controlar: to control

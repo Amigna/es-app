@@ -954,5 +954,1694 @@
    {"person":1,"es":"Acude a un médico si sigue el dolor.","en":"See a doctor if the pain continues."}
   ],
   "impNegative": {"rare":true}
+ },
+ "aguantar": {
+  "present": [
+   {"person":0,"es":"No aguanto este calor.","en":"I can't stand this heat."},
+   {"person":1,"es":"¿Cómo aguantas a tu jefe?","en":"How do you put up with your boss?"},
+   {"person":2,"es":"Mi abuela aguanta el dolor sin quejarse.","en":"My grandmother puts up with the pain without complaining."},
+   {"person":3,"es":"Aguantamos el frío con café caliente.","en":"We handle the cold with hot coffee."},
+   {"person":4,"es":"Los niños no aguantan sentados mucho tiempo.","en":"Kids can't sit still for long."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El puente aguantó la tormenta.","en":"The bridge held up in the storm."},
+   {"person":0,"es":"Aguanté la risa durante toda la misa.","en":"I held back my laughter all through Mass."},
+   {"person":1,"es":"¿Cómo aguantaste tantas horas de pie?","en":"How did you manage so many hours on your feet?"},
+   {"person":3,"es":"Ayer aguantamos tres horas de cola.","en":"Yesterday we put up with a three-hour line."},
+   {"person":4,"es":"Los jugadores aguantaron hasta el final.","en":"The players held on until the end."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi madre aguantaba todo por nosotros.","en":"My mother put up with everything for us."},
+   {"person":0,"es":"Yo no aguantaba el olor del pescado.","en":"I couldn't stand the smell of fish."},
+   {"person":1,"es":"Tú aguantabas las bromas de tus hermanos.","en":"You put up with your brothers' jokes."},
+   {"person":3,"es":"Aguantábamos el calor sin ventilador.","en":"We put up with the heat without a fan."},
+   {"person":4,"es":"Las paredes viejas aguantaban de milagro.","en":"The old walls were holding up by a miracle."}
+  ],
+  "future": [
+   {"person":1,"es":"Aguantarás, eres fuerte.","en":"You'll hold on, you're strong."},
+   {"person":0,"es":"No aguantaré otro invierno aquí.","en":"I won't make it through another winter here."},
+   {"person":2,"es":"Esta mesa no aguantará tanto peso.","en":"This table won't hold that much weight."},
+   {"person":3,"es":"Aguantaremos hasta el viernes.","en":"We'll hold out until Friday."},
+   {"person":4,"es":"Las plantas no aguantarán la helada.","en":"The plants won't survive the frost."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo no aguantaría ese trabajo ni un día.","en":"I wouldn't last a day in that job."},
+   {"person":1,"es":"¿Aguantarías una semana sin teléfono?","en":"Could you last a week without your phone?"},
+   {"person":2,"es":"Esa silla no aguantaría a un adulto.","en":"That chair wouldn't hold an adult."},
+   {"person":3,"es":"Aguantaríamos más con un poco de agua.","en":"We'd last longer with a little water."},
+   {"person":4,"es":"Ellos no aguantarían el ritmo.","en":"They couldn't keep up the pace."}
+  ],
+  "presentPerfect": [
+   {"person":1,"es":"Has aguantado mucho.","en":"You've put up with a lot."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"El viejo techo había aguantado cien años.","en":"The old roof had lasted a hundred years."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":0,"es":"Yo no lo habría aguantado.","en":"I wouldn't have put up with it."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"No quiero que aguantes más malos tratos.","en":"I don't want you to put up with any more mistreatment."},
+   {"person":0,"es":"No es justo que yo aguante todo esto.","en":"It's not fair that I have to put up with all this."},
+   {"person":2,"es":"Espero que la batería aguante hasta la noche.","en":"I hope the battery lasts until tonight."},
+   {"person":3,"es":"Es mejor que aguantemos un poco más.","en":"We'd better hold on a little longer."},
+   {"person":4,"es":"Ojalá que los frenos aguanten.","en":"Hopefully the brakes hold."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Me sorprendió que el puente aguantara.","en":"I was surprised the bridge held."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":1,"es":"Me admira que hayas aguantado tanto.","en":"I admire how much you've put up with."}
+  ],
+  "subjPluperfect": [
+   {"person":3,"es":"Si hubiéramos aguantado un poco más, habríamos ganado.","en":"If we had held on a little longer, we would have won."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Aguanta un poco, ya casi llegamos.","en":"Hang on, we're almost there."}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No aguantes malos tratos de nadie.","en":"Don't put up with mistreatment from anyone."}
+  ]
+ },
+ "amenazar": {
+  "present": [
+   {"person":2,"es":"El cielo amenaza lluvia.","en":"The sky looks like rain."},
+   {"person":0,"es":"No te amenazo, te aviso.","en":"I'm not threatening you, I'm warning you."},
+   {"person":1,"es":"Siempre amenazas con irte.","en":"You're always threatening to leave."},
+   {"person":3,"es":"Nosotros no amenazamos a nadie.","en":"We don't threaten anyone."},
+   {"person":4,"es":"Las plagas amenazan la cosecha.","en":"Pests are threatening the harvest."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El jefe amenazó con despedirlo.","en":"The boss threatened to fire him."},
+   {"person":0,"es":"Amenacé con llamar a la policía.","en":"I threatened to call the police."},
+   {"person":1,"es":"¿Lo amenazaste?","en":"Did you threaten him?"},
+   {"person":3,"es":"Ayer amenazamos con irnos si no bajaban el precio.","en":"Yesterday we threatened to leave if they didn't lower the price."},
+   {"person":4,"es":"Los trabajadores amenazaron con una huelga.","en":"The workers threatened a strike."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi madre siempre amenazaba con quitarnos la televisión.","en":"My mother always threatened to take away the TV."},
+   {"person":0,"es":"Yo amenazaba con contarle todo a papá.","en":"I'd threaten to tell Dad everything."},
+   {"person":1,"es":"Tú amenazabas con irte de la casa.","en":"You used to threaten to leave home."},
+   {"person":3,"es":"Amenazábamos con no ir a la escuela.","en":"We'd threaten not to go to school."},
+   {"person":4,"es":"Las nubes amenazaban tormenta.","en":"The clouds threatened a storm."}
+  ],
+  "future": [
+   {"person":4,"es":"Los vecinos amenazarán con demandar.","en":"The neighbors will threaten to sue."},
+   {"person":0,"es":"No te amenazaré más.","en":"I won't threaten you anymore."},
+   {"person":1,"es":"Amenazarás con irte, como siempre.","en":"You'll threaten to leave, like always."},
+   {"person":2,"es":"La sequía amenazará los cultivos.","en":"The drought will threaten the crops."},
+   {"person":3,"es":"No amenazaremos a nadie.","en":"We won't threaten anyone."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo nunca amenazaría a un niño.","en":"I would never threaten a child."},
+   {"person":1,"es":"¿Amenazarías a tu jefe con renunciar?","en":"Would you threaten your boss that you'd quit?"},
+   {"person":2,"es":"Un buen padre no amenazaría a sus hijos.","en":"A good father wouldn't threaten his kids."},
+   {"person":3,"es":"No amenazaríamos sin razón.","en":"We wouldn't make threats without a reason."},
+   {"person":4,"es":"Ellos amenazarían con cerrar la fábrica.","en":"They'd threaten to close the factory."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"El huracán ha amenazado la costa toda la semana.","en":"The hurricane has threatened the coast all week."}
+  ],
+  "pluperfect": [
+   {"person":4,"es":"Ya me habían amenazado antes.","en":"They had threatened me before."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":0,"es":"Yo no lo habría amenazado.","en":"I wouldn't have threatened him."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"No me gusta que me amenaces.","en":"I don't like you threatening me."},
+   {"person":0,"es":"No creas que yo te amenace sin motivo.","en":"Don't think I'd threaten you for no reason."},
+   {"person":2,"es":"Es grave que alguien amenace a un maestro.","en":"It's serious for someone to threaten a teacher."},
+   {"person":3,"es":"No es bueno que amenacemos a los niños.","en":"It's not good for us to threaten the kids."},
+   {"person":4,"es":"No dejes que te amenacen.","en":"Don't let them threaten you."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Me asustó que me amenazara así.","en":"It scared me that he threatened me like that."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":4,"es":"Me preocupa que te hayan amenazado.","en":"It worries me that they threatened you."}
+  ],
+  "subjPluperfect": [
+   {"person":2,"es":"Si me hubiera amenazado, lo habría denunciado.","en":"If he had threatened me, I would have reported him."}
+  ],
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No me amenaces.","en":"Don't threaten me."}
+  ]
+ },
+ "anunciar": {
+  "present": [
+   {"person":2,"es":"La radio anuncia lluvia para mañana.","en":"The radio is forecasting rain for tomorrow."},
+   {"person":0,"es":"Les anuncio que me caso.","en":"I'm announcing that I'm getting married."},
+   {"person":1,"es":"¿Anuncias tu casa en internet?","en":"Are you advertising your house online?"},
+   {"person":3,"es":"Anunciamos los ganadores el viernes.","en":"We announce the winners on Friday."},
+   {"person":4,"es":"Las nubes anuncian tormenta.","en":"The clouds are a sign of a storm."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El gobierno anunció nuevas medidas.","en":"The government announced new measures."},
+   {"person":0,"es":"Anuncié mi renuncia en la reunión.","en":"I announced my resignation at the meeting."},
+   {"person":1,"es":"¿Ya anunciaste el embarazo?","en":"Have you announced the pregnancy yet?"},
+   {"person":3,"es":"Ayer anunciamos la fecha de la boda.","en":"Yesterday we announced the wedding date."},
+   {"person":4,"es":"Anunciaron el vuelo por los altavoces.","en":"They announced the flight over the loudspeakers."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El vendedor anunciaba sus mangos a gritos.","en":"The vendor was shouting about his mangoes."},
+   {"person":0,"es":"Yo anunciaba los partidos en la radio del pueblo.","en":"I used to announce the games on the town radio."},
+   {"person":1,"es":"Tú anunciabas cada gol como un locutor.","en":"You announced every goal like a sportscaster."},
+   {"person":3,"es":"Anunciábamos las fiestas con carteles.","en":"We advertised the parties with posters."},
+   {"person":4,"es":"Las campanas anunciaban la misa.","en":"The bells announced Mass."}
+  ],
+  "future": [
+   {"person":2,"es":"La empresa anunciará los cambios mañana.","en":"The company will announce the changes tomorrow."},
+   {"person":0,"es":"Anunciaré la noticia en la cena.","en":"I'll announce the news at dinner."},
+   {"person":1,"es":"Anunciarás tu decisión cuando estés lista.","en":"You'll announce your decision when you're ready."},
+   {"person":3,"es":"Anunciaremos el ganador a las ocho.","en":"We'll announce the winner at eight."},
+   {"person":4,"es":"Los novios anunciarán la fecha pronto.","en":"The couple will announce the date soon."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo no anunciaría nada todavía.","en":"I wouldn't announce anything yet."},
+   {"person":1,"es":"¿Cómo anunciarías una noticia así?","en":"How would you announce news like that?"},
+   {"person":2,"es":"Un buen jefe anunciaría los cambios con tiempo.","en":"A good boss would announce changes ahead of time."},
+   {"person":3,"es":"Lo anunciaríamos en el periódico.","en":"We'd announce it in the newspaper."},
+   {"person":4,"es":"Ellos lo anunciarían en las redes.","en":"They'd announce it on social media."}
+  ],
+  "presentPerfect": [
+   {"person":4,"es":"Han anunciado un nuevo festival.","en":"They've announced a new festival."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"La tienda ya había anunciado las ofertas.","en":"The store had already announced the sales."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":0,"es":"Yo lo habría anunciado antes.","en":"I would have announced it sooner."}
+  ],
+  "subjPresent": [
+   {"person":2,"es":"Esperamos que el presidente anuncie buenas noticias.","en":"We hope the president announces good news."},
+   {"person":0,"es":"¿Quieres que yo anuncie la noticia?","en":"Do you want me to announce the news?"},
+   {"person":1,"es":"Es mejor que lo anuncies tú.","en":"It's better if you announce it."},
+   {"person":3,"es":"Es hora de que anunciemos el compromiso.","en":"It's time for us to announce the engagement."},
+   {"person":4,"es":"Ojalá que anuncien el fin de la huelga.","en":"Hopefully they'll announce the end of the strike."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Todos esperaban que el director anunciara su renuncia.","en":"Everyone expected the director to announce his resignation."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":2,"es":"Me alegra que el gobierno haya anunciado más becas.","en":"I'm glad the government has announced more scholarships."}
+  ],
+  "subjPluperfect": [
+   {"person":4,"es":"Si lo hubieran anunciado antes, habríamos ido.","en":"If they had announced it earlier, we would have gone."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Anuncia la noticia en la cena.","en":"Announce the news at dinner."}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No anuncies nada hasta que firmemos.","en":"Don't announce anything until we sign."}
+  ]
+ },
+ "apostar": {
+  "present": [
+   {"person":0,"es":"Te apuesto que llueve hoy.","en":"I bet you it rains today."},
+   {"person":1,"es":"¿Cuánto apuestas?","en":"How much are you betting?"},
+   {"person":2,"es":"Mi tío apuesta en las peleas de gallos.","en":"My uncle bets on cockfights."},
+   {"person":3,"es":"Apostamos por la educación de nuestros hijos.","en":"We're investing in our kids' education."},
+   {"person":4,"es":"Muchos apuestan por el equipo local.","en":"A lot of people are betting on the local team."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Mi primo apostó todo su sueldo.","en":"My cousin bet his whole paycheck."},
+   {"person":0,"es":"Aposté cien pesos al caballo blanco.","en":"I bet a hundred pesos on the white horse."},
+   {"person":1,"es":"¿Apostaste por Brasil?","en":"Did you bet on Brazil?"},
+   {"person":3,"es":"El año pasado apostamos por una casa en el campo.","en":"Last year we went for a house in the country."},
+   {"person":4,"es":"Los inversionistas apostaron por la empresa.","en":"The investors bet on the company."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo apostaba a la lotería cada semana.","en":"My grandfather played the lottery every week."},
+   {"person":0,"es":"Yo apostaba con mis amigos por cualquier cosa.","en":"I used to bet with my friends on anything."},
+   {"person":1,"es":"Tú siempre apostabas por el equipo perdedor.","en":"You always bet on the losing team."},
+   {"person":3,"es":"Apostábamos refrescos en los partidos.","en":"We bet sodas on the games."},
+   {"person":4,"es":"Los marineros apostaban en el puerto.","en":"The sailors gambled at the port."}
+  ],
+  "future": [
+   {"person":3,"es":"Apostaremos por la calidad.","en":"We'll go for quality."},
+   {"person":0,"es":"No apostaré más dinero.","en":"I won't bet any more money."},
+   {"person":1,"es":"¿Apostarás por el mismo caballo?","en":"Will you bet on the same horse?"},
+   {"person":2,"es":"El nuevo gobierno apostará por el turismo.","en":"The new government will bet on tourism."},
+   {"person":4,"es":"Los aficionados apostarán por su equipo.","en":"The fans will bet on their team."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo apostaría por el equipo de casa.","en":"I'd bet on the home team."},
+   {"person":1,"es":"¿Apostarías tu carro?","en":"Would you bet your car?"},
+   {"person":2,"es":"Mi padre nunca apostaría dinero.","en":"My father would never bet money."},
+   {"person":3,"es":"Apostaríamos por un candidato joven.","en":"We'd go for a young candidate."},
+   {"person":4,"es":"Ellos apostarían cualquier cosa.","en":"They'd bet anything."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"Nunca he apostado en un casino.","en":"I've never gambled at a casino."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Mi tío ya había apostado todo.","en":"My uncle had already bet everything."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":0,"es":"Yo habría apostado por ti.","en":"I would have bet on you."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"No quiero que apuestes el dinero de la casa.","en":"I don't want you betting the household money."},
+   {"person":0,"es":"Mi esposa no quiere que yo apueste.","en":"My wife doesn't want me to gamble."},
+   {"person":2,"es":"Es raro que mi padre apueste.","en":"It's unusual for my father to bet."},
+   {"person":3,"es":"Es mejor que apostemos por algo seguro.","en":"It's better if we go for something safe."},
+   {"person":4,"es":"Ojalá que los bancos apuesten por los pequeños negocios.","en":"Hopefully banks will back small businesses."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Mi madre no quería que mi padre apostara.","en":"My mother didn't want my father to gamble."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":1,"es":"Me alegra que hayas apostado por mí.","en":"I'm glad you bet on me."}
+  ],
+  "subjPluperfect": [
+   {"person":0,"es":"Si hubiera apostado, habría ganado.","en":"If I had placed a bet, I would have won."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Apuesta por ti mismo.","en":"Bet on yourself."}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No apuestes lo que no tienes.","en":"Don't bet what you don't have."}
+  ]
+ },
+ "apreciar": {
+  "present": [
+   {"person":0,"es":"Aprecio mucho tu ayuda.","en":"I really appreciate your help."},
+   {"person":1,"es":"Se nota que aprecias el buen café.","en":"You can tell you appreciate good coffee."},
+   {"person":2,"es":"Mi jefe aprecia el trabajo bien hecho.","en":"My boss appreciates a job well done."},
+   {"person":3,"es":"Apreciamos su paciencia.","en":"We appreciate your patience."},
+   {"person":4,"es":"Los turistas aprecian la comida local.","en":"Tourists appreciate the local food."}
+  ],
+  "preterite": [
+   {"person":4,"es":"Los clientes apreciaron el descuento.","en":"The customers appreciated the discount."},
+   {"person":0,"es":"Aprecié mucho tu llamada.","en":"I really appreciated your call."},
+   {"person":1,"es":"¿Apreciaste la vista desde la montaña?","en":"Did you enjoy the view from the mountain?"},
+   {"person":2,"es":"Mi abuela apreció mucho el regalo.","en":"My grandmother really appreciated the gift."},
+   {"person":3,"es":"Ayer apreciamos el atardecer desde el malecón.","en":"Yesterday we took in the sunset from the seawall."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi padre apreciaba las cosas sencillas.","en":"My father appreciated simple things."},
+   {"person":0,"es":"De joven yo no apreciaba a mis padres.","en":"When I was young I didn't appreciate my parents."},
+   {"person":1,"es":"Tú apreciabas la buena música.","en":"You appreciated good music."},
+   {"person":3,"es":"Apreciábamos cada momento juntos.","en":"We treasured every moment together."},
+   {"person":4,"es":"Los vecinos apreciaban mucho al doctor.","en":"The neighbors thought highly of the doctor."}
+  ],
+  "future": [
+   {"person":1,"es":"Con los años apreciarás estos consejos.","en":"Over the years you'll appreciate this advice."},
+   {"person":0,"es":"Siempre apreciaré lo que hiciste.","en":"I'll always appreciate what you did."},
+   {"person":2,"es":"Tu madre apreciará el gesto.","en":"Your mother will appreciate the gesture."},
+   {"person":3,"es":"Apreciaremos cualquier ayuda.","en":"We'll appreciate any help."},
+   {"person":4,"es":"Los clientes apreciarán el cambio.","en":"Customers will appreciate the change."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Apreciaría mucho tu opinión.","en":"I'd really appreciate your opinion."},
+   {"person":1,"es":"¿Apreciarías un consejo?","en":"Would you appreciate some advice?"},
+   {"person":2,"es":"Mi madre apreciaría una visita.","en":"My mother would appreciate a visit."},
+   {"person":3,"es":"Apreciaríamos un poco más de silencio.","en":"We'd appreciate a little more quiet."},
+   {"person":4,"es":"Ellos apreciarían tu honestidad.","en":"They'd appreciate your honesty."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"Siempre he apreciado tu amistad.","en":"I've always valued your friendship."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Mi padre nunca había apreciado tanto el silencio.","en":"My father had never appreciated silence so much."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":1,"es":"Tú habrías apreciado esa música.","en":"You would have appreciated that music."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"Espero que aprecies lo que tienes.","en":"I hope you appreciate what you have."},
+   {"person":0,"es":"Es normal que yo aprecie a mis compañeros.","en":"It's natural for me to value my coworkers."},
+   {"person":2,"es":"Ojalá que mi jefe aprecie mi esfuerzo.","en":"Hopefully my boss appreciates my effort."},
+   {"person":3,"es":"Es importante que apreciemos las cosas pequeñas.","en":"It's important for us to appreciate the little things."},
+   {"person":4,"es":"Quiero que mis hijos aprecien la naturaleza.","en":"I want my kids to appreciate nature."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Me alegró que el cliente apreciara el detalle.","en":"I was glad the customer appreciated the touch."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":1,"es":"Me alegra que hayas apreciado el regalo.","en":"I'm glad you appreciated the gift."}
+  ],
+  "subjPluperfect": [
+   {"person":0,"es":"Si lo hubiera apreciado antes, no lo habría perdido.","en":"If I had appreciated it sooner, I wouldn't have lost it."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Aprecia lo que tienes.","en":"Appreciate what you have."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "aprobar": {
+  "present": [
+   {"person":2,"es":"El congreso aprueba la ley hoy.","en":"Congress is passing the law today."},
+   {"person":0,"es":"No apruebo esa decisión.","en":"I don't approve of that decision."},
+   {"person":1,"es":"Si apruebas el examen, te compro un helado.","en":"If you pass the test, I'll buy you an ice cream."},
+   {"person":3,"es":"Aprobamos el presupuesto en cada reunión.","en":"We approve the budget at every meeting."},
+   {"person":4,"es":"Mis padres no aprueban a mi novio.","en":"My parents don't approve of my boyfriend."}
+  ],
+  "preterite": [
+   {"person":0,"es":"¡Aprobé el examen de manejo!","en":"I passed my driving test!"},
+   {"person":1,"es":"¿Aprobaste matemáticas?","en":"Did you pass math?"},
+   {"person":2,"es":"El banco aprobó mi préstamo.","en":"The bank approved my loan."},
+   {"person":3,"es":"El año pasado aprobamos todas las materias.","en":"Last year we passed all our subjects."},
+   {"person":4,"es":"Los vecinos aprobaron el proyecto del parque.","en":"The neighbors approved the park project."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo nunca aprobaba a mis novios.","en":"My grandfather never approved of my boyfriends."},
+   {"person":0,"es":"Yo aprobaba los exámenes sin estudiar mucho.","en":"I used to pass tests without studying much."},
+   {"person":1,"es":"Tú aprobabas todo con buenas notas.","en":"You passed everything with good grades."},
+   {"person":3,"es":"Aprobábamos los planes de la directora sin discutir.","en":"We approved the principal's plans without arguing."},
+   {"person":4,"es":"Los profesores aprobaban a casi todos.","en":"The teachers passed almost everyone."}
+  ],
+  "future": [
+   {"person":1,"es":"Aprobarás si estudias.","en":"You'll pass if you study."},
+   {"person":0,"es":"Esta vez aprobaré.","en":"This time I'll pass."},
+   {"person":2,"es":"El jefe aprobará tus vacaciones.","en":"The boss will approve your vacation."},
+   {"person":3,"es":"Aprobaremos el plan el lunes.","en":"We'll approve the plan on Monday."},
+   {"person":4,"es":"Los diputados aprobarán la reforma.","en":"The congressmen will pass the reform."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo no aprobaría ese gasto.","en":"I wouldn't approve that expense."},
+   {"person":1,"es":"¿Aprobarías sin estudiar?","en":"Would you pass without studying?"},
+   {"person":2,"es":"Mi madre nunca aprobaría ese viaje.","en":"My mother would never approve of that trip."},
+   {"person":3,"es":"Aprobaríamos la idea con algunos cambios.","en":"We'd approve the idea with some changes."},
+   {"person":4,"es":"Ellos no aprobarían el préstamo.","en":"They wouldn't approve the loan."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"He aprobado todas las materias.","en":"I've passed all my subjects."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"El congreso ya había aprobado la ley.","en":"Congress had already passed the law."}
+  ],
+  "futurePerfect": [
+   {"person":4,"es":"Para marzo ya habrán aprobado el proyecto.","en":"By March they'll have approved the project."}
+  ],
+  "conditionalPerfect": [
+   {"person":1,"es":"Con un poco más de estudio, habrías aprobado.","en":"With a little more studying, you would have passed."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"Ojalá que apruebes el examen.","en":"I hope you pass the test."},
+   {"person":0,"es":"Mis padres quieren que yo apruebe todo.","en":"My parents want me to pass everything."},
+   {"person":2,"es":"Espero que el banco apruebe el crédito.","en":"I hope the bank approves the loan."},
+   {"person":3,"es":"Es necesario que aprobemos el presupuesto hoy.","en":"We need to approve the budget today."},
+   {"person":4,"es":"No creo que aprueben la ley.","en":"I don't think they'll pass the law."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Nadie creía que el banco aprobara el préstamo.","en":"Nobody thought the bank would approve the loan."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":1,"es":"¡Qué bueno que hayas aprobado!","en":"It's great that you passed!"}
+  ],
+  "subjPluperfect": [
+   {"person":0,"es":"Si hubiera aprobado, estaría en la universidad.","en":"If I had passed, I'd be in college."}
+  ],
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
+ },
+ "asistir": {
+  "present": [
+   {"person":2,"es":"Mi hija asiste a una escuela pública.","en":"My daughter goes to a public school."},
+   {"person":0,"es":"Asisto a clases de baile los martes.","en":"I take dance classes on Tuesdays."},
+   {"person":1,"es":"¿Asistes a la boda?","en":"Are you going to the wedding?"},
+   {"person":3,"es":"Asistimos a misa los domingos.","en":"We go to Mass on Sundays."},
+   {"person":4,"es":"Muchos turistas asisten al carnaval.","en":"A lot of tourists attend the carnival."}
+  ],
+  "preterite": [
+   {"person":4,"es":"Más de mil personas asistieron al concierto.","en":"More than a thousand people attended the concert."},
+   {"person":0,"es":"Asistí a una conferencia muy interesante.","en":"I attended a very interesting lecture."},
+   {"person":1,"es":"¿Asististe a la reunión?","en":"Did you go to the meeting?"},
+   {"person":2,"es":"El presidente asistió al funeral.","en":"The president attended the funeral."},
+   {"person":3,"es":"El sábado asistimos a la boda de mi prima.","en":"On Saturday we went to my cousin's wedding."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo asistía a todas las fiestas del pueblo.","en":"My grandfather went to every town festival."},
+   {"person":0,"es":"Yo asistía a clases de noche.","en":"I took night classes."},
+   {"person":1,"es":"Tú asistías a una escuela de monjas.","en":"You went to a school run by nuns."},
+   {"person":3,"es":"Asistíamos a los partidos con mi padre.","en":"We went to the games with my father."},
+   {"person":4,"es":"Pocos alumnos asistían los viernes.","en":"Few students showed up on Fridays."}
+  ],
+  "future": [
+   {"person":0,"es":"Asistiré a la graduación de mi sobrino.","en":"I'll attend my nephew's graduation."},
+   {"person":1,"es":"¿Asistirás a la fiesta?","en":"Will you go to the party?"},
+   {"person":2,"es":"La ministra asistirá a la inauguración.","en":"The minister will attend the opening."},
+   {"person":3,"es":"Asistiremos a la reunión de padres.","en":"We'll go to the parents' meeting."},
+   {"person":4,"es":"Cientos de personas asistirán al desfile.","en":"Hundreds of people will attend the parade."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo asistiría, pero tengo que trabajar.","en":"I'd go, but I have to work."},
+   {"person":1,"es":"¿Asistirías a un curso de cocina?","en":"Would you take a cooking class?"},
+   {"person":2,"es":"Mi madre asistiría si alguien la llevara.","en":"My mother would go if someone took her."},
+   {"person":3,"es":"Asistiríamos a más conciertos si fueran más baratos.","en":"We'd go to more concerts if they were cheaper."},
+   {"person":4,"es":"Los vecinos asistirían si la reunión fuera de noche.","en":"The neighbors would come if the meeting were at night."}
+  ],
+  "presentPerfect": [
+   {"person":3,"es":"Hemos asistido a tres bodas este año.","en":"We've been to three weddings this year."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Mi madre nunca había asistido a una ópera.","en":"My mother had never been to an opera."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":0,"es":"Yo habría asistido con gusto.","en":"I would have gladly gone."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"Es importante que asistas a todas las clases.","en":"It's important for you to attend every class."},
+   {"person":0,"es":"Mi jefe quiere que yo asista a la reunión.","en":"My boss wants me to attend the meeting."},
+   {"person":2,"es":"Ojalá que el alcalde asista a la inauguración.","en":"Hopefully the mayor comes to the opening."},
+   {"person":3,"es":"Es mejor que asistamos los dos.","en":"It's better if we both go."},
+   {"person":4,"es":"Esperamos que muchos padres asistan.","en":"We hope a lot of parents come."}
+  ],
+  "subjImperfect": [
+   {"person":4,"es":"El director pidió que todos asistieran a la ceremonia.","en":"The principal asked everyone to attend the ceremony."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":4,"es":"Me alegra que tantos hayan asistido.","en":"I'm glad so many people came."}
+  ],
+  "subjPluperfect": [
+   {"person":1,"es":"Si hubieras asistido a clase, sabrías la respuesta.","en":"If you had gone to class, you'd know the answer."}
+  ],
+  "impAffirmative": [
+   {"person":4,"es":"Asistan a la reunión del jueves.","en":"Please attend Thursday's meeting."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "asumir": {
+  "present": [
+   {"person":2,"es":"El nuevo director asume el cargo el lunes.","en":"The new director takes office on Monday."},
+   {"person":0,"es":"Asumo toda la responsabilidad.","en":"I take full responsibility."},
+   {"person":1,"es":"Asumes demasiadas cosas.","en":"You assume too much."},
+   {"person":3,"es":"Asumimos los gastos del viaje.","en":"We're covering the cost of the trip."},
+   {"person":4,"es":"Muchos jóvenes asumen deudas para estudiar.","en":"Many young people take on debt to study."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Mi hermana asumió el control del negocio.","en":"My sister took control of the business."},
+   {"person":0,"es":"Asumí que no vendrías.","en":"I assumed you weren't coming."},
+   {"person":1,"es":"¿Por qué asumiste que era culpa mía?","en":"Why did you assume it was my fault?"},
+   {"person":3,"es":"El año pasado asumimos un gran riesgo.","en":"Last year we took a big risk."},
+   {"person":4,"es":"Los padres asumieron el costo de la fiesta.","en":"The parents covered the cost of the party."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi madre asumía todas las tareas de la casa.","en":"My mother took on all the housework."},
+   {"person":0,"es":"Yo asumía que todo iba bien.","en":"I assumed everything was going well."},
+   {"person":1,"es":"Tú siempre asumías lo peor.","en":"You always assumed the worst."},
+   {"person":3,"es":"Asumíamos que el tren llegaría a tiempo.","en":"We assumed the train would arrive on time."},
+   {"person":4,"es":"Los mayores asumían el cuidado de los pequeños.","en":"The older kids looked after the little ones."}
+  ],
+  "future": [
+   {"person":0,"es":"Asumiré las consecuencias.","en":"I'll accept the consequences."},
+   {"person":1,"es":"Asumirás el puesto en enero.","en":"You'll take the position in January."},
+   {"person":2,"es":"El vicepresidente asumirá la presidencia.","en":"The vice president will take over the presidency."},
+   {"person":3,"es":"Asumiremos el reto.","en":"We'll take on the challenge."},
+   {"person":4,"es":"Los nuevos dueños asumirán las deudas.","en":"The new owners will take on the debts."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo no asumiría eso tan rápido.","en":"I wouldn't assume that so quickly."},
+   {"person":1,"es":"¿Asumirías un trabajo así?","en":"Would you take on a job like that?"},
+   {"person":2,"es":"Nadie asumiría ese riesgo.","en":"Nobody would take that risk."},
+   {"person":3,"es":"Asumiríamos el costo si fuera necesario.","en":"We'd cover the cost if necessary."},
+   {"person":4,"es":"Ellos nunca asumirían la culpa.","en":"They would never take the blame."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"Mi hermano ha asumido muchas responsabilidades.","en":"My brother has taken on a lot of responsibilities."}
+  ],
+  "pluperfect": [
+   {"person":0,"es":"Había asumido que estabas de acuerdo.","en":"I had assumed you agreed."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":0,"es":"Yo no habría asumido nada.","en":"I wouldn't have assumed anything."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"Es hora de que asumas tus errores.","en":"It's time for you to own up to your mistakes."},
+   {"person":0,"es":"Mi familia espera que yo asuma el negocio.","en":"My family expects me to take over the business."},
+   {"person":2,"es":"Es importante que cada uno asuma su parte.","en":"It's important for everyone to do their part."},
+   {"person":3,"es":"Es justo que asumamos los gastos.","en":"It's fair for us to cover the costs."},
+   {"person":4,"es":"Ojalá que asuman la responsabilidad.","en":"Hopefully they'll take responsibility."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Todos esperaban que el hijo asumiera el negocio.","en":"Everyone expected the son to take over the business."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":1,"es":"Me alegra que hayas asumido el reto.","en":"I'm glad you've taken on the challenge."}
+  ],
+  "subjPluperfect": [
+   {"person":0,"es":"Si no hubiera asumido lo peor, no me habría asustado.","en":"If I hadn't assumed the worst, I wouldn't have gotten scared."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Asume tus errores y sigue adelante.","en":"Own your mistakes and move on."}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No asumas nada sin preguntar.","en":"Don't assume anything without asking."}
+  ]
+ },
+ "atacar": {
+  "present": [
+   {"person":2,"es":"El perro del vecino ataca a todos.","en":"The neighbor's dog attacks everyone."},
+   {"person":0,"es":"Yo no te ataco, solo digo la verdad.","en":"I'm not attacking you, I'm just telling the truth."},
+   {"person":1,"es":"Siempre me atacas cuando estás cansado.","en":"You always lash out at me when you're tired."},
+   {"person":3,"es":"Atacamos por la banda derecha.","en":"We attack down the right wing."},
+   {"person":4,"es":"Los mosquitos atacan al anochecer.","en":"The mosquitoes attack at dusk."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Un tiburón atacó a un surfista.","en":"A shark attacked a surfer."},
+   {"person":0,"es":"Ataqué el problema desde otro ángulo.","en":"I tackled the problem from another angle."},
+   {"person":1,"es":"¿Por qué lo atacaste así?","en":"Why did you attack him like that?"},
+   {"person":3,"es":"En el segundo tiempo atacamos sin parar.","en":"In the second half we attacked nonstop."},
+   {"person":4,"es":"Las abejas atacaron a los niños.","en":"The bees attacked the kids."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El gallo atacaba a cualquiera que entrara al patio.","en":"The rooster attacked anyone who came into the yard."},
+   {"person":0,"es":"Yo atacaba y mi hermano defendía.","en":"I played offense and my brother played defense."},
+   {"person":1,"es":"Tú atacabas a todos en los debates.","en":"You went after everyone in debates."},
+   {"person":3,"es":"Atacábamos con fuerza en cada partido.","en":"We attacked hard in every game."},
+   {"person":4,"es":"Los piratas atacaban los barcos en el Caribe.","en":"Pirates attacked ships in the Caribbean."}
+  ],
+  "future": [
+   {"person":3,"es":"Atacaremos desde el primer minuto.","en":"We'll attack from the first minute."},
+   {"person":0,"es":"Atacaré el problema mañana.","en":"I'll tackle the problem tomorrow."},
+   {"person":1,"es":"Atacarás por la izquierda.","en":"You'll attack down the left."},
+   {"person":2,"es":"El virus atacará a los más débiles.","en":"The virus will hit the weakest people."},
+   {"person":4,"es":"Las hormigas atacarán el azúcar si lo dejas abierto.","en":"The ants will go after the sugar if you leave it open."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo no atacaría a nadie por su opinión.","en":"I wouldn't attack anyone for their opinion."},
+   {"person":1,"es":"¿Atacarías o defenderías?","en":"Would you attack or defend?"},
+   {"person":2,"es":"Ese perro no atacaría a nadie.","en":"That dog wouldn't attack anyone."},
+   {"person":3,"es":"Atacaríamos más con otro entrenador.","en":"We'd attack more with another coach."},
+   {"person":4,"es":"Los lobos atacarían a las ovejas.","en":"The wolves would attack the sheep."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"Un virus ha atacado mi computadora.","en":"A virus has attacked my computer."}
+  ],
+  "pluperfect": [
+   {"person":4,"es":"Los mosquitos ya me habían atacado.","en":"The mosquitoes had already gotten me."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":2,"es":"El perro te habría atacado.","en":"The dog would have attacked you."}
+  ],
+  "subjPresent": [
+   {"person":2,"es":"Ten cuidado de que el perro no te ataque.","en":"Be careful the dog doesn't attack you."},
+   {"person":0,"es":"Es raro que yo ataque, prefiero defender.","en":"It's unusual for me to attack, I prefer to defend."},
+   {"person":1,"es":"No quiero que me ataques.","en":"I don't want you to attack me."},
+   {"person":3,"es":"El entrenador quiere que ataquemos más.","en":"The coach wants us to attack more."},
+   {"person":4,"es":"Es normal que las abejas ataquen si las molestas.","en":"It's normal for bees to attack if you bother them."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Temía que el perro me atacara.","en":"I was afraid the dog would attack me."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":2,"es":"Me sorprende que el perro te haya atacado.","en":"I'm surprised the dog attacked you."}
+  ],
+  "subjPluperfect": [
+   {"person":3,"es":"Si hubiéramos atacado más, habríamos ganado.","en":"If we had attacked more, we would have won."}
+  ],
+  "impAffirmative": [
+   {"person":4,"es":"¡Ataquen ahora!","en":"Attack now!"}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No ataques a tu hermano.","en":"Don't attack your brother."}
+  ]
+ },
+ "avisar": {
+  "present": [
+   {"person":0,"es":"Te aviso cuando llegue.","en":"I'll let you know when I get there."},
+   {"person":1,"es":"¿Me avisas si necesitas algo?","en":"Will you let me know if you need anything?"},
+   {"person":2,"es":"El conductor avisa antes de cada parada.","en":"The driver calls out before every stop."},
+   {"person":3,"es":"Siempre avisamos antes de visitar.","en":"We always call ahead before visiting."},
+   {"person":4,"es":"Los vecinos avisan cuando hay peligro.","en":"The neighbors warn us when there's danger."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Nadie me avisó de la reunión.","en":"Nobody told me about the meeting."},
+   {"person":0,"es":"Te avisé que iba a llover.","en":"I told you it was going to rain."},
+   {"person":1,"es":"¿Por qué no me avisaste?","en":"Why didn't you tell me?"},
+   {"person":3,"es":"Ayer avisamos a la policía.","en":"Yesterday we called the police."},
+   {"person":4,"es":"Me avisaron a última hora.","en":"They told me at the last minute."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El gallo nos avisaba que ya era de día.","en":"The rooster let us know it was morning."},
+   {"person":0,"es":"Yo siempre avisaba cuando llegaba tarde.","en":"I always let them know when I'd be late."},
+   {"person":1,"es":"Tú nunca avisabas si ibas a venir.","en":"You never let us know if you were coming."},
+   {"person":3,"es":"Avisábamos a los vecinos cuando había fiesta.","en":"We'd give the neighbors a heads-up when there was a party."},
+   {"person":4,"es":"Las sirenas avisaban de los huracanes.","en":"The sirens warned of hurricanes."}
+  ],
+  "future": [
+   {"person":0,"es":"Te avisaré si hay cambios.","en":"I'll let you know if there are any changes."},
+   {"person":1,"es":"Me avisarás cuando estés lista, ¿sí?","en":"You'll let me know when you're ready, okay?"},
+   {"person":2,"es":"La aerolínea avisará si hay retrasos.","en":"The airline will let us know if there are delays."},
+   {"person":3,"es":"Les avisaremos con tiempo.","en":"We'll let them know in advance."},
+   {"person":4,"es":"Te avisarán por correo.","en":"They'll let you know by email."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo te avisaría si supiera algo.","en":"I'd tell you if I knew anything."},
+   {"person":1,"es":"¿Me avisarías si te vas?","en":"Would you let me know if you leave?"},
+   {"person":2,"es":"Un buen amigo te avisaría.","en":"A good friend would warn you."},
+   {"person":3,"es":"Te avisaríamos, pero no tenemos tu número.","en":"We'd let you know, but we don't have your number."},
+   {"person":4,"es":"Ellos avisarían si hubiera peligro.","en":"They'd warn us if there were danger."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"El banco me ha avisado del pago.","en":"The bank has notified me about the payment."}
+  ],
+  "pluperfect": [
+   {"person":4,"es":"Ya nos habían avisado del corte de luz.","en":"They had already warned us about the power cut."}
+  ],
+  "futurePerfect": [
+   {"person":2,"es":"Tu hermano ya te habrá avisado.","en":"Your brother must have told you by now."}
+  ],
+  "conditionalPerfect": [
+   {"person":0,"es":"Yo te habría avisado.","en":"I would have told you."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"Quiero que me avises cuando llegues.","en":"I want you to let me know when you get there."},
+   {"person":0,"es":"¿Quieres que te avise mañana?","en":"Do you want me to let you know tomorrow?"},
+   {"person":2,"es":"Pídele a tu hermano que nos avise.","en":"Ask your brother to let us know."},
+   {"person":3,"es":"Es mejor que avisemos a la familia.","en":"We'd better tell the family."},
+   {"person":4,"es":"Ojalá que nos avisen a tiempo.","en":"Hopefully they'll tell us in time."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Le pedí al portero que me avisara.","en":"I asked the doorman to let me know."}
+  ],
+  "subjImperfectSe": [
+   {"person":4,"es":"Pedí que me avisasen de cualquier cambio.","en":"I asked them to let me know about any changes."}
+  ],
+  "subjPresentPerfect": [
+   {"person":1,"es":"Me alegra que me hayas avisado.","en":"I'm glad you told me."}
+  ],
+  "subjPluperfect": [
+   {"person":1,"es":"Si me hubieras avisado, te habría esperado.","en":"If you had told me, I would have waited for you."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Avisa cuando llegues.","en":"Let us know when you get there."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "bastar": {
+  "present": [
+   {"person":2,"es":"Basta con una cucharada.","en":"One spoonful is enough."},
+   {"person":4,"es":"Bastan dos horas para ver la ciudad.","en":"Two hours is enough to see the city."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Bastó una mirada para entender.","en":"One look was enough to understand."},
+   {"person":4,"es":"Bastaron cinco minutos para arreglarlo.","en":"Five minutes was enough to fix it."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Antes bastaba con un saludo.","en":"A greeting used to be enough."},
+   {"person":4,"es":"Le bastaban unas palabras para hacernos reír.","en":"A few words were all he needed to make us laugh."}
+  ],
+  "future": [
+   {"person":2,"es":"Bastará con llamar al llegar.","en":"Just calling when you get there will be enough."},
+   {"person":4,"es":"Bastarán tres sillas más.","en":"Three more chairs will be enough."}
+  ],
+  "conditional": [
+   {"person":2,"es":"¿Bastaría con cien dólares?","en":"Would a hundred dollars be enough?"},
+   {"person":4,"es":"Bastarían dos días para terminar.","en":"Two days would be enough to finish."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"No ha bastado con pedir perdón.","en":"Saying sorry hasn't been enough."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Nunca le había bastado tan poco.","en":"So little had never been enough for him."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":2,"es":"Habría bastado con una llamada.","en":"A phone call would have been enough."}
+  ],
+  "subjPresent": [
+   {"person":2,"es":"No creo que baste con eso.","en":"I don't think that's enough."},
+   {"person":4,"es":"Espero que basten las sillas.","en":"I hope there are enough chairs."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"No creía que bastara con estudiar una noche.","en":"I didn't think studying for one night would be enough."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":2,"es":"Espero que haya bastado la comida.","en":"I hope there was enough food."}
+  ],
+  "subjPluperfect": [
+   {"person":2,"es":"Si hubiera bastado con hablar, no habríamos ido a juicio.","en":"If talking had been enough, we wouldn't have gone to court."}
+  ],
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
+ },
+ "brillar": {
+  "present": [
+   {"person":2,"es":"El sol brilla mucho hoy.","en":"The sun is really bright today."},
+   {"person":1,"es":"Brillas cuando cantas.","en":"You shine when you sing."},
+   {"person":3,"es":"Cuando bailamos juntos, brillamos.","en":"When we dance together, we shine."},
+   {"person":4,"es":"Tus ojos brillan de alegría.","en":"Your eyes are shining with joy."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La luna brilló toda la noche.","en":"The moon shone all night."},
+   {"person":0,"es":"Brillé en mi primer partido con el equipo.","en":"I shone in my first game with the team."},
+   {"person":1,"es":"Brillaste en la obra de teatro.","en":"You shone in the play."},
+   {"person":3,"es":"Esa noche brillamos en el escenario.","en":"That night we shone on stage."},
+   {"person":4,"es":"Los fuegos artificiales brillaron sobre la bahía.","en":"The fireworks lit up the bay."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El mar brillaba bajo el sol.","en":"The sea was sparkling in the sun."},
+   {"person":1,"es":"Tú brillabas en todas las fiestas.","en":"You were the star of every party."},
+   {"person":4,"es":"Las estrellas brillaban sobre el desierto.","en":"The stars were shining over the desert."}
+  ],
+  "future": [
+   {"person":2,"es":"Mañana brillará el sol.","en":"The sun will shine tomorrow."},
+   {"person":1,"es":"Brillarás en tu nuevo trabajo.","en":"You'll shine in your new job."},
+   {"person":4,"es":"Las luces brillarán toda la Navidad.","en":"The lights will shine all through Christmas."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Con un poco de cera, el piso brillaría.","en":"With a little wax, the floor would shine."},
+   {"person":1,"es":"Brillarías en el escenario.","en":"You'd shine on stage."},
+   {"person":4,"es":"Esos zapatos brillarían con un poco de betún.","en":"Those shoes would shine with a bit of polish."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"El sol no ha brillado en toda la semana.","en":"The sun hasn't come out all week."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"La casa nunca había brillado tanto.","en":"The house had never been so spotless."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":1,"es":"Habrías brillado en ese papel.","en":"You would have shone in that role."}
+  ],
+  "subjPresent": [
+   {"person":2,"es":"Ojalá que brille el sol el día de la boda.","en":"Hopefully the sun will shine on the wedding day."},
+   {"person":1,"es":"Quiero que brilles en la entrevista.","en":"I want you to shine in the interview."},
+   {"person":4,"es":"Limpia las ventanas hasta que brillen.","en":"Clean the windows until they shine."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Pulí la mesa para que brillara.","en":"I polished the table so it would shine."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": [
+   {"person":2,"es":"Si hubiera brillado el sol, habríamos ido a la playa.","en":"If the sun had come out, we would have gone to the beach."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Sal y brilla.","en":"Go out there and shine."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "calcular": {
+  "present": [
+   {"person":0,"es":"Calculo que llegamos en una hora.","en":"I figure we'll get there in an hour."},
+   {"person":1,"es":"¿Calculas tú la propina?","en":"Will you work out the tip?"},
+   {"person":2,"es":"La aplicación calcula la ruta más rápida.","en":"The app works out the fastest route."},
+   {"person":3,"es":"Calculamos los gastos cada mes.","en":"We work out our expenses every month."},
+   {"person":4,"es":"Los ingenieros calculan el peso del puente.","en":"The engineers calculate the weight of the bridge."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El mesero calculó mal la cuenta.","en":"The waiter added up the bill wrong."},
+   {"person":0,"es":"Calculé mal el tiempo y llegué tarde.","en":"I misjudged the time and arrived late."},
+   {"person":1,"es":"¿Calculaste cuánto nos costará?","en":"Did you figure out how much it'll cost us?"},
+   {"person":3,"es":"Ayer calculamos el presupuesto del viaje.","en":"Yesterday we worked out the budget for the trip."},
+   {"person":4,"es":"Los expertos calcularon los daños.","en":"The experts estimated the damage."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo calculaba todo de cabeza.","en":"My grandfather did all his math in his head."},
+   {"person":0,"es":"Yo calculaba los precios con una calculadora vieja.","en":"I worked out prices on an old calculator."},
+   {"person":1,"es":"Tú calculabas cada centavo.","en":"You counted every penny."},
+   {"person":3,"es":"Calculábamos la distancia por las horas de viaje.","en":"We'd estimate the distance by the hours of travel."},
+   {"person":4,"es":"Los marineros calculaban la posición con las estrellas.","en":"Sailors worked out their position by the stars."}
+  ],
+  "future": [
+   {"person":3,"es":"Calcularemos el costo mañana.","en":"We'll work out the cost tomorrow."},
+   {"person":0,"es":"Calcularé cuánta pintura necesitamos.","en":"I'll figure out how much paint we need."},
+   {"person":1,"es":"Calcularás el área del triángulo.","en":"You'll calculate the area of the triangle."},
+   {"person":2,"es":"El contador calculará los impuestos.","en":"The accountant will work out the taxes."},
+   {"person":4,"es":"Los científicos calcularán la fecha exacta.","en":"The scientists will calculate the exact date."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo calcularía unas tres horas.","en":"I'd figure about three hours."},
+   {"person":1,"es":"¿Cuánto calcularías para la comida?","en":"How much would you budget for food?"},
+   {"person":2,"es":"Un buen arquitecto calcularía todo dos veces.","en":"A good architect would calculate everything twice."},
+   {"person":3,"es":"Calcularíamos mejor con más datos.","en":"We'd calculate better with more data."},
+   {"person":4,"es":"Ellos calcularían el precio en dólares.","en":"They'd work out the price in dollars."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"He calculado que nos falta dinero.","en":"I've worked out that we're short on money."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"El arquitecto había calculado mal.","en":"The architect had miscalculated."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":0,"es":"Yo habría calculado más tiempo.","en":"I would have allowed more time."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"Quiero que calcules cuánto gastamos.","en":"I want you to work out how much we spent."},
+   {"person":0,"es":"¿Quieres que calcule la propina?","en":"Do you want me to work out the tip?"},
+   {"person":2,"es":"Es importante que el ingeniero calcule bien.","en":"It's important for the engineer to calculate carefully."},
+   {"person":3,"es":"Es mejor que calculemos antes de comprar.","en":"It's better if we do the math before buying."},
+   {"person":4,"es":"Pide que te calculen el precio final.","en":"Ask them to work out the final price for you."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Le pedí al contador que calculara los impuestos.","en":"I asked the accountant to work out the taxes."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": [
+   {"person":0,"es":"Si hubiera calculado bien, habría llegado a tiempo.","en":"If I had calculated right, I would have arrived on time."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Calcula cuánto te debo.","en":"Work out how much I owe you."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "causar": {
+  "present": [
+   {"person":2,"es":"El humo causa problemas respiratorios.","en":"Smoke causes breathing problems."},
+   {"person":0,"es":"Perdón, siempre causo problemas.","en":"Sorry, I always cause trouble."},
+   {"person":1,"es":"Causas muy buena impresión.","en":"You make a very good impression."},
+   {"person":3,"es":"Con tanto ruido causamos molestias a los vecinos.","en":"With so much noise we're disturbing the neighbors."},
+   {"person":4,"es":"Los huracanes causan mucho daño.","en":"Hurricanes cause a lot of damage."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La lluvia causó inundaciones.","en":"The rain caused flooding."},
+   {"person":0,"es":"Causé un accidente sin querer.","en":"I caused an accident by mistake."},
+   {"person":1,"es":"Causaste muy buena impresión en mis padres.","en":"You made a very good impression on my parents."},
+   {"person":3,"es":"Ayer causamos un escándalo en el restaurante.","en":"Yesterday we caused a scene at the restaurant."},
+   {"person":4,"es":"Sus palabras causaron mucha risa.","en":"His words got a lot of laughs."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El tráfico causaba retrasos todos los días.","en":"The traffic caused delays every day."},
+   {"person":0,"es":"De niño, yo causaba problemas en clase.","en":"As a kid, I caused trouble in class."},
+   {"person":1,"es":"Tú causabas sensación en las fiestas.","en":"You were a sensation at parties."},
+   {"person":3,"es":"Causábamos mucho ruido en el patio.","en":"We made a lot of noise in the yard."},
+   {"person":4,"es":"Los mosquitos causaban enfermedades.","en":"The mosquitoes spread diseases."}
+  ],
+  "future": [
+   {"person":2,"es":"La tormenta causará apagones.","en":"The storm will cause blackouts."},
+   {"person":0,"es":"No causaré más problemas.","en":"I won't cause any more trouble."},
+   {"person":1,"es":"Causarás buena impresión con ese traje.","en":"You'll make a good impression in that suit."},
+   {"person":3,"es":"No causaremos molestias.","en":"We won't be any bother."},
+   {"person":4,"es":"Las obras causarán mucho tráfico.","en":"The construction will cause a lot of traffic."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Un error así causaría un desastre.","en":"A mistake like that would cause a disaster."},
+   {"person":0,"es":"Yo no causaría problemas.","en":"I wouldn't cause trouble."},
+   {"person":1,"es":"Causarías un escándalo con ese vestido.","en":"You'd cause a scandal in that dress."},
+   {"person":3,"es":"Causaríamos menos daño con otro método.","en":"We'd cause less damage with another method."},
+   {"person":4,"es":"Esas medidas causarían protestas.","en":"Those measures would cause protests."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"La sequía ha causado muchos problemas.","en":"The drought has caused a lot of problems."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"El viento había causado daños en el techo.","en":"The wind had damaged the roof."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":2,"es":"Esa noticia habría causado pánico.","en":"That news would have caused panic."}
+  ],
+  "subjPresent": [
+   {"person":2,"es":"Espero que la lluvia no cause problemas.","en":"I hope the rain doesn't cause problems."},
+   {"person":0,"es":"No quiero ser yo quien cause problemas.","en":"I don't want to be the one who causes trouble."},
+   {"person":1,"es":"Ten cuidado, no quiero que causes un accidente.","en":"Be careful, I don't want you to cause an accident."},
+   {"person":3,"es":"Es mejor que no causemos ruido.","en":"We'd better not make any noise."},
+   {"person":4,"es":"Es raro que estas plantas causen alergia.","en":"It's unusual for these plants to cause allergies."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Nadie esperaba que la noticia causara tanto revuelo.","en":"Nobody expected the news to cause such a stir."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":2,"es":"Siento que mi comentario haya causado problemas.","en":"I'm sorry my comment caused problems."}
+  ],
+  "subjPluperfect": [
+   {"person":2,"es":"Si el accidente hubiera causado heridos, sería peor.","en":"If the accident had caused injuries, it would be worse."}
+  ],
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No causes problemas en la escuela.","en":"Don't cause trouble at school."}
+  ]
+ },
+ "cobrar": {
+  "present": [
+   {"person":2,"es":"Este taxista cobra demasiado.","en":"This taxi driver charges too much."},
+   {"person":0,"es":"Cobro los viernes.","en":"I get paid on Fridays."},
+   {"person":1,"es":"¿Cuánto cobras por clase?","en":"How much do you charge per class?"},
+   {"person":3,"es":"No cobramos la entrega.","en":"We don't charge for delivery."},
+   {"person":4,"es":"En ese hotel cobran el desayuno aparte.","en":"At that hotel they charge separately for breakfast."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El mecánico me cobró una fortuna.","en":"The mechanic charged me a fortune."},
+   {"person":0,"es":"Ayer cobré mi primer sueldo.","en":"Yesterday I got my first paycheck."},
+   {"person":1,"es":"¿Le cobraste al cliente?","en":"Did you charge the customer?"},
+   {"person":3,"es":"El mes pasado cobramos el seguro.","en":"Last month we collected the insurance."},
+   {"person":4,"es":"Me cobraron dos veces.","en":"They charged me twice."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo cobraba la pensión cada mes.","en":"My grandfather collected his pension every month."},
+   {"person":0,"es":"Yo cobraba poco al principio.","en":"I charged very little at first."},
+   {"person":1,"es":"Tú cobrabas en efectivo.","en":"You used to take cash."},
+   {"person":3,"es":"Cobrábamos la entrada a un dólar.","en":"We charged a dollar for admission."},
+   {"person":4,"es":"Los buses cobraban menos antes.","en":"The buses used to charge less."}
+  ],
+  "future": [
+   {"person":0,"es":"Cobraré el lunes.","en":"I'll get paid on Monday."},
+   {"person":1,"es":"Cobrarás más con la experiencia.","en":"You'll earn more with experience."},
+   {"person":2,"es":"El banco cobrará una comisión.","en":"The bank will charge a fee."},
+   {"person":3,"es":"No te cobraremos nada.","en":"We won't charge you anything."},
+   {"person":4,"es":"Te cobrarán la maleta extra.","en":"They'll charge you for the extra suitcase."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo cobraría más por ese trabajo.","en":"I'd charge more for that job."},
+   {"person":1,"es":"¿Cuánto cobrarías por pintar la casa?","en":"How much would you charge to paint the house?"},
+   {"person":2,"es":"Un buen abogado cobraría el doble.","en":"A good lawyer would charge twice as much."},
+   {"person":3,"es":"Le cobraríamos menos si pagara en efectivo.","en":"We'd charge you less if you paid in cash."},
+   {"person":4,"es":"Ellos cobrarían por hora.","en":"They'd charge by the hour."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"Todavía no he cobrado.","en":"I still haven't been paid."}
+  ],
+  "pluperfect": [
+   {"person":4,"es":"Ya me habían cobrado la cuenta.","en":"They had already charged me for the bill."}
+  ],
+  "futurePerfect": [
+   {"person":2,"es":"Para el viernes ya habrá cobrado.","en":"By Friday he'll have been paid."}
+  ],
+  "conditionalPerfect": [
+   {"person":2,"es":"Otro mecánico te habría cobrado más.","en":"Another mechanic would have charged you more."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"No quiero que me cobres nada.","en":"I don't want you to charge me anything."},
+   {"person":0,"es":"¿Quieres que te cobre ahora?","en":"Do you want me to charge you now?"},
+   {"person":2,"es":"Es injusto que el banco cobre tanto.","en":"It's unfair for the bank to charge so much."},
+   {"person":3,"es":"Es mejor que cobremos por adelantado.","en":"It's better if we charge in advance."},
+   {"person":4,"es":"Pregunta antes de que te cobren.","en":"Ask before they charge you."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Le pedí al taxista que me cobrara menos.","en":"I asked the taxi driver to charge me less."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":4,"es":"Me molesta que me hayan cobrado de más.","en":"It bothers me that they overcharged me."}
+  ],
+  "subjPluperfect": [
+   {"person":0,"es":"Si hubiera cobrado a tiempo, habría pagado el alquiler.","en":"If I had been paid on time, I would have paid the rent."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Cobra lo justo.","en":"Charge a fair price."}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No me cobres el café.","en":"Don't charge me for the coffee."}
+  ]
+ },
+ "colocar": {
+  "present": [
+   {"person":2,"es":"Mi madre coloca flores en la mesa.","en":"My mother puts flowers on the table."},
+   {"person":0,"es":"Coloco las llaves siempre en el mismo lugar.","en":"I always put my keys in the same place."},
+   {"person":1,"es":"¿Dónde colocas los platos?","en":"Where do you put the plates?"},
+   {"person":3,"es":"Colocamos el árbol de Navidad en diciembre.","en":"We put up the Christmas tree in December."},
+   {"person":4,"es":"Los obreros colocan los ladrillos.","en":"The workers lay the bricks."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El técnico colocó la antena en el techo.","en":"The technician put the antenna on the roof."},
+   {"person":0,"es":"Coloqué los libros en orden.","en":"I put the books in order."},
+   {"person":1,"es":"¿Dónde colocaste el cuadro?","en":"Where did you hang the painting?"},
+   {"person":3,"es":"Ayer colocamos las cortinas nuevas.","en":"Yesterday we put up the new curtains."},
+   {"person":4,"es":"Colocaron una cámara en la entrada.","en":"They put a camera at the entrance."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuela colocaba velas en el altar.","en":"My grandmother placed candles on the altar."},
+   {"person":0,"es":"Yo colocaba los zapatos debajo de la cama.","en":"I'd put my shoes under the bed."},
+   {"person":1,"es":"Tú colocabas las sillas para la reunión.","en":"You'd set up the chairs for the meeting."},
+   {"person":3,"es":"Colocábamos los regalos debajo del árbol.","en":"We'd put the presents under the tree."},
+   {"person":4,"es":"Los vendedores colocaban la fruta en cajas.","en":"The vendors put the fruit in boxes."}
+  ],
+  "future": [
+   {"person":0,"es":"Colocaré la foto en la sala.","en":"I'll put the photo in the living room."},
+   {"person":1,"es":"Colocarás los cubiertos a la izquierda.","en":"You'll put the silverware on the left."},
+   {"person":2,"es":"La ciudad colocará más semáforos.","en":"The city will put up more traffic lights."},
+   {"person":3,"es":"Colocaremos las mesas en el patio.","en":"We'll set up the tables in the yard."},
+   {"person":4,"es":"Los electricistas colocarán las luces mañana.","en":"The electricians will put the lights in tomorrow."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo colocaría el sofá junto a la ventana.","en":"I'd put the sofa by the window."},
+   {"person":1,"es":"¿Dónde colocarías la televisión?","en":"Where would you put the TV?"},
+   {"person":2,"es":"Un decorador colocaría los cuadros más arriba.","en":"A decorator would hang the pictures higher."},
+   {"person":3,"es":"Colocaríamos más plantas si hubiera espacio.","en":"We'd put in more plants if there were room."},
+   {"person":4,"es":"Ellos colocarían un letrero en la puerta.","en":"They'd put a sign on the door."}
+  ],
+  "presentPerfect": [
+   {"person":4,"es":"Han colocado una cerca alrededor del parque.","en":"They've put up a fence around the park."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Mi madre ya había colocado los platos.","en":"My mother had already set out the plates."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":0,"es":"Yo lo habría colocado en otro lugar.","en":"I would have put it somewhere else."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"Quiero que coloques los vasos en la mesa.","en":"I want you to put the glasses on the table."},
+   {"person":0,"es":"¿Dónde quieres que coloque esto?","en":"Where do you want me to put this?"},
+   {"person":2,"es":"Es importante que el técnico coloque bien el cable.","en":"It's important for the technician to install the cable properly."},
+   {"person":3,"es":"Es mejor que coloquemos el árbol en la esquina.","en":"It's better if we put the tree in the corner."},
+   {"person":4,"es":"Pide que coloquen un semáforo aquí.","en":"Ask them to put a traffic light here."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Le pedí al pintor que colocara los cuadros.","en":"I asked the painter to hang the pictures."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": [
+   {"person":4,"es":"Si hubieran colocado una señal, no habría pasado el accidente.","en":"If they had put up a sign, the accident wouldn't have happened."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Coloca los platos en la mesa.","en":"Put the plates on the table."}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No coloques nada encima del televisor.","en":"Don't put anything on top of the TV."}
+  ]
+ },
+ "comentar": {
+  "present": [
+   {"person":2,"es":"Mi jefe comenta todo lo que hago.","en":"My boss comments on everything I do."},
+   {"person":0,"es":"Te comento que mañana no vengo.","en":"Just so you know, I'm not coming tomorrow."},
+   {"person":1,"es":"Siempre comentas las fotos de todos.","en":"You always comment on everyone's photos."},
+   {"person":3,"es":"Comentamos el partido en el desayuno.","en":"We talk about the game at breakfast."},
+   {"person":4,"es":"Los vecinos comentan lo que pasó.","en":"The neighbors are talking about what happened."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Mi hermana me comentó que se va a casar.","en":"My sister mentioned she's getting married."},
+   {"person":0,"es":"Le comenté la idea a mi jefe.","en":"I mentioned the idea to my boss."},
+   {"person":1,"es":"¿Le comentaste algo a tu mamá?","en":"Did you mention anything to your mom?"},
+   {"person":3,"es":"Ayer comentamos la noticia en clase.","en":"Yesterday we discussed the news in class."},
+   {"person":4,"es":"Me comentaron que el restaurante es bueno.","en":"They told me the restaurant is good."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi padre comentaba las noticias en voz alta.","en":"My father would comment on the news out loud."},
+   {"person":0,"es":"Yo comentaba los partidos con mi abuelo.","en":"I'd talk over the games with my grandfather."},
+   {"person":1,"es":"Tú comentabas cada escena de la telenovela.","en":"You'd comment on every scene of the soap opera."},
+   {"person":3,"es":"Comentábamos los chismes del barrio.","en":"We'd talk about the neighborhood gossip."},
+   {"person":4,"es":"Los profesores comentaban nuestros trabajos.","en":"The teachers commented on our work."}
+  ],
+  "future": [
+   {"person":0,"es":"Le comentaré tu idea al director.","en":"I'll mention your idea to the director."},
+   {"person":1,"es":"Comentarás el libro en clase.","en":"You'll discuss the book in class."},
+   {"person":2,"es":"El periodista comentará el partido.","en":"The journalist will commentate on the game."},
+   {"person":3,"es":"Comentaremos el tema después.","en":"We'll talk about it later."},
+   {"person":4,"es":"Todos comentarán tu nuevo corte.","en":"Everyone will comment on your new haircut."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo no comentaría nada todavía.","en":"I wouldn't say anything yet."},
+   {"person":1,"es":"¿Le comentarías esto a tu jefe?","en":"Would you mention this to your boss?"},
+   {"person":2,"es":"Mi madre lo comentaría con todo el barrio.","en":"My mother would tell the whole neighborhood."},
+   {"person":3,"es":"Lo comentaríamos con calma en casa.","en":"We'd talk it over calmly at home."},
+   {"person":4,"es":"Ellos comentarían cualquier cosa.","en":"They'd comment on anything."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"Mi profesor ha comentado mi ensayo.","en":"My teacher has commented on my essay."}
+  ],
+  "pluperfect": [
+   {"person":4,"es":"Ya me habían comentado algo.","en":"They had already mentioned something to me."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":0,"es":"Yo no lo habría comentado.","en":"I wouldn't have mentioned it."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"No quiero que comentes esto con nadie.","en":"I don't want you to mention this to anyone."},
+   {"person":0,"es":"¿Quieres que le comente algo a tu papá?","en":"Do you want me to mention anything to your dad?"},
+   {"person":2,"es":"Espero que nadie comente mis fotos.","en":"I hope nobody comments on my photos."},
+   {"person":3,"es":"Es mejor que no comentemos nada.","en":"We'd better not say anything."},
+   {"person":4,"es":"No me gusta que comenten mi vida.","en":"I don't like people talking about my life."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Le pedí que no comentara nada.","en":"I asked him not to mention anything."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":2,"es":"Me molesta que mi hermana lo haya comentado.","en":"It bothers me that my sister mentioned it."}
+  ],
+  "subjPluperfect": [
+   {"person":1,"es":"Si me lo hubieras comentado, te habría ayudado.","en":"If you had mentioned it to me, I would have helped you."}
+  ],
+  "impAffirmative": [
+   {"person":4,"es":"Comenten la lectura en grupos.","en":"Discuss the reading in groups."}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No comentes nada en la cena.","en":"Don't say anything at dinner."}
+  ]
+ },
+ "comparar": {
+  "present": [
+   {"person":2,"es":"Mi madre siempre me compara con mi hermana.","en":"My mother always compares me to my sister."},
+   {"person":0,"es":"Comparo precios antes de comprar.","en":"I compare prices before buying."},
+   {"person":1,"es":"Siempre comparas tu vida con la de otros.","en":"You always compare your life with other people's."},
+   {"person":3,"es":"Comparamos las dos ofertas.","en":"We're comparing the two offers."},
+   {"person":4,"es":"Los críticos comparan su música con la de Juan Luis Guerra.","en":"Critics compare his music to Juan Luis Guerra's."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El profesor comparó los dos poemas.","en":"The teacher compared the two poems."},
+   {"person":0,"es":"Comparé tres teléfonos antes de elegir.","en":"I compared three phones before choosing."},
+   {"person":1,"es":"¿Comparaste los precios?","en":"Did you compare the prices?"},
+   {"person":3,"es":"Ayer comparamos fotos de cuando éramos niños.","en":"Yesterday we compared photos from when we were kids."},
+   {"person":4,"es":"Los periodistas compararon a los dos candidatos.","en":"The journalists compared the two candidates."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuela comparaba todo con su pueblo.","en":"My grandmother compared everything to her hometown."},
+   {"person":0,"es":"Yo comparaba mis notas con las de mi hermano.","en":"I compared my grades with my brother's."},
+   {"person":1,"es":"Tú comparabas cada novio con el anterior.","en":"You compared every boyfriend to the last one."},
+   {"person":3,"es":"Comparábamos las ciudades que visitábamos.","en":"We compared the cities we visited."},
+   {"person":4,"es":"Los maestros nos comparaban con nuestros hermanos.","en":"The teachers compared us with our older siblings."}
+  ],
+  "future": [
+   {"person":3,"es":"Compararemos los resultados mañana.","en":"We'll compare the results tomorrow."},
+   {"person":0,"es":"Compararé los precios en internet.","en":"I'll compare prices online."},
+   {"person":1,"es":"Compararás las dos versiones.","en":"You'll compare the two versions."},
+   {"person":2,"es":"El estudio comparará las dos ciudades.","en":"The study will compare the two cities."},
+   {"person":4,"es":"Todos te compararán con tu padre.","en":"Everyone will compare you to your father."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo no compararía esas dos cosas.","en":"I wouldn't compare those two things."},
+   {"person":1,"es":"¿Con qué lo compararías?","en":"What would you compare it to?"},
+   {"person":2,"es":"Nadie compararía ese restaurante con la comida de mi madre.","en":"Nobody would compare that restaurant to my mother's cooking."},
+   {"person":3,"es":"Compararíamos más opciones con tiempo.","en":"We'd compare more options with more time."},
+   {"person":4,"es":"Ellos compararían todo con su país.","en":"They'd compare everything to their country."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"He comparado los dos contratos.","en":"I've compared the two contracts."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Nadie había comparado los datos.","en":"Nobody had compared the data."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":0,"es":"Yo habría comparado más precios.","en":"I would have compared more prices."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"No me gusta que me compares con tu ex.","en":"I don't like you comparing me to your ex."},
+   {"person":0,"es":"No es justo que yo compare a mis hijos.","en":"It isn't fair for me to compare my kids."},
+   {"person":2,"es":"Es normal que un niño se compare con sus amigos.","en":"It's normal for a child to compare himself to his friends."},
+   {"person":3,"es":"Es mejor que comparemos varias opciones.","en":"It's better if we compare several options."},
+   {"person":4,"es":"No quiero que comparen mi trabajo con el suyo.","en":"I don't want them comparing my work to his."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"La maestra pidió que cada alumno comparara los dos textos.","en":"The teacher asked each student to compare the two texts."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": [
+   {"person":0,"es":"Si hubiera comparado precios, habría ahorrado.","en":"If I had compared prices, I would have saved money."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Compara los precios antes de comprar.","en":"Compare prices before you buy."}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No compares a tus hijos.","en":"Don't compare your kids."}
+  ]
+ },
+ "completar": {
+  "present": [
+   {"person":2,"es":"El álbum se completa con esta foto.","en":"This photo completes the album."},
+   {"person":0,"es":"Completo el formulario en línea.","en":"I fill out the form online."},
+   {"person":1,"es":"¿Completas tú las palabras que faltan?","en":"Will you fill in the missing words?"},
+   {"person":3,"es":"Completamos el equipo con un portero nuevo.","en":"We're completing the team with a new goalkeeper."},
+   {"person":4,"es":"Los alumnos completan la tarea en clase.","en":"The students finish the assignment in class."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Mi hijo completó el rompecabezas solo.","en":"My son finished the puzzle by himself."},
+   {"person":0,"es":"Completé la carrera en dos horas.","en":"I finished the race in two hours."},
+   {"person":1,"es":"¿Completaste el formulario?","en":"Did you fill out the form?"},
+   {"person":3,"es":"Ayer completamos el álbum de figuritas.","en":"Yesterday we finished the sticker album."},
+   {"person":4,"es":"Los obreros completaron la obra a tiempo.","en":"The workers finished the job on time."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo completaba el crucigrama cada mañana.","en":"My grandfather did the crossword every morning."},
+   {"person":0,"es":"Yo completaba los ejercicios en el bus.","en":"I finished the exercises on the bus."},
+   {"person":1,"es":"Tú completabas mis frases.","en":"You used to finish my sentences."},
+   {"person":3,"es":"Completábamos la colección de estampillas juntos.","en":"We worked on the stamp collection together."},
+   {"person":4,"es":"Los niños completaban los dibujos con colores.","en":"The kids colored in the drawings."}
+  ],
+  "future": [
+   {"person":3,"es":"Completaremos el proyecto en junio.","en":"We'll finish the project in June."},
+   {"person":0,"es":"Completaré los papeles mañana.","en":"I'll fill out the paperwork tomorrow."},
+   {"person":1,"es":"Completarás el curso en seis meses.","en":"You'll complete the course in six months."},
+   {"person":2,"es":"Este jugador completará el equipo.","en":"This player will round out the team."},
+   {"person":4,"es":"Los estudiantes completarán sus estudios en diciembre.","en":"The students will finish their studies in December."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo completaría la colección con ese disco.","en":"I'd complete the collection with that record."},
+   {"person":1,"es":"¿Completarías el maratón?","en":"Would you finish the marathon?"},
+   {"person":2,"es":"Un postre completaría la cena.","en":"A dessert would round off the dinner."},
+   {"person":3,"es":"Completaríamos el trabajo con más tiempo.","en":"We'd finish the job with more time."},
+   {"person":4,"es":"Ellos completarían la obra en un mes.","en":"They'd finish the construction in a month."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"He completado todos los niveles.","en":"I've completed all the levels."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Mi hermana ya había completado la solicitud.","en":"My sister had already filled out the application."}
+  ],
+  "futurePerfect": [
+   {"person":3,"es":"Para el viernes habremos completado la mudanza.","en":"By Friday we'll have finished the move."}
+  ],
+  "conditionalPerfect": [
+   {"person":4,"es":"Con más ayuda, habrían completado la obra.","en":"With more help, they would have finished the construction."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"Es necesario que completes este formulario.","en":"You need to fill out this form."},
+   {"person":0,"es":"Mi jefe quiere que yo complete el informe hoy.","en":"My boss wants me to finish the report today."},
+   {"person":2,"es":"Espero que mi hijo complete sus estudios.","en":"I hope my son finishes his studies."},
+   {"person":3,"es":"Es importante que completemos todos los pasos.","en":"It's important for us to complete every step."},
+   {"person":4,"es":"Pide que completen la solicitud.","en":"Ask them to fill out the application."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"El maestro pidió que cada uno completara la frase.","en":"The teacher asked everyone to complete the sentence."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":1,"es":"Me alegra que hayas completado el curso.","en":"I'm glad you've completed the course."}
+  ],
+  "subjPluperfect": [
+   {"person":0,"es":"Si hubiera completado el formulario, me habrían dado la beca.","en":"If I had filled out the form, they would have given me the scholarship."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Completa las frases con el verbo correcto.","en":"Complete the sentences with the correct verb."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "comunicar": {
+  "present": [
+   {"person":2,"es":"Mi hijo comunica muy bien sus ideas.","en":"My son communicates his ideas really well."},
+   {"person":0,"es":"Les comunico que la reunión se cancela.","en":"I'm letting you know the meeting is canceled."},
+   {"person":1,"es":"Te comunicas bien con las manos.","en":"You communicate well with your hands."},
+   {"person":3,"es":"Comunicamos los resultados por correo.","en":"We send out the results by email."},
+   {"person":4,"es":"Las redes comunican a la gente.","en":"Social media connects people."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La empresa comunicó los cambios.","en":"The company announced the changes."},
+   {"person":0,"es":"Le comuniqué mi decisión a mi jefe.","en":"I told my boss my decision."},
+   {"person":1,"es":"¿Le comunicaste la noticia a tu familia?","en":"Did you tell your family the news?"},
+   {"person":3,"es":"Ayer comunicamos la fecha a los invitados.","en":"Yesterday we let the guests know the date."},
+   {"person":4,"es":"Me comunicaron que no había vuelo.","en":"They told me there was no flight."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Un puente comunicaba los dos pueblos.","en":"A bridge connected the two towns."},
+   {"person":0,"es":"Yo me comunicaba con mi abuela por cartas.","en":"I kept in touch with my grandmother by letter."},
+   {"person":1,"es":"Tú te comunicabas con señas.","en":"You communicated with signs."},
+   {"person":3,"es":"Nos comunicábamos por radio.","en":"We communicated by radio."},
+   {"person":4,"es":"Los túneles comunicaban las casas.","en":"The tunnels connected the houses."}
+  ],
+  "future": [
+   {"person":2,"es":"El nuevo tren comunicará las dos ciudades.","en":"The new train will connect the two cities."},
+   {"person":0,"es":"Te comunicaré la respuesta mañana.","en":"I'll give you the answer tomorrow."},
+   {"person":1,"es":"Comunicarás la noticia con calma.","en":"You'll break the news calmly."},
+   {"person":3,"es":"Les comunicaremos el horario por correo.","en":"We'll send you the schedule by email."},
+   {"person":4,"es":"Los médicos comunicarán los resultados a la familia.","en":"The doctors will give the results to the family."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo comunicaría la noticia en persona.","en":"I'd break the news in person."},
+   {"person":1,"es":"¿Cómo comunicarías algo así?","en":"How would you communicate something like that?"},
+   {"person":2,"es":"Una carretera comunicaría el pueblo con la ciudad.","en":"A road would connect the town with the city."},
+   {"person":3,"es":"Nos comunicaríamos mejor con un grupo de chat.","en":"We'd communicate better with a group chat."},
+   {"person":4,"es":"Ellos comunicarían los cambios a tiempo.","en":"They'd announce the changes in time."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"El colegio nos ha comunicado los horarios.","en":"The school has sent us the schedules."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Nadie nos había comunicado nada.","en":"Nobody had told us anything."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":0,"es":"Yo lo habría comunicado antes.","en":"I would have announced it sooner."}
+  ],
+  "subjPresent": [
+   {"person":2,"es":"Esperamos que la empresa comunique los cambios.","en":"We hope the company announces the changes."},
+   {"person":0,"es":"¿Quieres que yo les comunique la noticia?","en":"Do you want me to tell them the news?"},
+   {"person":1,"es":"Es importante que comuniques lo que sientes.","en":"It's important for you to say what you feel."},
+   {"person":3,"es":"Es mejor que nos comuniquemos por mensaje.","en":"It's better if we keep in touch by text."},
+   {"person":4,"es":"Ojalá que nos comuniquen pronto la respuesta.","en":"Hopefully they'll give us the answer soon."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Pedí que el médico me comunicara los resultados.","en":"I asked the doctor to tell me the results."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": [
+   {"person":4,"es":"Si nos lo hubieran comunicado, no habríamos venido.","en":"If they had told us, we wouldn't have come."}
+  ],
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
+ },
+ "confesar": {
+  "present": [
+   {"person":0,"es":"Te confieso que tengo miedo.","en":"I'll admit I'm scared."},
+   {"person":1,"es":"¿Confiesas que fuiste tú?","en":"Do you admit it was you?"},
+   {"person":2,"es":"El ladrón confiesa todo.","en":"The thief confesses everything."},
+   {"person":3,"es":"Confesamos que no leímos el libro.","en":"We admit we didn't read the book."},
+   {"person":4,"es":"Los niños nunca confiesan quién rompió el vaso.","en":"The kids never own up to who broke the glass."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El sospechoso confesó el crimen.","en":"The suspect confessed to the crime."},
+   {"person":0,"es":"Le confesé mis sentimientos.","en":"I told her how I felt."},
+   {"person":1,"es":"¿Le confesaste la verdad?","en":"Did you tell him the truth?"},
+   {"person":3,"es":"Al final confesamos que habíamos sido nosotros.","en":"In the end we admitted it had been us."},
+   {"person":4,"es":"Mis padres me confesaron que no les gustaba mi novio.","en":"My parents admitted they didn't like my boyfriend."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuela se confesaba cada sábado.","en":"My grandmother went to confession every Saturday."},
+   {"person":0,"es":"Yo siempre confesaba mis travesuras.","en":"I always owned up to my mischief."},
+   {"person":1,"es":"Tú nunca confesabas nada.","en":"You never admitted anything."},
+   {"person":3,"es":"Confesábamos nuestros secretos en el recreo.","en":"We'd tell each other our secrets at recess."},
+   {"person":4,"es":"Los niños confesaban sus pecados antes de la comunión.","en":"The children confessed their sins before Communion."}
+  ],
+  "future": [
+   {"person":2,"es":"Tarde o temprano confesará.","en":"Sooner or later he'll confess."},
+   {"person":0,"es":"Nunca confesaré dónde escondí el regalo.","en":"I'll never reveal where I hid the gift."},
+   {"person":1,"es":"Me confesarás la verdad, ¿no?","en":"You'll tell me the truth, won't you?"},
+   {"person":3,"es":"Confesaremos todo mañana.","en":"We'll confess everything tomorrow."},
+   {"person":4,"es":"Los testigos confesarán lo que vieron.","en":"The witnesses will admit what they saw."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo nunca confesaría algo así.","en":"I would never confess something like that."},
+   {"person":1,"es":"¿Le confesarías tu amor?","en":"Would you confess your love to her?"},
+   {"person":2,"es":"Ningún niño confesaría eso.","en":"No kid would admit that."},
+   {"person":3,"es":"Lo confesaríamos si nos preguntaran.","en":"We'd admit it if they asked us."},
+   {"person":4,"es":"Ellos no confesarían ni bajo presión.","en":"They wouldn't confess even under pressure."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"El acusado ha confesado.","en":"The accused has confessed."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Mi amigo ya me había confesado su secreto.","en":"My friend had already told me his secret."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":0,"es":"Yo lo habría confesado todo.","en":"I would have confessed everything."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"Quiero que me confieses la verdad.","en":"I want you to tell me the truth."},
+   {"person":0,"es":"No esperes que yo confiese nada.","en":"Don't expect me to confess anything."},
+   {"person":2,"es":"Es difícil que el acusado confiese.","en":"It's unlikely the accused will confess."},
+   {"person":3,"es":"Es mejor que confesemos ahora.","en":"We'd better confess now."},
+   {"person":4,"es":"Ojalá que confiesen quién fue.","en":"Hopefully they'll admit who it was."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"La policía quería que el sospechoso confesara.","en":"The police wanted the suspect to confess."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":1,"es":"Me alegra que me hayas confesado la verdad.","en":"I'm glad you told me the truth."}
+  ],
+  "subjPluperfect": [
+   {"person":2,"es":"Si hubiera confesado antes, la pena sería menor.","en":"If he had confessed earlier, the sentence would be lighter."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Confiesa, ¿fuiste tú?","en":"Come on, admit it, was it you?"}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "confirmar": {
+  "present": [
+   {"person":0,"es":"Te confirmo la reserva mañana.","en":"I'll confirm the reservation tomorrow."},
+   {"person":1,"es":"¿Me confirmas la hora?","en":"Can you confirm the time?"},
+   {"person":2,"es":"El médico confirma el diagnóstico.","en":"The doctor confirms the diagnosis."},
+   {"person":3,"es":"Confirmamos su cita para el lunes.","en":"We're confirming your appointment for Monday."},
+   {"person":4,"es":"Los resultados confirman lo que pensábamos.","en":"The results confirm what we thought."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La aerolínea confirmó el vuelo.","en":"The airline confirmed the flight."},
+   {"person":0,"es":"Confirmé mi asistencia a la boda.","en":"I RSVPed to the wedding."},
+   {"person":1,"es":"¿Confirmaste la reserva?","en":"Did you confirm the reservation?"},
+   {"person":3,"es":"Ayer confirmamos la fecha con el salón.","en":"Yesterday we confirmed the date with the venue."},
+   {"person":4,"es":"Los análisis confirmaron que estaba embarazada.","en":"The tests confirmed she was pregnant."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Cada dato nuevo confirmaba mis sospechas.","en":"Every new piece of information confirmed my suspicions."},
+   {"person":0,"es":"Yo confirmaba las citas por teléfono.","en":"I'd confirm appointments by phone."},
+   {"person":1,"es":"Tú siempre confirmabas dos veces.","en":"You always double-checked."},
+   {"person":3,"es":"Confirmábamos los pedidos cada mañana.","en":"We confirmed the orders every morning."},
+   {"person":4,"es":"Los vecinos confirmaban los rumores.","en":"The neighbors confirmed the rumors."}
+  ],
+  "future": [
+   {"person":2,"es":"El hotel confirmará la reserva por correo.","en":"The hotel will confirm the reservation by email."},
+   {"person":0,"es":"Te confirmaré mañana si voy.","en":"I'll let you know tomorrow if I'm going."},
+   {"person":1,"es":"Confirmarás tu asistencia antes del viernes.","en":"You'll confirm your attendance before Friday."},
+   {"person":3,"es":"Confirmaremos los detalles la próxima semana.","en":"We'll confirm the details next week."},
+   {"person":4,"es":"Las pruebas confirmarán la causa.","en":"The tests will confirm the cause."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo confirmaría antes de viajar.","en":"I'd confirm before traveling."},
+   {"person":1,"es":"¿Me confirmarías por mensaje?","en":"Would you confirm by text?"},
+   {"person":2,"es":"Esa foto confirmaría su historia.","en":"That photo would confirm his story."},
+   {"person":3,"es":"Confirmaríamos si tuviéramos señal.","en":"We'd confirm if we had a signal."},
+   {"person":4,"es":"Unos análisis confirmarían el problema.","en":"Some tests would confirm the problem."}
+  ],
+  "presentPerfect": [
+   {"person":4,"es":"Ya han confirmado la fecha del concierto.","en":"They've already confirmed the date of the concert."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"El jefe ya había confirmado mis vacaciones.","en":"The boss had already confirmed my vacation."}
+  ],
+  "futurePerfect": [
+   {"person":2,"es":"Ya habrá confirmado su vuelo.","en":"He's probably confirmed his flight by now."}
+  ],
+  "conditionalPerfect": [
+   {"person":0,"es":"Yo habría confirmado la reserva.","en":"I would have confirmed the reservation."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"Necesito que me confirmes hoy.","en":"I need you to confirm today."},
+   {"person":0,"es":"Espera a que yo confirme la hora.","en":"Wait for me to confirm the time."},
+   {"person":2,"es":"Esperamos que el hotel confirme la reserva.","en":"We're hoping the hotel confirms the reservation."},
+   {"person":3,"es":"Es mejor que confirmemos antes de salir.","en":"We'd better confirm before we leave."},
+   {"person":4,"es":"Ojalá que confirmen el concierto.","en":"Hopefully they'll confirm the concert."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Le pedí a la secretaria que confirmara la cita.","en":"I asked the secretary to confirm the appointment."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":4,"es":"Me alegra que hayan confirmado la noticia.","en":"I'm glad they've confirmed the news."}
+  ],
+  "subjPluperfect": [
+   {"person":1,"es":"Si hubieras confirmado, tendríamos mesa.","en":"If you had confirmed, we'd have a table."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Confirma tu asistencia antes del viernes.","en":"Confirm your attendance before Friday."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "conservar": {
+  "present": [
+   {"person":2,"es":"Mi abuela conserva todas las cartas de mi abuelo.","en":"My grandmother keeps all of my grandfather's letters."},
+   {"person":0,"es":"Todavía conservo mi primer juguete.","en":"I still have my first toy."},
+   {"person":1,"es":"Conservas la misma sonrisa de niño.","en":"You still have the same smile you had as a kid."},
+   {"person":3,"es":"Conservamos las tradiciones de la familia.","en":"We keep up the family traditions."},
+   {"person":4,"es":"Las neveras conservan la comida fresca.","en":"Refrigerators keep food fresh."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El pueblo conservó sus casas coloniales.","en":"The town preserved its colonial houses."},
+   {"person":0,"es":"Conservé el boleto de nuestro primer viaje.","en":"I kept the ticket from our first trip."},
+   {"person":1,"es":"¿Conservaste las fotos de la boda?","en":"Did you keep the wedding photos?"},
+   {"person":3,"es":"Durante el temblor conservamos la calma.","en":"During the earthquake we kept calm."},
+   {"person":4,"es":"Mis padres conservaron la casa del campo.","en":"My parents kept the house in the country."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo conservaba el carro de 1960.","en":"My grandfather kept the car from 1960."},
+   {"person":0,"es":"Yo conservaba los dientes de leche en una caja.","en":"I kept my baby teeth in a box."},
+   {"person":1,"es":"Tú conservabas cada regalo.","en":"You kept every gift."},
+   {"person":3,"es":"Conservábamos la comida con sal.","en":"We preserved food with salt."},
+   {"person":4,"es":"Los indígenas conservaban sus costumbres.","en":"The Indigenous people kept their customs."}
+  ],
+  "future": [
+   {"person":0,"es":"Conservaré este recuerdo para siempre.","en":"I'll keep this memory forever."},
+   {"person":1,"es":"Conservarás tu puesto si trabajas bien.","en":"You'll keep your job if you work hard."},
+   {"person":2,"es":"El museo conservará los documentos.","en":"The museum will preserve the documents."},
+   {"person":3,"es":"Conservaremos la casa de la abuela.","en":"We'll keep Grandma's house."},
+   {"person":4,"es":"Los jugadores conservarán la camiseta.","en":"The players will keep their jerseys."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo conservaría esos muebles viejos.","en":"I'd keep that old furniture."},
+   {"person":1,"es":"¿Conservarías una carta de tu ex?","en":"Would you keep a letter from your ex?"},
+   {"person":2,"es":"Ese frasco conservaría la mermelada por meses.","en":"That jar would keep the jam for months."},
+   {"person":3,"es":"Conservaríamos más agua con un tanque.","en":"We'd save more water with a tank."},
+   {"person":4,"es":"Ellos conservarían el apellido de su madre.","en":"They'd keep their mother's last name."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"La ciudad ha conservado su centro histórico.","en":"The city has preserved its historic center."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Mi madre había conservado mi primer dibujo.","en":"My mother had kept my first drawing."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":0,"es":"Yo habría conservado esas fotos.","en":"I would have kept those photos."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"Es importante que conserves la calma.","en":"It's important for you to stay calm."},
+   {"person":0,"es":"Mi madre quiere que yo conserve su anillo.","en":"My mother wants me to keep her ring."},
+   {"person":2,"es":"Ojalá que el pueblo conserve su encanto.","en":"Hopefully the town keeps its charm."},
+   {"person":3,"es":"Es necesario que conservemos el agua.","en":"We need to save water."},
+   {"person":4,"es":"Quiero que mis hijos conserven el español.","en":"I want my kids to keep up their Spanish."}
+  ],
+  "subjImperfect": [
+   {"person":3,"es":"Mi abuela pidió que conserváramos la casa.","en":"My grandmother asked us to keep the house."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":2,"es":"Me alegra que el museo haya conservado esas piezas.","en":"I'm glad the museum has preserved those pieces."}
+  ],
+  "subjPluperfect": [
+   {"person":1,"es":"Si hubieras conservado el recibo, podrías devolverlo.","en":"If you had kept the receipt, you could return it."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Conserva el recibo.","en":"Keep the receipt."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "consultar": {
+  "present": [
+   {"person":2,"es":"Mi padre consulta el clima cada mañana.","en":"My father checks the weather every morning."},
+   {"person":0,"es":"Consulto el diccionario cuando tengo dudas.","en":"I look things up in the dictionary when I'm unsure."},
+   {"person":1,"es":"¿Consultas con tu esposa antes de decidir?","en":"Do you check with your wife before deciding?"},
+   {"person":3,"es":"Consultamos el mapa antes de salir.","en":"We check the map before leaving."},
+   {"person":4,"es":"Los médicos consultan entre ellos.","en":"The doctors consult with each other."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Mi hermana consultó a un abogado.","en":"My sister consulted a lawyer."},
+   {"person":0,"es":"Consulté con mi médico.","en":"I checked with my doctor."},
+   {"person":1,"es":"¿Consultaste el horario del tren?","en":"Did you check the train schedule?"},
+   {"person":3,"es":"Ayer consultamos a un experto.","en":"Yesterday we consulted an expert."},
+   {"person":4,"es":"Los vecinos consultaron al alcalde.","en":"The neighbors consulted the mayor."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuela consultaba el almanaque para sembrar.","en":"My grandmother checked the almanac before planting."},
+   {"person":0,"es":"Yo consultaba la enciclopedia para las tareas.","en":"I used the encyclopedia for homework."},
+   {"person":1,"es":"Tú consultabas todo con tu madre.","en":"You checked everything with your mother."},
+   {"person":3,"es":"Consultábamos el periódico para ver los precios.","en":"We'd check the newspaper for prices."},
+   {"person":4,"es":"Los marineros consultaban las estrellas.","en":"The sailors consulted the stars."}
+  ],
+  "future": [
+   {"person":0,"es":"Consultaré con mi esposa y te aviso.","en":"I'll check with my wife and let you know."},
+   {"person":1,"es":"Consultarás a un especialista.","en":"You'll see a specialist."},
+   {"person":2,"es":"El gobierno consultará a los ciudadanos.","en":"The government will consult the citizens."},
+   {"person":3,"es":"Consultaremos el precio en la tienda.","en":"We'll check the price at the store."},
+   {"person":4,"es":"Los estudiantes consultarán libros en la biblioteca.","en":"The students will look things up in library books."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo consultaría a otro médico.","en":"I'd get a second opinion from another doctor."},
+   {"person":1,"es":"¿Consultarías a un adivino?","en":"Would you consult a fortune-teller?"},
+   {"person":2,"es":"Un buen jefe consultaría al equipo.","en":"A good boss would consult the team."},
+   {"person":3,"es":"Consultaríamos a un abogado antes de firmar.","en":"We'd consult a lawyer before signing."},
+   {"person":4,"es":"Ellos consultarían internet primero.","en":"They'd look it up online first."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"He consultado con varios expertos.","en":"I've consulted several experts."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Nadie me había consultado.","en":"Nobody had consulted me."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":0,"es":"Yo habría consultado a un abogado.","en":"I would have consulted a lawyer."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"Es mejor que consultes a un médico.","en":"You'd better see a doctor."},
+   {"person":0,"es":"Espera a que yo consulte con mi jefe.","en":"Wait until I check with my boss."},
+   {"person":2,"es":"Es importante que el paciente consulte a tiempo.","en":"It's important for the patient to see a doctor in time."},
+   {"person":3,"es":"Es mejor que consultemos el mapa.","en":"We'd better check the map."},
+   {"person":4,"es":"Me molesta que no me consulten nada.","en":"It bothers me that they don't consult me about anything."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Le pedí que consultara con un especialista.","en":"I asked him to consult a specialist."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":1,"es":"Me alegra que hayas consultado a un médico.","en":"I'm glad you saw a doctor."}
+  ],
+  "subjPluperfect": [
+   {"person":0,"es":"Si hubiera consultado el mapa, no me habría perdido.","en":"If I had checked the map, I wouldn't have gotten lost."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Consulta el horario en la página web.","en":"Check the schedule on the website."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "contratar": {
+  "present": [
+   {"person":2,"es":"La empresa contrata a jóvenes sin experiencia.","en":"The company hires young people with no experience."},
+   {"person":0,"es":"Contrato a un plomero para arreglar el baño.","en":"I'm hiring a plumber to fix the bathroom."},
+   {"person":1,"es":"¿Contratas a un fotógrafo para la boda?","en":"Are you hiring a photographer for the wedding?"},
+   {"person":3,"es":"Contratamos un mariachi para la fiesta.","en":"We're hiring a mariachi band for the party."},
+   {"person":4,"es":"Muchas tiendas contratan más gente en diciembre.","en":"Many stores hire more people in December."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El hotel contrató a mi prima.","en":"The hotel hired my cousin."},
+   {"person":0,"es":"Contraté un seguro médico.","en":"I took out health insurance."},
+   {"person":1,"es":"¿Contrataste el internet?","en":"Did you sign up for internet?"},
+   {"person":3,"es":"El año pasado contratamos a una niñera.","en":"Last year we hired a nanny."},
+   {"person":4,"es":"Me contrataron como cocinero.","en":"They hired me as a cook."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi padre contrataba trabajadores para la cosecha.","en":"My father hired workers for the harvest."},
+   {"person":0,"es":"Yo contrataba músicos para las fiestas del pueblo.","en":"I hired musicians for the town festivals."},
+   {"person":1,"es":"Tú contratabas siempre al mismo electricista.","en":"You always hired the same electrician."},
+   {"person":3,"es":"Contratábamos un bus para la excursión.","en":"We'd hire a bus for the field trip."},
+   {"person":4,"es":"Las fábricas contrataban a cualquiera.","en":"The factories hired anyone."}
+  ],
+  "future": [
+   {"person":2,"es":"La tienda contratará a diez personas.","en":"The store will hire ten people."},
+   {"person":0,"es":"Contrataré a alguien para pintar la casa.","en":"I'll hire someone to paint the house."},
+   {"person":1,"es":"Contratarás un buen abogado.","en":"You'll hire a good lawyer."},
+   {"person":3,"es":"Contrataremos un servicio de comida.","en":"We'll hire a caterer."},
+   {"person":4,"es":"Te contratarán, estoy seguro.","en":"They'll hire you, I'm sure."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo contrataría a alguien con experiencia.","en":"I'd hire someone with experience."},
+   {"person":1,"es":"¿Me contratarías?","en":"Would you hire me?"},
+   {"person":2,"es":"Ninguna empresa contrataría a alguien así.","en":"No company would hire someone like that."},
+   {"person":3,"es":"Contrataríamos más gente si hubiera dinero.","en":"We'd hire more people if there were money."},
+   {"person":4,"es":"Ellos te contratarían sin dudar.","en":"They'd hire you without hesitation."}
+  ],
+  "presentPerfect": [
+   {"person":4,"es":"Me han contratado en un banco.","en":"I've been hired at a bank."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"La empresa ya había contratado a otra persona.","en":"The company had already hired someone else."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":0,"es":"Yo te habría contratado.","en":"I would have hired you."}
+  ],
+  "subjPresent": [
+   {"person":2,"es":"Ojalá que la empresa te contrate.","en":"I hope the company hires you."},
+   {"person":0,"es":"Mi jefe no quiere que yo contrate a nadie.","en":"My boss doesn't want me to hire anyone."},
+   {"person":1,"es":"Te aconsejo que contrates un seguro.","en":"I advise you to take out insurance."},
+   {"person":3,"es":"Es mejor que contratemos a un profesional.","en":"It's better if we hire a professional."},
+   {"person":4,"es":"Espero que me contraten.","en":"I hope they hire me."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Mi madre quería que el hotel me contratara.","en":"My mother wanted the hotel to hire me."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":4,"es":"Me alegra que te hayan contratado.","en":"I'm glad they hired you."}
+  ],
+  "subjPluperfect": [
+   {"person":3,"es":"Si hubiéramos contratado a un guía, no nos habríamos perdido.","en":"If we had hired a guide, we wouldn't have gotten lost."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Contrata a alguien que sepa.","en":"Hire someone who knows what they're doing."}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No contrates a tu primo.","en":"Don't hire your cousin."}
+  ]
  }
 }
