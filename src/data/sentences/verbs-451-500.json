@@ -1,0 +1,926 @@
+{
+ "pronunciar": {
+  "present": [
+   {"person":2,"es":"Mi profesora pronuncia muy claro.","en":"My teacher pronounces things very clearly."},
+   {"person":0,"es":"No pronuncio bien la erre.","en":"I can't roll my R's well."},
+   {"person":1,"es":"¿Cómo pronuncias esta palabra?","en":"How do you pronounce this word?"},
+   {"person":3,"es":"En el Caribe pronunciamos la ese de otra manera.","en":"In the Caribbean we pronounce the S differently."},
+   {"person":4,"es":"Los niños pronuncian mejor que los adultos.","en":"Children pronounce better than adults."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El presentador pronunció mal mi nombre.","en":"The host mispronounced my name."},
+   {"person":0,"es":"Pronuncié cada palabra con cuidado.","en":"I pronounced each word carefully."},
+   {"person":1,"es":"Pronunciaste perfecto la palabra \"ferrocarril\".","en":"You pronounced the word \"ferrocarril\" perfectly."},
+   {"person":3,"es":"Pronunciamos el trabalenguas sin equivocarnos.","en":"We said the tongue twister without a single mistake."},
+   {"person":4,"es":"Los estudiantes pronunciaron las vocales en voz alta.","en":"The students pronounced the vowels out loud."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo pronunciaba las palabras muy despacio.","en":"My grandfather used to pronounce words very slowly."},
+   {"person":0,"es":"De niño, yo pronunciaba \"pasgueti\" en vez de \"espagueti\".","en":"As a kid, I used to say \"pasgueti\" instead of \"espagueti\"."},
+   {"person":1,"es":"Tú pronunciabas mi nombre con acento inglés.","en":"You used to say my name with an English accent."},
+   {"person":3,"es":"Pronunciábamos mal todos los nombres en alemán.","en":"We used to mispronounce all the German names."},
+   {"person":4,"es":"Mis compañeros pronunciaban la jota muy fuerte.","en":"My classmates used to pronounce the J really hard."}
+  ],
+  "future": [
+   {"person":0,"es":"Pronunciaré un discurso en la boda.","en":"I'll give a speech at the wedding."},
+   {"person":1,"es":"Con práctica, pronunciarás como un nativo.","en":"With practice, you'll pronounce like a native speaker."},
+   {"person":2,"es":"El juez pronunciará la sentencia mañana.","en":"The judge will pronounce the sentence tomorrow."},
+   {"person":3,"es":"Pronunciaremos las palabras nuevas juntos.","en":"We'll pronounce the new words together."},
+   {"person":4,"es":"Los alumnos pronunciarán las frases después del maestro.","en":"The students will pronounce the sentences after the teacher."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo lo pronunciaría de otra forma.","en":"I'd pronounce it differently."},
+   {"person":1,"es":"¿Cómo pronunciarías este apellido?","en":"How would you pronounce this last name?"},
+   {"person":2,"es":"Un mexicano lo pronunciaría distinto.","en":"A Mexican would pronounce it differently."},
+   {"person":3,"es":"Lo pronunciaríamos mejor con más práctica.","en":"We'd pronounce it better with more practice."},
+   {"person":4,"es":"Los argentinos lo pronunciarían con \"sh\".","en":"Argentines would pronounce it with an \"sh\"."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"Nunca he pronunciado bien esta palabra.","en":"I've never pronounced this word right."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Nadie había pronunciado mi nombre correctamente.","en":"No one had pronounced my name correctly."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Es importante que pronuncies bien las vocales.","en":"It's important that you pronounce the vowels correctly."},
+   {"person":0,"es":"La maestra quiere que yo pronuncie la palabra otra vez.","en":"The teacher wants me to say the word again."},
+   {"person":2,"es":"Espero que el locutor pronuncie bien mi apellido.","en":"I hope the announcer pronounces my last name correctly."},
+   {"person":3,"es":"Quiere que pronunciemos más despacio.","en":"She wants us to pronounce more slowly."},
+   {"person":4,"es":"Es normal que los estudiantes pronuncien con acento.","en":"It's normal for students to speak with an accent."}
+  ],
+  "subjImperfect": [
+   {"person":0,"es":"La profesora me pidió que pronunciara la palabra otra vez.","en":"The teacher asked me to say the word again."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Pronuncia despacio.","en":"Pronounce it slowly."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "provocar": {
+  "present": [
+   {"person":2,"es":"El humo provoca tos.","en":"Smoke makes you cough."},
+   {"person":0,"es":"Siempre provoco risas con mis chistes.","en":"I always get laughs with my jokes."},
+   {"person":1,"es":"Tú siempre provocas a tu hermano.","en":"You always provoke your brother."},
+   {"person":3,"es":"Con tanto ruido, provocamos quejas de los vecinos.","en":"With so much noise, we get complaints from the neighbors."},
+   {"person":4,"es":"Las lluvias provocan inundaciones cada año.","en":"The rains cause flooding every year."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La tormenta provocó un apagón.","en":"The storm caused a blackout."},
+   {"person":0,"es":"Sin querer, provoqué una discusión.","en":"Without meaning to, I started an argument."},
+   {"person":1,"es":"Tú provocaste la pelea.","en":"You started the fight."},
+   {"person":3,"es":"Provocamos un pequeño incendio en la cocina.","en":"We started a small fire in the kitchen."},
+   {"person":4,"es":"Las noticias provocaron miedo en el pueblo.","en":"The news caused fear in the town."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El calor provocaba dolores de cabeza.","en":"The heat used to cause headaches."},
+   {"person":0,"es":"Yo provocaba a mi hermana para que se enojara.","en":"I used to provoke my sister to make her angry."},
+   {"person":1,"es":"Tú provocabas risas en toda la clase.","en":"You used to make the whole class laugh."},
+   {"person":3,"es":"Provocábamos a los perros del vecino.","en":"We used to tease the neighbor's dogs."},
+   {"person":4,"es":"Los apagones provocaban muchos problemas.","en":"The blackouts used to cause a lot of problems."}
+  ],
+  "future": [
+   {"person":2,"es":"Esa decisión provocará muchas protestas.","en":"That decision will cause a lot of protests."},
+   {"person":0,"es":"No provocaré ningún problema.","en":"I won't cause any trouble."},
+   {"person":1,"es":"Si dices eso, provocarás una pelea.","en":"If you say that, you'll start a fight."},
+   {"person":3,"es":"Con esta noticia provocaremos un escándalo.","en":"With this news we'll cause a scandal."},
+   {"person":4,"es":"Los vientos fuertes provocarán daños.","en":"The strong winds will cause damage."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo no provocaría a ese perro.","en":"I wouldn't provoke that dog."},
+   {"person":1,"es":"¿Provocarías una pelea por eso?","en":"Would you start a fight over that?"},
+   {"person":2,"es":"Un cambio así provocaría mucha confusión.","en":"A change like that would cause a lot of confusion."},
+   {"person":3,"es":"Provocaríamos un accidente si manejáramos así.","en":"We'd cause an accident if we drove like that."},
+   {"person":4,"es":"Esas palabras provocarían una guerra.","en":"Those words would start a war."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"La sequía ha provocado la subida de precios.","en":"The drought has caused prices to rise."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Un cigarro había provocado el incendio.","en":"A cigarette had caused the fire."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":2,"es":"Ese error habría provocado un accidente.","en":"That mistake would have caused an accident."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"No quiero que provoques a tu primo.","en":"I don't want you to provoke your cousin."},
+   {"person":0,"es":"Temo que yo provoque una discusión si hablo.","en":"I'm afraid I'll start an argument if I speak."},
+   {"person":2,"es":"Es posible que la lluvia provoque retrasos.","en":"The rain may cause delays."},
+   {"person":3,"es":"Es mejor que no provoquemos más problemas.","en":"We'd better not cause any more trouble."},
+   {"person":4,"es":"Ojalá que los cambios no provoquen protestas.","en":"I hope the changes don't cause protests."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"No quería que su comentario provocara una pelea.","en":"He didn't want his comment to start a fight."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": [
+   {"person":0,"es":"Si hubiera provocado al perro, me habría mordido.","en":"If I had provoked the dog, it would have bitten me."}
+  ],
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No provoques al gato.","en":"Don't provoke the cat."}
+  ]
+ },
+ "publicar": {
+  "present": [
+   {"person":2,"es":"Mi prima publica fotos todos los días.","en":"My cousin posts photos every day."},
+   {"person":0,"es":"Casi nunca publico nada en redes sociales.","en":"I hardly ever post anything on social media."},
+   {"person":1,"es":"¿Dónde publicas tus poemas?","en":"Where do you publish your poems?"},
+   {"person":3,"es":"Publicamos el periódico escolar cada mes.","en":"We publish the school newspaper every month."},
+   {"person":4,"es":"Los periódicos publican las noticias en línea.","en":"Newspapers publish the news online."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La autora publicó su primer libro a los veinte años.","en":"The author published her first book at twenty."},
+   {"person":0,"es":"Publiqué un video de mi perro.","en":"I posted a video of my dog."},
+   {"person":1,"es":"¿Publicaste las fotos de la fiesta?","en":"Did you post the photos from the party?"},
+   {"person":3,"es":"Publicamos los resultados en la página web.","en":"We posted the results on the website."},
+   {"person":4,"es":"Los científicos publicaron un estudio nuevo.","en":"The scientists published a new study."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El diario publicaba el horóscopo en la última página.","en":"The paper used to publish the horoscope on the back page."},
+   {"person":0,"es":"Yo publicaba cuentos en un blog.","en":"I used to publish stories on a blog."},
+   {"person":1,"es":"Tú publicabas memes todo el día.","en":"You used to post memes all day."},
+   {"person":3,"es":"Publicábamos una revista en la universidad.","en":"We used to publish a magazine in college."},
+   {"person":4,"es":"Mis amigos publicaban todo lo que comían.","en":"My friends used to post everything they ate."}
+  ],
+  "future": [
+   {"person":2,"es":"La editorial publicará la novela en marzo.","en":"The publisher will release the novel in March."},
+   {"person":0,"es":"Publicaré las fotos mañana.","en":"I'll post the photos tomorrow."},
+   {"person":1,"es":"Algún día publicarás tu libro.","en":"Someday you'll publish your book."},
+   {"person":3,"es":"Publicaremos la lista de ganadores el lunes.","en":"We'll post the list of winners on Monday."},
+   {"person":4,"es":"Los maestros publicarán las notas en línea.","en":"The teachers will post the grades online."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo no publicaría esa foto.","en":"I wouldn't post that photo."},
+   {"person":1,"es":"¿Publicarías tu diario?","en":"Would you publish your diary?"},
+   {"person":2,"es":"Ninguna editorial publicaría algo así.","en":"No publisher would publish something like that."},
+   {"person":3,"es":"Publicaríamos más artículos si tuviéramos tiempo.","en":"We'd publish more articles if we had time."},
+   {"person":4,"es":"Ellos publicarían el video sin pedir permiso.","en":"They'd post the video without asking permission."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"Mi tío ha publicado tres libros.","en":"My uncle has published three books."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Alguien ya había publicado la noticia.","en":"Someone had already posted the news."}
+  ],
+  "futurePerfect": [
+   {"person":3,"es":"Para el viernes habremos publicado el informe.","en":"By Friday we'll have published the report."}
+  ],
+  "conditionalPerfect": [
+   {"person":0,"es":"Yo no habría publicado ese comentario.","en":"I wouldn't have posted that comment."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"No quiero que publiques fotos mías.","en":"I don't want you posting photos of me."},
+   {"person":0,"es":"Mi jefe quiere que yo publique el anuncio hoy.","en":"My boss wants me to post the ad today."},
+   {"person":2,"es":"Ojalá que la revista publique mi cuento.","en":"I hope the magazine publishes my story."},
+   {"person":3,"es":"Es mejor que publiquemos los horarios en la puerta.","en":"It's better if we post the schedule on the door."},
+   {"person":4,"es":"Espero que publiquen los resultados pronto.","en":"I hope they post the results soon."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Le pedí que no publicara la foto.","en":"I asked her not to post the photo."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":2,"es":"Me sorprende que nadie haya publicado nada.","en":"I'm surprised no one has posted anything."}
+  ],
+  "subjPluperfect": [
+   {"person":0,"es":"Si hubiera publicado el libro antes, habría vendido más.","en":"If I had published the book earlier, I would have sold more."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Publica la foto, está bonita.","en":"Post the photo; it's nice."}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No publiques mi número de teléfono.","en":"Don't post my phone number."}
+  ]
+ },
+ "quemar": {
+  "present": [
+   {"person":2,"es":"El sol quema mucho al mediodía.","en":"The sun is really strong at noon."},
+   {"person":0,"es":"Siempre quemo las tortillas.","en":"I always burn the tortillas."},
+   {"person":1,"es":"¿Por qué quemas las hojas secas?","en":"Why are you burning the dry leaves?"},
+   {"person":3,"es":"Quemamos calorías cuando caminamos.","en":"We burn calories when we walk."},
+   {"person":4,"es":"Los campesinos queman la caña antes de cortarla.","en":"Farmers burn the sugarcane before cutting it."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Mi hermano quemó el arroz.","en":"My brother burned the rice."},
+   {"person":0,"es":"Quemé las galletas otra vez.","en":"I burned the cookies again."},
+   {"person":1,"es":"¿Quemaste la carta?","en":"Did you burn the letter?"},
+   {"person":3,"es":"Quemamos leña en la chimenea.","en":"We burned firewood in the fireplace."},
+   {"person":4,"es":"Los vecinos quemaron basura en el patio.","en":"The neighbors burned trash in the yard."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"La arena quemaba los pies.","en":"The sand burned our feet."},
+   {"person":0,"es":"Yo siempre quemaba el pan tostado.","en":"I always used to burn the toast."},
+   {"person":1,"es":"Tú quemabas incienso en tu cuarto.","en":"You used to burn incense in your room."},
+   {"person":3,"es":"Quemábamos un muñeco de año viejo cada 31 de diciembre.","en":"We used to burn an \"año viejo\" effigy every December 31."},
+   {"person":4,"es":"Mis tíos quemaban las hojas del jardín en otoño.","en":"My aunt and uncle used to burn the garden leaves in the fall."}
+  ],
+  "future": [
+   {"person":2,"es":"Este sol te quemará la piel.","en":"This sun will burn your skin."},
+   {"person":0,"es":"No quemaré la cena esta vez.","en":"I won't burn dinner this time."},
+   {"person":1,"es":"Quemarás la sartén si la dejas en el fuego.","en":"You'll burn the pan if you leave it on the heat."},
+   {"person":3,"es":"Quemaremos más calorías en la clase de baile.","en":"We'll burn more calories in dance class."},
+   {"person":4,"es":"Si no tienen cuidado, quemarán la casa.","en":"If they're not careful, they'll burn the house down."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo nunca quemaría tus cartas.","en":"I'd never burn your letters."},
+   {"person":1,"es":"¿Quemarías tus fotos viejas?","en":"Would you burn your old photos?"},
+   {"person":2,"es":"Ese horno quemaría cualquier pastel.","en":"That oven would burn any cake."},
+   {"person":3,"es":"Quemaríamos más calorías si subiéramos por las escaleras.","en":"We'd burn more calories if we took the stairs."},
+   {"person":4,"es":"Ellos quemarían la comida sin tu ayuda.","en":"They'd burn the food without your help."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"He quemado la salsa.","en":"I've burned the sauce."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"El sol le había quemado la espalda.","en":"The sun had burned his back."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":1,"es":"Habrías quemado el pastel sin la alarma.","en":"You would have burned the cake without the timer."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"Cuidado, no quiero que quemes el arroz.","en":"Careful, I don't want you to burn the rice."},
+   {"person":0,"es":"Mi mamá teme que yo queme la cocina.","en":"My mom is afraid I'll burn the kitchen down."},
+   {"person":2,"es":"Es peligroso que el vecino queme basura.","en":"It's dangerous for the neighbor to burn trash."},
+   {"person":3,"es":"Es mejor que no quememos las hojas.","en":"We'd better not burn the leaves."},
+   {"person":4,"es":"La ley prohíbe que quemen basura aquí.","en":"The law prohibits burning trash here."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Tenía miedo de que el sol me quemara.","en":"I was afraid the sun would burn me."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":1,"es":"Espero que no hayas quemado la cena.","en":"I hope you haven't burned dinner."}
+  ],
+  "subjPluperfect": [
+   {"person":0,"es":"Si hubiera quemado esas cartas, no sabría la verdad.","en":"If I had burned those letters, I wouldn't know the truth."}
+  ],
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No quemes las tortillas.","en":"Don't burn the tortillas."}
+  ]
+ },
+ "rechazar": {
+  "present": [
+   {"person":2,"es":"Mi hijo rechaza todas las verduras.","en":"My son refuses all vegetables."},
+   {"person":0,"es":"Rechazo tu propuesta, lo siento.","en":"I'm turning down your proposal, I'm sorry."},
+   {"person":1,"es":"¿Por qué rechazas la ayuda?","en":"Why do you turn down help?"},
+   {"person":3,"es":"Rechazamos cualquier tipo de violencia.","en":"We reject all forms of violence."},
+   {"person":4,"es":"Algunos cajeros rechazan las tarjetas extranjeras.","en":"Some ATMs reject foreign cards."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Ella rechazó la oferta de trabajo.","en":"She turned down the job offer."},
+   {"person":0,"es":"Rechacé la invitación porque estaba cansado.","en":"I turned down the invitation because I was tired."},
+   {"person":1,"es":"¿Rechazaste la beca?","en":"Did you turn down the scholarship?"},
+   {"person":3,"es":"Rechazamos el contrato.","en":"We rejected the contract."},
+   {"person":4,"es":"Los votantes rechazaron la propuesta.","en":"Voters rejected the proposal."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El perro rechazaba la comida nueva.","en":"The dog kept refusing the new food."},
+   {"person":0,"es":"De niño yo rechazaba el pescado.","en":"As a kid I used to refuse fish."},
+   {"person":1,"es":"Tú siempre rechazabas mis invitaciones.","en":"You always used to turn down my invitations."},
+   {"person":3,"es":"Rechazábamos las ofertas que parecían sospechosas.","en":"We used to turn down offers that seemed suspicious."},
+   {"person":4,"es":"Las editoriales rechazaban sus novelas una y otra vez.","en":"Publishers rejected her novels again and again."}
+  ],
+  "future": [
+   {"person":2,"es":"La universidad no rechazará tu solicitud.","en":"The university won't reject your application."},
+   {"person":0,"es":"Rechazaré la oferta si no pagan más.","en":"I'll turn down the offer if they don't pay more."},
+   {"person":1,"es":"¿Rechazarás el puesto?","en":"Will you turn down the position?"},
+   {"person":3,"es":"Rechazaremos cualquier cambio injusto.","en":"We'll reject any unfair change."},
+   {"person":4,"es":"Los miembros rechazarán el plan.","en":"The members will reject the plan."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo no rechazaría una oportunidad así.","en":"I wouldn't turn down an opportunity like that."},
+   {"person":1,"es":"¿Rechazarías un millón de dólares?","en":"Would you turn down a million dollars?"},
+   {"person":2,"es":"Mi abuela nunca rechazaría un café.","en":"My grandmother would never turn down a coffee."},
+   {"person":3,"es":"Rechazaríamos el trato sin pensarlo.","en":"We'd turn down the deal without thinking twice."},
+   {"person":4,"es":"Ellos rechazarían la idea de inmediato.","en":"They'd reject the idea immediately."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"El banco ha rechazado mi tarjeta.","en":"The bank has declined my card."}
+  ],
+  "pluperfect": [
+   {"person":0,"es":"Ya había rechazado dos ofertas.","en":"I had already turned down two offers."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":0,"es":"Yo habría rechazado esa invitación.","en":"I would have turned down that invitation."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"Espero que no rechaces mi invitación.","en":"I hope you don't turn down my invitation."},
+   {"person":0,"es":"Mis papás no quieren que yo rechace la beca.","en":"My parents don't want me to turn down the scholarship."},
+   {"person":2,"es":"Es posible que el sistema rechace tu contraseña.","en":"The system might reject your password."},
+   {"person":3,"es":"Nos piden que rechacemos el acuerdo.","en":"They're asking us to reject the agreement."},
+   {"person":4,"es":"Ojalá que no rechacen mi solicitud.","en":"I hope they don't reject my application."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Me dolió que rechazara mi ayuda.","en":"It hurt that she turned down my help."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":2,"es":"Me sorprende que haya rechazado el premio.","en":"I'm surprised he turned down the award."}
+  ],
+  "subjPluperfect": [
+   {"person":0,"es":"Si hubiera rechazado el trabajo, me habría arrepentido.","en":"If I had turned down the job, I would have regretted it."}
+  ],
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No rechaces la ayuda de tus amigos.","en":"Don't turn down help from your friends."}
+  ]
+ },
+ "recorrer": {
+  "present": [
+   {"person":2,"es":"El tren recorre todo el país.","en":"The train travels across the whole country."},
+   {"person":0,"es":"Recorro el parque en bicicleta cada mañana.","en":"I ride around the park on my bike every morning."},
+   {"person":1,"es":"¿Cuántos kilómetros recorres al día?","en":"How many kilometers do you cover a day?"},
+   {"person":3,"es":"Recorremos el mercado los domingos.","en":"We wander around the market on Sundays."},
+   {"person":4,"es":"Los turistas recorren el centro histórico a pie.","en":"Tourists walk around the historic downtown."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Mi tío recorrió Sudamérica en moto.","en":"My uncle traveled through South America by motorcycle."},
+   {"person":0,"es":"Recorrí todo el museo en una hora.","en":"I went through the whole museum in an hour."},
+   {"person":1,"es":"¿Recorriste toda la ciudad?","en":"Did you go all over the city?"},
+   {"person":3,"es":"Recorrimos la costa de Puerto Rico en carro.","en":"We drove along the coast of Puerto Rico."},
+   {"person":4,"es":"Los niños recorrieron la casa buscando el regalo.","en":"The kids searched the whole house for the present."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El cartero recorría el barrio en bicicleta.","en":"The mail carrier used to ride around the neighborhood on a bike."},
+   {"person":0,"es":"Yo recorría las tiendas buscando ofertas.","en":"I used to go around the stores looking for deals."},
+   {"person":1,"es":"Tú recorrías la playa cada mañana.","en":"You used to walk along the beach every morning."},
+   {"person":3,"es":"Recorríamos el pueblo en las fiestas.","en":"We used to wander around town during the festivals."},
+   {"person":4,"es":"Los vendedores recorrían las calles gritando.","en":"The vendors used to go up and down the streets shouting."}
+  ],
+  "future": [
+   {"person":0,"es":"Recorreré Centroamérica el próximo verano.","en":"I'll travel through Central America next summer."},
+   {"person":1,"es":"Recorrerás el camino en tres horas.","en":"You'll cover the route in three hours."},
+   {"person":2,"es":"El guía recorrerá el castillo con nosotros.","en":"The guide will take us around the castle."},
+   {"person":3,"es":"Recorreremos las ruinas mayas.","en":"We'll tour the Mayan ruins."},
+   {"person":4,"es":"Los ciclistas recorrerán doscientos kilómetros.","en":"The cyclists will cover two hundred kilometers."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo recorrería el mundo si pudiera.","en":"I'd travel the world if I could."},
+   {"person":1,"es":"¿Recorrerías todo el país en autobús?","en":"Would you travel the whole country by bus?"},
+   {"person":2,"es":"Mi abuelo recorrería el pueblo entero a pie.","en":"My grandfather would walk the whole town."},
+   {"person":3,"es":"Recorreríamos más lugares con más tiempo.","en":"We'd see more places with more time."},
+   {"person":4,"es":"Ellos recorrerían la isla en un día.","en":"They'd go around the island in one day."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"Ella ha recorrido medio mundo.","en":"She's traveled half the world."}
+  ],
+  "pluperfect": [
+   {"person":3,"es":"Ya habíamos recorrido diez kilómetros.","en":"We had already covered ten kilometers."}
+  ],
+  "futurePerfect": [
+   {"person":3,"es":"Para el mediodía habremos recorrido la mitad del camino.","en":"By noon we'll have covered half the way."}
+  ],
+  "conditionalPerfect": [
+   {"person":0,"es":"Habría recorrido más, pero me dolían los pies.","en":"I would have gone farther, but my feet hurt."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"Quiero que recorras la ciudad conmigo.","en":"I want you to explore the city with me."},
+   {"person":0,"es":"Mi abuela quiere que yo recorra el pueblo donde nació.","en":"My grandmother wants me to go around the town where she was born."},
+   {"person":2,"es":"Es mejor que el guía recorra el sendero primero.","en":"It's better for the guide to go along the trail first."},
+   {"person":3,"es":"Propongo que recorramos el museo juntos.","en":"I suggest we go through the museum together."},
+   {"person":4,"es":"Ojalá que recorran la costa antes de irse.","en":"I hope they travel along the coast before they leave."}
+  ],
+  "subjImperfect": [
+   {"person":3,"es":"El guía sugirió que recorriéramos el mercado.","en":"The guide suggested we explore the market."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": [
+   {"person":0,"es":"Si hubiera recorrido el país de joven, habría aprendido más.","en":"If I had traveled the country when I was young, I would have learned more."}
+  ],
+  "impAffirmative": [
+   {"person":4,"es":"Recorran el museo con calma.","en":"Take your time going around the museum."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "reflejar": {
+  "present": [
+   {"person":2,"es":"El lago refleja las montañas.","en":"The lake reflects the mountains."},
+   {"person":0,"es":"En mis dibujos reflejo lo que siento.","en":"In my drawings I show what I feel."},
+   {"person":1,"es":"Reflejas mucha alegría en tus fotos.","en":"You show a lot of joy in your photos."},
+   {"person":3,"es":"Reflejamos la cultura de nuestro pueblo en la música.","en":"We reflect our town's culture in our music."},
+   {"person":4,"es":"Los espejos reflejan la luz.","en":"Mirrors reflect light."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La ventana reflejó el sol del atardecer.","en":"The window reflected the setting sun."},
+   {"person":0,"es":"Reflejé mis experiencias en la novela.","en":"I reflected my experiences in the novel."},
+   {"person":1,"es":"Reflejaste muy bien la historia en tu dibujo.","en":"You captured the story really well in your drawing."},
+   {"person":3,"es":"Reflejamos los resultados en el informe.","en":"We showed the results in the report."},
+   {"person":4,"es":"Las encuestas reflejaron un cambio importante.","en":"The polls reflected a major shift."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Su cara reflejaba cansancio.","en":"Her face showed tiredness."},
+   {"person":0,"es":"Yo no reflejaba lo nervioso que estaba.","en":"I didn't show how nervous I was."},
+   {"person":1,"es":"Tú reflejabas mucha confianza en las entrevistas.","en":"You came across as very confident in interviews."},
+   {"person":3,"es":"Reflejábamos la luz con un espejo para hacer señales.","en":"We used to reflect light with a mirror to send signals."},
+   {"person":4,"es":"Sus ojos reflejaban la alegría del momento.","en":"Their eyes reflected the joy of the moment."}
+  ],
+  "future": [
+   {"person":2,"es":"El precio reflejará el costo del envío.","en":"The price will reflect the shipping cost."},
+   {"person":0,"es":"Reflejaré tus comentarios en el documento.","en":"I'll include your comments in the document."},
+   {"person":1,"es":"En el ensayo reflejarás lo que aprendiste.","en":"In the essay you'll reflect what you learned."},
+   {"person":3,"es":"Reflejaremos todos los gastos en la cuenta.","en":"We'll show all the expenses on the bill."},
+   {"person":4,"es":"Los resultados reflejarán el trabajo del equipo.","en":"The results will reflect the team's work."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo reflejaría más emoción en la escena.","en":"I'd show more emotion in the scene."},
+   {"person":1,"es":"¿Cómo reflejarías esa idea en una pintura?","en":"How would you capture that idea in a painting?"},
+   {"person":2,"es":"Un espejo más grande reflejaría más luz.","en":"A bigger mirror would reflect more light."},
+   {"person":3,"es":"Reflejaríamos mejor la realidad con más datos.","en":"We'd reflect reality better with more data."},
+   {"person":4,"es":"Esas cifras no reflejarían la verdad.","en":"Those figures wouldn't reflect the truth."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"La película ha reflejado bien la época.","en":"The movie has captured the era well."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"El agua había reflejado la luna toda la noche.","en":"The water had reflected the moon all night."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Quiero que reflejes tu personalidad en el proyecto.","en":"I want you to show your personality in the project."},
+   {"person":0,"es":"El director quiere que yo refleje más tristeza en la escena.","en":"The director wants me to show more sadness in the scene."},
+   {"person":2,"es":"Es importante que el contrato refleje lo que acordamos.","en":"It's important that the contract reflects what we agreed to."},
+   {"person":3,"es":"Esperan que reflejemos la cultura local en el diseño.","en":"They expect us to reflect the local culture in the design."},
+   {"person":4,"es":"Es normal que los niños reflejen lo que ven en casa.","en":"It's normal for children to reflect what they see at home."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Querían que el mural reflejara la historia del barrio.","en":"They wanted the mural to reflect the neighborhood's history."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Refleja tus ideas en el ensayo.","en":"Show your ideas in the essay."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "registrar": {
+  "present": [
+   {"person":2,"es":"La policía registra el carro.","en":"The police are searching the car."},
+   {"person":0,"es":"Registro todos mis gastos en una libreta.","en":"I record all my expenses in a notebook."},
+   {"person":1,"es":"¿Registras tus horas de trabajo?","en":"Do you log your work hours?"},
+   {"person":3,"es":"Registramos a los invitados en la entrada.","en":"We sign the guests in at the entrance."},
+   {"person":4,"es":"En el aeropuerto registran las maletas.","en":"At the airport they search the suitcases."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El termómetro registró cuarenta grados.","en":"The thermometer recorded forty degrees."},
+   {"person":0,"es":"Registré a mi perro en la clínica.","en":"I registered my dog at the clinic."},
+   {"person":1,"es":"¿Registraste el carro a tu nombre?","en":"Did you register the car in your name?"},
+   {"person":3,"es":"Registramos la empresa el año pasado.","en":"We registered the company last year."},
+   {"person":4,"es":"Los guardias registraron mi mochila.","en":"The guards searched my backpack."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuela registraba todo en un diario.","en":"My grandmother used to write everything down in a diary."},
+   {"person":0,"es":"Yo registraba la temperatura cada mañana.","en":"I used to record the temperature every morning."},
+   {"person":1,"es":"Tú registrabas los partidos con tu cámara.","en":"You used to record the games with your camera."},
+   {"person":3,"es":"Registrábamos los pájaros que veíamos.","en":"We used to log the birds we saw."},
+   {"person":4,"es":"Los soldados registraban a todos en la frontera.","en":"The soldiers used to search everyone at the border."}
+  ],
+  "future": [
+   {"person":2,"es":"El sistema registrará tu respuesta.","en":"The system will record your answer."},
+   {"person":0,"es":"Registraré tu nombre en la lista.","en":"I'll put your name on the list."},
+   {"person":1,"es":"Registrarás la hora de llegada.","en":"You'll log the arrival time."},
+   {"person":3,"es":"Registraremos al bebé en el registro civil.","en":"We'll register the baby at the civil registry."},
+   {"person":4,"es":"Ellos registrarán la marca este año.","en":"They'll register the brand this year."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo registraría todo por escrito.","en":"I'd put everything in writing."},
+   {"person":1,"es":"¿Registrarías tu canción antes de publicarla?","en":"Would you register your song before releasing it?"},
+   {"person":2,"es":"Ningún policía registraría tu casa sin una orden.","en":"No police officer would search your house without a warrant."},
+   {"person":3,"es":"Registraríamos el nombre, pero ya existe.","en":"We'd register the name, but it's already taken."},
+   {"person":4,"es":"Ellos registrarían a todos los pasajeros.","en":"They'd search all the passengers."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"El sismógrafo ha registrado tres temblores hoy.","en":"The seismograph has recorded three tremors today."}
+  ],
+  "pluperfect": [
+   {"person":0,"es":"Ya había registrado mi cuenta.","en":"I had already registered my account."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Es necesario que registres tu teléfono.","en":"You need to register your phone."},
+   {"person":0,"es":"El banco quiere que yo registre mi firma.","en":"The bank wants me to register my signature."},
+   {"person":2,"es":"No es legal que la policía registre tu carro sin motivo.","en":"It's not legal for the police to search your car without cause."},
+   {"person":3,"es":"Nos piden que registremos nuestras horas.","en":"They're asking us to log our hours."},
+   {"person":4,"es":"Es importante que registren al bebé pronto.","en":"It's important that they register the baby soon."}
+  ],
+  "subjImperfect": [
+   {"person":0,"es":"Me pidieron que registrara mi entrada y salida.","en":"They asked me to log when I came and went."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Registra tus gastos cada día.","en":"Track your spending every day."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "relacionar": {
+  "present": [
+   {"person":2,"es":"El artículo relaciona el estrés con el sueño.","en":"The article links stress to sleep."},
+   {"person":0,"es":"Siempre relaciono esa canción con el verano.","en":"I always associate that song with summer."},
+   {"person":1,"es":"¿Con qué relacionas el color rojo?","en":"What do you associate the color red with?"},
+   {"person":3,"es":"Relacionamos cada palabra con su dibujo.","en":"We match each word with its picture."},
+   {"person":4,"es":"Los médicos relacionan el azúcar con muchas enfermedades.","en":"Doctors link sugar to many diseases."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La maestra relacionó la historia con nuestra vida.","en":"The teacher related the story to our lives."},
+   {"person":0,"es":"Relacioné el olor con la casa de mi abuela.","en":"I connected the smell with my grandmother's house."},
+   {"person":1,"es":"¿Relacionaste las dos columnas?","en":"Did you match the two columns?"},
+   {"person":3,"es":"Relacionamos los datos del año pasado con los de este año.","en":"We connected last year's data with this year's."},
+   {"person":4,"es":"Los detectives relacionaron las pistas.","en":"The detectives connected the clues."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo relacionaba la lluvia con la buena suerte.","en":"My grandfather associated rain with good luck."},
+   {"person":0,"es":"Yo relacionaba los números con colores.","en":"I used to associate numbers with colors."},
+   {"person":1,"es":"Tú relacionabas todo con el fútbol.","en":"You used to relate everything to soccer."},
+   {"person":3,"es":"Relacionábamos el olor a pan con la Navidad.","en":"We associated the smell of bread with Christmas."},
+   {"person":4,"es":"Los niños relacionaban al doctor con las inyecciones.","en":"The kids associated the doctor with shots."}
+  ],
+  "future": [
+   {"person":2,"es":"El examen relacionará la teoría con la práctica.","en":"The exam will connect theory and practice."},
+   {"person":0,"es":"Relacionaré estos dos temas en mi ensayo.","en":"I'll connect these two topics in my essay."},
+   {"person":1,"es":"Relacionarás cada país con su capital.","en":"You'll match each country with its capital."},
+   {"person":3,"es":"Relacionaremos las imágenes con las palabras.","en":"We'll match the pictures with the words."},
+   {"person":4,"es":"Los investigadores relacionarán los resultados.","en":"The researchers will connect the results."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo no relacionaría esas dos cosas.","en":"I wouldn't connect those two things."},
+   {"person":1,"es":"¿Relacionarías este cuadro con algún pintor?","en":"Would you associate this painting with any painter?"},
+   {"person":2,"es":"Nadie relacionaría a mi abuela con el rock.","en":"No one would associate my grandmother with rock music."},
+   {"person":3,"es":"Relacionaríamos mejor los temas con un mapa mental.","en":"We'd connect the topics better with a mind map."},
+   {"person":4,"es":"Ellos relacionarían el problema con el clima.","en":"They'd link the problem to the weather."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"Un estudio ha relacionado el ejercicio con la felicidad.","en":"A study has linked exercise to happiness."}
+  ],
+  "pluperfect": [
+   {"person":0,"es":"Nunca había relacionado las dos cosas.","en":"I had never connected the two things."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Quiero que relaciones cada palabra con su significado.","en":"I want you to match each word with its meaning."},
+   {"person":0,"es":"La maestra pide que yo relacione los dos textos.","en":"The teacher is asking me to connect the two texts."},
+   {"person":2,"es":"Es raro que alguien relacione el mar con el frío.","en":"It's rare for someone to associate the sea with the cold."},
+   {"person":3,"es":"Es útil que relacionemos lo nuevo con lo que ya sabemos.","en":"It helps for us to connect new things with what we already know."},
+   {"person":4,"es":"Es normal que los niños relacionen el verano con las vacaciones.","en":"It's normal for kids to associate summer with vacation."}
+  ],
+  "subjImperfect": [
+   {"person":3,"es":"La profesora quería que relacionáramos el poema con nuestra vida.","en":"The teacher wanted us to relate the poem to our lives."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Relaciona cada palabra con su dibujo.","en":"Match each word with its picture."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "renunciar": {
+  "present": [
+   {"person":2,"es":"Mi jefe renuncia a fin de mes.","en":"My boss is quitting at the end of the month."},
+   {"person":0,"es":"Renuncio, ya no aguanto más.","en":"I quit; I can't take it anymore."},
+   {"person":1,"es":"¿Por qué renuncias a tus sueños?","en":"Why are you giving up on your dreams?"},
+   {"person":3,"es":"Renunciamos al viaje por falta de dinero.","en":"We're giving up the trip because we don't have the money."},
+   {"person":4,"es":"Muchos jóvenes renuncian a su trabajo para estudiar.","en":"Many young people quit their jobs to study."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Mi hermana renunció a su trabajo ayer.","en":"My sister quit her job yesterday."},
+   {"person":0,"es":"Renuncié porque me pagaban muy poco.","en":"I quit because they paid me very little."},
+   {"person":1,"es":"¿Renunciaste de verdad?","en":"Did you really quit?"},
+   {"person":3,"es":"Renunciamos a la herencia.","en":"We gave up the inheritance."},
+   {"person":4,"es":"Tres ministros renunciaron esta semana.","en":"Three ministers resigned this week."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El entrenador nunca renunciaba a ganar.","en":"The coach never gave up on winning."},
+   {"person":0,"es":"Yo renunciaba a mis vacaciones para trabajar más.","en":"I used to give up my vacations to work more."},
+   {"person":1,"es":"Tú renunciabas a todo por tu familia.","en":"You used to give up everything for your family."},
+   {"person":3,"es":"Renunciábamos a los dulces durante la Cuaresma.","en":"We used to give up sweets during Lent."},
+   {"person":4,"es":"Los empleados renunciaban porque el jefe era muy duro.","en":"Employees kept quitting because the boss was very harsh."}
+  ],
+  "future": [
+   {"person":2,"es":"El presidente no renunciará.","en":"The president won't resign."},
+   {"person":0,"es":"Nunca renunciaré a mis sueños.","en":"I'll never give up on my dreams."},
+   {"person":1,"es":"¿Renunciarás si no te suben el sueldo?","en":"Will you quit if they don't give you a raise?"},
+   {"person":3,"es":"No renunciaremos a nuestros derechos.","en":"We won't give up our rights."},
+   {"person":4,"es":"Si siguen así, todos renunciarán.","en":"If things keep going like this, everyone will quit."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo renunciaría hoy mismo si pudiera.","en":"I'd quit today if I could."},
+   {"person":1,"es":"¿Renunciarías a tu trabajo por amor?","en":"Would you quit your job for love?"},
+   {"person":2,"es":"Mi papá nunca renunciaría a su café de la mañana.","en":"My dad would never give up his morning coffee."},
+   {"person":3,"es":"Renunciaríamos al carro si hubiera buen transporte público.","en":"We'd give up the car if there were good public transportation."},
+   {"person":4,"es":"Ellos renunciarían antes de trabajar los domingos.","en":"They'd quit before working on Sundays."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"La directora ha renunciado.","en":"The principal has resigned."}
+  ],
+  "pluperfect": [
+   {"person":0,"es":"Ya había renunciado cuando me ofrecieron un aumento.","en":"I had already quit when they offered me a raise."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":0,"es":"Yo habría renunciado mucho antes.","en":"I would have quit much sooner."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"No quiero que renuncies al equipo.","en":"I don't want you to quit the team."},
+   {"person":0,"es":"Mi familia no quiere que yo renuncie.","en":"My family doesn't want me to quit."},
+   {"person":2,"es":"Es posible que el entrenador renuncie.","en":"The coach might resign."},
+   {"person":3,"es":"No es justo que renunciemos a las vacaciones.","en":"It isn't fair for us to give up our vacation."},
+   {"person":4,"es":"Ojalá que no renuncien los mejores maestros.","en":"I hope the best teachers don't quit."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Le pidieron que renunciara.","en":"They asked him to resign."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":2,"es":"Me sorprende que haya renunciado.","en":"I'm surprised she quit."}
+  ],
+  "subjPluperfect": [
+   {"person":0,"es":"Si hubiera renunciado, no habría conocido a mis amigos de la oficina.","en":"If I had quit, I wouldn't have met my friends from the office."}
+  ],
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No renuncies a tus sueños.","en":"Don't give up on your dreams."}
+  ]
+ },
+ "reparar": {
+  "present": [
+   {"person":2,"es":"Mi tío repara carros en su taller.","en":"My uncle fixes cars in his shop."},
+   {"person":0,"es":"Reparo computadoras los fines de semana.","en":"I fix computers on weekends."},
+   {"person":1,"es":"¿Reparas bicicletas?","en":"Do you fix bikes?"},
+   {"person":3,"es":"Reparamos el techo antes de las lluvias.","en":"We repair the roof before the rainy season."},
+   {"person":4,"es":"En esa tienda reparan zapatos.","en":"They fix shoes at that shop."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El plomero reparó la tubería.","en":"The plumber fixed the pipe."},
+   {"person":0,"es":"Reparé la silla con pegamento.","en":"I fixed the chair with glue."},
+   {"person":1,"es":"¿Reparaste la lámpara?","en":"Did you fix the lamp?"},
+   {"person":3,"es":"Reparamos la cerca del jardín.","en":"We fixed the garden fence."},
+   {"person":4,"es":"Los técnicos repararon el elevador.","en":"The technicians fixed the elevator."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo reparaba relojes.","en":"My grandfather used to repair watches."},
+   {"person":0,"es":"Yo reparaba radios viejos con mi papá.","en":"I used to fix old radios with my dad."},
+   {"person":1,"es":"Tú reparabas todo lo que se rompía en casa.","en":"You used to fix everything that broke at home."},
+   {"person":3,"es":"Reparábamos las bicicletas nosotros mismos.","en":"We used to fix our bikes ourselves."},
+   {"person":4,"es":"Mis vecinos reparaban muebles en el garaje.","en":"My neighbors used to repair furniture in the garage."}
+  ],
+  "future": [
+   {"person":2,"es":"El mecánico reparará el carro mañana.","en":"The mechanic will fix the car tomorrow."},
+   {"person":0,"es":"Repararé la puerta este fin de semana.","en":"I'll fix the door this weekend."},
+   {"person":1,"es":"Tú repararás la bicicleta y yo la pinto.","en":"You'll fix the bike and I'll paint it."},
+   {"person":3,"es":"Repararemos la calle el próximo mes.","en":"We'll repair the street next month."},
+   {"person":4,"es":"Ellos repararán el puente en dos semanas.","en":"They'll repair the bridge in two weeks."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo la repararía, pero no tengo herramientas.","en":"I'd fix it, but I don't have tools."},
+   {"person":1,"es":"¿Repararías mi teléfono?","en":"Would you fix my phone?"},
+   {"person":2,"es":"Un buen carpintero repararía esa mesa.","en":"A good carpenter would fix that table."},
+   {"person":3,"es":"Repararíamos la casa si tuviéramos dinero.","en":"We'd repair the house if we had the money."},
+   {"person":4,"es":"Ellos repararían el techo gratis.","en":"They'd fix the roof for free."}
+  ],
+  "presentPerfect": [
+   {"person":3,"es":"Todavía no hemos reparado la lavadora.","en":"We still haven't fixed the washing machine."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"El técnico ya había reparado la nevera.","en":"The technician had already fixed the fridge."}
+  ],
+  "futurePerfect": [
+   {"person":2,"es":"Para el lunes, el mecánico habrá reparado el carro.","en":"By Monday the mechanic will have fixed the car."}
+  ],
+  "conditionalPerfect": [
+   {"person":0,"es":"Lo habría reparado yo mismo.","en":"I would have fixed it myself."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"Necesito que repares la ducha.","en":"I need you to fix the shower."},
+   {"person":0,"es":"Mi mamá quiere que yo repare la silla.","en":"My mom wants me to fix the chair."},
+   {"person":2,"es":"Ojalá que el técnico repare el internet hoy.","en":"I hope the technician fixes the internet today."},
+   {"person":3,"es":"Es mejor que reparemos el carro antes del viaje.","en":"We'd better fix the car before the trip."},
+   {"person":4,"es":"Espero que reparen el semáforo pronto.","en":"I hope they fix the traffic light soon."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Le pedí al mecánico que reparara los frenos.","en":"I asked the mechanic to fix the brakes."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":4,"es":"Me alegra que hayan reparado la calle.","en":"I'm glad they've repaired the street."}
+  ],
+  "subjPluperfect": [
+   {"person":0,"es":"Si hubiera reparado el techo, no habría goteras.","en":"If I had fixed the roof, there wouldn't be leaks."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Repara la bicicleta antes de usarla.","en":"Fix the bike before you use it."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "repartir": {
+  "present": [
+   {"person":2,"es":"El cartero reparte las cartas por la mañana.","en":"The mail carrier delivers the letters in the morning."},
+   {"person":0,"es":"Reparto pizzas los fines de semana.","en":"I deliver pizzas on weekends."},
+   {"person":1,"es":"¿Repartes tú las cartas?","en":"Are you dealing the cards?"},
+   {"person":3,"es":"Repartimos el trabajo entre todos.","en":"We split the work among everyone."},
+   {"person":4,"es":"Los voluntarios reparten comida en el parque.","en":"The volunteers hand out food in the park."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La maestra repartió los exámenes.","en":"The teacher handed out the exams."},
+   {"person":0,"es":"Repartí los dulces entre los niños.","en":"I shared the candy among the kids."},
+   {"person":1,"es":"¿Repartiste las invitaciones?","en":"Did you hand out the invitations?"},
+   {"person":3,"es":"Repartimos la cuenta entre cuatro.","en":"We split the bill four ways."},
+   {"person":4,"es":"Los vecinos repartieron volantes por todo el barrio.","en":"The neighbors handed out flyers all over the neighborhood."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuela repartía tamales en Navidad.","en":"My grandmother used to give out tamales at Christmas."},
+   {"person":0,"es":"Yo repartía periódicos en bicicleta.","en":"I used to deliver newspapers by bike."},
+   {"person":1,"es":"Tú siempre repartías los papeles en clase.","en":"You always used to hand out the papers in class."},
+   {"person":3,"es":"Repartíamos las tareas de la casa.","en":"We used to split the housework."},
+   {"person":4,"es":"Mis tíos repartían regalos a todos los sobrinos.","en":"My aunt and uncle used to hand out presents to all the nieces and nephews."}
+  ],
+  "future": [
+   {"person":2,"es":"El profesor repartirá las notas el viernes.","en":"The teacher will hand back the grades on Friday."},
+   {"person":0,"es":"Repartiré el pastel.","en":"I'll hand out the cake."},
+   {"person":1,"es":"Tú repartirás las cartas primero.","en":"You'll deal the cards first."},
+   {"person":3,"es":"Repartiremos las ganancias en partes iguales.","en":"We'll split the profits equally."},
+   {"person":4,"es":"Ellos repartirán los paquetes mañana.","en":"They'll deliver the packages tomorrow."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo repartiría el trabajo de otra forma.","en":"I'd divide up the work differently."},
+   {"person":1,"es":"¿Repartirías tu premio con tus amigos?","en":"Would you share your prize with your friends?"},
+   {"person":2,"es":"La empresa repartiría las ganancias entre los empleados.","en":"The company would share the profits among the employees."},
+   {"person":3,"es":"Repartiríamos más comida si tuviéramos más voluntarios.","en":"We'd hand out more food if we had more volunteers."},
+   {"person":4,"es":"Ellos repartirían volantes, pero llueve.","en":"They'd hand out flyers, but it's raining."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"El repartidor ya ha repartido todos los paquetes.","en":"The delivery driver has already delivered all the packages."}
+  ],
+  "pluperfect": [
+   {"person":3,"es":"Ya habíamos repartido la comida cuando llegaron.","en":"We had already served the food when they arrived."}
+  ],
+  "futurePerfect": [
+   {"person":2,"es":"A las diez, el cartero ya habrá repartido el correo.","en":"By ten, the mail carrier will have delivered the mail."}
+  ],
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Quiero que repartas los cuadernos.","en":"I want you to hand out the notebooks."},
+   {"person":0,"es":"La maestra quiere que yo reparta las hojas.","en":"The teacher wants me to hand out the sheets."},
+   {"person":2,"es":"Es mejor que el mayor reparta el pastel.","en":"It's best if the oldest one hands out the cake."},
+   {"person":3,"es":"Propongo que repartamos los gastos.","en":"I suggest we split the costs."},
+   {"person":4,"es":"Ojalá que repartan regalos en la fiesta.","en":"I hope they hand out presents at the party."}
+  ],
+  "subjImperfect": [
+   {"person":0,"es":"La directora me pidió que repartiera los diplomas.","en":"The principal asked me to hand out the diplomas."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": [
+   {"person":3,"es":"Si hubiéramos repartido el trabajo, habríamos terminado antes.","en":"If we had split up the work, we would have finished sooner."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Reparte las cartas.","en":"Deal the cards."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "requerir": {
+  "present": [
+   {"person":2,"es":"Este trabajo requiere mucha paciencia.","en":"This job requires a lot of patience."},
+   {"person":0,"es":"Requiero tu firma en este documento.","en":"I need your signature on this document."},
+   {"person":1,"es":"¿Requieres ayuda con la maleta?","en":"Do you need help with the suitcase?"},
+   {"person":3,"es":"Requerimos dos testigos para la boda.","en":"We need two witnesses for the wedding."},
+   {"person":4,"es":"Estas plantas requieren mucha agua.","en":"These plants need a lot of water."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La operación requirió tres horas.","en":"The surgery took three hours."},
+   {"person":0,"es":"Requerí ayuda del técnico.","en":"I needed help from the technician."},
+   {"person":1,"es":"¿Requeriste algún permiso especial?","en":"Did you need any special permit?"},
+   {"person":3,"es":"Requerimos más tiempo del que pensábamos.","en":"We needed more time than we thought."},
+   {"person":4,"es":"Los cambios requirieron mucho trabajo.","en":"The changes required a lot of work."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El puesto requería experiencia.","en":"The position required experience."},
+   {"person":0,"es":"Yo requería lentes para leer.","en":"I needed glasses to read."},
+   {"person":1,"es":"Tú requerías un permiso para salir.","en":"You needed a permit to go out."},
+   {"person":3,"es":"Requeríamos un traductor en las reuniones.","en":"We needed an interpreter at the meetings."},
+   {"person":4,"es":"Los viajes al extranjero requerían visa.","en":"Trips abroad required a visa."}
+  ],
+  "future": [
+   {"person":2,"es":"El proyecto requerirá más dinero.","en":"The project will require more money."},
+   {"person":0,"es":"Requeriré tu ayuda mañana.","en":"I'll need your help tomorrow."},
+   {"person":1,"es":"Requerirás un pasaporte para el viaje.","en":"You'll need a passport for the trip."},
+   {"person":3,"es":"Requeriremos más voluntarios.","en":"We'll need more volunteers."},
+   {"person":4,"es":"Los estudiantes requerirán una calculadora.","en":"The students will need a calculator."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo requeriría más información antes de decidir.","en":"I'd need more information before deciding."},
+   {"person":1,"es":"¿Requerirías ayuda para la mudanza?","en":"Would you need help with the move?"},
+   {"person":2,"es":"Un cambio así requeriría mucho tiempo.","en":"A change like that would take a lot of time."},
+   {"person":3,"es":"Requeriríamos un carro más grande.","en":"We'd need a bigger car."},
+   {"person":4,"es":"Esas reparaciones requerirían un experto.","en":"Those repairs would need an expert."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"La situación ha requerido medidas urgentes.","en":"The situation has required urgent measures."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"El viaje había requerido meses de planeación.","en":"The trip had required months of planning."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Avísame en caso de que requieras algo.","en":"Let me know in case you need anything."},
+   {"person":0,"es":"No creo que yo requiera ayuda.","en":"I don't think I'll need help."},
+   {"person":2,"es":"Es posible que el trámite requiera una foto.","en":"The paperwork may require a photo."},
+   {"person":3,"es":"Cuando requiramos más ayuda, te llamaremos.","en":"When we need more help, we'll call you."},
+   {"person":4,"es":"Ojalá que los arreglos no requieran mucho dinero.","en":"I hope the repairs don't require much money."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"No esperaba que el trabajo requiriera tanto esfuerzo.","en":"I didn't expect the job to take so much effort."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
+ },
+ "reservar": {
+  "present": [
+   {"person":2,"es":"Mi papá siempre reserva mesa en ese restaurante.","en":"My dad always reserves a table at that restaurant."},
+   {"person":0,"es":"Reservo los boletos por internet.","en":"I book the tickets online."},
+   {"person":1,"es":"¿Reservas tú el hotel?","en":"Are you booking the hotel?"},
+   {"person":3,"es":"Reservamos la cancha para el sábado.","en":"We're booking the court for Saturday."},
+   {"person":4,"es":"Mis tíos reservan una cabaña cada verano.","en":"My aunt and uncle book a cabin every summer."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Ella reservó una habitación con vista al mar.","en":"She booked a room with an ocean view."},
+   {"person":0,"es":"Reservé dos boletos para el concierto.","en":"I booked two tickets for the concert."},
+   {"person":1,"es":"¿Reservaste el vuelo?","en":"Did you book the flight?"},
+   {"person":3,"es":"Reservamos mesa para ocho personas.","en":"We reserved a table for eight."},
+   {"person":4,"es":"Ellos reservaron el salón para la boda.","en":"They booked the hall for the wedding."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuela reservaba el mejor pedazo para mí.","en":"My grandmother used to save the best piece for me."},
+   {"person":0,"es":"Yo siempre reservaba un asiento junto a la ventana.","en":"I always used to book a window seat."},
+   {"person":1,"es":"Tú reservabas los hoteles más baratos.","en":"You used to book the cheapest hotels."},
+   {"person":3,"es":"Reservábamos las vacaciones con meses de anticipación.","en":"We used to book our vacations months ahead."},
+   {"person":4,"es":"Los vecinos reservaban la piscina para las fiestas.","en":"The neighbors used to reserve the pool for parties."}
+  ],
+  "future": [
+   {"person":0,"es":"Reservaré una mesa para las ocho.","en":"I'll reserve a table for eight o'clock."},
+   {"person":1,"es":"Reservarás los boletos tú, ¿verdad?","en":"You'll book the tickets, right?"},
+   {"person":2,"es":"La agencia reservará el hotel por nosotros.","en":"The agency will book the hotel for us."},
+   {"person":3,"es":"Reservaremos un carro en el aeropuerto.","en":"We'll book a car at the airport."},
+   {"person":4,"es":"Ellos reservarán el salón con tiempo.","en":"They'll book the hall in advance."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo reservaría con tiempo, es temporada alta.","en":"I'd book early; it's high season."},
+   {"person":1,"es":"¿Me reservarías un lugar?","en":"Would you save me a spot?"},
+   {"person":2,"es":"Mi hermana reservaría el hotel más caro.","en":"My sister would book the most expensive hotel."},
+   {"person":3,"es":"Reservaríamos, pero ya no hay mesas.","en":"We'd make a reservation, but there are no tables left."},
+   {"person":4,"es":"Ellos reservarían el vuelo si fuera más barato.","en":"They'd book the flight if it were cheaper."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"Ya he reservado los boletos.","en":"I've already booked the tickets."}
+  ],
+  "pluperfect": [
+   {"person":3,"es":"Habíamos reservado una mesa, pero no encontraron la reservación.","en":"We had reserved a table, but they couldn't find the reservation."}
+  ],
+  "futurePerfect": [
+   {"person":2,"es":"Para mañana, mi papá ya habrá reservado el hotel.","en":"By tomorrow my dad will have booked the hotel."}
+  ],
+  "conditionalPerfect": [
+   {"person":0,"es":"Habría reservado antes, pero no sabía la fecha.","en":"I would have booked sooner, but I didn't know the date."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"Es mejor que reserves con anticipación.","en":"It's best if you book ahead."},
+   {"person":0,"es":"Mis amigos quieren que yo reserve la cabaña.","en":"My friends want me to book the cabin."},
+   {"person":2,"es":"Ojalá que el restaurante nos reserve una mesa.","en":"I hope the restaurant saves us a table."},
+   {"person":3,"es":"Sugiero que reservemos los boletos hoy.","en":"I suggest we book the tickets today."},
+   {"person":4,"es":"Diles que reserven el salón para el sábado.","en":"Tell them to book the hall for Saturday."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Le pedí a mi hermano que reservara el vuelo.","en":"I asked my brother to book the flight."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":1,"es":"Espero que hayas reservado mesa.","en":"I hope you've reserved a table."}
+  ],
+  "subjPluperfect": [
+   {"person":3,"es":"Si hubiéramos reservado antes, habríamos conseguido mejor precio.","en":"If we had booked earlier, we would have gotten a better price."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Reserva la mesa para las ocho.","en":"Reserve the table for eight o'clock."}
+  ],
+  "impNegative": {"rare":true}
+ }
+}

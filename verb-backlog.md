@@ -12,34 +12,6 @@ When adding a batch:
 - Delete the batch from this file once it's in `verbs.json`, and update the verb count in `plan.md`.
 - If a verb is dropped, move it to "Dropped" at the bottom with the reason, so it isn't suggested again.
 
-## Batch 6
-
-- pegar: to stick; to hit
-- perdonar: to forgive
-- permanecer: to remain, to stay
-- perseguir: to chase, to pursue
-- pertenecer: to belong
-- pesar: to weigh
-- planear: to plan
-- poseer: to possess, to own
-- practicar: to practice
-- prender: to turn on; to light (Latin America)
-- prometer: to promise
-- pronunciar: to pronounce
-- provocar: to cause, to provoke
-- publicar: to publish, to post
-- quemar: to burn
-- rechazar: to reject, to turn down
-- recorrer: to go around, to travel through
-- reflejar: to reflect
-- registrar: to register; to search
-- relacionar: to relate, to connect
-- renunciar: to quit, to give up
-- reparar: to repair, to fix
-- repartir: to hand out, to deliver
-- requerir: to require
-- reservar: to reserve, to book
-
 ## Batch 7
 
 - respetar: to respect
