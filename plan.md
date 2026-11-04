@@ -28,13 +28,13 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 
 ## Content backlog
 
-- [ ] Goal: about 5,000 words in all, roughly 2,300 nouns, 1,000 adjectives and 1,000 verbs, with adverbs already enough at about 250. The split is a rough estimate of how a list of the 5,000 most common words breaks down, from memory and not checked against a source. Common words come first, so regional and specialist words don't count for as much as their number suggests. Now about 4,135: 2,300 nouns, 1,001 adjectives, 282 adverbs, 159 small words, 389 verbs
+- [ ] Goal: about 5,000 words in all, roughly 2,300 nouns, 1,000 adjectives and 1,000 verbs, with adverbs already enough at about 250. The split is a rough estimate of how a list of the 5,000 most common words breaks down, from memory and not checked against a source. Common words come first, so regional and specialist words don't count for as much as their number suggests. Now about 4,160: 2,300 nouns, 1,001 adjectives, 282 adverbs, 159 small words, 414 verbs
 - [ ] Insults and words for disabilities (idiota, estúpido, imbécil, cojo, manco, enano), left out of the word batches on purpose. Add them with a note on why they offend, per the vulgar and offensive word rules in "How content gets added"
-- [ ] More verbs toward the goal: about 610 left. Slower than words, because each needs sentences for every tense. Work from `verb-backlog.md`, which lists 655 candidates in 27 batches of 25, already checked against `verbs.json`, including more reflexives and regional verbs. A batch takes about 900 sentences. Batch 4 crosses verb 400, so it needs `verbs-401-450.json`
+- [ ] More verbs toward the goal: about 590 left. Slower than words, because each needs sentences for every tense. Work from `verb-backlog.md`, which lists 630 candidates in 26 batches of 25, already checked against `verbs.json`, including more reflexives and regional verbs. A batch takes about 900 sentences. Batch 5 goes into `verbs-401-450.json`, and batch 6 crosses verb 450
 - [ ] More phrases and regional expressions, labeled by country. Now at 162
 - [ ] More regional words, and more countries in the existing entries
 - [ ] More reading passages. Now at 12, with 4 each at A1, A2 and B1
-- [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 12,500 remain, all in tenses drilled far less, so this needs batches and a usage check before each one. All 389 verbs are done in the six core tenses, apart from about 372 forms left out on purpose: forms with no natural sentence, like `yo naceré`, all of `nevar` beyond él, `suceder`, `surgir` and `bastar` beyond él and ellos, or the yo and nosotros forms of `interesar`, `encantar` and `preocupar` where they'd sound forced, and tenses marked rare, like most of `oponer` and `desoír`. Next would be the present perfect and the -ra imperfect subjunctive, about 2,470 sentences between them, starting from the most common verbs
+- [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 13,200 remain, all in tenses drilled far less, so this needs batches and a usage check before each one. All 414 verbs are done in the six core tenses, apart from about 411 forms left out on purpose: forms with no natural sentence, like `yo naceré`, all of `nevar` beyond él, `suceder`, `surgir`, `bastar`, `durar` and `corresponder` beyond él and ellos, or the yo and nosotros forms of `interesar`, `encantar` and `preocupar` where they'd sound forced, and tenses marked rare, like most of `oponer` and `desoír`. Next would be the present perfect and the -ra imperfect subjunctive, about 2,470 sentences between them, starting from the most common verbs
 - [ ] Add proverb of the day
 
 ## Later
@@ -49,6 +49,41 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 ## Waiting on feedback
 
 - [ ] Should the drill streak carry over between drills? Now it resets on a miss and also whenever a drill ends or changes: finishing a deck, "Change settings", switching drill type or reloading. I'm leaning towards keeping it going, because that encourages people to keep practicing. Ask: "Right now your drill streak resets when you finish or switch drills. Would you rather it kept going until you get one wrong, even across drills and days?" There are two options: carry it across drills but reset at midnight, or carry it until a miss, even across days. The second can blur into the days streak tile, and someone who rarely practices could build a big number slowly. The on-screen chip and the saved record should follow the same rule. Switching only changes when the streak resets in `DrillRunner.tsx`. The saved record keeps the higher number either way, so earlier records stay valid
+
+## Teacher classes (idea, not started)
+
+A teacher asked for a way to follow their students' progress. The plan is class-wide stats only, with no student named: accuracy by tense, weak spots and recent mistakes for the class as a whole.
+
+How it would work, with no server and still on the Spark plan:
+
+- A teacher (a `teacher: true` field on their invite, set by hand like `vulgar`) creates a class and gets a short join code.
+- A student enters the code on their account page. It's opt-in, they're told their answers count toward anonymous class stats, and they can leave.
+- Each time a student's progress saves, the same batch also adds to the class's own totals in `classes/{id}/stats`. That's one extra write per save. The teacher only ever reads the class totals and never gets access to students' own data. That makes it anonymous by design, not just hidden in the page.
+- The teacher's page reuses the progress page parts: accuracy by tense, weak spots, recent mistakes and a weekly trend, plus how many students practiced this week.
+
+Safeguards, because anonymous totals can still point to one person in a small class:
+
+- Show nothing until at least 5 students have joined and practiced.
+- Show mistakes grouped with counts, like "7 students wrote hablé for habló", and leave out mistakes only one student made.
+- Leave writing and dictation mistakes out, since free text could contain anything, including names.
+- Rules can check that a student only adds to classes they joined, but not that the numbers are honest. That's fine for a class tool.
+
+Trade-off: the teacher can't spot one struggling student or check homework. If teachers ask for that later, it would be a separate opt-in per student.
+
+Questions for the teacher first: how old are the students, how many are in a class, how do they sign in (school Google accounts often block outside apps, so email link may be the way), and what would they look at each week?
+
+## Opening sign-ups and paying for it
+
+The app started as invite-only for friends and family. Classes and wider use would mean opening sign-ups. The rules already have the switch: `canSaveProgress()` in `firestore.rules`.
+
+- **Costs are small for a long time.** A heavy day for one person is about 100 reads and 120 writes. The free tier (50,000 reads and 20,000 writes a day across everyone) covers roughly 150 heavy users a day. Past that, the Blaze plan keeps the same free tier and charges per use, around $0.18 per 100,000 writes and $0.06 per 100,000 reads at last check (confirm current prices). 1,000 heavy users a day would be under $10 a month. Hosting stays on AWS Amplify, which bills separately for build minutes, data served and server-rendered requests. Most pages are prerendered, so that should stay small too, but set an AWS Budgets alert alongside Firebase's. On Spark, going over the limit makes saves fail for the rest of the day rather than costing money.
+- **What would really cost money:** conversation practice with Claude (in "Later") and generated audio. Those, not the database, are where a subscription would come in.
+- **Before opening up:**
+  - A privacy policy and terms.
+  - A minimum age of 13, unless the school route is set up properly. Under-13 accounts need parental consent under COPPA.
+  - Firebase App Check against scripted abuse.
+  - Budget alerts if on Blaze.
+- **Paying for it, if needed:** free for learners, with a paid teacher or class plan, is common for school tools and keeps learners unaffected. Taking payments (Stripe) would need server routes and webhooks, which Amplify can run. Not worth building until costs are real.
 
 ## To verify
 
@@ -84,7 +119,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 
 - Sentences and vocabulary are written in Claude Code sessions and committed as JSON, so the app needs no API key or database.
 - `npm test` checks the data: every example must contain the exact word form it teaches.
-- Verbs: take the next batch from `verb-backlog.md` and delete it there once added. Add to the end of `src/data/verbs.json`, because a verb's position decides its sentence file. Then add its sentences to the matching `src/data/sentences/verbs-*.json` in tense order, with a list for each tense or `{"rare":true}`. `person` is 0 yo, 1 tú, 2 él, 3 nosotros, 4 ellos. After verb 400, add `verbs-401-450.json` to `sentence-data.ts` and `sentence-loader.ts`, starting it as `{}`.
+- Verbs: take the next batch from `verb-backlog.md` and delete it there once added. Add to the end of `src/data/verbs.json`, because a verb's position decides its sentence file. Then add its sentences to the matching `src/data/sentences/verbs-*.json` in tense order, with a list for each tense or `{"rare":true}`. `person` is 0 yo, 1 tú, 2 él, 3 nosotros, 4 ellos. After verb 450, add `verbs-451-500.json` to `sentence-data.ts` and `sentence-loader.ts`, starting it as `{}`.
 - Sentences for the other persons of a verb: add to the verb's tense list in the same file, after the main sentence, which stays first. Name the subject when forms look alike, like yo and él in the imperfect, because the verb is blanked out on cards.
 - Sentence files hold 50 verbs each in `verbs.json` order, so a drill downloads only the files for its verbs, and adding to one file leaves the others cached.
 - Words: add to the end of `src/data/vocab/*.json`, because file order sets the order new items are introduced. Noun topics must stay in step with `NOUN_TOPICS` in `src/lib/drill-settings.ts`. Give nouns shared by men and women `"article":"el"` (el dentista), which keeps them out of the gender drill. Multi-word nouns need `plural`.
@@ -159,6 +194,7 @@ These live in `.verify/`, which is gitignored, so keep a copy if you change mach
 - [x] 1,097 more sentences in four batches, extending that coverage to the top 206 verbs
 - [x] 1,676 more sentences in six batches, extending that coverage to the top 278 verbs
 - [x] 856 more sentences in three batches, finishing that coverage for all 314 verbs
+- [x] Verb backlog batch 4: 25 verbs (`controlar` to `grabar`) with 893 sentences. Verbs 401 on go in the new `verbs-401-450.json`
 - [x] Verb backlog batch 3: 25 verbs (`aguantar` to `contratar`) with 906 sentences
 - [x] Verb backlog batch 2: 25 verbs (`sufrir` to `acudir`) with 902 sentences, including the gustar-type verbs `faltar`, `importar`, `interesar`, `encantar`, `molestar` and `preocupar`. Verbs 351 on go in the new `verbs-351-400.json`
 - [x] Verb backlog batch 1: 25 common verbs (`desarrollar` to `avanzar`) with 904 sentences, every person in the six core tenses and one sentence or a "rarely used" note for the rest

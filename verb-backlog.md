@@ -12,34 +12,6 @@ When adding a batch:
 - Delete the batch from this file once it's in `verbs.json`, and update the verb count in `plan.md`.
 - If a verb is dropped, move it to "Dropped" at the bottom with the reason, so it isn't suggested again.
 
-## Batch 4
-
-- controlar: to control
-- convencer: to convince
-- conversar: to talk, to have a conversation
-- corresponder: to correspond; to be one's turn
-- criar: to raise, to bring up
-- declarar: to declare
-- depender: to depend
-- dibujar: to draw
-- disfrutar: to enjoy
-- durar: to last
-- eliminar: to eliminate, to remove
-- emplear: to employ, to use
-- enfrentar: to face, to confront
-- entregar: to deliver, to hand in
-- escapar: to escape
-- esconder: to hide
-- escoger: to choose, to pick
-- exigir: to demand
-- expresar: to express
-- extender: to extend, to spread
-- fallar: to fail, to miss
-- firmar: to sign
-- fumar: to smoke
-- golpear: to hit, to knock
-- grabar: to record
-
 ## Batch 5
 
 - identificar: to identify
