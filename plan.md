@@ -28,13 +28,13 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 
 ## Content backlog
 
-- [ ] Goal: about 5,000 words in all, roughly 2,300 nouns, 1,000 adjectives and 1,000 verbs, with adverbs already enough at about 250. The split is a rough estimate of how a list of the 5,000 most common words breaks down, from memory and not checked against a source. Common words come first, so regional and specialist words don't count for as much as their number suggests. Now about 4,060: 2,300 nouns, 1,001 adjectives, 282 adverbs, 159 small words, 314 verbs
+- [ ] Goal: about 5,000 words in all, roughly 2,300 nouns, 1,000 adjectives and 1,000 verbs, with adverbs already enough at about 250. The split is a rough estimate of how a list of the 5,000 most common words breaks down, from memory and not checked against a source. Common words come first, so regional and specialist words don't count for as much as their number suggests. Now about 4,085: 2,300 nouns, 1,001 adjectives, 282 adverbs, 159 small words, 339 verbs
 - [ ] Insults and words for disabilities (idiota, estúpido, imbécil, cojo, manco, enano), left out of the word batches on purpose. Add them with a note on why they offend, per the vulgar and offensive word rules in "How content gets added"
-- [ ] More verbs toward the goal: about 690 left. Slower than words, because each needs sentences for every tense. Work from `verb-backlog.md`, which lists 730 candidates in 30 batches of 25, already checked against `verbs.json`, including more reflexives and regional verbs
+- [ ] More verbs toward the goal: about 660 left. Slower than words, because each needs sentences for every tense. Work from `verb-backlog.md`, which lists 705 candidates in 29 batches of 25, already checked against `verbs.json`, including more reflexives and regional verbs. Batch 1 took about 900 sentences. Batch 2 crosses verb 350, so it needs the new sentence file
 - [ ] More phrases and regional expressions, labeled by country. Now at 162
 - [ ] More regional words, and more countries in the existing entries
 - [ ] More reading passages. Now at 12, with 4 each at A1, A2 and B1
-- [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 10,100 remain, all in tenses drilled far less, so this needs batches and a usage check before each one. All 314 verbs are done in the six core tenses, apart from about 272 forms left out on purpose: forms with no natural sentence, like `yo naceré` or all of `nevar` beyond él, and tenses marked rare, like most of `oponer` and `desoír`. Next would be the present perfect and the -ra imperfect subjunctive, about 2,470 sentences between them, starting from the most common verbs
+- [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 11,100 remain, all in tenses drilled far less, so this needs batches and a usage check before each one. All 339 verbs are done in the six core tenses, apart from about 316 forms left out on purpose: forms with no natural sentence, like `yo naceré`, all of `nevar` beyond él, or `suceder` and `surgir` beyond él and ellos, and tenses marked rare, like most of `oponer` and `desoír`. Next would be the present perfect and the -ra imperfect subjunctive, about 2,470 sentences between them, starting from the most common verbs
 - [ ] Add proverb of the day
 
 ## Later
@@ -96,6 +96,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 These live in `.verify/`, which is gitignored, so keep a copy if you change machines.
 
 - Conjugation: `npx tsc -p tsconfig.test.json && node .verify/check.mjs`
+- New verb sentences: write them in the short text format of `.verify/sentences/example.txt` (`@verb`, `#tense` or `#tense rare`, then `person Spanish | English`), then after `npx tsc -p tsconfig.test.json` run `node .verify/sentences/build.js "$PWD" verbs-351-400.json file.txt...`. It checks every form against the engine and the tense order, and `--write` adds the verbs to that sentence file without changing the rest of its layout
 - Browser, with `npm run build` and `npx next start -p 3111` running: `node --experimental-websocket --no-warnings .verify/browser/flow.mjs`, also `audit.mjs`, `account.mjs`, `progress.mjs`, `report.mjs`, `reading.mjs`, `sentence-loading.mjs`, `speech.mjs`, `flashcards.mjs`, `writing.mjs`, `new-modes.mjs` (learn words, dictation, tapping words in a reading) and `accents.mjs` (slips against accents that make another word, in a real conjugation drill). The browser profile isn't signed in, so none of these reach Firestore
 
 ## Completed
@@ -150,6 +151,7 @@ These live in `.verify/`, which is gitignored, so keep a copy if you change mach
 - [x] 1,097 more sentences in four batches, extending that coverage to the top 206 verbs
 - [x] 1,676 more sentences in six batches, extending that coverage to the top 278 verbs
 - [x] 856 more sentences in three batches, finishing that coverage for all 314 verbs
+- [x] Verb backlog batch 1: 25 common verbs (`desarrollar` to `avanzar`) with 904 sentences, every person in the six core tenses and one sentence or a "rarely used" note for the rest
 - [x] 62 sentences replacing "rarely used" notes that were too cautious: the preterite of `odiar` and `parecerse`, the future of `merecer` and `rogar`, the present of `nacer` (no yo) and the conditional of `graduar`, plus better coverage for `errar`, `prever`, `contraer` and `rogar`. Their remaining rare tenses and persons are left out on purpose
 - [x] Harder-to-miss request step on the account page: a "one more step" notice on the form, the two steps explained before signing in, and an explanation on the confirm-email screen
 - [x] Vocabulary section on /progress: words started per list, from `stats/seen`, so it adds one read. Mastered per list would need reading every item or new counters, so it's left out

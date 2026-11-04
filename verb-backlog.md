@@ -12,34 +12,6 @@ When adding a batch:
 - Delete the batch from this file once it's in `verbs.json`, and update the verb count in `plan.md`.
 - If a verb is dropped, move it to "Dropped" at the bottom with the reason, so it isn't suggested again.
 
-## Batch 1
-
-- desarrollar: to develop
-- ocupar: to occupy, to take up
-- añadir: to add
-- suceder: to happen
-- indicar: to indicate
-- representar: to represent
-- señalar: to point out, to point at
-- surgir: to arise, to come up
-- evitar: to avoid
-- impedir: to prevent
-- aumentar: to increase
-- comprobar: to check, to verify
-- preparar: to prepare
-- dedicar: to dedicate, to devote
-- observar: to observe
-- matar: to kill
-- echar: to throw (out); to pour
-- dudar: to doubt
-- desear: to wish, to desire
-- decidir: to decide
-- funcionar: to work, to function
-- demostrar: to demonstrate, to show
-- notar: to notice
-- asegurar: to assure, to make sure
-- avanzar: to advance, to move forward
-
 ## Batch 2
 
 - sufrir: to suffer
