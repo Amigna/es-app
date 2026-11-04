@@ -1,6 +1,8 @@
 import { stripAccents } from "./accent";
 import { IR_CHANGE, applyChange, conjugate } from "./engine";
+import { IRREGULARS } from "./irregulars";
 import type { Boot, Conjugation, TenseForms, TenseId } from "./types";
+import type { Verb } from "../verbs";
 
 /** How a form compares with the regular pattern. */
 export type Change = "spelling" | "stem" | "irregular";
@@ -84,4 +86,9 @@ export function markForms(conjugation: Conjugation, boot?: Boot): Partial<Record
     };
   }
   return out;
+}
+
+/** The marks for a verb from the list, taking its stem change from the verb or the irregular it's modeled on. */
+export function markVerb(verb: Verb, conjugation: Conjugation = conjugate(verb)): Partial<Record<TenseId, TenseMarks>> {
+  return markForms(conjugation, verb.boot ?? IRREGULARS[verb.like ?? verb.inf.replace(/se$/, "")]?.boot);
 }

@@ -2,6 +2,7 @@
 
 import { useState, type CSSProperties } from "react";
 import ReportProblem from "@/components/ReportProblem";
+import SpeakButton from "@/components/SpeakButton";
 import type { Change, FormMark, TenseMarks } from "@/lib/conjugation/regular";
 import { TENSES, type Conjugation, type Mood, type TenseForms, type TenseId, type TenseMeta } from "@/lib/conjugation/types";
 import { findForm, type RareTense, type Sentence, type VerbSentences } from "@/lib/sentences";
@@ -51,11 +52,11 @@ const IMPERATIVE_PERSONS = [null, "tú", "usted", "nosotros", "ustedes"];
 
 function rows(meta: TenseMeta, t: TenseForms, voseo: boolean, marks?: TenseMarks) {
   const labels = meta.mood === "imperative" ? IMPERATIVE_PERSONS : PERSONS;
-  const out: { label: string; form: string; mark?: FormMark | null; vos?: boolean }[] = [];
+  const out: { label: string; form: string; mark?: FormMark | null; vos?: boolean; person?: number }[] = [];
   t.forms.forEach((form, i) => {
     const label = labels[i];
     if (!form || !label) return;
-    out.push({ label, form, mark: marks?.forms[i] });
+    out.push({ label, form, mark: marks?.forms[i], person: i });
     if (i === 1 && voseo && t.vos) out.push({ label: "vos", form: t.vos, mark: marks?.vos, vos: true });
   });
   return out;
@@ -64,32 +65,44 @@ function rows(meta: TenseMeta, t: TenseForms, voseo: boolean, marks?: TenseMarks
 function Example({ sentence, form }: { sentence: Sentence; form: string }) {
   const hit = findForm(sentence.es, form);
   return (
-    <div className="mt-3 border-t border-stone-100 pt-3 dark:border-stone-800">
-      <p lang="es">
-        {hit ? (
-          <>
-            {sentence.es.slice(0, hit.start)}
-            <strong className="font-semibold text-accent-800 dark:text-accent-300">
-              {sentence.es.slice(hit.start, hit.end)}
-            </strong>
-            {sentence.es.slice(hit.end)}
-          </>
-        ) : (
-          sentence.es
-        )}
-      </p>
-      <p className="text-sm text-stone-500">{sentence.en}</p>
+    <div className="mt-3 flex items-start justify-between gap-2 border-t border-stone-100 pt-3 dark:border-stone-800">
+      <div>
+        <p lang="es">
+          {hit ? (
+            <>
+              {sentence.es.slice(0, hit.start)}
+              <strong className="font-semibold text-accent-800 dark:text-accent-300">
+                {sentence.es.slice(hit.start, hit.end)}
+              </strong>
+              {sentence.es.slice(hit.end)}
+            </>
+          ) : (
+            sentence.es
+          )}
+        </p>
+        <p className="text-sm text-stone-500">{sentence.en}</p>
+      </div>
+      <SpeakButton text={sentence.es} />
     </div>
   );
 }
 
-function TenseCard({
+/** The hue a tense's table is drawn in, from its mood. */
+export const moodHue = (mood: Mood) => hueStyle(MOODS.find((m) => m.id === mood)!.hue);
+
+/**
+ * One tense's forms with an example. `highlight` marks a person's row, for showing what a drill asked. A drill turns
+ * `report` off, since it has a report link of its own.
+ */
+export function TenseCard({
   infinitive,
   meta,
   forms,
   marks,
   voseo,
   sentence,
+  highlight,
+  report = true,
 }: {
   infinitive: string;
   meta: TenseMeta;
@@ -97,6 +110,8 @@ function TenseCard({
   marks?: TenseMarks;
   voseo: boolean;
   sentence?: Sentence | RareTense;
+  highlight?: number;
+  report?: boolean;
 }) {
   const rare = !!sentence && "rare" in sentence;
   const example = sentence && !("rare" in sentence) ? sentence : null;
@@ -111,7 +126,12 @@ function TenseCard({
       </p>
       <dl className="mt-3 divide-y divide-stone-100 dark:divide-stone-800">
         {list.map((r) => (
-          <div key={r.label} className="grid grid-cols-[6.5rem_1fr] gap-3 py-1.5">
+          <div
+            key={r.label}
+            className={`grid grid-cols-[6.5rem_1fr] gap-3 py-1.5 ${
+              r.person === highlight ? "-mx-2 rounded-md bg-accent-50 px-2 dark:bg-accent-950" : ""
+            }`}
+          >
             <dt className={`text-sm ${r.vos ? "font-medium text-stone-700 dark:text-stone-300" : "text-stone-500"}`}>{r.label}</dt>
             <dd className="font-medium">
               <Form form={r.form} mark={r.mark} />
@@ -125,7 +145,7 @@ function TenseCard({
           Rarely used with this verb.
         </p>
       )}
-      <ReportProblem about={`${infinitive}, ${meta.name}${example ? `: ${example.es}` : ""}`} />
+      {report && <ReportProblem about={`${infinitive}, ${meta.name}${example ? `: ${example.es}` : ""}`} />}
     </section>
   );
 }

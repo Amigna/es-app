@@ -71,6 +71,18 @@ describe("conjugationCard", () => {
   it("leaves the example off when there's no sentence", () => {
     assert.equal(conjugationCard(q).example, undefined);
   });
+
+  it("shows the tense in full after a miss, marking the person asked", () => {
+    const table = conjugationCard(q).table;
+    assert.equal(table?.tense, "imperfect");
+    assert.equal(table?.person, 1);
+  });
+
+  it("gives the table the main sentence, unless the card already shows it", () => {
+    const main = { person: 0, es: "Yo te llamaba.", en: "I used to call you." };
+    assert.equal(conjugationCard(q, [main, sentence]).table?.sentence, main);
+    assert.equal(conjugationCard(q, [sentence, main]).table?.sentence, undefined);
+  });
 });
 
 describe("limitedDeck", () => {

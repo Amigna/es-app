@@ -2,9 +2,13 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { TenseCard, moodHue } from "@/components/ConjugationView";
 import ReportProblem from "@/components/ReportProblem";
 import SpeakButton from "@/components/SpeakButton";
-import { accentTrap, gradeCard, wordDiff, type Card, type Grade } from "@/lib/drill";
+import { conjugate } from "@/lib/conjugation/engine";
+import { markVerb } from "@/lib/conjugation/regular";
+import { TENSES } from "@/lib/conjugation/types";
+import { accentTrap, gradeCard, wordDiff, type Card, type Grade, type TenseTable } from "@/lib/drill";
 import { recordAnswer, saveProgress } from "@/lib/progress-queue";
 import { SLOW_RATE, speak } from "@/lib/speech";
 
@@ -93,6 +97,29 @@ function Feedback({ result, card, input, speak }: { result: Grade; card: Card; i
           {card.link.label}
         </Link>
       )}
+    </div>
+  );
+}
+
+/** The missed tense in full, as the verb page shows it. Nothing in it links away, so a stray tap can't end the drill. */
+function MissedTense({ table }: { table: TenseTable }) {
+  const { verb, tense, person, sentence } = table;
+  const meta = TENSES.find((t) => t.id === tense)!;
+  const conjugation = conjugate(verb);
+  const forms = conjugation.tenses[tense];
+  if (!forms) return null;
+  return (
+    <div style={moodHue(meta.mood)} className="animate-pop-in">
+      <TenseCard
+        infinitive={conjugation.infinitive}
+        meta={meta}
+        forms={forms}
+        marks={markVerb(verb, conjugation)[tense]}
+        voseo={false}
+        sentence={sentence}
+        highlight={person}
+        report={false}
+      />
     </div>
   );
 }
@@ -527,6 +554,8 @@ export default function DrillRunner({
           </div>
         )}
       </section>
+
+      {result === "wrong" && card.table && <MissedTense key={card.id} table={card.table} />}
     </div>
   );
 }

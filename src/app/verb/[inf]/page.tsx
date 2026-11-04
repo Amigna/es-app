@@ -5,7 +5,7 @@ import ConjugationView from "@/components/ConjugationView";
 import VerbSearch from "@/components/VerbSearch";
 import { conjugate } from "@/lib/conjugation/engine";
 import { IRREGULARS } from "@/lib/conjugation/irregulars";
-import { markForms } from "@/lib/conjugation/regular";
+import { markVerb } from "@/lib/conjugation/regular";
 import { getSentences } from "@/lib/sentence-data";
 import { VERBS, VERB_SHAPE, findVerb, verbSlug, type Verb } from "@/lib/verbs";
 
@@ -90,7 +90,7 @@ async function VerbContent({ params }: { params: PageProps<"/verb/[inf]">["param
 
       <ConjugationView
         conjugation={conjugation}
-        marks={markForms(conjugation, verb.boot ?? IRREGULARS[verb.like ?? root]?.boot)}
+        marks={markVerb(verb, conjugation)}
         sentences={sentences}
       />
     </div>

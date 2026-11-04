@@ -1,10 +1,10 @@
 import { conjugate } from "./conjugation/engine";
 import { TENSES, type TenseId } from "./conjugation/types";
-import { COMMON_COUNT, CORE_TENSES, conjugationCard, englishAnswers, makeQuestion, personLabel, rareKey, verbForms, verbTrack, type Card } from "./drill";
+import { COMMON_COUNT, CORE_TENSES, conjugationCard, englishAnswers, makeQuestion, personLabel, rareKey, tenseTable, verbForms, verbTrack, type Card } from "./drill";
 import type { CardType, FlashSide, StudySide, VocabKind, WordType } from "./drill-settings";
 import { shuffled } from "./quiz";
 import { blankOut, findForm, sentencesFor, type SentenceBank } from "./sentences";
-import { VERBS, findVerb, verbSlug, type Verb } from "./verbs";
+import { VERBS, findVerb, type Verb } from "./verbs";
 import { ADJECTIVES, ADVERBS, NOUNS, PHRASES, SMALL_WORDS, adjectiveForms, isPluralOnly, nounArticle, type Adjective, type Example, type Noun } from "./vocab";
 
 // Decks for the vocabulary and fill-in-the-blank drills. Imported on demand because it pulls in the word lists.
@@ -268,7 +268,7 @@ export function blankCard(bank: SentenceBank, verb: Verb, tense: TenseId, random
     ask: `${verb.inf}, ${personLabel(tense, sentence.person)}`,
     answers: [sentence.es.slice(hit.start, hit.end)],
     shown: sentence.es.slice(hit.start, hit.end).toLowerCase(),
-    link: { href: `/verb/${verbSlug(verb.inf)}`, label: `See all forms of ${verb.inf}` },
+    table: tenseTable(verb, tense, sentence.person, sentences, sentence),
     track: verbTrack(verb.inf, tense),
     lookalikes: verbForms(verb),
   };
@@ -315,7 +315,6 @@ export function writingCard(bank: SentenceBank, verb: Verb, tense: TenseId, side
     shown,
     english: toEnglish,
     writing: true,
-    link: { href: `/verb/${verbSlug(verb.inf)}`, label: `See all forms of ${verb.inf}` },
     track: { item: `writing:${side}` },
     ...(toEnglish ? {} : { lookalikes: verbForms(verb) }),
   };
@@ -344,7 +343,6 @@ export function dictationCard(bank: SentenceBank, verb: Verb, tense: TenseId, ra
     answers: [sentence.es],
     shown: sentence.es,
     dictation: { en: sentence.en },
-    link: { href: `/verb/${verbSlug(verb.inf)}`, label: `See all forms of ${verb.inf}` },
     track: { item: "listening:dictation" },
     lookalikes: verbForms(verb),
   };

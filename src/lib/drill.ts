@@ -4,7 +4,7 @@ import { IRREGULARS } from "./conjugation/irregulars";
 import { TENSES, type TenseId } from "./conjugation/types";
 import type { Track } from "./progress";
 import { blankOut, type Sentence } from "./sentences";
-import { verbSlug, type Verb } from "./verbs";
+import type { Verb } from "./verbs";
 
 export type VerbPool = "common" | "irregular" | "all";
 
@@ -112,6 +112,8 @@ export interface Card {
   /** What this question counts toward in saved progress. */
   track?: Track;
   link?: { href: string; label: string };
+  /** The tense to show in full after a miss, with the person asked marked. */
+  table?: TenseTable;
   /** Present on a card you flip and grade yourself instead of answering. Shown with the answer. */
   flashcard?: { example?: { es: string; en: string }; note?: string };
   /** A sentence to translate. Many answers can be right, so one that doesn't match is compared by the learner. */
@@ -140,6 +142,19 @@ export function verbForms(verb: Verb): string[] {
   return [...out];
 }
 
+export interface TenseTable {
+  verb: Verb;
+  tense: TenseId;
+  person: number;
+  sentence?: Sentence;
+}
+
+/** The table's example is the tense's main sentence, the one the verb page shows, unless the card already used it. */
+export function tenseTable(verb: Verb, tense: TenseId, person: number, sentences: Sentence[], used?: Sentence): TenseTable {
+  const main = sentences[0];
+  return { verb, tense, person, ...(main && main !== used ? { sentence: main } : {}) };
+}
+
 /** An example only shows when it's written for the person asked, so the blank is always the answer. */
 export function conjugationCard(q: Question, sentences: Sentence[] = []): Card {
   const meta = TENSES.find((t) => t.id === q.tense)!;
@@ -155,7 +170,7 @@ export function conjugationCard(q: Question, sentences: Sentence[] = []): Card {
     ask: `${meta.name} · ${q.label}`,
     answers: [q.answer],
     shown: q.answer,
-    link: { href: `/verb/${verbSlug(q.verb.inf)}`, label: `See all forms of ${q.verb.inf}` },
+    table: tenseTable(q.verb, q.tense, q.person, sentences, sentence),
     track: verbTrack(q.verb.inf, q.tense),
     lookalikes: verbForms(q.verb),
   };
