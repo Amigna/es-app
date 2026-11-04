@@ -12,34 +12,6 @@ When adding a batch:
 - Delete the batch from this file once it's in `verbs.json`, and update the verb count in `plan.md`.
 - If a verb is dropped, move it to "Dropped" at the bottom with the reason, so it isn't suggested again.
 
-## Batch 7
-
-- respetar: to respect
-- respirar: to breathe
-- retirar: to withdraw, to remove
-- revisar: to check, to review
-- robar: to steal, to rob
-- saltar: to jump
-- salvar: to save, to rescue
-- separar: to separate
-- significar: to mean
-- soler: to usually (do) — *defective: no future, conditional or imperative, so mark those rare*
-- soltar: to let go, to release
-- solucionar: to solve
-- soportar: to stand, to bear
-- sorprender: to surprise
-- sumar: to add (up)
-- temer: to fear
-- transformar: to transform
-- unir: to unite, to join
-- votar: to vote
-- recuperar: to recover, to get back
-- reaccionar: to react
-- rezar: to pray
-- vigilar: to watch, to keep an eye on
-- agarrar: to grab, to catch (Latin America)
-- platicar: to chat (Mexico, Central America)
-
 ## Batch 8
 
 - voltear: to turn (over, around) (Latin America)
@@ -51,20 +23,20 @@ When adding a batch:
 - aburrir: to bore
 - acostumbrarse: to get used to
 - adivinar: to guess
-- admirar: to admire
+- quemarse: to get burned
 - admitir: to admit
-- advertir: to warn
+- moverse: to move
 - afectar: to affect
 - agregar: to add
-- alimentar: to feed
-- aliviar: to relieve
-- alegrar: to make happy
-- amanecer: to dawn; to wake up (feeling a certain way) — *mostly él (it dawns), but amanecí cansado works*
-- anochecer: to get dark — *mostly él*
+- cepillar: to brush
+- embarcar: to board
+- escanear: to scan
+- diseñar: to design
+- entrenar: to train
 - animar: to cheer up, to encourage
 - apretar: to squeeze, to press
-- apuntar: to note down; to aim
-- arrastrar: to drag
+- manchar: to stain
+- plantar: to plant
 - arrepentirse: to regret
 - asar: to roast, to grill
 
@@ -162,7 +134,7 @@ When adding a batch:
 - tejer: to knit, to weave
 - temblar: to tremble, to shake
 - tostar: to toast
-- toser: to cough
+- transformar: to transform
 - trepar: to climb
 - tropezar: to trip
 - untar: to spread
@@ -194,7 +166,7 @@ When adding a batch:
 - curar: to cure, to heal
 - sanar: to heal
 - sangrar: to bleed
-- operar: to operate
+- sumar: to add (up)
 - vacunar: to vaccinate
 - cuidarse: to take care of oneself
 - mejorarse: to get better
@@ -219,7 +191,7 @@ When adding a batch:
 - deletrear: to spell
 - restar: to subtract
 - multiplicar: to multiply
-- copiar: to copy
+- temer: to fear
 - susurrar: to whisper
 - insultar: to insult
 - jurar: to swear
@@ -234,7 +206,7 @@ When adding a batch:
 - agacharse: to crouch, to bend down
 - arrodillarse: to kneel
 - brincar: to jump (Latin America)
-- girar: to turn, to spin
+- soltar: to let go, to release
 
 ## Batch 15
 
@@ -245,7 +217,7 @@ When adding a batch:
 - juzgar: to judge
 - sospechar: to suspect
 - reflexionar: to reflect, to think over
-- concentrarse: to concentrate
+- separar: to separate
 - interpretar: to interpret; to perform
 - percibir: to perceive
 - granizar: to hail — *weather verb, él only, like nevar*
@@ -280,17 +252,17 @@ When adding a batch:
 - disculpar: to excuse, to forgive
 - aburrirse: to get bored
 - atreverse: to dare
-- afeitarse: to shave
+- vigilar: to watch, to keep an eye on
 - arreglarse: to get ready
-- cepillarse: to brush (teeth, hair)
+- rezar: to pray
 - secarse: to dry oneself
 - convertirse: to become, to turn into
 - fijarse: to notice, to pay attention
 - imaginarse: to imagine
 - llevarse: to take away; to get along
-- morirse: to die
+- unir: to unite, to join
 - negarse: to refuse
-- quemarse: to get burned
+- admirar: to admire
 
 ## Batch 17
 
@@ -299,7 +271,7 @@ When adding a batch:
 - dedicarse: to do for a living
 - encontrarse: to meet; to be (located)
 - esconderse: to hide
-- moverse: to move
+- advertir: to warn
 - juntarse: to get together
 - alejarse: to move away
 - asomarse: to lean out, to look out
@@ -352,7 +324,7 @@ When adding a batch:
 
 - cavar: to dig
 - ceder: to give way, to yield
-- cepillar: to brush
+- alimentar: to feed
 - chatear: to chat (online)
 - circular: to circulate, to move along
 - clavar: to nail, to stick in
@@ -371,7 +343,7 @@ When adding a batch:
 - dominar: to dominate, to master
 - editar: to edit
 - ejecutar: to carry out, to execute
-- embarcar: to board
+- aliviar: to relieve
 - emigrar: to emigrate
 - inmigrar: to immigrate
 - encerrar: to lock up, to shut in
@@ -382,7 +354,7 @@ When adding a batch:
 - enredar: to tangle
 - entusiasmar: to excite, to thrill
 - equipar: to equip
-- escanear: to scan
+- alegrar: to make happy
 - espiar: to spy
 - estallar: to burst, to break out
 - estirar: to stretch
@@ -408,7 +380,7 @@ When adding a batch:
 
 - lamer: to lick
 - latir: to beat (heart)
-- manchar: to stain
+- apuntar: to note down; to aim
 - marear: to make dizzy
 - moler: to grind
 - oprimir: to press (a button)
@@ -451,7 +423,7 @@ When adding a batch:
 - vendar: to bandage
 - volcar: to tip over
 - amarrar: to tie (Latin America)
-- plantar: to plant
+- arrastrar: to drag
 - picar: to chop; to sting; to be spicy
 - interrumpir: to interrupt
 - reemplazar: to replace
@@ -490,9 +462,9 @@ When adding a batch:
 
 ## Batch 24
 
-- entrenar: to train
+- anochecer: to get dark — *mostly él*
 - ensayar: to rehearse
-- diseñar: to design
+- amanecer: to dawn; to wake up (feeling a certain way) — *mostly él (it dawns), but amanecí cansado works*
 - disminuir: to decrease
 - dañar: to damage, to harm
 - culpar: to blame

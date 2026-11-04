@@ -2,6 +2,17 @@
 
 Aprendalgo (aprendalgo.com), a Spanish learning app for me, friends and family. Latin American and Caribbean Spanish: ustedes instead of vosotros, voseo optional. Add to this as we go.
 
+## Order of work
+
+Content shouldn't hold up everything else: the remaining verbs (about 18,400 sentences) and the other ten tenses (about 15,000) add up to dozens of sessions. Classrooms mostly use the top 150 to 200 verbs, and all 489 already have the six core tenses.
+
+1. Run the signed-in checks in "To verify", especially a second account's progress saving and real schedule writes. The teacher features build on these.
+2. Ask the teachers the questions at the end of "Teacher classes". Their answers decide which teacher steps come first.
+3. Get a native speaker to spot-check a sample of a few hundred sentences across files, so any repeated mistake is caught before 30,000 more sentences are written.
+4. Present perfect and -ra imperfect subjunctive for the current verbs, about 2,860 sentences, starting from the most common verbs.
+5. Teacher steps 1 to 4 (classes, class stats, assignments, gradebook), with verb batches in between.
+6. The rest of the verb backlog and the remaining tenses over time, with the least drilled tenses, like the future subjunctive, last.
+
 ## How spaced repetition works
 
 **No new dependency.** `src/lib/fsrs.ts` is our own, about 80 lines of pure math, checked against the expected values in py-fsrs's test suite. `ts-fsrs` is MIT, but it now brings in a dependency of its own and needs Node 24. The formulas are short and public.
@@ -28,14 +39,14 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 
 ## Content backlog
 
-- [ ] Goal: about 5,000 words in all, roughly 2,300 nouns, 1,000 adjectives and 1,000 verbs, with adverbs already enough at about 250. The split is a rough estimate of how a list of the 5,000 most common words breaks down, from memory and not checked against a source. Common words come first, so regional and specialist words don't count for as much as their number suggests. Now about 4,210: 2,300 nouns, 1,001 adjectives, 282 adverbs, 159 small words, 464 verbs
+- [ ] Goal: about 5,000 words in all, roughly 2,300 nouns, 1,000 adjectives and 1,000 verbs, with adverbs already enough at about 250. The split is a rough estimate of how a list of the 5,000 most common words breaks down, from memory and not checked against a source. Common words come first, so regional and specialist words don't count for as much as their number suggests. Now about 4,235: 2,300 nouns, 1,001 adjectives, 282 adverbs, 159 small words, 489 verbs
 - [ ] Insults and words for disabilities (idiota, estúpido, imbécil, cojo, manco, enano), left out of the word batches on purpose. Add them with a note on why they offend, per the vulgar and offensive word rules in "How content gets added"
-- [ ] More verbs toward the goal: about 535 left. Slower than words, because each needs sentences for every tense. Work from `verb-backlog.md`, which lists 580 candidates in 24 batches of 25 (batch 30 is 5), already checked against `verbs.json`, including more reflexives and regional verbs. A batch takes about 900 sentences. Batch 8 crosses verb 500, so it needs `verbs-501-550.json`
+- [ ] More verbs toward the goal: about 510 left. Slower than words, because each needs sentences for every tense. Work from `verb-backlog.md`, which lists 555 candidates in 23 batches of 25 (batch 30 is 5), already checked against `verbs.json`, including more reflexives and regional verbs. A batch takes about 900 sentences. Batch 8 crosses verb 500, so it needs `verbs-501-550.json`
 - [ ] Audit English glosses for common synonyms. A typed English answer only counts if it matches a listed meaning, so `basura` = "trash" marked "garbage" wrong, and `abuelito` = "grandpa" didn't accept abuelo, since abuelo was only "grandfather". Fixed so far: basura and basurero (garbage), abuelo and abuela (grandpa, grandma), mamá and papá (mother, father). The rest of the word lists likely have more
 - [ ] More phrases and regional expressions, labeled by country. Now at 162
 - [ ] More regional words, and more countries in the existing entries
 - [ ] More reading passages. Now at 12, with 4 each at A1, A2 and B1
-- [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 14,500 remain, all in tenses drilled far less, so this needs batches and a usage check before each one. All 464 verbs are done in the six core tenses, apart from about 411 forms left out on purpose: forms with no natural sentence, like `yo naceré`, all of `nevar` beyond él, `suceder`, `surgir`, `bastar`, `durar` and `corresponder` beyond él and ellos, or the yo and nosotros forms of `interesar`, `encantar` and `preocupar` where they'd sound forced, and tenses marked rare, like most of `oponer` and `desoír`. Next would be the present perfect and the -ra imperfect subjunctive, about 2,670 sentences between them, starting from the most common verbs
+- [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 15,000 remain, all in tenses drilled far less, so this needs batches and a usage check before each one. All 489 verbs are done in the six core tenses, apart from about 420 forms left out on purpose: forms with no natural sentence, like `yo naceré`, all of `nevar` beyond él, `suceder`, `surgir`, `bastar`, `durar` and `corresponder` beyond él and ellos, `significar` beyond él and ellos in the future, conditional and present subjunctive, or the yo and nosotros forms of `interesar`, `encantar` and `preocupar` where they'd sound forced, and tenses marked rare, like most of `oponer`, `desoír` and `soler`. Next would be the present perfect and the -ra imperfect subjunctive, about 2,860 sentences between them, starting from the most common verbs
 - [ ] Add proverb of the day
 
 ## Later
@@ -53,25 +64,33 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 
 ## Teacher classes (idea, not started)
 
-A teacher asked for a way to follow their students' progress. The plan is class-wide stats only, with no student named: accuracy by tense, weak spots and recent mistakes for the class as a whole.
+One teacher asked for a way to follow their students' progress, and another uses Conjuguemos. What Conjuguemos offers that we don't is the teacher side: assignments, scores under each student's name, a gradebook with export, and teacher-made lists and quizzes. On the learning side we're ahead (spaced repetition, guides, readings, audio, dictation, writing). So the plan is to add the teacher side in steps, each useful on its own. At last check Conjuguemos was free with limits (5 teacher-made activities, 25 stored grades), $45 a year for Premium, and $45 per school plus $5 per teacher a year for districts. That's the price teachers will compare against.
 
-How it would work, with no server and still on the Spark plan:
+No server is needed for any of it, and it stays on the Spark plan at first.
 
-- A teacher (a `teacher: true` field on their invite, set by hand like `vulgar`) creates a class and gets a short join code.
-- A student enters the code on their account page. It's opt-in, they're told their answers count toward anonymous class stats, and they can leave.
-- Each time a student's progress saves, the same batch also adds to the class's own totals in `classes/{id}/stats`. That's one extra write per save. The teacher only ever reads the class totals and never gets access to students' own data. That makes it anonymous by design, not just hidden in the page.
+1. **Classes and join codes.** A teacher (a `teacher: true` field on their invite, set by hand like `vulgar`) creates a class and gets a short join code. A student enters the code on their account page, picks the name the teacher will see (so their email isn't shown), and can leave.
+2. **Class-wide stats.** Anonymous totals for the whole class, described below.
+3. **Assignments.** The teacher picks something the app already has: verbs and tenses, a word list or noun topic, a guide quiz, a reading's questions, or a list or quiz of their own (steps 5 and 6). Then they set the length, a due date, and either practice or a single try for a score. Students see open assignments on the home and account pages, and the drill starts with those settings locked. The result (score, accuracy, accent slips, time spent, finished at) is saved to `classes/{id}/assignments/{aid}/results/{uid}` under the student's class name. Assignments still feed the student's own progress and review schedule like any drill.
+4. **Gradebook and export.** A teacher page with a table of students against assignments: scores, late work and missing work flagged, and a click-through to one student's results for one assignment. Export to CSV is built in the browser and opens in Google Sheets and Excel. Ask teachers which gradebook they use (Google Classroom, PowerSchool, Canvas, Schoology) so the columns import cleanly. Posting grades straight into Google Classroom would come later and needs Google's API approval.
+5. **Teacher word lists.** A teacher builds a list by searching the app's words and ticking them, or adds their own word with its English meaning. Lists are saved under `classes/{id}/lists` and can be used in assignments, flashcards and Learn words. A teacher's own words have no example sentences, so they get meaning drills and flashcards but not fill-in-the-blank. Tests don't check them, so show them as the teacher's own.
+6. **Teacher quizzes and tests.** Multiple choice and typed questions in the guide quiz format, plus questions built from the app's data, like "conjugate tener in the preterite for nosotros", graded the same way as drills, accent slips included. Lists and quizzes can be grouped into units ("Capítulo 3"), so a teacher can lay out the term to match their textbook.
+7. **Ready-made units.** More quizzes and tests by chapter-style themes and grammar (family, food, school, the preterite, the subjunctive), in the order most first- and second-year courses follow. They should match a textbook's topics and grammar without copying its lists or exercises, which belong to the publisher. Later, teachers could share their units with each other.
+
+Named results change the privacy picture, so:
+
+- Only assignment results carry a name, only in classes the student joined. The teacher never reads the rest of the student's account: not their history, mistakes, reviews or free practice. Rules allow a student to write only their own result and the teacher to read results only in their own classes.
+- Scores are worked out in the browser, so a determined student could fake one. That's fine for homework and practice, but teachers should be told not to count heavily on it for big tests. Grading on a server would fix this, at the cost of server routes.
+- Grades are education records under FERPA. Many districts need a signed data privacy agreement before teachers can use an app, and under-13 students need the school's consent under COPPA. Sort these out before any class under 13 and before any school or district deal, along with "Before opening up" below.
+
+Class-wide stats, anonymous by design:
+
+- Each time a student's progress saves, the same batch also adds to the class's own totals in `classes/{id}/stats`. That's one extra write per save. The teacher only ever reads the totals, so the stats are anonymous by design, not just hidden in the page. Students are told when they join.
 - The teacher's page reuses the progress page parts: accuracy by tense, weak spots, recent mistakes and a weekly trend, plus how many students practiced this week.
-
-Safeguards, because anonymous totals can still point to one person in a small class:
-
-- Show nothing until at least 5 students have joined and practiced.
+- Show nothing until at least 5 students have joined and practiced, since totals can still point to one person in a small class.
 - Show mistakes grouped with counts, like "7 students wrote hablé for habló", and leave out mistakes only one student made.
 - Leave writing and dictation mistakes out, since free text could contain anything, including names.
-- Rules can check that a student only adds to classes they joined, but not that the numbers are honest. That's fine for a class tool.
 
-Trade-off: the teacher can't spot one struggling student or check homework. If teachers ask for that later, it would be a separate opt-in per student.
-
-Questions for the teacher first: how old are the students, how many are in a class, how do they sign in (school Google accounts often block outside apps, so email link may be the way), and what would they look at each week?
+Questions for the teachers first: what do they actually grade in Conjuguemos, how old are the students, how many are in a class, which textbook do they use, which gradebook do grades go into, how do students sign in (school Google accounts often block outside apps, so email link may be the way), and what would they look at each week?
 
 ## Opening sign-ups and paying for it
 
