@@ -15,8 +15,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { auth, firebaseConfigured, inviteStatus, requestInvite, type InviteStatus } from "@/lib/firebase";
 import { setProgressEnabled } from "@/lib/progress-queue";
-import { loadNewPerDay, saveNewPerDay } from "@/lib/progress-store";
-import { DEFAULT_NEW_PER_DAY, NEW_PER_DAY_OPTIONS } from "@/lib/schedule";
+import { loadReviewSettings, saveReviewSetting, type ReviewSettings } from "@/lib/progress-store";
+import { DEFAULT_NEW_PER_DAY, DEFAULT_REVIEWS_PER_DAY, NEW_PER_DAY_OPTIONS, REVIEWS_PER_DAY_OPTIONS } from "@/lib/schedule";
 
 const EMAIL_KEY = "sign-in-email";
 
@@ -66,13 +66,18 @@ const secondaryClass =
 const noticeClass =
   "rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-sm text-amber-900 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-200";
 
-function NewItemsSetting({ uid }: { uid: string }) {
-  const [value, setValue] = useState<number | null>(null);
+const REVIEW_SETTINGS: { key: keyof ReviewSettings; id: string; label: string; fallback: number; options: number[] }[] = [
+  { key: "reviewsPerDay", id: "reviews-per-day", label: "Reviews per day", fallback: DEFAULT_REVIEWS_PER_DAY, options: REVIEWS_PER_DAY_OPTIONS },
+  { key: "newPerDay", id: "new-per-day", label: "New items per day", fallback: DEFAULT_NEW_PER_DAY, options: NEW_PER_DAY_OPTIONS },
+];
+
+function ReviewSettingsPanel({ uid }: { uid: string }) {
+  const [value, setValue] = useState<ReviewSettings | null>(null);
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
     let current = true;
-    loadNewPerDay(uid)
+    loadReviewSettings(uid)
       .then((saved) => {
         if (current) setValue(saved);
       })
@@ -84,34 +89,39 @@ function NewItemsSetting({ uid }: { uid: string }) {
     };
   }, [uid]);
 
-  async function change(next: number) {
-    setValue(next);
+  async function change(setting: Partial<ReviewSettings>) {
+    setValue((previous) => previous && { ...previous, ...setting });
     setFailed(false);
     try {
-      await saveNewPerDay(uid, next);
+      await saveReviewSetting(uid, setting);
     } catch {
       setFailed(true);
     }
   }
 
   return (
-    <div className="space-y-1">
-      <label htmlFor="new-per-day" className="block text-sm text-stone-500">
-        New items per day in Today&apos;s review
-      </label>
-      <select
-        id="new-per-day"
-        value={value ?? DEFAULT_NEW_PER_DAY}
-        disabled={value === null}
-        onChange={(e) => change(Number(e.target.value))}
-        className={inputClass}
-      >
-        {NEW_PER_DAY_OPTIONS.map((option) => (
-          <option key={option} value={option}>
-            {option}
-          </option>
-        ))}
-      </select>
+    <div className="space-y-3">
+      <p className="text-sm text-stone-500">Today&apos;s review</p>
+      {REVIEW_SETTINGS.map(({ key, id, label, fallback, options }) => (
+        <div key={key} className="space-y-1">
+          <label htmlFor={id} className="block text-sm text-stone-500">
+            {label}
+          </label>
+          <select
+            id={id}
+            value={value?.[key] ?? fallback}
+            disabled={value === null}
+            onChange={(e) => change({ [key]: Number(e.target.value) })}
+            className={inputClass}
+          >
+            {options.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </div>
+      ))}
       {failed && (
         <p role="alert" className="text-sm text-red-600 dark:text-red-400">
           Couldn&apos;t save that setting. Check your connection and try again.
@@ -231,7 +241,7 @@ function SignedIn({ user }: { user: User }) {
           You&apos;re on the invite list, so your drills and quizzes are saved. See your <Link href="/progress" prefetch={false} className="underline">progress</Link>.
         </p>
       )}
-      {status === "invited" && <NewItemsSetting uid={user.uid} />}
+      {status === "invited" && <ReviewSettingsPanel uid={user.uid} />}
       {status === "requested" && (
         <p role="status" className={noticeClass}>
           Your request is in. Your progress will start saving once it&apos;s approved, and until then everything else on the site is yours to use.

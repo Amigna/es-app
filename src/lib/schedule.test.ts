@@ -79,7 +79,7 @@ describe("planReviews", () => {
 });
 
 describe("pickToday", () => {
-  const data: TodayData = { due: ["a", "b"], seen: ["a", "b", "c"], newDone: 0, reviewsDone: 0, newPerDay: 2, wanted: [] };
+  const data: TodayData = { due: ["a", "b"], seen: ["a", "b", "c"], newDone: 0, reviewsDone: 0, reviewsPerDay: 50, newPerDay: 2, wanted: [] };
   const order = ["a", "c", "d", "e", "f"];
 
   it("puts wanted items first among new ones, within the daily limit", () => {
@@ -101,8 +101,9 @@ describe("pickToday", () => {
   });
 
   it("stops at the daily review limit", () => {
-    assert.deepEqual(pickToday({ ...data, reviewsDone: 99 }, order).reviews, ["a"]);
-    assert.deepEqual(pickToday({ ...data, reviewsDone: 100 }, order).reviews, []);
+    assert.deepEqual(pickToday({ ...data, reviewsDone: 49 }, order).reviews, ["a"]);
+    assert.deepEqual(pickToday({ ...data, reviewsDone: 50 }, order).reviews, []);
+    assert.deepEqual(pickToday({ ...data, reviewsPerDay: 1 }, order).reviews, ["a"]);
   });
 });
 

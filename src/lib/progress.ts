@@ -36,7 +36,7 @@ export interface Tally {
 }
 
 /** A saved day. `writing` is by direction and `listening` by kind, kept per day so they can be compared over time. */
-export type DayTally = Tally & { writing?: Record<string, Tally>; listening?: Record<string, Tally>; mistakes?: Mistake[] };
+export type DayTally = Tally & { writing?: Record<string, Tally>; listening?: Record<string, Tally>; mistakes?: Mistake[]; reviews?: number };
 
 export interface Summary {
   items: Record<string, Tally & { last: string }>;

@@ -11,7 +11,10 @@ export interface Schedule extends Memory {
   last: string;
 }
 
-export const REVIEWS_PER_DAY = 100;
+export const DEFAULT_REVIEWS_PER_DAY = 50;
+export const REVIEWS_PER_DAY_OPTIONS = [25, 50, 100];
+/** The most reviews any setting allows, which is how many due items Today's review loads. */
+export const MAX_REVIEWS_PER_DAY = Math.max(...REVIEWS_PER_DAY_OPTIONS);
 export const DEFAULT_NEW_PER_DAY = 10;
 export const NEW_PER_DAY_OPTIONS = [5, 10, 20];
 /** Stability at which an item counts as mastered: expected to stick for three weeks. */
@@ -72,21 +75,25 @@ export interface TodayData {
   seen: string[];
   newDone: number;
   reviewsDone: number;
+  reviewsPerDay: number;
   newPerDay: number;
   /** Items the learner asked for, like a word tapped while reading. They come first among new items. */
   wanted: string[];
 }
 
+/** How many more reviews today's limit allows. */
+export const reviewsLeft = (reviewsPerDay: number, reviewsDone: number) => Math.max(0, reviewsPerDay - reviewsDone);
+
 /**
  * Wanted items still count toward the new-item limit, because they add the same review load. Only items in the usual
  * order are taken, which leaves out rare tenses and words no longer in the data.
  */
-export function pickToday({ due, seen, newDone, reviewsDone, newPerDay, wanted }: TodayData, order: string[]) {
+export function pickToday({ due, seen, newDone, reviewsDone, reviewsPerDay, newPerDay, wanted }: TodayData, order: string[]) {
   const started = new Set(seen);
   const known = new Set(order);
   const queue = [...new Set([...wanted.filter((item) => known.has(item)), ...order])];
   return {
-    reviews: due.slice(0, Math.max(0, REVIEWS_PER_DAY - reviewsDone)),
+    reviews: due.slice(0, reviewsLeft(reviewsPerDay, reviewsDone)),
     fresh: queue.filter((item) => !started.has(item)).slice(0, Math.max(0, newPerDay - newDone)),
   };
 }

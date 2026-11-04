@@ -11,7 +11,7 @@ import { MAX_PRACTICE_ITEMS, practiceHref, weakSpots, type WeakSpot } from "@/li
 import { accentRate, accuracy, answered, currentStreak, lastSevenDays, localDay, recentWeeks, wordsPracticed, type Tally } from "@/lib/progress";
 import { saveProgress, setProgressEnabled } from "@/lib/progress-queue";
 import { DAYS_TO_LOAD, loadProgress, type ProgressData } from "@/lib/progress-store";
-import { MASTERED_DAYS } from "@/lib/schedule";
+import { MASTERED_DAYS, reviewsLeft } from "@/lib/schedule";
 
 const SAVE_WAIT_MS = 5000;
 const WEEKS_SHOWN = 6;
@@ -299,6 +299,7 @@ function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTot
   const total = answered(data.total);
   const streak = currentStreak(Object.keys(data.days), today);
   const overall = accuracy(data.total);
+  const inSession = Math.min(data.dueToday, reviewsLeft(data.reviewsPerDay, data.days[today]?.reviews ?? 0));
   const tenseRows = TENSES.flatMap((t) => {
     const tally = data.tenses[t.id];
     return tally && answered(tally) > 0 ? [{ meta: t, tally }] : [];
@@ -316,10 +317,17 @@ function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTot
     <div className="space-y-8">
       {data.dueToday > 0 && (
         <p>
-          {data.dueToday.toLocaleString()} {data.dueToday === 1 ? "item is" : "items are"} due today.{" "}
-          <Link href="/drill" onClick={() => update({ mode: "review" })} className={linkClass}>
-            Start today&apos;s review
-          </Link>
+          {data.dueToday.toLocaleString()} {data.dueToday === 1 ? "item is" : "items are"} due.{" "}
+          {inSession === 0
+            ? "You've done today's reviews, so the rest come up on later days."
+            : inSession < data.dueToday
+              ? `Today's review covers the ${inSession.toLocaleString()} most overdue, and the rest come up on later days. `
+              : null}
+          {inSession > 0 && (
+            <Link href="/drill" onClick={() => update({ mode: "review" })} className={linkClass}>
+              Start today&apos;s review
+            </Link>
+          )}
         </p>
       )}
 

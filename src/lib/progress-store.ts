@@ -16,7 +16,16 @@ import {
 } from "firebase/firestore";
 import { auth, db } from "./firebase";
 import { localDay, summarize, type Answer, type DayTally, type Summary, type Tally } from "./progress";
-import { DEFAULT_NEW_PER_DAY, MASTERED_DAYS, REVIEWS_PER_DAY, planReviews, schedulable, type Schedule, type TodayData } from "./schedule";
+import {
+  DEFAULT_NEW_PER_DAY,
+  DEFAULT_REVIEWS_PER_DAY,
+  MASTERED_DAYS,
+  MAX_REVIEWS_PER_DAY,
+  planReviews,
+  schedulable,
+  type Schedule,
+  type TodayData,
+} from "./schedule";
 
 // Everything lives under users/{uid}: `items` per thing practiced, `days` per calendar day, and `stats` for the
 // summary, the list of scheduled items and settings. Pages read those instead of scanning items.
@@ -101,6 +110,7 @@ export interface ProgressData {
   practiced: number;
   mastered: number;
   dueToday: number;
+  reviewsPerDay: number;
   /** Every item that has a schedule. */
   seen: string[];
 }
@@ -108,7 +118,7 @@ export interface ProgressData {
 export async function loadProgress(uid: string): Promise<ProgressData> {
   const items = collection(db(), "users", uid, "items");
   const cutoff = localDay(new Date(Date.now() - DAYS_TO_LOAD * 24 * 60 * 60 * 1000));
-  const [summary, recent, practiced, mastered, dueToday, seen] = await Promise.all([
+  const [summary, recent, practiced, mastered, dueToday, seen, settings] = await Promise.all([
     getDoc(statsDoc(uid, "summary")),
     // Days are keyed by date, so a range on the ID needs no custom index, unlike sorting it descending.
     getDocs(query(collection(db(), "users", uid, "days"), where(documentId(), ">=", cutoff))),
@@ -116,6 +126,7 @@ export async function loadProgress(uid: string): Promise<ProgressData> {
     getCountFromServer(query(items, where("stability", ">=", MASTERED_DAYS))),
     getCountFromServer(query(items, where("due", "<=", localDay()))),
     getDoc(statsDoc(uid, "seen")),
+    loadReviewSettings(uid),
   ]);
   const data = summary.data() ?? {};
   return {
@@ -129,6 +140,7 @@ export async function loadProgress(uid: string): Promise<ProgressData> {
     practiced: practiced.data().count,
     mastered: mastered.data().count,
     dueToday: dueToday.data().count,
+    reviewsPerDay: settings.reviewsPerDay,
     seen: seen.data()?.items ?? [],
   };
 }
@@ -140,10 +152,11 @@ export async function loadToday(): Promise<TodayData | null> {
   const today = localDay();
   const items = collection(db(), "users", uid, "items");
   const [due, seen, day, settings, wanted] = await Promise.all([
-    getDocs(query(items, where("due", "<=", today), orderBy("due"), limit(REVIEWS_PER_DAY))),
+    // Loads enough for the highest setting, so this can run alongside reading the setting.
+    getDocs(query(items, where("due", "<=", today), orderBy("due"), limit(MAX_REVIEWS_PER_DAY))),
     getDoc(statsDoc(uid, "seen")),
     getDoc(doc(db(), "users", uid, "days", today)),
-    getDoc(statsDoc(uid, "settings")),
+    loadReviewSettings(uid),
     getDoc(statsDoc(uid, "wanted")),
   ]);
   return {
@@ -151,7 +164,7 @@ export async function loadToday(): Promise<TodayData | null> {
     seen: seen.data()?.items ?? [],
     newDone: day.data()?.newItems ?? 0,
     reviewsDone: day.data()?.reviews ?? 0,
-    newPerDay: settings.data()?.newPerDay ?? DEFAULT_NEW_PER_DAY,
+    ...settings,
     wanted: wanted.data()?.items ?? [],
   };
 }
@@ -171,10 +184,16 @@ export async function addWanted(item: string) {
   await setDoc(statsDoc(uid, "wanted"), { items: arrayUnion(item) }, { merge: true });
 }
 
-export async function loadNewPerDay(uid: string): Promise<number> {
-  return (await getDoc(statsDoc(uid, "settings"))).data()?.newPerDay ?? DEFAULT_NEW_PER_DAY;
+export interface ReviewSettings {
+  newPerDay: number;
+  reviewsPerDay: number;
 }
 
-export async function saveNewPerDay(uid: string, newPerDay: number) {
-  await setDoc(statsDoc(uid, "settings"), { newPerDay }, { merge: true });
+export async function loadReviewSettings(uid: string): Promise<ReviewSettings> {
+  const data = (await getDoc(statsDoc(uid, "settings"))).data();
+  return { newPerDay: data?.newPerDay ?? DEFAULT_NEW_PER_DAY, reviewsPerDay: data?.reviewsPerDay ?? DEFAULT_REVIEWS_PER_DAY };
+}
+
+export async function saveReviewSetting(uid: string, setting: Partial<ReviewSettings>) {
+  await setDoc(statsDoc(uid, "settings"), setting, { merge: true });
 }
