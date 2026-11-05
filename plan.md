@@ -4,12 +4,12 @@ Aprendalgo (aprendalgo.com), a Spanish learning app for me, friends and family. 
 
 ## Order of work
 
-Content shouldn't hold up everything else: the remaining verbs (about 16,600 sentences) and the other ten tenses (about 16,000) add up to dozens of sessions. Classrooms mostly use the top 150 to 200 verbs, and all 539 already have the six core tenses.
+Content shouldn't hold up everything else: the remaining verbs (about 15,700 sentences) and the other ten tenses (about 16,500) add up to dozens of sessions. Classrooms mostly use the top 150 to 200 verbs, and all 564 already have the six core tenses.
 
 1. Run the signed-in checks in "To verify", especially a second account's progress saving and real schedule writes. The teacher features build on these.
 2. Ask the teachers the questions at the end of "Teacher classes". Their answers decide which teacher steps come first.
 3. Get a native speaker to spot-check a sample of a few hundred sentences across files, so any repeated mistake is caught before 30,000 more sentences are written.
-4. Present perfect and -ra imperfect subjunctive for the current verbs, about 3,260 sentences, starting from the most common verbs.
+4. Present perfect and -ra imperfect subjunctive for the current verbs, about 3,460 sentences, starting from the most common verbs.
 5. Teacher steps 1 to 4 (classes, class stats, assignments, gradebook), with verb batches in between.
 6. The rest of the verb backlog and the remaining tenses over time, with the least drilled tenses, like the future subjunctive, last.
 
@@ -24,8 +24,16 @@ Decisions:
 - **Grades:** correct is Good, accent slip is Hard, wrong is Again. Flashcards are the one place people grade themselves: "Knew it" is Good and "Didn't know" is Again, on the same item as the typed question. That can flatter a word, and typed drills stay the stricter test. There's no Easy.
 - **Days, not minutes:** the first answer to an item each day moves its schedule, and later ones only count toward stats. This matches "only the first try counts", drops FSRS's minute-based learning steps, and means a re-sent batch can't move a schedule twice. A missed item comes back in the session as it does now, then the next day.
 - **Every drill feeds the schedule:** free practice updates an item too, so Today's review stays honest.
-- **Limits:** 10 new items a day by default, per person. Reviews are capped at 100 a day, most overdue first, so a week away doesn't bury anyone.
+- **Limits:** 10 new items a day by default, per person. Reviews are capped at 50 a day by default (up to 100), most overdue first, so a week away doesn't bury anyone.
 - **New item order:** the most common verbs and their simplest tenses first, then words. Tally-only items from before launch start fresh at their next review.
+
+How a day's Today's review adds up:
+
+- **Size:** due reviews up to "Reviews per day" (default 50; 25, 50 or 100 on the account page), plus new items up to "New items per day" (default 10; 5, 10 or 20). These are separate limits, so a full day is 60 cards. Missed cards then come back 3 cards later until they're right, so the session can run past 60. Only the first try moves a schedule, and the results screen notes that retries count more than once.
+- **Leaving partway through:** nothing starts over. Answers queue in localStorage and save every 10 answers and when the tab is hidden. Opening Today's review sends anything still queued (waiting up to 5 seconds), then rebuilds the session from Firestore, so answered cards are gone and the remaining limits shrink. Only the unfinished run's score and pending retries are lost. A missed card is already graded Again and comes back the next day.
+- **Free practice in between** uses up the same limits, and anything due that it covers is no longer due, so Today's review gets shorter.
+- **Offline:** if the save doesn't finish in time, an answered card can show up again. Answering it twice is harmless, since only the first answer each day moves a schedule.
+- **Load over time:** reviews thin out as intervals grow. New items are what keep the daily load up, so lowering "New items per day" is the main way to make sessions shorter.
 
 Where things are:
 
@@ -39,14 +47,14 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 
 ## Content backlog
 
-- [ ] Goal: about 5,000 words in all, roughly 2,300 nouns, 1,000 adjectives and 1,000 verbs, with adverbs already enough at about 250. The split is a rough estimate of how a list of the 5,000 most common words breaks down, from memory and not checked against a source. Common words come first, so regional and specialist words don't count for as much as their number suggests. Now about 4,285: 2,300 nouns, 1,001 adjectives, 282 adverbs, 159 small words, 539 verbs
+- [ ] Goal: about 5,000 words in all, roughly 2,300 nouns, 1,000 adjectives and 1,000 verbs, with adverbs already enough at about 250. The split is a rough estimate of how a list of the 5,000 most common words breaks down, from memory and not checked against a source. Common words come first, so regional and specialist words don't count for as much as their number suggests. Now about 4,310: 2,300 nouns, 1,001 adjectives, 282 adverbs, 159 small words, 564 verbs
 - [ ] Insults and words for disabilities (idiota, estúpido, imbécil, cojo, manco, enano), left out of the word batches on purpose. Add them with a note on why they offend, per the vulgar and offensive word rules in "How content gets added"
-- [ ] More verbs toward the goal: about 460 left. Slower than words, because each needs sentences for every tense. Work from `verb-backlog.md`, which lists 505 candidates in 21 batches of 25 (batch 30 is 5), already checked against `verbs.json`, including more reflexives and regional verbs. A batch takes about 900 sentences. Batch 10 crosses verb 550, so it needs `verbs-551-600.json`
+- [ ] More verbs toward the goal: about 435 left. Slower than words, because each needs sentences for every tense. Work from `verb-backlog.md`, which lists 480 candidates in 20 batches of 25 (batch 30 is 5), already checked against `verbs.json`, including more reflexives and regional verbs. A batch takes about 900 sentences. Batch 12 crosses verb 600, so it needs `verbs-601-650.json`
 - [ ] Audit English glosses for common synonyms. A typed English answer only counts if it matches a listed meaning, so `basura` = "trash" marked "garbage" wrong, and `abuelito` = "grandpa" didn't accept abuelo, since abuelo was only "grandfather". Fixed so far: basura and basurero (garbage), abuelo and abuela (grandpa, grandma), mamá and papá (mother, father). The rest of the word lists likely have more
 - [ ] More phrases and regional expressions, labeled by country. Now at 162
 - [ ] More regional words, and more countries in the existing entries
 - [ ] More reading passages. Now at 12, with 4 each at A1, A2 and B1
-- [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 16,000 remain, all in tenses drilled far less, so this needs batches and a usage check before each one. All 539 verbs are done in the six core tenses, apart from about 420 forms left out on purpose: forms with no natural sentence, like `yo naceré`, all of `nevar` beyond él, `suceder`, `surgir`, `bastar`, `durar`, `corresponder` and `consistir` beyond él and ellos, `significar` beyond él and ellos in the future, conditional and present subjunctive, or the yo and nosotros forms of `interesar`, `encantar` and `preocupar` where they'd sound forced, and tenses marked rare, like most of `oponer`, `desoír` and `soler`. Next would be the present perfect and the -ra imperfect subjunctive, about 3,260 sentences between them, starting from the most common verbs
+- [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 16,500 remain, all in tenses drilled far less, so this needs batches and a usage check before each one. All 564 verbs are done in the six core tenses, apart from about 420 forms left out on purpose: forms with no natural sentence, like `yo naceré`, all of `nevar` beyond él, `suceder`, `surgir`, `bastar`, `durar`, `corresponder`, `consistir` and `florecer` beyond él and ellos, `significar` beyond él and ellos in the future, conditional and present subjunctive, or the yo and nosotros forms of `interesar`, `encantar` and `preocupar` where they'd sound forced, and tenses marked rare, like most of `oponer`, `desoír` and `soler`. Next would be the present perfect and the -ra imperfect subjunctive, about 3,460 sentences between them, starting from the most common verbs
 - [ ] Add proverb of the day
 
 ## Later

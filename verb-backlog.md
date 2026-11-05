@@ -12,34 +12,6 @@ When adding a batch:
 - Delete the batch from this file once it's in `verbs.json`, and update the verb count in `plan.md`.
 - If a verb is dropped, move it to "Dropped" at the bottom with the reason, so it isn't suggested again.
 
-## Batch 10
-
-- desconfiar: to distrust
-- desmayarse: to faint
-- despegar: to take off
-- desperdiciar: to waste
-- dividir: to divide
-- donar: to donate
-- emborracharse: to get drunk
-- emocionar: to move, to excite
-- empatar: to tie (a game)
-- empeorar: to get worse
-- encargar: to order; to put in charge
-- enchufar: to plug in
-- enfermarse: to get sick
-- engordar: to gain weight
-- enterarse: to find out
-- enterrar: to bury
-- envolver: to wrap
-- escalar: to climb
-- estornudar: to sneeze
-- estacionar: to park
-- exagerar: to exaggerate
-- explorar: to explore
-- fingir: to pretend
-- florecer: to bloom
-- fracasar: to fail
-
 ## Batch 11
 
 - frenar: to brake
