@@ -12,34 +12,6 @@ When adding a batch:
 - Delete the batch from this file once it's in `verbs.json`, and update the verb count in `plan.md`.
 - If a verb is dropped, move it to "Dropped" at the bottom with the reason, so it isn't suggested again.
 
-## Batch 13
-
-- ordeñar: to milk
-- abordar: to board; to tackle
-- empacar: to pack (Latin America)
-- desempacar: to unpack
-- hospedarse: to stay (at a hotel)
-- bajarse: to get off, to get out
-- subirse: to get on, to get in
-- acelerar: to speed up
-- atropellar: to run over
-- curar: to cure, to heal
-- sanar: to heal
-- sangrar: to bleed
-- sumar: to add (up)
-- vacunar: to vaccinate
-- cuidarse: to take care of oneself
-- mejorarse: to get better
-- padecer: to suffer (from)
-- despedir: to fire; to see off
-- ascender: to rise; to be promoted
-- emprender: to undertake, to start (a business)
-- fundar: to found
-- ingresar: to enter; to deposit
-- depositar: to deposit
-- transferir: to transfer
-- solicitar: to apply for, to request
-
 ## Batch 14
 
 - entrevistar: to interview
