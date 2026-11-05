@@ -2450,5 +2450,689 @@
    {"person":1,"es":"Relájate, todo va a salir bien.","en":"Relax, everything's going to be fine."}
   ],
   "impNegative": {"rare":true}
+ },
+ "resbalar": {
+  "present": [
+   {"person":2,"es":"El piso resbala cuando está mojado.","en":"The floor is slippery when it's wet."},
+   {"person":0,"es":"Siempre resbalo en estas escaleras.","en":"I always slip on these stairs."},
+   {"person":1,"es":"Resbalas porque tus zapatos no tienen suela.","en":"You slip because your shoes have no grip."},
+   {"person":3,"es":"En invierno resbalamos en el hielo de la banqueta.","en":"In winter we slip on the ice on the sidewalk."},
+   {"person":4,"es":"Los niños resbalan por el tobogán.","en":"The kids slide down the slide."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Mi abuelo resbaló en el baño.","en":"My grandfather slipped in the bathroom."},
+   {"person":0,"es":"Resbalé con una cáscara de plátano.","en":"I slipped on a banana peel."},
+   {"person":1,"es":"¿Resbalaste en el lodo?","en":"Did you slip in the mud?"},
+   {"person":3,"es":"Resbalamos al bajar del cerro.","en":"We slipped coming down the hill."},
+   {"person":4,"es":"Dos corredores resbalaron en la curva.","en":"Two runners slipped on the curve."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El jabón resbalaba de mis manos.","en":"The soap kept slipping out of my hands."},
+   {"person":0,"es":"Yo resbalaba cada vez que llovía.","en":"I slipped every time it rained."},
+   {"person":1,"es":"Tú resbalabas en la pista de hielo y te reías.","en":"You'd slip on the ice rink and laugh."},
+   {"person":3,"es":"Resbalábamos por la colina en cajas de cartón.","en":"We used to slide down the hill on cardboard boxes."},
+   {"person":4,"es":"Las llantas resbalaban en la nieve.","en":"The tires were slipping in the snow."}
+  ],
+  "future": [
+   {"person":0,"es":"Resbalaré si camino con estos tacones.","en":"I'll slip if I walk in these heels."},
+   {"person":1,"es":"Resbalarás si corres junto a la alberca.","en":"You'll slip if you run by the pool."},
+   {"person":2,"es":"El vaso resbalará si tienes las manos mojadas.","en":"The glass will slip if your hands are wet."},
+   {"person":3,"es":"Resbalaremos en esas rocas con musgo.","en":"We'll slip on those mossy rocks."},
+   {"person":4,"es":"Los carros resbalarán con esta lluvia.","en":"The cars will skid in this rain."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo resbalaría con estas botas.","en":"I'd slip in these boots."},
+   {"person":1,"es":"Resbalarías si no te agarras del barandal.","en":"You'd slip if you didn't hold the railing."},
+   {"person":2,"es":"Cualquiera resbalaría en ese piso.","en":"Anyone would slip on that floor."},
+   {"person":3,"es":"Resbalaríamos sin los zapatos de montaña.","en":"We'd slip without our hiking boots."},
+   {"person":4,"es":"Las bicis resbalarían en esa bajada.","en":"The bikes would skid on that slope."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"He resbalado dos veces en la regadera.","en":"I've slipped twice in the shower."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Mi abuela ya había resbalado en esa escalera antes.","en":"My grandmother had already slipped on those stairs before."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":3,"es":"Habríamos resbalado sin la cuerda.","en":"We would have slipped without the rope."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"Ten cuidado, no quiero que resbales.","en":"Be careful, I don't want you to slip."},
+   {"person":0,"es":"Mi mamá tiene miedo de que yo resbale en el hielo.","en":"My mom is afraid I'll slip on the ice."},
+   {"person":2,"es":"Pon una alfombra para que el abuelo no resbale.","en":"Put down a mat so Grandpa doesn't slip."},
+   {"person":3,"es":"Caminemos despacio para que no resbalemos.","en":"Let's walk slowly so we don't slip."},
+   {"person":4,"es":"Seca el piso antes de que los niños resbalen.","en":"Dry the floor before the kids slip."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Pusimos arena para que nadie resbalara.","en":"We put down sand so nobody would slip."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"¡No resbales en el piso mojado!","en":"Don't slip on the wet floor!"}
+  ]
+ },
+ "roncar": {
+  "present": [
+   {"person":2,"es":"Mi esposo ronca toda la noche.","en":"My husband snores all night."},
+   {"person":0,"es":"Mi esposa dice que ronco como un tractor.","en":"My wife says I snore like a tractor."},
+   {"person":1,"es":"¿Sabías que roncas?","en":"Did you know you snore?"},
+   {"person":3,"es":"Cuando estamos muy cansados, roncamos.","en":"When we're really tired, we snore."},
+   {"person":4,"es":"Los perros viejos roncan mucho.","en":"Old dogs snore a lot."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Mi tío roncó durante toda la película.","en":"My uncle snored through the whole movie."},
+   {"person":0,"es":"Dicen que ronqué en el avión.","en":"They say I snored on the plane."},
+   {"person":1,"es":"Anoche roncaste muchísimo.","en":"You snored like crazy last night."},
+   {"person":3,"es":"Roncamos tanto que despertamos a los vecinos.","en":"We snored so loud we woke up the neighbors."},
+   {"person":4,"es":"Los dos abuelos roncaron en el sofá.","en":"Both grandparents snored on the couch."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo roncaba tan fuerte que temblaban las ventanas.","en":"My grandfather snored so loudly the windows rattled."},
+   {"person":0,"es":"De niño yo roncaba por las alergias.","en":"As a kid I snored because of my allergies."},
+   {"person":1,"es":"Tú roncabas en todas las clases de historia.","en":"You used to snore through every history class."},
+   {"person":3,"es":"Roncábamos en la tienda de campaña.","en":"We used to snore in the tent."},
+   {"person":4,"es":"Mis compañeros de cuarto roncaban toda la noche.","en":"My roommates snored all night."}
+  ],
+  "future": [
+   {"person":0,"es":"Si duermo boca arriba, roncaré.","en":"If I sleep on my back, I'll snore."},
+   {"person":1,"es":"Roncarás menos con esta almohada.","en":"You'll snore less with this pillow."},
+   {"person":2,"es":"El perro roncará en cuanto se duerma.","en":"The dog will start snoring as soon as he falls asleep."},
+   {"person":3,"es":"Roncaremos después de esta comida tan pesada.","en":"We'll be snoring after this heavy meal."},
+   {"person":4,"es":"Seguro roncarán en el autobús.","en":"They're sure to snore on the bus."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo no roncaría si no estuviera resfriado.","en":"I wouldn't snore if I didn't have a cold."},
+   {"person":1,"es":"Roncarías menos si bajaras de peso.","en":"You'd snore less if you lost some weight."},
+   {"person":2,"es":"Mi papá roncaría hasta de pie.","en":"My dad would snore even standing up."},
+   {"person":3,"es":"Roncaríamos todos después de una cena así.","en":"We'd all snore after a dinner like that."},
+   {"person":4,"es":"Ellos roncarían en cualquier lugar.","en":"They'd snore anywhere."}
+  ],
+  "presentPerfect": [
+   {"person":1,"es":"Has roncado toda la noche.","en":"You've been snoring all night."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"El abuelo había roncado tanto que nadie durmió.","en":"Grandpa had snored so much that nobody slept."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"No me molesta que ronques.","en":"I don't mind that you snore."},
+   {"person":0,"es":"Mi esposa me pide que no ronque.","en":"My wife asks me not to snore."},
+   {"person":2,"es":"Es normal que un bulldog ronque.","en":"It's normal for a bulldog to snore."},
+   {"person":3,"es":"Ojalá que no ronquemos en la tienda de campaña.","en":"I hope we don't snore in the tent."},
+   {"person":4,"es":"Me da risa que los gatos ronquen.","en":"It makes me laugh that cats snore."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Le molestaba que su esposo roncara.","en":"It bothered her that her husband snored."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No ronques, que despiertas al bebé.","en":"Don't snore, you'll wake the baby."}
+  ]
+ },
+ "sobrevivir": {
+  "present": [
+   {"person":2,"es":"El cactus sobrevive con muy poca agua.","en":"The cactus survives on very little water."},
+   {"person":0,"es":"Sobrevivo con tres horas de sueño.","en":"I get by on three hours of sleep."},
+   {"person":1,"es":"¿Cómo sobrevives sin café?","en":"How do you survive without coffee?"},
+   {"person":3,"es":"Sobrevivimos al lunes, que ya es mucho.","en":"We survive Mondays, which is saying something."},
+   {"person":4,"es":"Pocas plantas sobreviven en el desierto.","en":"Few plants survive in the desert."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Mi abuelo sobrevivió a dos huracanes.","en":"My grandfather survived two hurricanes."},
+   {"person":0,"es":"Sobreviví a mi primer año de universidad.","en":"I survived my first year of college."},
+   {"person":1,"es":"¿Sobreviviste a la fiesta?","en":"Did you survive the party?"},
+   {"person":3,"es":"Sobrevivimos al viaje de doce horas en autobús.","en":"We survived the twelve-hour bus ride."},
+   {"person":4,"es":"Todos los pasajeros sobrevivieron.","en":"All the passengers survived."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El pueblo sobrevivía de la pesca.","en":"The town lived off fishing."},
+   {"person":0,"es":"Yo sobrevivía con sopas instantáneas.","en":"I survived on instant noodles."},
+   {"person":1,"es":"Tú sobrevivías con muy poco dinero.","en":"You got by on very little money."},
+   {"person":3,"es":"Sobrevivíamos con lo que daba el huerto.","en":"We lived on what the garden produced."},
+   {"person":4,"es":"Los animales sobrevivían el invierno en cuevas.","en":"The animals survived the winter in caves."}
+  ],
+  "future": [
+   {"person":0,"es":"Sobreviviré a esta semana de exámenes.","en":"I'll survive this week of exams."},
+   {"person":1,"es":"No te preocupes, sobrevivirás.","en":"Don't worry, you'll survive."},
+   {"person":2,"es":"La planta sobrevivirá si la riegas.","en":"The plant will survive if you water it."},
+   {"person":3,"es":"Sobreviviremos sin internet un fin de semana.","en":"We'll survive a weekend without internet."},
+   {"person":4,"es":"Las tortugas sobrevivirán gracias a la reserva.","en":"The turtles will survive thanks to the reserve."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo no sobreviviría ni un día en la selva.","en":"I wouldn't survive a single day in the jungle."},
+   {"person":1,"es":"¿Sobrevivirías sin tu celular?","en":"Would you survive without your phone?"},
+   {"person":2,"es":"Ese árbol no sobreviviría en un clima tan frío.","en":"That tree wouldn't survive in such a cold climate."},
+   {"person":3,"es":"Sobreviviríamos con lo que hay en la despensa.","en":"We'd survive on what's in the pantry."},
+   {"person":4,"es":"Ellos sobrevivirían en cualquier parte.","en":"They'd survive anywhere."}
+  ],
+  "presentPerfect": [
+   {"person":4,"es":"Estas tradiciones han sobrevivido cientos de años.","en":"These traditions have survived for hundreds of years."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Mi bisabuela había sobrevivido a una guerra.","en":"My great-grandmother had survived a war."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":1,"es":"Sin el casco, no habrías sobrevivido.","en":"Without the helmet, you wouldn't have survived."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"Te deseo que sobrevivas a los exámenes.","en":"Good luck surviving your exams."},
+   {"person":0,"es":"Mi familia duda que yo sobreviva un mes sin dulces.","en":"My family doubts I'll survive a month without sweets."},
+   {"person":2,"es":"Ojalá que el pajarito sobreviva.","en":"I hope the little bird survives."},
+   {"person":3,"es":"Es increíble que sobrevivamos con este sueldo.","en":"It's amazing we survive on this salary."},
+   {"person":4,"es":"Es difícil que las flores sobrevivan a la helada.","en":"The flowers are unlikely to survive the frost."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Nadie pensaba que el perrito sobreviviera.","en":"Nobody thought the puppy would survive."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
+ },
+ "sudar": {
+  "present": [
+   {"person":2,"es":"Mi papá suda mucho cuando corta el pasto.","en":"My dad sweats a lot when he mows the lawn."},
+   {"person":0,"es":"Sudo cuando estoy nervioso.","en":"I sweat when I'm nervous."},
+   {"person":1,"es":"Sudas mucho en el gimnasio.","en":"You sweat a lot at the gym."},
+   {"person":3,"es":"En Mérida sudamos todo el día.","en":"In Mérida we sweat all day."},
+   {"person":4,"es":"Los jugadores sudan bajo el sol.","en":"The players sweat in the sun."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El cantante sudó durante todo el concierto.","en":"The singer sweated through the whole concert."},
+   {"person":0,"es":"Sudé muchísimo en la clase de spinning.","en":"I sweated a ton in spin class."},
+   {"person":1,"es":"¿Sudaste en la entrevista?","en":"Did you sweat during the interview?"},
+   {"person":3,"es":"Sudamos la gota gorda subiendo la pirámide.","en":"We sweated buckets climbing the pyramid."},
+   {"person":4,"es":"Los bomberos sudaron bajo sus trajes.","en":"The firefighters sweated under their suits."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi hermano sudaba antes de cada examen.","en":"My brother used to sweat before every exam."},
+   {"person":0,"es":"Yo sudaba tanto que cambiaba de camiseta dos veces.","en":"I sweated so much I'd change my T-shirt twice."},
+   {"person":1,"es":"Tú sudabas en el autobús sin aire acondicionado.","en":"You'd sweat on the bus with no air conditioning."},
+   {"person":3,"es":"Sudábamos en la cocina del restaurante.","en":"We used to sweat in the restaurant kitchen."},
+   {"person":4,"es":"Los obreros sudaban en la construcción.","en":"The workers sweated at the construction site."}
+  ],
+  "future": [
+   {"person":0,"es":"Sudaré con esta chamarra.","en":"I'll sweat in this jacket."},
+   {"person":1,"es":"Sudarás menos con ropa de algodón.","en":"You'll sweat less in cotton clothes."},
+   {"person":2,"es":"El equipo sudará en el entrenamiento de hoy.","en":"The team will sweat in today's practice."},
+   {"person":3,"es":"Sudaremos en la caminata, lleva agua.","en":"We'll sweat on the hike, bring water."},
+   {"person":4,"es":"Los turistas sudarán con este calor.","en":"The tourists will sweat in this heat."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo sudaría menos en la playa con brisa.","en":"I'd sweat less at a breezy beach."},
+   {"person":1,"es":"Sudarías menos con un ventilador.","en":"You'd sweat less with a fan."},
+   {"person":2,"es":"Cualquiera sudaría frente a tanta gente.","en":"Anyone would sweat in front of so many people."},
+   {"person":3,"es":"Sudaríamos menos si saliéramos temprano.","en":"We'd sweat less if we left early."},
+   {"person":4,"es":"Ellos sudarían en ese salón sin ventanas.","en":"They'd sweat in that room without windows."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"Hoy he sudado como nunca.","en":"I've sweated like never before today."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"El corredor había sudado tanto que estaba empapado.","en":"The runner had sweated so much he was soaked."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Es normal que sudes cuando haces ejercicio.","en":"It's normal for you to sweat when you exercise."},
+   {"person":0,"es":"Mi entrenador quiere que yo sude más.","en":"My trainer wants me to sweat more."},
+   {"person":2,"es":"Ponle ropa ligera al bebé para que no sude.","en":"Put the baby in light clothes so he doesn't sweat."},
+   {"person":3,"es":"Prendamos el aire para que no sudemos.","en":"Let's turn on the AC so we don't sweat."},
+   {"person":4,"es":"Es lógico que los jugadores suden con este sol.","en":"It makes sense that the players are sweating in this sun."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"El entrenador quería que cada jugador sudara la camiseta.","en":"The coach wanted every player to give it their all."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
+ },
+ "suspirar": {
+  "present": [
+   {"person":2,"es":"Mi hermana suspira cada vez que ve a su novio.","en":"My sister sighs every time she sees her boyfriend."},
+   {"person":0,"es":"Suspiro cuando pienso en las vacaciones.","en":"I sigh when I think about vacation."},
+   {"person":1,"es":"¿Por qué suspiras tanto?","en":"Why are you sighing so much?"},
+   {"person":3,"es":"Suspiramos de alivio al terminar el examen.","en":"We sigh with relief when the exam is over."},
+   {"person":4,"es":"Los abuelos suspiran cuando hablan del pasado.","en":"Grandparents sigh when they talk about the past."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La maestra suspiró y empezó otra vez.","en":"The teacher sighed and started again."},
+   {"person":0,"es":"Suspiré cuando vi la cuenta.","en":"I sighed when I saw the bill."},
+   {"person":1,"es":"Suspiraste cuando se fue.","en":"You sighed when she left."},
+   {"person":3,"es":"Suspiramos de alivio cuando el avión aterrizó.","en":"We sighed with relief when the plane landed."},
+   {"person":4,"es":"Los fans suspiraron al ver al actor.","en":"The fans sighed when they saw the actor."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuela suspiraba mirando las fotos viejas.","en":"My grandmother would sigh looking at the old photos."},
+   {"person":0,"es":"Yo suspiraba por un chico de mi clase.","en":"I used to pine for a boy in my class."},
+   {"person":1,"es":"Tú suspirabas cada vez que sonaba esa canción.","en":"You'd sigh every time that song came on."},
+   {"person":3,"es":"Suspirábamos frente a las vitrinas de la pastelería.","en":"We'd sigh in front of the bakery windows."},
+   {"person":4,"es":"Los estudiantes suspiraban de aburrimiento.","en":"The students sighed with boredom."}
+  ],
+  "future": [
+   {"person":0,"es":"Suspiraré de alivio cuando termine la mudanza.","en":"I'll breathe a sigh of relief when the move is over."},
+   {"person":1,"es":"Suspirarás cuando veas el atardecer.","en":"You'll sigh when you see the sunset."},
+   {"person":2,"es":"Tu mamá suspirará cuando le cuentes.","en":"Your mom will sigh when you tell her."},
+   {"person":3,"es":"Suspiraremos cuando por fin lleguemos.","en":"We'll sigh with relief when we finally get there."},
+   {"person":4,"es":"Los invitados suspirarán al ver a la novia.","en":"The guests will sigh when they see the bride."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo suspiraría de alivio con esa noticia.","en":"I'd breathe a sigh of relief at that news."},
+   {"person":1,"es":"Suspirarías si vieras ese paisaje.","en":"You'd sigh if you saw that view."},
+   {"person":2,"es":"Mi abuela suspiraría al oír esa canción.","en":"My grandmother would sigh at hearing that song."},
+   {"person":3,"es":"Suspiraríamos menos con más vacaciones.","en":"We'd sigh less with more vacation."},
+   {"person":4,"es":"Ellos suspirarían por un poco de silencio.","en":"They'd long for a little peace and quiet."}
+  ],
+  "presentPerfect": [
+   {"person":1,"es":"Has suspirado tres veces en un minuto.","en":"You've sighed three times in a minute."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"No me gusta que suspires así.","en":"I don't like it when you sigh like that."},
+   {"person":0,"es":"A mi jefe no le gusta que yo suspire en las juntas.","en":"My boss doesn't like me sighing in meetings."},
+   {"person":2,"es":"Es normal que alguien suspire de cansancio.","en":"It's normal for someone to sigh from tiredness."},
+   {"person":3,"es":"No es para que suspiremos tanto.","en":"There's no reason for us to sigh so much."},
+   {"person":4,"es":"Me encanta que los niños suspiren con los cuentos.","en":"I love that the kids sigh over the stories."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Me dio ternura que el niño suspirara por su perrito.","en":"It was sweet that the boy missed his puppy so much."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No suspires, que no es para tanto.","en":"Don't sigh, it's not that bad."}
+  ]
+ },
+ "tejer": {
+  "present": [
+   {"person":2,"es":"Mi abuela teje bufandas para toda la familia.","en":"My grandmother knits scarves for the whole family."},
+   {"person":0,"es":"Tejo mientras veo la tele.","en":"I knit while I watch TV."},
+   {"person":1,"es":"¿Tejes con agujas o con gancho?","en":"Do you knit with needles or crochet?"},
+   {"person":3,"es":"En el pueblo tejemos hamacas.","en":"In our town we weave hammocks."},
+   {"person":4,"es":"Las arañas tejen sus telarañas de noche.","en":"Spiders spin their webs at night."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Mi tía tejió un suéter para el bebé.","en":"My aunt knitted a sweater for the baby."},
+   {"person":0,"es":"Tejí una cobija en dos meses.","en":"I knitted a blanket in two months."},
+   {"person":1,"es":"¿Tú tejiste este gorro?","en":"Did you knit this hat?"},
+   {"person":3,"es":"Tejimos una canasta en la clase de artesanía.","en":"We wove a basket in the crafts class."},
+   {"person":4,"es":"Las mujeres del mercado tejieron este tapete.","en":"The women at the market wove this rug."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi bisabuela tejía en su mecedora.","en":"My great-grandmother used to knit in her rocking chair."},
+   {"person":0,"es":"Yo tejía pulseras para mis amigas.","en":"I used to weave bracelets for my friends."},
+   {"person":1,"es":"Tú tejías calcetines cada invierno.","en":"You used to knit socks every winter."},
+   {"person":3,"es":"Tejíamos cestas de palma en la escuela.","en":"We used to weave palm baskets at school."},
+   {"person":4,"es":"Los mayas tejían telas de muchos colores.","en":"The Maya wove very colorful fabrics."}
+  ],
+  "future": [
+   {"person":0,"es":"Te tejeré una bufanda para tu cumpleaños.","en":"I'll knit you a scarf for your birthday."},
+   {"person":1,"es":"Con práctica tejerás más rápido.","en":"With practice you'll knit faster."},
+   {"person":2,"es":"La araña tejerá otra telaraña mañana.","en":"The spider will spin another web tomorrow."},
+   {"person":3,"es":"Tejeremos gorros para donar.","en":"We'll knit hats to donate."},
+   {"person":4,"es":"Las artesanas tejerán un rebozo para la feria.","en":"The artisans will weave a shawl for the fair."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo tejería más si tuviera paciencia.","en":"I'd knit more if I had the patience."},
+   {"person":1,"es":"¿Me tejerías unos guantes?","en":"Would you knit me some gloves?"},
+   {"person":2,"es":"Mi abuela tejería todo el día si la dejaras.","en":"My grandmother would knit all day if you let her."},
+   {"person":3,"es":"Tejeríamos una cobija si tuviéramos más lana.","en":"We'd knit a blanket if we had more yarn."},
+   {"person":4,"es":"Ellas tejerían más rápido con otra máquina.","en":"They'd weave faster with a different machine."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"He tejido cinco bufandas este invierno.","en":"I've knitted five scarves this winter."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Mi abuela ya había tejido la cobija del bebé antes de que naciera.","en":"My grandmother had already knitted the baby's blanket before he was born."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Quiero que me tejas un gorro.","en":"I want you to knit me a hat."},
+   {"person":0,"es":"Mi hija quiere que yo teja un suéter para su muñeca.","en":"My daughter wants me to knit a sweater for her doll."},
+   {"person":2,"es":"Pídele a la abuela que teja algo para el bebé.","en":"Ask Grandma to knit something for the baby."},
+   {"person":3,"es":"Es bonito que tejamos juntas.","en":"It's nice for us to knit together."},
+   {"person":4,"es":"Ojalá que las artesanas tejan más rebozos.","en":"I hope the artisans weave more shawls."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Le pedí a mi abuela que me tejiera una bufanda roja.","en":"I asked my grandmother to knit me a red scarf."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Teje más flojo, que se ve muy apretado.","en":"Knit looser, it looks too tight."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "temblar": {
+  "present": [
+   {"person":2,"es":"El perro tiembla cuando hay truenos.","en":"The dog shakes when there's thunder."},
+   {"person":0,"es":"Tiemblo de frío sin chamarra.","en":"I'm shivering without a jacket."},
+   {"person":1,"es":"¿Por qué tiemblas? ¿Tienes miedo?","en":"Why are you shaking? Are you scared?"},
+   {"person":3,"es":"Temblamos de nervios antes de salir al escenario.","en":"We shake with nerves before going on stage."},
+   {"person":4,"es":"Las piernas me tiemblan después de correr.","en":"My legs shake after running."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Anoche tembló en la Ciudad de México.","en":"There was an earthquake in Mexico City last night."},
+   {"person":0,"es":"Temblé cuando vi la araña.","en":"I trembled when I saw the spider."},
+   {"person":1,"es":"Temblaste cuando te llamó el director.","en":"You trembled when the principal called you."},
+   {"person":3,"es":"Temblamos de emoción al ver a nuestro equipo ganar.","en":"We trembled with excitement watching our team win."},
+   {"person":4,"es":"Las ventanas temblaron con la explosión.","en":"The windows shook from the explosion."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"La voz de la niña temblaba al leer el poema.","en":"The girl's voice was shaking as she read the poem."},
+   {"person":0,"es":"Yo temblaba antes de cada examen.","en":"I used to tremble before every exam."},
+   {"person":1,"es":"Tú temblabas de frío en la parada del autobús.","en":"You were shivering at the bus stop."},
+   {"person":3,"es":"Temblábamos de miedo con las historias del abuelo.","en":"We'd shake with fear at Grandpa's stories."},
+   {"person":4,"es":"Las manos le temblaban a mi abuelo.","en":"My grandfather's hands used to shake."}
+  ],
+  "future": [
+   {"person":0,"es":"Temblaré de nervios en la entrevista.","en":"I'll be shaking with nerves in the interview."},
+   {"person":1,"es":"Temblarás de frío si sales así.","en":"You'll be shivering if you go out like that."},
+   {"person":2,"es":"El edificio no temblará con un sismo pequeño.","en":"The building won't shake in a small quake."},
+   {"person":3,"es":"Temblaremos de emoción en el concierto.","en":"We'll be trembling with excitement at the concert."},
+   {"person":4,"es":"Tus rivales temblarán cuando te vean.","en":"Your rivals will tremble when they see you."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo temblaría frente a tanta gente.","en":"I'd tremble in front of so many people."},
+   {"person":1,"es":"Temblarías si vieras lo alto que está.","en":"You'd shake if you saw how high up it is."},
+   {"person":2,"es":"Cualquiera temblaría en una situación así.","en":"Anyone would tremble in a situation like that."},
+   {"person":3,"es":"Temblaríamos de frío sin la fogata.","en":"We'd shiver without the campfire."},
+   {"person":4,"es":"Ellos temblarían si supieran la verdad.","en":"They'd tremble if they knew the truth."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"Ha temblado tres veces esta semana.","en":"There have been three earthquakes this week."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Ya había temblado cuando sonó la alarma sísmica.","en":"The earthquake had already happened when the alarm went off."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"No quiero que tiembles de miedo.","en":"I don't want you shaking with fear."},
+   {"person":0,"es":"Me da pena que yo tiemble tanto cuando hablo en público.","en":"I'm embarrassed that I shake so much when I speak in public."},
+   {"person":2,"es":"Ojalá que no tiemble durante el viaje.","en":"I hope there isn't an earthquake during the trip."},
+   {"person":3,"es":"Abriguémonos para que no temblemos de frío.","en":"Let's bundle up so we don't shiver."},
+   {"person":4,"es":"Es normal que te tiemblen las manos.","en":"It's normal for your hands to shake."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Tenía miedo de que temblara otra vez.","en":"I was afraid there'd be another earthquake."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No tiembles, todo va a salir bien.","en":"Don't shake, everything's going to be fine."}
+  ]
+ },
+ "tostar": {
+  "present": [
+   {"person":2,"es":"Mi papá tuesta el pan en el comal.","en":"My dad toasts the bread on the griddle."},
+   {"person":0,"es":"Tuesto las almendras antes de comerlas.","en":"I toast the almonds before eating them."},
+   {"person":1,"es":"¿Tuestas el café en casa?","en":"Do you roast your coffee at home?"},
+   {"person":3,"es":"Tostamos tortillas para hacer tostadas.","en":"We toast tortillas to make tostadas."},
+   {"person":4,"es":"En Colombia tuestan el mejor café.","en":"In Colombia they roast the best coffee."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Mi mamá tostó el pan demasiado.","en":"My mom toasted the bread too long."},
+   {"person":0,"es":"Tosté unas semillas de calabaza.","en":"I toasted some pumpkin seeds."},
+   {"person":1,"es":"¿Tostaste los chiles para la salsa?","en":"Did you toast the chilies for the salsa?"},
+   {"person":3,"es":"Tostamos malvaviscos en la fogata.","en":"We toasted marshmallows over the campfire."},
+   {"person":4,"es":"Los campesinos tostaron el café al sol.","en":"The farmers roasted the coffee in the sun."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuela tostaba el café en una olla de barro.","en":"My grandmother used to roast coffee in a clay pot."},
+   {"person":0,"es":"Yo tostaba pan con mantequilla cada mañana.","en":"I used to make buttered toast every morning."},
+   {"person":1,"es":"Tú tostabas las tortillas hasta que crujían.","en":"You used to toast the tortillas until they were crunchy."},
+   {"person":3,"es":"Tostábamos maíz para hacer pinole.","en":"We used to toast corn to make pinole."},
+   {"person":4,"es":"Los vendedores tostaban cacahuates en la calle.","en":"The vendors used to roast peanuts on the street."}
+  ],
+  "future": [
+   {"person":0,"es":"Tostaré el pan para los sándwiches.","en":"I'll toast the bread for the sandwiches."},
+   {"person":1,"es":"Tostarás el ajonjolí en el sartén.","en":"You'll toast the sesame seeds in the pan."},
+   {"person":2,"es":"El chef tostará las especias primero.","en":"The chef will toast the spices first."},
+   {"person":3,"es":"Tostaremos los chiles para el mole.","en":"We'll toast the chilies for the mole."},
+   {"person":4,"es":"Los niños tostarán malvaviscos esta noche.","en":"The kids will toast marshmallows tonight."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo tostaría el pan un poco más.","en":"I'd toast the bread a little longer."},
+   {"person":1,"es":"¿Tostarías las nueces para el pastel?","en":"Would you toast the walnuts for the cake?"},
+   {"person":2,"es":"Un buen cocinero tostaría el comino antes.","en":"A good cook would toast the cumin first."},
+   {"person":3,"es":"Tostaríamos pan, pero se descompuso el tostador.","en":"We'd make toast, but the toaster broke."},
+   {"person":4,"es":"Ellos tostarían su propio café si tuvieran la máquina.","en":"They'd roast their own coffee if they had the machine."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"He tostado demasiado el pan otra vez.","en":"I've burned the toast again."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Mi abuelo ya había tostado el café cuando nos levantamos.","en":"My grandfather had already roasted the coffee when we got up."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Quiero que tuestes bien los chiles.","en":"I want you to toast the chilies well."},
+   {"person":0,"es":"Mis hijos quieren que yo tueste pan para el desayuno.","en":"My kids want me to make toast for breakfast."},
+   {"person":2,"es":"Pídele al cocinero que tueste el pan.","en":"Ask the cook to toast the bread."},
+   {"person":3,"es":"Es mejor que tostemos las semillas a fuego bajo.","en":"It's better if we toast the seeds over low heat."},
+   {"person":4,"es":"Me gusta que tuesten el café aquí mismo.","en":"I like that they roast the coffee right here."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Le pedí al mesero que tostara un poco más el pan.","en":"I asked the waiter to toast the bread a bit more."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Tuesta el pan mientras hago los huevos.","en":"Toast the bread while I make the eggs."}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No tuestes tanto las tortillas.","en":"Don't toast the tortillas so much."}
+  ]
+ },
+ "transformar": {
+  "present": [
+   {"person":2,"es":"La música transforma mi día.","en":"Music transforms my day."},
+   {"person":0,"es":"Transformo la ropa vieja en bolsas.","en":"I turn old clothes into bags."},
+   {"person":1,"es":"Transformas cualquier cuarto en algo bonito.","en":"You turn any room into something nice."},
+   {"person":3,"es":"Transformamos el garaje en un estudio.","en":"We're turning the garage into a studio."},
+   {"person":4,"es":"Los artistas transforman la basura en arte.","en":"The artists turn trash into art."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El viaje transformó su forma de pensar.","en":"The trip transformed the way she thought."},
+   {"person":0,"es":"Transformé el balcón en un jardín.","en":"I turned the balcony into a garden."},
+   {"person":1,"es":"Transformaste la casa con esos colores.","en":"You transformed the house with those colors."},
+   {"person":3,"es":"Transformamos la vieja fábrica en un museo.","en":"We turned the old factory into a museum."},
+   {"person":4,"es":"Las redes sociales transformaron la comunicación.","en":"Social media transformed communication."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuela transformaba las sobras en platillos deliciosos.","en":"My grandmother turned leftovers into delicious dishes."},
+   {"person":0,"es":"Yo transformaba cajas en castillos.","en":"I used to turn boxes into castles."},
+   {"person":1,"es":"Tú transformabas cualquier problema en un chiste.","en":"You'd turn any problem into a joke."},
+   {"person":3,"es":"Transformábamos la sala en un cine los viernes.","en":"We used to turn the living room into a movie theater on Fridays."},
+   {"person":4,"es":"Los carpinteros transformaban troncos en muebles.","en":"The carpenters turned logs into furniture."}
+  ],
+  "future": [
+   {"person":0,"es":"Transformaré este cuarto en una oficina.","en":"I'll turn this room into an office."},
+   {"person":1,"es":"Transformarás la casa con un poco de pintura.","en":"You'll transform the house with a little paint."},
+   {"person":2,"es":"La nueva línea de metro transformará el barrio.","en":"The new subway line will transform the neighborhood."},
+   {"person":3,"es":"Transformaremos el patio en un huerto.","en":"We'll turn the yard into a vegetable garden."},
+   {"person":4,"es":"Los ingenieros transformarán el río en una fuente de energía.","en":"The engineers will turn the river into a source of power."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo transformaría el garaje en un gimnasio.","en":"I'd turn the garage into a gym."},
+   {"person":1,"es":"¿Cómo transformarías este espacio?","en":"How would you transform this space?"},
+   {"person":2,"es":"Un buen maestro transformaría esta clase.","en":"A good teacher would transform this class."},
+   {"person":3,"es":"Transformaríamos la casa si tuviéramos dinero.","en":"We'd transform the house if we had money."},
+   {"person":4,"es":"Ellos transformarían el parque en un estacionamiento.","en":"They'd turn the park into a parking lot."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"Internet ha transformado el mundo.","en":"The internet has transformed the world."}
+  ],
+  "pluperfect": [
+   {"person":3,"es":"Habíamos transformado el sótano en un cuarto de juegos.","en":"We had turned the basement into a playroom."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Quiero que transformes tus ideas en acciones.","en":"I want you to turn your ideas into action."},
+   {"person":0,"es":"Mi esposa quiere que yo transforme el garaje en un taller.","en":"My wife wants me to turn the garage into a workshop."},
+   {"person":2,"es":"Espero que este proyecto transforme la comunidad.","en":"I hope this project transforms the community."},
+   {"person":3,"es":"Es hora de que transformemos este jardín.","en":"It's time we transformed this garden."},
+   {"person":4,"es":"Ojalá que transformen el edificio viejo en una biblioteca.","en":"I hope they turn the old building into a library."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Nadie esperaba que un viaje lo transformara tanto.","en":"Nobody expected a trip to change him so much."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Transforma esa caja en un juguete.","en":"Turn that box into a toy."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "trepar": {
+  "present": [
+   {"person":2,"es":"El gato trepa por la cortina.","en":"The cat climbs up the curtain."},
+   {"person":0,"es":"Trepo al árbol para bajar los mangos.","en":"I climb the tree to get the mangoes down."},
+   {"person":1,"es":"Trepas como un mono.","en":"You climb like a monkey."},
+   {"person":3,"es":"Trepamos por las rocas hasta la cascada.","en":"We scramble up the rocks to the waterfall."},
+   {"person":4,"es":"Las enredaderas trepan por la pared.","en":"The vines climb up the wall."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El niño trepó a la barda para ver el partido.","en":"The boy climbed the wall to watch the game."},
+   {"person":0,"es":"Trepé hasta la azotea por la escalera.","en":"I climbed up to the roof on the ladder."},
+   {"person":1,"es":"¿Trepaste al árbol sin ayuda?","en":"Did you climb the tree on your own?"},
+   {"person":3,"es":"Trepamos a la cima del cerro.","en":"We climbed to the top of the hill."},
+   {"person":4,"es":"Los ladrones treparon por la ventana.","en":"The thieves climbed in through the window."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi hermano trepaba a todos los árboles del parque.","en":"My brother used to climb every tree in the park."},
+   {"person":0,"es":"De niña yo trepaba a la higuera del patio.","en":"As a girl I used to climb the fig tree in the yard."},
+   {"person":1,"es":"Tú trepabas a la cerca para robar guayabas.","en":"You used to climb the fence to steal guavas."},
+   {"person":3,"es":"Trepábamos por las rocas para pescar.","en":"We used to climb over the rocks to go fishing."},
+   {"person":4,"es":"Los monos trepaban por los cables de luz.","en":"The monkeys used to climb along the power lines."}
+  ],
+  "future": [
+   {"person":0,"es":"Treparé al techo para limpiar el canal.","en":"I'll climb onto the roof to clean the gutter."},
+   {"person":1,"es":"Treparás más alto con estas botas.","en":"You'll climb higher with these boots."},
+   {"person":2,"es":"El bombero trepará por la escalera.","en":"The firefighter will climb up the ladder."},
+   {"person":3,"es":"Treparemos a esa roca para la foto.","en":"We'll climb onto that rock for the photo."},
+   {"person":4,"es":"Las plantas treparán por la reja.","en":"The plants will climb up the fence."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo no treparía a ese árbol, está muy alto.","en":"I wouldn't climb that tree, it's too high."},
+   {"person":1,"es":"¿Treparías por esa pared?","en":"Would you climb that wall?"},
+   {"person":2,"es":"Mi gato treparía hasta el techo si pudiera.","en":"My cat would climb up to the ceiling if he could."},
+   {"person":3,"es":"Treparíamos, pero las rocas están mojadas.","en":"We'd climb, but the rocks are wet."},
+   {"person":4,"es":"Ellos treparían cualquier cosa por una buena vista.","en":"They'd climb anything for a good view."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"El gato ha trepado otra vez al refrigerador.","en":"The cat has climbed onto the fridge again."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"El niño había trepado tan alto que no podía bajar.","en":"The boy had climbed so high he couldn't get down."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"No quiero que trepes a la barda.","en":"I don't want you climbing the wall."},
+   {"person":0,"es":"Mi mamá no quiere que yo trepe a los árboles.","en":"My mom doesn't want me climbing trees."},
+   {"person":2,"es":"No dejes que el gato trepe a la mesa.","en":"Don't let the cat climb onto the table."},
+   {"person":3,"es":"Es peligroso que trepemos sin cuerda.","en":"It's dangerous for us to climb without a rope."},
+   {"person":4,"es":"Pon una red para que los niños no trepen.","en":"Put up a net so the kids don't climb."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"El guardia no permitió que nadie trepara a la pirámide.","en":"The guard didn't let anyone climb the pyramid."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Trepa con cuidado.","en":"Climb carefully."}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No trepes al techo.","en":"Don't climb onto the roof."}
+  ]
+ },
+ "tropezar": {
+  "present": [
+   {"person":2,"es":"Mi abuelo tropieza con la alfombra.","en":"My grandfather trips on the rug."},
+   {"person":0,"es":"Siempre tropiezo con ese escalón.","en":"I always trip on that step."},
+   {"person":1,"es":"Tropiezas porque no miras por dónde caminas.","en":"You trip because you don't watch where you're going."},
+   {"person":3,"es":"Tropezamos con los juguetes de los niños.","en":"We trip over the kids' toys."},
+   {"person":4,"es":"Muchos turistas tropiezan en estas calles empedradas.","en":"Lots of tourists trip on these cobblestone streets."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El mesero tropezó y tiró la sopa.","en":"The waiter tripped and spilled the soup."},
+   {"person":0,"es":"Tropecé con una raíz en el bosque.","en":"I tripped on a root in the woods."},
+   {"person":1,"es":"¿Tropezaste con el cable?","en":"Did you trip over the cable?"},
+   {"person":3,"es":"Tropezamos con un viejo amigo en el mercado.","en":"We ran into an old friend at the market."},
+   {"person":4,"es":"Los novios tropezaron al bailar.","en":"The bride and groom stumbled while dancing."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El perro tropezaba con sus propias patas.","en":"The puppy kept tripping over his own paws."},
+   {"person":0,"es":"Yo tropezaba con todo cuando era adolescente.","en":"I used to trip over everything when I was a teenager."},
+   {"person":1,"es":"Tú tropezabas cada vez que usabas tacones.","en":"You'd trip every time you wore heels."},
+   {"person":3,"es":"Tropezábamos en la oscuridad del pasillo.","en":"We'd trip in the dark hallway."},
+   {"person":4,"es":"Los niños tropezaban al correr por el patio.","en":"The kids would trip running around the yard."}
+  ],
+  "future": [
+   {"person":0,"es":"Tropezaré si no me amarro las agujetas.","en":"I'll trip if I don't tie my shoelaces."},
+   {"person":1,"es":"Tropezarás con esas botas tan grandes.","en":"You'll trip in those big boots."},
+   {"person":2,"es":"El abuelo tropezará con esas cajas.","en":"Grandpa will trip over those boxes."},
+   {"person":3,"es":"Tropezaremos con muchos problemas al principio.","en":"We'll run into a lot of problems at first."},
+   {"person":4,"es":"Los invitados tropezarán con ese escalón.","en":"The guests will trip on that step."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo tropezaría con esos tacones.","en":"I'd trip in those heels."},
+   {"person":1,"es":"Tropezarías si corrieras sin mirar.","en":"You'd trip if you ran without looking."},
+   {"person":2,"es":"Cualquiera tropezaría con ese cable.","en":"Anyone would trip over that cable."},
+   {"person":3,"es":"Tropezaríamos en la oscuridad sin linterna.","en":"We'd trip in the dark without a flashlight."},
+   {"person":4,"es":"Ellos tropezarían con las raíces del árbol.","en":"They'd trip on the tree roots."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"He tropezado con ese escalón mil veces.","en":"I've tripped on that step a thousand times."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"La actriz ya había tropezado en el ensayo.","en":"The actress had already tripped in the rehearsal."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Prende la luz para que no tropieces.","en":"Turn on the light so you don't trip."},
+   {"person":0,"es":"Mi mamá tiene miedo de que yo tropiece con el vestido.","en":"My mom is afraid I'll trip on my dress."},
+   {"person":2,"es":"Quita las cajas para que el abuelo no tropiece.","en":"Move the boxes so Grandpa doesn't trip."},
+   {"person":3,"es":"Caminemos despacio para que no tropecemos.","en":"Let's walk slowly so we don't trip."},
+   {"person":4,"es":"Recoge los juguetes antes de que los invitados tropiecen.","en":"Pick up the toys before the guests trip."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Pusimos una luz para que nadie tropezara en la escalera.","en":"We put in a light so nobody would trip on the stairs."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No tropieces con el cable.","en":"Don't trip over the cable."}
+  ]
  }
 }

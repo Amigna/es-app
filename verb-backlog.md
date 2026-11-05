@@ -12,34 +12,6 @@ When adding a batch:
 - Delete the batch from this file once it's in `verbs.json`, and update the verb count in `plan.md`.
 - If a verb is dropped, move it to "Dropped" at the bottom with the reason, so it isn't suggested again.
 
-## Batch 12
-
-- resbalar: to slip
-- roncar: to snore
-- sobrevivir: to survive
-- sudar: to sweat
-- suspirar: to sigh
-- tejer: to knit, to weave
-- temblar: to tremble, to shake
-- tostar: to toast
-- transformar: to transform
-- trepar: to climb
-- tropezar: to trip
-- untar: to spread
-- vaciar: to empty
-- vomitar: to vomit, to throw up
-- bostezar: to yawn
-- enfriar: to cool, to chill
-- batir: to beat, to whisk
-- tragar: to swallow
-- morder: to bite
-- saborear: to taste, to savor
-- ensuciar: to get dirty
-- sacudir: to shake; to dust
-- trapear: to mop (Latin America)
-- aspirar: to vacuum; to aspire
-- cosechar: to harvest
-
 ## Batch 13
 
 - ordeñar: to milk
