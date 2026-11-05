@@ -128,6 +128,11 @@ describe("poolVerbs", () => {
     assert.ok(common.some((v) => v.inf === "poder"));
   });
 
+  it("takes as many common verbs as the level asks for", () => {
+    assert.equal(poolVerbs(VERBS, "common", 25).length, 25);
+    assert.equal(poolVerbs(VERBS, "common", 25)[0], VERBS[0]);
+  });
+
   it("finds irregular and stem-changing verbs", () => {
     assert.ok(isIrregular(verb("tener")));
     assert.ok(isIrregular(verb("dormir")));

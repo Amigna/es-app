@@ -3,6 +3,7 @@
 import type { CSSProperties, ReactNode } from "react";
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
+import { LevelPrompt } from "@/components/LevelPicker";
 
 // Each section's hue, which the accent-* colors in globals.css are built from.
 const NAV = [
@@ -74,7 +75,10 @@ export default function SiteShell({ children }: { children: ReactNode }) {
           </nav>
         </div>
       </header>
-      <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8">{children}</main>
+      <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8">
+        <LevelPrompt onDrill={segment === "drill"} />
+        {children}
+      </main>
     </div>
   );
 }

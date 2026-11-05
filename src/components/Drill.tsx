@@ -4,7 +4,9 @@ import Link from "next/link";
 import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import DrillRunner from "@/components/DrillRunner";
 import { TENSES, type Mood, type TenseId } from "@/lib/conjugation/types";
-import { CORE_TENSES, conjugationCard, limitedDeck, makeQuestion, poolVerbs, type Card, type VerbPool } from "@/lib/drill";
+import { LevelPicker } from "@/components/LevelPicker";
+import { COMMON_COUNT, CORE_TENSES, conjugationCard, limitedDeck, makeQuestion, poolVerbs, type Card, type VerbPool } from "@/lib/drill";
+import { levelInfo, useLevel } from "@/lib/level";
 import StudyRunner from "@/components/StudyRunner";
 import type { StudyCard } from "@/lib/card-decks";
 import {
@@ -50,11 +52,44 @@ const MOODS: { id: Mood; title: string }[] = [
   { id: "imperative", title: "Imperative" },
 ];
 
-const POOLS: { id: VerbPool; title: string; hint: string }[] = [
-  { id: "common", title: "Most common", hint: "The top 50 verbs" },
+const pools = (common: number): { id: VerbPool; title: string; hint: string }[] => [
+  { id: "common", title: "Most common", hint: `The top ${common} verbs` },
   { id: "irregular", title: "Irregular", hint: "Irregular and stem-changing" },
   { id: "all", title: "All verbs", hint: `All ${VERBS.length} verbs` },
 ];
+
+/** The current level, with a way to change it. Before one is chosen, the prompt above the page asks. */
+function LevelSection() {
+  const level = useLevel();
+  const [changing, setChanging] = useState(false);
+  if (!level) return null;
+  return (
+    <section>
+      <p className="flex flex-wrap items-center gap-x-3">
+        <span>
+          <span className="text-stone-500">Your level: </span>
+          <span className="font-medium">
+            {levelInfo(level).name} ({level})
+          </span>
+        </span>
+        <button
+          type="button"
+          aria-expanded={changing}
+          onClick={() => setChanging(!changing)}
+          className="min-h-10 text-sm text-accent-700 underline dark:text-accent-400"
+        >
+          {changing ? "Keep it" : "Change"}
+        </button>
+      </p>
+      {changing && (
+        <div className="mt-2 space-y-2">
+          <p className="text-sm text-stone-500">This also resets the verbs and tenses below to match.</p>
+          <LevelPicker onChosen={() => setChanging(false)} />
+        </div>
+      )}
+    </section>
+  );
+}
 
 const VOCAB_OPTIONS: { id: VocabKind; title: string; hint: string }[] = [
   { id: "toSpanish", title: "English to Spanish", hint: "See the meaning, type the word" },
@@ -173,6 +208,8 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [today, setToday] = useState<Today>({ status: "loading" });
+  const level = useLevel();
+  const commonVerbs = level ? levelInfo(level).commonVerbs : COMMON_COUNT;
 
   // Runs again after a session, because answering changes what's left.
   useEffect(() => {
@@ -208,7 +245,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
       const verb = findVerb(target.verb);
       return conjugationDeck(verb ? [verb] : [], CORE_TENSES);
     }
-    return conjugationDeck(poolVerbs(VERBS, pool), target.tenses);
+    return conjugationDeck(poolVerbs(VERBS, pool, commonVerbs), target.tenses);
   }
 
   async function buildDeck(): Promise<() => Card | null> {
@@ -219,7 +256,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
       const [{ reviewDeck }, bank] = await Promise.all([import("@/lib/card-decks"), loadSentences(itemVerbs(items))]);
       return reviewDeck(items, bank, rareSet);
     }
-    const verbs = poolVerbs(VERBS, pool);
+    const verbs = poolVerbs(VERBS, pool, commonVerbs);
     if (mode === "conjugation") return conjugationDeck(verbs, tenses);
     if (mode === "grammar") {
       const [{ quizDeck }, { GUIDE_QUIZZES }] = await Promise.all([import("@/lib/quiz"), import("@/lib/quiz-data")]);
@@ -280,6 +317,8 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
 
   return (
     <div className="space-y-8">
+      <LevelSection />
+
       <section>
         <h2 className="mb-3 text-xl font-semibold">What to practice</h2>
         <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
@@ -347,7 +386,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
           <section>
             <h2 className="mb-3 text-xl font-semibold">Which verbs?</h2>
             <div className="grid gap-2 sm:grid-cols-3">
-              {POOLS.map((p) => (
+              {pools(commonVerbs).map((p) => (
                 <OptionCard key={p.id} name="pool" title={p.title} hint={p.hint} checked={pool === p.id} onChange={() => update({ pool: p.id })} />
               ))}
             </div>

@@ -17,6 +17,7 @@ import {
   writeBatch,
 } from "firebase/firestore";
 import { auth, db } from "./firebase";
+import { isLevel, type Level } from "./level";
 import { localDay, summarize, type Answer, type DayTally, type Mistake, type StreakRecord, type Summary, type Tally } from "./progress";
 import {
   DEFAULT_NEW_PER_DAY,
@@ -209,6 +210,20 @@ export async function setMistakeHidden(day: string, mistake: Mistake, hidden: bo
   const { item, label, prompt, given, answer, grade } = mistake;
   const entry = { item, label, prompt, given, answer, grade };
   await setDoc(doc(db(), "users", uid, "days", day), { hiddenMistakes: hidden ? arrayUnion(entry) : arrayRemove(entry) }, { merge: true });
+}
+
+/** Null when nobody is signed in or no level has been saved. */
+export async function loadLevel(): Promise<Level | null> {
+  const uid = await currentUid();
+  if (!uid) return null;
+  const level = (await getDoc(statsDoc(uid, "settings"))).data()?.level;
+  return isLevel(level) ? level : null;
+}
+
+export async function saveLevel(level: Level) {
+  const uid = await currentUid();
+  if (!uid) throw new Error("Not signed in");
+  await setDoc(statsDoc(uid, "settings"), { level }, { merge: true });
 }
 
 export interface ReviewSettings {

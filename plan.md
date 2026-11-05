@@ -57,6 +57,16 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 18,500 remain, all in tenses drilled far less, so this needs batches and a usage check before each one. All 664 verbs are done in the six core tenses, apart from about 420 forms left out on purpose: forms with no natural sentence, like `yo naceré`, all of `nevar` beyond él, `suceder`, `surgir`, `bastar`, `durar`, `corresponder`, `consistir` and `florecer` beyond él and ellos, `significar` beyond él and ellos in the future, conditional and present subjunctive, or the yo and nosotros forms of `interesar`, `encantar` and `preocupar` where they'd sound forced, and tenses marked rare, like most of `oponer`, `desoír` and `soler`. Next would be the present perfect and the -ra imperfect subjunctive, about 4,260 sentences between them, starting from the most common verbs
 - [ ] Add proverb of the day
 
+## Levels
+
+Beginners and advanced learners used to get the same drills. A level (A1 to B2, the same as readings) now sets the drill's starting tenses and verbs. It never locks anything.
+
+- [x] Step 1: the level question and drill defaults. Asked on /drill for everyone, and on every page for signed-in people without one (their account's saved level is checked first). "Not now" skips it for the visit. Saved in this browser (`level` in localStorage) and on the account in `users/{uid}/stats/settings` as `level`. Choosing or changing a level resets the drill's tenses and verb pool to match: A1 present, top 25 verbs; A2 adds preterite and imperfect, top 100; B1 adds present perfect, future, conditional and present subjunctive, top 300; B2 every tense, all verbs. Changed on the Drills page. Defined in `src/lib/level.ts`
+- [ ] Step 2: levels for words, guides and sentences. Tag each noun, adjective, adverb and small word with a level in one small `{word: level}` file, about A1 500, A2 +700, B1 +1,200, B2 the rest, judged by frequency and by beginner topics (the Instituto Cervantes *Plan Curricular* as a guide, not copied). Frequency lists from subtitles (OpenSubtitles, SUBTLEX-ESP) stay local like the Wiktionary cache. Then filter vocabulary, flashcards and Learn words by level, tag guides by hand, and limit writing and dictation sentences by their tense. About two sessions for the word tags
+- [ ] Step 3: suggest the next level on /progress after about 85% right on the level's tenses over a few hundred answers, and show level-ups on the trend
+- [ ] Step 4, if beginners still struggle: multiple choice before typing, or a "show the pattern" hint that counts as a miss
+- A level changed on one device doesn't reach another device that already has one, since the account is only read when this browser has no level. Fine for now; sync on sign-in if it causes confusion
+
 ## Later
 
 - [ ] More audio, after the word lists pass the phone check in "To verify": example sentences on regional pages, then reading passages a sentence at a time. Verb page sentences and drill sentences have it already
@@ -145,6 +155,8 @@ The app started as invite-only for friends and family. Sign-ups opened on 2026-1
 - [ ] Signed in, tap a word in a reading and use "Add to my reviews". Confirm `stats/wanted` gets the item, the panel then says it's added, and the word comes up first among new items in Today's review. Only seen signed out
 - [ ] Signed in, miss a few typed answers (one with "I don't know this", one in dictation), then check "Recent mistakes" on /progress and its "Practice the latest" link. Mistakes are saved on `days/{day}` under `mistakes`, and none has reached real Firestore yet. Also check the Listening section after a dictation session
 - [ ] Try dictation on a real phone. On iPhone, the first sentence may not play until you tap Play once, because Safari can block speech that isn't started by a tap. Note whether it then plays on its own for the rest of the session
+- [ ] Signed in, clear `level` from localStorage (or use a new browser) and confirm the level question appears on any page, choose one, and check `users/{uid}/stats/settings` gets `level`. Then clear localStorage again and confirm it's loaded from the account without asking. Only seen signed out (`.verify/browser/level.mjs`)
+- [ ] Signed in, remove a recent mistake on /progress, reload, and confirm it stays gone and `days/{day}` has it under `hiddenMistakes`. Also try Undo, and "Report a problem" on a mistake. Not run against real Firestore
 - [ ] Dictation counts a word spelled differently but sounding the same (tuvo and tubo, haber and a ver) as wrong. That's the point of dictation, but decide whether it feels unfair in practice
 
 ## How content gets added

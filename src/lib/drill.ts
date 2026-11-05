@@ -43,8 +43,9 @@ export function isIrregular(v: Verb): boolean {
   return !!(v.like || v.boot || IRREGULARS[v.inf.replace(/se$/, "")]);
 }
 
-export function poolVerbs(verbs: Verb[], pool: VerbPool): Verb[] {
-  if (pool === "common") return verbs.slice(0, COMMON_COUNT);
+/** `common` is how many of the most common verbs to take, which the level sets. */
+export function poolVerbs(verbs: Verb[], pool: VerbPool, common = COMMON_COUNT): Verb[] {
+  if (pool === "common") return verbs.slice(0, common);
   if (pool === "irregular") return verbs.filter(isIrregular);
   return verbs;
 }
