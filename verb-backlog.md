@@ -12,34 +12,6 @@ When adding a batch:
 - Delete the batch from this file once it's in `verbs.json`, and update the verb count in `plan.md`.
 - If a verb is dropped, move it to "Dropped" at the bottom with the reason, so it isn't suggested again.
 
-## Batch 9
-
-- atar: to tie
-- atravesar: to cross, to go through
-- aterrizar: to land
-- borrar: to erase, to delete
-- brindar: to toast; to offer
-- bromear: to joke
-- bucear: to dive
-- calificar: to grade, to rate
-- cancelar: to cancel
-- charlar: to chat
-- chocar: to crash, to collide
-- citar: to quote; to make an appointment with
-- colaborar: to collaborate
-- coleccionar: to collect
-- combinar: to combine
-- conectar: to connect
-- confundir: to confuse
-- congelar: to freeze
-- consistir: to consist
-- contagiar: to infect, to pass on
-- contaminar: to pollute
-- convivir: to live together
-- decorar: to decorate
-- derretir: to melt
-- descargar: to download; to unload
-
 ## Batch 10
 
 - desconfiar: to distrust
