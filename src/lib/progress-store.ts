@@ -1,4 +1,5 @@
 import {
+  arrayRemove,
   arrayUnion,
   collection,
   doc,
@@ -16,7 +17,7 @@ import {
   writeBatch,
 } from "firebase/firestore";
 import { auth, db } from "./firebase";
-import { localDay, summarize, type Answer, type DayTally, type StreakRecord, type Summary, type Tally } from "./progress";
+import { localDay, summarize, type Answer, type DayTally, type Mistake, type StreakRecord, type Summary, type Tally } from "./progress";
 import {
   DEFAULT_NEW_PER_DAY,
   DEFAULT_REVIEWS_PER_DAY,
@@ -198,6 +199,16 @@ export async function addWanted(item: string) {
   const uid = await currentUid();
   if (!uid) throw new Error("Not signed in");
   await setDoc(statsDoc(uid, "wanted"), { items: arrayUnion(item) }, { merge: true });
+}
+
+/** Hides a mistake from the list, or shows it again. The mistake itself stays saved and counted. */
+export async function setMistakeHidden(day: string, mistake: Mistake, hidden: boolean) {
+  const uid = await currentUid();
+  if (!uid) throw new Error("Not signed in");
+  // Exactly the saved fields, since arrayRemove only matches an exact copy.
+  const { item, label, prompt, given, answer, grade } = mistake;
+  const entry = { item, label, prompt, given, answer, grade };
+  await setDoc(doc(db(), "users", uid, "days", day), { hiddenMistakes: hidden ? arrayUnion(entry) : arrayRemove(entry) }, { merge: true });
 }
 
 export interface ReviewSettings {

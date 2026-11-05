@@ -4,13 +4,14 @@ import { onAuthStateChanged, type User } from "firebase/auth";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AccuracyTrend, PracticeCalendar } from "@/components/ProgressCharts";
+import ReportProblem from "@/components/ReportProblem";
 import { TENSES } from "@/lib/conjugation/types";
 import { useDrillSettings } from "@/lib/drill-settings";
 import { auth, firebaseConfigured } from "@/lib/firebase";
 import { MAX_PRACTICE_ITEMS, practiceHref, weakSpots, type WeakSpot } from "@/lib/practice";
-import { accentRate, accuracy, answered, currentStreak, lastSevenDays, localDay, recentWeeks, wordsPracticed, type Tally } from "@/lib/progress";
+import { accentRate, accuracy, answered, currentStreak, lastSevenDays, localDay, recentWeeks, wordsPracticed, type Mistake, type Tally } from "@/lib/progress";
 import { saveProgress, setProgressEnabled } from "@/lib/progress-queue";
-import { DAYS_TO_LOAD, loadProgress, type ProgressData } from "@/lib/progress-store";
+import { DAYS_TO_LOAD, loadProgress, setMistakeHidden, type ProgressData } from "@/lib/progress-store";
 import { MASTERED_DAYS, reviewsLeft } from "@/lib/schedule";
 
 const SAVE_WAIT_MS = 5000;
@@ -199,22 +200,55 @@ function dayLabel(day: string, today: string): string {
   return date.toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
 }
 
+type DayMistake = Mistake & { day: string };
+
+const mistakeKey = (m: DayMistake) => JSON.stringify([m.day, m.item, m.label, m.prompt, m.given, m.answer, m.grade]);
+
 /** What was actually typed, newest first. Seeing the wrong forms side by side shows patterns a percentage hides. */
 function MistakesSection({ data }: { data: ProgressData }) {
   const [showAll, setShowAll] = useState(false);
+  // Removed on this visit, so they can be undone. Ones removed before are left out altogether.
+  const [removed, setRemoved] = useState<Set<string>>(new Set());
+  const [failed, setFailed] = useState(false);
   const today = localDay();
   // A day's list is saved in the order answered, so it's reversed for newest first.
   const all = Object.keys(data.days)
     .sort()
     .reverse()
-    .flatMap((day) => [...(data.days[day].mistakes ?? [])].reverse().map((m) => ({ ...m, day })));
+    .flatMap((day) => {
+      const hidden = new Set((data.days[day].hiddenMistakes ?? []).map((m) => mistakeKey({ ...m, day })));
+      return [...(data.days[day].mistakes ?? [])]
+        .reverse()
+        .map((m) => ({ ...m, day }))
+        .filter((m) => !hidden.has(mistakeKey(m)));
+    });
   if (all.length === 0) return null;
 
+  async function setHidden(m: DayMistake, hidden: boolean) {
+    const change = (hide: boolean) =>
+      setRemoved((prev) => {
+        const next = new Set(prev);
+        if (hide) next.add(mistakeKey(m));
+        else next.delete(mistakeKey(m));
+        return next;
+      });
+    setFailed(false);
+    change(hidden);
+    try {
+      await setMistakeHidden(m.day, m, hidden);
+    } catch (err) {
+      console.error("Couldn't change the mistake list", err);
+      change(!hidden);
+      setFailed(true);
+    }
+  }
+
+  const kept = all.filter((m) => !removed.has(mistakeKey(m)));
   // By answer as well as item: every dictation sentence shares one item, and a verb's tense covers five forms.
   const key = (m: { item: string; answer: string }) => `${m.item}|${m.answer}`;
   const times = new Map<string, number>();
-  for (const m of all) times.set(key(m), (times.get(key(m)) ?? 0) + 1);
-  const practice = [...new Set(all.map((m) => m.item).filter((item) => item.startsWith("verb:") || item.startsWith("vocab:")))];
+  for (const m of kept) times.set(key(m), (times.get(key(m)) ?? 0) + 1);
+  const practice = [...new Set(kept.map((m) => m.item).filter((item) => item.startsWith("verb:") || item.startsWith("vocab:")))];
   const shown = showAll ? all : all.slice(0, MISTAKES_SHOWN);
 
   return (
@@ -228,16 +262,46 @@ function MistakesSection({ data }: { data: ProgressData }) {
         )}
       </div>
       <ul className="divide-y divide-stone-100 overflow-hidden rounded-xl border border-stone-200 bg-white dark:divide-stone-800 dark:border-stone-800 dark:bg-stone-900">
-        {shown.map((m, i) => {
+        {shown.map((m) => {
+          if (removed.has(mistakeKey(m))) {
+            return (
+              <li key={mistakeKey(m)} className="flex flex-wrap items-center justify-between gap-x-4 px-4 py-1 text-sm text-stone-500">
+                <span>Removed {m.answer} from your list.</span>
+                <button type="button" onClick={() => setHidden(m, false)} className={`min-h-10 font-medium ${linkClass}`}>
+                  Undo
+                </button>
+              </li>
+            );
+          }
           const count = times.get(key(m)) ?? 1;
           return (
-            <li key={i} className="space-y-1 px-4 py-3">
+            <li key={mistakeKey(m)} className="space-y-1 px-4 py-3">
               <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-stone-500">
                 {m.label && !m.prompt.includes(m.label) && (
                   <span className="rounded-md bg-accent-100 px-2 py-0.5 font-medium text-accent-900 dark:bg-accent-950 dark:text-accent-200">{m.label}</span>
                 )}
                 <span>{dayLabel(m.day, today)}</span>
                 {count > 1 && <span className="font-medium text-red-700 dark:text-red-400">Missed {count} times</span>}
+                <button
+                  type="button"
+                  onClick={() => setHidden(m, true)}
+                  aria-label={`Remove ${m.answer} from your list`}
+                  title="Remove from your list"
+                  className="-my-2.5 -mr-2 ml-auto flex min-h-10 min-w-10 items-center justify-center text-stone-400 transition hover:text-accent-700 dark:text-stone-500 dark:hover:text-accent-400"
+                >
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="size-4"
+                  >
+                    <path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v6M14 11v6" />
+                  </svg>
+                </button>
               </p>
               {m.prompt && <p className="text-stone-700 dark:text-stone-300">{m.prompt}</p>}
               <p className="flex flex-wrap gap-x-4 gap-y-1">
@@ -256,10 +320,19 @@ function MistakesSection({ data }: { data: ProgressData }) {
                   <span className="font-medium text-emerald-700 dark:text-emerald-400">{m.answer}</span>
                 </span>
               </p>
+              <ReportProblem
+                about={`Mistake ${m.item}: typed "${m.given || "didn't know"}", answer "${m.answer}" | ${m.label} | ${m.prompt}`}
+                message={m.given ? "I think my answer was correct." : ""}
+              />
             </li>
           );
         })}
       </ul>
+      {failed && (
+        <p role="alert" className="mt-2 text-sm text-red-600 dark:text-red-400">
+          Couldn&apos;t change your list. Check your connection and try again.
+        </p>
+      )}
       {all.length > MISTAKES_SHOWN && (
         <button type="button" onClick={() => setShowAll(!showAll)} className={`mt-2 min-h-10 text-sm ${linkClass}`}>
           {showAll ? "Show fewer" : `Show all ${all.length.toLocaleString()}`}
@@ -267,6 +340,7 @@ function MistakesSection({ data }: { data: ProgressData }) {
       )}
       <p className="mt-2 text-sm text-stone-500">
         From the last {DAYS_TO_LOAD} days. Only first tries are kept, and flashcards aren&apos;t, since nothing is typed on them.
+        Removing a mistake hides it here, but it still counts in your stats.
       </p>
     </section>
   );

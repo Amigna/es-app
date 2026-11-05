@@ -98,6 +98,7 @@ Class-wide stats, anonymous by design:
 - Show nothing until at least 5 students have joined and practiced, since totals can still point to one person in a small class.
 - Show mistakes grouped with counts, like "7 students wrote hablé for habló", and leave out mistakes only one student made.
 - Leave writing and dictation mistakes out, since free text could contain anything, including names.
+- Open question (2026-11-04): the user may want teachers to see each student's own mistakes, not just class totals. That reverses "the teacher never reads … mistakes" above, so it needs a decision, rule changes and student notice. Mistakes a student removed are only marked in `hiddenMistakes`, so they'd still be there to show.
 
 Questions for the teachers first: what do they actually grade in Conjuguemos, how old are the students, how many are in a class, which textbook do they use, which gradebook do grades go into, how do students sign in (school Google accounts often block outside apps, so email link may be the way), and what would they look at each week?
 
@@ -215,6 +216,8 @@ These live in `.verify/`, which is gitignored, so keep a copy if you change mach
 - [x] "Longest drill streak" tile on /progress: the best on-screen drill streak, with the day it was set. Queued in the browser like answers and saved to `stats/records`, where the higher number wins. Only drills that save progress count
 - [x] Weak-spot stats by tense, verb and mistake type, each with a "Practice this" link that starts a 15-question session
 - [x] "Report a problem" link on words, phrases, regional entries, verb tenses and drill answers, for invited people. Saved to `reports` in Firestore
+- [x] "Report a problem" on each recent mistake on /progress, prefilled with "I think my answer was correct." Its `about` starts with `Mistake <item>:` and holds what was typed, the answer, the label and the prompt
+- [x] Trash button on each recent mistake to remove it from the list, with Undo. It's added to the day's `hiddenMistakes`, and the mistake stays in `mistakes` and in every tally, so a teacher view could still show it later
 - [x] Vulgar words section on the regional page, shown only to invites with `vulgar: true`. Offensive words stay public with the reason explained. Vulgar ones say so publicly, and only this section says what they mean
 
 ### Content

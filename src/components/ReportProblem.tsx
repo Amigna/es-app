@@ -11,12 +11,12 @@ const MAX_PAGE = 200;
 const subscribe = () => () => {};
 const onServer = () => false;
 
-/** A link to flag a mistake, shown to signed-in people. `about` tells you which word or sentence it was. */
-export default function ReportProblem({ about }: { about: string }) {
+/** A link to flag a mistake, shown to signed-in people. `about` tells you which word or sentence it was. `message` prefills the form. */
+export default function ReportProblem({ about, message: initialMessage = "" }: { about: string; message?: string }) {
   const invited = useSyncExternalStore(subscribe, progressEnabled, onServer);
   const id = useId();
   const [state, setState] = useState<"closed" | "open" | "sending" | "failed" | "sent">("closed");
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(initialMessage);
   const text = message.trim();
 
   async function send() {
