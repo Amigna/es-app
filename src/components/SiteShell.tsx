@@ -76,7 +76,8 @@ export default function SiteShell({ children }: { children: ReactNode }) {
         </div>
       </header>
       <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8">
-        <LevelPrompt onDrill={segment === "drill"} />
+        {/* The drill page asks on its setup screen instead, so the question never sits above a drill in progress. */}
+        {segment !== "drill" && <LevelPrompt className="mb-8" />}
         {children}
       </main>
     </div>

@@ -1,9 +1,11 @@
 import adjectivesRaw from "../data/vocab/adjectives.json";
 import adverbsRaw from "../data/vocab/adverbs.json";
+import levelsRaw from "../data/vocab/levels.json";
 import nounsRaw from "../data/vocab/nouns.json";
 import phrasesRaw from "../data/vocab/phrases.json";
 import smallWordsRaw from "../data/vocab/small-words.json";
 import { nuclei, setStress, stressIndex } from "./conjugation/accent";
+import type { Level } from "./level";
 
 export interface Example {
   es: string;
@@ -61,6 +63,28 @@ export const ADJECTIVES = adjectivesRaw as Adjective[];
 export const ADVERBS = adverbsRaw as Adverb[];
 export const SMALL_WORDS = smallWordsRaw as SmallWord[];
 export const PHRASES = phrasesRaw as Phrase[];
+
+/** The lists that have levels. Phrases don't: they're everyday expressions, open to everyone. */
+export type LeveledType = "noun" | "adjective" | "adverb" | "small";
+
+// Judged by frequency and by the topics beginners learn first, from levels.json. Each level includes the ones before.
+const WORD_LEVELS = levelsRaw as Record<LeveledType, Record<Level, string[]>>;
+const LEVEL_ORDER: Level[] = ["A1", "A2", "B1", "B2"];
+const levelOf = new Map(
+  Object.entries(WORD_LEVELS).flatMap(([type, levels]) =>
+    Object.entries(levels).flatMap(([level, words]) => words.map((es) => [`${type}|${es}`, level as Level] as const)),
+  ),
+);
+
+/** Words missing from levels.json count as the hardest, so a new word never lands in a beginner's drill by accident. */
+export const wordLevel = (type: LeveledType, es: string): Level => levelOf.get(`${type}|${es}`) ?? "B2";
+
+/** Whether a word is at or below the level. With no level, every word is. */
+export const upToLevel = (level: Level | null | undefined, type: LeveledType, es: string): boolean =>
+  !level || LEVEL_ORDER.indexOf(wordLevel(type, es)) <= LEVEL_ORDER.indexOf(level);
+
+/** For sorting easiest first. */
+export const levelRank = (type: LeveledType, es: string): number => LEVEL_ORDER.indexOf(wordLevel(type, es));
 
 /** Regular plural, keeping the stress on the same syllable: joven -> jóvenes, camión -> camiones, lápiz -> lápices. */
 export function pluralOf(word: string): string {

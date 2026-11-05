@@ -58,10 +58,11 @@ export function LevelPicker({ onChosen }: { onChosen?: () => void }) {
 }
 
 /**
- * Asks for a level when there isn't one: on the drill page for everyone, and on every page for signed-in people, whose
- * level may already be saved to their account from another device. Firebase is only loaded for signed-in people.
+ * Asks for a level when there isn't one. Signed-in people are asked on every page, after checking their account, which
+ * may have one from another device. Signed-out people only on the drill setup (`everyone`). Firebase is only loaded for
+ * signed-in people.
  */
-export function LevelPrompt({ onDrill }: { onDrill: boolean }) {
+export function LevelPrompt({ everyone = false, className = "" }: { everyone?: boolean; className?: string }) {
   const level = useLevel();
   const signedIn = useSyncExternalStore(subscribe, progressEnabled, onServer);
   const [checked, setChecked] = useState(false);
@@ -84,16 +85,19 @@ export function LevelPrompt({ onDrill }: { onDrill: boolean }) {
     };
   }, [signedIn]);
 
-  if (level || dismissed || !(signedIn ? checked : onDrill)) return null;
+  if (level || dismissed || !(signedIn ? checked : everyone)) return null;
 
   return (
-    <section aria-labelledby="level-prompt" className="mb-8 space-y-3 rounded-xl border border-accent-300 bg-white p-4 dark:border-accent-800 dark:bg-stone-900">
+    <section
+      aria-labelledby="level-prompt"
+      className={`space-y-3 rounded-xl border border-accent-300 bg-white p-4 dark:border-accent-800 dark:bg-stone-900 ${className}`}
+    >
       <div>
         <h2 id="level-prompt" className="text-xl font-semibold">
           How much Spanish do you know?
         </h2>
         <p className="text-sm text-stone-500">
-          Drills start with the tenses and verbs for your level. You can still pick anything, and change your level on the Drills page.
+          Drills start with the tenses, verbs and words for your level. You can still pick anything, and change your level on the Drills page.
         </p>
       </div>
       <LevelPicker />

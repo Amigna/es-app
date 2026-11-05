@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import DrillRunner from "@/components/DrillRunner";
 import { TENSES, type Mood, type TenseId } from "@/lib/conjugation/types";
-import { LevelPicker } from "@/components/LevelPicker";
+import { LevelPicker, LevelPrompt } from "@/components/LevelPicker";
 import { COMMON_COUNT, CORE_TENSES, conjugationCard, limitedDeck, makeQuestion, poolVerbs, type Card, type VerbPool } from "@/lib/drill";
 import { levelInfo, useLevel } from "@/lib/level";
 import StudyRunner from "@/components/StudyRunner";
@@ -57,6 +57,17 @@ const pools = (common: number): { id: VerbPool; title: string; hint: string }[] 
   { id: "irregular", title: "Irregular", hint: "Irregular and stem-changing" },
   { id: "all", title: "All verbs", hint: `All ${VERBS.length} verbs` },
 ];
+
+function WordLevelNote({ phrases = false }: { phrases?: boolean }) {
+  const level = useLevel();
+  return (
+    <p className="mb-3 text-sm text-stone-500">
+      {level
+        ? `Words up to ${levelInfo(level).name} (${level})${phrases ? ", and every phrase" : ""}. Change your level above for more.`
+        : "Every word. Choose a level to start with the most useful ones."}
+    </p>
+  );
+}
 
 /** The current level, with a way to change it. Before one is chosen, the prompt above the page asks. */
 function LevelSection() {
@@ -239,7 +250,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
     }
     if ("kind" in target) {
       const { vocabDeck } = await import("@/lib/card-decks");
-      return vocabDeck({ kinds: [target.kind], wordTypes: ["noun", "adjective", "adverb", "small"], topics: [] });
+      return vocabDeck({ kinds: [target.kind], wordTypes: ["noun", "adjective", "adverb", "small"], topics: [], level });
     }
     if ("verb" in target) {
       const verb = findVerb(target.verb);
@@ -264,8 +275,8 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
       return quizDeck(GUIDE_QUIZZES, chosen);
     }
     const decks = await import("@/lib/card-decks");
-    if (mode === "vocabulary") return decks.vocabDeck({ kinds, wordTypes, topics });
-    if (mode === "flashcards") return limitedDeck(decks.flashcardDeck({ side: flashSide, types: flashTypes, topics }), FLASHCARD_SESSION);
+    if (mode === "vocabulary") return decks.vocabDeck({ kinds, wordTypes, topics, level });
+    if (mode === "flashcards") return limitedDeck(decks.flashcardDeck({ side: flashSide, types: flashTypes, topics, level }), FLASHCARD_SESSION);
     if (mode === "writing") return limitedDeck(decks.writingDeck(await loadSentences(verbs), verbs, tenses, writingSides), WRITING_SESSION);
     if (mode === "listening") return limitedDeck(decks.dictationDeck(await loadSentences(verbs), verbs, tenses), DICTATION_SESSION);
     return decks.blankDeck(await loadSentences(verbs), verbs, tenses);
@@ -277,7 +288,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
     try {
       if (mode === "study" && !target) {
         const { studyCards } = await import("@/lib/card-decks");
-        const cards = studyCards({ side: studySide, types: flashTypes, topics });
+        const cards = studyCards({ side: studySide, types: flashTypes, topics, level });
         if (cards.length > 0) setStudy(cards);
         else setError("No words match that choice. Try selecting more options.");
         return;
@@ -317,6 +328,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
 
   return (
     <div className="space-y-8">
+      <LevelPrompt everyone />
       <LevelSection />
 
       <section>
@@ -438,7 +450,8 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
           </section>
 
           <section>
-            <h2 className="mb-3 text-xl font-semibold">Which words?</h2>
+            <h2 className="mb-1 text-xl font-semibold">Which words?</h2>
+            <WordLevelNote />
             <div className="grid gap-2 sm:grid-cols-3">
               {WORD_TYPES.map((w) => (
                 <OptionCard
@@ -501,7 +514,8 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
       {usesCards && (
         <>
           <section>
-            <h2 className="mb-3 text-xl font-semibold">Which words?</h2>
+            <h2 className="mb-1 text-xl font-semibold">Which words?</h2>
+            <WordLevelNote phrases />
             <div className="grid gap-2 sm:grid-cols-3">
               {FLASH_TYPES.map((t) => (
                 <OptionCard

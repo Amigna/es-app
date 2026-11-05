@@ -5,7 +5,22 @@ import type { CardType, FlashSide, StudySide, VocabKind, WordType } from "./dril
 import { shuffled } from "./quiz";
 import { blankOut, findForm, sentencesFor, type SentenceBank } from "./sentences";
 import { VERBS, findVerb, type Verb } from "./verbs";
-import { ADJECTIVES, ADVERBS, NOUNS, PHRASES, SMALL_WORDS, adjectiveForms, isPluralOnly, nounArticle, type Adjective, type Example, type Noun } from "./vocab";
+import type { Level } from "./level";
+import {
+  ADJECTIVES,
+  ADVERBS,
+  NOUNS,
+  PHRASES,
+  SMALL_WORDS,
+  adjectiveForms,
+  isPluralOnly,
+  levelRank,
+  nounArticle,
+  upToLevel,
+  type Adjective,
+  type Example,
+  type Noun,
+} from "./vocab";
 
 // Decks for the vocabulary and fill-in-the-blank drills. Imported on demand because it pulls in the word lists.
 
@@ -14,6 +29,8 @@ export interface VocabOptions {
   wordTypes: WordType[];
   /** Noun topics to include; empty means all of them. */
   topics: string[];
+  /** Only words at or below this level; none means every word. */
+  level?: Level | null;
 }
 
 type Random = () => number;
@@ -136,12 +153,13 @@ function agreementCard(adjective: Adjective, random: Random): Card {
   };
 }
 
-export function vocabDeck({ kinds, wordTypes, topics }: VocabOptions, random: Random = Math.random): () => Card | null {
+export function vocabDeck({ kinds, wordTypes, topics, level }: VocabOptions, random: Random = Math.random): () => Card | null {
   const has = (type: WordType) => wordTypes.includes(type);
-  const nouns = has("noun") ? NOUNS.filter((n) => topics.length === 0 || topics.includes(n.topic)) : [];
-  const adjectives = has("adjective") ? ADJECTIVES : [];
-  const adverbs = has("adverb") ? ADVERBS : [];
-  const smallWords = has("small") ? SMALL_WORDS : [];
+  const leveled = <T extends { es: string }>(type: WordType, list: T[]) => (has(type) ? list.filter((w) => upToLevel(level, type, w.es)) : []);
+  const nouns = leveled("noun", NOUNS).filter((n) => topics.length === 0 || topics.includes(n.topic));
+  const adjectives = leveled("adjective", ADJECTIVES);
+  const adverbs = leveled("adverb", ADVERBS);
+  const smallWords = leveled("small", SMALL_WORDS);
 
   const words = [
     ...nouns.map(nounWord),
@@ -151,7 +169,7 @@ export function vocabDeck({ kinds, wordTypes, topics }: VocabOptions, random: Ra
   ];
   const everyWord = allWords();
   const genderNouns = nouns.filter((n) => !n.article && !isPluralOnly(n));
-  const agreeing = has("adjective") ? agreeingAdjectives() : [];
+  const agreeing = has("adjective") ? agreeingAdjectives().filter((a) => upToLevel(level, "adjective", a.es)) : [];
 
   // Drop question types with nothing to ask, e.g. noun gender with only adverbs selected.
   const usable = kinds.filter((k) => {
@@ -193,22 +211,27 @@ export interface FlashcardOptions {
   types: CardType[];
   /** Noun topics to include; empty means all of them. */
   topics: string[];
+  /** Only words at or below this level; none means every word. Phrases are always included. */
+  level?: Level | null;
 }
 
-function chosenWords(types: CardType[], topics: string[]): Word[] {
+function chosenWords(types: CardType[], topics: string[], level: Level | null | undefined): Word[] {
   const has = (type: CardType) => types.includes(type);
+  const leveled = <T extends { es: string }>(type: WordType, list: T[]) => (has(type) ? list.filter((w) => upToLevel(level, type, w.es)) : []);
   return [
-    ...(has("noun") ? NOUNS.filter((n) => topics.length === 0 || topics.includes(n.topic)).map(nounWord) : []),
-    ...(has("adjective") ? ADJECTIVES.map(plainWord("adjective")) : []),
-    ...(has("adverb") ? ADVERBS.map(plainWord("adverb")) : []),
-    ...(has("small") ? SMALL_WORDS.map(plainWord("small")) : []),
+    ...leveled("noun", NOUNS)
+      .filter((n) => topics.length === 0 || topics.includes(n.topic))
+      .map(nounWord),
+    ...leveled("adjective", ADJECTIVES).map(plainWord("adjective")),
+    ...leveled("adverb", ADVERBS).map(plainWord("adverb")),
+    ...leveled("small", SMALL_WORDS).map(plainWord("small")),
     ...(has("phrase") ? PHRASES.map(plainWord("phrase")) : []),
   ];
 }
 
 /** Each chosen word once, in random order. The deck runs out, which ends the session. */
-export function flashcardDeck({ side, types, topics }: FlashcardOptions, random: Random = Math.random): () => Card | null {
-  const order = shuffled(chosenWords(types, topics), random);
+export function flashcardDeck({ side, types, topics, level }: FlashcardOptions, random: Random = Math.random): () => Card | null {
+  const order = shuffled(chosenWords(types, topics, level), random);
   let next = 0;
   return () => (next < order.length ? flashcard(order[next++], side) : null);
 }
@@ -230,11 +253,13 @@ export interface StudyOptions {
   types: CardType[];
   /** Noun topics to include; empty means all of them. */
   topics: string[];
+  /** Only words at or below this level; none means every word. Phrases are always included. */
+  level?: Level | null;
 }
 
 /** Every chosen word in random order. The learner pages through them, so the whole list is handed over. */
-export function studyCards({ side, types, topics }: StudyOptions, random: Random = Math.random): StudyCard[] {
-  return shuffled(chosenWords(types, topics), random).map((word) => {
+export function studyCards({ side, types, topics, level }: StudyOptions, random: Random = Math.random): StudyCard[] {
+  return shuffled(chosenWords(types, topics, level), random).map((word) => {
     const spanish = { text: word.shown, spanish: true };
     const english = { text: word.en, spanish: false };
     const spanishFirst = side === "mixed" ? random() < 0.5 : side === "toEnglish";
@@ -416,11 +441,13 @@ function verbItems(rare: Set<string>): string[] {
 }
 
 function wordItems(): string[] {
+  // Easiest level first. The sort is stable, so each level keeps the lists' order.
+  const easiestFirst = <T extends { es: string }>(type: WordType, list: T[]) => [...list].sort((a, b) => levelRank(type, a.es) - levelRank(type, b.es));
   const lists: [WordType, { es: string }[]][] = [
-    ["noun", NOUNS],
-    ["adjective", ADJECTIVES],
-    ["adverb", ADVERBS],
-    ["small", SMALL_WORDS],
+    ["noun", easiestFirst("noun", NOUNS)],
+    ["adjective", easiestFirst("adjective", ADJECTIVES)],
+    ["adverb", easiestFirst("adverb", ADVERBS)],
+    ["small", easiestFirst("small", SMALL_WORDS)],
   ];
   const meanings = (kind: VocabKind) => {
     const longest = Math.max(...lists.map(([, list]) => list.length));
@@ -428,8 +455,10 @@ function wordItems(): string[] {
       lists.flatMap(([type, list]) => (list[i] ? [vocabTrack(type, list[i].es, kind).item] : [])),
     ).flat();
   };
-  const gender = NOUNS.filter((n) => !n.article && !isPluralOnly(n)).map((n) => vocabTrack("noun", n.es, "gender").item);
-  const agreement = agreeingAdjectives().map((a) => vocabTrack("adjective", a.es, "agreement").item);
+  const gender = easiestFirst("noun", NOUNS)
+    .filter((n) => !n.article && !isPluralOnly(n))
+    .map((n) => vocabTrack("noun", n.es, "gender").item);
+  const agreement = easiestFirst("adjective", agreeingAdjectives()).map((a) => vocabTrack("adjective", a.es, "agreement").item);
   return [...meanings("toEnglish"), ...meanings("toSpanish"), ...gender, ...agreement];
 }
 
