@@ -12,34 +12,6 @@ When adding a batch:
 - Delete the batch from this file once it's in `verbs.json`, and update the verb count in `plan.md`.
 - If a verb is dropped, move it to "Dropped" at the bottom with the reason, so it isn't suggested again.
 
-## Batch 11
-
-- frenar: to brake
-- gozar: to enjoy
-- hornear: to bake
-- hundir: to sink
-- invertir: to invest; to reverse
-- jubilarse: to retire
-- lastimar: to hurt
-- madrugar: to get up early
-- maquillarse: to put on makeup
-- masticar: to chew
-- merendar: to have an afternoon snack
-- navegar: to sail; to browse
-- pasear: to go for a walk
-- patinar: to skate
-- perderse: to get lost
-- pisar: to step on
-- portarse: to behave
-- posponer: to postpone
-- quebrar: to break (Latin America)
-- rascar: to scratch
-- recetar: to prescribe
-- reciclar: to recycle
-- regañar: to scold
-- regar: to water
-- relajarse: to relax
-
 ## Batch 12
 
 - resbalar: to slip
