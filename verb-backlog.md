@@ -12,34 +12,6 @@ When adding a batch:
 - Delete the batch from this file once it's in `verbs.json`, and update the verb count in `plan.md`.
 - If a verb is dropped, move it to "Dropped" at the bottom with the reason, so it isn't suggested again.
 
-## Batch 14
-
-- entrevistar: to interview
-- matricularse: to enroll
-- inscribirse: to sign up, to register
-- repasar: to review, to go over
-- memorizar: to memorize
-- resumir: to summarize
-- deletrear: to spell
-- restar: to subtract
-- multiplicar: to multiply
-- temer: to fear
-- susurrar: to whisper
-- insultar: to insult
-- jurar: to swear
-- aconsejar: to advise
-- reclamar: to complain; to claim
-- felicitar: to congratulate
-- criticar: to criticize
-- chismear: to gossip
-- suplicar: to beg
-- narrar: to narrate
-- alejar: to move away
-- agacharse: to crouch, to bend down
-- arrodillarse: to kneel
-- brincar: to jump (Latin America)
-- soltar: to let go, to release
-
 ## Batch 15
 
 - atrapar: to catch, to trap

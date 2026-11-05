@@ -2438,5 +2438,683 @@
    {"person":1,"es":"Solicita el formulario en la ventanilla.","en":"Ask for the form at the window."}
   ],
   "impNegative": {"rare":true}
+ },
+ "entrevistar": {
+  "present": [
+   {"person":2,"es":"La periodista entrevista al alcalde hoy.","en":"The reporter is interviewing the mayor today."},
+   {"person":0,"es":"Entrevisto a cinco candidatos esta semana.","en":"I'm interviewing five candidates this week."},
+   {"person":1,"es":"¿A quién entrevistas para tu tarea?","en":"Who are you interviewing for your homework?"},
+   {"person":3,"es":"Entrevistamos a los abuelos para el proyecto de historia.","en":"We're interviewing our grandparents for the history project."},
+   {"person":4,"es":"En la radio entrevistan a un cantante cada viernes.","en":"On the radio they interview a singer every Friday."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El periodista entrevistó a la campeona.","en":"The reporter interviewed the champion."},
+   {"person":0,"es":"Entrevisté a mi abuela sobre su infancia.","en":"I interviewed my grandmother about her childhood."},
+   {"person":1,"es":"¿Entrevistaste al director?","en":"Did you interview the principal?"},
+   {"person":3,"es":"Entrevistamos a diez personas en la calle.","en":"We interviewed ten people on the street."},
+   {"person":4,"es":"Me entrevistaron por teléfono.","en":"They interviewed me over the phone."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi tía entrevistaba a artistas para una revista.","en":"My aunt used to interview artists for a magazine."},
+   {"person":0,"es":"Yo entrevistaba a los clientes antes de diseñar sus casas.","en":"I used to interview clients before designing their houses."},
+   {"person":1,"es":"Tú entrevistabas a los jugadores después de cada partido.","en":"You used to interview the players after every game."},
+   {"person":3,"es":"Entrevistábamos a los vecinos para el periódico escolar.","en":"We used to interview the neighbors for the school paper."},
+   {"person":4,"es":"Los reporteros entrevistaban a todos los testigos.","en":"The reporters were interviewing all the witnesses."}
+  ],
+  "future": [
+   {"person":0,"es":"Entrevistaré al nuevo profesor mañana.","en":"I'll interview the new teacher tomorrow."},
+   {"person":1,"es":"Entrevistarás a la autora en la feria del libro.","en":"You'll interview the author at the book fair."},
+   {"person":2,"es":"El canal entrevistará al presidente.","en":"The channel will interview the president."},
+   {"person":3,"es":"Entrevistaremos a los candidatos el lunes.","en":"We'll interview the candidates on Monday."},
+   {"person":4,"es":"Te entrevistarán dos personas de la empresa.","en":"Two people from the company will interview you."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo entrevistaría a más personas antes de decidir.","en":"I'd interview more people before deciding."},
+   {"person":1,"es":"¿A quién entrevistarías si pudieras?","en":"Who would you interview if you could?"},
+   {"person":2,"es":"Mi hermano entrevistaría a su futbolista favorito.","en":"My brother would interview his favorite soccer player."},
+   {"person":3,"es":"Entrevistaríamos al alcalde, pero no tiene tiempo.","en":"We'd interview the mayor, but he doesn't have time."},
+   {"person":4,"es":"Ellos te entrevistarían si mandaras tu currículum.","en":"They'd interview you if you sent your résumé."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"He entrevistado a veinte personas para el puesto.","en":"I've interviewed twenty people for the job."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"La reportera ya había entrevistado al actor.","en":"The reporter had already interviewed the actor."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Quiero que entrevistes a tu abuelo.","en":"I want you to interview your grandfather."},
+   {"person":0,"es":"Mi jefe quiere que yo entreviste a los candidatos.","en":"My boss wants me to interview the candidates."},
+   {"person":2,"es":"Ojalá que la revista entreviste a mi hermana.","en":"I hope the magazine interviews my sister."},
+   {"person":3,"es":"Es mejor que entrevistemos a los testigos hoy.","en":"It's better if we interview the witnesses today."},
+   {"person":4,"es":"Espero que me entrevisten pronto.","en":"I hope they interview me soon."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"La maestra pidió que cada alumno entrevistara a un familiar.","en":"The teacher asked each student to interview a relative."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Entrevista a alguien mayor de setenta años.","en":"Interview someone over seventy."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "matricularse": {
+  "present": [
+   {"person":2,"es":"Mi hija se matricula en la universidad en agosto.","en":"My daughter is enrolling at the university in August."},
+   {"person":0,"es":"Me matriculo en el curso de inglés cada año.","en":"I sign up for the English course every year."},
+   {"person":1,"es":"¿Cuándo te matriculas?","en":"When are you enrolling?"},
+   {"person":3,"es":"Nos matriculamos en línea.","en":"We enroll online."},
+   {"person":4,"es":"Los alumnos se matriculan en enero.","en":"The students enroll in January."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Mi hermano se matriculó en medicina.","en":"My brother enrolled in medicine."},
+   {"person":0,"es":"Me matriculé en un curso de cocina.","en":"I enrolled in a cooking class."},
+   {"person":1,"es":"¿Te matriculaste a tiempo?","en":"Did you enroll on time?"},
+   {"person":3,"es":"Nos matriculamos en la misma escuela.","en":"We enrolled at the same school."},
+   {"person":4,"es":"Mis primos se matricularon en el colegio nuevo.","en":"My cousins enrolled at the new school."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi papá se matriculaba en cursos de noche.","en":"My dad used to sign up for night classes."},
+   {"person":0,"es":"Me matriculaba siempre el último día.","en":"I always enrolled on the last day."},
+   {"person":1,"es":"Te matriculabas en todos los talleres.","en":"You used to sign up for every workshop."},
+   {"person":3,"es":"Nos matriculábamos en natación cada verano.","en":"We used to sign up for swimming every summer."},
+   {"person":4,"es":"Los estudiantes se matriculaban en persona.","en":"Students used to enroll in person."}
+  ],
+  "future": [
+   {"person":0,"es":"Me matricularé en la universidad abierta.","en":"I'll enroll in the open university."},
+   {"person":1,"es":"Te matricularás en el segundo semestre.","en":"You'll enroll in the second semester."},
+   {"person":2,"es":"Mi hijo se matriculará en primer grado.","en":"My son will enroll in first grade."},
+   {"person":3,"es":"Nos matricularemos en el curso de verano.","en":"We'll sign up for the summer course."},
+   {"person":4,"es":"Muchos jóvenes se matricularán este año.","en":"Many young people will enroll this year."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Me matricularía en ese curso si fuera más barato.","en":"I'd enroll in that course if it were cheaper."},
+   {"person":1,"es":"¿Te matricularías en una universidad en línea?","en":"Would you enroll in an online university?"},
+   {"person":2,"es":"Mi mamá se matricularía en pintura si tuviera tiempo.","en":"My mom would sign up for painting if she had time."},
+   {"person":3,"es":"Nos matricularíamos juntos en el gimnasio.","en":"We'd sign up at the gym together."},
+   {"person":4,"es":"Ellos se matricularían si hubiera becas.","en":"They'd enroll if there were scholarships."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"Ya me he matriculado para el próximo semestre.","en":"I've already enrolled for next semester."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Cuando abrieron el curso nuevo, mi hermana ya se había matriculado en otro.","en":"When the new course opened, my sister had already enrolled in another one."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Es importante que te matricules antes del viernes.","en":"It's important that you enroll before Friday."},
+   {"person":0,"es":"Mis papás quieren que me matricule en ingeniería.","en":"My parents want me to enroll in engineering."},
+   {"person":2,"es":"Ojalá que mi hermano se matricule este año.","en":"I hope my brother enrolls this year."},
+   {"person":3,"es":"Es mejor que nos matriculemos en línea.","en":"It's better if we enroll online."},
+   {"person":4,"es":"La escuela quiere que los alumnos se matriculen pronto.","en":"The school wants the students to enroll soon."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"La escuela pidió que cada alumno se matriculara en persona.","en":"The school asked each student to enroll in person."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Matricúlate antes de que se acaben los lugares.","en":"Enroll before the spots run out."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "inscribirse": {
+  "present": [
+   {"person":2,"es":"Mi hijo se inscribe en el equipo de futbol.","en":"My son is signing up for the soccer team."},
+   {"person":0,"es":"Me inscribo en la carrera de diez kilómetros.","en":"I'm signing up for the ten-kilometer race."},
+   {"person":1,"es":"¿Te inscribes conmigo en la clase de baile?","en":"Will you sign up for the dance class with me?"},
+   {"person":3,"es":"Nos inscribimos en el concurso de cocina.","en":"We're entering the cooking contest."},
+   {"person":4,"es":"Muchos niños se inscriben en el campamento.","en":"Lots of kids sign up for the camp."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Mi abuela se inscribió en una clase de computación.","en":"My grandmother signed up for a computer class."},
+   {"person":0,"es":"Me inscribí en el torneo de ajedrez.","en":"I signed up for the chess tournament."},
+   {"person":1,"es":"¿Te inscribiste en el maratón?","en":"Did you sign up for the marathon?"},
+   {"person":3,"es":"Nos inscribimos en el curso de fotografía.","en":"We signed up for the photography course."},
+   {"person":4,"es":"Mis amigos se inscribieron en el coro.","en":"My friends joined the choir."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi hermana se inscribía en todos los concursos.","en":"My sister used to enter every contest."},
+   {"person":0,"es":"Me inscribía en las carreras del pueblo.","en":"I used to enter the town races."},
+   {"person":1,"es":"Te inscribías en todos los clubes de la escuela.","en":"You used to join every club at school."},
+   {"person":3,"es":"Nos inscribíamos en el torneo cada verano.","en":"We used to sign up for the tournament every summer."},
+   {"person":4,"es":"Los vecinos se inscribían en la fiesta del barrio.","en":"The neighbors used to sign up for the block party."}
+  ],
+  "future": [
+   {"person":0,"es":"Me inscribiré en el gimnasio en enero.","en":"I'll join the gym in January."},
+   {"person":1,"es":"Te inscribirás en la página de la escuela.","en":"You'll register on the school's website."},
+   {"person":2,"es":"El equipo se inscribirá en la liga.","en":"The team will register for the league."},
+   {"person":3,"es":"Nos inscribiremos en la carrera de cinco kilómetros.","en":"We'll sign up for the five-kilometer race."},
+   {"person":4,"es":"Los alumnos se inscribirán en la excursión.","en":"The students will sign up for the field trip."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Me inscribiría en el concurso si cantara mejor.","en":"I'd enter the contest if I sang better."},
+   {"person":1,"es":"¿Te inscribirías en un curso de chino?","en":"Would you sign up for a Chinese course?"},
+   {"person":2,"es":"Mi papá se inscribiría en el torneo de golf.","en":"My dad would sign up for the golf tournament."},
+   {"person":3,"es":"Nos inscribiríamos, pero ya no hay lugar.","en":"We'd sign up, but there's no room left."},
+   {"person":4,"es":"Ellos se inscribirían si fuera gratis.","en":"They'd sign up if it were free."}
+  ],
+  "presentPerfect": [
+   {"person":3,"es":"Ya nos hemos inscrito en el maratón.","en":"We've already signed up for the marathon."}
+  ],
+  "pluperfect": [
+   {"person":4,"es":"Cuando llegué, todos ya se habían inscrito.","en":"When I got there, everyone had already signed up."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Quiero que te inscribas en el equipo.","en":"I want you to join the team."},
+   {"person":0,"es":"La maestra quiere que me inscriba en el concurso de ortografía.","en":"The teacher wants me to enter the spelling bee."},
+   {"person":2,"es":"Ojalá que mi hermana se inscriba en la carrera.","en":"I hope my sister signs up for the race."},
+   {"person":3,"es":"Es mejor que nos inscribamos hoy.","en":"It's better if we sign up today."},
+   {"person":4,"es":"El club quiere que más niños se inscriban.","en":"The club wants more kids to sign up."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"El entrenador pidió que cada jugador se inscribiera en la liga.","en":"The coach asked every player to register for the league."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Inscríbete en la clase de natación.","en":"Sign up for the swimming class."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "repasar": {
+  "present": [
+   {"person":2,"es":"Mi hija repasa las tablas antes de dormir.","en":"My daughter goes over her times tables before bed."},
+   {"person":0,"es":"Repaso mis apuntes en el autobús.","en":"I review my notes on the bus."},
+   {"person":1,"es":"¿Repasas el vocabulario cada día?","en":"Do you review the vocabulary every day?"},
+   {"person":3,"es":"Repasamos la lección antes del examen.","en":"We go over the lesson before the exam."},
+   {"person":4,"es":"Los actores repasan sus líneas en el camerino.","en":"The actors go over their lines in the dressing room."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La maestra repasó los verbos con nosotros.","en":"The teacher went over the verbs with us."},
+   {"person":0,"es":"Repasé todo el libro en un fin de semana.","en":"I reviewed the whole book in one weekend."},
+   {"person":1,"es":"¿Repasaste para el examen?","en":"Did you study for the exam?"},
+   {"person":3,"es":"Repasamos el plan una última vez.","en":"We went over the plan one last time."},
+   {"person":4,"es":"Los músicos repasaron la canción antes del concierto.","en":"The musicians ran through the song before the concert."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi papá repasaba las cuentas cada noche.","en":"My dad used to go over the accounts every night."},
+   {"person":0,"es":"Yo repasaba los verbos en voz alta.","en":"I used to go over the verbs out loud."},
+   {"person":1,"es":"Tú repasabas con tarjetas de colores.","en":"You used to review with colored flashcards."},
+   {"person":3,"es":"Repasábamos juntos en la biblioteca.","en":"We used to study together in the library."},
+   {"person":4,"es":"Los alumnos repasaban en el patio antes de clase.","en":"The students used to review in the yard before class."}
+  ],
+  "future": [
+   {"person":0,"es":"Repasaré la presentación esta noche.","en":"I'll go over the presentation tonight."},
+   {"person":1,"es":"Repasarás los capítulos tres y cuatro.","en":"You'll review chapters three and four."},
+   {"person":2,"es":"El profesor repasará el tema el lunes.","en":"The teacher will go over the topic on Monday."},
+   {"person":3,"es":"Repasaremos todo antes del examen final.","en":"We'll review everything before the final exam."},
+   {"person":4,"es":"Los bailarines repasarán la coreografía.","en":"The dancers will run through the choreography."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo repasaría otra vez, por si acaso.","en":"I'd go over it again, just in case."},
+   {"person":1,"es":"¿Repasarías conmigo esta tarde?","en":"Would you study with me this afternoon?"},
+   {"person":2,"es":"Un buen estudiante repasaría cada semana.","en":"A good student would review every week."},
+   {"person":3,"es":"Repasaríamos más, pero estamos cansados.","en":"We'd review more, but we're tired."},
+   {"person":4,"es":"Ellos repasarían si tuvieran tiempo.","en":"They'd review if they had time."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"He repasado todo dos veces.","en":"I've gone over everything twice."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Mi hermano ya había repasado el tema antes de la clase.","en":"My brother had already reviewed the topic before class."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Es importante que repases todos los días.","en":"It's important that you review every day."},
+   {"person":0,"es":"Mi mamá quiere que yo repase las tablas.","en":"My mom wants me to go over my times tables."},
+   {"person":2,"es":"Pídele al profesor que repase el tema otra vez.","en":"Ask the teacher to go over the topic again."},
+   {"person":3,"es":"Es mejor que repasemos juntos.","en":"It's better if we study together."},
+   {"person":4,"es":"Ojalá que los alumnos repasen el fin de semana.","en":"I hope the students review over the weekend."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"La maestra quería que cada alumno repasara diez minutos al día.","en":"The teacher wanted every student to review for ten minutes a day."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Repasa tus apuntes antes de dormir.","en":"Go over your notes before bed."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "memorizar": {
+  "present": [
+   {"person":2,"es":"Mi hermano memoriza las capitales del mundo.","en":"My brother memorizes the world's capitals."},
+   {"person":0,"es":"Memorizo los números de teléfono fácilmente.","en":"I memorize phone numbers easily."},
+   {"person":1,"es":"¿Cómo memorizas tantas palabras?","en":"How do you memorize so many words?"},
+   {"person":3,"es":"Memorizamos el himno nacional en la escuela.","en":"We memorize the national anthem at school."},
+   {"person":4,"es":"Los actores memorizan guiones muy largos.","en":"Actors memorize very long scripts."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Mi hija memorizó el poema en una noche.","en":"My daughter memorized the poem in one night."},
+   {"person":0,"es":"Memoricé todas las fechas para el examen.","en":"I memorized all the dates for the exam."},
+   {"person":1,"es":"¿Memorizaste tu discurso?","en":"Did you memorize your speech?"},
+   {"person":3,"es":"Memorizamos la canción completa.","en":"We memorized the whole song."},
+   {"person":4,"es":"Los niños memorizaron los colores en inglés.","en":"The kids memorized the colors in English."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo memorizaba poemas enteros.","en":"My grandfather used to memorize whole poems."},
+   {"person":0,"es":"Yo memorizaba las tablas cantando.","en":"I used to memorize my times tables by singing them."},
+   {"person":1,"es":"Tú memorizabas todo sin esfuerzo.","en":"You used to memorize everything effortlessly."},
+   {"person":3,"es":"Memorizábamos los verbos con canciones.","en":"We used to memorize verbs with songs."},
+   {"person":4,"es":"Los alumnos memorizaban las lecciones de memoria.","en":"The students used to learn the lessons by heart."}
+  ],
+  "future": [
+   {"person":0,"es":"Memorizaré mi parte para la obra.","en":"I'll memorize my part for the play."},
+   {"person":1,"es":"Memorizarás las palabras más rápido con tarjetas.","en":"You'll memorize the words faster with flashcards."},
+   {"person":2,"es":"El actor memorizará el guion en una semana.","en":"The actor will memorize the script in a week."},
+   {"person":3,"es":"Memorizaremos la presentación para no leerla.","en":"We'll memorize the presentation so we don't read it."},
+   {"person":4,"es":"Los niños memorizarán un poema para el Día de las Madres.","en":"The kids will memorize a poem for Mother's Day."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo memorizaría la contraseña, pero es muy larga.","en":"I'd memorize the password, but it's too long."},
+   {"person":1,"es":"¿Memorizarías mil palabras en un mes?","en":"Would you memorize a thousand words in a month?"},
+   {"person":2,"es":"Mi hermana memorizaría todo el libro si pudiera.","en":"My sister would memorize the whole book if she could."},
+   {"person":3,"es":"Memorizaríamos mejor con imágenes.","en":"We'd memorize better with pictures."},
+   {"person":4,"es":"Ellos memorizarían el discurso con más tiempo.","en":"They'd memorize the speech with more time."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"Ya he memorizado la mitad del guion.","en":"I've already memorized half the script."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"La niña había memorizado todas las capitales de América.","en":"The girl had memorized all the capitals in the Americas."}
+  ],
+  "futurePerfect": [
+   {"person":0,"es":"Para el viernes ya habré memorizado todo.","en":"By Friday I'll have memorized it all."}
+  ],
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"No es necesario que memorices todo.","en":"You don't need to memorize everything."},
+   {"person":0,"es":"La maestra quiere que yo memorice el poema.","en":"The teacher wants me to memorize the poem."},
+   {"person":2,"es":"Es increíble que un niño memorice tanto.","en":"It's amazing that a kid can memorize so much."},
+   {"person":3,"es":"Es mejor que memoricemos las fórmulas.","en":"It's better if we memorize the formulas."},
+   {"person":4,"es":"El director quiere que los actores memoricen el guion.","en":"The director wants the actors to memorize the script."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"El profesor pidió que cada alumno memorizara una estrofa.","en":"The teacher asked each student to memorize a verse."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Memoriza estos números.","en":"Memorize these numbers."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "resumir": {
+  "present": [
+   {"person":2,"es":"El autor resume la historia en el primer capítulo.","en":"The author sums up the story in the first chapter."},
+   {"person":0,"es":"Siempre resumo los capítulos en mi cuaderno.","en":"I always summarize the chapters in my notebook."},
+   {"person":1,"es":"Resumes muy bien las ideas.","en":"You sum up ideas really well."},
+   {"person":3,"es":"Resumimos las noticias para la clase.","en":"We summarize the news for the class."},
+   {"person":4,"es":"Los alumnos resumen el libro en una página.","en":"The students summarize the book in one page."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El director resumió el año en cinco minutos.","en":"The principal summed up the year in five minutes."},
+   {"person":0,"es":"Resumí la película en dos frases.","en":"I summed up the movie in two sentences."},
+   {"person":1,"es":"¿Resumiste el artículo?","en":"Did you summarize the article?"},
+   {"person":3,"es":"Resumimos la reunión en un correo.","en":"We summarized the meeting in an email."},
+   {"person":4,"es":"Los periodistas resumieron el partido.","en":"The reporters summed up the game."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"La maestra resumía cada lección en la pizarra.","en":"The teacher would summarize each lesson on the board."},
+   {"person":0,"es":"Yo resumía los libros que no quería leer.","en":"I used to summarize the books I didn't want to read."},
+   {"person":1,"es":"Tú resumías las reuniones para el jefe.","en":"You used to summarize the meetings for the boss."},
+   {"person":3,"es":"Resumíamos los capítulos en tarjetas.","en":"We used to summarize the chapters on index cards."},
+   {"person":4,"es":"Los estudiantes resumían los textos en grupo.","en":"The students used to summarize the texts in groups."}
+  ],
+  "future": [
+   {"person":0,"es":"Resumiré los puntos más importantes.","en":"I'll sum up the most important points."},
+   {"person":1,"es":"Resumirás el cuento en cien palabras.","en":"You'll summarize the story in a hundred words."},
+   {"person":2,"es":"El profesor resumirá el tema al final.","en":"The teacher will sum up the topic at the end."},
+   {"person":3,"es":"Resumiremos el informe para los clientes.","en":"We'll summarize the report for the clients."},
+   {"person":4,"es":"Los alumnos resumirán el capítulo en clase.","en":"The students will summarize the chapter in class."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo resumiría el texto en una sola página.","en":"I'd summarize the text in a single page."},
+   {"person":1,"es":"¿Cómo resumirías tu viaje?","en":"How would you sum up your trip?"},
+   {"person":2,"es":"Mi hermano resumiría todo con un chiste.","en":"My brother would sum it all up with a joke."},
+   {"person":3,"es":"Resumiríamos mejor con más tiempo.","en":"We'd summarize better with more time."},
+   {"person":4,"es":"Ellos resumirían la reunión en un correo.","en":"They'd summarize the meeting in an email."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"He resumido los tres capítulos.","en":"I've summarized the three chapters."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"La secretaria ya había resumido el informe.","en":"The secretary had already summarized the report."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Quiero que resumas el artículo.","en":"I want you to summarize the article."},
+   {"person":0,"es":"Mi jefe quiere que yo resuma la reunión.","en":"My boss wants me to summarize the meeting."},
+   {"person":2,"es":"Pídele al profesor que resuma el tema.","en":"Ask the teacher to sum up the topic."},
+   {"person":3,"es":"Es mejor que resumamos las ideas principales.","en":"It's better if we summarize the main ideas."},
+   {"person":4,"es":"La maestra quiere que los alumnos resuman el cuento.","en":"The teacher wants the students to summarize the story."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"El jefe pidió que cada equipo resumiera su trabajo.","en":"The boss asked each team to summarize its work."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Resume el cuento en tres oraciones.","en":"Summarize the story in three sentences."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "deletrear": {
+  "present": [
+   {"person":2,"es":"La niña deletrea su nombre en voz alta.","en":"The girl spells her name out loud."},
+   {"person":0,"es":"Siempre deletreo mi apellido por teléfono.","en":"I always spell my last name on the phone."},
+   {"person":1,"es":"¿Cómo deletreas tu nombre?","en":"How do you spell your name?"},
+   {"person":3,"es":"Deletreamos las palabras difíciles en clase.","en":"We spell the hard words in class."},
+   {"person":4,"es":"Los niños deletrean las palabras en el concurso.","en":"The kids spell the words in the contest."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El niño deletreó la palabra sin errores.","en":"The boy spelled the word without mistakes."},
+   {"person":0,"es":"Deletreé mi correo electrónico dos veces.","en":"I spelled my email address twice."},
+   {"person":1,"es":"¿Deletreaste bien la dirección?","en":"Did you spell the address right?"},
+   {"person":3,"es":"Deletreamos el nombre del pueblo para el taxista.","en":"We spelled the name of the town for the cab driver."},
+   {"person":4,"es":"Los participantes deletrearon cien palabras.","en":"The contestants spelled a hundred words."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuela deletreaba las palabras para escribirlas.","en":"My grandmother used to spell words out to write them down."},
+   {"person":0,"es":"Yo deletreaba mi apellido en cada llamada.","en":"I used to spell my last name on every call."},
+   {"person":1,"es":"Tú deletreabas mejor que nadie en la clase.","en":"You used to spell better than anyone in the class."},
+   {"person":3,"es":"Deletreábamos palabras largas para jugar.","en":"We used to spell long words as a game."},
+   {"person":4,"es":"Los alumnos deletreaban en voz alta.","en":"The students used to spell out loud."}
+  ],
+  "future": [
+   {"person":0,"es":"Te deletrearé mi nombre para que no te equivoques.","en":"I'll spell my name for you so you don't get it wrong."},
+   {"person":1,"es":"Deletrearás diez palabras en el concurso.","en":"You'll spell ten words in the contest."},
+   {"person":2,"es":"El niño deletreará la última palabra.","en":"The boy will spell the last word."},
+   {"person":3,"es":"Deletrearemos los nombres para la lista.","en":"We'll spell the names for the list."},
+   {"person":4,"es":"Los finalistas deletrearán palabras muy difíciles.","en":"The finalists will spell very hard words."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo deletrearía mi nombre, pero es muy largo.","en":"I'd spell my name, but it's very long."},
+   {"person":1,"es":"¿Deletrearías \"otorrinolaringólogo\" sin errores?","en":"Would you spell \"otorrinolaringólogo\" without mistakes?"},
+   {"person":2,"es":"Mi hijo deletrearía cualquier palabra.","en":"My son could spell any word."},
+   {"person":3,"es":"Deletrearíamos mejor con más práctica.","en":"We'd spell better with more practice."},
+   {"person":4,"es":"Ellos deletrearían el nombre si se lo pidieras.","en":"They'd spell the name if you asked."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"He deletreado mi apellido tres veces y todavía lo escribieron mal.","en":"I've spelled my last name three times and they still got it wrong."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Necesito que me deletrees tu apellido.","en":"I need you to spell your last name for me."},
+   {"person":0,"es":"El operador quiere que yo deletree mi dirección.","en":"The operator wants me to spell my address."},
+   {"person":2,"es":"Pídele que deletree su nombre.","en":"Ask him to spell his name."},
+   {"person":3,"es":"Es mejor que deletreemos el nombre completo.","en":"It's better if we spell out the whole name."},
+   {"person":4,"es":"La maestra quiere que los niños deletreen en voz alta.","en":"The teacher wants the kids to spell out loud."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"El juez pidió que la niña deletreara la palabra otra vez.","en":"The judge asked the girl to spell the word again."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Deletrea tu apellido, por favor.","en":"Spell your last name, please."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "restar": {
+  "present": [
+   {"person":2,"es":"Mi hija resta con los dedos.","en":"My daughter subtracts on her fingers."},
+   {"person":0,"es":"Resto los gastos de lo que gano.","en":"I subtract the expenses from what I earn."},
+   {"person":1,"es":"¿Restas o sumas primero?","en":"Do you subtract or add first?"},
+   {"person":3,"es":"Restamos el descuento del precio.","en":"We subtract the discount from the price."},
+   {"person":4,"es":"Los niños restan números de dos cifras.","en":"The kids subtract two-digit numbers."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El cajero restó el descuento.","en":"The cashier took off the discount."},
+   {"person":0,"es":"Resté mal y salió negativo.","en":"I subtracted wrong and it came out negative."},
+   {"person":1,"es":"¿Restaste los impuestos?","en":"Did you subtract the taxes?"},
+   {"person":3,"es":"Restamos lo que ya pagamos.","en":"We subtracted what we'd already paid."},
+   {"person":4,"es":"Le restaron puntos por llegar tarde.","en":"They took points off him for arriving late."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"La maestra restaba un punto por cada error.","en":"The teacher would take off a point for each mistake."},
+   {"person":0,"es":"Yo restaba con piedritas cuando era niño.","en":"I used to subtract with pebbles when I was a kid."},
+   {"person":1,"es":"Tú restabas más rápido que la calculadora.","en":"You used to subtract faster than the calculator."},
+   {"person":3,"es":"Restábamos los días que faltaban para Navidad.","en":"We'd count down the days until Christmas."},
+   {"person":4,"es":"Los jueces restaban puntos por las faltas.","en":"The judges would deduct points for fouls."}
+  ],
+  "future": [
+   {"person":0,"es":"Restaré lo que te debo.","en":"I'll subtract what I owe you."},
+   {"person":1,"es":"Restarás el número menor del mayor.","en":"You'll subtract the smaller number from the bigger one."},
+   {"person":2,"es":"El árbitro restará un punto por la falta.","en":"The referee will deduct a point for the foul."},
+   {"person":3,"es":"Restaremos los gastos del viaje.","en":"We'll subtract the trip expenses."},
+   {"person":4,"es":"Te restarán puntos si entregas tarde.","en":"They'll take points off if you turn it in late."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo restaría el descuento primero.","en":"I'd take off the discount first."},
+   {"person":1,"es":"¿Restarías puntos por la ortografía?","en":"Would you take points off for spelling?"},
+   {"person":2,"es":"Esa falta le restaría credibilidad.","en":"That mistake would take away from his credibility."},
+   {"person":3,"es":"Restaríamos el IVA si fuera necesario.","en":"We'd subtract the sales tax if necessary."},
+   {"person":4,"es":"Ellos restarían importancia al problema.","en":"They'd play down the problem."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"El profesor me ha restado dos puntos.","en":"The teacher has taken two points off me."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Quiero que restes estas dos cantidades.","en":"I want you to subtract these two amounts."},
+   {"person":0,"es":"La maestra quiere que yo reste sin calculadora.","en":"The teacher wants me to subtract without a calculator."},
+   {"person":2,"es":"No creo que el árbitro reste puntos por eso.","en":"I don't think the referee will deduct points for that."},
+   {"person":3,"es":"Es mejor que restemos los gastos ahora.","en":"It's better if we subtract the expenses now."},
+   {"person":4,"es":"Ojalá que no me resten puntos.","en":"I hope they don't take points off."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Me molestó que el profesor restara puntos por la letra.","en":"It bothered me that the teacher took points off for handwriting."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Resta cinco de veinte.","en":"Subtract five from twenty."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "multiplicar": {
+  "present": [
+   {"person":2,"es":"Mi hijo multiplica mentalmente.","en":"My son multiplies in his head."},
+   {"person":0,"es":"Multiplico la receta por dos para la fiesta.","en":"I double the recipe for the party."},
+   {"person":1,"es":"¿Multiplicas con calculadora?","en":"Do you multiply with a calculator?"},
+   {"person":3,"es":"Multiplicamos los números de dos cifras.","en":"We multiply two-digit numbers."},
+   {"person":4,"es":"En tercer grado los niños multiplican fracciones.","en":"In third grade kids multiply fractions."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La empresa multiplicó sus ventas.","en":"The company multiplied its sales."},
+   {"person":0,"es":"Multipliqué mal y el resultado salió raro.","en":"I multiplied wrong and the answer came out weird."},
+   {"person":1,"es":"¿Multiplicaste por diez?","en":"Did you multiply by ten?"},
+   {"person":3,"es":"Multiplicamos los ingredientes para cincuenta personas.","en":"We multiplied the ingredients for fifty people."},
+   {"person":4,"es":"Los alumnos multiplicaron sin errores.","en":"The students multiplied without mistakes."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo multiplicaba sin papel ni lápiz.","en":"My grandfather used to multiply without pencil or paper."},
+   {"person":0,"es":"Yo multiplicaba con los dedos.","en":"I used to multiply on my fingers."},
+   {"person":1,"es":"Tú multiplicabas más rápido que la maestra.","en":"You used to multiply faster than the teacher."},
+   {"person":3,"es":"Multiplicábamos las tablas en voz alta.","en":"We used to say our times tables out loud."},
+   {"person":4,"es":"Los comerciantes multiplicaban sus ganancias en diciembre.","en":"The merchants used to multiply their profits in December."}
+  ],
+  "future": [
+   {"person":0,"es":"Multiplicaré la receta por tres.","en":"I'll triple the recipe."},
+   {"person":1,"es":"Multiplicarás el resultado por dos.","en":"You'll multiply the result by two."},
+   {"person":2,"es":"La nueva tienda multiplicará sus clientes.","en":"The new store will multiply its customers."},
+   {"person":3,"es":"Multiplicaremos los esfuerzos este año.","en":"We'll redouble our efforts this year."},
+   {"person":4,"es":"Los alumnos multiplicarán fracciones mañana.","en":"The students will multiply fractions tomorrow."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo multiplicaría primero y luego sumaría.","en":"I'd multiply first and then add."},
+   {"person":1,"es":"¿Multiplicarías la receta para tanta gente?","en":"Would you multiply the recipe for so many people?"},
+   {"person":2,"es":"Una buena campaña multiplicaría las ventas.","en":"A good campaign would multiply sales."},
+   {"person":3,"es":"Multiplicaríamos el dinero con esa inversión.","en":"We'd multiply our money with that investment."},
+   {"person":4,"es":"Ellos multiplicarían la producción con más máquinas.","en":"They'd multiply production with more machines."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"La ciudad ha multiplicado su población.","en":"The city has multiplied its population."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"El niño había multiplicado mal desde el principio.","en":"The boy had multiplied wrong from the start."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Quiero que multipliques estos números.","en":"I want you to multiply these numbers."},
+   {"person":0,"es":"La maestra quiere que yo multiplique sin calculadora.","en":"The teacher wants me to multiply without a calculator."},
+   {"person":2,"es":"Ojalá que el negocio multiplique sus ganancias.","en":"I hope the business multiplies its profits."},
+   {"person":3,"es":"Es mejor que multipliquemos la receta.","en":"It's better if we multiply the recipe."},
+   {"person":4,"es":"La maestra quiere que los alumnos multipliquen en su cuaderno.","en":"The teacher wants the students to multiply in their notebooks."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"El profesor pidió que cada alumno multiplicara en la pizarra.","en":"The teacher asked each student to multiply on the board."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Multiplica siete por ocho.","en":"Multiply seven by eight."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "temer": {
+  "present": [
+   {"person":2,"es":"Mi mamá teme que llueva en la boda.","en":"My mom is worried it'll rain at the wedding."},
+   {"person":0,"es":"Temo que no lleguemos a tiempo.","en":"I'm afraid we won't make it in time."},
+   {"person":1,"es":"¿Temes a las alturas?","en":"Are you afraid of heights?"},
+   {"person":3,"es":"Tememos lo peor.","en":"We fear the worst."},
+   {"person":4,"es":"Los niños temen a la oscuridad.","en":"Kids are afraid of the dark."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El capitán temió por la vida de los marineros.","en":"The captain feared for the sailors' lives."},
+   {"person":0,"es":"Temí que te hubieras perdido.","en":"I was afraid you'd gotten lost."},
+   {"person":1,"es":"¿Temiste por tu trabajo?","en":"Were you afraid for your job?"},
+   {"person":3,"es":"Temimos lo peor cuando no llamaste.","en":"We feared the worst when you didn't call."},
+   {"person":4,"es":"Los vecinos temieron una inundación.","en":"The neighbors feared a flood."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuela temía a los truenos.","en":"My grandmother was afraid of thunder."},
+   {"person":0,"es":"Yo temía a los perros grandes de niño.","en":"I was afraid of big dogs as a kid."},
+   {"person":1,"es":"Tú temías hablar en público.","en":"You were afraid of speaking in public."},
+   {"person":3,"es":"Temíamos que el río se desbordara.","en":"We were afraid the river would overflow."},
+   {"person":4,"es":"Los pescadores temían las tormentas.","en":"The fishermen feared the storms."}
+  ],
+  "future": [
+   {"person":0,"es":"No temeré a nada.","en":"I won't be afraid of anything."},
+   {"person":1,"es":"No temerás si vamos juntos.","en":"You won't be afraid if we go together."},
+   {"person":2,"es":"El perro temerá a los fuegos artificiales.","en":"The dog will be scared of the fireworks."},
+   {"person":3,"es":"No temeremos los cambios.","en":"We won't fear change."},
+   {"person":4,"es":"Los niños no temerán al doctor si es amable.","en":"The kids won't be afraid of the doctor if he's nice."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo temería por mi trabajo en tu lugar.","en":"I'd be worried about my job in your shoes."},
+   {"person":1,"es":"¿Temerías vivir solo?","en":"Would you be afraid to live alone?"},
+   {"person":2,"es":"Cualquier padre temería por su hijo.","en":"Any parent would fear for their child."},
+   {"person":3,"es":"Temeríamos lo peor sin noticias.","en":"We'd fear the worst without news."},
+   {"person":4,"es":"Ellos no temerían a nada con ese entrenador.","en":"They wouldn't be afraid of anything with that coach."}
+  ],
+  "presentPerfect": [
+   {"person":1,"es":"Siempre has temido a las arañas.","en":"You've always been afraid of spiders."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Mi madre había temido ese momento durante años.","en":"My mother had dreaded that moment for years."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"No quiero que temas al agua.","en":"I don't want you to be afraid of the water."},
+   {"person":0,"es":"No es lógico que yo tema a un perro tan pequeño.","en":"It makes no sense for me to be afraid of such a small dog."},
+   {"person":2,"es":"Es normal que un niño tema a la oscuridad.","en":"It's normal for a child to be afraid of the dark."},
+   {"person":3,"es":"No hay razón para que temamos.","en":"There's no reason for us to be afraid."},
+   {"person":4,"es":"No quiero que mis hijos teman a los doctores.","en":"I don't want my kids to be afraid of doctors."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"No era raro que la gente temiera al volcán.","en":"It wasn't unusual for people to fear the volcano."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No temas, todo va a estar bien.","en":"Don't be afraid, everything's going to be okay."}
+  ]
+ },
+ "susurrar": {
+  "present": [
+   {"person":2,"es":"Mi hija me susurra secretos al oído.","en":"My daughter whispers secrets in my ear."},
+   {"person":0,"es":"Susurro para no despertar al bebé.","en":"I whisper so I don't wake the baby."},
+   {"person":1,"es":"¿Por qué susurras?","en":"Why are you whispering?"},
+   {"person":3,"es":"En la biblioteca susurramos.","en":"We whisper in the library."},
+   {"person":4,"es":"Los alumnos susurran durante el examen.","en":"The students whisper during the exam."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El novio le susurró algo a la novia.","en":"The groom whispered something to the bride."},
+   {"person":0,"es":"Le susurré la respuesta a mi amigo.","en":"I whispered the answer to my friend."},
+   {"person":1,"es":"¿Qué me susurraste? No te oí.","en":"What did you whisper to me? I didn't hear you."},
+   {"person":3,"es":"Susurramos para no molestar a nadie.","en":"We whispered so we wouldn't bother anyone."},
+   {"person":4,"es":"Las niñas susurraron y luego se rieron.","en":"The girls whispered and then laughed."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuela me susurraba canciones para dormirme.","en":"My grandmother used to whisper songs to put me to sleep."},
+   {"person":0,"es":"Yo susurraba en la iglesia y mi mamá me regañaba.","en":"I used to whisper in church and my mom would scold me."},
+   {"person":1,"es":"Tú susurrabas cuando estabas nervioso.","en":"You used to whisper when you were nervous."},
+   {"person":3,"es":"Susurrábamos de noche en el campamento.","en":"We used to whisper at night at camp."},
+   {"person":4,"es":"Los vecinos susurraban cuando pasábamos.","en":"The neighbors would whisper when we walked by."}
+  ],
+  "future": [
+   {"person":0,"es":"Te susurraré la respuesta.","en":"I'll whisper the answer to you."},
+   {"person":1,"es":"Susurrarás tu deseo antes de soplar las velas.","en":"You'll whisper your wish before blowing out the candles."},
+   {"person":2,"es":"El actor susurrará la última línea.","en":"The actor will whisper the last line."},
+   {"person":3,"es":"Susurraremos para no despertar a los niños.","en":"We'll whisper so we don't wake the kids."},
+   {"person":4,"es":"Los niños susurrarán toda la película.","en":"The kids will whisper through the whole movie."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo susurraría, pero el bebé ya está despierto.","en":"I'd whisper, but the baby's already awake."},
+   {"person":1,"es":"¿Me susurrarías la respuesta?","en":"Would you whisper the answer to me?"},
+   {"person":2,"es":"Un buen espía susurraría.","en":"A good spy would whisper."},
+   {"person":3,"es":"Susurraríamos en un museo así.","en":"We'd whisper in a museum like that."},
+   {"person":4,"es":"Ellos susurrarían si supieran que alguien escucha.","en":"They'd whisper if they knew someone was listening."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"Alguien me ha susurrado un secreto.","en":"Someone has whispered a secret to me."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Necesito que susurres, el bebé duerme.","en":"I need you to whisper, the baby's asleep."},
+   {"person":0,"es":"La bibliotecaria quiere que yo susurre.","en":"The librarian wants me to whisper."},
+   {"person":2,"es":"Es mejor que el guía susurre en la cueva.","en":"It's better if the guide whispers in the cave."},
+   {"person":3,"es":"Es mejor que susurremos.","en":"We'd better whisper."},
+   {"person":4,"es":"La maestra pide que los niños susurren en la biblioteca.","en":"The teacher asks the kids to whisper in the library."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"La enfermera pidió que cada visita susurrara en el pasillo.","en":"The nurse asked every visitor to whisper in the hallway."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Susurra, que estamos en la biblioteca.","en":"Whisper, we're in the library."}
+  ],
+  "impNegative": {"rare":true}
  }
 }
