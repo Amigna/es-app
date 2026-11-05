@@ -6,7 +6,8 @@ import type { RegionalEntry } from "./guides";
 /** Empty unless the signed-in person's invite has `vulgar: true`. */
 export async function vulgarEntries(): Promise<RegionalEntry[]> {
   await auth().authStateReady();
-  const email = auth().currentUser?.email;
-  if (!email || !(await canSeeVulgar(email))) return [];
+  const user = auth().currentUser;
+  // The rules only show invites to verified emails.
+  if (!user?.email || !user.emailVerified || !(await canSeeVulgar(user.email))) return [];
   return (await import("./vulgar-data")).VULGAR;
 }

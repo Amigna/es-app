@@ -1,7 +1,7 @@
 import type { Grade } from "./drill";
 import { localDay, type Answer, type StreakRecord, type Track } from "./progress";
 
-// Holds answers until they're saved. Firebase is only imported at save time, and only for invited
+// Holds answers until they're saved. Firebase is only imported at save time, and only for signed-in
 // people, so signed-out visitors never download it.
 
 const ENABLED_KEY = "progress-enabled";
@@ -55,7 +55,7 @@ function queuedStreak(): StreakRecord | null {
   }
 }
 
-/** Set once someone's invite is confirmed, and cleared when they sign out. */
+/** Set when someone signs in, and cleared when they sign out. */
 export function setProgressEnabled(on: boolean) {
   write(ENABLED_KEY, on ? "1" : null);
   if (!on) {
@@ -64,7 +64,7 @@ export function setProgressEnabled(on: boolean) {
   }
 }
 
-/** Whether this person is signed in and invited, as far as this browser knows. */
+/** Whether this person is signed in, as far as this browser knows. */
 export const progressEnabled = () => read(ENABLED_KEY) === "1";
 
 type Save = (answers: Answer[], best: StreakRecord | null) => Promise<void>;

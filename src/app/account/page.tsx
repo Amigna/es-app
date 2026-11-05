@@ -9,7 +9,7 @@ export default function AccountPage() {
       <header className="mx-auto max-w-md space-y-2">
         <h1 className="text-3xl font-semibold tracking-tight">Account</h1>
         <p className="text-stone-600 dark:text-stone-400">
-          You don&apos;t need an account to use the site. Signing in lets invited people save their progress.
+          You don&apos;t need an account to use the site. Signing in saves your progress.
         </p>
       </header>
       <AccountPanel />

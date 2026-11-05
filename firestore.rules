@@ -11,36 +11,19 @@ service cloud.firestore {
       return request.auth.token.email.lower();
     }
 
-    // To open the app to everyone, make this function just: return signedIn();
-    // Nothing else needs to change.
+    // Open to anyone signed in. Progress is keyed by uid, so a password account with an unverified email can only touch its own.
     function canSaveProgress() {
-      return signedIn()
-        && request.auth.token.email_verified == true
-        && get(/databases/$(database)/documents/invites/$(ownEmail())).data.get('added', true) == true;
+      return signedIn();
     }
 
-    function validName(name) {
-      return name is string && name.size() > 0 && name.size() <= 80;
-    }
-
-    // People can check their own invite and ask for one, with `added: false`. Approving is done by hand in the Firebase
-    // console by setting `added` to true. Invites made by hand with no `added` field count as approved.
+    // Invites are now only for extras like `vulgar: true`, added by hand in the Firebase console. People can read their own,
+    // once their email is verified, so nobody can claim someone else's invite with an unverified password account.
     match /invites/{email} {
-      allow get: if signedIn() && ownEmail() == email;
-      allow create: if signedIn()
-        && request.auth.token.email_verified == true
-        && ownEmail() == email
-        && request.resource.data.keys().hasOnly(['firstName', 'lastName', 'email', 'added', 'requestedAt'])
-        && request.resource.data.keys().hasAll(['firstName', 'lastName', 'email', 'added', 'requestedAt'])
-        && validName(request.resource.data.firstName)
-        && validName(request.resource.data.lastName)
-        && request.resource.data.email == email
-        && request.resource.data.added == false
-        && request.resource.data.requestedAt == request.time;
-      allow list, update, delete: if false;
+      allow get: if signedIn() && request.auth.token.email_verified == true && ownEmail() == email;
+      allow list, create, update, delete: if false;
     }
 
-    // "Report a problem" from invited people. Read and clear them in the Firebase console.
+    // "Report a problem" from signed-in people. Read and clear them in the Firebase console.
     match /reports/{id} {
       allow create: if canSaveProgress()
         && request.resource.data.keys().hasOnly(['about', 'message', 'page', 'email', 'createdAt'])

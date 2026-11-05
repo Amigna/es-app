@@ -11,7 +11,7 @@ const MAX_PAGE = 200;
 const subscribe = () => () => {};
 const onServer = () => false;
 
-/** A link to flag a mistake, shown to invited people. `about` tells you which word or sentence it was. */
+/** A link to flag a mistake, shown to signed-in people. `about` tells you which word or sentence it was. */
 export default function ReportProblem({ about }: { about: string }) {
   const invited = useSyncExternalStore(subscribe, progressEnabled, onServer);
   const id = useId();

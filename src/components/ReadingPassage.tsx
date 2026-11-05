@@ -19,7 +19,7 @@ interface Picked {
 /** Null until loaded, and stays null for people without saved progress. */
 type ReviewState = { seen: Set<string>; wanted: Set<string> } | null;
 
-/** Firebase stays out of this page's bundle, so it only loads for invited people who tap a word. */
+/** Firebase stays out of this page's bundle, so it only loads for signed-in people who tap a word. */
 async function loadReviewState(): Promise<ReviewState> {
   const { loadReviewState } = await import("@/lib/progress-store");
   const state = await loadReviewState();
@@ -69,7 +69,7 @@ function AddButton({ match, review, onAdded }: { match: LookupMatch; review: Rev
   );
 }
 
-/** The passage with every word tappable. A tap shows what the word is and, for invited people, adds it to their reviews. */
+/** The passage with every word tappable. A tap shows what the word is and, for signed-in people, adds it to their reviews. */
 export default function ReadingPassage({ paragraphs, words }: { paragraphs: { es: string; en: string }[]; words: { es: string; en: string }[] }) {
   const invited = useSyncExternalStore(subscribe, progressEnabled, onServer);
   const [picked, setPicked] = useState<Picked | null>(null);
@@ -209,7 +209,7 @@ export default function ReadingPassage({ paragraphs, words }: { paragraphs: { es
                 <Link href="/account" prefetch={false} className="text-accent-700 underline dark:text-accent-400">
                   Sign in
                 </Link>{" "}
-                to add words to your reviews. Saved progress is invite-only for now.
+                to add words to your reviews.
               </p>
             )}
           </div>

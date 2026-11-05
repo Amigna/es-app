@@ -4,12 +4,12 @@ Aprendalgo (aprendalgo.com), a Spanish learning app for me, friends and family. 
 
 ## Order of work
 
-Content shouldn't hold up everything else: the remaining verbs (about 18,400 sentences) and the other ten tenses (about 15,000) add up to dozens of sessions. Classrooms mostly use the top 150 to 200 verbs, and all 489 already have the six core tenses.
+Content shouldn't hold up everything else: the remaining verbs (about 17,500 sentences) and the other ten tenses (about 15,500) add up to dozens of sessions. Classrooms mostly use the top 150 to 200 verbs, and all 514 already have the six core tenses.
 
 1. Run the signed-in checks in "To verify", especially a second account's progress saving and real schedule writes. The teacher features build on these.
 2. Ask the teachers the questions at the end of "Teacher classes". Their answers decide which teacher steps come first.
 3. Get a native speaker to spot-check a sample of a few hundred sentences across files, so any repeated mistake is caught before 30,000 more sentences are written.
-4. Present perfect and -ra imperfect subjunctive for the current verbs, about 2,860 sentences, starting from the most common verbs.
+4. Present perfect and -ra imperfect subjunctive for the current verbs, about 3,060 sentences, starting from the most common verbs.
 5. Teacher steps 1 to 4 (classes, class stats, assignments, gradebook), with verb batches in between.
 6. The rest of the verb backlog and the remaining tenses over time, with the least drilled tenses, like the future subjunctive, last.
 
@@ -39,14 +39,14 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 
 ## Content backlog
 
-- [ ] Goal: about 5,000 words in all, roughly 2,300 nouns, 1,000 adjectives and 1,000 verbs, with adverbs already enough at about 250. The split is a rough estimate of how a list of the 5,000 most common words breaks down, from memory and not checked against a source. Common words come first, so regional and specialist words don't count for as much as their number suggests. Now about 4,235: 2,300 nouns, 1,001 adjectives, 282 adverbs, 159 small words, 489 verbs
+- [ ] Goal: about 5,000 words in all, roughly 2,300 nouns, 1,000 adjectives and 1,000 verbs, with adverbs already enough at about 250. The split is a rough estimate of how a list of the 5,000 most common words breaks down, from memory and not checked against a source. Common words come first, so regional and specialist words don't count for as much as their number suggests. Now about 4,260: 2,300 nouns, 1,001 adjectives, 282 adverbs, 159 small words, 514 verbs
 - [ ] Insults and words for disabilities (idiota, estúpido, imbécil, cojo, manco, enano), left out of the word batches on purpose. Add them with a note on why they offend, per the vulgar and offensive word rules in "How content gets added"
-- [ ] More verbs toward the goal: about 510 left. Slower than words, because each needs sentences for every tense. Work from `verb-backlog.md`, which lists 555 candidates in 23 batches of 25 (batch 30 is 5), already checked against `verbs.json`, including more reflexives and regional verbs. A batch takes about 900 sentences. Batch 8 crosses verb 500, so it needs `verbs-501-550.json`
+- [ ] More verbs toward the goal: about 485 left. Slower than words, because each needs sentences for every tense. Work from `verb-backlog.md`, which lists 530 candidates in 22 batches of 25 (batch 30 is 5), already checked against `verbs.json`, including more reflexives and regional verbs. A batch takes about 900 sentences. Batch 10 crosses verb 550, so it needs `verbs-551-600.json`
 - [ ] Audit English glosses for common synonyms. A typed English answer only counts if it matches a listed meaning, so `basura` = "trash" marked "garbage" wrong, and `abuelito` = "grandpa" didn't accept abuelo, since abuelo was only "grandfather". Fixed so far: basura and basurero (garbage), abuelo and abuela (grandpa, grandma), mamá and papá (mother, father). The rest of the word lists likely have more
 - [ ] More phrases and regional expressions, labeled by country. Now at 162
 - [ ] More regional words, and more countries in the existing entries
 - [ ] More reading passages. Now at 12, with 4 each at A1, A2 and B1
-- [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 15,000 remain, all in tenses drilled far less, so this needs batches and a usage check before each one. All 489 verbs are done in the six core tenses, apart from about 420 forms left out on purpose: forms with no natural sentence, like `yo naceré`, all of `nevar` beyond él, `suceder`, `surgir`, `bastar`, `durar` and `corresponder` beyond él and ellos, `significar` beyond él and ellos in the future, conditional and present subjunctive, or the yo and nosotros forms of `interesar`, `encantar` and `preocupar` where they'd sound forced, and tenses marked rare, like most of `oponer`, `desoír` and `soler`. Next would be the present perfect and the -ra imperfect subjunctive, about 2,860 sentences between them, starting from the most common verbs
+- [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 15,500 remain, all in tenses drilled far less, so this needs batches and a usage check before each one. All 514 verbs are done in the six core tenses, apart from about 420 forms left out on purpose: forms with no natural sentence, like `yo naceré`, all of `nevar` beyond él, `suceder`, `surgir`, `bastar`, `durar` and `corresponder` beyond él and ellos, `significar` beyond él and ellos in the future, conditional and present subjunctive, or the yo and nosotros forms of `interesar`, `encantar` and `preocupar` where they'd sound forced, and tenses marked rare, like most of `oponer`, `desoír` and `soler`. Next would be the present perfect and the -ra imperfect subjunctive, about 3,060 sentences between them, starting from the most common verbs
 - [ ] Add proverb of the day
 
 ## Later
@@ -57,6 +57,7 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 - [ ] Optional voseo in drills
 - [ ] Split the word lists like the sentence files if vocabulary drills feel slow to start on a phone. Starting a vocabulary, flashcard or review drill now downloads all of them, about 140 KB gzipped (nouns 96, adjectives 35, adverbs 10), up from about 65 KB
 - [ ] Verb of the day on the home page. Left out of the color pass because the home page is prerendered, so it would need to be picked in the browser
+- [ ] Our own auth email link page (say `/auth/action`), so links in Firebase emails point at aprendalgo.com, not firebaseapp.com. It must handle every `mode` Firebase sends: `resetPassword` (confirmPasswordReset), `verifyEmail` (applyActionCode), `recoverEmail`, and probably `signIn` for email links (check the Firebase docs before building). Only then set it as the Custom action URL under Authentication → Templates, because that one setting applies to every email. Try it if iCloud still drops mail after the custom sender domain, since the sender, not the link, is the main fix
 
 ## Waiting on feedback
 
@@ -94,7 +95,7 @@ Questions for the teachers first: what do they actually grade in Conjuguemos, ho
 
 ## Opening sign-ups and paying for it
 
-The app started as invite-only for friends and family. Classes and wider use would mean opening sign-ups. The rules already have the switch: `canSaveProgress()` in `firestore.rules`.
+The app started as invite-only for friends and family. Sign-ups opened on 2026-11-04: anyone signed in with a verified email can save progress (`canSaveProgress()` in `firestore.rules`), and the request-access form is gone. Invites now only unlock extras like `vulgar`. The checklist below still applies before promoting it widely.
 
 - **Costs are small for a long time.** A heavy day for one person is about 100 reads and 120 writes. The free tier (50,000 reads and 20,000 writes a day across everyone) covers roughly 150 heavy users a day. Past that, the Blaze plan keeps the same free tier and charges per use, around $0.18 per 100,000 writes and $0.06 per 100,000 reads at last check (confirm current prices). 1,000 heavy users a day would be under $10 a month. Hosting stays on AWS Amplify, which bills separately for build minutes, data served and server-rendered requests. Most pages are prerendered, so that should stay small too, but set an AWS Budgets alert alongside Firebase's. On Spark, going over the limit makes saves fail for the rest of the day rather than costing money.
 - **What would really cost money:** conversation practice with Claude (in "Later") and generated audio. Those, not the database, are where a subscription would come in.
@@ -119,13 +120,15 @@ The app started as invite-only for friends and family. Classes and wider use wou
 - [ ] Listen to the speaker buttons on an iPhone, an Android phone and a computer: does sound play, does the voice sound Latin American, are single-letter words like `y` and `a` read as words and not letter names, and does the slower speed feel right? Only what gets requested has been tested, in headless Chrome with fake voices. Nobody has heard it yet
 - [ ] Have a native speaker check the regional words and slang, including `src/data/vulgar.json` and the notes on offensive words. Usage varies and these come from my own knowledge, not a source
 - [ ] Set `vulgar: true` on your invite and confirm the section appears on /regional. Confirm it doesn't show signed out or on an account without the field. It hasn't been seen signed in
-- [ ] Publish the new `firestore.rules`, then request access with a second account, approve it, and confirm its progress saves. Also confirm your own invite still works. The rules can't be tested here
+- [ ] Publish the new `firestore.rules` (open sign-ups), then sign in with a second account that has no invite and confirm its progress saves straight away. Also confirm your own account still saves. The rules can't be tested here
+- [ ] On /account, create an email/password account, sign out and back in, and try "Forgot password?". Password accounts save progress without verifying their email, but only verified emails can read their invite (for `vulgar`). The form hasn't been seen in a browser
+- [ ] Set the Firebase Auth email templates to send from aprendalgo.com (Authentication → Templates → Customize domain, then add its DNS records). iCloud silently drops mail from the default firebaseapp.com sender
 - [ ] Check Weak spots on /progress with a signed-in account: miss a verb and a question type at least 5 times each, then use "Practice this". Verb and mistake-type stats only count answers from now on, and the section hasn't been seen with real data
 - [ ] Use Today's review with a signed-in account: confirm its cards still show sentences now that it loads only the sentence files for its verbs. Finish a session, check an item in `users/{uid}/items` has `stability` and `due`, and check `/progress` shows what's due the next day. Real Firestore writes of schedules haven't run yet
 - [ ] Signed in, do a flashcard session with some phrases and tap "I don't know this" on a typed card. Confirm the Vocabulary numbers on /progress go up, a phrase comes back in Today's review as a flashcard, and it's due sooner after "Didn't know" than after "Knew it". None of this has run against real Firestore, and the Vocabulary section has only been seen with made-up data
 - [ ] Signed in, do a writing session in each direction. Confirm the Writing section appears on /progress with the right counts, and that "Accuracy by week" looks right against your history. Neither has run against real Firestore
 - [ ] Do a verb drill, then a vocabulary drill, and confirm "Accuracy by tense" stays. A save with no verb answers used to erase it. The fix is confirmed against the Firestore SDK offline, not yet against real Firestore
-- [ ] Try a backlog of 25 different items at once, because Firestore rules allow 20 lookups per batch and the docs say repeated lookups are cached, but that isn't confirmed for our invite check
+- [ ] Try a backlog of 25 different items at once, because Firestore rules allow 20 lookups per batch and the docs say repeated lookups are cached, but that isn't confirmed (the rules no longer look up invites, so this mostly matters if a lookup comes back)
 - [ ] A save interrupted by a closed tab can be sent twice, which overcounts stats slightly. Accepted, since the alternative was losing answers
 - [ ] Read the grammar guides and their quizzes for accuracy. Tests check the structure, not the grammar
 - [ ] Unknown verb URLs returned 200 on first request and 404 after. Harmless so far
@@ -150,7 +153,7 @@ The app started as invite-only for friends and family. Classes and wider use wou
 - Vulgar words: add to `src/data/vulgar.json`, with a note on what each means. Never add these to the drills or the public word lists with their meaning. Words that are offensive but not vulgar go in `regional.json` under `careful`, with the reason.
 - Vulgar section: in the Firebase console, add a boolean `vulgar` set to true on someone's document in `invites`. It's off by default and people can't change it themselves. It's a filter, not protection, because the file is a public download for anyone who goes looking.
 - Problem reports: in the Firebase console, open `reports`. Each has what it's about, the message, the page and who sent it. Delete a report once it's fixed. There's no notification, so check it now and then.
-- Access requests: in the Firebase console, open `invites`, filter for `added == false`, and set `added` to true to approve someone. Delete the document to decline. There's no notification, so check it now and then. To add someone directly, make a document keyed by their lowercase email.
+- Invites: no longer needed to save progress. To give someone an extra like `vulgar`, make a document in `invites` keyed by their lowercase email. Old requests with `added: false` can be deleted.
 
 ## Local checks
 

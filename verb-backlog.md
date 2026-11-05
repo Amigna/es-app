@@ -12,34 +12,6 @@ When adding a batch:
 - Delete the batch from this file once it's in `verbs.json`, and update the verb count in `plan.md`.
 - If a verb is dropped, move it to "Dropped" at the bottom with the reason, so it isn't suggested again.
 
-## Batch 8
-
-- voltear: to turn (over, around) (Latin America)
-- jalar: to pull (Latin America)
-- pararse: to stand up; to stop (Latin America)
-- rentar: to rent (Mexico)
-- reprobar: to fail (a test) (Latin America)
-- analizar: to analyze
-- aburrir: to bore
-- acostumbrarse: to get used to
-- adivinar: to guess
-- quemarse: to get burned
-- admitir: to admit
-- moverse: to move
-- afectar: to affect
-- agregar: to add
-- cepillar: to brush
-- embarcar: to board
-- escanear: to scan
-- diseñar: to design
-- entrenar: to train
-- animar: to cheer up, to encourage
-- apretar: to squeeze, to press
-- manchar: to stain
-- plantar: to plant
-- arrepentirse: to regret
-- asar: to roast, to grill
-
 ## Batch 9
 
 - atar: to tie

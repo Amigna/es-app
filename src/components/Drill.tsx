@@ -125,7 +125,7 @@ type Today = { status: "loading" } | { status: "signedOut" } | { status: "failed
 
 const plural = (count: number, word: string) => `${count} ${word}${count === 1 ? "" : "s"}`;
 
-/** Firebase stays out of this page's bundle, so it only loads for invited people who open this mode. */
+/** Firebase stays out of this page's bundle, so it only loads for signed-in people who open this mode. */
 async function loadTodayPlan(rare: Set<string>): Promise<Today> {
   if (!progressEnabled()) return { status: "signedOut" };
   try {
@@ -144,7 +144,7 @@ function TodaySummary({ today }: { today: Today }) {
   if (today.status === "signedOut") {
     return (
       <p className="text-stone-600 dark:text-stone-400">
-        Today&apos;s review needs saved progress, which is invite-only for now.{" "}
+        Today&apos;s review needs saved progress.{" "}
         <Link href="/account" prefetch={false} className="text-accent-700 underline dark:text-accent-400">
           Sign in
         </Link>{" "}

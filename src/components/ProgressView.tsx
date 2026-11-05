@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { AccuracyTrend, PracticeCalendar } from "@/components/ProgressCharts";
 import { TENSES } from "@/lib/conjugation/types";
 import { useDrillSettings } from "@/lib/drill-settings";
-import { auth, firebaseConfigured, isInvited } from "@/lib/firebase";
+import { auth, firebaseConfigured } from "@/lib/firebase";
 import { MAX_PRACTICE_ITEMS, practiceHref, weakSpots, type WeakSpot } from "@/lib/practice";
 import { accentRate, accuracy, answered, currentStreak, lastSevenDays, localDay, recentWeeks, wordsPracticed, type Tally } from "@/lib/progress";
 import { saveProgress, setProgressEnabled } from "@/lib/progress-queue";
@@ -27,7 +27,6 @@ interface WordListTotal {
 type State =
   | { status: "loading" }
   | { status: "signedOut" }
-  | { status: "notInvited" }
   | { status: "failed" }
   | { status: "ready"; data: ProgressData };
 
@@ -426,11 +425,6 @@ export default function ProgressView({ wordLists }: { wordLists: WordListTotal[]
         return;
       }
       try {
-        if (!(await isInvited(user.email ?? ""))) {
-          setProgressEnabled(false);
-          setState({ status: "notInvited" });
-          return;
-        }
         setProgressEnabled(true);
         // Include any answers still waiting to be saved. Offline, a write waits for the connection, so don't wait forever.
         await Promise.race([saveProgress(), new Promise((resolve) => setTimeout(resolve, SAVE_WAIT_MS))]);
@@ -448,15 +442,7 @@ export default function ProgressView({ wordLists }: { wordLists: WordListTotal[]
   if (state.status === "signedOut") {
     return (
       <Message>
-        <Link href="/account" prefetch={false} className={linkClass}>Sign in</Link> to see your progress. Saved progress is invite-only for now.
-      </Message>
-    );
-  }
-  if (state.status === "notInvited") {
-    return (
-      <Message>
-        Saved progress is invite-only for now. <Link href="/account" prefetch={false} className={linkClass}>Check your account</Link> to request
-        access or see your request.
+        <Link href="/account" prefetch={false} className={linkClass}>Sign in</Link> to save and see your progress.
       </Message>
     );
   }

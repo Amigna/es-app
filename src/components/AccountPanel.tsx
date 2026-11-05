@@ -2,10 +2,14 @@
 
 import { FirebaseError } from "firebase/app";
 import {
+  createUserWithEmailAndPassword,
   GoogleAuthProvider,
   isSignInWithEmailLink,
   onAuthStateChanged,
+  sendEmailVerification,
+  sendPasswordResetEmail,
   sendSignInLinkToEmail,
+  signInWithEmailAndPassword,
   signInWithEmailLink,
   signInWithPopup,
   signOut,
@@ -13,7 +17,7 @@ import {
 } from "firebase/auth";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { auth, firebaseConfigured, inviteStatus, requestInvite, type InviteStatus } from "@/lib/firebase";
+import { auth, firebaseConfigured } from "@/lib/firebase";
 import { setProgressEnabled } from "@/lib/progress-queue";
 import { loadReviewSettings, saveReviewSetting, type ReviewSettings } from "@/lib/progress-store";
 import { DEFAULT_NEW_PER_DAY, DEFAULT_REVIEWS_PER_DAY, NEW_PER_DAY_OPTIONS, REVIEWS_PER_DAY_OPTIONS } from "@/lib/schedule";
@@ -27,6 +31,16 @@ const FRIENDLY_ERRORS: Record<string, string> = {
   "auth/expired-action-code": "This sign-in link has expired. Request a new one.",
   "auth/unauthorized-domain": "This site isn't authorized for sign-in yet.",
   "auth/network-request-failed": "Couldn't reach the sign-in service. Check your connection and try again.",
+  "auth/invalid-credential":
+    "Wrong email or password. If you usually sign in with Google or an email link, do that, or use \"Forgot password?\" to set one.",
+  "auth/wrong-password": "Wrong email or password. Try again, or use \"Forgot password?\".",
+  "auth/user-not-found": "There's no account with that email yet. Create one below.",
+  "auth/email-already-in-use":
+    "There's already an account with this email. Sign in instead, or use \"Forgot password?\" if it was made with Google or an email link.",
+  "auth/weak-password": "That password is too short. Use at least 6 characters.",
+  "auth/password-does-not-meet-requirements": "That password doesn't meet the requirements. Try a longer one.",
+  "auth/missing-password": "Enter your password.",
+  "auth/too-many-requests": "Too many tries. Wait a few minutes and try again.",
 };
 
 // Closing the Google window isn't a problem worth reporting.
@@ -63,8 +77,6 @@ const primaryClass =
   "h-12 w-full rounded-xl bg-accent-700 px-5 font-medium text-white transition hover:bg-accent-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-600 disabled:cursor-not-allowed disabled:opacity-50";
 const secondaryClass =
   "h-12 w-full rounded-xl border border-stone-300 px-5 font-medium transition hover:border-accent-600 disabled:cursor-not-allowed disabled:opacity-50 dark:border-stone-700";
-const noticeClass =
-  "rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-sm text-amber-900 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-200";
 
 const REVIEW_SETTINGS: { key: keyof ReviewSettings; id: string; label: string; fallback: number; options: number[] }[] = [
   { key: "reviewsPerDay", id: "reviews-per-day", label: "Reviews per day", fallback: DEFAULT_REVIEWS_PER_DAY, options: REVIEWS_PER_DAY_OPTIONS },
@@ -131,98 +143,10 @@ function ReviewSettingsPanel({ uid }: { uid: string }) {
   );
 }
 
-function RequestInvite({ user, onSent }: { user: User; onSent: () => void }) {
-  const [firstFromAccount, ...restFromAccount] = (user.displayName ?? "").split(" ");
-  const [firstName, setFirstName] = useState(firstFromAccount);
-  const [lastName, setLastName] = useState(restFromAccount.join(" "));
-  const [busy, setBusy] = useState(false);
-  const [failed, setFailed] = useState(false);
-  const first = firstName.trim();
-  const last = lastName.trim();
-
-  async function send() {
-    setBusy(true);
-    setFailed(false);
-    try {
-      await requestInvite(user.email ?? "", first, last);
-      onSent();
-    } catch (err) {
-      console.error("Invite request failed", err);
-      setFailed(true);
-      setBusy(false);
-    }
-  }
-
-  return (
-    <form
-      className="space-y-3"
-      onSubmit={(e) => {
-        e.preventDefault();
-        send();
-      }}
-    >
-      <div className={noticeClass}>
-        <h2 className="font-medium">One more step to save your progress</h2>
-        <p>
-          You&apos;re signed in, but saved progress is invite-only for now. Add your name and send this request. Everything else on the
-          site is yours to use either way.
-        </p>
-      </div>
-      <label htmlFor="request-first" className="block text-sm text-stone-500">
-        First name
-      </label>
-      <input
-        id="request-first"
-        autoComplete="given-name"
-        required
-        maxLength={80}
-        value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
-        className={inputClass}
-      />
-      <label htmlFor="request-last" className="block text-sm text-stone-500">
-        Last name
-      </label>
-      <input
-        id="request-last"
-        autoComplete="family-name"
-        required
-        maxLength={80}
-        value={lastName}
-        onChange={(e) => setLastName(e.target.value)}
-        className={inputClass}
-      />
-      {failed && (
-        <p role="alert" className="text-sm text-red-600 dark:text-red-400">
-          Couldn&apos;t send your request. Please try again.
-        </p>
-      )}
-      <button type="submit" disabled={busy || !first || !last} className={primaryClass}>
-        Request access
-      </button>
-    </form>
-  );
-}
-
 function SignedIn({ user }: { user: User }) {
-  const [status, setStatus] = useState<InviteStatus | null>(null);
-  const [checkError, setCheckError] = useState<string | null>(null);
-
   useEffect(() => {
-    let current = true;
-    inviteStatus(user.email ?? "")
-      .then((result) => {
-        setProgressEnabled(result === "invited");
-        if (current) setStatus(result);
-      })
-      .catch((err: unknown) => {
-        console.error("Invite check failed", err);
-        if (current) setCheckError(err instanceof FirebaseError ? err.code : "unknown");
-      });
-    return () => {
-      current = false;
-    };
-  }, [user.email]);
+    setProgressEnabled(true);
+  }, []);
 
   return (
     <div className="space-y-4">
@@ -231,23 +155,10 @@ function SignedIn({ user }: { user: User }) {
         <p className="text-lg font-medium break-all">{user.email}</p>
       </div>
 
-      {checkError && (
-        <p role="alert" className="text-sm text-red-600 dark:text-red-400">
-          Couldn&apos;t check your invite ({checkError}). Everything else still works, so try again later.
-        </p>
-      )}
-      {status === "invited" && (
-        <p className="rounded-lg border border-emerald-300 bg-emerald-50 px-3 py-2 text-sm text-emerald-900 dark:border-emerald-800 dark:bg-emerald-950 dark:text-emerald-200">
-          You&apos;re on the invite list, so your drills and quizzes are saved. See your <Link href="/progress" prefetch={false} className="underline">progress</Link>.
-        </p>
-      )}
-      {status === "invited" && <ReviewSettingsPanel uid={user.uid} />}
-      {status === "requested" && (
-        <p role="status" className={noticeClass}>
-          Your request is in. Your progress will start saving once it&apos;s approved, and until then everything else on the site is yours to use.
-        </p>
-      )}
-      {status === "none" && <RequestInvite user={user} onSent={() => setStatus("requested")} />}
+      <p className="rounded-lg border border-emerald-300 bg-emerald-50 px-3 py-2 text-sm text-emerald-900 dark:border-emerald-800 dark:bg-emerald-950 dark:text-emerald-200">
+        Your drills and quizzes are saved. See your <Link href="/progress" prefetch={false} className="underline">progress</Link>.
+      </p>
+      <ReviewSettingsPanel uid={user.uid} />
 
       <button
         type="button"
@@ -264,15 +175,18 @@ function SignedIn({ user }: { user: User }) {
 }
 
 function SignInForm({ onError }: { onError: (message: string | null) => void }) {
+  const [creating, setCreating] = useState(false);
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
-  const [sentTo, setSentTo] = useState<string | null>(null);
+  const [sent, setSent] = useState<{ kind: "link" | "reset"; to: string } | null>(null);
+  const address = email.trim();
 
-  async function withGoogle() {
+  async function run(action: () => Promise<void>) {
     onError(null);
     setBusy(true);
     try {
-      await signInWithPopup(auth(), new GoogleAuthProvider());
+      await action();
     } catch (err) {
       onError(errorMessage(err));
     } finally {
@@ -280,35 +194,59 @@ function SignInForm({ onError }: { onError: (message: string | null) => void }) 
     }
   }
 
-  async function withEmail() {
-    onError(null);
-    setBusy(true);
-    try {
-      const address = email.trim();
+  const withGoogle = () =>
+    run(async () => {
+      await signInWithPopup(auth(), new GoogleAuthProvider());
+    });
+
+  const withPassword = () =>
+    run(async () => {
+      if (!creating) {
+        await signInWithEmailAndPassword(auth(), address, password);
+        return;
+      }
+      const { user } = await createUserWithEmailAndPassword(auth(), address, password);
+      // Saving progress doesn't need this, but invite extras do. Some providers never deliver it, so don't wait on it.
+      sendEmailVerification(user).catch((err) => console.error("Verification email failed", err));
+    });
+
+  const withLink = () =>
+    run(async () => {
       await sendSignInLinkToEmail(auth(), address, { url: `${window.location.origin}/account`, handleCodeInApp: true });
       storeEmail(address);
-      setSentTo(address);
-    } catch (err) {
-      onError(errorMessage(err));
-    } finally {
-      setBusy(false);
-    }
-  }
+      setSent({ kind: "link", to: address });
+    });
 
-  if (sentTo) {
+  const resetPassword = () =>
+    run(async () => {
+      await sendPasswordResetEmail(auth(), address);
+      setSent({ kind: "reset", to: address });
+    });
+
+  if (sent) {
     return (
       <div role="status" className="space-y-2">
         <p className="font-medium">Check your email</p>
         <p className="text-stone-600 dark:text-stone-400">
-          We sent a sign-in link to <span className="break-all">{sentTo}</span>. Open it on this device to finish, and check your
-          spam folder if it doesn&apos;t arrive.
+          {sent.kind === "link" ? (
+            <>
+              We sent a sign-in link to <span className="break-all">{sent.to}</span>. Open it on this device to finish.
+            </>
+          ) : (
+            <>
+              If there&apos;s an account for <span className="break-all">{sent.to}</span>, we sent it a link to set a new password.
+            </>
+          )}{" "}
+          Check your spam folder if it doesn&apos;t arrive.
         </p>
-        <p className="text-stone-600 dark:text-stone-400">
-          New here? There&apos;s one more step after the link: request access on the page it opens.
-        </p>
+        <button type="button" onClick={() => setSent(null)} className="text-sm text-accent-700 underline dark:text-accent-400">
+          Back
+        </button>
       </div>
     );
   }
+
+  const linkButton = "text-sm text-accent-700 underline disabled:opacity-50 dark:text-accent-400";
 
   return (
     <div className="space-y-4">
@@ -316,13 +254,13 @@ function SignInForm({ onError }: { onError: (message: string | null) => void }) 
         Continue with Google
       </button>
 
-      <p className="text-center text-sm text-stone-500">or get a sign-in link by email</p>
+      <p className="text-center text-sm text-stone-500">{creating ? "or create an account with your email" : "or sign in with your email"}</p>
 
       <form
         className="space-y-3"
         onSubmit={(e) => {
           e.preventDefault();
-          withEmail();
+          withPassword();
         }}
       >
         <label htmlFor="account-email" className="sr-only">
@@ -338,12 +276,45 @@ function SignInForm({ onError }: { onError: (message: string | null) => void }) 
           onChange={(e) => setEmail(e.target.value)}
           className={inputClass}
         />
-        <button type="submit" disabled={busy || !email.trim()} className={primaryClass}>
-          Email me a link
+        <label htmlFor="account-password" className="sr-only">
+          Password
+        </label>
+        <input
+          id="account-password"
+          type="password"
+          autoComplete={creating ? "new-password" : "current-password"}
+          placeholder={creating ? "Choose a password (6+ characters)" : "Password"}
+          required
+          minLength={creating ? 6 : undefined}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className={inputClass}
+        />
+        <button type="submit" disabled={busy || !address || !password} className={primaryClass}>
+          {creating ? "Create account" : "Sign in"}
         </button>
       </form>
 
-      <p className="text-center text-sm text-stone-500">New here? There are two steps: sign in, then request access on this page to save your progress.</p>
+      <div className="flex flex-wrap justify-center gap-x-4 gap-y-2">
+        <button
+          type="button"
+          onClick={() => {
+            onError(null);
+            setCreating(!creating);
+          }}
+          className={linkButton}
+        >
+          {creating ? "I already have an account" : "New here? Create an account"}
+        </button>
+        {!creating && (
+          <button type="button" onClick={resetPassword} disabled={busy || !address} className={linkButton}>
+            Forgot password?
+          </button>
+        )}
+        <button type="button" onClick={withLink} disabled={busy || !address} className={linkButton}>
+          Email me a sign-in link instead
+        </button>
+      </div>
     </div>
   );
 }
