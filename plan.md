@@ -4,12 +4,12 @@ Aprendalgo (aprendalgo.com), a Spanish learning app for me, friends and family. 
 
 ## Order of work
 
-Content shouldn't hold up everything else: the remaining verbs (about 12,100 sentences) and the other ten tenses (about 18,500) add up to dozens of sessions. Classrooms mostly use the top 150 to 200 verbs, and all 664 already have the six core tenses.
+Content shouldn't hold up everything else: the remaining verbs (about 11,400 sentences) and the other ten tenses (about 19,000) add up to dozens of sessions. Classrooms mostly use the top 150 to 200 verbs, and all 689 already have the six core tenses.
 
 1. Run the signed-in checks in "To verify", especially a second account's progress saving and real schedule writes. The teacher features build on these.
 2. Ask the teachers the questions at the end of "Teacher classes". Their answers decide which teacher steps come first.
 3. Get a native speaker to spot-check a sample of a few hundred sentences across files, so any repeated mistake is caught before 30,000 more sentences are written.
-4. Present perfect and -ra imperfect subjunctive for the current verbs, about 4,260 sentences, starting from the most common verbs.
+4. Present perfect and -ra imperfect subjunctive for the current verbs, about 4,450 sentences, starting from the most common verbs.
 5. Teacher steps 1 to 4 (classes, class stats, assignments, gradebook), with verb batches in between.
 6. The rest of the verb backlog and the remaining tenses over time, with the least drilled tenses, like the future subjunctive, last.
 
@@ -47,14 +47,14 @@ Cost check: a heavy day for one person is about 100 reviews, or roughly 100 read
 
 ## Content backlog
 
-- [ ] Goal: about 5,000 words in all, roughly 2,300 nouns, 1,000 adjectives and 1,000 verbs, with adverbs already enough at about 250. The split is a rough estimate of how a list of the 5,000 most common words breaks down, from memory and not checked against a source. Common words come first, so regional and specialist words don't count for as much as their number suggests. Now about 4,410: 2,300 nouns, 1,001 adjectives, 282 adverbs, 159 small words, 664 verbs
+- [ ] Goal: about 5,000 words in all, roughly 2,300 nouns, 1,000 adjectives and 1,000 verbs, with adverbs already enough at about 250. The split is a rough estimate of how a list of the 5,000 most common words breaks down, from memory and not checked against a source. Common words come first, so regional and specialist words don't count for as much as their number suggests. Now about 4,435: 2,300 nouns, 1,001 adjectives, 282 adverbs, 159 small words, 689 verbs
 - [ ] Insults and words for disabilities (idiota, estúpido, imbécil, cojo, manco, enano), left out of the word batches on purpose. Add them with a note on why they offend, per the vulgar and offensive word rules in "How content gets added"
-- [ ] More verbs toward the goal: about 335 left. Slower than words, because each needs sentences for every tense. Work from `verb-backlog.md`, which lists 380 candidates in 16 batches of 25 (batch 30 is 5), already checked against `verbs.json`, including more reflexives and regional verbs. A batch takes about 900 sentences. Batch 16 crosses verb 700, so it needs `verbs-701-750.json`
+- [ ] More verbs toward the goal: about 310 left. Slower than words, because each needs sentences for every tense. Work from `verb-backlog.md`, which lists 355 candidates in 15 batches of 25 (batch 30 is 5), already checked against `verbs.json`, including more reflexives and regional verbs. A batch takes about 900 sentences. Batch 16 crosses verb 700, so it needs `verbs-701-750.json`
 - [ ] Audit English glosses for common synonyms. A typed English answer only counts if it matches a listed meaning, so `basura` = "trash" marked "garbage" wrong, and `abuelito` = "grandpa" didn't accept abuelo, since abuelo was only "grandfather". Fixed so far: basura and basurero (garbage), abuelo and abuela (grandpa, grandma), mamá and papá (mother, father). The rest of the word lists likely have more
 - [ ] More phrases and regional expressions, labeled by country. Now at 162
 - [ ] More regional words, and more countries in the existing entries
 - [ ] More reading passages. Now at 12, with 4 each at A1, A2 and B1
-- [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 18,500 remain, all in tenses drilled far less, so this needs batches and a usage check before each one. All 664 verbs are done in the six core tenses, apart from about 420 forms left out on purpose: forms with no natural sentence, like `yo naceré`, all of `nevar` beyond él, `suceder`, `surgir`, `bastar`, `durar`, `corresponder`, `consistir` and `florecer` beyond él and ellos, `significar` beyond él and ellos in the future, conditional and present subjunctive, or the yo and nosotros forms of `interesar`, `encantar` and `preocupar` where they'd sound forced, and tenses marked rare, like most of `oponer`, `desoír` and `soler`. Next would be the present perfect and the -ra imperfect subjunctive, about 4,260 sentences between them, starting from the most common verbs
+- [ ] Example sentences for every person of every verb, so all conjugation cards can show one. About 19,000 remain, all in tenses drilled far less, so this needs batches and a usage check before each one. All 689 verbs are done in the six core tenses, apart from about 420 forms left out on purpose: forms with no natural sentence, like `yo naceré`, all of `nevar`, `granizar` and `lloviznar` beyond él, `suceder`, `surgir`, `bastar`, `durar`, `corresponder`, `consistir`, `florecer`, `tronar`, `helar`, `brotar` and `oscurecer` beyond él and ellos, `significar` beyond él and ellos in the future, conditional and present subjunctive, or the yo and nosotros forms of `interesar`, `encantar` and `preocupar` where they'd sound forced, and tenses marked rare, like most of `oponer`, `desoír` and `soler`. Next would be the present perfect and the -ra imperfect subjunctive, about 4,450 sentences between them, starting from the most common verbs
 - [ ] Add proverb of the day
 
 ## Levels
@@ -114,6 +114,18 @@ Effort, roughly:
 
 Best after levels step 3, since chapters lean on levels for words and verbs.
 
+## Badges (idea, not started)
+
+Rewards for learning, not activity: no XP, leagues or global leaderboards, which reward redoing easy material and pull against spaced repetition and accuracy. Badges are private and live on /progress beside the trends, so they show improvement over time.
+
+- [ ] Chapter badges: one for each chapter and short lesson, earned by passing its checkpoint, with the date
+- [ ] Level badges, bigger: finishing every chapter at A1, A2, B1 or B2, and one for the whole course. Earning one shows the level offer already on the last chapter's page
+- [ ] Milestones in what's mastered (stability of 21+ days): 25, 100 and 250 verb and tense items; 100, 500 and 1,000 words; every core tense of the top 50 verbs. Counting mastered items by type needs a count query on a range of item IDs plus stability, which may need a Firestore index, or counters kept on save. Check before building
+- [ ] Improvement badges: retaking a checkpoint from under 80% to 90% or more (from the saved tries); a weak spot that's no longer weak. The second needs accuracy by tense over time, which isn't stored per week yet, so it may come later
+- [ ] Streak milestones: 7, 30 and 100 days in a row, plus drill streaks of 25 and 50 from the saved record. The days streak is only worked out from the last 120 days, so a longest-ever streak would need its own record
+- How: worked out from data already loaded where possible. The first time one is earned, its date goes in `users/{uid}/stats/badges` as `{badgeId: day}`, so dates stay put. Signed out, chapter and level badges still work from the browser's course progress. A small celebration when one is earned, using the drill's confetti, and the badge list on /progress shows earned ones with dates and the next few to aim for
+- Effort: about one session, more if the mastered counts need counters
+
 ## Beyond B2: C1/C2 (idea, not started)
 
 B2 already turns on every tense, every verb and every word, so the app has no grammar left to unlock. What the C levels add is nuance, register and longer, natural Spanish. One top level, "Proficient (C1/C2)", covers both. C2 is near-native, and drills alone can't get anyone there or test it, so the content aims at C1 and the label is honest about the rest being up to real use.
@@ -159,6 +171,14 @@ No server is needed for any of it, and it stays on the Spark plan at first.
 5. **Teacher word lists.** A teacher builds a list by searching the app's words and ticking them, or adds their own word with its English meaning. Lists are saved under `classes/{id}/lists` and can be used in assignments, flashcards and Learn words. A teacher's own words have no example sentences, so they get meaning drills and flashcards but not fill-in-the-blank. Tests don't check them, so show them as the teacher's own.
 6. **Teacher quizzes and tests.** Multiple choice and typed questions in the guide quiz format, plus questions built from the app's data, like "conjugate tener in the preterite for nosotros", graded the same way as drills, accent slips included. Lists and quizzes can be grouped into units ("Capítulo 3"), so a teacher can lay out the term to match their textbook.
 7. **Ready-made units.** More quizzes and tests by chapter-style themes and grammar (family, food, school, the preterite, the subjunctive), in the order most first- and second-year courses follow. They should match a textbook's topics and grammar without copying its lists or exercises, which belong to the publisher. Later, teachers could share their units with each other.
+
+**Study groups**, for friends and family as well as classes. Small and opt-in, with mild competition on effort and mastery, never on raw activity. Built on the same join codes and display names as step 1, so it comes with or just after it:
+
+- Anyone signed in can start a group and share its join code. Members pick a display name, can leave any time, and are told exactly what the group sees. Up to about 20 people
+- A weekly board, reset each Monday: days practiced, chapters finished, items newly mastered, and badges earned. Nothing else: no accuracy, mistakes, history or reviews, so nobody is ranked on what they got wrong
+- Each save also writes the member's weekly totals to `groups/{id}/members/{uid}`, one extra write per save per group. Rules let members read their own groups and write only their own member doc
+- Totals are worked out in the browser, so they can be faked. That's fine among friends, and the board is for encouragement, not prizes
+- Under-13 students and school use follow the same privacy rules as classes
 
 Named results change the privacy picture, so:
 

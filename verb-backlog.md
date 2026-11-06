@@ -12,34 +12,6 @@ When adding a batch:
 - Delete the batch from this file once it's in `verbs.json`, and update the verb count in `plan.md`.
 - If a verb is dropped, move it to "Dropped" at the bottom with the reason, so it isn't suggested again.
 
-## Batch 15
-
-- atrapar: to catch, to trap
-- recostarse: to lie down
-- rodar: to roll; to film
-- retroceder: to go back, to back up
-- juzgar: to judge
-- sospechar: to suspect
-- reflexionar: to reflect, to think over
-- separar: to separate
-- interpretar: to interpret; to perform
-- percibir: to perceive
-- granizar: to hail — *weather verb, él only, like nevar*
-- lloviznar: to drizzle — *weather verb, él only, like nevar*
-- tronar: to thunder — *weather verb, mostly él*
-- helar: to freeze — *mostly él for weather*
-- brotar: to sprout
-- inundar: to flood
-- oscurecer: to get dark
-- aclarar: to clarify; to clear up
-- divorciarse: to get divorced
-- separarse: to separate, to split up
-- comprometerse: to get engaged; to commit
-- coquetear: to flirt
-- engañar: to deceive, to cheat on
-- traicionar: to betray
-- tolerar: to tolerate
-
 ## Batch 16
 
 - educar: to educate, to raise
