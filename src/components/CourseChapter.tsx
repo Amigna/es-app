@@ -3,12 +3,14 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { Example, TenseCard, moodHue } from "@/components/ConjugationView";
+import BadgeArt from "@/components/Badge";
 import DrillRunner from "@/components/DrillRunner";
 import GuideSections from "@/components/GuideSections";
 import { LevelUpOffer } from "@/components/LevelPicker";
 import { conjugate } from "@/lib/conjugation/engine";
 import { markVerb } from "@/lib/conjugation/regular";
 import { TENSES, type TenseId } from "@/lib/conjugation/types";
+import { earnedBadges, findBadge } from "@/lib/badges";
 import { CHAPTERS, PASS_SCORE, STEPS, chapterSteps, nextStep, type Chapter, type StepId } from "@/lib/course";
 import { completeStep, recordCheckpoint, storedCourse, syncCourse, useCourseProgress } from "@/lib/course-progress";
 import type { ChapterQuiz } from "@/lib/course-decks";
@@ -122,6 +124,7 @@ export default function CourseChapter({
   // By ID: the chapter arrives from the server as a copy, not the object in CHAPTERS.
   const number = CHAPTERS.findIndex((c) => c.id === chapter.id) + 1;
   const following = CHAPTERS[number];
+  const levelDone = !!earnedBadges({ course: progress }, "")[`level:${chapter.level}`];
   const lastAtLevel = CHAPTERS.filter((c) => c.level === chapter.level).at(-1)?.id === chapter.id;
   const verbs = useMemo(() => chapter.verbs.map(findVerb).filter((v): v is Verb => !!v), [chapter]);
   const rareSet = useMemo(() => new Set(rare), [rare]);
@@ -306,10 +309,17 @@ export default function CourseChapter({
 
       {mine?.done ? (
         <section className="space-y-3 rounded-xl border border-t-4 border-stone-200 border-t-accent-500 bg-white p-5 dark:border-stone-800 dark:bg-stone-900">
-          <p className="text-lg font-semibold">¡Capítulo terminado! Best checkpoint: {mine.best}%</p>
+          <div className="flex items-center gap-4">
+            <BadgeArt badge={findBadge(`chapter:${chapter.id}`)!} size={64} />
+            {levelDone && <BadgeArt badge={findBadge(`level:${chapter.level}`)!} size={64} />}
+            <p className="text-lg font-semibold">
+              ¡Capítulo terminado! Best checkpoint: {mine.best}%
+              {levelDone && <span className="block text-base font-normal">Every {chapter.level} chapter done, so the {chapter.level} badge is yours too.</span>}
+            </p>
+          </div>
           {lastAtLevel && <LevelUpOffer to={chapter.level} />}
           {following ? (
-            <Link href={`/course/${following.id}`} className={`inline-flex items-center ${buttonClass}`}>
+            <Link href={`/course/${following.id}`} className={`inline-flex items-center ${buttonClass.replace("h-11", "min-h-11 py-2")}`}>
               Next: {following.title}
             </Link>
           ) : (

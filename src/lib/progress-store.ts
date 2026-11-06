@@ -131,12 +131,14 @@ export interface ProgressData {
   /** Null until a drill streak has been saved. */
   drillStreak: StreakRecord | null;
   course: CourseProgress;
+  /** Badges earned, by ID, with the day each was first seen. */
+  badges: Record<string, string>;
 }
 
 export async function loadProgress(uid: string): Promise<ProgressData> {
   const items = collection(db(), "users", uid, "items");
   const cutoff = localDay(new Date(Date.now() - DAYS_TO_LOAD * 24 * 60 * 60 * 1000));
-  const [summary, recent, practiced, mastered, dueToday, seen, settings, records, course] = await Promise.all([
+  const [summary, recent, practiced, mastered, dueToday, seen, settings, records, course, badges] = await Promise.all([
     getDoc(statsDoc(uid, "summary")),
     // Days are keyed by date, so a range on the ID needs no custom index, unlike sorting it descending.
     getDocs(query(collection(db(), "users", uid, "days"), where(documentId(), ">=", cutoff))),
@@ -147,6 +149,7 @@ export async function loadProgress(uid: string): Promise<ProgressData> {
     loadReviewSettings(uid),
     getDoc(statsDoc(uid, "records")),
     getDoc(statsDoc(uid, "course")),
+    getDoc(statsDoc(uid, "badges")),
   ]);
   const data = summary.data() ?? {};
   return {
@@ -164,6 +167,7 @@ export async function loadProgress(uid: string): Promise<ProgressData> {
     seen: seen.data()?.items ?? [],
     drillStreak: (records.data()?.drillStreak as StreakRecord | undefined) ?? null,
     course: parseCourse(course.data()),
+    badges: Object.fromEntries(Object.entries(badges.data() ?? {}).filter((e): e is [string, string] => typeof e[1] === "string")),
   };
 }
 
@@ -214,6 +218,12 @@ export async function setMistakeHidden(day: string, mistake: Mistake, hidden: bo
   const { item, label, prompt, given, answer, grade } = mistake;
   const entry = { item, label, prompt, given, answer, grade };
   await setDoc(doc(db(), "users", uid, "days", day), { hiddenMistakes: hidden ? arrayUnion(entry) : arrayRemove(entry) }, { merge: true });
+}
+
+/** Keeps the day each badge was first earned. Only new ones are sent, and merging never moves a saved day. */
+export async function saveBadges(uid: string, earned: Record<string, string>) {
+  if (Object.keys(earned).length === 0) return;
+  await setDoc(statsDoc(uid, "badges"), earned, { merge: true });
 }
 
 /** Merges this browser's course progress with the account's and saves the result, which it returns. */

@@ -114,17 +114,21 @@ Effort, roughly:
 
 Best after levels step 3, since chapters lean on levels for words and verbs.
 
-## Badges (idea, not started)
+## Badges
 
-Rewards for learning, not activity: no XP, leagues or global leaderboards, which reward redoing easy material and pull against spaced repetition and accuracy. Badges are private and live on /progress beside the trends, so they show improvement over time.
+Rewards for learning, not activity: no XP, leagues or global leaderboards, which reward redoing easy material and pull against spaced repetition and accuracy. Badges are private and show improvement over time.
 
-- [ ] Chapter badges: one for each chapter and short lesson, earned by passing its checkpoint, with the date
-- [ ] Level badges, bigger: finishing every chapter at A1, A2, B1 or B2, and one for the whole course. Earning one shows the level offer already on the last chapter's page
-- [ ] Milestones in what's mastered (stability of 21+ days): 25, 100 and 250 verb and tense items; 100, 500 and 1,000 words; every core tense of the top 50 verbs. Counting mastered items by type needs a count query on a range of item IDs plus stability, which may need a Firestore index, or counters kept on save. Check before building
-- [ ] Improvement badges: retaking a checkpoint from under 80% to 90% or more (from the saved tries); a weak spot that's no longer weak. The second needs accuracy by tense over time, which isn't stored per week yet, so it may come later
-- [ ] Streak milestones: 7, 30 and 100 days in a row, plus drill streaks of 25 and 50 from the saved record. The days streak is only worked out from the last 120 days, so a longest-ever streak would need its own record
-- How: worked out from data already loaded where possible. The first time one is earned, its date goes in `users/{uid}/stats/badges` as `{badgeId: day}`, so dates stay put. Signed out, chapter and level badges still work from the browser's course progress. A small celebration when one is earned, using the drill's confetti, and the badge list on /progress shows earned ones with dates and the next few to aim for
-- Effort: about one session, more if the mastered counts need counters
+- [x] First set (2026-11-05), 44 badges defined in `src/lib/badges.ts` and drawn by `src/components/Badge.tsx`:
+  - A medal for each chapter and short lesson (25), numbered and colored by level, earned by passing its checkpoint
+  - A shield for each level (A1 to B2), for finishing every chapter at it, and a star for the whole course
+  - Rosettes: 7, 30 and 100 days in a row; drill streaks of 25 and 50; 25, 100, 250, 500 and 1,000 items mastered (all types together); and a comeback, a checkpoint retaken from under 80% to 90% or more
+  - Where: a Badges section on /progress (earned, newest first with dates, and "Next up" with a few locked ones), the chapter's done panel (its medal, and the level shield when it finishes a level), and the chapter list (a medal on each finished chapter, and each level's shield beside its heading, gray until earned). Chapter and level badges work signed out, from the browser's course progress
+  - Dates: chapter, level, course, comeback and drill-streak badges take the day from the data. All earned badges are saved to `users/{uid}/stats/badges` the first time /progress sees them, so a days streak or mastered count keeps its badge after the streak ends. The days streak only looks at the last 120 days loaded
+  - Art: inline SVG, no image files. A shape per tier (medal, shield, star, rosette), colors from the `--hue` accent scale so dark mode works, and a number, level or icon (flame, bolt, arrow, star) in the middle. Locked badges are gray. Adding a badge is one entry in `BADGES`. Illustrated art, if ever wanted, would go in `public/`, served by Amplify, not S3
+- [ ] Mastered milestones by type (100 words, every core tense of the top 50 verbs). Counting mastered items by type needs a count query on a range of item IDs plus stability, which may need a Firestore index, or counters kept on save
+- [ ] A weak spot that's no longer weak. Needs accuracy by tense stored per week
+- [ ] A small celebration when a badge is earned mid-drill (today they show up on the next visit to /progress or the chapter page)
+- [ ] A longest-ever days streak, so badges past 100 days don't depend on the 120 days loaded
 
 ## Beyond B2: C1/C2 (idea, not started)
 
@@ -246,6 +250,7 @@ The app started as invite-only for friends and family. Sign-ups opened on 2026-1
 - [ ] Course saving signed in: confirmed on 2026-11-05 that checkpoint tries reach `users/{uid}/stats/course` in real Firestore. Still to check: the Course section on /progress, a step done signed out moving to the account after signing in on /account, and the course list starting empty after signing out
 - [ ] Writing drill, into Spanish: a near miss now underlines the words that differ from the model answer, and says when an accent makes another word (cuanto for cuánto). Only checked in code, not seen in a browser
 - [ ] Preterite vs. imperfect practice (chapter 14) hides the tense, but the sentences were each written for one tense, and some may read fine in the other (llovía or llovió). Play through it and note sentences where both work; the fix is a clearer time word in the sentence
+- [ ] Signed in, open /progress and check the Badges section, and that `users/{uid}/stats/badges` gets a day for each earned badge. Then reload and confirm the days don't change. Not run against real Firestore
 - [ ] Dictation counts a word spelled differently but sounding the same (tuvo and tubo, haber and a ver) as wrong. That's the point of dictation, but decide whether it feels unfair in practice
 
 ## How content gets added

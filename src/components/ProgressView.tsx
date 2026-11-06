@@ -4,7 +4,9 @@ import { onAuthStateChanged, type User } from "firebase/auth";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AccuracyTrend, PracticeCalendar } from "@/components/ProgressCharts";
+import BadgeArt from "@/components/Badge";
 import ReportProblem from "@/components/ReportProblem";
+import { BADGES, earnedBadges, findBadge, nextBadges, withSaved } from "@/lib/badges";
 import { TENSES } from "@/lib/conjugation/types";
 import { CHAPTERS, PASS_SCORE, chaptersDone } from "@/lib/course";
 import { syncCourse } from "@/lib/course-progress";
@@ -13,7 +15,7 @@ import { auth, firebaseConfigured } from "@/lib/firebase";
 import { MAX_PRACTICE_ITEMS, practiceHref, weakSpots, type WeakSpot } from "@/lib/practice";
 import { accentRate, accuracy, answered, currentStreak, lastSevenDays, localDay, recentWeeks, wordsPracticed, type Mistake, type Tally } from "@/lib/progress";
 import { saveProgress, setProgressEnabled } from "@/lib/progress-queue";
-import { DAYS_TO_LOAD, loadProgress, setMistakeHidden, type ProgressData } from "@/lib/progress-store";
+import { DAYS_TO_LOAD, loadProgress, saveBadges, setMistakeHidden, type ProgressData } from "@/lib/progress-store";
 import { MASTERED_DAYS, reviewsLeft } from "@/lib/schedule";
 
 const SAVE_WAIT_MS = 5000;
@@ -368,6 +370,59 @@ function VocabularySection({ data, wordLists }: { data: ProgressData; wordLists:
   );
 }
 
+/** Earned badges, newest first, and a few to aim for next. */
+function BadgesSection({ data }: { data: ProgressData }) {
+  const today = localDay();
+  const earned = Object.entries(data.badges)
+    .flatMap(([id, day]) => {
+      const badge = findBadge(id);
+      return badge ? [{ badge, day }] : [];
+    })
+    .sort((a, b) => b.day.localeCompare(a.day) || BADGES.indexOf(a.badge) - BADGES.indexOf(b.badge));
+  const next = nextBadges(data.badges);
+  return (
+    <section>
+      <h2 className="mb-3 text-xl font-semibold">
+        Badges{" "}
+        <span className="text-base font-normal text-stone-500">
+          {earned.length} of {BADGES.length}
+        </span>
+      </h2>
+      {earned.length > 0 ? (
+        <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          {earned.map(({ badge, day }) => (
+            <li key={badge.id} className="flex items-center gap-3 rounded-xl border border-stone-200 bg-white p-3 dark:border-stone-800 dark:bg-stone-900">
+              <BadgeArt badge={badge} />
+              <span className="min-w-0">
+                <span className="block font-medium">{badge.title}</span>
+                <span className="block text-sm text-stone-500">{dayLabel(day, today)}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="text-stone-600 dark:text-stone-400">None yet. Finish a course chapter, or keep a streak going, to earn your first.</p>
+      )}
+      {next.length > 0 && (
+        <>
+          <h3 className="mt-5 mb-2 font-medium">Next up</h3>
+          <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
+            {next.map((badge) => (
+              <li key={badge.id} className="flex items-center gap-3 rounded-xl border border-dashed border-stone-300 p-3 dark:border-stone-700">
+                <BadgeArt badge={badge} size={44} locked />
+                <span className="min-w-0">
+                  <span className="block text-sm font-medium">{badge.title}</span>
+                  <span className="block text-xs text-stone-500">{badge.detail}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+    </section>
+  );
+}
+
 /** Checkpoints taken, with the first score beside the best, so improvement shows and not only a total. */
 function CourseSection({ data }: { data: ProgressData }) {
   const today = localDay();
@@ -498,6 +553,8 @@ function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTot
         </section>
       </div>
 
+      <BadgesSection data={data} />
+
       <WeakSpotsSection data={data} />
 
       <MistakesSection data={data} />
@@ -562,7 +619,12 @@ export default function ProgressView({ wordLists }: { wordLists: WordListTotal[]
         setProgressEnabled(true);
         // Include any answers still waiting to be saved. Offline, a write waits for the connection, so don't wait forever.
         await Promise.race([Promise.all([saveProgress(), syncCourse()]), new Promise((resolve) => setTimeout(resolve, SAVE_WAIT_MS))]);
-        setState({ status: "ready", data: await loadProgress(user.uid) });
+        const data = await loadProgress(user.uid);
+        // New badges get today's date, or the day the data shows, and keep it from then on.
+        const earned = earnedBadges({ course: data.course, days: Object.keys(data.days), mastered: data.mastered, drillStreak: data.drillStreak }, localDay());
+        const fresh = Object.fromEntries(Object.entries(earned).filter(([id]) => !data.badges[id]));
+        saveBadges(user.uid, fresh).catch((err) => console.error("Couldn't save badges", err));
+        setState({ status: "ready", data: { ...data, badges: withSaved(earned, data.badges) } });
       } catch (err) {
         console.error("Couldn't load progress", err);
         setState({ status: "failed" });

@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import BadgeArt from "@/components/Badge";
+import { earnedBadges, findBadge } from "@/lib/badges";
 import { useEffect } from "react";
 import { CHAPTERS, chapterSteps, chaptersDone, suggestedChapter, type ChapterProgress } from "@/lib/course";
 import { syncCourse, useCourseProgress } from "@/lib/course-progress";
@@ -21,6 +23,7 @@ export default function CourseList() {
   const level = useLevel();
   const suggested = suggestedChapter(progress, level);
   const done = chaptersDone(progress);
+  const earned = earnedBadges({ course: progress }, "");
 
   useEffect(() => {
     void syncCourse();
@@ -54,8 +57,11 @@ export default function CourseList() {
         if (chapters.length === 0) return null;
         return (
           <section key={l.id}>
-            <h2 className="mb-3 text-xl font-semibold">
-              {l.name} <span className="text-base font-normal text-stone-500">{l.id}</span>
+            <h2 className="mb-3 flex items-center gap-2 text-xl font-semibold">
+              <BadgeArt badge={findBadge(`level:${l.id}`)!} size={32} locked={!earned[`level:${l.id}`]} />
+              <span>
+                {l.name} <span className="text-base font-normal text-stone-500">{l.id}</span>
+              </span>
             </h2>
             <ol className="divide-y divide-stone-100 overflow-hidden rounded-xl border border-stone-200 bg-white dark:divide-stone-800 dark:border-stone-800 dark:bg-stone-900">
               {chapters.map((c) => {
@@ -69,14 +75,16 @@ export default function CourseList() {
                         c === suggested ? "bg-accent-50 dark:bg-accent-950" : ""
                       }`}
                     >
-                      <span
-                        aria-hidden
-                        className={`flex size-8 shrink-0 items-center justify-center rounded-full text-sm font-semibold tabular-nums ${
-                          mine?.done ? "bg-accent-600 text-white" : "border-2 border-stone-300 text-stone-600 dark:border-stone-700 dark:text-stone-400"
-                        }`}
-                      >
-                        {mine?.done ? "✓" : n}
-                      </span>
+                      {mine?.done ? (
+                        <BadgeArt badge={findBadge(`chapter:${c.id}`)!} size={36} />
+                      ) : (
+                        <span
+                          aria-hidden
+                          className="mx-0.5 flex size-8 shrink-0 items-center justify-center rounded-full border-2 border-stone-300 text-sm font-semibold tabular-nums text-stone-600 dark:border-stone-700 dark:text-stone-400"
+                        >
+                          {n}
+                        </span>
+                      )}
                       <span className="min-w-0 flex-1">
                         <span className="block font-medium">
                           <span className="sr-only">Chapter {n}: </span>
