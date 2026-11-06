@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { BADGES, earnedBadges, findBadge, nextBadges, withSaved } from "./badges";
-import { CHAPTERS, type CourseProgress } from "./course";
+import { CHAPTERS, EXAM_LEVELS, examId, levelChapters, type CourseProgress } from "./course";
 
 const TODAY = "2026-11-05";
 const done = (day: string) => ({ steps: [], best: 90, done: day });
@@ -19,15 +19,20 @@ describe("badges", () => {
     assert.equal(earned[`level:${CHAPTERS[0].level}`], undefined);
   });
 
-  it("gives a level its badge once every chapter at it is done, on the last day", () => {
-    const a1 = CHAPTERS.filter((c) => c.level === "A1");
-    const course: CourseProgress = Object.fromEntries(a1.map((c, i) => [c.id, done(`2026-10-${String(10 + i).padStart(2, "0")}`)]));
-    const earned = earnedBadges({ course }, TODAY);
-    assert.equal(earned["level:A1"], `2026-10-${String(10 + a1.length - 1).padStart(2, "0")}`);
+  it("gives a level its badge for passing its exam, not for finishing its chapters", () => {
+    const a1: CourseProgress = Object.fromEntries(levelChapters("A1").map((c) => [c.id, done("2026-10-10")]));
+    assert.equal(earnedBadges({ course: a1 }, TODAY)["level:A1"], undefined);
+    const earned = earnedBadges({ course: { [examId("A1")]: done("2026-10-12") } }, TODAY);
+    assert.equal(earned["level:A1"], "2026-10-12");
     assert.equal(earned["level:A2"], undefined);
-    assert.equal(earned.course, undefined);
-    const everything = Object.fromEntries(CHAPTERS.map((c) => [c.id, done("2026-11-02")]));
-    assert.equal(earnedBadges({ course: everything }, TODAY).course, "2026-11-02");
+    assert.equal(earnedBadges({ course: { [examId("A1")]: { steps: [], best: 70, tries: [{ day: TODAY, score: 70 }] } } }, TODAY)["level:A1"], undefined);
+  });
+
+  it("finishes the course with every chapter and every exam, on the last day", () => {
+    const chapters = Object.fromEntries(CHAPTERS.map((c) => [c.id, done("2026-11-02")]));
+    assert.equal(earnedBadges({ course: chapters }, TODAY).course, undefined);
+    const exams = Object.fromEntries(EXAM_LEVELS.map((l) => [examId(l), done("2026-11-03")]));
+    assert.equal(earnedBadges({ course: { ...chapters, ...exams } }, TODAY).course, "2026-11-03");
   });
 
   it("counts days in a row, on the day the run reached the length", () => {

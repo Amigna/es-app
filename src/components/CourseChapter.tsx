@@ -6,15 +6,15 @@ import { Example, TenseCard, moodHue } from "@/components/ConjugationView";
 import BadgeArt from "@/components/Badge";
 import DrillRunner from "@/components/DrillRunner";
 import GuideSections from "@/components/GuideSections";
-import { LevelUpOffer } from "@/components/LevelPicker";
 import { conjugate } from "@/lib/conjugation/engine";
 import { markVerb } from "@/lib/conjugation/regular";
 import { TENSES, type TenseId } from "@/lib/conjugation/types";
-import { earnedBadges, findBadge } from "@/lib/badges";
-import { CHAPTERS, PASS_SCORE, STEPS, chapterSteps, nextStep, type Chapter, type StepId } from "@/lib/course";
+import { findBadge } from "@/lib/badges";
+import { CHAPTERS, PASS_SCORE, STEPS, chapterSteps, examId, isDone, levelChapters, nextStep, type Chapter, type StepId } from "@/lib/course";
 import { completeStep, recordCheckpoint, storedCourse, syncCourse, useCourseProgress } from "@/lib/course-progress";
 import type { ChapterQuiz } from "@/lib/course-decks";
 import type { Card } from "@/lib/drill";
+import { QUIZ_RUN } from "@/lib/quiz";
 import type { GuideSection } from "@/lib/guides";
 import { levelInfo } from "@/lib/level";
 import { loadSentences } from "@/lib/sentence-loader";
@@ -124,8 +124,8 @@ export default function CourseChapter({
   // By ID: the chapter arrives from the server as a copy, not the object in CHAPTERS.
   const number = CHAPTERS.findIndex((c) => c.id === chapter.id) + 1;
   const following = CHAPTERS[number];
-  const levelDone = !!earnedBadges({ course: progress }, "")[`level:${chapter.level}`];
-  const lastAtLevel = CHAPTERS.filter((c) => c.level === chapter.level).at(-1)?.id === chapter.id;
+  const levelChaptersDone = levelChapters(chapter.level).every((c) => isDone(progress, c.id));
+  const examPassed = isDone(progress, examId(chapter.level));
   const verbs = useMemo(() => chapter.verbs.map(findVerb).filter((v): v is Verb => !!v), [chapter]);
   const rareSet = useMemo(() => new Set(rare), [rare]);
 
@@ -156,24 +156,26 @@ export default function CourseChapter({
     setError("");
     setLoading(true);
     try {
-      const decks = await import("@/lib/course-decks");
+      const [decks, { quizSeen, remembering }] = await Promise.all([import("@/lib/course-decks"), import("@/lib/quiz-seen")]);
+      const seen = quizSeen();
       const needsSentences = step === "practice" || step === "write" || step === "checkpoint";
       const bank = needsSentences ? await loadSentences(verbs) : {};
-      const data = { chapter, verbs, bank, rare: rareSet, quiz };
+      const data = { chapter, verbs, bank, rare: rareSet, quiz, seen };
       const next =
         step === "words"
           ? decks.wordsDeck(chapter)
           : step === "quiz" && quiz
-            ? decks.chapterQuizDeck(quiz)
+            ? decks.chapterQuizDeck(quiz, seen)
             : step === "practice"
               ? decks.practiceDeck(data)
               : step === "write"
                 ? decks.writeDeck(data)
                 : decks.checkpointDeck(data);
-      const first = next();
+      const dealt = remembering(next);
+      const first = dealt();
       if (first) {
         setFinishedStep(null);
-        setSession({ step, first, next });
+        setSession({ step, first, next: dealt });
       } else setError("Couldn't find questions for this step.");
     } catch {
       setError("Couldn't load this step. Check your connection and try again.");
@@ -266,7 +268,7 @@ export default function CourseChapter({
             <p className="text-stone-600 dark:text-stone-400">
               {open === "words" &&
                 `${chapter.words.length} ${chapter.words.every((w) => w.startsWith("phrase:")) ? "expressions" : "words"} that go with this chapter. Flip each card and say whether you knew it. When you're signed in, they join your review schedule and come back in Today's review.`}
-              {open === "quiz" && `${quiz?.questions.length ?? 0} questions on the lesson. Each answer comes with a short explanation, and anything you miss comes back.`}
+              {open === "quiz" && `${Math.min(quiz?.questions.length ?? 0, QUIZ_RUN)} questions on the lesson${(quiz?.questions.length ?? 0) > QUIZ_RUN ? ", starting with ones you haven't seen lately" : ""}. Each answer comes with a short explanation, and anything you miss comes back.`}
               {open === "practice" &&
                 (chapter.tenses.length === 0
                   ? "15 questions on this chapter's words: el or la for each noun, and the right form of each adjective. Anything you miss comes back."
@@ -311,13 +313,18 @@ export default function CourseChapter({
         <section className="space-y-3 rounded-xl border border-t-4 border-stone-200 border-t-accent-500 bg-white p-5 dark:border-stone-800 dark:bg-stone-900">
           <div className="flex items-center gap-4">
             <BadgeArt badge={findBadge(`chapter:${chapter.id}`)!} size={64} />
-            {levelDone && <BadgeArt badge={findBadge(`level:${chapter.level}`)!} size={64} />}
             <p className="text-lg font-semibold">
               ¡Capítulo terminado! Best checkpoint: {mine.best}%
-              {levelDone && <span className="block text-base font-normal">Every {chapter.level} chapter done, so the {chapter.level} badge is yours too.</span>}
+              {levelChaptersDone && !examPassed && (
+                <span className="block text-base font-normal">Every {chapter.level} chapter is done. Pass the {chapter.level} exam to earn its badge.</span>
+              )}
             </p>
           </div>
-          {lastAtLevel && <LevelUpOffer to={chapter.level} />}
+          {levelChaptersDone && !examPassed && (
+            <Link href={`/course/exam/${chapter.level.toLowerCase()}`} className={`mr-3 inline-flex items-center ${buttonClass.replace("h-11", "min-h-11 py-2")}`}>
+              Take the {chapter.level} exam
+            </Link>
+          )}
           {following ? (
             <Link href={`/course/${following.id}`} className={`inline-flex items-center ${buttonClass.replace("h-11", "min-h-11 py-2")}`}>
               Next: {following.title}

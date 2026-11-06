@@ -170,5 +170,22 @@ export function suggestedChapter(progress: CourseProgress, level: Level | null):
   return open.find((c) => CHAPTERS.indexOf(c) >= start) ?? open[0] ?? null;
 }
 
+// Each level ends with an exam of questions from its chapters' quizzes. Passing it earns the level's badge. Like chapters,
+// it's always open. Its tries are kept with the chapters, under `exam:A1` and so on, so they save and merge the same way.
+
+/** Questions in a level exam, or fewer when its quizzes don't have that many. */
+export const EXAM_SIZE = 40;
+/** Higher than a checkpoint's, since the exam stands for the whole level. */
+export const EXAM_PASS_SCORE = 90;
+/** Of the exam's questions, how many review earlier levels. B2 ends the course, so its exam covers all of it. */
+export const EXAM_REVIEW: Partial<Record<Level, number>> = { B2: 10 };
+
+/** Levels with chapters, so with an exam. */
+export const EXAM_LEVELS: Level[] = [...new Set(CHAPTERS.map((c) => c.level))];
+
+export const examId = (level: Level) => `exam:${level}`;
+
+export const levelChapters = (level: Level) => CHAPTERS.filter((c) => c.level === level);
+
 /** Chapters finished, counting only chapters still in the course. */
 export const chaptersDone = (progress: CourseProgress) => Object.keys(progress).filter((id) => CHAPTER_IDS.has(id) && isDone(progress, id)).length;

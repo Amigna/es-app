@@ -1,4 +1,4 @@
-import { CHAPTERS, PASS_SCORE, chapterNumber, isDone, type CourseProgress } from "./course";
+import { CHAPTERS, EXAM_LEVELS, PASS_SCORE, chapterNumber, examId, isDone, type CourseProgress } from "./course";
 import { LEVELS, type Level } from "./level";
 import type { StreakRecord } from "./progress";
 
@@ -41,15 +41,15 @@ export const BADGES: Badge[] = [
     hue: LEVEL_HUES[c.level],
     label: String(chapterNumber(c)),
   })),
-  ...LEVELS.filter((l) => CHAPTERS.some((c) => c.level === l.id)).map((l): Badge => ({
+  ...LEVELS.filter((l) => EXAM_LEVELS.includes(l.id)).map((l): Badge => ({
     id: `level:${l.id}`,
     title: `${l.name} finished`,
-    detail: `Every ${l.id} chapter in the course`,
+    detail: `Passed the ${l.id} exam`,
     tier: "level",
     hue: LEVEL_HUES[l.id],
     label: l.id,
   })),
-  { id: "course", title: "Course finished", detail: "Every chapter, A1 to B2", tier: "course", hue: 75, icon: "star" },
+  { id: "course", title: "Course finished", detail: "Every chapter and exam, A1 to B2", tier: "course", hue: 75, icon: "star" },
   ...DAY_STREAKS.map((n): Badge => ({ id: `days:${n}`, title: `${n} days in a row`, detail: `Practiced ${n} days running`, tier: "milestone", hue: 25, icon: "flame" })),
   ...DRILL_STREAKS.map((n): Badge => ({ id: `drill:${n}`, title: `${n} right in a row`, detail: `A drill streak of ${n}`, tier: "milestone", hue: 325, icon: "bolt" })),
   ...MASTERED.map((n): Badge => ({
@@ -63,7 +63,7 @@ export const BADGES: Badge[] = [
   {
     id: "comeback",
     title: "Comeback",
-    detail: `A checkpoint retaken from under ${PASS_SCORE}% to ${COMEBACK_SCORE}% or more`,
+    detail: `A checkpoint or exam retaken from under ${PASS_SCORE}% to ${COMEBACK_SCORE}% or more`,
     tier: "milestone",
     hue: 235,
     icon: "up",
@@ -109,14 +109,10 @@ export function earnedBadges(data: BadgeData, today: string): Record<string, str
   const { course } = data;
   for (const c of CHAPTERS) if (isDone(course, c.id)) out[`chapter:${c.id}`] = course[c.id].done!;
 
-  const finishedOn = (chapters: typeof CHAPTERS) =>
-    chapters.length > 0 && chapters.every((c) => isDone(course, c.id)) ? chapters.map((c) => course[c.id].done!).sort().at(-1)! : null;
-  for (const l of LEVELS) {
-    const day = finishedOn(CHAPTERS.filter((c) => c.level === l.id));
-    if (day) out[`level:${l.id}`] = day;
-  }
-  const all = finishedOn(CHAPTERS);
-  if (all) out.course = all;
+  for (const level of EXAM_LEVELS) if (isDone(course, examId(level))) out[`level:${level}`] = course[examId(level)].done!;
+
+  const parts = [...CHAPTERS.map((c) => c.id), ...EXAM_LEVELS.map(examId)];
+  if (parts.every((id) => isDone(course, id))) out.course = parts.map((id) => course[id].done!).sort().at(-1)!;
 
   for (const n of DAY_STREAKS) {
     const day = streakDays(data.days ?? [], n)[0];

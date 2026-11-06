@@ -8,7 +8,7 @@ import BadgeArt from "@/components/Badge";
 import ReportProblem from "@/components/ReportProblem";
 import { BADGES, earnedBadges, findBadge, nextBadges, withSaved } from "@/lib/badges";
 import { TENSES } from "@/lib/conjugation/types";
-import { CHAPTERS, PASS_SCORE, chaptersDone } from "@/lib/course";
+import { CHAPTERS, EXAM_LEVELS, EXAM_PASS_SCORE, PASS_SCORE, chaptersDone, examId, levelChapters } from "@/lib/course";
 import { syncCourse } from "@/lib/course-progress";
 import { useDrillSettings } from "@/lib/drill-settings";
 import { auth, firebaseConfigured } from "@/lib/firebase";
@@ -426,7 +426,12 @@ function BadgesSection({ data }: { data: ProgressData }) {
 /** Checkpoints taken, with the first score beside the best, so improvement shows and not only a total. */
 function CourseSection({ data }: { data: ProgressData }) {
   const today = localDay();
-  const taken = CHAPTERS.filter((c) => data.course[c.id]?.tries?.length);
+  // Each level's chapters, then its exam, as they come in the course.
+  const rows = EXAM_LEVELS.flatMap((level) => [
+    ...levelChapters(level).map((c) => ({ id: c.id, href: `/course/${c.id}`, name: `${CHAPTERS.indexOf(c) + 1}. ${c.title}` })),
+    { id: examId(level), href: `/course/exam/${level.toLowerCase()}`, name: `${level} exam` },
+  ]);
+  const taken = rows.filter((r) => data.course[r.id]?.tries?.length);
   const done = chaptersDone(data.course);
   return (
     <section>
@@ -436,7 +441,7 @@ function CourseSection({ data }: { data: ProgressData }) {
           <Link href="/course" className={linkClass}>
             Start the course
           </Link>{" "}
-          and your checkpoint scores will show up here.
+          and your checkpoint and exam scores will show up here.
         </p>
       ) : (
         <div className="space-y-3">
@@ -454,13 +459,13 @@ function CourseSection({ data }: { data: ProgressData }) {
                 </tr>
               </thead>
               <tbody>
-                {taken.map((c) => {
-                  const mine = data.course[c.id];
+                {taken.map((r) => {
+                  const mine = data.course[r.id];
                   return (
-                    <tr key={c.id} className="border-b border-stone-100 last:border-0 dark:border-stone-800">
+                    <tr key={r.id} className="border-b border-stone-100 last:border-0 dark:border-stone-800">
                       <th scope="row" className="px-4 py-2 font-normal">
-                        <Link href={`/course/${c.id}`} className="underline decoration-stone-300 underline-offset-2 dark:decoration-stone-600">
-                          {CHAPTERS.indexOf(c) + 1}. {c.title}
+                        <Link href={r.href} className="underline decoration-stone-300 underline-offset-2 dark:decoration-stone-600">
+                          {r.name}
                         </Link>
                       </th>
                       <td className="px-4 py-2 text-right tabular-nums">{mine.tries![0].score}%</td>
@@ -472,7 +477,7 @@ function CourseSection({ data }: { data: ProgressData }) {
               </tbody>
             </table>
           </div>
-          <p className="text-sm text-stone-500">A checkpoint of {PASS_SCORE}% or more finishes a chapter. Retakes keep your best score.</p>
+          <p className="text-sm text-stone-500">A checkpoint of {PASS_SCORE}% or more finishes a chapter, and an exam score of {EXAM_PASS_SCORE}% or more earns the level&apos;s badge. Retakes keep your best score.</p>
         </div>
       )}
     </section>

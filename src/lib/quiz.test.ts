@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { gradeCard } from "./drill";
 import { GUIDES } from "./guides";
-import { quizCard, quizDeck, shuffled, type QuizQuestion } from "./quiz";
+import { freshestFirst, quizCard, quizDeck, quizPlace, shuffled, type QuizQuestion } from "./quiz";
 import { GUIDE_QUIZZES } from "./quiz-data";
 
 describe("quiz data", () => {
@@ -70,6 +70,23 @@ describe("quiz cards", () => {
     for (let i = 0; i < total; i++) ids.add(next()!.id);
     assert.equal(ids.size, total);
     assert.equal(next(), null);
+  });
+
+  it("draws a run per guide, starting with questions not asked lately", () => {
+    const guide = GUIDES[0];
+    const count = GUIDE_QUIZZES[guide.slug].length;
+    // Asked lately: everything but the last two, which were never asked.
+    const seen = { [guide.slug]: Array.from({ length: count - 2 }, (_, i) => i) };
+    const next = quizDeck(GUIDE_QUIZZES, [guide], Math.random, { seen, perGuide: 3 });
+    const indexes = [next(), next(), next()].map((c) => quizPlace(c!)![1]).sort((a, b) => a - b);
+    assert.equal(next(), null);
+    assert.deepEqual(indexes, [0, count - 2, count - 1]);
+  });
+
+  it("puts never-asked questions first, then the ones asked longest ago", () => {
+    const cards = [0, 1, 2, 3].map((i) => quizCard("x", i, "X", question));
+    const order = freshestFirst(cards, { x: [2, 0, 3] }).map((c) => quizPlace(c)![1]);
+    assert.deepEqual(order, [1, 2, 0, 3]);
   });
 
   it("shuffles without losing anything", () => {

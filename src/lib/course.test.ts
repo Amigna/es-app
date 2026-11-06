@@ -3,10 +3,11 @@ import { describe, it } from "node:test";
 import { listedWordCard } from "./card-decks";
 import { TENSES } from "./conjugation/types";
 import { conjugate } from "./conjugation/engine";
-import { CHAPTERS, chapterSteps, mergeCourse, nextStep, parseCourse, suggestedChapter, type CourseProgress } from "./course";
-import { checkpointCards, practiceDeck, quizCards, writeDeck, type ChapterData, type ChapterQuiz } from "./course-decks";
+import { CHAPTERS, EXAM_LEVELS, EXAM_REVIEW, EXAM_SIZE, chapterSteps, levelChapters, mergeCourse, nextStep, parseCourse, suggestedChapter, type CourseProgress } from "./course";
+import { checkpointCards, examCards, examWithReview, practiceDeck, quizCards, writeDeck, type ChapterData, type ChapterQuiz } from "./course-decks";
 import { findGuide } from "./guides";
 import { LEVELS } from "./level";
+import { quizPlace } from "./quiz";
 import { GUIDE_QUIZZES } from "./quiz-data";
 import { SENTENCE_BANK } from "./sentence-data";
 import { findVerb } from "./verbs";
@@ -177,6 +178,46 @@ describe("chapter decks", () => {
       quizCards(quiz).map((c) => c.track!.item),
       ["quiz:talking-about-the-future:0", "quiz:talking-about-the-future:4", "quiz:talking-about-the-future:9"],
     );
+  });
+});
+
+describe("level exams", () => {
+  it("ask up to 40 different questions spread across every chapter at the level", () => {
+    for (const level of EXAM_LEVELS) {
+      const quizzes = levelChapters(level).flatMap((c) => (c.guide ? (chapterQuiz(c.guide.slug, c.guide.quiz) ?? []) : []));
+      const cards = examCards(quizzes, EXAM_SIZE, seeded(7));
+      const pool = new Set(quizzes.flatMap((q) => q.questions.map(({ index }) => `${q.slug}:${index}`))).size;
+      assert.equal(cards.length, Math.min(EXAM_SIZE, pool), level);
+      assert.equal(new Set(cards.map((c) => c.id)).size, cards.length, level);
+      assert.ok(cards.every((c) => c.track?.item?.startsWith("quiz:")), level);
+      // Every guide in the level is asked about, and none takes much more than its share.
+      const slugs = new Set(quizzes.map((q) => q.slug));
+      // Per chapter: two B1 chapters share the subjunctive guide.
+      const counts = [...slugs].map(
+        (slug) => cards.filter((c) => c.id.startsWith(`quiz:${slug}:`)).length / quizzes.filter((q) => q.slug === slug).length,
+      );
+      assert.ok(counts.every((n) => n > 0), level);
+      assert.ok(Math.max(...counts) - Math.min(...counts) <= 1, `${level}: ${counts}`);
+    }
+  });
+
+  it("review earlier levels where set, without repeating the level's own questions", () => {
+    const quizzesAt = (level: string) => CHAPTERS.filter((c) => c.level === level && c.guide).flatMap((c) => chapterQuiz(c.guide!.slug, c.guide!.quiz) ?? []);
+    const own = quizzesAt("B2");
+    const earlier = ["A1", "A2", "B1"].flatMap(quizzesAt);
+    const cards = examWithReview(own, earlier, EXAM_REVIEW.B2!, seeded(5));
+    const ownIds = new Set(own.flatMap((q) => q.questions.map(({ index }) => `quiz:${q.slug}:${index}`)));
+    const reviewed = cards.filter((c) => !ownIds.has(c.id));
+    assert.equal(reviewed.length, EXAM_REVIEW.B2);
+    assert.equal(new Set(cards.map((c) => c.id)).size, cards.length);
+    // One per chapter, and a few chapters share a guide, so nearly every review question is from a different guide.
+    assert.ok(new Set(reviewed.map((c) => quizPlace(c)![0])).size >= reviewed.length - 2);
+  });
+
+  it("count a question two chapters share only once", () => {
+    const quiz = chapterQuiz("subjunctive")!;
+    const cards = examCards([quiz, quiz], 100, seeded(3));
+    assert.equal(cards.length, quiz.questions.length);
   });
 });
 

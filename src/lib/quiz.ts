@@ -43,13 +43,48 @@ export function quizCard(slug: string, index: number, guideTitle: string, q: Qui
   };
 }
 
-/** Every question once, in random order. The deck runs out, which ends the quiz. */
+/** Questions asked in one run of a guide's quiz, so a retake isn't a memory test. Bigger quizzes are drawn from. */
+export const QUIZ_RUN = 12;
+
+/** Question positions per guide, most recently asked last, as kept in this browser by quiz-seen. */
+export type QuizSeen = Record<string, number[]>;
+
+/** A quiz card's guide and position, from its saved item `quiz:<slug>:<index>`. */
+export function quizPlace(card: Card): [string, number] | null {
+  const match = /^quiz:(.+):(\d+)$/.exec(card.track?.item ?? "");
+  return match ? [match[1], Number(match[2])] : null;
+}
+
+/** Shuffled, then questions never asked here first, then the ones asked longest ago. */
+export function freshestFirst(cards: Card[], seen: QuizSeen = {}, random: () => number = Math.random): Card[] {
+  const rank = (card: Card) => {
+    const place = quizPlace(card);
+    return place ? (seen[place[0]] ?? []).indexOf(place[1]) : -1;
+  };
+  // Sorting is stable, so cards of equal rank keep their shuffled order.
+  return shuffled(cards, random)
+    .map((card) => ({ card, rank: rank(card) }))
+    .sort((a, b) => a.rank - b.rank)
+    .map(({ card }) => card);
+}
+
+/**
+ * Up to `perGuide` questions from each guide, freshest first, in random order. The deck runs out, which ends the quiz.
+ * Without `perGuide`, every question once.
+ */
 export function quizDeck(
   quizzes: GuideQuizzes,
   guides: { slug: string; title: string }[],
   random: () => number = Math.random,
+  { seen = {}, perGuide = Infinity }: { seen?: QuizSeen; perGuide?: number } = {},
 ): () => Card | null {
-  const cards = guides.flatMap((g) => (quizzes[g.slug] ?? []).map((q, i) => quizCard(g.slug, i, g.title, q, random)));
+  const cards = guides.flatMap((g) =>
+    freshestFirst(
+      (quizzes[g.slug] ?? []).map((q, i) => quizCard(g.slug, i, g.title, q, random)),
+      seen,
+      random,
+    ).slice(0, perGuide),
+  );
   const queue = shuffled(cards, random);
   return () => queue.shift() ?? null;
 }

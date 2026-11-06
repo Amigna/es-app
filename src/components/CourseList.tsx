@@ -4,7 +4,7 @@ import Link from "next/link";
 import BadgeArt from "@/components/Badge";
 import { earnedBadges, findBadge } from "@/lib/badges";
 import { useEffect } from "react";
-import { CHAPTERS, chapterSteps, chaptersDone, suggestedChapter, type ChapterProgress } from "@/lib/course";
+import { CHAPTERS, EXAM_PASS_SCORE, chapterSteps, chaptersDone, examId, suggestedChapter, type ChapterProgress } from "@/lib/course";
 import { syncCourse, useCourseProgress } from "@/lib/course-progress";
 import { LEVELS, levelInfo, useLevel } from "@/lib/level";
 
@@ -15,6 +15,12 @@ function status(chapter: (typeof CHAPTERS)[number], mine: ChapterProgress | unde
   const finished = mine?.steps.length ?? 0;
   if (finished > 0) return `${kind}${finished} of ${total} steps${mine?.best !== undefined ? ` · best ${mine.best}%` : ""}`;
   return `${kind}${total} steps`;
+}
+
+function examStatus(mine: ChapterProgress | undefined, chapters: number): string {
+  if (mine?.done) return `Passed · best ${mine.best}% · badge earned`;
+  if (mine?.best !== undefined) return `Best ${mine.best}% · ${EXAM_PASS_SCORE}% passes`;
+  return `Questions from all ${chapters} chapters · passing earns the badge`;
 }
 
 /** Every chapter by level, with progress from this browser and, once synced, the account. */
@@ -97,6 +103,18 @@ export default function CourseList() {
                   </li>
                 );
               })}
+              <li>
+                <Link
+                  href={`/course/exam/${l.id.toLowerCase()}`}
+                  className="flex items-center gap-3 px-4 py-3 transition hover:bg-accent-50 dark:hover:bg-accent-950"
+                >
+                  <BadgeArt badge={findBadge(`level:${l.id}`)!} size={36} locked={!earned[`level:${l.id}`]} />
+                  <span className="min-w-0 flex-1">
+                    <span className="block font-medium">{l.id} exam</span>
+                    <span className="block text-sm text-stone-500">{examStatus(progress[examId(l.id)], chapters.length)}</span>
+                  </span>
+                </Link>
+              </li>
             </ol>
           </section>
         );

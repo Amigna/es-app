@@ -67,7 +67,7 @@ export function LevelPicker({ onChosen }: { onChosen?: () => void }) {
 }
 
 /**
- * After finishing a level's last course chapter, asks whether to set that as the level, when the saved one is lower or
+ * After passing a level's course exam, asks whether to set that as the level, when the saved one is lower or
  * missing. Asked, not done, because the level also resets the drill's tenses and verbs.
  */
 export function LevelUpOffer({ to }: { to: Level }) {
@@ -89,7 +89,7 @@ export function LevelUpOffer({ to }: { to: Level }) {
   return (
     <div className="space-y-2 rounded-lg border border-accent-300 p-3 dark:border-accent-800">
       <p>
-        You&apos;ve finished the {info.name.toLowerCase()} ({to}) chapters. Set your level to {to}? Drills will start with its tenses, verbs and
+        You&apos;ve passed the {info.name.toLowerCase()} ({to}) exam. Set your level to {to}? Drills will start with its tenses, verbs and
         words.
       </p>
       <div className="flex flex-wrap gap-3">

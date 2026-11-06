@@ -1,8 +1,8 @@
 import { blankDeck, listedWordCard, writingDeck } from "./card-decks";
-import type { Chapter, ChapterDrill } from "./course";
+import { EXAM_SIZE, type Chapter, type ChapterDrill } from "./course";
 import { TENSES } from "./conjugation/types";
 import { conjugationCard, limitedDeck, makeQuestion, type Card } from "./drill";
-import { quizCard, shuffled, type QuizQuestion } from "./quiz";
+import { QUIZ_RUN, freshestFirst, quizCard, shuffled, type QuizQuestion, type QuizSeen } from "./quiz";
 import { sentencesFor, type SentenceBank } from "./sentences";
 import type { Verb } from "./verbs";
 
@@ -29,6 +29,8 @@ export interface ChapterData {
   bank: SentenceBank;
   rare: Set<string>;
   quiz: ChapterQuiz | null;
+  /** Quiz questions this browser asked lately, which checkpoints ask last. */
+  seen?: QuizSeen;
 }
 
 /** A chapter word the question fits, like a noun for gender. Null when none does. */
@@ -103,8 +105,9 @@ export function quizCards(quiz: ChapterQuiz, random: Random = Math.random): Card
   return quiz.questions.map(({ index, question }) => quizCard(quiz.slug, index, quiz.title, question, random));
 }
 
-export function chapterQuizDeck(quiz: ChapterQuiz, random: Random = Math.random): () => Card | null {
-  return queue(shuffled(quizCards(quiz, random), random));
+/** A dozen of the chapter's questions, the ones not asked lately first, so a retake isn't a memory test. */
+export function chapterQuizDeck(quiz: ChapterQuiz, seen: QuizSeen = {}, random: Random = Math.random): () => Card | null {
+  return queue(shuffled(freshestFirst(quizCards(quiz, random), seen, random).slice(0, QUIZ_RUN), random));
 }
 
 /** Every word once, as flashcards, in random order. */
@@ -122,9 +125,9 @@ export function writeDeck({ chapter, verbs, bank }: ChapterData, random: Random 
  * phrases, which are never typed, the others take its share. Missed questions don't come back, so the score is a first try.
  */
 export function checkpointCards(data: ChapterData, random: Random = Math.random): Card[] {
-  const { chapter, quiz } = data;
+  const { chapter, quiz, seen } = data;
   const total = CHECKPOINT_MIX.verbs + CHECKPOINT_MIX.quiz + CHECKPOINT_MIX.words;
-  const quizPool = quiz ? shuffled(quizCards(quiz, random), random) : [];
+  const quizPool = quiz ? freshestFirst(quizCards(quiz, random), seen, random) : [];
   const typed = shuffled(chapter.words, random).flatMap((id) => listedWordCard(id, "toSpanish", random) ?? []);
   const words = typed.slice(0, CHECKPOINT_MIX.words);
   const drillShare = chapter.drills.length > 0 ? CHECKPOINT_MIX.verbs : 0;
@@ -134,3 +137,49 @@ export function checkpointCards(data: ChapterData, random: Random = Math.random)
 }
 
 export const checkpointDeck = (data: ChapterData, random: Random = Math.random) => queue(checkpointCards(data, random));
+
+/**
+ * A level exam: questions from each chapter's quiz in turn, so every chapter gets about the same share, then shuffled.
+ * A question two chapters share counts for the first, and questions not asked lately come first. Missed questions
+ * don't come back, as in a checkpoint.
+ */
+export function examCards(quizzes: ChapterQuiz[], size = EXAM_SIZE, random: Random = Math.random, seen: QuizSeen = {}): Card[] {
+  const taken = new Set<string>();
+  const pools = quizzes.map((quiz) =>
+    freshestFirst(
+      quiz.questions
+        .filter(({ index }) => !taken.has(`${quiz.slug}:${index}`) && !!taken.add(`${quiz.slug}:${index}`))
+        .map(({ index, question }) => quizCard(quiz.slug, index, quiz.title, question, random)),
+      seen,
+      random,
+    ),
+  );
+  // Which chapter goes first changes each time, so a short pool doesn't always favor the early chapters.
+  const start = Math.floor(random() * Math.max(1, pools.length));
+  const picked: Card[] = [];
+  for (let round = 0; picked.length < size && pools.some((p) => p.length > round); round++) {
+    for (let i = 0; i < pools.length && picked.length < size; i++) {
+      const card = pools[(start + i) % pools.length][round];
+      if (card) picked.push(card);
+    }
+  }
+  return shuffled(picked, random);
+}
+
+/** A level exam, with `reviewCount` of its questions drawn from earlier levels' quizzes, when it has any. */
+export function examWithReview(
+  quizzes: ChapterQuiz[],
+  review: ChapterQuiz[] = [],
+  reviewCount = 0,
+  random: Random = Math.random,
+  seen: QuizSeen = {},
+): Card[] {
+  // A guide can be at two levels, like the perfect tenses at B1 and B2, so review leaves out the level's own questions.
+  const own = new Set(quizzes.flatMap((q) => q.questions.map(({ index }) => `${q.slug}:${index}`)));
+  const others = review.map((q) => ({ ...q, questions: q.questions.filter(({ index }) => !own.has(`${q.slug}:${index}`)) }));
+  const earlier = reviewCount > 0 ? examCards(others, reviewCount, random, seen) : [];
+  return shuffled([...examCards(quizzes, EXAM_SIZE - earlier.length, random, seen), ...earlier], random);
+}
+
+export const examDeck = (quizzes: ChapterQuiz[], review: ChapterQuiz[], reviewCount: number, seen: QuizSeen = {}, random: Random = Math.random) =>
+  queue(examWithReview(quizzes, review, reviewCount, random, seen));

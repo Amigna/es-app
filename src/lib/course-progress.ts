@@ -96,10 +96,10 @@ export function completeStep(id: string, step: Exclude<StepId, "checkpoint">) {
   change(id, (chapter) => (chapter.steps.includes(step) ? chapter : { ...chapter, steps: STEP_IDS.filter((s) => s === step || chapter.steps.includes(s)) }));
 }
 
-/** Saves a checkpoint try. Passing finishes the chapter. */
-export function recordCheckpoint(id: string, score: number) {
+/** Saves a checkpoint or exam try. Passing finishes the chapter or exam. */
+export function recordCheckpoint(id: string, score: number, passScore = PASS_SCORE) {
   change(id, (chapter) => {
-    const passed = score >= PASS_SCORE;
+    const passed = score >= passScore;
     const out: ChapterProgress = {
       ...chapter,
       best: Math.max(chapter.best ?? 0, score),

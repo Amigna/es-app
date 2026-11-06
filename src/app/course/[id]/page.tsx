@@ -3,10 +3,9 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import CourseChapter, { type TenseSentences } from "@/components/CourseChapter";
 import type { TenseId } from "@/lib/conjugation/types";
+import { chapterQuiz } from "@/lib/chapter-quiz";
 import { CHAPTERS, findChapter, type Chapter } from "@/lib/course";
-import type { ChapterQuiz } from "@/lib/course-decks";
 import { findGuide } from "@/lib/guides";
-import { GUIDE_QUIZZES } from "@/lib/quiz-data";
 import { SENTENCE_BANK } from "@/lib/sentence-data";
 import { sentencesFor } from "@/lib/sentences";
 
@@ -36,14 +35,8 @@ export default function ChapterPage({ params }: PageProps<"/course/[id]">) {
 function lessonFor(chapter: Chapter) {
   const guide = chapter.guide && findGuide(chapter.guide.slug);
   if (!guide || !chapter.guide) return { sections: [], quiz: null };
-  const { sections: only, quiz: picked } = chapter.guide;
-  const all = GUIDE_QUIZZES[guide.slug] ?? [];
-  const indexes = picked ?? all.map((_, i) => i);
-  const quiz: ChapterQuiz | null =
-    indexes.length > 0
-      ? { slug: guide.slug, title: guide.title, questions: indexes.filter((i) => all[i]).map((index) => ({ index, question: all[index] })) }
-      : null;
-  return { sections: only ? guide.sections.filter((s) => only.includes(s.heading)) : guide.sections, quiz };
+  const only = chapter.guide.sections;
+  return { sections: only ? guide.sections.filter((s) => only.includes(s.heading)) : guide.sections, quiz: chapterQuiz(chapter) };
 }
 
 /** Each model verb's sentences for each tense, and the main sentence of other chapter verbs for more examples. */
