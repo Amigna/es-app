@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import CourseChapter, { type TenseSentences } from "@/components/CourseChapter";
@@ -26,9 +25,6 @@ export async function generateMetadata({ params }: PageProps<"/course/[id]">): P
 export default function ChapterPage({ params }: PageProps<"/course/[id]">) {
   return (
     <div className="space-y-6">
-      <Link href="/course" className="text-sm text-accent-700 underline dark:text-accent-400">
-        All chapters
-      </Link>
       <Suspense fallback={<div className="h-10 w-64 animate-pulse rounded-lg bg-stone-100 dark:bg-stone-800" aria-busy="true" />}>
         <ChapterContent params={params} />
       </Suspense>

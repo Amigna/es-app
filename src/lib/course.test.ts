@@ -107,7 +107,7 @@ describe("course chapters", () => {
 
 describe("chapter decks", () => {
   it("practice stays on the chapter's verbs and tenses", () => {
-    for (const c of CHAPTERS.filter((ch) => ch.drills.includes("conjugation") || ch.drills.includes("blanks"))) {
+    for (const c of CHAPTERS.filter((ch) => ch.drills.some((d) => d === "conjugation" || d === "blanks" || d === "choose"))) {
       const deck = practiceDeck(chapterData(c), seeded(5));
       let count = 0;
       for (let card = deck(); card; card = deck()) {
@@ -118,6 +118,19 @@ describe("chapter decks", () => {
       }
       assert.equal(count, 15, c.id);
     }
+  });
+
+  it("tense choice hides the tense until it's answered", () => {
+    const c = CHAPTERS.find((ch) => ch.drills.includes("choose"))!;
+    const deck = practiceDeck(chapterData(c), seeded(4));
+    const names = TENSES.map((t) => t.name);
+    const seen = new Set<string>();
+    for (let card = deck(); card; card = deck()) {
+      assert.ok(!names.includes(card.badge!) && !names.some((n) => card.context?.includes(n)), card.badge);
+      assert.ok(card.explain?.includes(TENSES.find((t) => t.id === card.track!.tense)!.name.toLowerCase()), card.explain);
+      seen.add(card.track!.tense!);
+    }
+    assert.deepEqual([...seen].sort(), [...c.tenses].sort());
   });
 
   it("gender and agreement practice stays on the chapter's nouns and adjectives", () => {

@@ -7,8 +7,11 @@ import type { Level } from "./level";
 // signed-in people merged into users/{uid}/stats/course.
 
 export type StepId = "learn" | "see" | "words" | "quiz" | "practice" | "write" | "checkpoint";
-/** Verb forms, or for chapters about nouns and adjectives, gender and agreement questions on the chapter's words. */
-export type ChapterDrill = "conjugation" | "blanks" | "gender" | "agreement";
+/**
+ * Verb forms; `choose`, fill in the blank with the tense hidden, for chapters about choosing between tenses; or for
+ * chapters about nouns and adjectives, gender and agreement questions on the chapter's words.
+ */
+export type ChapterDrill = "conjugation" | "blanks" | "choose" | "gender" | "agreement";
 
 export interface Chapter {
   id: string;

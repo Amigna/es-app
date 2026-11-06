@@ -74,10 +74,9 @@ describe("reading questions", () => {
     assert.equal(next(), null);
   });
 
-  it("grades answers without saving them or linking away", () => {
+  it("grades answers without saving them", () => {
     const card = readingDeck(reading)()!;
     assert.equal(gradeCard(card, reading.questions[0].answer), "correct");
     assert.equal(card.track, undefined);
-    assert.equal(card.link, undefined);
   });
 });

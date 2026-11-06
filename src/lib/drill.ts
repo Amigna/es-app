@@ -2,6 +2,7 @@ import { stripAccents } from "./conjugation/accent";
 import { alsoAccepted, conjugate } from "./conjugation/engine";
 import { IRREGULARS } from "./conjugation/irregulars";
 import { TENSES, type TenseId } from "./conjugation/types";
+import type { GuideRule } from "./guides";
 import type { Track } from "./progress";
 import { blankOut, type Sentence } from "./sentences";
 import type { Verb } from "./verbs";
@@ -114,7 +115,8 @@ export interface Card {
   explain?: string;
   /** What this question counts toward in saved progress. */
   track?: Track;
-  link?: { href: string; label: string };
+  /** The guide rule a quiz question tests, shown after a miss like a missed verb's tense table. */
+  lesson?: GuideRule;
   /** The tense to show in full after a miss, with the person asked marked. */
   table?: TenseTable;
   /** Present on a card you flip and grade yourself instead of answering. Shown with the answer. */

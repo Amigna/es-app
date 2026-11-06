@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { TenseCard, moodHue } from "@/components/ConjugationView";
+import { RuleCard } from "@/components/GuideSections";
 import ReportProblem from "@/components/ReportProblem";
 import SpeakButton from "@/components/SpeakButton";
 import { conjugate } from "@/lib/conjugation/engine";
@@ -92,11 +92,6 @@ function Feedback({ result, card, input, speak, retry }: { result: Grade; card: 
         {speak && <SpeakButton text={speak} />}
       </div>
       {card.explain && <p className="mt-1">{card.explain}</p>}
-      {card.link && (
-        <Link href={card.link.href} className="mt-1 inline-block text-sm underline">
-          {card.link.label}
-        </Link>
-      )}
     </div>
   );
 }
@@ -598,6 +593,11 @@ export default function DrillRunner({
       </section>
 
       {result === "wrong" && card.table && <MissedTense key={card.id} table={card.table} />}
+      {result === "wrong" && card.lesson && (
+        <div key={card.id} className="animate-pop-in">
+          <RuleCard rule={card.lesson} />
+        </div>
+      )}
     </div>
   );
 }

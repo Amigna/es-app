@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Example, TenseCard, moodHue } from "@/components/ConjugationView";
 import DrillRunner from "@/components/DrillRunner";
 import GuideSections from "@/components/GuideSections";
+import { LevelUpOffer } from "@/components/LevelPicker";
 import { conjugate } from "@/lib/conjugation/engine";
 import { markVerb } from "@/lib/conjugation/regular";
 import { TENSES, type TenseId } from "@/lib/conjugation/types";
@@ -121,6 +122,7 @@ export default function CourseChapter({
   // By ID: the chapter arrives from the server as a copy, not the object in CHAPTERS.
   const number = CHAPTERS.findIndex((c) => c.id === chapter.id) + 1;
   const following = CHAPTERS[number];
+  const lastAtLevel = CHAPTERS.filter((c) => c.level === chapter.level).at(-1)?.id === chapter.id;
   const verbs = useMemo(() => chapter.verbs.map(findVerb).filter((v): v is Verb => !!v), [chapter]);
   const rareSet = useMemo(() => new Set(rare), [rare]);
 
@@ -207,6 +209,10 @@ export default function CourseChapter({
 
   const header = (
     <header className="space-y-2">
+      {/* Only outside a session: a stray tap here would end a quiz. */}
+      <Link href="/course" className="text-sm text-accent-700 underline dark:text-accent-400">
+        All chapters
+      </Link>
       <p className="text-sm text-stone-500">
         Chapter {number}
         {chapter.lesson && " · Short lesson"} · {levelInfo(chapter.level).name} ({chapter.level})
@@ -261,7 +267,9 @@ export default function CourseChapter({
               {open === "practice" &&
                 (chapter.tenses.length === 0
                   ? "15 questions on this chapter's words: el or la for each noun, and the right form of each adjective. Anything you miss comes back."
-                  : `15 questions on the ${tenses}, ${chapter.drills.length > 1 ? "mixing conjugation and fill in the blank" : chapter.drills[0] === "blanks" ? "filling in the blank in real sentences" : "typing the verb form"}. Anything you miss comes back.`)}
+                  : chapter.drills.includes("choose")
+                    ? `15 sentences with the tense hidden. Decide from the sentence whether it needs the ${tenses.replace(" and ", " or ")}, then type the form. Anything you miss comes back.`
+                    : `15 questions on the ${tenses}, ${chapter.drills.length > 1 ? "mixing conjugation and fill in the blank" : chapter.drills[0] === "blanks" ? "filling in the blank in real sentences" : "typing the verb form"}. Anything you miss comes back.`)}
               {open === "write" &&
                 `Translate 6 sentences in the ${tenses}, both ways. If yours doesn't match the model answer, you decide whether it counts.`}
               {open === "checkpoint" &&
@@ -299,6 +307,7 @@ export default function CourseChapter({
       {mine?.done ? (
         <section className="space-y-3 rounded-xl border border-t-4 border-stone-200 border-t-accent-500 bg-white p-5 dark:border-stone-800 dark:bg-stone-900">
           <p className="text-lg font-semibold">¡Capítulo terminado! Best checkpoint: {mine.best}%</p>
+          {lastAtLevel && <LevelUpOffer to={chapter.level} />}
           {following ? (
             <Link href={`/course/${following.id}`} className={`inline-flex items-center ${buttonClass}`}>
               Next: {following.title}

@@ -1,5 +1,6 @@
 import { blankDeck, listedWordCard, writingDeck } from "./card-decks";
 import type { Chapter, ChapterDrill } from "./course";
+import { TENSES } from "./conjugation/types";
 import { conjugationCard, limitedDeck, makeQuestion, type Card } from "./drill";
 import { quizCard, shuffled, type QuizQuestion } from "./quiz";
 import { sentencesFor, type SentenceBank } from "./sentences";
@@ -36,8 +37,25 @@ function wordQuestion(words: string[], kind: "gender" | "agreement", random: Ran
   return () => (fitting.length ? listedWordCard(fitting[Math.floor(random() * fitting.length)], kind, random) : null);
 }
 
+/**
+ * Fill in the blank with the tense hidden, so the sentence has to show which of the chapter's tenses it takes. After
+ * answering, it says which one. The saved item is still the verb and tense, so stats by tense stay right.
+ */
+function chooseTenseDeck({ chapter, verbs, bank }: ChapterData, random: Random): () => Card | null {
+  const blanks = blankDeck(bank, verbs, chapter.tenses, random);
+  const names = chapter.tenses.map((t) => TENSES.find((m) => m.id === t)!.name);
+  const label = `${names.slice(0, -1).join(", ")} or ${names.at(-1)!.toLowerCase()}?`;
+  return () => {
+    const card = blanks();
+    const tense = card && TENSES.find((t) => t.id === card.track?.tense);
+    if (!card || !tense) return card;
+    return { ...card, id: `choose:${card.id}`, badge: label, context: "Which tense does the sentence need?", explain: `This sentence takes the ${tense.name.toLowerCase()}.` };
+  };
+}
+
 /** The chapter's drills in turn: verb forms, or gender and agreement on its words. Endless, so callers limit it. */
-function drillDeck({ chapter, verbs, bank, rare }: ChapterData, random: Random): () => Card | null {
+function drillDeck(data: ChapterData, random: Random): () => Card | null {
+  const { chapter, verbs, bank, rare } = data;
   const decks: Record<ChapterDrill, () => () => Card | null> = {
     blanks: () => blankDeck(bank, verbs, chapter.tenses, random),
     conjugation: () => () => {
@@ -46,6 +64,7 @@ function drillDeck({ chapter, verbs, bank, rare }: ChapterData, random: Random):
     },
     gender: () => wordQuestion(chapter.words, "gender", random),
     agreement: () => wordQuestion(chapter.words, "agreement", random),
+    choose: () => chooseTenseDeck(data, random),
   };
   const kinds = chapter.drills.map((d) => decks[d]());
   let turn = Math.floor(random() * Math.max(1, kinds.length));

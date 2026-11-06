@@ -1,4 +1,5 @@
 import type { Card } from "./drill";
+import type { GuideRule } from "./guides";
 
 /** A guide question. With `choices` it's multiple choice; without, the answer is typed. */
 export interface QuizQuestion {
@@ -7,6 +8,10 @@ export interface QuizQuestion {
   choices?: string[];
   answer: string;
   why: string;
+  /** The guide rule it tests, by its text. */
+  rule?: string;
+  /** That rule in full, attached when the quizzes are loaded, to show after a miss. */
+  lesson?: GuideRule;
 }
 
 export type GuideQuizzes = Record<string, QuizQuestion[]>;
@@ -32,7 +37,8 @@ export function quizCard(slug: string, index: number, guideTitle: string, q: Qui
     shown: q.answer,
     choices: q.choices && shuffled(q.choices, random),
     explain: q.why,
-    link: { href: `/guides/${slug}`, label: `Read the guide: ${guideTitle}` },
+    // No link to the guide: a stray tap would leave the quiz. A miss shows the rule instead.
+    ...(q.lesson ? { lesson: q.lesson } : {}),
     track: { item: `quiz:${slug}:${index}` },
   };
 }

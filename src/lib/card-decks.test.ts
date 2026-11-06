@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { blankCard, blankDeck, dictationCard, dictationDeck, flashcardDeck, studyCards, newItemOrder, reviewCard, reviewDeck, vocabDeck, writingCard, writingDeck, type VocabOptions } from "./card-decks";
+import { blankCard, blankDeck, listedWordCard, dictationCard, dictationDeck, flashcardDeck, studyCards, newItemOrder, reviewCard, reviewDeck, vocabDeck, writingCard, writingDeck, type VocabOptions } from "./card-decks";
 import { accentTrap, englishAnswers, englishCore, gradeCard, type Card } from "./drill";
 import { DEFAULT_SETTINGS, NOUN_TOPICS, parseSettings } from "./drill-settings";
 import { schedulable } from "./schedule";
@@ -115,6 +115,17 @@ describe("vocabDeck", () => {
     assert.equal(vocabDeck(options({ kinds: [] }))(), null);
     assert.equal(vocabDeck(options({ kinds: ["gender"], wordTypes: ["adverb"] }))(), null);
     assert.equal(vocabDeck(options({ kinds: ["agreement"], wordTypes: ["noun"] }))(), null);
+  });
+});
+
+describe("adjectives in Spanish", () => {
+  it("accept the feminine form, and show the masculine", () => {
+    const card = listedWordCard("adjective:bonito", "toSpanish")!;
+    assert.equal(gradeCard(card, "bonita"), "correct");
+    assert.equal(gradeCard(card, "bonito"), "correct");
+    assert.equal(gradeCard(card, "bonitos"), "wrong");
+    assert.equal(card.shown, "bonito");
+    assert.equal(gradeCard(listedWordCard("adjective:trabajador", "toSpanish")!, "trabajadora"), "correct");
   });
 });
 

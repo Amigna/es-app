@@ -135,10 +135,10 @@
       {
         "heading": "The, a and some",
         "rules": [
-          {"rule": "The: el, la, los, las", "examples": [{"es": "el libro, los libros", "en": "the book, the books"}, {"es": "la mesa, las mesas", "en": "the table, the tables"}]},
-          {"rule": "A and some: un, una, unos, unas", "examples": [{"es": "Tengo un perro.", "en": "I have a dog."}, {"es": "Busco una casa grande.", "en": "I'm looking for a big house."}, {"es": "Compré unos zapatos.", "en": "I bought some shoes."}]},
+          {"rule": "'The': el, la, los, las", "examples": [{"es": "el libro, los libros", "en": "the book, the books"}, {"es": "la mesa, las mesas", "en": "the table, the tables"}]},
+          {"rule": "'A' and 'some': un, una, unos, unas", "examples": [{"es": "Tengo un perro.", "en": "I have a dog."}, {"es": "Busco una casa grande.", "en": "I'm looking for a big house."}, {"es": "Compré unos zapatos.", "en": "I bought some shoes."}]},
           {"rule": "A and el join as al, and de and el join as del", "examples": [{"es": "Vamos al parque.", "en": "We're going to the park."}, {"es": "Es el carro del vecino.", "en": "It's the neighbor's car."}], "note": "Only with el: a la playa and de la casa stay as they are."},
-          {"rule": "Spanish uses the where English doesn't", "examples": [{"es": "Me gusta el café.", "en": "I like coffee."}, {"es": "El lunes tengo clase.", "en": "On Monday I have class."}, {"es": "La señora Gómez está aquí.", "en": "Mrs. Gómez is here."}], "note": "And the other way around: no un with a profession. Soy maestra means I'm a teacher."}
+          {"rule": "Spanish uses 'the' where English doesn't", "examples": [{"es": "Me gusta el café.", "en": "I like coffee."}, {"es": "El lunes tengo clase.", "en": "On Monday I have class."}, {"es": "La señora Gómez está aquí.", "en": "Mrs. Gómez is here."}], "note": "And the other way around: no un with a profession. Soy maestra means I'm a teacher."}
         ]
       },
       {
@@ -153,7 +153,7 @@
         "heading": "Adjectives agree with the noun",
         "rules": [
           {"rule": "Adjectives ending in -o have four forms", "examples": [{"es": "un carro rojo, una casa roja", "en": "a red car, a red house"}, {"es": "unos carros rojos, unas casas rojas", "en": "some red cars, some red houses"}]},
-          {"rule": "Adjectives ending in -e or a consonant only change for the plural", "examples": [{"es": "un examen fácil, una pregunta fácil", "en": "an easy test, an easy question"}, {"es": "unos niños felices", "en": "some happy children"}]},
+          {"rule": "Adjectives ending in -e or a consonant only change for the plural", "examples": [{"es": "un examen fácil, una pregunta fácil", "en": "an easy test, an easy question"}, {"es": "unas preguntas fáciles", "en": "some easy questions"}, {"es": "una niña feliz", "en": "a happy girl"}, {"es": "unos niños felices", "en": "some happy children"}]},
           {"rule": "Nationalities and words ending in -or add -a", "examples": [{"es": "un chico español, una chica española", "en": "a Spanish boy, a Spanish girl"}, {"es": "Mi hermana es muy trabajadora.", "en": "My sister is very hardworking."}]}
         ]
       },
@@ -162,7 +162,7 @@
         "rules": [
           {"rule": "Usually after the noun", "examples": [{"es": "una casa blanca", "en": "a white house"}, {"es": "un libro interesante", "en": "an interesting book"}]},
           {"rule": "Numbers and words for how many go before", "examples": [{"es": "dos perros", "en": "two dogs"}, {"es": "mucha gente", "en": "a lot of people"}, {"es": "otro día", "en": "another day"}]},
-          {"rule": "Bueno and malo drop the -o before a masculine noun, and grande becomes gran", "examples": [{"es": "Hoy es un buen día.", "en": "Today is a good day."}, {"es": "Fue un mal momento.", "en": "It was a bad moment."}, {"es": "Es una gran idea.", "en": "It's a great idea."}], "note": "Gran before a noun means great, and grande after it means big: un gran hombre, un hombre grande."}
+          {"rule": "Bueno and malo drop the -o before a masculine noun, and grande becomes gran", "examples": [{"es": "Hoy es un buen día.", "en": "Today is a good day."}, {"es": "Fue un mal momento.", "en": "It was a bad moment."}, {"es": "Es una gran idea.", "en": "It's a great idea."}], "note": "Gran before a noun means 'great', and grande after it means 'big': un gran hombre, un hombre grande."}
         ]
       },
       {
@@ -170,14 +170,14 @@
         "rules": [
           {"rule": "Mi, tu and su add -s for a plural noun", "examples": [{"es": "mi casa, mis hermanos", "en": "my house, my brothers"}, {"es": "tu carro, tus llaves", "en": "your car, your keys"}]},
           {"rule": "Nuestro agrees like any adjective ending in -o", "examples": [{"es": "nuestra familia, nuestros amigos", "en": "our family, our friends"}]},
-          {"rule": "Su can mean his, her, its, their or your", "examples": [{"es": "Su casa es grande.", "en": "His, her, their or your house is big."}, {"es": "La casa de ella es grande.", "en": "Her house is big."}], "note": "When it isn't clear, say de él, de ella, de ellos or de usted after the noun."}
+          {"rule": "Su can mean 'his', 'her', 'its', 'their' or 'your'", "examples": [{"es": "Su casa es grande.", "en": "His, her, their or your house is big."}, {"es": "La casa de ella es grande.", "en": "Her house is big."}], "note": "When it isn't clear, say de él, de ella, de ellos or de usted after the noun."}
         ]
       },
       {
         "heading": "This and that",
         "rules": [
-          {"rule": "Este for this, ese for that, aquel for that over there", "examples": [{"es": "este libro, esta mesa", "en": "this book, this table"}, {"es": "esos zapatos", "en": "those shoes"}, {"es": "aquella montaña", "en": "that mountain over there"}]},
-          {"rule": "On their own, they mean this one or that one", "examples": [{"es": "Quiero este.", "en": "I want this one."}, {"es": "¿Cuál prefieres, esta o esa?", "en": "Which do you prefer, this one or that one?"}]},
+          {"rule": "Este for 'this' and 'these', ese for 'that' and 'those', aquel for 'that over there'", "examples": [{"es": "este libro, esta mesa", "en": "this book, this table"}, {"es": "estos libros, estas mesas", "en": "these books, these tables"}, {"es": "ese carro, esa casa", "en": "that car, that house"}, {"es": "esos zapatos, esas llaves", "en": "those shoes, those keys"}, {"es": "aquel edificio, aquella montaña", "en": "that building over there, that mountain over there"}, {"es": "aquellos días", "en": "those days, long ago"}], "note": "Ese is for something near the person you're talking to, or just a little away. Aquel is for something far from both of you, in space or in time."},
+          {"rule": "On their own, they mean 'this one' or 'that one'", "examples": [{"es": "Quiero este.", "en": "I want this one."}, {"es": "¿Cuál prefieres, esta o esa?", "en": "Which do you prefer, this one or that one?"}]},
           {"rule": "Esto and eso for ideas, or things you can't name", "examples": [{"es": "¿Qué es esto?", "en": "What's this?"}, {"es": "Eso no es verdad.", "en": "That's not true."}]}
         ]
       }
@@ -971,9 +971,9 @@
     "summary": "Fixed expressions that don't translate word for word, from tener hambre to meter la pata, and the sayings people quote every day.",
     "sections": [
       {
-        "heading": "Tener where English says be",
+        "heading": "Tener where English says 'be'",
         "rules": [
-          {"rule": "Hunger, thirst, sleepiness, cold, heat, fear and hurry", "examples": [{"es": "Tengo hambre.", "en": "I'm hungry."}, {"es": "¿Tienes frío?", "en": "Are you cold?"}, {"es": "Tenemos prisa.", "en": "We're in a hurry."}], "note": "These are nouns, so very is mucho or mucha: tengo mucha hambre."},
+          {"rule": "Hunger, thirst, sleepiness, cold, heat, fear and hurry", "examples": [{"es": "Tengo hambre.", "en": "I'm hungry."}, {"es": "¿Tienes frío?", "en": "Are you cold?"}, {"es": "Tenemos prisa.", "en": "We're in a hurry."}], "note": "These are nouns, so 'very' is mucho or mucha: tengo mucha hambre."},
           {"rule": "Tener razón: to be right", "examples": [{"es": "Tienes razón.", "en": "You're right."}]},
           {"rule": "Tener ganas de: to feel like", "examples": [{"es": "Tengo ganas de bailar.", "en": "I feel like dancing."}]}
         ]

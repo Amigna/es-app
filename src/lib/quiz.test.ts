@@ -11,6 +11,12 @@ describe("quiz data", () => {
     for (const [slug, questions] of Object.entries(GUIDE_QUIZZES)) assert.ok(questions.length >= 10, slug);
   });
 
+  it("ties every question to a rule in its guide, to show after a miss", () => {
+    for (const [slug, questions] of Object.entries(GUIDE_QUIZZES)) {
+      questions.forEach((q, i) => assert.equal(q.lesson?.rule, q.rule, `${slug} ${i}: no rule "${q.rule}"`));
+    }
+  });
+
   it("has well-formed questions", () => {
     for (const [slug, questions] of Object.entries(GUIDE_QUIZZES)) {
       const seen = new Set<string>();
@@ -46,7 +52,14 @@ describe("quiz cards", () => {
     assert.equal(gradeCard(card, "Es"), "correct");
     assert.equal(gradeCard(card, "Son"), "wrong");
     assert.equal(card.explain, "Singular.");
-    assert.equal(card.link?.href, "/guides/numbers-and-dates");
+    assert.equal(card.lesson, undefined);
+  });
+
+  it("carries the lesson's rule, to show after a miss, and never a link away", () => {
+    const lesson = { rule: "Es la una", examples: [{ es: "Es la una.", en: "It's one." }] };
+    const card = quizCard("numbers-and-dates", 0, "Numbers", { ...question, lesson });
+    assert.deepEqual(card.lesson, lesson);
+    assert.ok(!("link" in card));
   });
 
   it("deals every question once, then runs out", () => {

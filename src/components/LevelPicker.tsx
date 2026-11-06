@@ -8,24 +8,33 @@ import { progressEnabled } from "@/lib/progress-queue";
 const subscribe = () => () => {};
 const onServer = () => false;
 
-/** Choosing a level also sets the drill's tenses and verbs to match it. */
-export function LevelPicker({ onChosen }: { onChosen?: () => void }) {
-  const level = useLevel();
+/** Sets the level and the drill's tenses and verbs to match. Resolves to false when it's only saved in this browser. */
+function useSetLevel() {
   const [, update] = useDrillSettings();
-  const [failed, setFailed] = useState(false);
-
-  async function pick(id: Level) {
+  return async (id: Level) => {
     const info = LEVELS.find((l) => l.id === id)!;
     update({ tenses: info.tenses, pool: info.pool });
-    setFailed(false);
-    onChosen?.();
     try {
       await chooseLevel(id);
+      return true;
     } catch (err) {
       // It's still saved in this browser.
       console.error("Couldn't save the level", err);
-      setFailed(true);
+      return false;
     }
+  };
+}
+
+/** Choosing a level also sets the drill's tenses and verbs to match it. */
+export function LevelPicker({ onChosen }: { onChosen?: () => void }) {
+  const level = useLevel();
+  const setLevel = useSetLevel();
+  const [failed, setFailed] = useState(false);
+
+  async function pick(id: Level) {
+    setFailed(false);
+    onChosen?.();
+    setFailed(!(await setLevel(id)));
   }
 
   return (
@@ -53,6 +62,48 @@ export function LevelPicker({ onChosen }: { onChosen?: () => void }) {
           Saved on this device, but couldn&apos;t save it to your account. Check your connection and choose again.
         </p>
       )}
+    </div>
+  );
+}
+
+/**
+ * After finishing a level's last course chapter, asks whether to set that as the level, when the saved one is lower or
+ * missing. Asked, not done, because the level also resets the drill's tenses and verbs.
+ */
+export function LevelUpOffer({ to }: { to: Level }) {
+  const level = useLevel();
+  const setLevel = useSetLevel();
+  const [answer, setAnswer] = useState<"pending" | "moved" | "failed" | "later">("pending");
+  const info = LEVELS.find((l) => l.id === to)!;
+  const below = !level || LEVELS.findIndex((l) => l.id === level) < LEVELS.findIndex((l) => l.id === to);
+  if (answer === "later" || (answer === "pending" && !below)) return null;
+  if (answer !== "pending") {
+    return (
+      <p role="status" className="text-sm">
+        {answer === "moved"
+          ? `Your level is now ${info.name} (${to}). Drills start with its tenses and words.`
+          : "Saved on this device, but couldn't save it to your account. Check your connection and change it on the Drills page."}
+      </p>
+    );
+  }
+  return (
+    <div className="space-y-2 rounded-lg border border-accent-300 p-3 dark:border-accent-800">
+      <p>
+        You&apos;ve finished the {info.name.toLowerCase()} ({to}) chapters. Set your level to {to}? Drills will start with its tenses, verbs and
+        words.
+      </p>
+      <div className="flex flex-wrap gap-3">
+        <button
+          type="button"
+          onClick={async () => setAnswer((await setLevel(to)) ? "moved" : "failed")}
+          className="h-10 rounded-xl bg-accent-700 px-4 font-medium text-white transition hover:bg-accent-800"
+        >
+          Set my level to {to}
+        </button>
+        <button type="button" onClick={() => setAnswer("later")} className="h-10 px-2 text-sm text-accent-700 underline dark:text-accent-400">
+          Not now
+        </button>
+      </div>
     </div>
   );
 }

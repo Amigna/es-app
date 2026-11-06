@@ -36,7 +36,6 @@ export function readingDeck(reading: Reading, random: () => number = Math.random
   const cards = reading.questions.map((q, i): Card => ({
     ...quizCard(reading.slug, i, reading.title, q, random),
     id: `reading:${reading.slug}:${i}`,
-    link: undefined,
     track: undefined,
   }));
   return () => cards.shift() ?? null;

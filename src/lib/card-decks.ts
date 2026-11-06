@@ -60,12 +60,15 @@ const plainWord =
   (type: CardType) =>
   (w: { es: string; en: string; ex?: Example; note?: string }): Word => ({ es: w.es, en: w.en, type, accepted: [w.es], shown: w.es, ex: w.ex, note: w.note });
 
+/** Bonita is as right as bonito for "pretty", so the feminine is accepted too. The list's masculine form is shown. */
+const adjectiveWord = (a: Adjective): Word => ({ ...plainWord("adjective")(a), accepted: [...new Set(adjectiveForms(a).slice(0, 2))] });
+
 /** Includes the word type because some spellings are two words: mañana is both "morning" and "tomorrow". */
 const vocabTrack = (type: CardType, es: string, kind: VocabKind) => ({ item: `vocab:${type}:${es}:${kind}` });
 
 const allWords = () => [
   ...NOUNS.map(nounWord),
-  ...ADJECTIVES.map(plainWord("adjective")),
+  ...ADJECTIVES.map(adjectiveWord),
   ...ADVERBS.map(plainWord("adverb")),
   ...SMALL_WORDS.map(plainWord("small")),
 ];
@@ -163,7 +166,7 @@ export function vocabDeck({ kinds, wordTypes, topics, level }: VocabOptions, ran
 
   const words = [
     ...nouns.map(nounWord),
-    ...adjectives.map(plainWord("adjective")),
+    ...adjectives.map(adjectiveWord),
     ...adverbs.map(plainWord("adverb")),
     ...smallWords.map(plainWord("small")),
   ];
@@ -222,7 +225,7 @@ function chosenWords(types: CardType[], topics: string[], level: Level | null | 
     ...leveled("noun", NOUNS)
       .filter((n) => topics.length === 0 || topics.includes(n.topic))
       .map(nounWord),
-    ...leveled("adjective", ADJECTIVES).map(plainWord("adjective")),
+    ...leveled("adjective", ADJECTIVES).map(adjectiveWord),
     ...leveled("adverb", ADVERBS).map(plainWord("adverb")),
     ...leveled("small", SMALL_WORDS).map(plainWord("small")),
     ...(has("phrase") ? PHRASES.map(plainWord("phrase")) : []),
@@ -274,6 +277,14 @@ export function studyCards({ side, types, topics, level }: StudyOptions, random:
   });
 }
 
+// In me gustan los perros, the subject is the dogs. "ellos / ustedes" reads as "they like", so these say what they agree with.
+const LIKE_GUSTAR = new Set(["gustar", "encantar", "interesar", "importar", "molestar", "faltar", "doler"]);
+
+function agreesWithThing(inf: string, person: number): string | null {
+  if (!LIKE_GUSTAR.has(inf)) return null;
+  return person === 2 ? "agreeing with one thing" : person === 4 ? "agreeing with more than one thing" : null;
+}
+
 /** The example sentence with its verb removed, or null when the tense has no usable sentence. */
 export function blankCard(bank: SentenceBank, verb: Verb, tense: TenseId, random: Random = Math.random): Card | null {
   const sentences = sentencesFor(bank, verb.inf, tense);
@@ -293,7 +304,7 @@ export function blankCard(bank: SentenceBank, verb: Verb, tense: TenseId, random
     titleIsSpanish: true,
     subtitle: sentence.en,
     sentence: sentence.es,
-    ask: `${verb.inf}, ${personLabel(tense, sentence.person)}`,
+    ask: `${verb.inf}, ${agreesWithThing(verb.inf, sentence.person) ?? personLabel(tense, sentence.person)}`,
     answers: [answer, ...alsoAccepted(conjugation, answer)],
     shown: answer.toLowerCase(),
     table: tenseTable(verb, tense, sentence.person, sentences, sentence),
