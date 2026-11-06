@@ -16,6 +16,7 @@ import {
   where,
   writeBatch,
 } from "firebase/firestore";
+import { mergeCourse, parseCourse, sameCourse, type CourseProgress } from "./course";
 import { auth, db } from "./firebase";
 import { isLevel, type Level } from "./level";
 import { localDay, summarize, type Answer, type DayTally, type Mistake, type StreakRecord, type Summary, type Tally } from "./progress";
@@ -129,12 +130,13 @@ export interface ProgressData {
   seen: string[];
   /** Null until a drill streak has been saved. */
   drillStreak: StreakRecord | null;
+  course: CourseProgress;
 }
 
 export async function loadProgress(uid: string): Promise<ProgressData> {
   const items = collection(db(), "users", uid, "items");
   const cutoff = localDay(new Date(Date.now() - DAYS_TO_LOAD * 24 * 60 * 60 * 1000));
-  const [summary, recent, practiced, mastered, dueToday, seen, settings, records] = await Promise.all([
+  const [summary, recent, practiced, mastered, dueToday, seen, settings, records, course] = await Promise.all([
     getDoc(statsDoc(uid, "summary")),
     // Days are keyed by date, so a range on the ID needs no custom index, unlike sorting it descending.
     getDocs(query(collection(db(), "users", uid, "days"), where(documentId(), ">=", cutoff))),
@@ -144,6 +146,7 @@ export async function loadProgress(uid: string): Promise<ProgressData> {
     getDoc(statsDoc(uid, "seen")),
     loadReviewSettings(uid),
     getDoc(statsDoc(uid, "records")),
+    getDoc(statsDoc(uid, "course")),
   ]);
   const data = summary.data() ?? {};
   return {
@@ -160,6 +163,7 @@ export async function loadProgress(uid: string): Promise<ProgressData> {
     reviewsPerDay: settings.reviewsPerDay,
     seen: seen.data()?.items ?? [],
     drillStreak: (records.data()?.drillStreak as StreakRecord | undefined) ?? null,
+    course: parseCourse(course.data()),
   };
 }
 
@@ -210,6 +214,19 @@ export async function setMistakeHidden(day: string, mistake: Mistake, hidden: bo
   const { item, label, prompt, given, answer, grade } = mistake;
   const entry = { item, label, prompt, given, answer, grade };
   await setDoc(doc(db(), "users", uid, "days", day), { hiddenMistakes: hidden ? arrayUnion(entry) : arrayRemove(entry) }, { merge: true });
+}
+
+/** Merges this browser's course progress with the account's and saves the result, which it returns. */
+export async function saveCourse(local: CourseProgress): Promise<CourseProgress> {
+  const uid = await currentUid();
+  if (!uid) throw new Error("Not signed in");
+  const ref = statsDoc(uid, "course");
+  return runTransaction(db(), async (t) => {
+    const saved = parseCourse((await t.get(ref)).data());
+    const merged = mergeCourse(saved, local);
+    if (!sameCourse(merged, saved)) t.set(ref, merged);
+    return merged;
+  });
 }
 
 /** Null when nobody is signed in or no level has been saved. */

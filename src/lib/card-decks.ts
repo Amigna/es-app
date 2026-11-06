@@ -395,6 +395,17 @@ function vocabReviewCard(type: string, es: string, kind: string, random: Random)
   return kind === "toSpanish" ? toSpanishCard(word, everyWord) : toEnglishCard(word);
 }
 
+/**
+ * A card for one word from a hand-picked list, like a course chapter's, written `type:es`. A flashcard shares its item
+ * with the typed question, as in the flashcard drill. Null when the word is no longer in the lists.
+ */
+export function listedWordCard(id: string, kind: "flashcard" | "toSpanish", random: Random = Math.random): Card | null {
+  const [type, es] = id.split(":");
+  if (kind === "toSpanish") return vocabReviewCard(type, es, "toSpanish", random);
+  const word = allWords().find((w) => w.type === type && w.es === es);
+  return word ? flashcard(word, "toEnglish") : null;
+}
+
 /** Rebuilds a card from a saved item ID, or null when its verb or word is no longer in the data. */
 export function reviewCard(item: string, bank: SentenceBank, rare: Set<string>, random: Random = Math.random): Card | null {
   const [source, ...parts] = item.split(":");

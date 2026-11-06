@@ -62,7 +62,8 @@ function rows(meta: TenseMeta, t: TenseForms, voseo: boolean, marks?: TenseMarks
   return out;
 }
 
-function Example({ sentence, form }: { sentence: Sentence; form: string }) {
+/** A sentence with the verb form in bold and a speaker. Also used for a course chapter's examples. */
+export function Example({ sentence, form }: { sentence: Sentence; form: string }) {
   const hit = findForm(sentence.es, form);
   return (
     <div className="mt-3 flex items-start justify-between gap-2 border-t border-stone-100 pt-3 dark:border-stone-800">
@@ -103,7 +104,10 @@ export function TenseCard({
   sentence,
   highlight,
   report = true,
+  title,
 }: {
+  /** Shown in place of the tense's name, for a page that shows one tense across several verbs. */
+  title?: string;
   infinitive: string;
   meta: TenseMeta;
   forms: TenseForms;
@@ -120,7 +124,7 @@ export function TenseCard({
   if (list.length === 0) return null;
   return (
     <section className="flex flex-col rounded-xl border border-t-4 border-stone-200 border-t-accent-500 bg-white p-4 dark:border-stone-800 dark:border-t-accent-600 dark:bg-stone-900">
-      <h3 className="font-semibold">{meta.name}</h3>
+      <h3 className="font-semibold">{title ?? meta.name}</h3>
       <p className="text-sm text-stone-500">
         {meta.spanish} · {meta.hint}
       </p>

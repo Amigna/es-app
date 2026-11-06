@@ -68,6 +68,67 @@ Beginners and advanced learners used to get the same drills. A level (A1 to B2, 
 - [ ] Step 4, if beginners still struggle: multiple choice before typing, or a "show the pattern" hint that counts as a miss
 - A level changed on one device doesn't reach another device that already has one, since the account is only read when this browser has no level. Fine for now; sync on sign-in if it causes confusion
 
+## Course
+
+- [x] Framework (2026-11-05): `/course` lists the 18 chapters by level, with the level's first unfinished chapter suggested, and `/course/[id]` walks through the steps. Chapters are defined in `src/data/course.json` (tenses, model verbs, verbs, drills, 12 to 25 words picked from the existing lists at the chapter's level, and the guide with optional sections and quiz questions by position). Steps without content are left out: no guide means no Learn or Quiz, and no model verbs means no See it. Practice is 15 questions, Write is 6 sentences both ways, and the checkpoint is 15 questions (6 verb, 5 quiz, 4 words typed in Spanish; parts without content give their share to the others) with no retries, passing at 80%. Answers count toward stats and the review schedule like any drill, and quiz questions keep their guide position, so they're the same saved item. Progress is kept in localStorage (`course-progress`, `src/lib/course-progress.ts`) and, signed in, merged into `users/{uid}/stats/course` in a transaction: steps add up, the best score and earliest finish win, and tries (last 20) are kept. It syncs on sign-in, on opening a course page or /progress, and after each step, and clears on sign-out. /progress has a Course section with each chapter's first try, best and finish date. The home page has a Course card that becomes "Continue the course", and the nav has a Course link. Tests in `course.test.ts` check the data and decks. `.verify/browser/course.mjs` runs chapter 1 from See it to a failed and then a passed checkpoint, signed out
+- [ ] Content: new guides with quizzes for chapters 1, 3, 4, 7, 8 and 9 (present regular, stem changes and irregular yo, gustar, preterite regular and irregular, imperfect), which have no Learn or Quiz step until then. Chapter 17 uses the subjunctive guide's imperfect subjunctive section with no quiz, so it needs its own guide too. Adding a guide is just `"guide": {"slug": ...}` in `course.json`
+- [ ] Por vs. para, comparisons, relative pronouns, gender and numbers as short lessons between chapters
+- [ ] Gustar (chapter 4) and preterite vs. imperfect (chapter 10) only use fill in the blank, since conjugation would ask for forms like "yo encanto". Blanks show the tense as a label, so in chapter 10 the practice doesn't test choosing the tense; the quiz and checkpoint quiz questions do
+
+A step-by-step path through Spanish grammar, chapter by chapter, with progress saved as you go. It's modeled on the format of workbooks like *Advanced Spanish Step-by-Step*: one topic per chapter with explanation, examples, vocabulary, quizzes and writing. It doesn't use their content. The chapter order, explanations, sentences and exercises are our own, since the book's text and exercises belong to the publisher. Most of the parts already exist (guides, quizzes, sentences, levels, drills), so this mostly ties them together.
+
+Each chapter is a short series of steps, done in order:
+
+1. **Learn:** a short lesson. Use an existing guide where there is one, or write a new one.
+2. **See it:** the conjugation pattern, plus example sentences from our sentence bank for that tense.
+3. **Words:** 15 to 25 words for the chapter's theme, taken from the existing lists at the chapter's level. No new words needed.
+4. **Quiz:** the guide quiz.
+5. **Practice:** a conjugation drill and a fill-in-the-blank drill, locked to the chapter's tense and the level's verbs.
+6. **Write:** translate 5 to 10 sentences, graded like the writing drill.
+7. **Checkpoint:** a short mixed test. Passing (say 80%) marks the chapter done, and you can retake it.
+
+Proposed chapters, our own order, matching most first- and second-year courses:
+
+| # | Chapter | Level | Guide |
+|---|---|---|---|
+| 1 | Present tense: regular verbs | A1 | new |
+| 2 | Ser and estar | A1 | ser-vs-estar |
+| 3 | Present: stem changes and irregular yo forms | A1 | new |
+| 4 | Gustar and similar verbs | A1 | new |
+| 5 | The near future: ir a + infinitive | A1 | talking-about-the-future (part) |
+| 6 | Reflexive verbs | A2 | reflexive-verbs |
+| 7 | Preterite: regular | A2 | new |
+| 8 | Preterite: irregular | A2 | new |
+| 9 | Imperfect | A2 | new |
+| 10 | Preterite vs. imperfect | A2 | preterite-vs-imperfect |
+| 11 | Object pronouns | A2 | object-pronouns |
+| 12 | Commands | B1 | commands |
+| 13 | Present perfect | B1 | perfect-tenses (part) |
+| 14 | Future and conditional | B1 | talking-about-the-future |
+| 15 | Present subjunctive: forms and wishes | B1 | subjunctive (part) |
+| 16 | Subjunctive: doubt, emotion and conjunctions | B1 | subjunctive |
+| 17 | Imperfect subjunctive and si clauses | B2 | new |
+| 18 | Pluperfect and the other perfect tenses | B2 | perfect-tenses |
+
+Por vs. para, comparisons, relative pronouns, gender and numbers go in as short extra lessons between chapters, or as sections inside the chapter where they fit.
+
+How it works:
+
+- **Where:** a new `/course` page listing chapters with progress (not started, in progress, done, checkpoint score), and a chapter page that walks through the steps. A "Continue" button on the home page goes to the next unfinished step.
+- **Open order:** every chapter stays open, and the level only suggests where to start (A2 starts at chapter 6). The next chapter is highlighted, not locked. Locking frustrates people who already know some of it.
+- **Saving:** progress is saved to `users/{uid}/stats/course` as `{chapterId: {steps: [...], best: score, done: day}}`. One small doc, already covered by the rules. Signed-out people keep progress in localStorage, and it moves to the account when they sign in.
+- **Review:** drill and quiz answers inside chapters count toward progress and spaced repetition like any drill, so chapter work feeds Today's review.
+- **Trends:** checkpoint scores and finish dates go on /progress (chapters done over time), in line with showing improvement and not just totals.
+- **Teacher classes:** chapters could later be assigned like any other assignment.
+
+Effort, roughly:
+
+- The course framework (pages, steps, saving, checkpoint): 1 to 2 sessions.
+- Content: about 7 new guides with quizzes, chapter word picks, writing sentences and checkpoint questions: 2 to 3 sessions.
+- Tenses past chapter 12 need more example sentences, which ties in with the sentence backlog. The present perfect and -ra imperfect subjunctive batches come first there.
+
+Best after levels step 3, since chapters lean on levels for words and verbs.
+
 ## Later
 
 - [ ] More audio, after the word lists pass the phone check in "To verify": example sentences on regional pages, then reading passages a sentence at a time. Verb page sentences and drill sentences have it already
@@ -159,6 +220,8 @@ The app started as invite-only for friends and family. Sign-ups opened on 2026-1
 - [ ] Skim `src/data/vocab/levels.json`, especially A1 and A2, for words at the wrong level. They're my judgment plus subtitle frequency, not a textbook list. Moving a word is just moving it between arrays; the test checks each word appears once
 - [ ] Signed in, clear `level` from localStorage (or use a new browser) and confirm the level question appears on any page, choose one, and check `users/{uid}/stats/settings` gets `level`. Then clear localStorage again and confirm it's loaded from the account without asking. Only seen signed out (`.verify/browser/level.mjs`)
 - [ ] Signed in, remove a recent mistake on /progress, reload, and confirm it stays gone and `days/{day}` has it under `hiddenMistakes`. Also try Undo, and "Report a problem" on a mistake. Not run against real Firestore
+- [ ] Signed in, finish a course step and a checkpoint, then check `users/{uid}/stats/course` and the Course section on /progress. Also do a step signed out, sign in on /account, and confirm it moves to the account; then sign out and confirm the course list starts empty. Course saving hasn't run against real Firestore
+- [ ] Writing drill, into Spanish: a near miss now underlines the words that differ from the model answer, and says when an accent makes another word (cuanto for cuánto). Only checked in code, not seen in a browser
 - [ ] Dictation counts a word spelled differently but sounding the same (tuvo and tubo, haber and a ver) as wrong. That's the point of dictation, but decide whether it feels unfair in practice
 
 ## How content gets added

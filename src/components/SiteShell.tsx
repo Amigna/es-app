@@ -15,6 +15,7 @@ const NAV = [
   ["/phrases", "Phrases", 350],
   ["/regional", "Regional", 300],
   ["/reading", "Reading", 270],
+  ["/course", "Course", 105],
   ["/guides", "Guides", 205],
   ["/drill", "Drills", 325],
 ] as const;
@@ -60,8 +61,8 @@ export default function SiteShell({ children }: { children: ReactNode }) {
               ))}
             </div>
           </div>
-          {/* A tidy grid on phones with the last link centered, a row under the title on tablets, all one line on wide screens. */}
-          <nav className="grid grid-cols-3 gap-1 text-sm md:flex">
+          {/* A tidy grid on phones with the last two links centered, a row under the title on tablets, all one line on wide screens. */}
+          <nav className="grid grid-cols-6 gap-1 text-sm md:flex">
             {NAV.map(([href, label, hue]) => (
               <NavLink
                 key={href}
@@ -69,7 +70,7 @@ export default function SiteShell({ children }: { children: ReactNode }) {
                 label={label}
                 hue={hue}
                 active={isActive(href, segment)}
-                className="last:col-start-2"
+                className="col-span-2 nth-last-2:col-start-2"
               />
             ))}
           </nav>

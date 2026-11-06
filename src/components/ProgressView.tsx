@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import { AccuracyTrend, PracticeCalendar } from "@/components/ProgressCharts";
 import ReportProblem from "@/components/ReportProblem";
 import { TENSES } from "@/lib/conjugation/types";
+import { CHAPTERS, PASS_SCORE, chaptersDone } from "@/lib/course";
+import { syncCourse } from "@/lib/course-progress";
 import { useDrillSettings } from "@/lib/drill-settings";
 import { auth, firebaseConfigured } from "@/lib/firebase";
 import { MAX_PRACTICE_ITEMS, practiceHref, weakSpots, type WeakSpot } from "@/lib/practice";
@@ -366,6 +368,62 @@ function VocabularySection({ data, wordLists }: { data: ProgressData; wordLists:
   );
 }
 
+/** Checkpoints taken, with the first score beside the best, so improvement shows and not only a total. */
+function CourseSection({ data }: { data: ProgressData }) {
+  const today = localDay();
+  const taken = CHAPTERS.filter((c) => data.course[c.id]?.tries?.length);
+  const done = chaptersDone(data.course);
+  return (
+    <section>
+      <h2 className="mb-3 text-xl font-semibold">Course</h2>
+      {taken.length === 0 ? (
+        <p className="text-stone-600 dark:text-stone-400">
+          <Link href="/course" className={linkClass}>
+            Start the course
+          </Link>{" "}
+          and your checkpoint scores will show up here.
+        </p>
+      ) : (
+        <div className="space-y-3">
+          <p>
+            {done} of {CHAPTERS.length} chapters done.
+          </p>
+          <div className="overflow-x-auto rounded-xl border border-stone-200 bg-white dark:border-stone-800 dark:bg-stone-900">
+            <table className="w-full text-left">
+              <thead>
+                <tr className="border-b border-stone-200 text-sm text-stone-500 dark:border-stone-800">
+                  <th scope="col" className="px-4 py-2 font-medium">Chapter</th>
+                  <th scope="col" className="px-4 py-2 text-right font-medium">First try</th>
+                  <th scope="col" className="px-4 py-2 text-right font-medium">Best</th>
+                  <th scope="col" className="px-4 py-2 text-right font-medium">Done</th>
+                </tr>
+              </thead>
+              <tbody>
+                {taken.map((c) => {
+                  const mine = data.course[c.id];
+                  return (
+                    <tr key={c.id} className="border-b border-stone-100 last:border-0 dark:border-stone-800">
+                      <th scope="row" className="px-4 py-2 font-normal">
+                        <Link href={`/course/${c.id}`} className="underline decoration-stone-300 underline-offset-2 dark:decoration-stone-600">
+                          {CHAPTERS.indexOf(c) + 1}. {c.title}
+                        </Link>
+                      </th>
+                      <td className="px-4 py-2 text-right tabular-nums">{mine.tries![0].score}%</td>
+                      <td className="px-4 py-2 text-right tabular-nums">{mine.best}%</td>
+                      <td className="px-4 py-2 text-right whitespace-nowrap">{mine.done ? dayLabel(mine.done, today) : "–"}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-sm text-stone-500">A checkpoint of {PASS_SCORE}% or more finishes a chapter. Retakes keep your best score.</p>
+        </div>
+      )}
+    </section>
+  );
+}
+
 function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTotal[] }) {
   const [, update] = useDrillSettings();
   const today = localDay();
@@ -444,6 +502,8 @@ function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTot
 
       <MistakesSection data={data} />
 
+      <CourseSection data={data} />
+
       <VocabularySection data={data} wordLists={wordLists} />
 
       <WritingSection data={data} />
@@ -501,7 +561,7 @@ export default function ProgressView({ wordLists }: { wordLists: WordListTotal[]
       try {
         setProgressEnabled(true);
         // Include any answers still waiting to be saved. Offline, a write waits for the connection, so don't wait forever.
-        await Promise.race([saveProgress(), new Promise((resolve) => setTimeout(resolve, SAVE_WAIT_MS))]);
+        await Promise.race([Promise.all([saveProgress(), syncCourse()]), new Promise((resolve) => setTimeout(resolve, SAVE_WAIT_MS))]);
         setState({ status: "ready", data: await loadProgress(user.uid) });
       } catch (err) {
         console.error("Couldn't load progress", err);

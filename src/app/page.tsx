@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import Link from "next/link";
+import CourseShortcut from "@/components/CourseShortcut";
 import VerbSearch from "@/components/VerbSearch";
 import { verbGroup, type VerbGroup } from "@/lib/conjugation/regular";
 import { VERBS, verbSlug } from "@/lib/verbs";
@@ -51,6 +52,12 @@ const SHORTCUTS = [
   },
 ] as const;
 
+// The course's nav hue. Its card is drawn in the browser, since it depends on progress saved there.
+const COURSE_HUE = 105;
+
+const shortcutClass =
+  "block h-full rounded-xl border border-accent-200 bg-accent-50 p-4 transition hover:border-accent-500 dark:border-accent-900 dark:bg-accent-950";
+
 const hueStyle = (hue: number) => ({ "--hue": hue }) as CSSProperties;
 
 const endingOf = (inf: string) =>
@@ -81,12 +88,15 @@ export default function Home() {
         <VerbSearch autoFocus />
       </section>
 
-      <ul className="grid gap-3 sm:grid-cols-3">
+      <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <li style={hueStyle(COURSE_HUE)}>
+          <CourseShortcut className={shortcutClass} />
+        </li>
         {SHORTCUTS.map((s) => (
           <li key={s.href} style={hueStyle(s.hue)}>
             <Link
               href={s.href}
-              className="block h-full rounded-xl border border-accent-200 bg-accent-50 p-4 transition hover:border-accent-500 dark:border-accent-900 dark:bg-accent-950"
+              className={shortcutClass}
             >
               <span className="block text-lg font-semibold text-accent-800 dark:text-accent-200">
                 {s.title} →

@@ -36,7 +36,8 @@ function DictationAnswer({ input, card }: { input: string; card: Card }) {
   );
 }
 
-function Feedback({ result, card, input, speak }: { result: Grade; card: Card; input: string; speak?: string }) {
+function Feedback({ result, card, input, speak, retry }: { result: Grade; card: Card; input: string; speak?: string; retry: boolean }) {
+  const comesBack = retry ? " This one will come back." : "";
   const styles = {
     correct: "border-emerald-300 bg-emerald-50 text-emerald-900 dark:border-emerald-800 dark:bg-emerald-950 dark:text-emerald-200",
     accent: "border-amber-300 bg-amber-50 text-amber-900 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-200",
@@ -62,7 +63,7 @@ function Feedback({ result, card, input, speak }: { result: Grade; card: Card; i
                 ? "Correct!"
                 : result === "accent"
                   ? "Right words, mind the accents underlined. This doesn't count against you."
-                  : "Not quite. Words you missed are underlined. This one will come back."}
+                  : `Not quite. Words you missed are underlined.${comesBack}`}
             </p>
             <DictationAnswer input={input} card={card} />
             <p className="mt-1 opacity-80">{card.dictation.en}</p>
@@ -82,8 +83,7 @@ function Feedback({ result, card, input, speak }: { result: Grade; card: Card; i
             )}
             {result === "wrong" && (
               <p>
-                <span className="font-medium">The answer is</span> <span className="font-semibold">{card.shown}</span>. This one
-                will come back.
+                <span className="font-medium">The answer is</span> <span className="font-semibold">{card.shown}</span>.{comesBack}
               </p>
             )}
             {trapNote}
@@ -163,10 +163,18 @@ export default function DrillRunner({
   first,
   next,
   onStop,
+  onFinish,
+  retry = true,
+  stopLabel = "Change settings",
 }: {
   first: Card;
   next: () => Card | null;
   onStop: () => void;
+  /** Called once when the last card is answered, with the score as the results screen shows it. */
+  onFinish?: (score: number) => void;
+  /** Off for a test, where a miss shouldn't come back and the score is a first try. */
+  retry?: boolean;
+  stopLabel?: string;
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
@@ -211,6 +219,15 @@ export default function DrillRunner({
   // Save what's left when the session ends.
   useEffect(() => () => void saveProgress(), []);
 
+  // After the render that finished, so the counts include the last answer.
+  useEffect(() => {
+    if (!finished) return;
+    const counted = total - slips;
+    onFinish?.(counted ? Math.round((right / counted) * 100) : 100);
+    // Only when the session ends.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [finished]);
+
   /** What gets saved about a miss. Dictation leaves the prompt out, since the sentence is the answer. */
   function mistake(given: string) {
     const prompt = card.dictation ? "" : [card.title, card.ask].filter(Boolean).join(" · ");
@@ -225,7 +242,7 @@ export default function DrillRunner({
     // An accent slip shows the right spelling but doesn't come back or end the streak. It's counted on its own.
     const ok = g !== "wrong";
     const answeredNow = total + 1;
-    const missed = ok ? retries : [...retries, { card, dueAt: answeredNow + RETRY_GAP }];
+    const missed = ok || !retry ? retries : [...retries, { card, dueAt: answeredNow + RETRY_GAP }];
     setResult(g);
     setTotal(answeredNow);
     // Only the first try counts, so a retry can't inflate progress.
@@ -307,7 +324,7 @@ export default function DrillRunner({
             </p>
           )}
           {bestStreak >= 3 && <p className="text-stone-600 dark:text-stone-400">Best streak: {bestStreak} in a row</p>}
-          {right < counted && (
+          {right < counted && retry && (
             <p className="text-sm text-stone-500">Questions you missed came back, so they count more than once.</p>
           )}
           <button
@@ -331,7 +348,7 @@ export default function DrillRunner({
           <StreakChip streak={streak} />
         </span>
         <button type="button" onClick={onStop} className="min-h-10 underline">
-          Change settings
+          {stopLabel}
         </button>
       </div>
 
@@ -514,14 +531,30 @@ export default function DrillRunner({
           <div className="mt-4 space-y-3">
             <div role="status" className="rounded-lg border border-stone-200 px-4 py-3 dark:border-stone-700">
               <p className="text-sm text-stone-500">One good answer</p>
-              <p className="flex items-start justify-between gap-2">
-                <span lang={card.english ? "en" : "es"} className="text-lg font-semibold">
+              {card.english ? (
+                <p lang="en" className="text-lg font-semibold">
                   {card.shown}
-                </span>
-                {!card.english && <SpeakButton text={card.shown} />}
-              </p>
+                </p>
+              ) : (
+                // In Spanish the difference is often one word or an accent, so the words that differ are underlined.
+                <div className="flex items-start justify-between gap-2 font-semibold">
+                  <DictationAnswer input={input} card={card} />
+                  <SpeakButton text={card.shown} />
+                </div>
+              )}
+              {!card.english && accentTrap(card, input) && (
+                <p className="mt-1 text-sm">
+                  <span lang="es" className="font-semibold">
+                    {accentTrap(card, input)}
+                  </span>{" "}
+                  is a different word, so here the accent changes the meaning.
+                </p>
+              )}
             </div>
-            <p className="text-sm text-stone-600 dark:text-stone-400">Yours doesn&apos;t match exactly, but it can still be right. Count it if it means the same thing.</p>
+            <p className="text-sm text-stone-600 dark:text-stone-400">
+              Yours doesn&apos;t match exactly{card.english ? "" : ". Words that differ from this answer are underlined"}, but it can still be right. Count it if it
+              means the same thing.
+            </p>
             <div className="grid grid-cols-2 gap-3">
               <button
                 type="button"
@@ -550,7 +583,7 @@ export default function DrillRunner({
 
         {result && (
           <div className="mt-4 space-y-3">
-            <Feedback result={result} card={card} input={input} speak={(canGiveUp || card.dictation) && !card.english ? card.shown : undefined} />
+            <Feedback result={result} card={card} input={input} retry={retry} speak={(canGiveUp || card.dictation) && !card.english ? card.shown : undefined} />
             <button
               ref={nextRef}
               type="button"

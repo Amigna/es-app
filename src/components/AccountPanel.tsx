@@ -18,6 +18,7 @@ import {
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { auth, firebaseConfigured } from "@/lib/firebase";
+import { clearCourse, syncCourse } from "@/lib/course-progress";
 import { setProgressEnabled } from "@/lib/progress-queue";
 import { loadReviewSettings, saveReviewSetting, type ReviewSettings } from "@/lib/progress-store";
 import { DEFAULT_NEW_PER_DAY, DEFAULT_REVIEWS_PER_DAY, NEW_PER_DAY_OPTIONS, REVIEWS_PER_DAY_OPTIONS } from "@/lib/schedule";
@@ -146,6 +147,8 @@ function ReviewSettingsPanel({ uid }: { uid: string }) {
 function SignedIn({ user }: { user: User }) {
   useEffect(() => {
     setProgressEnabled(true);
+    // Course chapters done while signed out move to the account.
+    void syncCourse();
   }, []);
 
   return (
@@ -164,6 +167,7 @@ function SignedIn({ user }: { user: User }) {
         type="button"
         onClick={() => {
           setProgressEnabled(false);
+          clearCourse();
           signOut(auth());
         }}
         className={secondaryClass}

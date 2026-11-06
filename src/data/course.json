@@ -1,0 +1,293 @@
+[
+  {
+    "id": "present-regular",
+    "title": "Present tense: regular verbs",
+    "level": "A1",
+    "summary": "Talk about what you do every day with -ar, -er and -ir verbs.",
+    "tenses": ["present"],
+    "models": ["hablar", "comer", "vivir"],
+    "verbs": ["hablar", "trabajar", "estudiar", "llegar", "llamar", "tomar", "mirar", "esperar", "buscar", "necesitar", "comprar", "cocinar", "bailar", "caminar", "escuchar", "comer", "beber", "leer", "correr", "vender", "aprender", "comprender", "vivir", "escribir", "recibir", "abrir"],
+    "drills": ["conjugation", "blanks"],
+    "words": [
+      "noun:escuela", "noun:clase", "noun:libro", "noun:cuaderno", "noun:tarea", "noun:examen", "noun:pregunta", "noun:respuesta",
+      "noun:idioma", "noun:palabra", "noun:trabajo", "noun:oficina", "noun:estudiante", "noun:maestro", "noun:compañero",
+      "adverb:todos los días", "adverb:siempre", "adverb:nunca", "adverb:a veces", "adverb:hoy"
+    ]
+  },
+  {
+    "id": "ser-and-estar",
+    "title": "Ser and estar",
+    "level": "A1",
+    "summary": "Two verbs for to be: what something is, and how or where it is.",
+    "guide": { "slug": "ser-vs-estar" },
+    "tenses": ["present"],
+    "models": ["ser", "estar"],
+    "verbs": ["ser", "estar"],
+    "drills": ["conjugation", "blanks"],
+    "words": [
+      "adjective:alto", "adjective:bajo", "adjective:simpático", "adjective:inteligente", "adjective:trabajador", "adjective:cansado",
+      "adjective:contento", "adjective:triste", "adjective:enfermo", "adjective:ocupado", "adjective:aburrido", "adjective:listo",
+      "adjective:abierto", "adjective:cerrado", "adjective:nervioso", "adjective:tranquilo", "adjective:mexicano", "adjective:enojado",
+      "adjective:feliz"
+    ]
+  },
+  {
+    "id": "present-irregular",
+    "title": "Present: stem changes and irregular yo forms",
+    "level": "A1",
+    "summary": "Verbs like pensar, volver and pedir change their stem, and verbs like tener and hacer have a yo form of their own.",
+    "tenses": ["present"],
+    "models": ["pensar", "volver", "pedir", "tener"],
+    "verbs": ["pensar", "querer", "empezar", "cerrar", "preferir", "entender", "poder", "volver", "dormir", "encontrar", "contar", "jugar", "almorzar", "pedir", "servir", "repetir", "seguir", "tener", "venir", "hacer", "poner", "salir", "decir", "conocer", "saber", "traer", "oír", "ver", "dar"],
+    "drills": ["conjugation", "blanks"],
+    "words": [
+      "noun:día", "noun:semana", "noun:hora", "noun:mañana", "noun:noche", "noun:fin de semana", "noun:lunes", "noun:sábado",
+      "noun:desayuno", "noun:almuerzo", "noun:cena", "adverb:temprano", "adverb:después", "adverb:luego", "adverb:antes"
+    ]
+  },
+  {
+    "id": "gustar",
+    "title": "Gustar and similar verbs",
+    "level": "A1",
+    "summary": "Me gusta, te encanta, nos interesa: the thing you like is the subject.",
+    "tenses": ["present"],
+    "models": ["gustar", "encantar"],
+    "verbs": ["gustar", "encantar", "interesar", "importar", "molestar", "faltar", "doler"],
+    "drills": ["blanks"],
+    "words": [
+      "noun:fútbol", "noun:deporte", "noun:música", "noun:película", "noun:juego", "noun:fiesta", "noun:chocolate", "noun:café",
+      "noun:helado", "noun:fruta", "noun:verdura", "noun:pescado", "noun:pastel", "noun:postre", "adjective:delicioso",
+      "adjective:divertido", "adjective:interesante"
+    ]
+  },
+  {
+    "id": "near-future",
+    "title": "The near future: ir a + infinitive",
+    "level": "A1",
+    "summary": "Voy a comer: the everyday way to talk about plans.",
+    "guide": {
+      "slug": "talking-about-the-future",
+      "sections": ["Ir a + infinitive", "The present for the future"],
+      "quiz": [0, 1, 4, 6, 7, 9]
+    },
+    "tenses": ["present"],
+    "models": ["ir"],
+    "verbs": ["ir"],
+    "drills": ["conjugation", "blanks"],
+    "words": [
+      "noun:playa", "noun:cine", "noun:parque", "noun:museo", "noun:mercado", "noun:tienda", "noun:biblioteca", "noun:restaurante",
+      "noun:vacaciones", "noun:viaje", "noun:cumpleaños", "noun:verano", "adverb:mañana", "adverb:esta noche", "adverb:pronto"
+    ]
+  },
+  {
+    "id": "reflexive-verbs",
+    "title": "Reflexive verbs",
+    "level": "A2",
+    "summary": "Me levanto, te duchas, se viste: actions you do to yourself, and your daily routine.",
+    "guide": { "slug": "reflexive-verbs" },
+    "tenses": ["present"],
+    "models": ["levantarse", "vestirse"],
+    "verbs": ["levantarse", "sentarse", "acostarse", "despertarse", "ducharse", "vestirse", "llamarse", "quedarse", "irse", "ponerse", "sentirse", "divertirse", "acordarse", "lavarse", "peinarse", "bañarse", "dormirse", "casarse", "preocuparse", "enojarse"],
+    "drills": ["conjugation", "blanks"],
+    "words": [
+      "noun:cara", "noun:pelo", "noun:diente", "noun:mano", "noun:ducha", "noun:toalla", "noun:jabón", "noun:espejo",
+      "noun:cepillo de dientes", "noun:peine", "noun:ropa", "noun:camisa", "noun:pantalón", "noun:zapato", "noun:despertador",
+      "adjective:despierto", "adjective:dormido"
+    ]
+  },
+  {
+    "id": "preterite-regular",
+    "title": "Preterite: regular verbs",
+    "level": "A2",
+    "summary": "Hablé, comí, viví: finished actions in the past.",
+    "tenses": ["preterite"],
+    "models": ["hablar", "comer", "vivir", "llegar"],
+    "verbs": ["hablar", "trabajar", "estudiar", "llegar", "buscar", "pagar", "tomar", "comprar", "cocinar", "viajar", "comer", "beber", "correr", "vender", "aprender", "volver", "vivir", "escribir", "recibir", "abrir", "salir", "leer"],
+    "drills": ["conjugation", "blanks"],
+    "words": [
+      "noun:aeropuerto", "noun:avión", "noun:hotel", "noun:boleto", "noun:maleta", "noun:vuelo", "noun:excursión", "noun:turista",
+      "noun:pasaporte", "noun:mar", "noun:montaña", "adverb:ayer", "adverb:anoche", "adverb:anteayer", "adverb:la semana pasada"
+    ]
+  },
+  {
+    "id": "preterite-irregular",
+    "title": "Preterite: irregular verbs",
+    "level": "A2",
+    "summary": "Fui, tuve, hice, dije: the past tense of the verbs you use most.",
+    "tenses": ["preterite"],
+    "models": ["tener", "hacer", "ir", "pedir"],
+    "verbs": ["ser", "ir", "estar", "tener", "hacer", "decir", "poder", "poner", "querer", "saber", "venir", "traer", "dar", "ver", "conducir", "pedir", "dormir", "sentir", "preferir", "seguir"],
+    "drills": ["conjugation", "blanks"],
+    "words": [
+      "noun:boda", "noun:regalo", "noun:invitado", "noun:ceremonia", "noun:sorpresa", "noun:noticia", "noun:mensaje", "noun:llamada",
+      "noun:carta", "noun:visita", "noun:baile", "noun:canción", "adjective:emocionante", "adjective:increíble", "adverb:enseguida"
+    ]
+  },
+  {
+    "id": "imperfect",
+    "title": "The imperfect",
+    "level": "A2",
+    "summary": "Hablaba, comía, era: what used to happen and what was going on.",
+    "tenses": ["imperfect"],
+    "models": ["hablar", "comer", "ser", "ir"],
+    "verbs": ["ser", "ir", "ver", "estar", "tener", "hacer", "vivir", "jugar", "comer", "hablar", "trabajar", "querer", "poder", "saber", "dormir", "leer", "escuchar", "llevar"],
+    "drills": ["conjugation", "blanks"],
+    "words": [
+      "noun:niño", "noun:juguete", "noun:pelota", "noun:abuelo", "noun:abuela", "noun:pueblo", "noun:barrio", "noun:vecino",
+      "noun:patio", "noun:jardín", "noun:perro", "noun:gato", "adjective:tímido", "adverb:a menudo", "adverb:de vez en cuando",
+      "adverb:normalmente"
+    ]
+  },
+  {
+    "id": "preterite-vs-imperfect",
+    "title": "Preterite vs. imperfect",
+    "level": "A2",
+    "summary": "Telling a story: what happened, and what was going on around it.",
+    "guide": { "slug": "preterite-vs-imperfect" },
+    "tenses": ["preterite", "imperfect"],
+    "models": ["estar", "tener"],
+    "verbs": ["ser", "estar", "tener", "hacer", "ir", "querer", "poder", "saber", "conocer", "llegar", "llover", "hablar", "salir", "ver", "decir"],
+    "drills": ["blanks"],
+    "words": [
+      "noun:lluvia", "noun:viento", "noun:sol", "noun:nieve", "noun:cielo", "noun:calor", "noun:frío", "noun:bosque", "noun:campo",
+      "noun:río", "adjective:soleado", "adjective:nublado", "adjective:lluvioso", "adjective:caluroso", "adjective:oscuro",
+      "adverb:de repente", "adverb:entonces"
+    ]
+  },
+  {
+    "id": "object-pronouns",
+    "title": "Object pronouns",
+    "level": "A2",
+    "summary": "Lo, la, le, se lo: saying it, giving it to her, without repeating the noun.",
+    "guide": { "slug": "object-pronouns" },
+    "tenses": ["present", "preterite"],
+    "verbs": ["dar", "decir", "traer", "llevar", "comprar", "buscar", "ver", "llamar", "ayudar", "explicar", "preguntar", "mostrar", "pedir", "regalar", "mandar"],
+    "drills": [],
+    "words": [
+      "noun:llave", "noun:teléfono", "noun:celular", "noun:foto", "noun:bolsa", "noun:botella", "noun:caja", "noun:cámara",
+      "noun:computadora", "noun:billetera", "noun:anillo", "noun:reloj", "noun:gafas", "noun:mochila", "noun:dinero"
+    ]
+  },
+  {
+    "id": "commands",
+    "title": "Commands",
+    "level": "B1",
+    "summary": "Habla, no hables, siéntese: telling people what to do, and what not to.",
+    "guide": { "slug": "commands" },
+    "tenses": ["impAffirmative", "impNegative"],
+    "models": ["hablar", "comer", "tener"],
+    "verbs": ["hablar", "comer", "escribir", "tener", "venir", "poner", "salir", "hacer", "decir", "ir", "ser", "dar", "abrir", "cerrar", "esperar", "llamar", "traer", "buscar", "sentarse", "levantarse", "dormir", "pedir"],
+    "drills": ["conjugation", "blanks"],
+    "words": [
+      "noun:cocina", "noun:olla", "noun:sartén", "noun:horno", "noun:estufa", "noun:plato", "noun:vaso", "noun:cuchillo",
+      "noun:tenedor", "noun:cuchara", "noun:aceite", "noun:sal", "noun:ajo", "noun:cebolla", "adjective:limpio", "adjective:sucio",
+      "adverb:despacio"
+    ]
+  },
+  {
+    "id": "present-perfect",
+    "title": "The present perfect",
+    "level": "B1",
+    "summary": "He comido, has visto: what you've done, and when Latin America prefers the preterite instead.",
+    "guide": {
+      "slug": "perfect-tenses",
+      "sections": ["How they're built", "Present perfect or preterite?", "Easy mix-ups"],
+      "quiz": [0, 1, 2, 3, 4, 5, 7, 8, 9, 11, 12]
+    },
+    "tenses": ["presentPerfect"],
+    "models": ["hablar", "comer", "hacer"],
+    "verbs": ["hablar", "comer", "vivir", "hacer", "decir", "ver", "escribir", "poner", "volver", "abrir", "romper", "estar", "ser", "tener", "ir", "llegar", "terminar", "leer", "descubrir", "traer"],
+    "drills": ["conjugation", "blanks"],
+    "words": [
+      "noun:experiencia", "noun:proyecto", "noun:informe", "noun:reunión", "noun:empresa", "noun:carrera", "noun:error", "noun:éxito",
+      "noun:oportunidad", "noun:decisión", "adverb:ya", "adverb:todavía", "adverb:hasta ahora", "adjective:responsable",
+      "adjective:preparado"
+    ]
+  },
+  {
+    "id": "future-and-conditional",
+    "title": "The future and the conditional",
+    "level": "B1",
+    "summary": "Hablaré and hablaría: promises, predictions, guesses and what would happen.",
+    "guide": { "slug": "talking-about-the-future" },
+    "tenses": ["future", "conditional"],
+    "models": ["hablar", "tener", "hacer"],
+    "verbs": ["tener", "poder", "saber", "querer", "hacer", "decir", "poner", "salir", "venir", "haber", "hablar", "comer", "vivir", "ir", "ser", "estar", "llegar", "viajar", "comprar", "trabajar"],
+    "drills": ["conjugation", "blanks"],
+    "words": [
+      "noun:futuro", "noun:plan", "noun:objetivo", "noun:negocio", "noun:abogado", "noun:universidad", "noun:sueño", "noun:esperanza",
+      "noun:planeta", "adverb:tal vez", "adverb:quizás", "adverb:a lo mejor", "adjective:posible", "adjective:próximo",
+      "adjective:seguro"
+    ]
+  },
+  {
+    "id": "present-subjunctive",
+    "title": "Present subjunctive: forms and wishes",
+    "level": "B1",
+    "summary": "Quiero que vengas: how the subjunctive is formed, and how wishes and requests trigger it.",
+    "guide": {
+      "slug": "subjunctive",
+      "sections": ["The basic pattern", "Common triggers"],
+      "quiz": [0, 1, 2, 5, 6, 12]
+    },
+    "tenses": ["subjPresent"],
+    "models": ["hablar", "comer", "tener", "ser"],
+    "verbs": ["hablar", "comer", "vivir", "tener", "hacer", "decir", "venir", "poner", "salir", "ser", "estar", "ir", "saber", "dar", "haber", "ver", "pedir", "dormir", "llegar", "buscar", "empezar", "poder", "querer", "traer"],
+    "drills": ["conjugation", "blanks"],
+    "words": [
+      "noun:salud", "noun:médico", "noun:enfermedad", "noun:fiebre", "noun:gripe", "noun:resfriado", "noun:medicina", "noun:receta",
+      "noun:tos", "noun:garganta", "noun:dolor", "noun:consejo", "adjective:sano", "adjective:saludable", "adjective:grave",
+      "adjective:necesario", "adjective:importante"
+    ]
+  },
+  {
+    "id": "subjunctive-uses",
+    "title": "Subjunctive: doubt, emotion and conjunctions",
+    "level": "B1",
+    "summary": "No creo que sea, me alegra que vengas, cuando llegues: the rest of the triggers.",
+    "guide": {
+      "slug": "subjunctive",
+      "sections": ["The basic pattern", "Common triggers", "After certain conjunctions", "Unknown or nonexistent things"],
+      "quiz": [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12]
+    },
+    "tenses": ["subjPresent"],
+    "verbs": ["ser", "estar", "ir", "tener", "hacer", "venir", "poder", "saber", "llegar", "llover", "salir", "decir", "haber", "querer", "ver"],
+    "drills": ["blanks"],
+    "words": [
+      "noun:miedo", "noun:vergüenza", "noun:duda", "noun:pena", "noun:culpa", "noun:confianza", "noun:verdad", "noun:mentira",
+      "adjective:orgulloso", "adjective:enamorado", "adjective:molesto", "adjective:asustado", "adjective:preocupado",
+      "adjective:extraño", "adjective:raro", "adjective:verdadero", "adjective:falso", "adjective:obvio"
+    ]
+  },
+  {
+    "id": "imperfect-subjunctive",
+    "title": "Imperfect subjunctive and si clauses",
+    "level": "B2",
+    "summary": "Si tuviera dinero, viajaría: the subjunctive in the past, and what you'd do if.",
+    "guide": { "slug": "subjunctive", "sections": ["The imperfect subjunctive"], "quiz": [] },
+    "tenses": ["subjImperfect", "conditional"],
+    "models": ["hablar", "tener", "ser"],
+    "verbs": ["ser", "ir", "tener", "estar", "hacer", "poder", "saber", "querer", "decir", "venir", "haber", "hablar", "vivir", "comer", "dar", "poner", "ver", "ganar", "comprar", "viajar"],
+    "drills": ["conjugation", "blanks"],
+    "words": [
+      "noun:millón", "noun:precio", "noun:cuenta", "noun:banco", "noun:suerte", "noun:isla", "noun:mundo", "noun:libertad", "noun:paz",
+      "noun:vida", "adjective:rico", "adjective:pobre", "adjective:libre", "adjective:capaz"
+    ]
+  },
+  {
+    "id": "other-perfect-tenses",
+    "title": "The pluperfect and the other perfect tenses",
+    "level": "B2",
+    "summary": "Había comido, habré terminado, habría ido, hubiera sabido: the rest of the perfect tenses.",
+    "guide": { "slug": "perfect-tenses" },
+    "tenses": ["pluperfect", "futurePerfect", "conditionalPerfect", "subjPresentPerfect", "subjPluperfect"],
+    "models": ["hacer"],
+    "verbs": ["hacer", "decir", "ver", "ir", "llegar", "terminar", "salir", "comer", "estar", "ser", "tener", "poder", "saber", "volver", "escribir", "hablar"],
+    "drills": ["conjugation", "blanks"],
+    "words": [
+      "noun:historia", "noun:siglo", "noun:época", "noun:pasado", "noun:recuerdo", "noun:gobierno", "noun:presidente", "noun:ley",
+      "noun:acuerdo", "noun:situación", "noun:accidente", "noun:edad", "adjective:antiguo", "adjective:anterior", "adjective:famoso",
+      "adverb:hace mucho", "adverb:ya no"
+    ]
+  }
+]
