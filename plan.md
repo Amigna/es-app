@@ -70,10 +70,12 @@ Beginners and advanced learners used to get the same drills. A level (A1 to B2, 
 
 ## Course
 
-- [x] Framework (2026-11-05): `/course` lists the 18 chapters by level, with the level's first unfinished chapter suggested, and `/course/[id]` walks through the steps. Chapters are defined in `src/data/course.json` (tenses, model verbs, verbs, drills, 12 to 25 words picked from the existing lists at the chapter's level, and the guide with optional sections and quiz questions by position). Steps without content are left out: no guide means no Learn or Quiz, and no model verbs means no See it. Practice is 15 questions, Write is 6 sentences both ways, and the checkpoint is 15 questions (6 verb, 5 quiz, 4 words typed in Spanish; parts without content give their share to the others) with no retries, passing at 80%. Answers count toward stats and the review schedule like any drill, and quiz questions keep their guide position, so they're the same saved item. Progress is kept in localStorage (`course-progress`, `src/lib/course-progress.ts`) and, signed in, merged into `users/{uid}/stats/course` in a transaction: steps add up, the best score and earliest finish win, and tries (last 20) are kept. It syncs on sign-in, on opening a course page or /progress, and after each step, and clears on sign-out. /progress has a Course section with each chapter's first try, best and finish date. The home page has a Course card that becomes "Continue the course", and the nav has a Course link. Tests in `course.test.ts` check the data and decks. `.verify/browser/course.mjs` runs chapter 1 from See it to a failed and then a passed checkpoint, signed out
-- [ ] Content: new guides with quizzes for chapters 1, 3, 4, 7, 8 and 9 (present regular, stem changes and irregular yo, gustar, preterite regular and irregular, imperfect), which have no Learn or Quiz step until then. Chapter 17 uses the subjunctive guide's imperfect subjunctive section with no quiz, so it needs its own guide too. Adding a guide is just `"guide": {"slug": ...}` in `course.json`
-- [ ] Por vs. para, comparisons, relative pronouns, gender and numbers as short lessons between chapters
-- [ ] Gustar (chapter 4) and preterite vs. imperfect (chapter 10) only use fill in the blank, since conjugation would ask for forms like "yo encanto". Blanks show the tense as a label, so in chapter 10 the practice doesn't test choosing the tense; the quiz and checkpoint quiz questions do
+- [x] Framework (2026-11-05): `/course` lists the chapters by level, with the level's first unfinished chapter suggested, and `/course/[id]` walks through the steps. Chapters are defined in `src/data/course.json` (tenses, model verbs, verbs, drills, 12 to 25 words picked from the existing lists at the chapter's level, and the guide with optional sections and quiz questions by position). Steps without content are left out: no guide means no Learn or Quiz, and no model verbs means no See it. Practice is 15 questions, Write is 6 sentences both ways, and the checkpoint is 15 questions (6 verb, 5 quiz, 4 words typed in Spanish; parts without content give their share to the others) with no retries, passing at 80%. Answers count toward stats and the review schedule like any drill, and quiz questions keep their guide position, so they're the same saved item. Progress is kept in localStorage (`course-progress`, `src/lib/course-progress.ts`) and, signed in, merged into `users/{uid}/stats/course` in a transaction: steps add up, the best score and earliest finish win, and tries (last 20) are kept. It syncs on sign-in, on opening a course page or /progress, and after each step, and clears on sign-out. /progress has a Course section with each chapter's first try, best and finish date. The home page has a Course card that becomes "Continue the course", and the nav has a Course link. Tests in `course.test.ts` check the data and decks. `.verify/browser/course.mjs` runs chapter 1 from See it to a failed and then a passed checkpoint, signed out
+- [x] Content (2026-11-05): seven new guides with quizzes, so every chapter now has Learn and Quiz: present regular, present stem changes and irregular yo, gustar, preterite regular, preterite irregular, imperfect, and imperfect subjunctive with si clauses. Every quiz answer with a verb hint like `(hablar, yo)` was checked against the engine, but the grammar and phrasing are my own and need the same read as the other guides (see "To verify")
+- [x] The pluperfect is labeled "Pluperfect / Past perfect" and the pluperfect subjunctive "Pluperfect / Past perfect subjunctive" on tense cards and in drills. The perfect-tenses guide gives both names for each, and so does chapter 18 for the pluperfect
+- [x] Two more chapters (2026-11-05), for 20 in all: nouns, articles and adjectives as chapter 2 (gender, articles, plurals, agreement and placement, possessives, demonstratives), and idioms and everyday expressions as chapter 20 (tener and hacer expressions, everyday idioms, se me olvidó, reactions, sayings), each with a new guide and a 15-question quiz. Chapters can now practice `gender` and `agreement` on their own words instead of verb forms, and list phrases as words (`phrase:...`), which are flashcards only and left out of the typed checkpoint questions. Chapter 2 has Learn, Words, Quiz, Practice and Checkpoint; chapter 20 has Learn, Words, Quiz and a checkpoint made of quiz questions. Progress is saved by chapter ID, so inserting chapter 2 renumbers the rest without losing anything
+- [x] Short lessons (2026-11-05), marked `"lesson": true` in `course.json`: Learn, Quiz, and a checkpoint of quiz questions, with no words or practice. Numbers, dates and time (A1), por vs. para: the basics (end of A1, a new present-tense-only guide), comparisons (start of A2), por vs. para: more uses (end of A2, the full existing guide, which uses past tenses and adds duration, on behalf of, the passive and meaning changes), and relative pronouns (B1). The idioms chapter moved from the end of B2 to the end of B1, since most of it is everyday material. That makes 25 chapters and lessons in all
+- [ ] Gustar (chapter 6) and preterite vs. imperfect (chapter 14) only use fill in the blank, since conjugation would ask for forms like "yo encanto". Blanks show the tense as a label, so in chapter 14 the practice doesn't test choosing the tense; the quiz and checkpoint quiz questions do
 
 A step-by-step path through Spanish grammar, chapter by chapter, with progress saved as you go. It's modeled on the format of workbooks like *Advanced Spanish Step-by-Step*: one topic per chapter with explanation, examples, vocabulary, quizzes and writing. It doesn't use their content. The chapter order, explanations, sentences and exercises are our own, since the book's text and exercises belong to the publisher. Most of the parts already exist (guides, quizzes, sentences, levels, drills), so this mostly ties them together.
 
@@ -87,30 +89,9 @@ Each chapter is a short series of steps, done in order:
 6. **Write:** translate 5 to 10 sentences, graded like the writing drill.
 7. **Checkpoint:** a short mixed test. Passing (say 80%) marks the chapter done, and you can retake it.
 
-Proposed chapters, our own order, matching most first- and second-year courses:
+The chapter list, in our own order matching most first- and second-year courses, lives in `src/data/course.json`.
 
-| # | Chapter | Level | Guide |
-|---|---|---|---|
-| 1 | Present tense: regular verbs | A1 | new |
-| 2 | Ser and estar | A1 | ser-vs-estar |
-| 3 | Present: stem changes and irregular yo forms | A1 | new |
-| 4 | Gustar and similar verbs | A1 | new |
-| 5 | The near future: ir a + infinitive | A1 | talking-about-the-future (part) |
-| 6 | Reflexive verbs | A2 | reflexive-verbs |
-| 7 | Preterite: regular | A2 | new |
-| 8 | Preterite: irregular | A2 | new |
-| 9 | Imperfect | A2 | new |
-| 10 | Preterite vs. imperfect | A2 | preterite-vs-imperfect |
-| 11 | Object pronouns | A2 | object-pronouns |
-| 12 | Commands | B1 | commands |
-| 13 | Present perfect | B1 | perfect-tenses (part) |
-| 14 | Future and conditional | B1 | talking-about-the-future |
-| 15 | Present subjunctive: forms and wishes | B1 | subjunctive (part) |
-| 16 | Subjunctive: doubt, emotion and conjunctions | B1 | subjunctive |
-| 17 | Imperfect subjunctive and si clauses | B2 | new |
-| 18 | Pluperfect and the other perfect tenses | B2 | perfect-tenses |
-
-Por vs. para, comparisons, relative pronouns, gender and numbers go in as short extra lessons between chapters, or as sections inside the chapter where they fit.
+Por vs. para, comparisons, relative pronouns and numbers go in as short extra lessons between chapters, or as sections inside the chapter where they fit.
 
 How it works:
 
@@ -128,6 +109,24 @@ Effort, roughly:
 - Tenses past chapter 12 need more example sentences, which ties in with the sentence backlog. The present perfect and -ra imperfect subjunctive batches come first there.
 
 Best after levels step 3, since chapters lean on levels for words and verbs.
+
+## Beyond B2: C1/C2 (idea, not started)
+
+B2 already turns on every tense, every verb and every word, so the app has no grammar left to unlock. What the C levels add is nuance, register and longer, natural Spanish. One top level, "Proficient (C1/C2)", covers both. C2 is near-native, and drills alone can't get anyone there or test it, so the content aims at C1 and the label is honest about the rest being up to real use.
+
+- [ ] The level: a "C1/C2" entry in `LEVELS` (`src/lib/level.ts`), starting like B2 with every tense and verb. `levels.json` gets a C1/C2 bucket for rarer words once the lists grow past the 5,000-word goal; until then anything unlisted still counts as B2. The level question gets a fifth choice
+- [ ] Advanced chapters, using the course framework as it is:
+  - Passive voice and the uses of se (impersonal, passive, accidental)
+  - Sequence of tenses and reported speech (dijo que vendría, me pidió que fuera)
+  - Aunque, como and mientras with the indicative or subjunctive, where the choice changes the meaning
+  - Linking words for writing and argument (sin embargo, por lo tanto, no obstante, en cambio)
+  - Register: tú, usted and vos across countries, formal and informal writing
+  - Diminutives and augmentatives (ahorita, cafecito, grandote)
+  - The future subjunctive, only to recognize it in legal language and sayings (sea lo que fuere)
+- [ ] Readings at B2 and C1/C2: longer passages, opinion pieces, and dialogue with regional slang. Readings stop at B1 now, so this is the biggest gain for advanced learners. Needs B2 and C1/C2 entries in `LEVELS` in `src/lib/readings.ts`
+- [ ] Dictation at natural speed with longer sentences, as an option
+- At these levels most learning is writing and speaking with feedback, which the app can't give without AI at runtime. That's what "Conversation or writing practice with Claude" in "Later" would add, and the one part with a running cost
+- Effort, roughly: the level and chapter changes are small; chapters take about one content session per 3 or 4 guides, and readings about one session per 4 passages. Best after the remaining verb and sentence work
 
 ## Later
 
@@ -220,7 +219,7 @@ The app started as invite-only for friends and family. Sign-ups opened on 2026-1
 - [ ] Skim `src/data/vocab/levels.json`, especially A1 and A2, for words at the wrong level. They're my judgment plus subtitle frequency, not a textbook list. Moving a word is just moving it between arrays; the test checks each word appears once
 - [ ] Signed in, clear `level` from localStorage (or use a new browser) and confirm the level question appears on any page, choose one, and check `users/{uid}/stats/settings` gets `level`. Then clear localStorage again and confirm it's loaded from the account without asking. Only seen signed out (`.verify/browser/level.mjs`)
 - [ ] Signed in, remove a recent mistake on /progress, reload, and confirm it stays gone and `days/{day}` has it under `hiddenMistakes`. Also try Undo, and "Report a problem" on a mistake. Not run against real Firestore
-- [ ] Signed in, finish a course step and a checkpoint, then check `users/{uid}/stats/course` and the Course section on /progress. Also do a step signed out, sign in on /account, and confirm it moves to the account; then sign out and confirm the course list starts empty. Course saving hasn't run against real Firestore
+- [ ] Course saving signed in: confirmed on 2026-11-05 that checkpoint tries reach `users/{uid}/stats/course` in real Firestore. Still to check: the Course section on /progress, a step done signed out moving to the account after signing in on /account, and the course list starting empty after signing out
 - [ ] Writing drill, into Spanish: a near miss now underlines the words that differ from the model answer, and says when an accent makes another word (cuanto for cuánto). Only checked in code, not seen in a browser
 - [ ] Dictation counts a word spelled differently but sounding the same (tuvo and tubo, haber and a ver) as wrong. That's the point of dictation, but decide whether it feels unfair in practice
 

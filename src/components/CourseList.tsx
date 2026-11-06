@@ -7,11 +7,12 @@ import { syncCourse, useCourseProgress } from "@/lib/course-progress";
 import { LEVELS, levelInfo, useLevel } from "@/lib/level";
 
 function status(chapter: (typeof CHAPTERS)[number], mine: ChapterProgress | undefined): string {
-  if (mine?.done) return `Done · best ${mine.best}%`;
+  const kind = chapter.lesson ? "Short lesson · " : "";
+  if (mine?.done) return `${kind}Done · best ${mine.best}%`;
   const total = chapterSteps(chapter).length;
   const finished = mine?.steps.length ?? 0;
-  if (finished > 0) return `${finished} of ${total} steps${mine?.best !== undefined ? ` · best ${mine.best}%` : ""}`;
-  return `${total} steps`;
+  if (finished > 0) return `${kind}${finished} of ${total} steps${mine?.best !== undefined ? ` · best ${mine.best}%` : ""}`;
+  return `${kind}${total} steps`;
 }
 
 /** Every chapter by level, with progress from this browser and, once synced, the account. */

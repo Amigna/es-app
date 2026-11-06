@@ -397,10 +397,20 @@ function vocabReviewCard(type: string, es: string, kind: string, random: Random)
 
 /**
  * A card for one word from a hand-picked list, like a course chapter's, written `type:es`. A flashcard shares its item
- * with the typed question, as in the flashcard drill. Null when the word is no longer in the lists.
+ * with the typed question, as in the flashcard drill. Null when the word is no longer in the lists, or the question
+ * doesn't fit it: gender is only for nouns, agreement only for adjectives, and phrases are flashcards only.
  */
-export function listedWordCard(id: string, kind: "flashcard" | "toSpanish", random: Random = Math.random): Card | null {
+export function listedWordCard(id: string, kind: "flashcard" | "toSpanish" | "gender" | "agreement", random: Random = Math.random): Card | null {
   const [type, es] = id.split(":");
+  if (type === "phrase") return kind === "flashcard" ? vocabReviewCard(type, es, "toEnglish", random) : null;
+  if (kind === "gender") {
+    const noun = type === "noun" ? NOUNS.find((n) => n.es === es) : undefined;
+    return noun && !noun.article && !isPluralOnly(noun) ? genderCard(noun) : null;
+  }
+  if (kind === "agreement") {
+    const adjective = type === "adjective" ? agreeingAdjectives().find((a) => a.es === es) : undefined;
+    return adjective ? agreementCard(adjective, random) : null;
+  }
   if (kind === "toSpanish") return vocabReviewCard(type, es, "toSpanish", random);
   const word = allWords().find((w) => w.type === type && w.es === es);
   return word ? flashcard(word, "toEnglish") : null;

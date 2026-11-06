@@ -1,5 +1,189 @@
 [
   {
+    "slug": "present-regular",
+    "title": "The present tense: regular verbs",
+    "summary": "Regular verbs drop -ar, -er or -ir and add an ending for each person. One pattern covers most of the verbs you'll meet.",
+    "sections": [
+      {
+        "heading": "Who's doing it",
+        "rules": [
+          {"rule": "Yo, tú, él, ella, usted, nosotros, ellos, ellas, ustedes", "examples": [{"es": "Yo trabajo y tú estudias.", "en": "I work and you study."}, {"es": "Ella vive en Panamá.", "en": "She lives in Panama."}, {"es": "Nosotros comemos tarde.", "en": "We eat late."}]},
+          {"rule": "Usted and ustedes take the él and ellos forms", "examples": [{"es": "¿Usted habla inglés?", "en": "Do you speak English?"}, {"es": "¿Ustedes viven aquí?", "en": "Do you all live here?"}], "note": "Ustedes is the plural you everywhere in Latin America, for friends and strangers alike."},
+          {"rule": "The pronoun is often left out, since the ending already says who", "examples": [{"es": "Hablo español.", "en": "I speak Spanish."}, {"es": "¿Trabajas mañana?", "en": "Are you working tomorrow?"}]}
+        ]
+      },
+      {
+        "heading": "-ar verbs, like hablar",
+        "rules": [
+          {"rule": "Drop -ar and add -o, -as, -a, -amos, -an", "examples": [{"es": "Hablo con mi mamá todos los días.", "en": "I talk to my mom every day."}, {"es": "Hablas muy rápido.", "en": "You speak very fast."}, {"es": "El profesor habla despacio.", "en": "The teacher speaks slowly."}, {"es": "Hablamos por teléfono.", "en": "We talk on the phone."}, {"es": "Mis tíos hablan inglés.", "en": "My aunt and uncle speak English."}]}
+        ]
+      },
+      {
+        "heading": "-er and -ir verbs, like comer and vivir",
+        "rules": [
+          {"rule": "-er verbs add -o, -es, -e, -emos, -en", "examples": [{"es": "Como arroz con frijoles.", "en": "I eat rice and beans."}, {"es": "¿Comes carne?", "en": "Do you eat meat?"}, {"es": "Comemos a las dos.", "en": "We eat at two."}, {"es": "Mis hermanos leen mucho.", "en": "My brothers read a lot."}]},
+          {"rule": "-ir verbs add the same endings, except -imos for nosotros", "examples": [{"es": "Vivo cerca de la playa.", "en": "I live near the beach."}, {"es": "Vivimos en el centro.", "en": "We live downtown."}, {"es": "Ellos escriben muchos mensajes.", "en": "They write a lot of messages."}], "note": "Only the nosotros form tells -er and -ir verbs apart: comemos, vivimos."}
+        ]
+      },
+      {
+        "heading": "What the present covers",
+        "rules": [
+          {"rule": "What happens regularly, or is true now", "examples": [{"es": "Trabajo en una oficina.", "en": "I work in an office."}, {"es": "Siempre camino a la escuela.", "en": "I always walk to school."}]},
+          {"rule": "What's happening right now, where English uses -ing", "examples": [{"es": "—¿Qué buscas? —Busco mis llaves.", "en": "\"What are you looking for?\" \"I'm looking for my keys.\""}, {"es": "Espero el autobús.", "en": "I'm waiting for the bus."}]},
+          {"rule": "Plans for soon, with a time word", "examples": [{"es": "Mañana trabajo hasta tarde.", "en": "Tomorrow I'm working late."}]}
+        ]
+      },
+      {
+        "heading": "Questions and negatives",
+        "rules": [
+          {"rule": "No goes right before the verb", "examples": [{"es": "No hablo francés.", "en": "I don't speak French."}, {"es": "No comemos carne.", "en": "We don't eat meat."}], "note": "There's no word for do or does: the verb itself is negative or asks the question."},
+          {"rule": "A yes or no question is the same sentence with ¿ and ?", "examples": [{"es": "¿Trabajas hoy?", "en": "Are you working today?"}, {"es": "¿Viven cerca?", "en": "Do they live nearby?"}]},
+          {"rule": "Question words come first and have a written accent", "examples": [{"es": "¿Dónde trabajas?", "en": "Where do you work?"}, {"es": "¿Qué estudias?", "en": "What are you studying?"}, {"es": "¿Cuándo llegan?", "en": "When are they arriving?"}]}
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "present-irregular",
+    "title": "The present: stem changes and irregular yo forms",
+    "summary": "Many common verbs change a vowel in their stem, and some have a yo form of their own. The endings stay regular.",
+    "sections": [
+      {
+        "heading": "Stem changes",
+        "rules": [
+          {"rule": "e becomes ie: pensar, querer, empezar, cerrar, preferir, entender", "examples": [{"es": "Pienso en ti.", "en": "I think about you."}, {"es": "¿Quieres un café?", "en": "Do you want a coffee?"}, {"es": "La clase empieza a las ocho.", "en": "Class starts at eight."}]},
+          {"rule": "o becomes ue: poder, volver, dormir, encontrar, contar, almorzar", "examples": [{"es": "Puedo ayudarte.", "en": "I can help you."}, {"es": "Mis padres vuelven a las seis.", "en": "My parents come back at six."}, {"es": "Duermo muy poco.", "en": "I sleep very little."}]},
+          {"rule": "e becomes i, only in -ir verbs: pedir, servir, repetir, seguir", "examples": [{"es": "Siempre pido la sopa.", "en": "I always order the soup."}, {"es": "¿Me repites la pregunta?", "en": "Can you repeat the question?"}]},
+          {"rule": "Jugar is the only u that becomes ue", "examples": [{"es": "Juego fútbol los sábados.", "en": "I play soccer on Saturdays."}], "note": "Jugar fútbol is usual in much of Latin America, and jugar al fútbol is also correct."},
+          {"rule": "Nosotros keeps the original vowel", "examples": [{"es": "Queremos ir al cine.", "en": "We want to go to the movies."}, {"es": "Podemos almorzar juntos.", "en": "We can have lunch together."}, {"es": "Pedimos una pizza.", "en": "We're ordering a pizza."}], "note": "The forms that change make a boot shape in the verb table: yo, tú, él and ellos, but not nosotros."}
+        ]
+      },
+      {
+        "heading": "Irregular yo forms",
+        "rules": [
+          {"rule": "A -go ending: hacer, poner, salir, traer, oír", "examples": [{"es": "Hago la tarea después de cenar.", "en": "I do my homework after dinner."}, {"es": "Salgo de casa a las siete.", "en": "I leave home at seven."}, {"es": "Yo traigo el postre.", "en": "I'll bring dessert."}], "note": "Only yo changes: haces, hace, hacemos, hacen."},
+          {"rule": "A -zco ending: conocer, and most verbs ending in a vowel plus -cer or -cir", "examples": [{"es": "Conozco a tu hermano.", "en": "I know your brother."}, {"es": "No conduzco de noche.", "en": "I don't drive at night."}]},
+          {"rule": "Others of their own: sé, veo, doy", "examples": [{"es": "No sé.", "en": "I don't know."}, {"es": "Veo a mis abuelos los domingos.", "en": "I see my grandparents on Sundays."}, {"es": "Te doy mi número.", "en": "I'll give you my number."}]}
+        ]
+      },
+      {
+        "heading": "Verbs that do both",
+        "rules": [
+          {"rule": "Tener, venir and decir: an irregular yo form and a stem change", "examples": [{"es": "Tengo hambre. ¿Tú tienes hambre?", "en": "I'm hungry. Are you hungry?"}, {"es": "Vengo mañana, y ellos vienen hoy.", "en": "I'm coming tomorrow, and they're coming today."}, {"es": "Yo digo que sí y ella dice que no.", "en": "I say yes and she says no."}]}
+        ]
+      },
+      {
+        "heading": "Ir, ser and estar",
+        "rules": [
+          {"rule": "The most common verbs are irregular in every form", "examples": [{"es": "Voy a la escuela en bus.", "en": "I go to school by bus."}, {"es": "Somos de Puerto Rico.", "en": "We're from Puerto Rico."}, {"es": "¿Dónde estás?", "en": "Where are you?"}], "note": "Ir: voy, vas, va, vamos, van. Ser: soy, eres, es, somos, son. Estar: estoy, estás, está, estamos, están."}
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "gustar",
+    "title": "Gustar and verbs like it",
+    "summary": "Me gusta works the other way around from English: the thing you like is the subject, and a pronoun says who likes it.",
+    "sections": [
+      {
+        "heading": "How gustar works",
+        "rules": [
+          {"rule": "Gusta for one thing, gustan for more than one", "examples": [{"es": "Me gusta el café.", "en": "I like coffee."}, {"es": "Me gustan los perros.", "en": "I like dogs."}], "note": "Literally, coffee pleases me. The verb agrees with the coffee or the dogs, not with you."},
+          {"rule": "With an infinitive, always gusta", "examples": [{"es": "Me gusta bailar.", "en": "I like to dance."}, {"es": "Nos gusta cocinar y comer.", "en": "We like cooking and eating."}]},
+          {"rule": "The pronoun says who likes it: me, te, le, nos, les", "examples": [{"es": "¿Te gusta la música?", "en": "Do you like music?"}, {"es": "Le gusta el fútbol.", "en": "He likes soccer."}, {"es": "Nos gustan las películas de terror.", "en": "We like horror movies."}, {"es": "¿Les gusta la playa?", "en": "Do you all like the beach?"}]}
+        ]
+      },
+      {
+        "heading": "Making it clear, or stressing it",
+        "rules": [
+          {"rule": "A plus a name or pronoun says who le or les means", "examples": [{"es": "A Ana le gusta el chocolate.", "en": "Ana likes chocolate."}, {"es": "A mis padres les gusta viajar.", "en": "My parents like to travel."}, {"es": "¿A usted le gusta el té?", "en": "Do you like tea?"}], "note": "The pronoun stays: a Ana le gusta, never a Ana gusta."},
+          {"rule": "A mí and a ti add stress or contrast", "examples": [{"es": "A mí me gusta, pero a ti no.", "en": "I like it, but you don't."}]},
+          {"rule": "Agreeing: a mí también, and a mí tampoco after a negative", "examples": [{"es": "—Me gusta el helado. —A mí también.", "en": "\"I like ice cream.\" \"Me too.\""}, {"es": "—No me gusta el frío. —A mí tampoco.", "en": "\"I don't like the cold.\" \"Me neither.\""}]}
+        ]
+      },
+      {
+        "heading": "Verbs that work the same way",
+        "rules": [
+          {"rule": "Encantar: to love something", "examples": [{"es": "Me encanta este lugar.", "en": "I love this place."}, {"es": "Nos encantan los tacos.", "en": "We love tacos."}], "note": "Encantar is already strong, so it doesn't take mucho."},
+          {"rule": "Interesar, importar, molestar", "examples": [{"es": "¿Te interesa la historia?", "en": "Are you interested in history?"}, {"es": "No me importa.", "en": "I don't care."}, {"es": "Me molesta el ruido.", "en": "The noise bothers me."}]},
+          {"rule": "Faltar: to be missing, or still to go", "examples": [{"es": "Me falta un dólar.", "en": "I'm a dollar short."}, {"es": "Faltan dos días para mi cumpleaños.", "en": "My birthday is two days away."}]},
+          {"rule": "Doler: to hurt", "examples": [{"es": "Me duele la cabeza.", "en": "My head hurts."}, {"es": "Le duelen los pies.", "en": "Her feet hurt."}], "note": "Body parts take el or la, not mi: me duele la cabeza."},
+          {"rule": "Parecer, for opinions", "examples": [{"es": "¿Qué te parece?", "en": "What do you think?"}, {"es": "Me parece bien.", "en": "That sounds good to me."}]}
+        ]
+      },
+      {
+        "heading": "In other tenses",
+        "rules": [
+          {"rule": "The pattern stays the same", "examples": [{"es": "Me gustó la película.", "en": "I liked the movie."}, {"es": "De niño me gustaban los dulces.", "en": "As a kid I liked candy."}, {"es": "Te va a gustar.", "en": "You're going to like it."}]}
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "nouns-and-adjectives",
+    "title": "Nouns, articles and adjectives",
+    "summary": "Every noun is masculine or feminine, and the words around it, like the, a, this, my and its adjectives, change to match.",
+    "sections": [
+      {
+        "heading": "Every noun is masculine or feminine",
+        "rules": [
+          {"rule": "Most nouns ending in -o are masculine, and most ending in -a are feminine", "examples": [{"es": "el libro", "en": "the book"}, {"es": "la casa", "en": "the house"}]},
+          {"rule": "Some common ones break the pattern", "examples": [{"es": "el día", "en": "the day"}, {"es": "el mapa", "en": "the map"}, {"es": "el problema", "en": "the problem"}, {"es": "la mano", "en": "the hand"}], "note": "Learn each noun with its article. The guide to noun gender and plurals has more patterns and exceptions."},
+          {"rule": "Nouns for people often have both forms", "examples": [{"es": "el amigo, la amiga", "en": "the friend"}, {"es": "el profesor, la profesora", "en": "the teacher"}, {"es": "el estudiante, la estudiante", "en": "the student"}]}
+        ]
+      },
+      {
+        "heading": "The, a and some",
+        "rules": [
+          {"rule": "The: el, la, los, las", "examples": [{"es": "el libro, los libros", "en": "the book, the books"}, {"es": "la mesa, las mesas", "en": "the table, the tables"}]},
+          {"rule": "A and some: un, una, unos, unas", "examples": [{"es": "Tengo un perro.", "en": "I have a dog."}, {"es": "Busco una casa grande.", "en": "I'm looking for a big house."}, {"es": "Compré unos zapatos.", "en": "I bought some shoes."}]},
+          {"rule": "A and el join as al, and de and el join as del", "examples": [{"es": "Vamos al parque.", "en": "We're going to the park."}, {"es": "Es el carro del vecino.", "en": "It's the neighbor's car."}], "note": "Only with el: a la playa and de la casa stay as they are."},
+          {"rule": "Spanish uses the where English doesn't", "examples": [{"es": "Me gusta el café.", "en": "I like coffee."}, {"es": "El lunes tengo clase.", "en": "On Monday I have class."}, {"es": "La señora Gómez está aquí.", "en": "Mrs. Gómez is here."}], "note": "And the other way around: no un with a profession. Soy maestra means I'm a teacher."}
+        ]
+      },
+      {
+        "heading": "Plurals",
+        "rules": [
+          {"rule": "Add -s after a vowel and -es after a consonant", "examples": [{"es": "un libro, dos libros", "en": "one book, two books"}, {"es": "una ciudad, dos ciudades", "en": "one city, two cities"}]},
+          {"rule": "A final z becomes c", "examples": [{"es": "el lápiz, los lápices", "en": "the pencil, the pencils"}]},
+          {"rule": "A mixed group takes the masculine", "examples": [{"es": "mis padres", "en": "my parents"}, {"es": "los niños", "en": "the children, or the boys"}]}
+        ]
+      },
+      {
+        "heading": "Adjectives agree with the noun",
+        "rules": [
+          {"rule": "Adjectives ending in -o have four forms", "examples": [{"es": "un carro rojo, una casa roja", "en": "a red car, a red house"}, {"es": "unos carros rojos, unas casas rojas", "en": "some red cars, some red houses"}]},
+          {"rule": "Adjectives ending in -e or a consonant only change for the plural", "examples": [{"es": "un examen fácil, una pregunta fácil", "en": "an easy test, an easy question"}, {"es": "unos niños felices", "en": "some happy children"}]},
+          {"rule": "Nationalities and words ending in -or add -a", "examples": [{"es": "un chico español, una chica española", "en": "a Spanish boy, a Spanish girl"}, {"es": "Mi hermana es muy trabajadora.", "en": "My sister is very hardworking."}]}
+        ]
+      },
+      {
+        "heading": "Where adjectives go",
+        "rules": [
+          {"rule": "Usually after the noun", "examples": [{"es": "una casa blanca", "en": "a white house"}, {"es": "un libro interesante", "en": "an interesting book"}]},
+          {"rule": "Numbers and words for how many go before", "examples": [{"es": "dos perros", "en": "two dogs"}, {"es": "mucha gente", "en": "a lot of people"}, {"es": "otro día", "en": "another day"}]},
+          {"rule": "Bueno and malo drop the -o before a masculine noun, and grande becomes gran", "examples": [{"es": "Hoy es un buen día.", "en": "Today is a good day."}, {"es": "Fue un mal momento.", "en": "It was a bad moment."}, {"es": "Es una gran idea.", "en": "It's a great idea."}], "note": "Gran before a noun means great, and grande after it means big: un gran hombre, un hombre grande."}
+        ]
+      },
+      {
+        "heading": "My, your, his and her",
+        "rules": [
+          {"rule": "Mi, tu and su add -s for a plural noun", "examples": [{"es": "mi casa, mis hermanos", "en": "my house, my brothers"}, {"es": "tu carro, tus llaves", "en": "your car, your keys"}]},
+          {"rule": "Nuestro agrees like any adjective ending in -o", "examples": [{"es": "nuestra familia, nuestros amigos", "en": "our family, our friends"}]},
+          {"rule": "Su can mean his, her, its, their or your", "examples": [{"es": "Su casa es grande.", "en": "His, her, their or your house is big."}, {"es": "La casa de ella es grande.", "en": "Her house is big."}], "note": "When it isn't clear, say de él, de ella, de ellos or de usted after the noun."}
+        ]
+      },
+      {
+        "heading": "This and that",
+        "rules": [
+          {"rule": "Este for this, ese for that, aquel for that over there", "examples": [{"es": "este libro, esta mesa", "en": "this book, this table"}, {"es": "esos zapatos", "en": "those shoes"}, {"es": "aquella montaña", "en": "that mountain over there"}]},
+          {"rule": "On their own, they mean this one or that one", "examples": [{"es": "Quiero este.", "en": "I want this one."}, {"es": "¿Cuál prefieres, esta o esa?", "en": "Which do you prefer, this one or that one?"}]},
+          {"rule": "Esto and eso for ideas, or things you can't name", "examples": [{"es": "¿Qué es esto?", "en": "What's this?"}, {"es": "Eso no es verdad.", "en": "That's not true."}]}
+        ]
+      }
+    ]
+  },
+  {
     "slug": "ser-vs-estar",
     "title": "Ser vs. estar",
     "summary": "Both mean \"to be\". Ser says what something is; estar says how or where it is right now.",
@@ -41,6 +225,46 @@
     ]
   },
   {
+    "slug": "por-vs-para-basics",
+    "title": "Por vs. para: the basics",
+    "summary": "Both can mean for. Para points toward a goal: a purpose, a person, a place or a deadline. Por is about the reason behind something, or the way through it.",
+    "sections": [
+      {
+        "heading": "Para: where it's headed",
+        "rules": [
+          {"rule": "Purpose: in order to", "examples": [{"es": "Estudio para aprender.", "en": "I study to learn."}, {"es": "Trabajo para ganar dinero.", "en": "I work to earn money."}]},
+          {"rule": "Who something is for", "examples": [{"es": "Este regalo es para ti.", "en": "This present is for you."}, {"es": "¿Es para mí?", "en": "Is it for me?"}]},
+          {"rule": "Where someone is headed", "examples": [{"es": "Mañana salgo para Bogotá.", "en": "Tomorrow I leave for Bogotá."}]},
+          {"rule": "A deadline", "examples": [{"es": "La tarea es para el lunes.", "en": "The homework is for Monday."}]},
+          {"rule": "In someone's opinion", "examples": [{"es": "Para mí, el español es fácil.", "en": "For me, Spanish is easy."}]}
+        ]
+      },
+      {
+        "heading": "Por: why, which way, and how",
+        "rules": [
+          {"rule": "The cause or reason", "examples": [{"es": "Siempre llego tarde por el tráfico.", "en": "I'm always late because of the traffic."}, {"es": "Gracias por la ayuda.", "en": "Thanks for the help."}], "note": "Gracias always takes por, because you're thanking someone for a reason."},
+          {"rule": "Through or along a place", "examples": [{"es": "Caminamos por el parque.", "en": "We walk through the park."}]},
+          {"rule": "A price or exchange", "examples": [{"es": "Pago diez dólares por la camisa.", "en": "I'm paying ten dollars for the shirt."}]},
+          {"rule": "How you get in touch", "examples": [{"es": "Te llamo por teléfono.", "en": "I'll call you on the phone."}]},
+          {"rule": "Parts of the day", "examples": [{"es": "Trabajo por la mañana.", "en": "I work in the morning."}], "note": "With a clock time it's de: a las ocho de la mañana."}
+        ]
+      },
+      {
+        "heading": "Set phrases with por",
+        "rules": [
+          {"rule": "Worth learning whole", "examples": [{"es": "Por favor, ayúdame.", "en": "Please help me."}, {"es": "Por eso no voy.", "en": "That's why I'm not going."}, {"es": "¡Por fin!", "en": "Finally!"}, {"es": "Por ejemplo, el mango.", "en": "For example, mango."}]},
+          {"rule": "¿Por qué? asks why, and porque answers", "examples": [{"es": "—¿Por qué estudias español? —Porque me gusta.", "en": "\"Why are you studying Spanish?\" \"Because I like it.\""}]}
+        ]
+      },
+      {
+        "heading": "A quick test",
+        "rules": [
+          {"rule": "A goal or destination takes para, and a reason or route takes por", "examples": [{"es": "Compro flores para mi mamá.", "en": "I'm buying flowers for my mom."}, {"es": "Estoy aquí por mi mamá.", "en": "I'm here because of my mom."}], "note": "The flowers go to her, so para. She's the reason you're here, so por. The full guide to por and para has more uses."}
+        ]
+      }
+    ]
+  },
+  {
     "slug": "por-vs-para",
     "title": "Por vs. para",
     "summary": "Para points toward a goal or destination. Por looks back at a cause, or covers a route, exchange or length of time.",
@@ -77,6 +301,127 @@
         "heading": "One sentence, two meanings",
         "rules": [
           {"rule": "The choice can change what you're saying", "examples": [{"es": "Trabajo para mi tío.", "en": "I work for my uncle (he's my boss)."}, {"es": "Trabajo por mi tío.", "en": "I'm working in my uncle's place."}]}
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "preterite-regular",
+    "title": "The preterite: regular verbs",
+    "summary": "The preterite tells what happened and was finished. Regular verbs have one set of endings for -ar and another shared by -er and -ir.",
+    "sections": [
+      {
+        "heading": "-ar verbs",
+        "rules": [
+          {"rule": "-é, -aste, -ó, -amos, -aron", "examples": [{"es": "Hablé con ella ayer.", "en": "I talked to her yesterday."}, {"es": "¿Hablaste con tu jefe?", "en": "Did you talk to your boss?"}, {"es": "El presidente habló en la radio.", "en": "The president spoke on the radio."}, {"es": "Mis amigos llamaron anoche.", "en": "My friends called last night."}], "note": "The accent matters: hablo is I speak, habló is he spoke."}
+        ]
+      },
+      {
+        "heading": "-er and -ir verbs",
+        "rules": [
+          {"rule": "-í, -iste, -ió, -imos, -ieron", "examples": [{"es": "Comí arroz con pollo.", "en": "I had chicken and rice."}, {"es": "¿Comiste?", "en": "Did you eat?"}, {"es": "Mi abuelo vivió en México.", "en": "My grandfather lived in Mexico."}, {"es": "Escribieron una carta.", "en": "They wrote a letter."}]}
+        ]
+      },
+      {
+        "heading": "Nosotros, the same as the present",
+        "rules": [
+          {"rule": "-ar and -ir verbs use one nosotros form for both tenses", "examples": [{"es": "Hablamos todos los días.", "en": "We talk every day."}, {"es": "Hablamos ayer.", "en": "We talked yesterday."}, {"es": "Anoche salimos tarde.", "en": "Last night we went out late."}], "note": "A time word usually makes it clear. -er verbs differ: comemos, comimos."}
+        ]
+      },
+      {
+        "heading": "Spelling changes",
+        "rules": [
+          {"rule": "In the yo form, -car becomes -qué, -gar becomes -gué and -zar becomes -cé", "examples": [{"es": "Busqué mis llaves.", "en": "I looked for my keys."}, {"es": "Llegué tarde.", "en": "I arrived late."}, {"es": "Empecé a las ocho.", "en": "I started at eight."}], "note": "Only the spelling changes, to keep the sound. The other forms are regular: buscaste, llegó, empezamos."},
+          {"rule": "An i between two vowels becomes y: leer, creer", "examples": [{"es": "Leyó el libro en un día.", "en": "She read the book in a day."}, {"es": "No me creyeron.", "en": "They didn't believe me."}]},
+          {"rule": "Present stem changes don't carry over in -ar and -er verbs", "examples": [{"es": "Volví a casa a las diez.", "en": "I came back home at ten."}, {"es": "Pensé en ti.", "en": "I thought about you."}], "note": "-ir verbs like pedir and dormir do change, in the él and ellos forms. They're in the guide to irregular preterites."}
+        ]
+      },
+      {
+        "heading": "When to use it",
+        "rules": [
+          {"rule": "Finished actions, often with a time word", "examples": [{"es": "Ayer trabajé diez horas.", "en": "Yesterday I worked ten hours."}, {"es": "La semana pasada viajamos a Quito.", "en": "Last week we traveled to Quito."}]},
+          {"rule": "One event after another", "examples": [{"es": "Llegué, comí y salí.", "en": "I arrived, ate and left."}]},
+          {"rule": "Recent events too, in Latin America", "examples": [{"es": "¿Ya comiste?", "en": "Have you eaten yet?"}, {"es": "Hoy terminé temprano.", "en": "I finished early today."}], "note": "Where Spain often says he comido, Latin America usually says comí."}
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "preterite-irregular",
+    "title": "The preterite: irregular verbs",
+    "summary": "The most common verbs have their own preterite stems, with endings that have no written accents. Some -ir verbs change a vowel instead.",
+    "sections": [
+      {
+        "heading": "Ser and ir share one preterite",
+        "rules": [
+          {"rule": "Fui, fuiste, fue, fuimos, fueron", "examples": [{"es": "Fui al mercado.", "en": "I went to the market."}, {"es": "Fue un día largo.", "en": "It was a long day."}, {"es": "¿Adónde fueron?", "en": "Where did they go?"}], "note": "The sentence tells them apart: fue al cine is went, fue difícil is was."}
+        ]
+      },
+      {
+        "heading": "New stems, with unaccented endings",
+        "rules": [
+          {"rule": "The endings are -e, -iste, -o, -imos, -ieron, with no written accents", "examples": [{"es": "Tuve que trabajar.", "en": "I had to work."}, {"es": "Tuvo suerte.", "en": "He was lucky."}]},
+          {"rule": "Stems with u: tener tuv-, estar estuv-, poder pud-, poner pus-, saber sup-", "examples": [{"es": "Estuvimos en Cartagena una semana.", "en": "We were in Cartagena for a week."}, {"es": "No pude ir.", "en": "I couldn't go."}, {"es": "¿Dónde pusiste las llaves?", "en": "Where did you put the keys?"}, {"es": "Supe la noticia ayer.", "en": "I found out the news yesterday."}]},
+          {"rule": "Stems with i: hacer hic-, querer quis-, venir vin-", "examples": [{"es": "Hice la cena.", "en": "I made dinner."}, {"es": "¿Quién hizo esto?", "en": "Who did this?"}, {"es": "Mis primos vinieron a la fiesta.", "en": "My cousins came to the party."}], "note": "Hacer writes hizo, with z, to keep the sound."},
+          {"rule": "Stems with j: decir dij-, traer traj-, conducir conduj-", "examples": [{"es": "Le dije la verdad.", "en": "I told him the truth."}, {"es": "Trajeron comida.", "en": "They brought food."}], "note": "The ellos ending drops its i: dijeron, trajeron."}
+        ]
+      },
+      {
+        "heading": "Dar and ver",
+        "rules": [
+          {"rule": "Dar takes -er endings, and neither needs a written accent", "examples": [{"es": "Le di un regalo a mi mamá.", "en": "I gave my mom a present."}, {"es": "Me dio su número.", "en": "She gave me her number."}, {"es": "¿Viste el partido?", "en": "Did you see the game?"}]}
+        ]
+      },
+      {
+        "heading": "Hay in the past",
+        "rules": [
+          {"rule": "Hubo for something that happened", "examples": [{"es": "Hubo un accidente en la carretera.", "en": "There was an accident on the highway."}], "note": "It's always singular, and for a description you use había: había mucha gente."}
+        ]
+      },
+      {
+        "heading": "-ir verbs that change a vowel",
+        "rules": [
+          {"rule": "e becomes i in the él and ellos forms: pedir, servir, repetir, seguir, sentir, preferir", "examples": [{"es": "Ella pidió la sopa.", "en": "She ordered the soup."}, {"es": "Siguieron derecho.", "en": "They kept going straight."}, {"es": "Sintió frío.", "en": "He felt cold."}], "note": "The other forms are regular: pedí, pediste, pedimos."},
+          {"rule": "o becomes u in the same forms: dormir, morir", "examples": [{"es": "El bebé durmió diez horas.", "en": "The baby slept ten hours."}, {"es": "Durmieron en el avión.", "en": "They slept on the plane."}]}
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "imperfect",
+    "title": "The imperfect",
+    "summary": "The imperfect describes the past as it was going on: habits, descriptions and the background to events. Only three verbs are irregular.",
+    "sections": [
+      {
+        "heading": "Regular forms",
+        "rules": [
+          {"rule": "-ar verbs: -aba, -abas, -aba, -ábamos, -aban", "examples": [{"es": "Mi papá trabajaba en un banco.", "en": "My dad worked at a bank."}, {"es": "Caminábamos a la escuela.", "en": "We used to walk to school."}]},
+          {"rule": "-er and -ir verbs: -ía, -ías, -ía, -íamos, -ían", "examples": [{"es": "Comía mucho pan.", "en": "I used to eat a lot of bread."}, {"es": "Vivíamos en el campo.", "en": "We lived in the country."}, {"es": "Tenían un perro.", "en": "They had a dog."}]},
+          {"rule": "Yo and él share a form, so the subject is often named", "examples": [{"es": "Yo trabajaba de noche y ella trabajaba de día.", "en": "I worked nights and she worked days."}]},
+          {"rule": "Stems don't change", "examples": [{"es": "Quería ir, pero no podía.", "en": "I wanted to go, but I couldn't."}, {"es": "El bebé dormía.", "en": "The baby was sleeping."}]}
+        ]
+      },
+      {
+        "heading": "Only three irregular verbs",
+        "rules": [
+          {"rule": "Ser: era, eras, era, éramos, eran", "examples": [{"es": "Era muy tímido.", "en": "I was very shy."}, {"es": "Éramos vecinos.", "en": "We were neighbors."}]},
+          {"rule": "Ir: iba, ibas, iba, íbamos, iban", "examples": [{"es": "Iba a la playa cada verano.", "en": "I went to the beach every summer."}]},
+          {"rule": "Ver: veía, veías, veía, veíamos, veían", "examples": [{"es": "Veíamos caricaturas los sábados.", "en": "We watched cartoons on Saturdays."}]}
+        ]
+      },
+      {
+        "heading": "When to use it",
+        "rules": [
+          {"rule": "Habits, what used to happen", "examples": [{"es": "De niño, jugaba en la calle.", "en": "As a kid, I used to play in the street."}, {"es": "Siempre visitábamos a mis abuelos.", "en": "We always visited my grandparents."}]},
+          {"rule": "Descriptions: people, places, weather, time and age", "examples": [{"es": "Mi abuela era muy alegre.", "en": "My grandmother was very cheerful."}, {"es": "Hacía calor.", "en": "It was hot."}, {"es": "Eran las tres.", "en": "It was three o'clock."}, {"es": "Tenía diez años.", "en": "I was ten."}]},
+          {"rule": "What was going on when something happened", "examples": [{"es": "Leía cuando sonó el teléfono.", "en": "I was reading when the phone rang."}]},
+          {"rule": "Feelings and states of mind", "examples": [{"es": "Estaba cansado.", "en": "I was tired."}, {"es": "No sabía qué hacer.", "en": "I didn't know what to do."}]}
+        ]
+      },
+      {
+        "heading": "Words that go with it",
+        "rules": [
+          {"rule": "Siempre, todos los días, a menudo, de niño, mientras", "examples": [{"es": "Todos los días tomábamos el bus.", "en": "We took the bus every day."}, {"es": "Mientras cocinaba, escuchaba música.", "en": "While I cooked, I listened to music."}], "note": "Choosing between it and the preterite has a guide of its own."}
         ]
       }
     ]
@@ -161,6 +506,42 @@
           {"rule": "The same triggers, in the past", "examples": [{"es": "Quería que vinieras.", "en": "I wanted you to come."}]},
           {"rule": "Unreal conditions: si + imperfect subjunctive, then the conditional", "examples": [{"es": "Si tuviera dinero, viajaría.", "en": "If I had money, I would travel."}], "note": "Never use the present subjunctive after si."},
           {"rule": "Polite requests", "examples": [{"es": "Quisiera un café.", "en": "I would like a coffee."}]}
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "imperfect-subjunctive",
+    "title": "The imperfect subjunctive and si clauses",
+    "summary": "The imperfect subjunctive is the subjunctive in the past, and the way to talk about what isn't true. It's built from the ellos form of the preterite.",
+    "sections": [
+      {
+        "heading": "How it's formed",
+        "rules": [
+          {"rule": "Take the ellos preterite, drop -ron, and add -ra, -ras, -ra, -ramos, -ran", "examples": [{"es": "Quería que hablaras conmigo.", "en": "I wanted you to talk to me."}, {"es": "Me pidió que comiera algo.", "en": "She asked me to eat something."}, {"es": "Esperaban que viviéramos cerca.", "en": "They hoped we'd live nearby."}], "note": "Nosotros takes a written accent: habláramos, comiéramos."},
+          {"rule": "Irregular preterites carry over", "examples": [{"es": "Si tuviera tiempo, iría.", "en": "If I had time, I'd go."}, {"es": "Le pedí que me dijera la verdad.", "en": "I asked him to tell me the truth."}, {"es": "Ojalá pudiera ayudarte.", "en": "I wish I could help you."}], "note": "Tuvieron gives tuviera, dijeron gives dijera, and fueron gives fuera for both ser and ir."},
+          {"rule": "The -se forms mean the same", "examples": [{"es": "Si tuviese tiempo, iría.", "en": "If I had time, I'd go."}], "note": "The -ra forms are far more common in Latin American speech, and they're what the drills ask for."}
+        ]
+      },
+      {
+        "heading": "The same triggers, in the past",
+        "rules": [
+          {"rule": "A wish, feeling or doubt in the past takes the imperfect subjunctive", "examples": [{"es": "Quiero que vengas. Quería que vinieras.", "en": "I want you to come. I wanted you to come."}, {"es": "Me alegró que llamaras.", "en": "I was glad you called."}, {"es": "No creía que fuera verdad.", "en": "I didn't think it was true."}, {"es": "Te lo expliqué para que entendieras.", "en": "I explained it so you'd understand."}]}
+        ]
+      },
+      {
+        "heading": "Si clauses",
+        "rules": [
+          {"rule": "Not true or unlikely: si plus the imperfect subjunctive, then the conditional", "examples": [{"es": "Si tuviera dinero, viajaría.", "en": "If I had money, I'd travel."}, {"es": "Si fuera más joven, estudiaría medicina.", "en": "If I were younger, I'd study medicine."}, {"es": "Viviría en la playa si pudiera.", "en": "I'd live at the beach if I could."}], "note": "The conditional never comes right after si: si tuviera, not si tendría."},
+          {"rule": "Likely: si plus the present, then the present or future", "examples": [{"es": "Si llueve, no salgo.", "en": "If it rains, I'm not going out."}, {"es": "Si tengo tiempo, te llamo.", "en": "If I have time, I'll call you."}]},
+          {"rule": "Como si always takes it", "examples": [{"es": "Habla como si fuera el jefe.", "en": "He talks as if he were the boss."}]}
+        ]
+      },
+      {
+        "heading": "Wishes and polite requests",
+        "rules": [
+          {"rule": "Ojalá plus the imperfect subjunctive, for wishes that probably won't come true", "examples": [{"es": "Ojalá estuvieras aquí.", "en": "I wish you were here."}, {"es": "Ojalá tuviera más tiempo.", "en": "I wish I had more time."}]},
+          {"rule": "Quisiera, for a polite I'd like", "examples": [{"es": "Quisiera un café, por favor.", "en": "I'd like a coffee, please."}]}
         ]
       }
     ]
@@ -360,11 +741,11 @@
         "heading": "The six tenses",
         "rules": [
           {"rule": "Present perfect, has or have done", "examples": [{"es": "He estado en Cuba.", "en": "I've been to Cuba."}]},
-          {"rule": "Pluperfect, had done", "examples": [{"es": "Ya había comido cuando llegaste.", "en": "I had already eaten when you arrived."}]},
+          {"rule": "Pluperfect, also called the past perfect: had done", "examples": [{"es": "Ya había comido cuando llegaste.", "en": "I had already eaten when you arrived."}]},
           {"rule": "Future perfect, will have done", "examples": [{"es": "Para junio habré terminado.", "en": "By June I will have finished."}]},
           {"rule": "Conditional perfect, would have done", "examples": [{"es": "Habría ido contigo.", "en": "I would have gone with you."}]},
           {"rule": "Present perfect subjunctive, after subjunctive triggers", "examples": [{"es": "Espero que hayas comido.", "en": "I hope you've eaten."}]},
-          {"rule": "Pluperfect subjunctive, for what didn't happen", "examples": [{"es": "Ojalá hubiera ido.", "en": "I wish I had gone."}]}
+          {"rule": "Pluperfect subjunctive, also called the past perfect subjunctive, for what didn't happen", "examples": [{"es": "Ojalá hubiera ido.", "en": "I wish I had gone."}]}
         ]
       },
       {
@@ -580,6 +961,62 @@
         "heading": "Age",
         "rules": [
           {"rule": "Use tener, not ser", "examples": [{"es": "Tengo treinta años.", "en": "I'm thirty years old."}, {"es": "¿Cuántos años tienes?", "en": "How old are you?"}], "note": "Keep the ñ in años. Without it, the word is something very different."}
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "idioms",
+    "title": "Idioms and everyday expressions",
+    "summary": "Fixed expressions that don't translate word for word, from tener hambre to meter la pata, and the sayings people quote every day.",
+    "sections": [
+      {
+        "heading": "Tener where English says be",
+        "rules": [
+          {"rule": "Hunger, thirst, sleepiness, cold, heat, fear and hurry", "examples": [{"es": "Tengo hambre.", "en": "I'm hungry."}, {"es": "¿Tienes frío?", "en": "Are you cold?"}, {"es": "Tenemos prisa.", "en": "We're in a hurry."}], "note": "These are nouns, so very is mucho or mucha: tengo mucha hambre."},
+          {"rule": "Tener razón: to be right", "examples": [{"es": "Tienes razón.", "en": "You're right."}]},
+          {"rule": "Tener ganas de: to feel like", "examples": [{"es": "Tengo ganas de bailar.", "en": "I feel like dancing."}]}
+        ]
+      },
+      {
+        "heading": "Hacer and dar",
+        "rules": [
+          {"rule": "Hacer falta: to be needed", "examples": [{"es": "Hace falta más tiempo.", "en": "More time is needed."}, {"es": "No hace falta.", "en": "There's no need."}]},
+          {"rule": "Darse cuenta: to realize", "examples": [{"es": "No me di cuenta.", "en": "I didn't realize."}]},
+          {"rule": "Me da igual, me da miedo, me da pena", "examples": [{"es": "Me da igual.", "en": "I don't mind either way."}, {"es": "Me dan miedo las alturas.", "en": "Heights scare me."}], "note": "Like gustar, the thing is the subject, so it's dan for more than one."}
+        ]
+      },
+      {
+        "heading": "Everyday idioms",
+        "rules": [
+          {"rule": "Valer la pena: to be worth it", "examples": [{"es": "Vale la pena visitar Cartagena.", "en": "Cartagena is worth visiting."}]},
+          {"rule": "Llevarse bien or mal: to get along, or not", "examples": [{"es": "Me llevo bien con mi suegra.", "en": "I get along well with my mother-in-law."}]},
+          {"rule": "Estar de acuerdo: to agree", "examples": [{"es": "Estoy de acuerdo contigo.", "en": "I agree with you."}]},
+          {"rule": "Extrañar: to miss someone or something", "examples": [{"es": "Te extraño mucho.", "en": "I miss you a lot."}], "note": "Echar de menos is understood everywhere, but most of Latin America says extrañar."},
+          {"rule": "Meter la pata: to put your foot in it", "examples": [{"es": "Metí la pata.", "en": "I messed up."}]},
+          {"rule": "Tomar el pelo: to pull someone's leg", "examples": [{"es": "¿Me estás tomando el pelo?", "en": "Are you pulling my leg?"}]},
+          {"rule": "Costar un ojo de la cara: to cost an arm and a leg", "examples": [{"es": "Ese carro cuesta un ojo de la cara.", "en": "That car costs an arm and a leg."}]},
+          {"rule": "Ponerse las pilas: to get your act together", "examples": [{"es": "Ponte las pilas, que el examen es mañana.", "en": "Get it together, the exam is tomorrow."}]}
+        ]
+      },
+      {
+        "heading": "Things that happen to you",
+        "rules": [
+          {"rule": "Se, then me, te or le, then the verb, for accidents", "examples": [{"es": "Se me olvidó.", "en": "I forgot."}, {"es": "Se me cayó el vaso.", "en": "I dropped the glass."}], "note": "The thing is the subject, so it's plural with more than one: se me olvidaron las llaves."}
+        ]
+      },
+      {
+        "heading": "Reactions",
+        "rules": [
+          {"rule": "¡Qué! plus a noun or adjective", "examples": [{"es": "¡Qué lástima!", "en": "What a shame!"}, {"es": "¡Qué bien!", "en": "How great!"}]},
+          {"rule": "Surprise and refusal", "examples": [{"es": "¡No me digas!", "en": "No way!"}, {"es": "¡Qué va!", "en": "Not at all!"}, {"es": "¡Ni hablar!", "en": "No way, out of the question!"}]},
+          {"rule": "Ni modo: oh well", "examples": [{"es": "Ni modo, vamos mañana.", "en": "Oh well, we'll go tomorrow."}], "note": "Common in Mexico and Central America."}
+        ]
+      },
+      {
+        "heading": "Sayings",
+        "rules": [
+          {"rule": "Refranes come up all the time, often only the first half", "examples": [{"es": "Más vale tarde que nunca.", "en": "Better late than never."}, {"es": "Al mal tiempo, buena cara.", "en": "Keep your chin up in hard times."}, {"es": "Camarón que se duerme se lo lleva la corriente.", "en": "If you snooze, you lose."}], "note": "Saying camarón que se duerme is enough, since everyone knows the rest."}
         ]
       }
     ]

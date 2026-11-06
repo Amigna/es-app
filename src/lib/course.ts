@@ -7,7 +7,8 @@ import type { Level } from "./level";
 // signed-in people merged into users/{uid}/stats/course.
 
 export type StepId = "learn" | "see" | "words" | "quiz" | "practice" | "write" | "checkpoint";
-export type ChapterDrill = "conjugation" | "blanks";
+/** Verb forms, or for chapters about nouns and adjectives, gender and agreement questions on the chapter's words. */
+export type ChapterDrill = "conjugation" | "blanks" | "gender" | "agreement";
 
 export interface Chapter {
   id: string;
@@ -21,9 +22,11 @@ export interface Chapter {
   models?: string[];
   /** The verbs practice and writing draw from. */
   verbs: string[];
-  /** Empty when the topic isn't about verb forms, like object pronouns. */
+  /** Empty when there's nothing to drill beyond the quiz, like object pronouns. */
   drills: ChapterDrill[];
-  /** Words for the chapter's theme, written `type:es`, like `noun:casa`. */
+  /** A short lesson between chapters: the guide and its quiz, with no words or practice. */
+  lesson?: boolean;
+  /** Words for the chapter's theme, written `type:es`, like `noun:casa` or `phrase:Tengo prisa.`. */
   words: string[];
 }
 

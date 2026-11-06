@@ -4,6 +4,7 @@
     "title": "Present tense: regular verbs",
     "level": "A1",
     "summary": "Talk about what you do every day with -ar, -er and -ir verbs.",
+    "guide": { "slug": "present-regular" },
     "tenses": ["present"],
     "models": ["hablar", "comer", "vivir"],
     "verbs": ["hablar", "trabajar", "estudiar", "llegar", "llamar", "tomar", "mirar", "esperar", "buscar", "necesitar", "comprar", "cocinar", "bailar", "caminar", "escuchar", "comer", "beber", "leer", "correr", "vender", "aprender", "comprender", "vivir", "escribir", "recibir", "abrir"],
@@ -12,6 +13,21 @@
       "noun:escuela", "noun:clase", "noun:libro", "noun:cuaderno", "noun:tarea", "noun:examen", "noun:pregunta", "noun:respuesta",
       "noun:idioma", "noun:palabra", "noun:trabajo", "noun:oficina", "noun:estudiante", "noun:maestro", "noun:compañero",
       "adverb:todos los días", "adverb:siempre", "adverb:nunca", "adverb:a veces", "adverb:hoy"
+    ]
+  },
+  {
+    "id": "nouns-and-adjectives",
+    "title": "Nouns, articles and adjectives",
+    "level": "A1",
+    "summary": "El or la, un or una, and adjectives that change to match: casa roja, libros nuevos.",
+    "guide": { "slug": "nouns-and-adjectives" },
+    "tenses": [],
+    "verbs": [],
+    "drills": ["gender", "agreement"],
+    "words": [
+      "noun:casa", "noun:libro", "noun:mesa", "noun:silla", "noun:ciudad", "noun:calle", "noun:ventana", "noun:lápiz", "noun:mano",
+      "noun:mapa", "noun:problema", "noun:día", "adjective:pequeño", "adjective:grande", "adjective:nuevo", "adjective:viejo",
+      "adjective:bonito", "adjective:rojo", "adjective:blanco", "adjective:negro", "adjective:español", "adjective:trabajador"
     ]
   },
   {
@@ -32,10 +48,23 @@
     ]
   },
   {
+    "id": "numbers-and-dates",
+    "title": "Numbers, dates and time",
+    "level": "A1",
+    "summary": "Counting, prices, birthdays and telling time, with ser for dates and hours.",
+    "lesson": true,
+    "guide": { "slug": "numbers-and-dates" },
+    "tenses": [],
+    "verbs": [],
+    "drills": [],
+    "words": []
+  },
+  {
     "id": "present-irregular",
     "title": "Present: stem changes and irregular yo forms",
     "level": "A1",
     "summary": "Verbs like pensar, volver and pedir change their stem, and verbs like tener and hacer have a yo form of their own.",
+    "guide": { "slug": "present-irregular" },
     "tenses": ["present"],
     "models": ["pensar", "volver", "pedir", "tener"],
     "verbs": ["pensar", "querer", "empezar", "cerrar", "preferir", "entender", "poder", "volver", "dormir", "encontrar", "contar", "jugar", "almorzar", "pedir", "servir", "repetir", "seguir", "tener", "venir", "hacer", "poner", "salir", "decir", "conocer", "saber", "traer", "oír", "ver", "dar"],
@@ -50,6 +79,7 @@
     "title": "Gustar and similar verbs",
     "level": "A1",
     "summary": "Me gusta, te encanta, nos interesa: the thing you like is the subject.",
+    "guide": { "slug": "gustar" },
     "tenses": ["present"],
     "models": ["gustar", "encantar"],
     "verbs": ["gustar", "encantar", "interesar", "importar", "molestar", "faltar", "doler"],
@@ -80,6 +110,30 @@
     ]
   },
   {
+    "id": "por-vs-para-basics",
+    "title": "Por vs. para: the basics",
+    "level": "A1",
+    "summary": "Two words for for: para for goals, people, places and deadlines, por for reasons, routes, prices and set phrases.",
+    "lesson": true,
+    "guide": { "slug": "por-vs-para-basics" },
+    "tenses": [],
+    "verbs": [],
+    "drills": [],
+    "words": []
+  },
+  {
+    "id": "comparisons",
+    "title": "Comparisons",
+    "level": "A2",
+    "summary": "Más alto que, tan rápido como, el mejor: comparing people and things.",
+    "lesson": true,
+    "guide": { "slug": "comparisons" },
+    "tenses": [],
+    "verbs": [],
+    "drills": [],
+    "words": []
+  },
+  {
     "id": "reflexive-verbs",
     "title": "Reflexive verbs",
     "level": "A2",
@@ -100,6 +154,7 @@
     "title": "Preterite: regular verbs",
     "level": "A2",
     "summary": "Hablé, comí, viví: finished actions in the past.",
+    "guide": { "slug": "preterite-regular" },
     "tenses": ["preterite"],
     "models": ["hablar", "comer", "vivir", "llegar"],
     "verbs": ["hablar", "trabajar", "estudiar", "llegar", "buscar", "pagar", "tomar", "comprar", "cocinar", "viajar", "comer", "beber", "correr", "vender", "aprender", "volver", "vivir", "escribir", "recibir", "abrir", "salir", "leer"],
@@ -114,6 +169,7 @@
     "title": "Preterite: irregular verbs",
     "level": "A2",
     "summary": "Fui, tuve, hice, dije: the past tense of the verbs you use most.",
+    "guide": { "slug": "preterite-irregular" },
     "tenses": ["preterite"],
     "models": ["tener", "hacer", "ir", "pedir"],
     "verbs": ["ser", "ir", "estar", "tener", "hacer", "decir", "poder", "poner", "querer", "saber", "venir", "traer", "dar", "ver", "conducir", "pedir", "dormir", "sentir", "preferir", "seguir"],
@@ -128,6 +184,7 @@
     "title": "The imperfect",
     "level": "A2",
     "summary": "Hablaba, comía, era: what used to happen and what was going on.",
+    "guide": { "slug": "imperfect" },
     "tenses": ["imperfect"],
     "models": ["hablar", "comer", "ser", "ir"],
     "verbs": ["ser", "ir", "ver", "estar", "tener", "hacer", "vivir", "jugar", "comer", "hablar", "trabajar", "querer", "poder", "saber", "dormir", "leer", "escuchar", "llevar"],
@@ -167,6 +224,18 @@
       "noun:llave", "noun:teléfono", "noun:celular", "noun:foto", "noun:bolsa", "noun:botella", "noun:caja", "noun:cámara",
       "noun:computadora", "noun:billetera", "noun:anillo", "noun:reloj", "noun:gafas", "noun:mochila", "noun:dinero"
     ]
+  },
+  {
+    "id": "por-vs-para",
+    "title": "Por vs. para: more uses",
+    "level": "A2",
+    "summary": "Por and para again, now in the past, with duration, on behalf of, the passive, and sentences where the choice changes the meaning.",
+    "lesson": true,
+    "guide": { "slug": "por-vs-para" },
+    "tenses": [],
+    "verbs": [],
+    "drills": [],
+    "words": []
   },
   {
     "id": "commands",
@@ -221,6 +290,18 @@
     ]
   },
   {
+    "id": "relative-pronouns",
+    "title": "Relative pronouns",
+    "level": "B1",
+    "summary": "Que, quien, lo que, donde and cuyo: joining sentences without repeating yourself.",
+    "lesson": true,
+    "guide": { "slug": "relative-pronouns" },
+    "tenses": [],
+    "verbs": [],
+    "drills": [],
+    "words": []
+  },
+  {
     "id": "present-subjunctive",
     "title": "Present subjunctive: forms and wishes",
     "level": "B1",
@@ -260,11 +341,28 @@
     ]
   },
   {
+    "id": "idioms",
+    "title": "Idioms and everyday expressions",
+    "level": "B1",
+    "summary": "Tener ganas, meter la pata, valer la pena: expressions that don't translate word for word, and the sayings people quote.",
+    "guide": { "slug": "idioms" },
+    "tenses": [],
+    "verbs": [],
+    "drills": [],
+    "words": [
+      "phrase:Tengo ganas de comer.", "phrase:Tengo prisa.", "phrase:Tengo razón.", "phrase:Me da igual.", "phrase:Se me olvidó.",
+      "phrase:Se fue la luz.", "phrase:¡Qué lástima!", "phrase:¡No me digas!", "phrase:¡Qué va!", "phrase:¡Ni hablar!", "phrase:Ni modo.",
+      "phrase:Poco a poco.", "phrase:Más vale tarde que nunca.", "phrase:No hay mal que por bien no venga.", "phrase:Al mal tiempo, buena cara.",
+      "phrase:Del dicho al hecho hay mucho trecho.", "phrase:El que no arriesga no gana.", "phrase:Camarón que se duerme se lo lleva la corriente.",
+      "phrase:Lo barato sale caro."
+    ]
+  },
+  {
     "id": "imperfect-subjunctive",
     "title": "Imperfect subjunctive and si clauses",
     "level": "B2",
     "summary": "Si tuviera dinero, viajaría: the subjunctive in the past, and what you'd do if.",
-    "guide": { "slug": "subjunctive", "sections": ["The imperfect subjunctive"], "quiz": [] },
+    "guide": { "slug": "imperfect-subjunctive" },
     "tenses": ["subjImperfect", "conditional"],
     "models": ["hablar", "tener", "ser"],
     "verbs": ["ser", "ir", "tener", "estar", "hacer", "poder", "saber", "querer", "decir", "venir", "haber", "hablar", "vivir", "comer", "dar", "poner", "ver", "ganar", "comprar", "viajar"],
@@ -276,7 +374,7 @@
   },
   {
     "id": "other-perfect-tenses",
-    "title": "The pluperfect and the other perfect tenses",
+    "title": "The pluperfect (past perfect) and the other perfect tenses",
     "level": "B2",
     "summary": "Había comido, habré terminado, habría ido, hubiera sabido: the rest of the perfect tenses.",
     "guide": { "slug": "perfect-tenses" },

@@ -1,5 +1,5 @@
 import { blankDeck, listedWordCard, writingDeck } from "./card-decks";
-import type { Chapter } from "./course";
+import type { Chapter, ChapterDrill } from "./course";
 import { conjugationCard, limitedDeck, makeQuestion, type Card } from "./drill";
 import { quizCard, shuffled, type QuizQuestion } from "./quiz";
 import { sentencesFor, type SentenceBank } from "./sentences";
@@ -30,18 +30,28 @@ export interface ChapterData {
   quiz: ChapterQuiz | null;
 }
 
-/** Conjugation and fill-in-the-blank in turn, as the chapter allows. Endless, so callers limit it. */
-function verbDeck({ chapter, verbs, bank, rare }: ChapterData, random: Random): () => Card | null {
-  const blanks = blankDeck(bank, verbs, chapter.tenses, random);
-  const conjugation = () => {
-    const q = makeQuestion(verbs, chapter.tenses, rare, random);
-    return q && conjugationCard(q, sentencesFor(bank, q.verb.inf, q.tense));
+/** A chapter word the question fits, like a noun for gender. Null when none does. */
+function wordQuestion(words: string[], kind: "gender" | "agreement", random: Random): () => Card | null {
+  const fitting = words.filter((id) => listedWordCard(id, kind));
+  return () => (fitting.length ? listedWordCard(fitting[Math.floor(random() * fitting.length)], kind, random) : null);
+}
+
+/** The chapter's drills in turn: verb forms, or gender and agreement on its words. Endless, so callers limit it. */
+function drillDeck({ chapter, verbs, bank, rare }: ChapterData, random: Random): () => Card | null {
+  const decks: Record<ChapterDrill, () => () => Card | null> = {
+    blanks: () => blankDeck(bank, verbs, chapter.tenses, random),
+    conjugation: () => () => {
+      const q = makeQuestion(verbs, chapter.tenses, rare, random);
+      return q && conjugationCard(q, sentencesFor(bank, q.verb.inf, q.tense));
+    },
+    gender: () => wordQuestion(chapter.words, "gender", random),
+    agreement: () => wordQuestion(chapter.words, "agreement", random),
   };
-  const kinds = chapter.drills.map((d) => (d === "blanks" ? blanks : conjugation));
+  const kinds = chapter.drills.map((d) => decks[d]());
   let turn = Math.floor(random() * Math.max(1, kinds.length));
   return () => {
     if (kinds.length === 0) return null;
-    // A verb with no sentence for the tense gives no blank, so the other kind fills in.
+    // A verb with no sentence for the tense gives no blank, so another kind fills in.
     for (let i = 0; i < kinds.length; i++) {
       const card = kinds[turn++ % kinds.length]();
       if (card) return card;
@@ -67,7 +77,7 @@ const queue = (cards: Card[]): (() => Card | null) => {
 };
 
 export function practiceDeck(data: ChapterData, random: Random = Math.random): () => Card | null {
-  return limitedDeck(verbDeck(data, random), PRACTICE_SIZE);
+  return limitedDeck(drillDeck(data, random), PRACTICE_SIZE);
 }
 
 export function quizCards(quiz: ChapterQuiz, random: Random = Math.random): Card[] {
@@ -89,19 +99,19 @@ export function writeDeck({ chapter, verbs, bank }: ChapterData, random: Random 
 }
 
 /**
- * A short mixed test: verb forms, guide questions and the chapter's words, typed. When a chapter has no verb drills or
- * no quiz, the other parts take its share. Missed questions don't come back, so the score is a first try.
+ * A short mixed test: the chapter's drills, guide questions and its words, typed. When a part has nothing to ask, like
+ * phrases, which are never typed, the others take its share. Missed questions don't come back, so the score is a first try.
  */
 export function checkpointCards(data: ChapterData, random: Random = Math.random): Card[] {
   const { chapter, quiz } = data;
   const total = CHECKPOINT_MIX.verbs + CHECKPOINT_MIX.quiz + CHECKPOINT_MIX.words;
   const quizPool = quiz ? shuffled(quizCards(quiz, random), random) : [];
-  const verbs = chapter.drills.length > 0 ? distinct(verbDeck(data, random), CHECKPOINT_MIX.verbs + (quizPool.length > 0 ? 0 : CHECKPOINT_MIX.quiz)) : [];
-  const quizCount = Math.min(quizPool.length, total - CHECKPOINT_MIX.words - verbs.length);
-  const words = shuffled(chapter.words, random)
-    .slice(0, total - verbs.length - quizCount)
-    .flatMap((id) => listedWordCard(id, "toSpanish", random) ?? []);
-  return shuffled([...verbs, ...quizPool.slice(0, quizCount), ...words], random);
+  const typed = shuffled(chapter.words, random).flatMap((id) => listedWordCard(id, "toSpanish", random) ?? []);
+  const words = typed.slice(0, CHECKPOINT_MIX.words);
+  const drillShare = chapter.drills.length > 0 ? CHECKPOINT_MIX.verbs : 0;
+  const quizCount = Math.min(quizPool.length, total - words.length - drillShare);
+  const drills = drillShare ? distinct(drillDeck(data, random), total - words.length - quizCount) : [];
+  return shuffled([...drills, ...quizPool.slice(0, quizCount), ...words], random);
 }
 
 export const checkpointDeck = (data: ChapterData, random: Random = Math.random) => queue(checkpointCards(data, random));

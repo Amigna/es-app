@@ -56,7 +56,9 @@ describe("course chapters", () => {
 
   it("name verbs, tenses and model verbs that exist", () => {
     for (const c of CHAPTERS) {
-      assert.ok(c.tenses.length > 0 && c.tenses.every((t) => TENSE_IDS.has(t)), c.id);
+      assert.ok(c.tenses.every((t) => TENSE_IDS.has(t)), c.id);
+      const verbDrills = c.drills.some((d) => d === "conjugation" || d === "blanks");
+      assert.ok(!verbDrills || (c.tenses.length > 0 && c.verbs.length > 0), `${c.id} drills verbs but names none`);
       for (const inf of c.verbs) assert.equal(findVerb(inf)?.inf, inf, `${c.id}: ${inf}`);
       assert.equal(new Set(c.verbs).size, c.verbs.length, `${c.id} lists a verb twice`);
       for (const inf of c.models ?? []) {
@@ -72,10 +74,13 @@ describe("course chapters", () => {
       for (const id of c.words) {
         const [type, es] = id.split(":");
         assert.ok(listedWordCard(id, "flashcard"), `${c.id}: no word ${id}`);
+        // Phrases have no level and are never typed.
+        if (type === "phrase") continue;
         assert.ok(listedWordCard(id, "toSpanish"), `${c.id}: no typed card for ${id}`);
         assert.ok(upToLevel(c.level, type as LeveledType, es), `${c.id}: ${id} is above ${c.level}`);
       }
-      assert.ok(c.words.length >= 12 && c.words.length <= 25, `${c.id} has ${c.words.length} words`);
+      if (c.lesson) assert.equal(c.words.length + c.drills.length + c.verbs.length, 0, `${c.id} is a short lesson`);
+      else assert.ok(c.words.length >= 12 && c.words.length <= 25, `${c.id} has ${c.words.length} words`);
     }
   });
 
@@ -102,7 +107,7 @@ describe("course chapters", () => {
 
 describe("chapter decks", () => {
   it("practice stays on the chapter's verbs and tenses", () => {
-    for (const c of CHAPTERS.filter((ch) => ch.drills.length > 0)) {
+    for (const c of CHAPTERS.filter((ch) => ch.drills.includes("conjugation") || ch.drills.includes("blanks"))) {
       const deck = practiceDeck(chapterData(c), seeded(5));
       let count = 0;
       for (let card = deck(); card; card = deck()) {
@@ -115,8 +120,25 @@ describe("chapter decks", () => {
     }
   });
 
+  it("gender and agreement practice stays on the chapter's nouns and adjectives", () => {
+    for (const c of CHAPTERS.filter((ch) => ch.drills.includes("gender"))) {
+      const deck = practiceDeck(chapterData(c), seeded(3));
+      const kinds = new Set<string>();
+      let count = 0;
+      for (let card = deck(); card; card = deck()) {
+        count++;
+        const [source, type, es, kind] = card.track!.item.split(":");
+        kinds.add(kind);
+        assert.equal(source, "vocab", card.id);
+        assert.ok(c.words.includes(`${type}:${es}`), `${c.id}: ${card.track!.item}`);
+      }
+      assert.equal(count, 15, c.id);
+      assert.deepEqual([...kinds].sort(), [...c.drills].sort(), c.id);
+    }
+  });
+
   it("writing gives six sentences from the chapter's tenses", () => {
-    for (const c of CHAPTERS) {
+    for (const c of CHAPTERS.filter((ch) => chapterSteps(ch).includes("write"))) {
       const deck = writeDeck(chapterData(c), seeded(9));
       let count = 0;
       for (let card = deck(); card; card = deck()) count++;
@@ -129,8 +151,9 @@ describe("chapter decks", () => {
       const cards = checkpointCards(chapterData(c), seeded(11));
       assert.ok(cards.length >= 12 && cards.length <= 15, `${c.id}: ${cards.length}`);
       assert.equal(new Set(cards.map((card) => card.id)).size, cards.length, `${c.id} repeats a question`);
+      const typed = cards.filter((card) => card.badge === "English to Spanish");
+      assert.ok(typed.length >= 4 || c.words.every((w) => w.startsWith("phrase:")), c.id);
       const words = cards.filter((card) => card.track?.item.startsWith("vocab:"));
-      assert.ok(words.length >= 4, c.id);
       for (const card of words) assert.ok(c.words.includes(card.track!.item.split(":").slice(1, 3).join(":")), card.track!.item);
     }
   });

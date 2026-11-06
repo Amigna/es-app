@@ -208,7 +208,8 @@ export default function CourseChapter({
   const header = (
     <header className="space-y-2">
       <p className="text-sm text-stone-500">
-        Chapter {number} · {levelInfo(chapter.level).name} ({chapter.level})
+        Chapter {number}
+        {chapter.lesson && " · Short lesson"} · {levelInfo(chapter.level).name} ({chapter.level})
       </p>
       <h1 className="text-3xl font-semibold tracking-tight">{chapter.title}</h1>
       <p className="text-lg text-stone-600 dark:text-stone-400">{chapter.summary}</p>
@@ -255,14 +256,16 @@ export default function CourseChapter({
           <section className="space-y-4">
             <p className="text-stone-600 dark:text-stone-400">
               {open === "words" &&
-                `${chapter.words.length} words that go with this chapter. Flip each card and say whether you knew it. When you're signed in, they join your review schedule and come back in Today's review.`}
+                `${chapter.words.length} ${chapter.words.every((w) => w.startsWith("phrase:")) ? "expressions" : "words"} that go with this chapter. Flip each card and say whether you knew it. When you're signed in, they join your review schedule and come back in Today's review.`}
               {open === "quiz" && `${quiz?.questions.length ?? 0} questions on the lesson. Each answer comes with a short explanation, and anything you miss comes back.`}
               {open === "practice" &&
-                `15 questions on the ${tenses}, ${chapter.drills.length > 1 ? "mixing conjugation and fill in the blank" : chapter.drills[0] === "blanks" ? "filling in the blank in real sentences" : "typing the verb form"}. Anything you miss comes back.`}
+                (chapter.tenses.length === 0
+                  ? "15 questions on this chapter's words: el or la for each noun, and the right form of each adjective. Anything you miss comes back."
+                  : `15 questions on the ${tenses}, ${chapter.drills.length > 1 ? "mixing conjugation and fill in the blank" : chapter.drills[0] === "blanks" ? "filling in the blank in real sentences" : "typing the verb form"}. Anything you miss comes back.`)}
               {open === "write" &&
                 `Translate 6 sentences in the ${tenses}, both ways. If yours doesn't match the model answer, you decide whether it counts.`}
               {open === "checkpoint" &&
-                `A short test mixing verb forms, questions on the lesson and this chapter's words. Missed questions don't come back. ${PASS_SCORE}% or more finishes the chapter, and you can take it again any time.`}
+                `A short test mixing ${chapter.drills.length > 0 ? "practice questions, " : ""}questions on the lesson and this chapter's words. Missed questions don't come back. ${PASS_SCORE}% or more finishes the chapter, and you can take it again any time.`}
             </p>
             {open === "checkpoint" && mine?.best !== undefined && (
               <p>
