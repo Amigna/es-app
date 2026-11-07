@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { listedWordCard } from "./card-decks";
-import { TENSES } from "./conjugation/types";
+import { TENSES, type TenseId } from "./conjugation/types";
 import { conjugate } from "./conjugation/engine";
 import { CHAPTERS, EXAM_LEVELS, EXAM_REVIEW, EXAM_SIZE, chapterSteps, levelChapters, mergeCourse, nextStep, parseCourse, suggestedChapter, type CourseProgress } from "./course";
 import { checkpointCards, examCards, examWithReview, practiceDeck, quizCards, writeDeck, type ChapterData, type ChapterQuiz } from "./course-decks";
@@ -9,7 +9,10 @@ import { findGuide } from "./guides";
 import { LEVELS } from "./level";
 import { quizPlace } from "./quiz";
 import { GUIDE_QUIZZES } from "./quiz-data";
+import { chapterSentences } from "./chapter-quiz";
+import courseSentences from "../data/course-sentences.json";
 import { SENTENCE_BANK } from "./sentence-data";
+import { findForm, sentencesFor, withExtraSentences, type Sentence, type SentenceBank } from "./sentences";
 import { findVerb } from "./verbs";
 import { upToLevel, type LeveledType } from "./vocab";
 
@@ -41,7 +44,7 @@ function chapterData(chapter: (typeof CHAPTERS)[number]): ChapterData {
   return {
     chapter,
     verbs: chapter.verbs.map((inf) => findVerb(inf)!),
-    bank: SENTENCE_BANK,
+    bank: withExtraSentences(SENTENCE_BANK, chapterSentences(chapter.id)),
     rare,
     quiz: chapter.guide ? chapterQuiz(chapter.guide.slug, chapter.guide.quiz) : null,
   };
@@ -58,7 +61,7 @@ describe("course chapters", () => {
   it("name verbs, tenses and model verbs that exist", () => {
     for (const c of CHAPTERS) {
       assert.ok(c.tenses.every((t) => TENSE_IDS.has(t)), c.id);
-      const verbDrills = c.drills.some((d) => d === "conjugation" || d === "blanks");
+      const verbDrills = c.drills.some((d) => d === "conjugation" || d === "blanks" || d === "chooseVerb");
       assert.ok(!verbDrills || (c.tenses.length > 0 && c.verbs.length > 0), `${c.id} drills verbs but names none`);
       for (const inf of c.verbs) assert.equal(findVerb(inf)?.inf, inf, `${c.id}: ${inf}`);
       assert.equal(new Set(c.verbs).size, c.verbs.length, `${c.id} lists a verb twice`);
@@ -97,6 +100,26 @@ describe("course chapters", () => {
     }
   });
 
+  it("add their own sentences only for their verbs and tenses, each with the right form", () => {
+    for (const [id, verbs] of Object.entries(courseSentences as Record<string, SentenceBank>)) {
+      const c = CHAPTERS.find((ch) => ch.id === id);
+      assert.ok(c, `${id} isn't a chapter`);
+      for (const [inf, tenses] of Object.entries(verbs)) {
+        assert.ok(c.verbs.includes(inf), `${id}: ${inf}`);
+        for (const [tense, rows] of Object.entries(tenses) as [TenseId, Sentence[]][]) {
+          assert.ok(c.tenses.includes(tense), `${id}: ${tense}`);
+          const bank = new Set(sentencesFor(SENTENCE_BANK, inf, tense).map((s) => s.es));
+          for (const s of rows) {
+            const form = conjugate(findVerb(inf)!).tenses[tense]?.forms[s.person];
+            assert.ok(form && findForm(s.es, form), `${id}: "${s.es}" lacks ${form}`);
+            assert.ok(/[.?!]$/.test(s.es) && /[.?!]$/.test(s.en), s.es);
+            assert.ok(!bank.has(s.es), `${id}: "${s.es}" is already in the bank`);
+          }
+        }
+      }
+    }
+  });
+
   it("always end in a checkpoint and have something to practice", () => {
     for (const c of CHAPTERS) {
       const steps = chapterSteps(c);
@@ -108,11 +131,14 @@ describe("course chapters", () => {
 
 describe("chapter decks", () => {
   it("practice stays on the chapter's verbs and tenses", () => {
-    for (const c of CHAPTERS.filter((ch) => ch.drills.some((d) => d === "conjugation" || d === "blanks" || d === "choose"))) {
+    for (const c of CHAPTERS.filter((ch) => ch.drills.some((d) => d === "conjugation" || d === "blanks" || d === "choose" || d === "chooseVerb"))) {
       const deck = practiceDeck(chapterData(c), seeded(5));
       let count = 0;
+      const asked = new Set<string>();
       for (let card = deck(); card; card = deck()) {
         count++;
+        assert.ok(!asked.has(`${card.id}|${card.title}`), `${c.id} repeats ${card.id}`);
+        asked.add(`${card.id}|${card.title}`);
         const [source, inf, tense] = card.track!.item.split(":");
         assert.equal(source, "verb", card.id);
         assert.ok(c.verbs.includes(inf) && c.tenses.includes(tense as never), `${c.id}: ${card.track!.item}`);
@@ -132,6 +158,19 @@ describe("chapter decks", () => {
       seen.add(card.track!.tense!);
     }
     assert.deepEqual([...seen].sort(), [...c.tenses].sort());
+  });
+
+  it("verb choice hides the verb until it's answered", () => {
+    const c = CHAPTERS.find((ch) => ch.drills.includes("chooseVerb"))!;
+    const deck = practiceDeck(chapterData(c), seeded(6));
+    const seen = new Set<string>();
+    for (let card = deck(); card; card = deck()) {
+      const inf = card.track!.item.split(":")[1];
+      assert.ok(!card.ask.includes(inf), card.ask);
+      assert.equal(card.explain, `This sentence takes ${inf}.`);
+      seen.add(inf);
+    }
+    assert.deepEqual([...seen].sort(), [...c.verbs].sort());
   });
 
   it("gender and agreement practice stays on the chapter's nouns and adjectives", () => {
@@ -155,7 +194,12 @@ describe("chapter decks", () => {
     for (const c of CHAPTERS.filter((ch) => chapterSteps(ch).includes("write"))) {
       const deck = writeDeck(chapterData(c), seeded(9));
       let count = 0;
-      for (let card = deck(); card; card = deck()) count++;
+      const asked = new Set<string>();
+      for (let card = deck(); card; card = deck()) {
+        count++;
+        assert.ok(!asked.has(card.title), `${c.id} repeats ${card.title}`);
+        asked.add(card.title);
+      }
       assert.equal(count, 6, c.id);
     }
   });
@@ -164,7 +208,7 @@ describe("chapter decks", () => {
     for (const c of CHAPTERS) {
       const cards = checkpointCards(chapterData(c), seeded(11));
       assert.ok(cards.length >= 12 && cards.length <= 15, `${c.id}: ${cards.length}`);
-      assert.equal(new Set(cards.map((card) => card.id)).size, cards.length, `${c.id} repeats a question`);
+      assert.equal(new Set(cards.map((card) => `${card.id}|${card.title}`)).size, cards.length, `${c.id} repeats a question`);
       const typed = cards.filter((card) => card.badge === "English to Spanish");
       assert.ok(typed.length >= 4 || c.words.every((w) => w.startsWith("phrase:")), c.id);
       const words = cards.filter((card) => card.track?.item.startsWith("vocab:"));
@@ -197,7 +241,13 @@ describe("level exams", () => {
         (slug) => cards.filter((c) => c.id.startsWith(`quiz:${slug}:`)).length / quizzes.filter((q) => q.slug === slug).length,
       );
       assert.ok(counts.every((n) => n > 0), level);
-      assert.ok(Math.max(...counts) - Math.min(...counts) <= 1, `${level}: ${counts}`);
+      // A chapter can fall short only by running out of questions, and the others make up the rest.
+      const most = Math.max(...counts);
+      [...slugs].forEach((slug, i) => {
+        const pool = new Set(quizzes.filter((q) => q.slug === slug).flatMap((q) => q.questions.map(({ index }) => index))).size;
+        const asked = cards.filter((c) => c.id.startsWith(`quiz:${slug}:`)).length;
+        assert.ok(counts[i] >= most - 1 || asked === pool, `${level}: ${slug} ${asked} of ${pool}, counts ${counts}`);
+      });
     }
   });
 

@@ -15,7 +15,7 @@ import { auth, firebaseConfigured } from "@/lib/firebase";
 import { MAX_PRACTICE_ITEMS, practiceHref, weakSpots, type WeakSpot } from "@/lib/practice";
 import { accentRate, accuracy, answered, currentStreak, lastSevenDays, localDay, recentWeeks, wordsPracticed, type Mistake, type Tally } from "@/lib/progress";
 import { saveProgress, setProgressEnabled } from "@/lib/progress-queue";
-import { DAYS_TO_LOAD, loadProgress, saveBadges, setMistakeHidden, type ProgressData } from "@/lib/progress-store";
+import { DAYS_TO_LOAD, loadMastered, loadProgress, saveBadges, setMistakeHidden, type ProgressData } from "@/lib/progress-store";
 import { MASTERED_DAYS, reviewsLeft } from "@/lib/schedule";
 
 const SAVE_WAIT_MS = 5000;
@@ -35,12 +35,88 @@ type State =
   | { status: "failed" }
   | { status: "ready"; data: ProgressData };
 
-function Tile({ label, value, note }: { label: string; value: string; note?: string }) {
-  return (
-    <div className="rounded-xl border border-stone-200 bg-white p-4 dark:border-stone-800 dark:bg-stone-900">
+function Tile({ label, value, note, onClick, expanded }: { label: string; value: string; note?: string; onClick?: () => void; expanded?: boolean }) {
+  const body = (
+    <>
       <p className="text-sm text-stone-500">{label}</p>
       <p className="mt-1 text-3xl font-semibold tracking-tight">{value}</p>
       {note && <p className="mt-1 text-sm text-stone-500">{note}</p>}
+    </>
+  );
+  const box = "rounded-xl border border-stone-200 bg-white p-4 dark:border-stone-800 dark:bg-stone-900";
+  if (!onClick) return <div className={box}>{body}</div>;
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-expanded={expanded}
+      className={`${box} text-left transition hover:border-accent-400 dark:hover:border-accent-600`}
+    >
+      {body}
+      <p className="mt-1 text-sm font-medium text-accent-700 underline dark:text-accent-400">{expanded ? "Hide the list" : "Show the list"}</p>
+    </button>
+  );
+}
+
+/** What's mastered, as words and as verb tenses, so the tile's number can be checked against real items. */
+function MasteredList({ wordLists }: { wordLists: WordListTotal[] }) {
+  const [items, setItems] = useState<string[] | null>(null);
+  const [failed, setFailed] = useState(false);
+  useEffect(() => {
+    loadMastered().then(setItems, (err) => {
+      console.error("Couldn't load mastered items", err);
+      setFailed(true);
+    });
+  }, []);
+
+  if (failed) {
+    return (
+      <p role="alert" className="text-sm text-red-600 dark:text-red-400">
+        Couldn&apos;t load the list. Check your connection and try again.
+      </p>
+    );
+  }
+  if (!items) return <p className="text-stone-500">Loading…</p>;
+  if (items.length === 0) return <p className="text-stone-600 dark:text-stone-400">Nothing is mastered yet. Keep reviewing and words will show up here.</p>;
+
+  // A word counts once however many ways it's asked, and a verb lists the tenses that have stuck.
+  const tenses = new Map<string, string[]>();
+  const words = new Map<string, Set<string>>();
+  for (const item of items) {
+    const [kind, a, b] = item.split(":");
+    if (kind === "verb") {
+      tenses.set(a, [...(tenses.get(a) ?? []), TENSES.find((t) => t.id === b)?.name ?? b]);
+    } else if (kind === "vocab") {
+      const [, type, es] = item.split(":");
+      (words.get(type) ?? words.set(type, new Set()).get(type)!).add(es);
+    }
+  }
+  const titles = new Map(wordLists.map((l) => [l.type, l.title]));
+  const listClass = "divide-y divide-stone-100 overflow-hidden rounded-xl border border-stone-200 bg-white dark:divide-stone-800 dark:border-stone-800 dark:bg-stone-900";
+
+  return (
+    <div className="space-y-4">
+      {tenses.size > 0 && (
+        <div>
+          <h3 className="mb-2 font-medium">Verb tenses</h3>
+          <ul className={listClass}>
+            {[...tenses].map(([inf, names]) => (
+              <li key={inf} className="flex flex-wrap items-baseline justify-between gap-x-4 px-4 py-2">
+                <span className="font-medium">{inf}</span>
+                <span className="text-sm text-stone-500">{names.join(", ")}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {[...words].map(([type, set]) => (
+        <div key={type}>
+          <h3 className="mb-2 font-medium">
+            {titles.get(type) ?? type} <span className="font-normal text-stone-500">{set.size.toLocaleString()}</span>
+          </h3>
+          <p className="rounded-xl border border-stone-200 bg-white px-4 py-3 dark:border-stone-800 dark:bg-stone-900">{[...set].join(", ")}</p>
+        </div>
+      ))}
     </div>
   );
 }
@@ -486,6 +562,7 @@ function CourseSection({ data }: { data: ProgressData }) {
 
 function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTotal[] }) {
   const [, update] = useDrillSettings();
+  const [showMastered, setShowMastered] = useState(false);
   const today = localDay();
   const total = answered(data.total);
   const streak = currentStreak(Object.keys(data.days), today);
@@ -536,8 +613,21 @@ function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTot
         <Tile label="Last 7 days" value={lastSevenDays(data.days, today).toLocaleString()} note="questions" />
         <Tile label="All time" value={total.toLocaleString()} note={overall === null ? undefined : `${overall}% correct`} />
         <Tile label="Accent slips" value={`${accentRate(data.total) ?? 0}%`} note={`${data.total.accent.toLocaleString()} answers`} />
-        <Tile label="Mastered" value={data.mastered.toLocaleString()} note={`of ${data.practiced.toLocaleString()} practiced`} />
+        <Tile
+          label="Mastered"
+          value={data.mastered.toLocaleString()}
+          note={`of ${data.practiced.toLocaleString()} practiced`}
+          onClick={data.mastered > 0 ? () => setShowMastered(!showMastered) : undefined}
+          expanded={showMastered}
+        />
       </div>
+
+      {showMastered && (
+        <section>
+          <h2 className="mb-3 text-xl font-semibold">Mastered</h2>
+          <MasteredList wordLists={wordLists} />
+        </section>
+      )}
 
       {/* Side by side on wide screens, where the calendar alone would leave most of the row empty. */}
       <div className="grid gap-8 lg:grid-cols-[auto_minmax(0,1fr)]">

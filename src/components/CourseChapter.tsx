@@ -18,7 +18,7 @@ import { QUIZ_RUN } from "@/lib/quiz";
 import type { GuideSection } from "@/lib/guides";
 import { levelInfo } from "@/lib/level";
 import { loadSentences } from "@/lib/sentence-loader";
-import type { Sentence } from "@/lib/sentences";
+import { withExtraSentences, type Sentence, type SentenceBank } from "@/lib/sentences";
 import { findVerb, type Verb } from "@/lib/verbs";
 
 /** A verb's sentences for one tense, main sentence first, picked on the server so the page doesn't load sentence files. */
@@ -109,6 +109,7 @@ export default function CourseChapter({
   tables,
   examples,
   rare,
+  extra,
 }: {
   chapter: Chapter;
   sections: GuideSection[];
@@ -116,6 +117,8 @@ export default function CourseChapter({
   tables: TenseSentences[];
   examples: TenseSentences[];
   rare: string[];
+  /** The chapter's own sentences, added to the bank's. */
+  extra: SentenceBank;
 }) {
   const progress = useCourseProgress();
   const mine = progress[chapter.id];
@@ -159,7 +162,7 @@ export default function CourseChapter({
       const [decks, { quizSeen, remembering }] = await Promise.all([import("@/lib/course-decks"), import("@/lib/quiz-seen")]);
       const seen = quizSeen();
       const needsSentences = step === "practice" || step === "write" || step === "checkpoint";
-      const bank = needsSentences ? await loadSentences(verbs) : {};
+      const bank = needsSentences ? withExtraSentences(await loadSentences(verbs), extra) : {};
       const data = { chapter, verbs, bank, rare: rareSet, quiz, seen };
       const next =
         step === "words"
@@ -272,7 +275,9 @@ export default function CourseChapter({
               {open === "practice" &&
                 (chapter.tenses.length === 0
                   ? "15 questions on this chapter's words: el or la for each noun, and the right form of each adjective. Anything you miss comes back."
-                  : chapter.drills.includes("choose")
+                  : chapter.drills.includes("chooseVerb")
+                    ? `15 sentences with the verb hidden. Decide from the sentence whether it needs ${listNames(chapter.verbs).replace(" and ", " or ")}, then type the form. Anything you miss comes back.`
+                    : chapter.drills.includes("choose")
                     ? `15 sentences with the tense hidden. Decide from the sentence whether it needs the ${tenses.replace(" and ", " or ")}, then type the form. Anything you miss comes back.`
                     : `15 questions on the ${tenses}, ${chapter.drills.length > 1 ? "mixing conjugation and fill in the blank" : chapter.drills[0] === "blanks" ? "filling in the blank in real sentences" : "typing the verb form"}. Anything you miss comes back.`)}
               {open === "write" &&

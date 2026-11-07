@@ -8,10 +8,11 @@ import type { Level } from "./level";
 
 export type StepId = "learn" | "see" | "words" | "quiz" | "practice" | "write" | "checkpoint";
 /**
- * Verb forms; `choose`, fill in the blank with the tense hidden, for chapters about choosing between tenses; or for
+ * Verb forms; `choose`, fill in the blank with the tense hidden, for chapters about choosing between tenses;
+ * `chooseVerb`, the same with the verb hidden, for choosing between verbs like ser and estar; or for
  * chapters about nouns and adjectives, gender and agreement questions on the chapter's words.
  */
-export type ChapterDrill = "conjugation" | "blanks" | "choose" | "gender" | "agreement";
+export type ChapterDrill = "conjugation" | "blanks" | "choose" | "chooseVerb" | "gender" | "agreement";
 
 export interface Chapter {
   id: string;

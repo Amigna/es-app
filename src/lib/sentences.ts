@@ -24,6 +24,19 @@ export function sentencesFor(bank: SentenceBank, inf: string, tense: TenseId): S
   return Array.isArray(entry) ? entry : [];
 }
 
+/**
+ * The bank with more sentences added after each list, like a course chapter's own. Those can repeat a person, which
+ * the bank itself doesn't, so they stay out of verb pages and tense tables.
+ */
+export function withExtraSentences(bank: SentenceBank, extra: SentenceBank): SentenceBank {
+  const out: SentenceBank = { ...bank };
+  for (const [inf, tenses] of Object.entries(extra)) {
+    out[inf] = { ...bank[inf] };
+    for (const [tense, rows] of Object.entries(tenses) as [TenseId, Sentence[]][]) out[inf][tense] = [...sentencesFor(bank, inf, tense), ...rows];
+  }
+  return out;
+}
+
 const words = (text: string) => text.split(" ").join("\\s+");
 
 /** Locates a conjugated form in a sentence as whole words. "no digas" also matches "no me digas". */

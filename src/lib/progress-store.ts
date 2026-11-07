@@ -171,6 +171,15 @@ export async function loadProgress(uid: string): Promise<ProgressData> {
   };
 }
 
+/** Items expected to stick for at least MASTERED_DAYS, as saved IDs like `verb:hablar:present`, most solid first. */
+export async function loadMastered(): Promise<string[]> {
+  const uid = await currentUid();
+  if (!uid) return [];
+  const items = collection(db(), "users", uid, "items");
+  const found = await getDocs(query(items, where("stability", ">=", MASTERED_DAYS), orderBy("stability", "desc")));
+  return found.docs.map((d) => d.id);
+}
+
 /** Null when nobody is signed in. */
 export async function loadToday(): Promise<TodayData | null> {
   const uid = await currentUid();

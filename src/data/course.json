@@ -39,7 +39,7 @@
     "tenses": ["present"],
     "models": ["ser", "estar"],
     "verbs": ["ser", "estar"],
-    "drills": ["conjugation", "blanks"],
+    "drills": ["chooseVerb"],
     "words": [
       "adjective:alto", "adjective:bajo", "adjective:simpático", "adjective:inteligente", "adjective:trabajador", "adjective:cansado",
       "adjective:contento", "adjective:triste", "adjective:enfermo", "adjective:ocupado", "adjective:aburrido", "adjective:listo",
@@ -261,7 +261,7 @@
     "guide": {
       "slug": "perfect-tenses",
       "sections": ["How they're built", "Present perfect or preterite?", "Easy mix-ups"],
-      "quiz": [0, 1, 2, 3, 4, 5, 7, 8, 9, 11, 12]
+      "quiz": [0, 1, 2, 3, 4, 5, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]
     },
     "tenses": ["presentPerfect"],
     "models": ["hablar", "comer", "hacer"],
@@ -309,7 +309,7 @@
     "guide": {
       "slug": "subjunctive",
       "sections": ["The basic pattern", "Common triggers"],
-      "quiz": [0, 1, 2, 5, 6, 12]
+      "quiz": [0, 1, 2, 5, 6, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
     },
     "tenses": ["subjPresent"],
     "models": ["hablar", "comer", "tener", "ser"],
@@ -329,7 +329,7 @@
     "guide": {
       "slug": "subjunctive",
       "sections": ["The basic pattern", "Common triggers", "After certain conjunctions", "Unknown or nonexistent things"],
-      "quiz": [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12]
+      "quiz": [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33]
     },
     "tenses": ["subjPresent"],
     "verbs": ["ser", "estar", "ir", "tener", "hacer", "venir", "poder", "saber", "llegar", "llover", "salir", "decir", "haber", "querer", "ver"],

@@ -1,7 +1,7 @@
 import { blankDeck, listedWordCard, writingDeck } from "./card-decks";
 import { EXAM_SIZE, type Chapter, type ChapterDrill } from "./course";
 import { TENSES } from "./conjugation/types";
-import { conjugationCard, limitedDeck, makeQuestion, type Card } from "./drill";
+import { conjugationCard, makeQuestion, type Card } from "./drill";
 import { QUIZ_RUN, freshestFirst, quizCard, shuffled, type QuizQuestion, type QuizSeen } from "./quiz";
 import { sentencesFor, type SentenceBank } from "./sentences";
 import type { Verb } from "./verbs";
@@ -55,6 +55,29 @@ function chooseTenseDeck({ chapter, verbs, bank }: ChapterData, random: Random):
   };
 }
 
+/**
+ * Fill in the blank with the verb hidden, so the sentence has to show which of the chapter's verbs it takes, like ser
+ * or estar. Only the person is given. After answering, it says which verb.
+ */
+function chooseVerbDeck({ chapter, verbs, bank }: ChapterData, random: Random): () => Card | null {
+  const blanks = blankDeck(bank, verbs, chapter.tenses, random);
+  const label = `${verbs.slice(0, -1).map((v) => v.inf).join(", ")} or ${verbs.at(-1)!.inf}?`;
+  return () => {
+    const card = blanks();
+    const inf = card?.track?.item?.split(":")[1];
+    if (!card || !inf) return card;
+    const person = card.ask.slice(card.ask.indexOf(", ") + 2);
+    return {
+      ...card,
+      id: `chooseVerb:${card.id}`,
+      badge: label.charAt(0).toUpperCase() + label.slice(1),
+      context: "Which verb does the sentence need?",
+      ask: person,
+      explain: `This sentence takes ${inf}.`,
+    };
+  };
+}
+
 /** The chapter's drills in turn: verb forms, or gender and agreement on its words. Endless, so callers limit it. */
 function drillDeck(data: ChapterData, random: Random): () => Card | null {
   const { chapter, verbs, bank, rare } = data;
@@ -67,6 +90,7 @@ function drillDeck(data: ChapterData, random: Random): () => Card | null {
     gender: () => wordQuestion(chapter.words, "gender", random),
     agreement: () => wordQuestion(chapter.words, "agreement", random),
     choose: () => chooseTenseDeck(data, random),
+    chooseVerb: () => chooseVerbDeck(data, random),
   };
   const kinds = chapter.drills.map((d) => decks[d]());
   let turn = Math.floor(random() * Math.max(1, kinds.length));
@@ -81,13 +105,17 @@ function drillDeck(data: ChapterData, random: Random): () => Card | null {
   };
 }
 
-/** Up to `count` cards with different IDs, so a short test doesn't ask the same thing twice. */
+/**
+ * Up to `count` different cards, so a step never asks the same thing twice. A small chapter gives fewer cards rather
+ * than repeats. The prompt counts too, since a verb's sentences for one person share an ID.
+ */
 function distinct(next: () => Card | null, count: number): Card[] {
   const out = new Map<string, Card>();
-  for (let tries = 0; out.size < count && tries < count * 5; tries++) {
+  for (let tries = 0; out.size < count && tries < count * 8; tries++) {
     const card = next();
     if (!card) break;
-    if (!out.has(card.id)) out.set(card.id, card);
+    const key = `${card.id}|${card.title}`;
+    if (!out.has(key)) out.set(key, card);
   }
   return [...out.values()];
 }
@@ -98,7 +126,7 @@ const queue = (cards: Card[]): (() => Card | null) => {
 };
 
 export function practiceDeck(data: ChapterData, random: Random = Math.random): () => Card | null {
-  return limitedDeck(drillDeck(data, random), PRACTICE_SIZE);
+  return queue(distinct(drillDeck(data, random), PRACTICE_SIZE));
 }
 
 export function quizCards(quiz: ChapterQuiz, random: Random = Math.random): Card[] {
@@ -117,7 +145,7 @@ export function wordsDeck(chapter: Chapter, random: Random = Math.random): () =>
 }
 
 export function writeDeck({ chapter, verbs, bank }: ChapterData, random: Random = Math.random): () => Card | null {
-  return limitedDeck(writingDeck(bank, verbs, chapter.tenses, ["toEnglish", "toSpanish"], random), WRITE_SIZE);
+  return queue(distinct(writingDeck(bank, verbs, chapter.tenses, ["toEnglish", "toSpanish"], random), WRITE_SIZE));
 }
 
 /**

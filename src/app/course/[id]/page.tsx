@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import CourseChapter, { type TenseSentences } from "@/components/CourseChapter";
 import type { TenseId } from "@/lib/conjugation/types";
-import { chapterQuiz } from "@/lib/chapter-quiz";
+import { chapterQuiz, chapterSentences } from "@/lib/chapter-quiz";
 import { CHAPTERS, findChapter, type Chapter } from "@/lib/course";
 import { findGuide } from "@/lib/guides";
 import { SENTENCE_BANK } from "@/lib/sentence-data";
@@ -70,5 +70,15 @@ async function ChapterContent({ params }: { params: PageProps<"/course/[id]">["p
   if (!chapter) notFound();
   const { sections, quiz } = lessonFor(chapter);
   const { tables, examples } = seeItSentences(chapter);
-  return <CourseChapter chapter={chapter} sections={sections} quiz={quiz} tables={tables} examples={examples} rare={rareKeys(chapter)} />;
+  return (
+    <CourseChapter
+      chapter={chapter}
+      sections={sections}
+      quiz={quiz}
+      tables={tables}
+      examples={examples}
+      rare={rareKeys(chapter)}
+      extra={chapterSentences(chapter.id)}
+    />
+  );
 }

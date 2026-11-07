@@ -1,0 +1,78 @@
+{
+  "ser-and-estar": {
+    "ser": {
+      "present": [
+        {"person":0,"es":"Soy profesora de matemáticas.","en":"I'm a math teacher."},
+        {"person":0,"es":"Soy muy tímido con la gente nueva.","en":"I'm very shy with new people."},
+        {"person":0,"es":"Soy el mayor de cuatro hermanos.","en":"I'm the oldest of four siblings."},
+        {"person":0,"es":"Soy colombiana, de Medellín.","en":"I'm Colombian, from Medellín."},
+        {"person":1,"es":"Eres muy simpático.","en":"You're very nice."},
+        {"person":1,"es":"¿Eres estudiante o trabajas?","en":"Are you a student, or do you work?"},
+        {"person":1,"es":"Tú eres mi mejor amiga.","en":"You're my best friend."},
+        {"person":1,"es":"Eres muy alto para tu edad.","en":"You're very tall for your age."},
+        {"person":2,"es":"Hoy es martes.","en":"Today is Tuesday."},
+        {"person":2,"es":"La fiesta es en la casa de Ana.","en":"The party is at Ana's house."},
+        {"person":2,"es":"Este carro es de mi tío.","en":"This car is my uncle's."},
+        {"person":2,"es":"La clase de historia es muy aburrida.","en":"History class is really boring."},
+        {"person":3,"es":"Somos de Honduras.","en":"We're from Honduras."},
+        {"person":3,"es":"Somos muy buenos amigos.","en":"We're very good friends."},
+        {"person":3,"es":"Nosotros somos los nuevos vecinos.","en":"We're the new neighbors."},
+        {"person":3,"es":"En mi familia somos cinco.","en":"There are five of us in my family."},
+        {"person":4,"es":"Son las ocho de la noche.","en":"It's eight at night."},
+        {"person":4,"es":"Mis padres son muy trabajadores.","en":"My parents are very hardworking."},
+        {"person":4,"es":"Estos zapatos son de mi hermana.","en":"These shoes are my sister's."},
+        {"person":4,"es":"¿Ustedes son de aquí?","en":"Are you all from here?"}
+      ]
+    },
+    "estar": {
+      "present": [
+        {"person":0,"es":"Estoy muy cansada hoy.","en":"I'm very tired today."},
+        {"person":0,"es":"Estoy en la biblioteca, te llamo después.","en":"I'm at the library, I'll call you later."},
+        {"person":0,"es":"Estoy estudiando para el examen.","en":"I'm studying for the exam."},
+        {"person":0,"es":"Estoy aburrido, no hay nada que hacer.","en":"I'm bored, there's nothing to do."},
+        {"person":1,"es":"¿Estás enfermo? Tienes mala cara.","en":"Are you sick? You don't look well."},
+        {"person":1,"es":"¿Estás lista? Ya nos vamos.","en":"Are you ready? We're leaving."},
+        {"person":1,"es":"¿Qué estás haciendo?","en":"What are you doing?"},
+        {"person":1,"es":"¿Estás en casa?","en":"Are you at home?"},
+        {"person":2,"es":"La sopa está muy caliente.","en":"The soup is very hot."},
+        {"person":2,"es":"El restaurante está cerca del parque.","en":"The restaurant is near the park."},
+        {"person":2,"es":"Mi abuela está contenta con la visita.","en":"My grandmother is happy about the visit."},
+        {"person":2,"es":"La tienda está cerrada hoy.","en":"The store is closed today."},
+        {"person":3,"es":"Estamos en la playa con los niños.","en":"We're at the beach with the kids."},
+        {"person":3,"es":"Estamos muy ocupados esta semana.","en":"We're very busy this week."},
+        {"person":3,"es":"Estamos esperando el bus.","en":"We're waiting for the bus."},
+        {"person":3,"es":"Estamos listos para salir.","en":"We're ready to go out."},
+        {"person":4,"es":"Mis llaves están en la mesa.","en":"My keys are on the table."},
+        {"person":4,"es":"Los niños están nerviosos por el examen.","en":"The kids are nervous about the test."},
+        {"person":4,"es":"¿Dónde están ustedes?","en":"Where are you all?"},
+        {"person":4,"es":"Las ventanas están abiertas.","en":"The windows are open."}
+      ]
+    }
+  },
+  "near-future": {
+    "ir": {
+      "present": [
+        {"person":0,"es":"Voy a llamar a mi mamá esta noche.","en":"I'm going to call my mom tonight."},
+        {"person":0,"es":"Mañana voy a estudiar en la biblioteca.","en":"Tomorrow I'm going to study at the library."},
+        {"person":0,"es":"Voy al mercado los sábados.","en":"I go to the market on Saturdays."},
+        {"person":0,"es":"Este verano voy a viajar a México.","en":"This summer I'm going to travel to Mexico."},
+        {"person":1,"es":"¿Vas a venir a la fiesta?","en":"Are you going to come to the party?"},
+        {"person":1,"es":"¿Qué vas a hacer el fin de semana?","en":"What are you going to do on the weekend?"},
+        {"person":1,"es":"¿Vas al cine con nosotros?","en":"Are you going to the movies with us?"},
+        {"person":1,"es":"Vas a necesitar un abrigo.","en":"You're going to need a coat."},
+        {"person":2,"es":"Mi hermano va a cumplir quince años.","en":"My brother is going to turn fifteen."},
+        {"person":2,"es":"Va a llover esta tarde.","en":"It's going to rain this afternoon."},
+        {"person":2,"es":"Mi papá va al trabajo en bus.","en":"My dad goes to work by bus."},
+        {"person":2,"es":"¿A qué hora va a empezar la película?","en":"What time is the movie going to start?"},
+        {"person":3,"es":"Vamos a comer en un restaurante.","en":"We're going to eat at a restaurant."},
+        {"person":3,"es":"Mañana vamos a la playa.","en":"Tomorrow we're going to the beach."},
+        {"person":3,"es":"Vamos a ver a mis abuelos el domingo.","en":"We're going to see my grandparents on Sunday."},
+        {"person":3,"es":"Pronto vamos a tener vacaciones.","en":"We're going to have vacation soon."},
+        {"person":4,"es":"Mis primos van a llegar mañana.","en":"My cousins are going to arrive tomorrow."},
+        {"person":4,"es":"¿Ustedes van a cenar con nosotros?","en":"Are you all going to have dinner with us?"},
+        {"person":4,"es":"Los niños van a la escuela a pie.","en":"The kids walk to school."},
+        {"person":4,"es":"Mis amigos van a jugar fútbol esta tarde.","en":"My friends are going to play soccer this afternoon."}
+      ]
+    }
+  }
+}
