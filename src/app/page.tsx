@@ -3,6 +3,7 @@ import Link from "next/link";
 import CourseShortcut from "@/components/CourseShortcut";
 import VerbSearch from "@/components/VerbSearch";
 import { verbGroup, type VerbGroup } from "@/lib/conjugation/regular";
+import { COMMON_COUNT, ESSENTIAL_VERBS, OTHER_VERBS } from "@/lib/essential-verbs";
 import { VERBS, verbSlug, type Verb } from "@/lib/verbs";
 
 // A hue per verb ending, for the edge of each verb card.
@@ -67,14 +68,11 @@ const endingOf = (inf: string) =>
       ? "er"
       : "ir";
 
-// VERBS is in order of how common each verb is.
-const COMMON_COUNT = 50;
-
 const byName = (a: Verb, b: Verb) => a.inf.localeCompare(b.inf, "es");
 
 const SECTIONS = [
-  { id: "common", title: `${COMMON_COUNT} most common`, verbs: VERBS.slice(0, COMMON_COUNT) },
-  { id: "rest", title: "All other verbs", verbs: VERBS.slice(COMMON_COUNT) },
+  { id: "common", title: "Essential verbs", verbs: ESSENTIAL_VERBS },
+  { id: "rest", title: "All other verbs", verbs: OTHER_VERBS },
 ].map((section) => {
   const sorted = [...section.verbs].sort(byName);
   return {
@@ -171,7 +169,7 @@ export default function Home() {
                 </h2>
                 {s.id === "common" && (
                   <p className="text-sm text-stone-600 dark:text-stone-400">
-                    Ordered by how often they&apos;re used, then listed A to Z.
+                    The {COMMON_COUNT} most common verbs plus everyday ones like comer, comprar and cantar, listed A to Z.
                   </p>
                 )}
               </div>

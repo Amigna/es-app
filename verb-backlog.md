@@ -12,34 +12,6 @@ When adding a batch:
 - Delete the batch from this file once it's in `verbs.json`, and update the verb count in `plan.md`.
 - If a verb is dropped, move it to "Dropped" at the bottom with the reason, so it isn't suggested again.
 
-## Batch 16
-
-- educar: to educate, to raise
-- adoptar: to adopt
-- mimar: to spoil, to pamper
-- consentir: to spoil; to consent
-- castigar: to punish
-- premiar: to reward
-- festejar: to celebrate
-- reconciliarse: to make up
-- envidiar: to envy
-- fastidiar: to annoy
-- disculparse: to apologize
-- disculpar: to excuse, to forgive
-- aburrirse: to get bored
-- atreverse: to dare
-- vigilar: to watch, to keep an eye on
-- arreglarse: to get ready
-- rezar: to pray
-- secarse: to dry oneself
-- convertirse: to become, to turn into
-- fijarse: to notice, to pay attention
-- imaginarse: to imagine
-- llevarse: to take away; to get along
-- unir: to unite, to join
-- negarse: to refuse
-- admirar: to admire
-
 ## Batch 17
 
 - volverse: to become; to turn around

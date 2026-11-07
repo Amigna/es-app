@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { blankCard, blankDeck, listedWordCard, dictationCard, dictationDeck, flashcardDeck, studyCards, newItemOrder, reviewCard, reviewDeck, vocabDeck, writingCard, writingDeck, type VocabOptions } from "./card-decks";
+import { blankCard, blankDeck, listedWordCard, dictationCard, dictationDeck, flashcardDeck, studyCards, newItemOrder, reviewCard, reviewDeck, verbPracticeDeck, vocabDeck, writingCard, writingDeck, type VocabOptions } from "./card-decks";
 import { accentTrap, englishAnswers, englishCore, gradeCard, type Card } from "./drill";
 import { DEFAULT_SETTINGS, NOUN_TOPICS, parseSettings } from "./drill-settings";
 import { schedulable } from "./schedule";
@@ -192,6 +192,29 @@ describe("blankCard", () => {
     assert.ok(total > 800, `only ${total}`);
     const next = blankDeck(SENTENCE_BANK, VERBS.slice(0, 10), ["present"]);
     assert.ok(next()?.title.includes("_____"));
+  });
+});
+
+describe("verbPracticeDeck", () => {
+  const CORE = ["present", "preterite", "imperfect", "future", "conditional", "subjPresent"] as const;
+  const drain = (next: () => Card | null) => {
+    const cards: Card[] = [];
+    for (let card = next(); card; card = next()) cards.push(card);
+    return cards;
+  };
+
+  it("mixes verb forms and blanks for one verb, with no repeats", () => {
+    const cards = drain(verbPracticeDeck(verb("hablar"), SENTENCE_BANK, [...CORE], new Set(), 15));
+    assert.equal(cards.length, 15);
+    assert.equal(new Set(cards.map((c) => `${c.id}|${c.title}`)).size, 15);
+    assert.ok(cards.every((c) => c.track?.item?.startsWith("verb:hablar:")));
+    const blanks = cards.filter((c) => c.title.includes("_____")).length;
+    assert.ok(blanks > 0 && blanks < 15, `${blanks} blanks`);
+  });
+
+  it("gives fewer cards rather than repeating when the verb runs out", () => {
+    const cards = drain(verbPracticeDeck(verb("hablar"), {}, ["present"], new Set(), 15));
+    assert.equal(cards.length, 5);
   });
 });
 

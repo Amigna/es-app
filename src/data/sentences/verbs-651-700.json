@@ -2288,5 +2288,741 @@
   "impNegative": [
    {"person":1,"es":"No toleres que te falten al respeto.","en":"Don't let anyone disrespect you."}
   ]
+ },
+ "educar": {
+  "present": [
+   {"person":2,"es":"Mi abuela educa a sus nietos con mucho cariño.","en":"My grandmother raises her grandchildren with a lot of love."},
+   {"person":0,"es":"Educo a mis hijos para que sean amables.","en":"I'm raising my kids to be kind."},
+   {"person":1,"es":"Educas muy bien a tu perro.","en":"You're training your dog really well."},
+   {"person":3,"es":"En esta escuela educamos a niños de todo el barrio.","en":"At this school we teach kids from all over the neighborhood."},
+   {"person":4,"es":"Los buenos maestros educan con el ejemplo.","en":"Good teachers teach by example."}
+  ],
+  "preterite": [
+   {"person":4,"es":"Mis padres me educaron para respetar a todos.","en":"My parents raised me to respect everyone."},
+   {"person":0,"es":"Eduqué a mis hijos sola después del divorcio.","en":"I raised my kids on my own after the divorce."},
+   {"person":1,"es":"Educaste a tus hijos con mucha paciencia.","en":"You raised your kids with a lot of patience."},
+   {"person":2,"es":"Mi tía educó a cinco hijos.","en":"My aunt raised five children."},
+   {"person":3,"es":"Educamos a nuestros hijos en dos idiomas.","en":"We raised our kids in two languages."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"La escuela del pueblo educaba a niños de tres comunidades.","en":"The village school taught children from three communities."},
+   {"person":0,"es":"Yo educaba a mis hermanos menores cuando mamá trabajaba.","en":"I helped raise my younger siblings while Mom was at work."},
+   {"person":1,"es":"Tú educabas a tus alumnos con juegos.","en":"You taught your students with games."},
+   {"person":3,"es":"Educábamos a los niños en casa durante la pandemia.","en":"We schooled the kids at home during the pandemic."},
+   {"person":4,"es":"Antes las monjas educaban a las niñas del barrio.","en":"Nuns used to teach the neighborhood girls."}
+  ],
+  "future": [
+   {"person":1,"es":"Educarás a tus hijos a tu manera.","en":"You'll raise your kids your own way."},
+   {"person":0,"es":"Educaré a mi hija para que no tenga miedo de nada.","en":"I'll raise my daughter not to be afraid of anything."},
+   {"person":2,"es":"El nuevo programa educará a miles de adultos.","en":"The new program will educate thousands of adults."},
+   {"person":3,"es":"Educaremos a la gente sobre el reciclaje.","en":"We'll teach people about recycling."},
+   {"person":4,"es":"Estas maestras educarán a la próxima generación.","en":"These teachers will educate the next generation."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo educaría a mis hijos en el campo.","en":"I'd raise my kids in the country."},
+   {"person":1,"es":"¿Cómo educarías a un niño tan inquieto?","en":"How would you raise such a restless child?"},
+   {"person":2,"es":"Una buena escuela educaría también a los padres.","en":"A good school would educate the parents too."},
+   {"person":3,"es":"Educaríamos mejor con grupos más pequeños.","en":"We'd teach better with smaller classes."},
+   {"person":4,"es":"Si fuera por ellos, mis abuelos educarían a los nietos con mano dura.","en":"If it were up to them, my grandparents would raise the grandkids strictly."}
+  ],
+  "presentPerfect": [
+   {"person":4,"es":"Tus padres te han educado muy bien.","en":"Your parents have raised you very well."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Su abuela lo había educado desde bebé.","en":"His grandmother had raised him since he was a baby."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":0,"es":"Yo los habría educado de otra forma.","en":"I would have raised them differently."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"Es importante que eduques a tus hijos con el ejemplo.","en":"It's important for you to raise your kids by example."},
+   {"person":0,"es":"Mi suegra quiere que yo eduque a los niños como ella.","en":"My mother-in-law wants me to raise the kids the way she did."},
+   {"person":2,"es":"Ojalá que esta escuela eduque bien a mi hijo.","en":"I hope this school teaches my son well."},
+   {"person":3,"es":"Es necesario que eduquemos a los jóvenes sobre el dinero.","en":"We need to teach young people about money."},
+   {"person":4,"es":"Los padres quieren que las escuelas eduquen en valores.","en":"Parents want schools to teach values."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Mi madre quería que la escuela me educara en inglés.","en":"My mother wanted the school to teach me in English."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":4,"es":"Me alegra que te hayan educado así.","en":"I'm glad they raised you like that."}
+  ],
+  "subjPluperfect": [
+   {"person":3,"es":"Si los hubiéramos educado con más límites, serían diferentes.","en":"If we had raised them with more limits, they'd be different."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Educa a tus hijos con paciencia.","en":"Raise your kids with patience."}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No eduques a gritos.","en":"Don't raise kids by yelling."}
+  ]
+ },
+ "adoptar": {
+  "present": [
+   {"person":2,"es":"Mi vecina adopta gatos de la calle.","en":"My neighbor adopts stray cats."},
+   {"person":0,"es":"Siempre adopto perros mayores.","en":"I always adopt older dogs."},
+   {"person":1,"es":"¿Adoptas un perro o un gato?","en":"Are you adopting a dog or a cat?"},
+   {"person":3,"es":"Este año adoptamos una nueva forma de trabajar.","en":"This year we're adopting a new way of working."},
+   {"person":4,"es":"Muchas familias adoptan niños de otros países.","en":"Many families adopt children from other countries."}
+  ],
+  "preterite": [
+   {"person":3,"es":"El año pasado adoptamos a una niña.","en":"Last year we adopted a little girl."},
+   {"person":0,"es":"Adopté a mi perro en un refugio.","en":"I adopted my dog from a shelter."},
+   {"person":1,"es":"¿Cuándo adoptaste a tu gato?","en":"When did you adopt your cat?"},
+   {"person":2,"es":"La empresa adoptó un horario flexible.","en":"The company adopted a flexible schedule."},
+   {"person":4,"es":"Mis tíos adoptaron a dos hermanos.","en":"My aunt and uncle adopted two siblings."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuela adoptaba a todos los animales perdidos.","en":"My grandmother took in every lost animal."},
+   {"person":0,"es":"Yo adoptaba el acento de cada país que visitaba.","en":"I'd pick up the accent of every country I visited."},
+   {"person":1,"es":"Tú adoptabas una voz seria con los clientes.","en":"You'd put on a serious voice with customers."},
+   {"person":3,"es":"Adoptábamos las costumbres del lugar.","en":"We'd adopt the local customs."},
+   {"person":4,"es":"Antes pocas parejas adoptaban niños mayores.","en":"Few couples used to adopt older children."}
+  ],
+  "future": [
+   {"person":3,"es":"Adoptaremos un perro cuando tengamos patio.","en":"We'll adopt a dog when we have a yard."},
+   {"person":0,"es":"Algún día adoptaré un niño.","en":"Someday I'll adopt a child."},
+   {"person":1,"es":"¿Adoptarás el gatito?","en":"Will you adopt the kitten?"},
+   {"person":2,"es":"El gobierno adoptará nuevas medidas.","en":"The government will adopt new measures."},
+   {"person":4,"es":"Los países adoptarán el acuerdo el próximo año.","en":"The countries will adopt the agreement next year."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo adoptaría a todos los perros del refugio.","en":"I'd adopt every dog at the shelter."},
+   {"person":1,"es":"¿Adoptarías un gato ciego?","en":"Would you adopt a blind cat?"},
+   {"person":2,"es":"Mi hermano adoptaría un perro, pero vive en un apartamento pequeño.","en":"My brother would adopt a dog, but he lives in a small apartment."},
+   {"person":3,"es":"Adoptaríamos si pudiéramos.","en":"We'd adopt if we could."},
+   {"person":4,"es":"Ellos adoptarían esa idea sin pensarlo.","en":"They'd adopt that idea without thinking twice."}
+  ],
+  "presentPerfect": [
+   {"person":4,"es":"Mis vecinos han adoptado un perro.","en":"My neighbors have adopted a dog."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"La familia ya había adoptado a otro niño.","en":"The family had already adopted another child."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":1,"es":"Tú lo habrías adoptado también.","en":"You would have adopted him too."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"Quiero que adoptes un perro, no que lo compres.","en":"I want you to adopt a dog, not buy one."},
+   {"person":0,"es":"Mis hijos quieren que yo adopte un gato.","en":"My kids want me to adopt a cat."},
+   {"person":2,"es":"Es importante que la escuela adopte reglas claras.","en":"It's important for the school to adopt clear rules."},
+   {"person":3,"es":"Mi hija quiere que adoptemos un conejo.","en":"My daughter wants us to adopt a rabbit."},
+   {"person":4,"es":"Ojalá que adopten pronto a estos gatitos.","en":"I hope these kittens get adopted soon."}
+  ],
+  "subjImperfect": [
+   {"person":4,"es":"Nadie esperaba que adoptaran a un perro tan viejo.","en":"Nobody expected them to adopt such an old dog."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":1,"es":"Qué bueno que hayas adoptado en vez de comprar.","en":"It's great that you adopted instead of buying."}
+  ],
+  "subjPluperfect": [
+   {"person":0,"es":"Si no lo hubiera adoptado, estaría en la calle.","en":"If I hadn't adopted him, he'd be on the street."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Adopta, no compres.","en":"Adopt, don't shop."}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No adoptes un animal si no puedes cuidarlo.","en":"Don't adopt an animal if you can't take care of it."}
+  ]
+ },
+ "mimar": {
+  "present": [
+   {"person":2,"es":"Mi abuela mima a todos sus nietos.","en":"My grandmother spoils all her grandchildren."},
+   {"person":0,"es":"Los domingos me mimo con un buen desayuno.","en":"On Sundays I treat myself to a nice breakfast."},
+   {"person":1,"es":"Mimas demasiado a ese gato.","en":"You spoil that cat way too much."},
+   {"person":3,"es":"Mimamos a los clientes con café gratis.","en":"We pamper our customers with free coffee."},
+   {"person":4,"es":"Los abuelos siempre miman a los nietos.","en":"Grandparents always spoil their grandkids."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Mi mamá me mimó mucho cuando estuve enfermo.","en":"My mom pampered me a lot when I was sick."},
+   {"person":0,"es":"Mimé a mi esposa en su cumpleaños.","en":"I pampered my wife on her birthday."},
+   {"person":1,"es":"¿Mimaste al bebé toda la tarde?","en":"Did you fuss over the baby all afternoon?"},
+   {"person":3,"es":"Mimamos a los invitados con comida casera.","en":"We spoiled the guests with home cooking."},
+   {"person":4,"es":"En el hotel nos mimaron como a reyes.","en":"At the hotel they treated us like royalty."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo me mimaba con dulces.","en":"My grandfather spoiled me with candy."},
+   {"person":0,"es":"Yo mimaba a mi hermanita todo el tiempo.","en":"I was always fussing over my little sister."},
+   {"person":1,"es":"Tú mimabas a ese perro como a un bebé.","en":"You treated that dog like a baby."},
+   {"person":3,"es":"Mimábamos a nuestra gata con pescado fresco.","en":"We spoiled our cat with fresh fish."},
+   {"person":4,"es":"Mis tías me mimaban en cada visita.","en":"My aunts spoiled me on every visit."}
+  ],
+  "future": [
+   {"person":0,"es":"Te mimaré cuando vuelvas del hospital.","en":"I'll pamper you when you get back from the hospital."},
+   {"person":1,"es":"Mimarás a tu nieto, ya verás.","en":"You'll spoil your grandson, you'll see."},
+   {"person":2,"es":"El spa te mimará todo el día.","en":"The spa will pamper you all day."},
+   {"person":3,"es":"Mimaremos a mamá el Día de las Madres.","en":"We'll pamper Mom on Mother's Day."},
+   {"person":4,"es":"Tus abuelos te mimarán durante las vacaciones.","en":"Your grandparents will spoil you during the vacation."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo te mimaría todos los días.","en":"I'd pamper you every day."},
+   {"person":1,"es":"¿Mimarías tanto a un perro?","en":"Would you spoil a dog that much?"},
+   {"person":2,"es":"Cualquier abuela mimaría a un nieto así.","en":"Any grandmother would spoil a grandchild like that."},
+   {"person":3,"es":"Te mimaríamos si te quedaras con nosotros.","en":"We'd spoil you if you stayed with us."},
+   {"person":4,"es":"Ellos mimarían a los niños si los dejaras.","en":"They'd spoil the kids if you let them."}
+  ],
+  "presentPerfect": [
+   {"person":1,"es":"Has mimado demasiado a ese niño.","en":"You've spoiled that kid too much."}
+  ],
+  "pluperfect": [
+   {"person":4,"es":"Sus padres siempre lo habían mimado.","en":"His parents had always spoiled him."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"No quiero que mimes tanto al perro.","en":"I don't want you to spoil the dog so much."},
+   {"person":0,"es":"Mi hijo enfermo quiere que yo lo mime todo el día.","en":"My sick son wants me to fuss over him all day."},
+   {"person":2,"es":"Es normal que una abuela mime a sus nietos.","en":"It's normal for a grandmother to spoil her grandchildren."},
+   {"person":3,"es":"Mi esposa dice que no mimemos tanto a los niños.","en":"My wife says we shouldn't spoil the kids so much."},
+   {"person":4,"es":"No me gusta que mimen tanto a mi hija.","en":"I don't like them spoiling my daughter so much."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Mi abuela no dejaba que nadie me mimara más que ella.","en":"My grandmother wouldn't let anyone spoil me more than she did."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Mima un poco a tu mamá, se lo merece.","en":"Pamper your mom a little, she deserves it."}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No mimes tanto al gato.","en":"Don't spoil the cat so much."}
+  ]
+ },
+ "consentir": {
+  "present": [
+   {"person":2,"es":"Mi papá consiente a mi hermana en todo.","en":"My dad gives my sister whatever she wants."},
+   {"person":0,"es":"No consiento que me hablen así.","en":"I won't let people talk to me like that."},
+   {"person":1,"es":"Consientes demasiado a tus hijos.","en":"You spoil your kids too much."},
+   {"person":3,"es":"Los fines de semana consentimos a los niños con helado.","en":"On weekends we treat the kids to ice cream."},
+   {"person":4,"es":"Los abuelos consienten a los nietos.","en":"Grandparents spoil their grandkids."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El dueño consintió que pintáramos la casa.","en":"The owner agreed to let us paint the house."},
+   {"person":0,"es":"Consentí a mi esposa con un viaje.","en":"I spoiled my wife with a trip."},
+   {"person":1,"es":"¿Consentiste que se fuera solo?","en":"You let him go alone?"},
+   {"person":3,"es":"Consentimos a los niños toda la Navidad.","en":"We spoiled the kids all through Christmas."},
+   {"person":4,"es":"Mis tíos me consintieron mucho de niño.","en":"My aunt and uncle spoiled me a lot as a kid."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo me consentía en todo.","en":"My grandfather spoiled me rotten."},
+   {"person":0,"es":"Yo consentía a mi perro con comida de la mesa.","en":"I used to spoil my dog with table scraps."},
+   {"person":1,"es":"Tú consentías a tu hermano menor.","en":"You used to spoil your little brother."},
+   {"person":3,"es":"Consentíamos a la bebé con canciones.","en":"We'd spoil the baby with songs."},
+   {"person":4,"es":"Mis padres no consentían malas palabras en casa.","en":"My parents didn't allow bad words at home."}
+  ],
+  "future": [
+   {"person":0,"es":"No consentiré más faltas de respeto.","en":"I won't put up with any more disrespect."},
+   {"person":1,"es":"Consentirás a tu nieto, igual que yo.","en":"You'll spoil your grandson, just like I did."},
+   {"person":2,"es":"Mi padre nunca consentirá ese matrimonio.","en":"My father will never consent to that marriage."},
+   {"person":3,"es":"Te consentiremos mucho cuando vengas.","en":"We'll spoil you a lot when you come."},
+   {"person":4,"es":"Los vecinos no consentirán más ruido.","en":"The neighbors won't put up with any more noise."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo nunca consentiría eso.","en":"I'd never allow that."},
+   {"person":1,"es":"¿Consentirías que tu hija viajara sola?","en":"Would you let your daughter travel alone?"},
+   {"person":2,"es":"Ningún padre consentiría algo así.","en":"No parent would allow something like that."},
+   {"person":3,"es":"Consentiríamos más a los niños si tuviéramos tiempo.","en":"We'd spoil the kids more if we had time."},
+   {"person":4,"es":"Ellos no consentirían ese trato.","en":"They wouldn't put up with that treatment."}
+  ],
+  "presentPerfect": [
+   {"person":4,"es":"Lo han consentido demasiado.","en":"They've spoiled him too much."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Mi madre nunca había consentido mentiras.","en":"My mother had never put up with lies."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":0,"es":"Yo no lo habría consentido.","en":"I wouldn't have allowed it."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"No quiero que consientas tanto al niño.","en":"I don't want you to spoil the boy so much."},
+   {"person":0,"es":"Mi esposa no quiere que yo consienta a los perros.","en":"My wife doesn't want me to spoil the dogs."},
+   {"person":2,"es":"Es raro que mi padre consienta algo así.","en":"It's unusual for my father to allow something like that."},
+   {"person":3,"es":"Está bien que consintamos a los niños de vez en cuando.","en":"It's fine for us to spoil the kids now and then."},
+   {"person":4,"es":"No dejes que te consientan tanto.","en":"Don't let them spoil you so much."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Me sorprendió que el director consintiera el cambio.","en":"I was surprised the principal agreed to the change."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": [
+   {"person":4,"es":"Si no lo hubieran consentido tanto, sería más independiente.","en":"If they hadn't spoiled him so much, he'd be more independent."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Consiente un poco a tu abuela.","en":"Spoil your grandmother a little."}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No consientas que te traten mal.","en":"Don't let them treat you badly."}
+  ]
+ },
+ "castigar": {
+  "present": [
+   {"person":2,"es":"La maestra castiga a los que llegan tarde.","en":"The teacher punishes the kids who show up late."},
+   {"person":0,"es":"No castigo a mis hijos sin explicarles por qué.","en":"I don't punish my kids without explaining why."},
+   {"person":1,"es":"¿Por qué castigas al perro?","en":"Why are you punishing the dog?"},
+   {"person":3,"es":"Si no hacen la tarea, los castigamos sin tele.","en":"If they don't do their homework, we take away TV."},
+   {"person":4,"es":"Las leyes castigan el robo con cárcel.","en":"The law punishes theft with prison."}
+  ],
+  "preterite": [
+   {"person":4,"es":"Mis papás me castigaron por mentir.","en":"My parents grounded me for lying."},
+   {"person":0,"es":"Castigué a mi hijo sin videojuegos.","en":"I took away my son's video games as a punishment."},
+   {"person":1,"es":"¿Castigaste a tu hija?","en":"Did you punish your daughter?"},
+   {"person":2,"es":"El árbitro castigó al jugador con tarjeta roja.","en":"The referee gave the player a red card."},
+   {"person":3,"es":"Ayer castigamos a los niños por pelear.","en":"Yesterday we punished the kids for fighting."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi padre nos castigaba sin salir.","en":"My father would ground us."},
+   {"person":0,"es":"Yo nunca castigaba a mis alumnos.","en":"I never punished my students."},
+   {"person":1,"es":"Tú castigabas a tu hermano escondiéndole los juguetes.","en":"You'd punish your brother by hiding his toys."},
+   {"person":3,"es":"Antes castigábamos más que ahora.","en":"We used to punish more than we do now."},
+   {"person":4,"es":"Antes los maestros castigaban a los alumnos con reglas de madera.","en":"Teachers used to punish students with wooden rulers."}
+  ],
+  "future": [
+   {"person":0,"es":"Si vuelves a mentir, te castigaré.","en":"If you lie again, I'll punish you."},
+   {"person":1,"es":"¿Castigarás a tu hijo por eso?","en":"Will you punish your son for that?"},
+   {"person":2,"es":"La ley castigará a los culpables.","en":"The law will punish those responsible."},
+   {"person":3,"es":"Esta vez no te castigaremos.","en":"We won't punish you this time."},
+   {"person":4,"es":"Tus padres te castigarán si llegas tarde.","en":"Your parents will ground you if you get home late."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo no lo castigaría por un error.","en":"I wouldn't punish him for a mistake."},
+   {"person":1,"es":"¿Castigarías a un niño por llorar?","en":"Would you punish a child for crying?"},
+   {"person":2,"es":"Un buen juez castigaría a los dos.","en":"A good judge would punish both of them."},
+   {"person":3,"es":"Nunca te castigaríamos por decir la verdad.","en":"We'd never punish you for telling the truth."},
+   {"person":4,"es":"Mis padres me castigarían por mucho menos.","en":"My parents would ground me for a lot less."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"Hoy he castigado a toda la clase.","en":"Today I've punished the whole class."}
+  ],
+  "pluperfect": [
+   {"person":4,"es":"Ya lo habían castigado dos veces.","en":"They had already punished him twice."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":2,"es":"Mi abuela me habría castigado por eso.","en":"My grandmother would have punished me for that."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"No quiero que castigues a tu hermano por mi culpa.","en":"I don't want you to punish your brother because of me."},
+   {"person":0,"es":"Mi hijo no quiere que yo lo castigue.","en":"My son doesn't want me to punish him."},
+   {"person":2,"es":"Es justo que la ley castigue la corrupción.","en":"It's right for the law to punish corruption."},
+   {"person":3,"es":"No es necesario que lo castiguemos.","en":"We don't need to punish him."},
+   {"person":4,"es":"Ojalá no me castiguen por la nota.","en":"I hope they don't ground me over my grade."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Le pedí al director que no castigara a mi amigo.","en":"I asked the principal not to punish my friend."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":4,"es":"Me parece injusto que te hayan castigado.","en":"I think it's unfair that they punished you."}
+  ],
+  "subjPluperfect": [
+   {"person":1,"es":"Si lo hubieras castigado, no lo haría otra vez.","en":"If you had punished him, he wouldn't do it again."}
+  ],
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No castigues al niño por algo tan pequeño.","en":"Don't punish the boy for something so small."}
+  ]
+ },
+ "premiar": {
+  "present": [
+   {"person":2,"es":"La empresa premia a los mejores empleados.","en":"The company rewards its best employees."},
+   {"person":0,"es":"Premio a mi perro con galletas.","en":"I reward my dog with treats."},
+   {"person":1,"es":"Siempre premias el esfuerzo de tus hijos.","en":"You always reward your kids' effort."},
+   {"person":3,"es":"Premiamos a los alumnos que leen más libros.","en":"We give prizes to the students who read the most books."},
+   {"person":4,"es":"Los jueces premian la creatividad.","en":"The judges reward creativity."}
+  ],
+  "preterite": [
+   {"person":4,"es":"Premiaron su película en el festival.","en":"Her film won an award at the festival."},
+   {"person":0,"es":"Premié a los niños con un día en el parque.","en":"I rewarded the kids with a day at the park."},
+   {"person":1,"es":"¿Premiaste al ganador?","en":"Did you give the winner the prize?"},
+   {"person":2,"es":"La escuela premió a mi hija por su dibujo.","en":"The school gave my daughter a prize for her drawing."},
+   {"person":3,"es":"Premiamos a los voluntarios con una cena.","en":"We thanked the volunteers with a dinner."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuela nos premiaba con dulces.","en":"My grandmother would reward us with candy."},
+   {"person":0,"es":"Yo premiaba a mis alumnos con estrellas.","en":"I'd reward my students with stars."},
+   {"person":1,"es":"Tú premiabas a tu perro cada vez que se sentaba.","en":"You'd reward your dog every time it sat."},
+   {"person":3,"es":"Premiábamos al que terminaba primero.","en":"We'd give a prize to whoever finished first."},
+   {"person":4,"es":"Mis padres premiaban las buenas notas.","en":"My parents rewarded good grades."}
+  ],
+  "future": [
+   {"person":2,"es":"El concurso premiará la mejor foto.","en":"The contest will give a prize for the best photo."},
+   {"person":0,"es":"Te premiaré si terminas la tarea.","en":"I'll reward you if you finish your homework."},
+   {"person":1,"es":"¿Premiarás a todos los participantes?","en":"Will you give all the participants a prize?"},
+   {"person":3,"es":"Premiaremos a los tres primeros.","en":"We'll give prizes to the top three."},
+   {"person":4,"es":"Los organizadores premiarán a los ganadores el domingo.","en":"The organizers will give out the prizes on Sunday."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo premiaría el esfuerzo, no solo el resultado.","en":"I'd reward the effort, not just the result."},
+   {"person":1,"es":"¿A quién premiarías tú?","en":"Who would you give the prize to?"},
+   {"person":2,"es":"Un buen jefe premiaría tu trabajo.","en":"A good boss would reward your work."},
+   {"person":3,"es":"Premiaríamos a todos si pudiéramos.","en":"We'd give everyone a prize if we could."},
+   {"person":4,"es":"Ellos premiarían una película más comercial.","en":"They'd give the award to a more commercial film."}
+  ],
+  "presentPerfect": [
+   {"person":4,"es":"Han premiado a mi hermano por su novela.","en":"My brother has won an award for his novel."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"El festival nunca había premiado a una directora tan joven.","en":"The festival had never given an award to such a young director."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":3,"es":"Nosotros habríamos premiado otra canción.","en":"We would have given the prize to another song."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"Es bueno que premies a tus hijos por intentarlo.","en":"It's good that you reward your kids for trying."},
+   {"person":0,"es":"Mis alumnos esperan que yo premie al mejor equipo.","en":"My students expect me to give a prize to the best team."},
+   {"person":2,"es":"Es justo que la empresa premie la lealtad.","en":"It's fair for the company to reward loyalty."},
+   {"person":3,"es":"Es importante que premiemos el buen comportamiento.","en":"It's important for us to reward good behavior."},
+   {"person":4,"es":"Ojalá que premien a mi hija.","en":"I hope they give my daughter a prize."}
+  ],
+  "subjImperfect": [
+   {"person":4,"es":"Nos sorprendió que premiaran una película tan rara.","en":"We were surprised they gave a prize to such a strange film."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":4,"es":"Me alegra que hayan premiado tu trabajo.","en":"I'm glad they gave your work an award."}
+  ],
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Premia el esfuerzo, no solo la nota.","en":"Reward the effort, not just the grade."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "festejar": {
+  "present": [
+   {"person":2,"es":"Mi pueblo festeja a su santo en agosto.","en":"My town celebrates its patron saint in August."},
+   {"person":0,"es":"Este año festejo mi cumpleaños en la playa.","en":"This year I'm celebrating my birthday at the beach."},
+   {"person":1,"es":"¿Cómo festejas el Año Nuevo?","en":"How do you celebrate New Year's?"},
+   {"person":3,"es":"Hoy festejamos los quince años de mi hija.","en":"Today we're celebrating my daughter's quinceañera."},
+   {"person":4,"es":"Los aficionados festejan en las calles.","en":"The fans are celebrating in the streets."}
+  ],
+  "preterite": [
+   {"person":4,"es":"Los jugadores festejaron el gol con la afición.","en":"The players celebrated the goal with the fans."},
+   {"person":0,"es":"Festejé mi graduación con mi familia.","en":"I celebrated my graduation with my family."},
+   {"person":1,"es":"¿Dónde festejaste tu cumpleaños?","en":"Where did you celebrate your birthday?"},
+   {"person":2,"es":"Mi abuela festejó sus noventa años con baile.","en":"My grandmother celebrated her ninetieth birthday with dancing."},
+   {"person":3,"es":"Anoche festejamos hasta las tres.","en":"Last night we celebrated until three."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi barrio festejaba la Navidad con una gran cena.","en":"My neighborhood used to celebrate Christmas with a big dinner."},
+   {"person":0,"es":"De niño, yo festejaba mi santo además de mi cumpleaños.","en":"As a kid, I celebrated my saint's day as well as my birthday."},
+   {"person":1,"es":"Tú festejabas cada pequeño logro.","en":"You'd celebrate every little win."},
+   {"person":3,"es":"Festejábamos el Día de la Independencia con fuegos artificiales.","en":"We used to celebrate Independence Day with fireworks."},
+   {"person":4,"es":"Mis abuelos festejaban su aniversario cada año.","en":"My grandparents used to celebrate their anniversary every year."}
+  ],
+  "future": [
+   {"person":3,"es":"Festejaremos cuando termines la carrera.","en":"We'll celebrate when you finish your degree."},
+   {"person":0,"es":"Festejaré mi ascenso con una cena.","en":"I'll celebrate my promotion with a dinner."},
+   {"person":1,"es":"Festejarás tu cumpleaños en casa, ¿verdad?","en":"You'll celebrate your birthday at home, right?"},
+   {"person":2,"es":"La ciudad festejará sus quinientos años.","en":"The city will celebrate its 500th anniversary."},
+   {"person":4,"es":"Los novios festejarán la boda en un jardín.","en":"The couple will hold their wedding party in a garden."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo festejaría con algo sencillo.","en":"I'd celebrate with something simple."},
+   {"person":1,"es":"¿Cómo festejarías un premio así?","en":"How would you celebrate an award like that?"},
+   {"person":2,"es":"Mi papá festejaría a lo grande si ganara su equipo.","en":"My dad would celebrate big if his team won."},
+   {"person":3,"es":"Festejaríamos, pero mañana trabajamos.","en":"We'd celebrate, but we work tomorrow."},
+   {"person":4,"es":"Ellos festejarían por cualquier cosa.","en":"They'd celebrate anything."}
+  ],
+  "presentPerfect": [
+   {"person":3,"es":"Nunca hemos festejado el Día de Acción de Gracias.","en":"We've never celebrated Thanksgiving."}
+  ],
+  "pluperfect": [
+   {"person":4,"es":"Ya habían festejado antes del final del partido.","en":"They had already celebrated before the end of the game."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":0,"es":"Yo habría festejado con mis amigos.","en":"I would have celebrated with my friends."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"Quiero que festejes con nosotros.","en":"I want you to celebrate with us."},
+   {"person":0,"es":"Mi familia quiere que yo festeje mis treinta años en grande.","en":"My family wants me to celebrate my thirtieth in a big way."},
+   {"person":2,"es":"Es justo que el equipo festeje después de tanto esfuerzo.","en":"It's only fair for the team to celebrate after so much effort."},
+   {"person":3,"es":"Es mejor que festejemos el sábado.","en":"It's better if we celebrate on Saturday."},
+   {"person":4,"es":"Deja que los niños festejen un rato.","en":"Let the kids celebrate for a while."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Mi madre quería que mi hermana festejara sus quince años.","en":"My mother wanted my sister to have a quinceañera party."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": [
+   {"person":3,"es":"Si hubiéramos festejado en casa, habría sido más barato.","en":"If we had celebrated at home, it would have been cheaper."}
+  ],
+  "impAffirmative": [
+   {"person":4,"es":"¡Festejen, que hoy es su día!","en":"Celebrate, today is your day!"}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No festejes antes de tiempo.","en":"Don't celebrate too early."}
+  ]
+ },
+ "reconciliarse": {
+  "present": [
+   {"person":2,"es":"Mi hermano siempre se reconcilia con su novia al día siguiente.","en":"My brother always makes up with his girlfriend the next day."},
+   {"person":0,"es":"Me reconcilio rápido con la gente.","en":"I make up with people quickly."},
+   {"person":1,"es":"¿Por qué no te reconcilias con tu papá?","en":"Why don't you make up with your dad?"},
+   {"person":3,"es":"Siempre nos reconciliamos antes de dormir.","en":"We always make up before going to sleep."},
+   {"person":4,"es":"Los niños se pelean y se reconcilian en cinco minutos.","en":"Kids fight and make up in five minutes."}
+  ],
+  "preterite": [
+   {"person":4,"es":"Mis padres se reconciliaron después de un año.","en":"My parents got back together after a year."},
+   {"person":0,"es":"Me reconcilié con mi hermana en Navidad.","en":"I made up with my sister at Christmas."},
+   {"person":1,"es":"¿Te reconciliaste con tu amigo?","en":"Did you make up with your friend?"},
+   {"person":2,"es":"El actor se reconcilió con su familia.","en":"The actor reconciled with his family."},
+   {"person":3,"es":"Nos reconciliamos con un abrazo.","en":"We made up with a hug."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi tía se peleaba con todos, pero luego se reconciliaba.","en":"My aunt fought with everyone, but then she'd make up."},
+   {"person":0,"es":"Yo me reconciliaba con mis primos en cada fiesta.","en":"I'd make up with my cousins at every party."},
+   {"person":1,"es":"Tú siempre te reconciliabas primero.","en":"You were always the first to make up."},
+   {"person":3,"es":"Nos reconciliábamos con un helado.","en":"We'd make up over ice cream."},
+   {"person":4,"es":"Los vecinos se peleaban y se reconciliaban cada semana.","en":"The neighbors fought and made up every week."}
+  ],
+  "future": [
+   {"person":1,"es":"Te reconciliarás con él, ya verás.","en":"You'll make up with him, you'll see."},
+   {"person":0,"es":"Me reconciliaré con mi padre antes de que sea tarde.","en":"I'll make peace with my father before it's too late."},
+   {"person":2,"es":"El país se reconciliará con su pasado.","en":"The country will come to terms with its past."},
+   {"person":3,"es":"Nos reconciliaremos pronto.","en":"We'll make up soon."},
+   {"person":4,"es":"Los dos hermanos se reconciliarán en la boda.","en":"The two brothers will make up at the wedding."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo me reconciliaría con ella si me pidiera perdón.","en":"I'd make up with her if she apologized."},
+   {"person":1,"es":"¿Te reconciliarías con tu ex?","en":"Would you get back together with your ex?"},
+   {"person":2,"es":"Mi abuelo nunca se reconciliaría con su hermano.","en":"My grandfather would never make up with his brother."},
+   {"person":3,"es":"Nos reconciliaríamos si habláramos con calma.","en":"We'd make up if we talked calmly."},
+   {"person":4,"es":"Ellos se reconciliarían si alguien los ayudara.","en":"They'd make up if someone helped them."}
+  ],
+  "presentPerfect": [
+   {"person":4,"es":"Mis amigos se han reconciliado.","en":"My friends have made up."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Mi tío ya se había reconciliado con su hijo antes de la boda.","en":"My uncle had already made up with his son before the wedding."}
+  ],
+  "futurePerfect": [
+   {"person":4,"es":"Para mañana ya se habrán reconciliado.","en":"They'll have made up by tomorrow."}
+  ],
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Quiero que te reconcilies con tu hermana.","en":"I want you to make up with your sister."},
+   {"person":0,"es":"Mi mamá quiere que yo me reconcilie con mi primo.","en":"My mom wants me to make up with my cousin."},
+   {"person":2,"es":"Ojalá que mi papá se reconcilie con mi abuelo.","en":"I hope my dad makes up with my grandfather."},
+   {"person":3,"es":"Es hora de que nos reconciliemos.","en":"It's time for us to make up."},
+   {"person":4,"es":"Espero que se reconcilien pronto.","en":"I hope they make up soon."}
+  ],
+  "subjImperfect": [
+   {"person":4,"es":"Todos querían que los novios se reconciliaran.","en":"Everyone wanted the couple to make up."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":1,"es":"Me alegra que te hayas reconciliado con tu madre.","en":"I'm glad you've made up with your mother."}
+  ],
+  "subjPluperfect": [
+   {"person":0,"es":"Si me hubiera reconciliado antes, no habría perdido tantos años.","en":"If I had made up sooner, I wouldn't have lost so many years."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Reconcíliate con tu hermano, la vida es corta.","en":"Make up with your brother, life is short."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "envidiar": {
+  "present": [
+   {"person":0,"es":"Te envidio, tienes un trabajo increíble.","en":"I envy you, you have an amazing job."},
+   {"person":1,"es":"¿Por qué envidias a tu prima?","en":"Why are you jealous of your cousin?"},
+   {"person":2,"es":"Mi hermano envidia mi bicicleta.","en":"My brother is jealous of my bike."},
+   {"person":3,"es":"Envidiamos a la gente que vive cerca del mar.","en":"We envy people who live near the sea."},
+   {"person":4,"es":"Muchos envidian su suerte.","en":"Lots of people envy her luck."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Mi amiga envidió mi vestido toda la noche.","en":"My friend was jealous of my dress all night."},
+   {"person":0,"es":"Envidié a mis compañeros que se fueron de viaje.","en":"I envied my classmates who went on the trip."},
+   {"person":1,"es":"¿Envidiaste su premio?","en":"Were you jealous of his award?"},
+   {"person":3,"es":"Envidiamos un poco su casa nueva.","en":"We were a bit jealous of their new house."},
+   {"person":4,"es":"Todos envidiaron su calma en el examen.","en":"Everyone envied how calm she was during the exam."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi hermana envidiaba mi pelo rizado.","en":"My sister used to envy my curly hair."},
+   {"person":0,"es":"De niño, yo envidiaba a los que tenían videojuegos.","en":"As a kid, I envied the kids who had video games."},
+   {"person":1,"es":"Tú envidiabas a los niños altos.","en":"You used to envy the tall kids."},
+   {"person":3,"es":"Envidiábamos a los vecinos por su piscina.","en":"We envied the neighbors for their pool."},
+   {"person":4,"es":"Mis compañeros envidiaban mi letra.","en":"My classmates envied my handwriting."}
+  ],
+  "future": [
+   {"person":1,"es":"Envidiarás a los que se quedaron en la playa.","en":"You'll envy the ones who stayed at the beach."},
+   {"person":0,"es":"No envidiaré a nadie si soy feliz.","en":"I won't envy anyone if I'm happy."},
+   {"person":2,"es":"Tu hermano envidiará tu carro nuevo.","en":"Your brother will be jealous of your new car."},
+   {"person":3,"es":"Los envidiaremos cuando estén de vacaciones.","en":"We'll envy them when they're on vacation."},
+   {"person":4,"es":"Todos envidiarán tu jardín.","en":"Everyone will envy your garden."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo no envidiaría una vida tan complicada.","en":"I wouldn't envy such a complicated life."},
+   {"person":1,"es":"¿Envidiarías a alguien tan famoso?","en":"Would you envy someone so famous?"},
+   {"person":2,"es":"Cualquiera envidiaría esa vista.","en":"Anyone would envy that view."},
+   {"person":3,"es":"No envidiaríamos su fama por nada.","en":"We wouldn't envy their fame for anything."},
+   {"person":4,"es":"Mis amigos envidiarían este viaje.","en":"My friends would be jealous of this trip."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"Siempre he envidiado tu calma.","en":"I've always envied how calm you are."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Ella nunca había envidiado a nadie.","en":"She had never envied anyone."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"No quiero que envidies a tus amigos.","en":"I don't want you to envy your friends."},
+   {"person":0,"es":"No es verdad que yo envidie su trabajo.","en":"It's not true that I'm jealous of her job."},
+   {"person":2,"es":"Es normal que un niño envidie los juguetes de otro.","en":"It's normal for a child to envy another kid's toys."},
+   {"person":3,"es":"No es bueno que envidiemos a los demás.","en":"It's not good for us to envy others."},
+   {"person":4,"es":"No me importa que me envidien.","en":"I don't care if they envy me."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Me dolió que mi mejor amiga me envidiara.","en":"It hurt that my best friend was jealous of me."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No envidies lo que tienen los demás.","en":"Don't envy what other people have."}
+  ]
+ },
+ "fastidiar": {
+  "present": [
+   {"person":2,"es":"Me fastidia el ruido de la calle.","en":"The street noise bothers me."},
+   {"person":0,"es":"No te fastidio más, ya me voy.","en":"I won't bother you anymore, I'm leaving."},
+   {"person":1,"es":"Siempre fastidias a tu hermana.","en":"You're always bugging your sister."},
+   {"person":3,"es":"¿Te fastidiamos si ponemos música?","en":"Will it bother you if we put on music?"},
+   {"person":4,"es":"Me fastidian los mosquitos.","en":"Mosquitoes annoy me."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Me fastidió mucho su comentario.","en":"His comment really annoyed me."},
+   {"person":0,"es":"Perdón, ¿te fastidié con tantas preguntas?","en":"Sorry, did I bug you with so many questions?"},
+   {"person":1,"es":"Fastidiaste a tu primo toda la tarde.","en":"You bugged your cousin all afternoon."},
+   {"person":3,"es":"Fastidiamos al profesor con tanto ruido.","en":"We annoyed the teacher with all the noise."},
+   {"person":4,"es":"Los niños fastidiaron al perro hasta que ladró.","en":"The kids bothered the dog until it barked."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi hermano me fastidiaba todo el tiempo.","en":"My brother used to bug me all the time."},
+   {"person":0,"es":"Yo fastidiaba a mi abuela escondiendo sus lentes.","en":"I'd annoy my grandmother by hiding her glasses."},
+   {"person":1,"es":"Tú fastidiabas a todos con tus chistes.","en":"You annoyed everyone with your jokes."},
+   {"person":3,"es":"Fastidiábamos a la vecina tocando su timbre.","en":"We'd annoy the neighbor by ringing her doorbell."},
+   {"person":4,"es":"Me fastidiaban las clases de los lunes.","en":"Monday classes used to annoy me."}
+  ],
+  "future": [
+   {"person":2,"es":"Te fastidiará esperar tanto.","en":"It'll annoy you to wait so long."},
+   {"person":0,"es":"No te fastidiaré más con eso.","en":"I won't bother you with that anymore."},
+   {"person":1,"es":"Fastidiarás a tu papá si sigues así.","en":"You'll annoy your dad if you keep that up."},
+   {"person":3,"es":"No te fastidiaremos mientras estudias.","en":"We won't bother you while you study."},
+   {"person":4,"es":"Los vecinos te fastidiarán con sus quejas.","en":"The neighbors will bug you with their complaints."}
+  ],
+  "conditional": [
+   {"person":2,"es":"¿Te fastidiaría que abriera la ventana?","en":"Would it bother you if I opened the window?"},
+   {"person":0,"es":"Yo no te fastidiaría si no fuera importante.","en":"I wouldn't bother you if it weren't important."},
+   {"person":1,"es":"¿Fastidiarías a tu hermano solo por diversión?","en":"Would you bug your brother just for fun?"},
+   {"person":3,"es":"No los fastidiaríamos a esta hora.","en":"We wouldn't bother them at this hour."},
+   {"person":4,"es":"Me fastidiarían esos horarios.","en":"Those hours would annoy me."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"Me ha fastidiado todo el día.","en":"He's been bugging me all day."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"La lluvia nos había fastidiado el paseo.","en":"The rain had spoiled our outing."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"No quiero que fastidies a tu hermana.","en":"I don't want you bugging your sister."},
+   {"person":0,"es":"¿Te molesta que yo te fastidie con preguntas?","en":"Do you mind me bugging you with questions?"},
+   {"person":2,"es":"No dejes que el perro fastidie a los invitados.","en":"Don't let the dog bother the guests."},
+   {"person":3,"es":"Mamá no quiere que fastidiemos a la abuela.","en":"Mom doesn't want us bothering Grandma."},
+   {"person":4,"es":"No me gusta que me fastidien cuando leo.","en":"I don't like being bothered when I'm reading."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Le pedí a mi hermano que no me fastidiara.","en":"I asked my brother not to bug me."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No fastidies a tu hermano.","en":"Don't bug your brother."}
+  ]
+ },
+ "disculparse": {
+  "present": [
+   {"person":2,"es":"Mi hijo siempre se disculpa cuando se equivoca.","en":"My son always apologizes when he makes a mistake."},
+   {"person":0,"es":"Me disculpo por llegar tarde.","en":"I apologize for being late."},
+   {"person":1,"es":"Nunca te disculpas.","en":"You never apologize."},
+   {"person":3,"es":"Nos disculpamos por las molestias.","en":"We apologize for the inconvenience."},
+   {"person":4,"es":"Los vecinos se disculpan por el ruido.","en":"The neighbors apologize for the noise."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El mesero se disculpó por el error.","en":"The waiter apologized for the mistake."},
+   {"person":0,"es":"Me disculpé con mi amiga.","en":"I apologized to my friend."},
+   {"person":1,"es":"¿Te disculpaste con tu maestra?","en":"Did you apologize to your teacher?"},
+   {"person":3,"es":"Nos disculpamos y nos fuimos.","en":"We apologized and left."},
+   {"person":4,"es":"Los niños se disculparon con la vecina.","en":"The kids apologized to the neighbor."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo se disculpaba por todo.","en":"My grandfather used to apologize for everything."},
+   {"person":0,"es":"Yo me disculpaba cada vez que hablaba en clase.","en":"I'd apologize every time I spoke up in class."},
+   {"person":1,"es":"Tú te disculpabas sin tener la culpa.","en":"You'd apologize even when it wasn't your fault."},
+   {"person":3,"es":"Nos disculpábamos con un regalo.","en":"We'd apologize with a gift."},
+   {"person":4,"es":"Los políticos nunca se disculpaban.","en":"The politicians never apologized."}
+  ],
+  "future": [
+   {"person":1,"es":"Te disculparás con tu hermano, ¿entendido?","en":"You'll apologize to your brother, understood?"},
+   {"person":0,"es":"Mañana me disculparé con el jefe.","en":"Tomorrow I'll apologize to the boss."},
+   {"person":2,"es":"El alcalde se disculpará en público.","en":"The mayor will apologize publicly."},
+   {"person":3,"es":"Nos disculparemos en cuanto lleguemos.","en":"We'll apologize as soon as we get there."},
+   {"person":4,"es":"Ellos nunca se disculparán.","en":"They'll never apologize."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo me disculparía con ella.","en":"I'd apologize to her."},
+   {"person":1,"es":"¿Te disculparías si no fuera tu culpa?","en":"Would you apologize if it weren't your fault?"},
+   {"person":2,"es":"Una persona madura se disculparía.","en":"A mature person would apologize."},
+   {"person":3,"es":"Nos disculparíamos, pero no hicimos nada malo.","en":"We'd apologize, but we didn't do anything wrong."},
+   {"person":4,"es":"Mis hermanos se disculparían si supieran la verdad.","en":"My brothers would apologize if they knew the truth."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"Ya se ha disculpado tres veces.","en":"He's already apologized three times."}
+  ],
+  "pluperfect": [
+   {"person":4,"es":"Ya se habían disculpado cuando llegué.","en":"They had already apologized by the time I got there."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":0,"es":"Yo me habría disculpado enseguida.","en":"I would have apologized right away."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"Quiero que te disculpes con tu prima.","en":"I want you to apologize to your cousin."},
+   {"person":0,"es":"Mi mamá quiere que yo me disculpe con la vecina.","en":"My mom wants me to apologize to the neighbor."},
+   {"person":2,"es":"Es necesario que el director se disculpe.","en":"The principal needs to apologize."},
+   {"person":3,"es":"Es mejor que nos disculpemos ahora.","en":"We'd better apologize now."},
+   {"person":4,"es":"Espero que se disculpen por lo que dijeron.","en":"I hope they apologize for what they said."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"La maestra pidió que el niño se disculpara.","en":"The teacher asked the boy to apologize."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":1,"es":"Me alegra que te hayas disculpado.","en":"I'm glad you apologized."}
+  ],
+  "subjPluperfect": [
+   {"person":1,"es":"Si te hubieras disculpado, no estaría enojada.","en":"If you had apologized, she wouldn't be angry."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Discúlpate con tu hermano.","en":"Apologize to your brother."}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No te disculpes, no fue tu culpa.","en":"Don't apologize, it wasn't your fault."}
+  ]
  }
 }

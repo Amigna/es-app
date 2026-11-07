@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import ConjugationView from "@/components/ConjugationView";
@@ -6,6 +7,7 @@ import VerbSearch from "@/components/VerbSearch";
 import { conjugate } from "@/lib/conjugation/engine";
 import { IRREGULARS } from "@/lib/conjugation/irregulars";
 import { markVerb } from "@/lib/conjugation/regular";
+import { practiceHref } from "@/lib/practice";
 import { getSentences } from "@/lib/sentence-data";
 import { VERBS, VERB_SHAPE, findVerb, verbSlug, type Verb } from "@/lib/verbs";
 
@@ -80,6 +82,14 @@ async function VerbContent({ params }: { params: PageProps<"/verb/[inf]">["param
           {verb.boot && <Chip>stem change {verb.boot.replace(">", " → ")}</Chip>}
           {verb.accent && <Chip>accent shifts (envío)</Chip>}
         </div>
+        {listed && (
+          <Link
+            href={practiceHref({ verb: verb.inf })}
+            className="inline-flex h-11 items-center rounded-xl bg-accent-700 px-5 font-medium text-white transition hover:bg-accent-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-600"
+          >
+            Drill {verb.inf}
+          </Link>
+        )}
         {!listed && (
           <p className="rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-sm text-amber-900 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-200">
             This verb isn’t in the curated list yet, so it’s conjugated by the regular rules. If it has a stem change or

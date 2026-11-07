@@ -6,7 +6,7 @@ import DrillRunner from "@/components/DrillRunner";
 import { TENSES, type Mood, type TenseId } from "@/lib/conjugation/types";
 import { LevelPicker, LevelPrompt } from "@/components/LevelPicker";
 import { COMMON_COUNT, CORE_TENSES, conjugationCard, limitedDeck, makeQuestion, poolVerbs, type Card, type VerbPool } from "@/lib/drill";
-import { levelInfo, useLevel } from "@/lib/level";
+import { levelInfo, storedLevel, useLevel } from "@/lib/level";
 import StudyRunner from "@/components/StudyRunner";
 import type { StudyCard } from "@/lib/card-decks";
 import {
@@ -254,7 +254,12 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
     }
     if ("verb" in target) {
       const verb = findVerb(target.verb);
-      return conjugationDeck(verb ? [verb] : [], CORE_TENSES);
+      if (!verb) return () => null;
+      const [{ verbPracticeDeck }, bank] = await Promise.all([import("@/lib/card-decks"), loadSentences([verb])]);
+      // The level's tenses, so a beginner isn't asked forms they haven't learned. A1's present alone gives about 10 questions.
+      // Read from storage: this runs on arrival, when the first render may not have the level yet.
+      const saved = storedLevel();
+      return verbPracticeDeck(verb, bank, saved ? levelInfo(saved).tenses : CORE_TENSES, rareSet, PRACTICE_SIZE);
     }
     return conjugationDeck(poolVerbs(VERBS, pool, commonVerbs), target.tenses);
   }

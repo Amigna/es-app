@@ -336,6 +336,30 @@ export function blankDeck(bank: SentenceBank, verbs: Verb[], tenses: TenseId[], 
   return sentenceDeck(verbs, tenses, (verb, tense) => blankCard(bank, verb, tense, random), random);
 }
 
+/**
+ * Practice on one verb, from its page or a weak spot: verb forms and fill in the blank in turn, with no question asked
+ * twice. One verb only has 30 core forms, so random picks would repeat a lot. Fewer than `size` if it runs out.
+ */
+export function verbPracticeDeck(verb: Verb, bank: SentenceBank, tenses: TenseId[], rare: Set<string>, size: number, random: Random = Math.random): () => Card | null {
+  const kinds = [
+    () => {
+      const q = makeQuestion([verb], tenses, rare, random);
+      return q && conjugationCard(q, sentencesFor(bank, q.verb.inf, q.tense));
+    },
+    blankDeck(bank, [verb], tenses, random),
+  ];
+  const cards = new Map<string, Card>();
+  // The prompt counts too, since a verb's sentences for one person share an ID.
+  for (let tries = 0; cards.size < size && tries < size * 8; tries++) {
+    const card = kinds[tries % kinds.length]();
+    if (!card) continue;
+    const key = `${card.id}|${card.title}`;
+    if (!cards.has(key)) cards.set(key, card);
+  }
+  const left = [...cards.values()];
+  return () => left.shift() ?? null;
+}
+
 /** One saved item per direction: translations aren't scheduled, so there's nothing to keep per sentence. */
 export function writingCard(bank: SentenceBank, verb: Verb, tense: TenseId, side: FlashSide, random: Random = Math.random): Card | null {
   const sentences = sentencesFor(bank, verb.inf, tense);
