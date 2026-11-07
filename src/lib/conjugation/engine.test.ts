@@ -124,6 +124,9 @@ describe("stem-changing verbs", () => {
     check({ inf: "empezar", boot: "e>ie" }, "subjPresent", P5("empiece empieces empiece empecemos empiecen"));
     check({ inf: "almorzar", boot: "o>ue" }, "present", P5("almuerzo almuerzas almuerza almorzamos almuerzan"));
     check({ inf: "almorzar", boot: "o>ue" }, "preterite", P5("almorcé almorzaste almorzó almorzamos almorzaron"));
+    check({ inf: "avergonzar", boot: "o>ue" }, "present", P5("avergüenzo avergüenzas avergüenza avergonzamos avergüenzan"));
+    check({ inf: "avergonzar", boot: "o>ue" }, "subjPresent", P5("avergüence avergüences avergüence avergoncemos avergüencen"));
+    check({ inf: "avergonzar", boot: "o>ue" }, "preterite", P5("avergoncé avergonzaste avergonzó avergonzamos avergonzaron"));
     check({ inf: "jugar", boot: "u>ue" }, "present", P5("juego juegas juega jugamos juegan"));
     check({ inf: "jugar", boot: "u>ue" }, "preterite", P5("jugué jugaste jugó jugamos jugaron"));
     check({ inf: "jugar", boot: "u>ue" }, "subjPresent", P5("juegue juegues juegue juguemos jueguen"));

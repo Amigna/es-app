@@ -41,7 +41,10 @@ const NO_ZC = new Set(["mecer", "remecer", "cocer", "escocer", "recocer"]);
 export function applyChange(stem: string, change: string): string {
   const [from, to] = change.split(">");
   const i = stem.lastIndexOf(from);
-  return i < 0 ? stem : stem.slice(0, i) + to + stem.slice(i + 1);
+  if (i < 0) return stem;
+  // After g the u is said, so it needs a diaeresis: avergonzar -> avergüenzo.
+  const added = stem[i - 1] === "g" && to.startsWith("u") ? "ü" + to.slice(1) : to;
+  return stem.slice(0, i) + added + stem.slice(i + 1);
 }
 
 function accentStem(stem: string, vowel: "i" | "u"): string {

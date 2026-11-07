@@ -13,11 +13,12 @@ import file12 from "../data/sentences/verbs-551-600.json";
 import file13 from "../data/sentences/verbs-601-650.json";
 import file14 from "../data/sentences/verbs-651-700.json";
 import file15 from "../data/sentences/verbs-701-750.json";
+import file16 from "../data/sentences/verbs-751-800.json";
 import type { SentenceBank, VerbSentences } from "./sentences";
 
 // Every example sentence. Large: server only. The browser uses sentence-loader.ts, which fetches only what a drill needs.
 
-export const SENTENCE_FILES = [file1, file2, file3, file4, file5, file6, file7, file8, file9, file10, file11, file12, file13, file14, file15] as SentenceBank[];
+export const SENTENCE_FILES = [file1, file2, file3, file4, file5, file6, file7, file8, file9, file10, file11, file12, file13, file14, file15, file16] as SentenceBank[];
 
 export const SENTENCE_BANK: SentenceBank = Object.assign({}, ...SENTENCE_FILES);
 
