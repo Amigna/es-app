@@ -3,7 +3,7 @@ import Link from "next/link";
 import CourseShortcut from "@/components/CourseShortcut";
 import VerbSearch from "@/components/VerbSearch";
 import { verbGroup, type VerbGroup } from "@/lib/conjugation/regular";
-import { VERBS, verbSlug } from "@/lib/verbs";
+import { VERBS, verbSlug, type Verb } from "@/lib/verbs";
 
 // A hue per verb ending, for the edge of each verb card.
 const ENDINGS = [
@@ -67,12 +67,26 @@ const endingOf = (inf: string) =>
       ? "er"
       : "ir";
 
+// VERBS is in order of how common each verb is.
+const COMMON_COUNT = 50;
+
+const byName = (a: Verb, b: Verb) => a.inf.localeCompare(b.inf, "es");
+
+const SECTIONS = [
+  { id: "common", title: `${COMMON_COUNT} most common`, verbs: VERBS.slice(0, COMMON_COUNT) },
+  { id: "rest", title: "All other verbs", verbs: VERBS.slice(COMMON_COUNT) },
+].map((section) => {
+  const sorted = [...section.verbs].sort(byName);
+  return {
+    ...section,
+    groups: GROUPS.map((g) => ({ ...g, id: `${section.id}-${g.id}`, verbs: sorted.filter((v) => verbGroup(v) === g.id) })),
+  };
+});
+
+const pillClass =
+  "inline-flex min-h-10 items-center gap-1.5 rounded-full border border-stone-300 px-4 transition hover:border-stone-500 hover:bg-stone-100 dark:border-stone-700 dark:hover:bg-stone-800";
+
 export default function Home() {
-  const sorted = [...VERBS].sort((a, b) => a.inf.localeCompare(b.inf, "es"));
-  const grouped = GROUPS.map((g) => ({
-    ...g,
-    verbs: sorted.filter((v) => verbGroup(v) === g.id),
-  }));
   const hue = Object.fromEntries(ENDINGS.map((e) => [e.id, e.hue]));
 
   return (
@@ -133,56 +147,71 @@ export default function Home() {
             ))}
           </p>
         </div>
-        <nav
-          aria-label="Verb groups"
-          className="mb-6 flex flex-wrap gap-2 text-sm"
-        >
-          {grouped.map((g) => (
-            <a
-              key={g.id}
-              href={`#${g.id}`}
-              className="inline-flex min-h-10 items-center gap-1.5 rounded-full border border-stone-300 px-4 transition hover:border-stone-500 hover:bg-stone-100 dark:border-stone-700 dark:hover:bg-stone-800"
-            >
-              {g.title} <span className="text-stone-500">{g.verbs.length}</span>
-            </a>
+        <nav aria-label="Verb groups" className="mb-6 space-y-2 text-sm">
+          {SECTIONS.filter((s) => s.id === "rest").map((s) => (
+            <div key={s.id} className="flex flex-wrap items-center gap-2">
+              <span className="w-full font-medium sm:w-40">{s.title}</span>
+              {s.groups.map((g) => (
+                <a key={g.id} href={`#${g.id}`} className={pillClass}>
+                  {g.title} <span className="text-stone-500">{g.verbs.length}</span>
+                </a>
+              ))}
+            </div>
           ))}
         </nav>
-        <div className="space-y-8">
-          {grouped.map((g) => (
-            <section
-              key={g.id}
-              id={g.id}
-              aria-labelledby={`${g.id}-title`}
-              className="scroll-mt-20"
-            >
-              <h3 id={`${g.id}-title`} className="text-lg font-semibold">
-                {g.title}{" "}
-                <span className="text-sm font-normal text-stone-500">
-                  {g.verbs.length}
-                </span>
-              </h3>
-              <p className="mb-3 text-sm text-stone-600 dark:text-stone-400">
-                {g.note}
-              </p>
-              <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
-                {g.verbs.map((v) => (
-                  <li
-                    key={v.inf}
-                    className="min-w-0"
-                    style={hueStyle(hue[endingOf(v.inf)])}
-                  >
-                    <Link
-                      href={`/verb/${verbSlug(v.inf)}`}
-                      className="flex items-baseline justify-between gap-3 rounded-lg border border-l-4 border-stone-200 border-l-accent-500 bg-white px-3 py-2 transition hover:border-accent-500 hover:bg-accent-50 dark:border-stone-800 dark:border-l-accent-600 dark:bg-stone-900 dark:hover:bg-accent-950"
-                    >
-                      <span className="shrink-0 font-medium">{v.inf}</span>
-                      <span className="truncate text-sm text-stone-500">
-                        {v.en.replace(/^to /, "")}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+        <div className="space-y-12">
+          {SECTIONS.map((s) => (
+            <section key={s.id} aria-labelledby={`${s.id}-title`} className="space-y-8">
+              <div>
+                <h2 id={`${s.id}-title`} className="font-display text-2xl font-semibold">
+                  {s.title}{" "}
+                  <span className="text-base font-normal text-stone-500">
+                    ({s.verbs.length})
+                  </span>
+                </h2>
+                {s.id === "common" && (
+                  <p className="text-sm text-stone-600 dark:text-stone-400">
+                    Ordered by how often they&apos;re used, then listed A to Z.
+                  </p>
+                )}
+              </div>
+              {s.groups.map((g) => (
+                <section
+                  key={g.id}
+                  id={g.id}
+                  aria-labelledby={`${g.id}-title`}
+                  className="scroll-mt-20"
+                >
+                  <h3 id={`${g.id}-title`} className="text-lg font-semibold">
+                    {g.title}{" "}
+                    <span className="text-sm font-normal text-stone-500">
+                      {g.verbs.length}
+                    </span>
+                  </h3>
+                  <p className="mb-3 text-sm text-stone-600 dark:text-stone-400">
+                    {g.note}
+                  </p>
+                  <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                    {g.verbs.map((v) => (
+                      <li
+                        key={v.inf}
+                        className="min-w-0"
+                        style={hueStyle(hue[endingOf(v.inf)])}
+                      >
+                        <Link
+                          href={`/verb/${verbSlug(v.inf)}`}
+                          className="flex items-baseline justify-between gap-3 rounded-lg border border-l-4 border-stone-200 border-l-accent-500 bg-white px-3 py-2 transition hover:border-accent-500 hover:bg-accent-50 dark:border-stone-800 dark:border-l-accent-600 dark:bg-stone-900 dark:hover:bg-accent-950"
+                        >
+                          <span className="shrink-0 font-medium">{v.inf}</span>
+                          <span className="truncate text-sm text-stone-500">
+                            {v.en.replace(/^to /, "")}
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ))}
             </section>
           ))}
         </div>
