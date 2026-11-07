@@ -2388,5 +2388,647 @@
   "impNegative": [
    {"person":1,"es":"No encierres al perro en el carro.","en":"Don't leave the dog shut in the car."}
   ]
+ },
+ "encoger": {
+  "present": [
+   {"person":2,"es":"La secadora encoge la ropa de algodón.","en":"The dryer shrinks cotton clothes."},
+   {"person":0,"es":"Siempre encojo los suéteres en la lavadora.","en":"I always shrink sweaters in the washing machine."},
+   {"person":1,"es":"¿Por qué encoges los hombros?","en":"Why are you shrugging?"},
+   {"person":3,"es":"Encogemos las piernas para que quepa otro en el sofá.","en":"We pull our legs in so someone else fits on the couch."},
+   {"person":4,"es":"Los caracoles encogen el cuerpo cuando los tocas.","en":"Snails pull in their bodies when you touch them."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Mi camisa favorita encogió en la lavadora.","en":"My favorite shirt shrank in the wash."},
+   {"person":0,"es":"Encogí tu suéter sin querer.","en":"I accidentally shrank your sweater."},
+   {"person":1,"es":"Encogiste los hombros y no dijiste nada.","en":"You shrugged and didn't say anything."},
+   {"person":3,"es":"Encogimos los pies para no mojarnos.","en":"We pulled our feet up so we wouldn't get wet."},
+   {"person":4,"es":"Los pantalones encogieron dos tallas.","en":"The pants shrank two sizes."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo encogía los hombros a todo.","en":"My grandfather would shrug at everything."},
+   {"person":0,"es":"Yo encogía la ropa cada vez que lavaba.","en":"I'd shrink clothes every time I did laundry."},
+   {"person":1,"es":"Tú encogías las piernas en el asiento del carro.","en":"You'd tuck your legs up on the car seat."},
+   {"person":3,"es":"Encogíamos el estómago para las fotos.","en":"We'd suck in our stomachs for photos."},
+   {"person":4,"es":"Las camisetas baratas encogían enseguida.","en":"Cheap T-shirts shrank right away."}
+  ],
+  "future": [
+   {"person":1,"es":"Encogerás ese vestido si lo lavas con agua caliente.","en":"You'll shrink that dress if you wash it in hot water."},
+   {"person":0,"es":"No encogeré tu ropa esta vez.","en":"I won't shrink your clothes this time."},
+   {"person":2,"es":"Esta tela no encogerá.","en":"This fabric won't shrink."},
+   {"person":3,"es":"Encogeremos el presupuesto el próximo año.","en":"We'll shrink the budget next year."},
+   {"person":4,"es":"Los jeans encogerán un poco.","en":"The jeans will shrink a little."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo no encogería los hombros ante algo tan serio.","en":"I wouldn't shrug at something so serious."},
+   {"person":1,"es":"¿Encogerías la lana en la secadora?","en":"Would you shrink wool in the dryer?"},
+   {"person":2,"es":"El agua caliente encogería este suéter.","en":"Hot water would shrink this sweater."},
+   {"person":3,"es":"Encogeríamos los gastos si fuera necesario.","en":"We'd cut back our spending if necessary."},
+   {"person":4,"es":"Esas camisas encogerían con el primer lavado.","en":"Those shirts would shrink with the first wash."}
+  ],
+  "presentPerfect": [
+   {"person":1,"es":"¡Has encogido mi suéter favorito!","en":"You've shrunk my favorite sweater!"}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"La camisa ya había encogido antes.","en":"The shirt had already shrunk before."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"No quiero que encojas mi ropa.","en":"I don't want you to shrink my clothes."},
+   {"person":0,"es":"Mi esposa teme que yo encoja sus blusas.","en":"My wife is afraid I'll shrink her blouses."},
+   {"person":2,"es":"Lávalo en frío para que no encoja.","en":"Wash it in cold water so it doesn't shrink."},
+   {"person":3,"es":"Es mejor que encojamos los gastos.","en":"We'd better cut our spending."},
+   {"person":4,"es":"Ojalá que estos pantalones no encojan.","en":"I hope these pants don't shrink."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Lavé la camisa a mano para que no encogiera.","en":"I washed the shirt by hand so it wouldn't shrink."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Encoge las piernas, que no paso.","en":"Pull your legs in, I can't get by."}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No encojas los hombros, contéstame.","en":"Don't shrug, answer me."}
+  ]
+ },
+ "enredar": {
+  "present": [
+   {"person":2,"es":"El viento enreda el pelo de mi hija.","en":"The wind tangles my daughter's hair."},
+   {"person":0,"es":"Siempre enredo los cables de los audífonos.","en":"I always tangle my headphone cables."},
+   {"person":1,"es":"Enredas todo cuando explicas algo.","en":"You make everything complicated when you explain something."},
+   {"person":3,"es":"Enredamos las luces de Navidad cada año.","en":"We tangle up the Christmas lights every year."},
+   {"person":4,"es":"Los gatos enredan la lana.","en":"Cats tangle up the yarn."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El gato enredó el ovillo de lana.","en":"The cat tangled the ball of yarn."},
+   {"person":0,"es":"Enredé el hilo de la cometa en un árbol.","en":"I got the kite string tangled in a tree."},
+   {"person":1,"es":"Enredaste la historia con tantos detalles.","en":"You complicated the story with so many details."},
+   {"person":3,"es":"Enredamos las cuerdas sin querer.","en":"We accidentally tangled the ropes."},
+   {"person":4,"es":"Los niños enredaron todos los cables.","en":"The kids tangled up all the cables."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El mar enredaba las redes de los pescadores.","en":"The sea would tangle the fishermen's nets."},
+   {"person":0,"es":"Yo enredaba el pelo de mis muñecas.","en":"I'd tangle my dolls' hair."},
+   {"person":1,"es":"Tú enredabas las cosas para no decir la verdad.","en":"You'd muddle things up so you didn't have to tell the truth."},
+   {"person":3,"es":"Enredábamos las mangueras del jardín.","en":"We'd tangle up the garden hoses."},
+   {"person":4,"es":"Los cachorros enredaban las correas.","en":"The puppies would tangle their leashes."}
+  ],
+  "future": [
+   {"person":1,"es":"Enredarás las luces si no las guardas bien.","en":"You'll tangle the lights if you don't put them away properly."},
+   {"person":0,"es":"No enredaré más el asunto.","en":"I won't complicate the matter any further."},
+   {"person":2,"es":"El viento enredará el hilo.","en":"The wind will tangle the string."},
+   {"person":3,"es":"Enredaremos las cosas si hablamos todos a la vez.","en":"We'll muddle things up if we all talk at once."},
+   {"person":4,"es":"Los perros enredarán sus correas.","en":"The dogs will tangle their leashes."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo no enredaría más las cosas.","en":"I wouldn't complicate things any more."},
+   {"person":1,"es":"¿Enredarías a tu amigo en ese problema?","en":"Would you drag your friend into that problem?"},
+   {"person":2,"es":"Un abogado enredaría el caso.","en":"A lawyer would complicate the case."},
+   {"person":3,"es":"Enredaríamos los cables sin una caja.","en":"We'd tangle the cables without a box."},
+   {"person":4,"es":"Esas ramas enredarían el hilo.","en":"Those branches would tangle the string."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"El gato ha enredado toda la lana.","en":"The cat has tangled all the yarn."}
+  ],
+  "pluperfect": [
+   {"person":4,"es":"Los niños habían enredado las luces.","en":"The kids had tangled up the lights."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"No quiero que enredes los cables.","en":"I don't want you to tangle the cables."},
+   {"person":0,"es":"Mi madre no quiere que yo enrede las cosas.","en":"My mother doesn't want me to complicate things."},
+   {"person":2,"es":"No dejes que el gato enrede la lana.","en":"Don't let the cat tangle the yarn."},
+   {"person":3,"es":"Es mejor que no enredemos el asunto.","en":"We'd better not complicate the matter."},
+   {"person":4,"es":"Guarda las luces para que no se enreden.","en":"Put the lights away so they don't get tangled."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No enredes las cosas.","en":"Don't complicate things."}
+  ]
+ },
+ "entusiasmar": {
+  "present": [
+   {"person":2,"es":"Me entusiasma la idea de viajar.","en":"The idea of traveling excites me."},
+   {"person":1,"es":"Entusiasmas a todos con tus planes.","en":"You get everyone excited with your plans."},
+   {"person":3,"es":"Entusiasmamos a los niños con el viaje al zoológico.","en":"We get the kids excited about the trip to the zoo."},
+   {"person":4,"es":"Me entusiasman los proyectos nuevos.","en":"New projects excite me."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El concierto me entusiasmó.","en":"The concert thrilled me."},
+   {"person":0,"es":"Entusiasmé a mis amigos con la idea del viaje.","en":"I got my friends excited about the trip."},
+   {"person":1,"es":"Entusiasmaste a todos con tu discurso.","en":"You fired everyone up with your speech."},
+   {"person":3,"es":"Entusiasmamos al público con la última canción.","en":"We got the crowd going with the last song."},
+   {"person":4,"es":"Las noticias nos entusiasmaron.","en":"The news thrilled us."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"De niño, me entusiasmaba la Navidad.","en":"As a kid, I got so excited about Christmas."},
+   {"person":1,"es":"Tú entusiasmabas a la clase con tus historias.","en":"You'd get the class excited with your stories."},
+   {"person":4,"es":"Me entusiasmaban las clases de arte.","en":"Art classes used to excite me."}
+  ],
+  "future": [
+   {"person":2,"es":"Esta noticia te entusiasmará.","en":"This news will get you excited."},
+   {"person":1,"es":"Entusiasmarás a los niños con ese plan.","en":"You'll get the kids excited with that plan."},
+   {"person":3,"es":"Entusiasmaremos a los clientes con la oferta.","en":"We'll get the customers excited with the deal."},
+   {"person":4,"es":"Los fuegos artificiales entusiasmarán a los niños.","en":"The fireworks will thrill the kids."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Me entusiasmaría trabajar en otro país.","en":"I'd love to work in another country."},
+   {"person":1,"es":"Entusiasmarías a cualquiera con esa energía.","en":"You'd get anyone excited with that energy."},
+   {"person":4,"es":"Esos planes entusiasmarían a mis hijos.","en":"Those plans would get my kids excited."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"Me ha entusiasmado tu propuesta.","en":"Your proposal has me really excited."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":2,"es":"Me alegra que te entusiasme el proyecto.","en":"I'm glad you're excited about the project."},
+   {"person":1,"es":"Necesito que entusiasmes al equipo.","en":"I need you to fire up the team."},
+   {"person":4,"es":"Es normal que te entusiasmen estas cosas.","en":"It's normal for these things to excite you."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Me sorprendió que le entusiasmara tanto la idea.","en":"I was surprised he was so excited about the idea."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
+ },
+ "equipar": {
+  "present": [
+   {"person":2,"es":"La escuela equipa los laboratorios cada año.","en":"The school equips its labs every year."},
+   {"person":0,"es":"Equipo mi mochila con todo lo necesario.","en":"I pack my backpack with everything I need."},
+   {"person":1,"es":"¿Equipas la cocina tú solo?","en":"Are you outfitting the kitchen by yourself?"},
+   {"person":3,"es":"Equipamos el carro para el viaje.","en":"We kit out the car for the trip."},
+   {"person":4,"es":"Los padres equipan a sus hijos para el campamento.","en":"Parents get their kids ready for camp."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El gobierno equipó el hospital con máquinas nuevas.","en":"The government equipped the hospital with new machines."},
+   {"person":0,"es":"Equipé el gimnasio de mi casa.","en":"I set up my home gym."},
+   {"person":1,"es":"¿Equipaste la tienda de campaña?","en":"Did you set up the tent with everything?"},
+   {"person":3,"es":"Equipamos la oficina con computadoras nuevas.","en":"We fitted out the office with new computers."},
+   {"person":4,"es":"Los voluntarios equiparon la escuela.","en":"The volunteers equipped the school."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi padre equipaba el barco antes de cada viaje.","en":"My father would get the boat ready before every trip."},
+   {"person":0,"es":"Yo equipaba a mis hijos con impermeables.","en":"I'd send my kids out with raincoats."},
+   {"person":1,"es":"Tú equipabas el carro para cualquier emergencia.","en":"You'd stock the car for any emergency."},
+   {"person":3,"es":"Equipábamos la cabaña cada verano.","en":"We'd stock up the cabin every summer."},
+   {"person":4,"es":"Los clubes equipaban a sus jugadores.","en":"The clubs equipped their players."}
+  ],
+  "future": [
+   {"person":1,"es":"Equiparás la cocina con lo básico.","en":"You'll stock the kitchen with the basics."},
+   {"person":0,"es":"Equiparé el taller poco a poco.","en":"I'll equip the workshop little by little."},
+   {"person":2,"es":"La ciudad equipará los parques con juegos nuevos.","en":"The city will put new play equipment in the parks."},
+   {"person":3,"es":"Equiparemos la casa para el bebé.","en":"We'll get the house ready for the baby."},
+   {"person":4,"es":"Los organizadores equiparán a los corredores.","en":"The organizers will provide the runners with gear."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo equiparía el salón con más luces.","en":"I'd put more lights in the living room."},
+   {"person":1,"es":"¿Cómo equiparías una cocina pequeña?","en":"How would you equip a small kitchen?"},
+   {"person":2,"es":"Una buena escuela equiparía mejor a sus alumnos.","en":"A good school would better equip its students."},
+   {"person":3,"es":"Equiparíamos el carro si fuéramos a acampar.","en":"We'd kit out the car if we went camping."},
+   {"person":4,"es":"Ellos equiparían el gimnasio con más máquinas.","en":"They'd put more machines in the gym."}
+  ],
+  "presentPerfect": [
+   {"person":3,"es":"Hemos equipado la cocina con todo.","en":"We've stocked the kitchen with everything."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"La empresa ya había equipado la oficina.","en":"The company had already fitted out the office."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Quiero que equipes bien la mochila.","en":"I want you to pack your backpack properly."},
+   {"person":0,"es":"Mi hijo quiere que yo equipe su cuarto con una computadora.","en":"My son wants me to set up his room with a computer."},
+   {"person":2,"es":"Es necesario que el hospital equipe la sala de urgencias.","en":"The hospital needs to equip the emergency room."},
+   {"person":3,"es":"Es importante que equipemos el botiquín.","en":"It's important for us to stock the first-aid kit."},
+   {"person":4,"es":"Pídeles que equipen el aula.","en":"Ask them to equip the classroom."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Equipa bien el carro antes del viaje.","en":"Get the car well stocked before the trip."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "alegrar": {
+  "present": [
+   {"person":2,"es":"Me alegra verte.","en":"I'm glad to see you."},
+   {"person":0,"es":"Siempre alegro a mi abuela con mis visitas.","en":"I always cheer up my grandmother with my visits."},
+   {"person":1,"es":"Me alegras el día.","en":"You make my day."},
+   {"person":3,"es":"Alegramos la casa con flores.","en":"We brighten up the house with flowers."},
+   {"person":4,"es":"Me alegran tus noticias.","en":"Your news makes me happy."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Tu llamada me alegró mucho.","en":"Your call made me really happy."},
+   {"person":0,"es":"Alegré a los niños con un payaso.","en":"I cheered up the kids with a clown."},
+   {"person":1,"es":"Me alegraste la tarde.","en":"You brightened my afternoon."},
+   {"person":3,"es":"Alegramos la fiesta con música.","en":"We livened up the party with music."},
+   {"person":4,"es":"Las flores alegraron el cuarto.","en":"The flowers brightened up the room."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"La música alegraba la casa.","en":"The music livened up the house."},
+   {"person":0,"es":"Yo alegraba a mi madre con mis dibujos.","en":"I'd cheer up my mother with my drawings."},
+   {"person":1,"es":"Tú alegrabas a todos con tus chistes.","en":"You'd cheer everyone up with your jokes."},
+   {"person":3,"es":"Alegrábamos al abuelo con nuestras visitas.","en":"We'd cheer up grandpa with our visits."},
+   {"person":4,"es":"Me alegraban los domingos en familia.","en":"Sundays with family made me happy."}
+  ],
+  "future": [
+   {"person":2,"es":"Esta noticia te alegrará.","en":"This news will cheer you up."},
+   {"person":0,"es":"Te alegraré el día, ya verás.","en":"I'll make your day, you'll see."},
+   {"person":1,"es":"Alegrarás a tu madre si la llamas.","en":"You'll make your mother happy if you call her."},
+   {"person":3,"es":"Alegraremos la sala con cortinas nuevas.","en":"We'll brighten up the living room with new curtains."},
+   {"person":4,"es":"Los payasos alegrarán a los niños.","en":"The clowns will cheer up the kids."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Me alegraría mucho verte en la boda.","en":"I'd be really glad to see you at the wedding."},
+   {"person":0,"es":"Yo alegraría este cuarto con colores vivos.","en":"I'd brighten up this room with bright colors."},
+   {"person":1,"es":"¿Alegrarías a tu abuela con una visita?","en":"Would you cheer up your grandmother with a visit?"},
+   {"person":3,"es":"Alegraríamos la fiesta con un mariachi.","en":"We'd liven up the party with a mariachi band."},
+   {"person":4,"es":"Unas flores alegrarían la mesa.","en":"Some flowers would brighten up the table."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"Me ha alegrado mucho tu visita.","en":"Your visit has made me really happy."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":2,"es":"Espero que esto te alegre.","en":"I hope this cheers you up."},
+   {"person":0,"es":"Mi abuela quiere que yo la alegre con una canción.","en":"My grandmother wants me to cheer her up with a song."},
+   {"person":1,"es":"Quiero que alegres a tu hermana.","en":"I want you to cheer up your sister."},
+   {"person":3,"es":"Es bonito que alegremos a los enfermos.","en":"It's nice for us to cheer up the sick."},
+   {"person":4,"es":"Ojalá que estas flores te alegren.","en":"I hope these flowers cheer you up."}
+  ],
+  "subjImperfect": [
+   {"person":4,"es":"Le llevé flores para que la alegraran.","en":"I brought her flowers to cheer her up."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":2,"es":"Me alegra que te haya alegrado el regalo.","en":"I'm glad the gift made you happy."}
+  ],
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Alegra esa cara.","en":"Cheer up."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "espiar": {
+  "present": [
+   {"person":2,"es":"Mi hermano espía mis mensajes.","en":"My brother snoops on my messages."},
+   {"person":0,"es":"Espío a los vecinos por la ventana.","en":"I spy on the neighbors through the window."},
+   {"person":1,"es":"¿Me espías?","en":"Are you spying on me?"},
+   {"person":3,"es":"Espiamos a los pájaros con binoculares.","en":"We watch the birds with binoculars."},
+   {"person":4,"es":"Los gatos espían a los ratones.","en":"Cats watch the mice."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Mi hermana me espió mientras escribía el diario.","en":"My sister spied on me while I wrote in my diary."},
+   {"person":0,"es":"Espié lo que había en la caja.","en":"I peeked at what was in the box."},
+   {"person":1,"es":"¿Espiaste los regalos de Navidad?","en":"Did you peek at the Christmas presents?"},
+   {"person":3,"es":"Espiamos por el agujero de la cerca.","en":"We peeked through the hole in the fence."},
+   {"person":4,"es":"Los niños espiaron a los novios.","en":"The kids spied on the couple."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"La vecina espiaba a todos desde su balcón.","en":"The neighbor spied on everyone from her balcony."},
+   {"person":0,"es":"Yo espiaba a mis hermanos mayores.","en":"I used to spy on my older siblings."},
+   {"person":1,"es":"Tú espiabas por la cerradura.","en":"You used to peek through the keyhole."},
+   {"person":3,"es":"Espiábamos a la maestra en el recreo.","en":"We'd spy on the teacher at recess."},
+   {"person":4,"es":"Los niños espiaban a los vecinos nuevos.","en":"The kids used to spy on the new neighbors."}
+  ],
+  "future": [
+   {"person":1,"es":"Espiarás a los pájaros desde aquí.","en":"You'll watch the birds from here."},
+   {"person":0,"es":"No te espiaré, lo prometo.","en":"I won't spy on you, I promise."},
+   {"person":2,"es":"El detective espiará al sospechoso.","en":"The detective will spy on the suspect."},
+   {"person":3,"es":"Espiaremos a los animales desde el escondite.","en":"We'll watch the animals from the hide."},
+   {"person":4,"es":"Ellos espiarán al otro equipo.","en":"They'll spy on the other team."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo nunca espiaría el teléfono de mi pareja.","en":"I'd never snoop on my partner's phone."},
+   {"person":1,"es":"¿Espiarías a tus vecinos?","en":"Would you spy on your neighbors?"},
+   {"person":2,"es":"Un buen detective espiaría sin ser visto.","en":"A good detective would spy without being seen."},
+   {"person":3,"es":"Espiaríamos los regalos si pudiéramos.","en":"We'd peek at the presents if we could."},
+   {"person":4,"es":"Ellos espiarían a la competencia.","en":"They'd spy on the competition."}
+  ],
+  "presentPerfect": [
+   {"person":1,"es":"¿Has espiado mi diario?","en":"Have you been snooping in my diary?"}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Mi hermano ya había espiado los regalos.","en":"My brother had already peeked at the presents."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"No quiero que espíes mis cosas.","en":"I don't want you snooping through my things."},
+   {"person":0,"es":"¿Quieres que yo espíe lo que hace?","en":"Do you want me to spy on what he's doing?"},
+   {"person":2,"es":"No me gusta que nadie espíe mi correo.","en":"I don't like anyone snooping on my mail."},
+   {"person":3,"es":"Es mejor que no espiemos los regalos.","en":"We'd better not peek at the presents."},
+   {"person":4,"es":"No dejes que los niños espíen.","en":"Don't let the kids peek."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"¡No espíes, cierra los ojos!","en":"No peeking, close your eyes!"}
+  ]
+ },
+ "estallar": {
+  "present": [
+   {"person":2,"es":"El globo estalla si lo inflas mucho.","en":"The balloon pops if you blow it up too much."},
+   {"person":0,"es":"Estallo de risa con sus chistes.","en":"I burst out laughing at his jokes."},
+   {"person":1,"es":"Estallas por cualquier cosa.","en":"You blow up over anything."},
+   {"person":3,"es":"Estallamos en aplausos al final.","en":"We burst into applause at the end."},
+   {"person":4,"es":"Los fuegos artificiales estallan en el cielo.","en":"The fireworks burst in the sky."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La guerra estalló en 1914.","en":"The war broke out in 1914."},
+   {"person":0,"es":"Estallé de risa en medio de la clase.","en":"I burst out laughing in the middle of class."},
+   {"person":1,"es":"Estallaste cuando te dijeron que no.","en":"You blew up when they told you no."},
+   {"person":3,"es":"Estallamos de alegría con el gol.","en":"We burst with joy at the goal."},
+   {"person":4,"es":"Los globos estallaron con el calor.","en":"The balloons popped in the heat."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"La tormenta estallaba cada tarde.","en":"The storm would break every afternoon."},
+   {"person":4,"es":"Los cohetes estallaban toda la noche.","en":"The rockets went off all night."}
+  ],
+  "future": [
+   {"person":2,"es":"La tormenta estallará esta noche.","en":"The storm will break tonight."},
+   {"person":4,"es":"Los fuegos artificiales estallarán a medianoche.","en":"The fireworks will go off at midnight."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Esa botella estallaría en el congelador.","en":"That bottle would burst in the freezer."},
+   {"person":4,"es":"Esas llantas estallarían con tanto peso.","en":"Those tires would burst with that much weight."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"Ha estallado una tubería en la cocina.","en":"A pipe has burst in the kitchen."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"La tormenta ya había estallado cuando salimos.","en":"The storm had already broken when we left."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":2,"es":"Ojalá que la tormenta no estalle durante la boda.","en":"I hope the storm doesn't break during the wedding."},
+   {"person":4,"es":"Infla los globos despacio para que no estallen.","en":"Blow up the balloons slowly so they don't pop."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Temíamos que estallara una guerra.","en":"We were afraid a war would break out."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
+ },
+ "estirar": {
+  "present": [
+   {"person":2,"es":"Mi gato estira las patas al despertar.","en":"My cat stretches its legs when it wakes up."},
+   {"person":0,"es":"Estiro los músculos antes de correr.","en":"I stretch my muscles before running."},
+   {"person":1,"es":"Estiras mucho el dinero.","en":"You really stretch your money."},
+   {"person":3,"es":"Estiramos la masa con un rodillo.","en":"We roll out the dough with a rolling pin."},
+   {"person":4,"es":"Los bailarines estiran antes de ensayar.","en":"The dancers stretch before rehearsing."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El niño estiró la mano para coger una galleta.","en":"The boy reached out his hand to grab a cookie."},
+   {"person":0,"es":"Estiré las piernas en el avión.","en":"I stretched my legs on the plane."},
+   {"person":1,"es":"¿Estiraste bien antes del partido?","en":"Did you stretch properly before the game?"},
+   {"person":3,"es":"Estiramos la sábana para que no tuviera arrugas.","en":"We pulled the sheet tight so it had no wrinkles."},
+   {"person":4,"es":"Los obreros estiraron el cable.","en":"The workers pulled the cable tight."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuela estiraba la masa de las empanadas.","en":"My grandmother would roll out the empanada dough."},
+   {"person":0,"es":"Yo estiraba el sueldo hasta fin de mes.","en":"I'd stretch my paycheck until the end of the month."},
+   {"person":1,"es":"Tú estirabas el cuello para ver el desfile.","en":"You'd crane your neck to see the parade."},
+   {"person":3,"es":"Estirábamos las vacaciones todo lo posible.","en":"We'd stretch out our vacations as long as we could."},
+   {"person":4,"es":"Los gimnastas estiraban antes de cada ejercicio.","en":"The gymnasts stretched before every routine."}
+  ],
+  "future": [
+   {"person":1,"es":"Estirarás después de la carrera.","en":"You'll stretch after the race."},
+   {"person":0,"es":"Estiraré la masa mientras se calienta el horno.","en":"I'll roll out the dough while the oven heats up."},
+   {"person":2,"es":"El entrenador estirará con el equipo.","en":"The coach will stretch with the team."},
+   {"person":3,"es":"Estiraremos el presupuesto como podamos.","en":"We'll stretch the budget however we can."},
+   {"person":4,"es":"Los corredores estirarán al terminar.","en":"The runners will stretch when they finish."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo estiraría más antes de hacer ejercicio.","en":"I'd stretch more before exercising."},
+   {"person":1,"es":"¿Estirarías la reunión una hora más?","en":"Would you drag the meeting out another hour?"},
+   {"person":2,"es":"Un buen fisioterapeuta te estiraría la espalda.","en":"A good physical therapist would stretch out your back."},
+   {"person":3,"es":"Estiraríamos las piernas si paráramos.","en":"We'd stretch our legs if we stopped."},
+   {"person":4,"es":"Ellos estirarían la comida para todos.","en":"They'd stretch the food to feed everyone."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"He estirado y ya me siento mejor.","en":"I've stretched and I feel better already."}
+  ],
+  "pluperfect": [
+   {"person":4,"es":"Los atletas ya habían estirado.","en":"The athletes had already stretched."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Es importante que estires antes de correr.","en":"It's important for you to stretch before running."},
+   {"person":0,"es":"El médico quiere que yo estire todos los días.","en":"The doctor wants me to stretch every day."},
+   {"person":2,"es":"Espera a que tu abuela estire la masa.","en":"Wait for your grandmother to roll out the dough."},
+   {"person":3,"es":"Es mejor que estiremos un poco.","en":"We'd better stretch a little."},
+   {"person":4,"es":"El entrenador pide que los jugadores estiren.","en":"The coach asks the players to stretch."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"El entrenador quería que mi hijo estirara más.","en":"The coach wanted my son to stretch more."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Estira los brazos hacia arriba.","en":"Stretch your arms up."}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No estires tanto la cuerda.","en":"Don't pull the rope so tight."}
+  ]
+ },
+ "estrenar": {
+  "present": [
+   {"person":2,"es":"El cine estrena la película el viernes.","en":"The theater premieres the movie on Friday."},
+   {"person":0,"es":"Hoy estreno zapatos.","en":"I'm wearing new shoes today."},
+   {"person":1,"es":"¿Estrenas vestido?","en":"Is that a new dress?"},
+   {"person":3,"es":"Estrenamos casa este mes.","en":"We're moving into our new house this month."},
+   {"person":4,"es":"Los teatros estrenan obras nuevas en otoño.","en":"Theaters open new plays in the fall."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Mi hija estrenó su bicicleta en el parque.","en":"My daughter took her new bike out for the first time at the park."},
+   {"person":0,"es":"Estrené mi chaqueta nueva en la boda.","en":"I wore my new jacket for the first time at the wedding."},
+   {"person":1,"es":"¿Ya estrenaste el carro?","en":"Have you taken the new car out yet?"},
+   {"person":3,"es":"Estrenamos la cocina con una gran cena.","en":"We broke in the kitchen with a big dinner."},
+   {"person":4,"es":"Los actores estrenaron la obra anoche.","en":"The actors premiered the play last night."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi madre siempre estrenaba ropa en Navidad.","en":"My mother always wore new clothes at Christmas."},
+   {"person":0,"es":"Yo estrenaba zapatos cada año en septiembre.","en":"I'd get new shoes every year in September."},
+   {"person":1,"es":"Tú estrenabas algo en cada fiesta.","en":"You'd show up with something new at every party."},
+   {"person":3,"es":"Estrenábamos ropa para el Año Nuevo.","en":"We'd wear new clothes for New Year's."},
+   {"person":4,"es":"Los cines estrenaban películas los jueves.","en":"Theaters used to release movies on Thursdays."}
+  ],
+  "future": [
+   {"person":1,"es":"Estrenarás tu vestido en la graduación.","en":"You'll wear your new dress for the first time at graduation."},
+   {"person":0,"es":"Estrenaré mi bicicleta el sábado.","en":"I'll take my new bike out on Saturday."},
+   {"person":2,"es":"El director estrenará su película en Cannes.","en":"The director will premiere his film at Cannes."},
+   {"person":3,"es":"Estrenaremos la piscina en verano.","en":"We'll use the pool for the first time in summer."},
+   {"person":4,"es":"Los alumnos estrenarán uniforme el lunes.","en":"The students will wear their new uniforms on Monday."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo estrenaría esos zapatos en la fiesta.","en":"I'd wear those new shoes to the party."},
+   {"person":1,"es":"¿Estrenarías el vestido en la boda?","en":"Would you wear the new dress to the wedding?"},
+   {"person":2,"es":"Ese teatro estrenaría la obra en abril.","en":"That theater would open the play in April."},
+   {"person":3,"es":"Estrenaríamos casa si encontráramos una buena.","en":"We'd move into a new house if we found a good one."},
+   {"person":4,"es":"Ellos estrenarían la canción en el concierto.","en":"They'd debut the song at the concert."}
+  ],
+  "presentPerfect": [
+   {"person":4,"es":"Han estrenado una película nueva.","en":"They've released a new movie."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Mi hermano ya había estrenado el carro.","en":"My brother had already taken the car out."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Quiero que estrenes el vestido en mi cumpleaños.","en":"I want you to wear the new dress on my birthday."},
+   {"person":0,"es":"Mi mamá quiere que yo estrene los zapatos en la boda.","en":"My mom wants me to wear my new shoes to the wedding."},
+   {"person":2,"es":"Espero que el cine estrene la película pronto.","en":"I hope the theater releases the movie soon."},
+   {"person":3,"es":"Es hora de que estrenemos la parrilla.","en":"It's time for us to fire up the new grill."},
+   {"person":4,"es":"Ojalá que estrenen la serie este año.","en":"I hope they release the series this year."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
+ },
+ "exhibir": {
+  "present": [
+   {"person":2,"es":"El museo exhibe pinturas de Frida Kahlo.","en":"The museum displays paintings by Frida Kahlo."},
+   {"person":0,"es":"Exhibo mis fotos en un café del barrio.","en":"I show my photos at a neighborhood café."},
+   {"person":1,"es":"¿Exhibes tus cuadros en la feria?","en":"Are you showing your paintings at the fair?"},
+   {"person":3,"es":"Exhibimos los trabajos de los alumnos en el pasillo.","en":"We display the students' work in the hallway."},
+   {"person":4,"es":"Las tiendas exhiben la ropa nueva en la vitrina.","en":"The stores display the new clothes in the window."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La galería exhibió sus esculturas.","en":"The gallery exhibited her sculptures."},
+   {"person":0,"es":"Exhibí mis dibujos en la escuela.","en":"I showed my drawings at school."},
+   {"person":1,"es":"¿Exhibiste tu proyecto en la feria de ciencias?","en":"Did you show your project at the science fair?"},
+   {"person":3,"es":"Exhibimos los premios en la entrada.","en":"We displayed the trophies at the entrance."},
+   {"person":4,"es":"Los artistas exhibieron sus obras en la plaza.","en":"The artists displayed their work in the square."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"La tienda exhibía juguetes en la ventana.","en":"The store displayed toys in the window."},
+   {"person":0,"es":"Yo exhibía mis trofeos en el estante.","en":"I used to display my trophies on the shelf."},
+   {"person":1,"es":"Tú exhibías tus medallas con orgullo.","en":"You proudly showed off your medals."},
+   {"person":3,"es":"Exhibíamos las artesanías en el mercado.","en":"We'd display the crafts at the market."},
+   {"person":4,"es":"Los museos exhibían piezas de todo el mundo.","en":"The museums displayed pieces from all over the world."}
+  ],
+  "future": [
+   {"person":1,"es":"Exhibirás tus fotos en la galería.","en":"You'll show your photos at the gallery."},
+   {"person":0,"es":"Exhibiré los cuadros en mi casa.","en":"I'll display the paintings in my house."},
+   {"person":2,"es":"El museo exhibirá la colección en mayo.","en":"The museum will exhibit the collection in May."},
+   {"person":3,"es":"Exhibiremos los trabajos el día de los padres.","en":"We'll display the work on parents' day."},
+   {"person":4,"es":"Los alumnos exhibirán sus proyectos.","en":"The students will display their projects."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo exhibiría estas fotos en una galería.","en":"I'd show these photos in a gallery."},
+   {"person":1,"es":"¿Exhibirías tus pinturas en público?","en":"Would you show your paintings in public?"},
+   {"person":2,"es":"Un buen museo exhibiría esta obra.","en":"A good museum would exhibit this piece."},
+   {"person":3,"es":"Exhibiríamos más si tuviéramos espacio.","en":"We'd display more if we had space."},
+   {"person":4,"es":"Ellos exhibirían sus trofeos en la entrada.","en":"They'd display their trophies at the entrance."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"La galería ha exhibido obras de artistas jóvenes.","en":"The gallery has exhibited works by young artists."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"El museo nunca había exhibido esa pintura.","en":"The museum had never exhibited that painting."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Quiero que exhibas tus dibujos.","en":"I want you to show your drawings."},
+   {"person":0,"es":"La maestra quiere que yo exhiba mi proyecto.","en":"The teacher wants me to show my project."},
+   {"person":2,"es":"Ojalá que el museo exhiba su obra.","en":"I hope the museum exhibits her work."},
+   {"person":3,"es":"Es buena idea que exhibamos las fotos.","en":"It's a good idea for us to display the photos."},
+   {"person":4,"es":"Pídeles que exhiban los precios.","en":"Ask them to display the prices."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
+ },
+ "exportar": {
+  "present": [
+   {"person":2,"es":"Colombia exporta café a todo el mundo.","en":"Colombia exports coffee all over the world."},
+   {"person":0,"es":"Exporto artesanías a Europa.","en":"I export crafts to Europe."},
+   {"person":1,"es":"¿Exportas tus productos?","en":"Do you export your products?"},
+   {"person":3,"es":"Exportamos flores a Estados Unidos.","en":"We export flowers to the United States."},
+   {"person":4,"es":"Muchos países exportan petróleo.","en":"Many countries export oil."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La empresa exportó mil toneladas de plátanos.","en":"The company exported a thousand tons of bananas."},
+   {"person":0,"es":"Exporté las fotos a la computadora.","en":"I exported the photos to the computer."},
+   {"person":1,"es":"¿Exportaste el archivo?","en":"Did you export the file?"},
+   {"person":3,"es":"Exportamos nuestros primeros vinos el año pasado.","en":"We exported our first wines last year."},
+   {"person":4,"es":"Los agricultores exportaron toda la cosecha.","en":"The farmers exported the whole harvest."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi pueblo exportaba azúcar.","en":"My town used to export sugar."},
+   {"person":0,"es":"Yo exportaba muebles a Canadá.","en":"I used to export furniture to Canada."},
+   {"person":1,"es":"Tú exportabas textiles.","en":"You used to export textiles."},
+   {"person":3,"es":"Exportábamos cacao a Europa.","en":"We used to export cacao to Europe."},
+   {"person":4,"es":"Las colonias exportaban plata y oro.","en":"The colonies exported silver and gold."}
+  ],
+  "future": [
+   {"person":1,"es":"Exportarás el video cuando termines.","en":"You'll export the video when you're done."},
+   {"person":0,"es":"Exportaré los datos a una hoja de cálculo.","en":"I'll export the data to a spreadsheet."},
+   {"person":2,"es":"La fábrica exportará a Asia.","en":"The factory will export to Asia."},
+   {"person":3,"es":"Exportaremos aguacates el próximo año.","en":"We'll export avocados next year."},
+   {"person":4,"es":"Los productores exportarán más café.","en":"The growers will export more coffee."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo exportaría a otros países si pudiera.","en":"I'd export to other countries if I could."},
+   {"person":1,"es":"¿Exportarías tu producto a Europa?","en":"Would you export your product to Europe?"},
+   {"person":2,"es":"Esa empresa exportaría más con mejores carreteras.","en":"That company would export more with better roads."},
+   {"person":3,"es":"Exportaríamos más si bajaran los impuestos.","en":"We'd export more if taxes went down."},
+   {"person":4,"es":"Ellos exportarían toda la producción.","en":"They'd export all their production."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"El país ha exportado más que nunca este año.","en":"The country has exported more than ever this year."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Necesito que exportes el archivo en PDF.","en":"I need you to export the file as a PDF."},
+   {"person":0,"es":"Mi jefe quiere que yo exporte los datos.","en":"My boss wants me to export the data."},
+   {"person":2,"es":"Es importante que el país exporte más.","en":"It's important for the country to export more."},
+   {"person":3,"es":"Es posible que exportemos a Japón.","en":"We might export to Japan."},
+   {"person":4,"es":"El gobierno quiere que las empresas exporten más.","en":"The government wants companies to export more."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Exporta el video en alta calidad.","en":"Export the video in high quality."}
+  ],
+  "impNegative": {"rare":true}
  }
 }
