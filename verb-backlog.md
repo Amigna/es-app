@@ -12,34 +12,6 @@ When adding a batch:
 - Delete the batch from this file once it's in `verbs.json`, and update the verb count in `plan.md`.
 - If a verb is dropped, move it to "Dropped" at the bottom with the reason, so it isn't suggested again.
 
-## Batch 19
-
-- cavar: to dig
-- ceder: to give way, to yield
-- alimentar: to feed
-- chatear: to chat (online)
-- circular: to circulate, to move along
-- clavar: to nail, to stick in
-- colar: to strain
-- cooperar: to cooperate
-- cultivar: to grow, to cultivate
-- desafiar: to challenge
-- desatar: to untie
-- desconectar: to disconnect
-- descongelar: to defrost
-- destapar: to uncover, to open
-- detestar: to hate, to detest
-- devorar: to devour
-- disparar: to shoot, to fire
-- disimular: to hide, to pretend not to notice
-- dominar: to dominate, to master
-- editar: to edit
-- ejecutar: to carry out, to execute
-- aliviar: to relieve
-- emigrar: to emigrate
-- inmigrar: to immigrate
-- encerrar: to lock up, to shut in
-
 ## Batch 20
 
 - encoger: to shrink
