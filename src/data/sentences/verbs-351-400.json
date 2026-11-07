@@ -1,4 +1,72 @@
 {
+ "molestar": {
+  "present": [
+   {"person":2,"es":"¿Te molesta la música?","en":"Does the music bother you?"},
+   {"person":0,"es":"¿Te molesto?","en":"Am I bothering you?"},
+   {"person":1,"es":"Me molestas cuando haces eso.","en":"You bug me when you do that."},
+   {"person":3,"es":"Perdón, ¿molestamos?","en":"Sorry, are we interrupting?"},
+   {"person":4,"es":"Me molestan los mosquitos.","en":"The mosquitoes bother me."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Me molestó su comentario.","en":"His comment bothered me."},
+   {"person":0,"es":"Perdona si te molesté.","en":"Sorry if I bothered you."},
+   {"person":1,"es":"Me molestaste toda la tarde.","en":"You bugged me all afternoon."},
+   {"person":3,"es":"Ayer molestamos a los vecinos con la música.","en":"Yesterday we bothered the neighbors with the music."},
+   {"person":4,"es":"Me molestaron sus preguntas.","en":"Their questions bothered me."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Me molestaba el ruido de la calle.","en":"The street noise bothered me."},
+   {"person":0,"es":"Yo molestaba a mi hermana todo el tiempo.","en":"I used to pester my sister all the time."},
+   {"person":1,"es":"Tú molestabas al gato.","en":"You used to bother the cat."},
+   {"person":3,"es":"Molestábamos al profesor con preguntas.","en":"We'd pester the teacher with questions."},
+   {"person":4,"es":"Me molestaban los zapatos nuevos.","en":"My new shoes hurt."}
+  ],
+  "future": [
+   {"person":0,"es":"No te molestaré más.","en":"I won't bother you anymore."},
+   {"person":1,"es":"Si haces ruido, molestarás al bebé.","en":"If you make noise, you'll bother the baby."},
+   {"person":2,"es":"¿Te molestará el humo?","en":"Will the smoke bother you?"},
+   {"person":3,"es":"No te molestaremos, te lo prometo.","en":"We won't bother you, I promise."},
+   {"person":4,"es":"Las obras molestarán a los vecinos.","en":"The construction will bother the neighbors."}
+  ],
+  "conditional": [
+   {"person":2,"es":"¿Te molestaría bajar el volumen?","en":"Would you mind turning down the volume?"},
+   {"person":0,"es":"Yo no te molestaría si no fuera urgente.","en":"I wouldn't bother you if it weren't urgent."},
+   {"person":1,"es":"Tú nunca molestarías a nadie.","en":"You'd never bother anyone."},
+   {"person":3,"es":"No te molestaríamos a esta hora sin razón.","en":"We wouldn't bother you at this hour without a reason."},
+   {"person":4,"es":"¿Le molestarían unas preguntas?","en":"Would you mind a few questions?"}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"Me ha molestado mucho tu actitud.","en":"Your attitude has really bothered me."}
+  ],
+  "pluperfect": [
+   {"person":4,"es":"Los vecinos ya se habían molestado por el ruido.","en":"The neighbors had already gotten upset about the noise."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":0,"es":"No te habría molestado si no fuera importante.","en":"I wouldn't have bothered you if it weren't important."}
+  ],
+  "subjPresent": [
+   {"person":2,"es":"Espero que no te moleste el humo.","en":"I hope the smoke doesn't bother you."},
+   {"person":0,"es":"Avísame si no quieres que yo te moleste.","en":"Let me know if you don't want me to bother you."},
+   {"person":1,"es":"No quiero que molestes a tu hermano.","en":"I don't want you bothering your brother."},
+   {"person":3,"es":"No quiero que molestemos a los vecinos.","en":"I don't want us to bother the neighbors."},
+   {"person":4,"es":"No dejes que te molesten.","en":"Don't let them bother you."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Abrí la ventana para que no te molestara el calor.","en":"I opened the window so the heat wouldn't bother you."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":2,"es":"Siento que te haya molestado mi comentario.","en":"I'm sorry my comment bothered you."}
+  ],
+  "subjPluperfect": [
+   {"person":2,"es":"Si me hubiera molestado, te lo habría dicho.","en":"If it had bothered me, I would have told you."}
+  ],
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No molestes al perro mientras come.","en":"Don't bother the dog while he's eating."}
+  ]
+ },
  "preocupar": {
   "present": [
    {"person":2,"es":"Me preocupa tu salud.","en":"I'm worried about your health."},
@@ -3276,75 +3344,5 @@
   ],
   "impAffirmative": {"rare":true},
   "impNegative": {"rare":true}
- },
- "eliminar": {
-  "present": [
-   {"person":2,"es":"Este jabón elimina las manchas.","en":"This soap gets rid of stains."},
-   {"person":0,"es":"Elimino las fotos que no me gustan.","en":"I delete the photos I don't like."},
-   {"person":1,"es":"¿Eliminas los correos viejos?","en":"Do you delete old emails?"},
-   {"person":3,"es":"Eliminamos el azúcar de nuestra dieta.","en":"We're cutting sugar out of our diet."},
-   {"person":4,"es":"Los filtros eliminan las bacterias del agua.","en":"The filters remove bacteria from the water."}
-  ],
-  "preterite": [
-   {"person":2,"es":"El árbitro eliminó al jugador por la tarjeta roja.","en":"The referee sent the player off with a red card."},
-   {"person":0,"es":"Eliminé su número de mi teléfono.","en":"I deleted his number from my phone."},
-   {"person":1,"es":"¿Eliminaste el mensaje?","en":"Did you delete the message?"},
-   {"person":3,"es":"El domingo eliminamos al campeón.","en":"On Sunday we knocked out the champion."},
-   {"person":4,"es":"Nos eliminaron en la primera ronda.","en":"They knocked us out in the first round."}
-  ],
-  "imperfect": [
-   {"person":2,"es":"El jefe eliminaba los gastos innecesarios.","en":"The boss cut out unnecessary expenses."},
-   {"person":0,"es":"Yo eliminaba las malas hierbas del jardín.","en":"I pulled the weeds from the garden."},
-   {"person":1,"es":"Tú eliminabas todo lo que no servía.","en":"You got rid of everything that wasn't useful."},
-   {"person":3,"es":"Eliminábamos a los otros equipos sin problema.","en":"We knocked out the other teams easily."},
-   {"person":4,"es":"Las lluvias eliminaban el polvo de las calles.","en":"The rains washed the dust off the streets."}
-  ],
-  "future": [
-   {"person":2,"es":"La nueva ley eliminará ese impuesto.","en":"The new law will get rid of that tax."},
-   {"person":0,"es":"Eliminaré la cuenta mañana.","en":"I'll delete the account tomorrow."},
-   {"person":1,"es":"Eliminarás el estrés con ejercicio.","en":"You'll get rid of stress with exercise."},
-   {"person":3,"es":"Eliminaremos los plásticos de la oficina.","en":"We'll get rid of plastics in the office."},
-   {"person":4,"es":"Los médicos eliminarán la infección.","en":"The doctors will clear up the infection."}
-  ],
-  "conditional": [
-   {"person":0,"es":"Yo eliminaría las reuniones de los lunes.","en":"I'd get rid of Monday meetings."},
-   {"person":1,"es":"¿Qué eliminarías de tu vida?","en":"What would you cut out of your life?"},
-   {"person":2,"es":"Un buen antivirus eliminaría el problema.","en":"A good antivirus would get rid of the problem."},
-   {"person":3,"es":"Eliminaríamos el tráfico con más trenes.","en":"We'd get rid of traffic with more trains."},
-   {"person":4,"es":"Esas medidas eliminarían la pobreza.","en":"Those measures would eliminate poverty."}
-  ],
-  "presentPerfect": [
-   {"person":0,"es":"He eliminado el azúcar de mi dieta.","en":"I've cut sugar out of my diet."}
-  ],
-  "pluperfect": [
-   {"person":4,"es":"Ya nos habían eliminado del torneo.","en":"They had already knocked us out of the tournament."}
-  ],
-  "futurePerfect": {"rare":true},
-  "conditionalPerfect": [
-   {"person":0,"es":"Yo habría eliminado esa escena.","en":"I would have cut that scene."}
-  ],
-  "subjPresent": [
-   {"person":1,"es":"No quiero que elimines las fotos.","en":"I don't want you to delete the photos."},
-   {"person":0,"es":"¿Quieres que elimine este archivo?","en":"Do you want me to delete this file?"},
-   {"person":2,"es":"Esperamos que el gobierno elimine ese impuesto.","en":"We hope the government gets rid of that tax."},
-   {"person":3,"es":"Es necesario que eliminemos los gastos inútiles.","en":"We need to cut out pointless expenses."},
-   {"person":4,"es":"Ojalá que no nos eliminen.","en":"Hopefully they won't knock us out."}
-  ],
-  "subjImperfect": [
-   {"person":2,"es":"El médico pidió que mi padre eliminara la sal.","en":"The doctor asked my father to cut out salt."}
-  ],
-  "subjImperfectSe": {"rare":true},
-  "subjPresentPerfect": [
-   {"person":1,"es":"Me molesta que hayas eliminado mis fotos.","en":"It bothers me that you deleted my photos."}
-  ],
-  "subjPluperfect": [
-   {"person":4,"es":"Si no nos hubieran eliminado, estaríamos en la final.","en":"If they hadn't knocked us out, we'd be in the final."}
-  ],
-  "impAffirmative": [
-   {"person":1,"es":"Elimina ese mensaje.","en":"Delete that message."}
-  ],
-  "impNegative": [
-   {"person":1,"es":"No elimines nada sin preguntar.","en":"Don't delete anything without asking."}
-  ]
  }
 }

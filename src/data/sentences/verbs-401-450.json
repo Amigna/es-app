@@ -1,4 +1,74 @@
 {
+ "eliminar": {
+  "present": [
+   {"person":2,"es":"Este jabón elimina las manchas.","en":"This soap gets rid of stains."},
+   {"person":0,"es":"Elimino las fotos que no me gustan.","en":"I delete the photos I don't like."},
+   {"person":1,"es":"¿Eliminas los correos viejos?","en":"Do you delete old emails?"},
+   {"person":3,"es":"Eliminamos el azúcar de nuestra dieta.","en":"We're cutting sugar out of our diet."},
+   {"person":4,"es":"Los filtros eliminan las bacterias del agua.","en":"The filters remove bacteria from the water."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El árbitro eliminó al jugador por la tarjeta roja.","en":"The referee sent the player off with a red card."},
+   {"person":0,"es":"Eliminé su número de mi teléfono.","en":"I deleted his number from my phone."},
+   {"person":1,"es":"¿Eliminaste el mensaje?","en":"Did you delete the message?"},
+   {"person":3,"es":"El domingo eliminamos al campeón.","en":"On Sunday we knocked out the champion."},
+   {"person":4,"es":"Nos eliminaron en la primera ronda.","en":"They knocked us out in the first round."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El jefe eliminaba los gastos innecesarios.","en":"The boss cut out unnecessary expenses."},
+   {"person":0,"es":"Yo eliminaba las malas hierbas del jardín.","en":"I pulled the weeds from the garden."},
+   {"person":1,"es":"Tú eliminabas todo lo que no servía.","en":"You got rid of everything that wasn't useful."},
+   {"person":3,"es":"Eliminábamos a los otros equipos sin problema.","en":"We knocked out the other teams easily."},
+   {"person":4,"es":"Las lluvias eliminaban el polvo de las calles.","en":"The rains washed the dust off the streets."}
+  ],
+  "future": [
+   {"person":2,"es":"La nueva ley eliminará ese impuesto.","en":"The new law will get rid of that tax."},
+   {"person":0,"es":"Eliminaré la cuenta mañana.","en":"I'll delete the account tomorrow."},
+   {"person":1,"es":"Eliminarás el estrés con ejercicio.","en":"You'll get rid of stress with exercise."},
+   {"person":3,"es":"Eliminaremos los plásticos de la oficina.","en":"We'll get rid of plastics in the office."},
+   {"person":4,"es":"Los médicos eliminarán la infección.","en":"The doctors will clear up the infection."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo eliminaría las reuniones de los lunes.","en":"I'd get rid of Monday meetings."},
+   {"person":1,"es":"¿Qué eliminarías de tu vida?","en":"What would you cut out of your life?"},
+   {"person":2,"es":"Un buen antivirus eliminaría el problema.","en":"A good antivirus would get rid of the problem."},
+   {"person":3,"es":"Eliminaríamos el tráfico con más trenes.","en":"We'd get rid of traffic with more trains."},
+   {"person":4,"es":"Esas medidas eliminarían la pobreza.","en":"Those measures would eliminate poverty."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"He eliminado el azúcar de mi dieta.","en":"I've cut sugar out of my diet."}
+  ],
+  "pluperfect": [
+   {"person":4,"es":"Ya nos habían eliminado del torneo.","en":"They had already knocked us out of the tournament."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":0,"es":"Yo habría eliminado esa escena.","en":"I would have cut that scene."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"No quiero que elimines las fotos.","en":"I don't want you to delete the photos."},
+   {"person":0,"es":"¿Quieres que elimine este archivo?","en":"Do you want me to delete this file?"},
+   {"person":2,"es":"Esperamos que el gobierno elimine ese impuesto.","en":"We hope the government gets rid of that tax."},
+   {"person":3,"es":"Es necesario que eliminemos los gastos inútiles.","en":"We need to cut out pointless expenses."},
+   {"person":4,"es":"Ojalá que no nos eliminen.","en":"Hopefully they won't knock us out."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"El médico pidió que mi padre eliminara la sal.","en":"The doctor asked my father to cut out salt."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":1,"es":"Me molesta que hayas eliminado mis fotos.","en":"It bothers me that you deleted my photos."}
+  ],
+  "subjPluperfect": [
+   {"person":4,"es":"Si no nos hubieran eliminado, estaríamos en la final.","en":"If they hadn't knocked us out, we'd be in the final."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Elimina ese mensaje.","en":"Delete that message."}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No elimines nada sin preguntar.","en":"Don't delete anything without asking."}
+  ]
+ },
  "emplear": {
   "present": [
    {"person":2,"es":"La fábrica emplea a quinientas personas.","en":"The factory employs five hundred people."},
@@ -3228,78 +3298,6 @@
   "subjPluperfect": {"rare":true},
   "impAffirmative": {"rare":true},
   "impNegative": {"rare":true}
- },
- "practicar": {
-  "present": [
-   {"person":2,"es":"Mi hermana practica piano todos los días.","en":"My sister practices piano every day."},
-   {"person":0,"es":"Practico español con mis amigos.","en":"I practice Spanish with my friends."},
-   {"person":1,"es":"¿Qué deporte practicas?","en":"What sport do you play?"},
-   {"person":3,"es":"Practicamos yoga los sábados.","en":"We do yoga on Saturdays."},
-   {"person":4,"es":"Los jugadores practican después de clase.","en":"The players practice after school."}
-  ],
-  "preterite": [
-   {"person":2,"es":"El equipo practicó bajo la lluvia.","en":"The team practiced in the rain."},
-   {"person":0,"es":"Practiqué la presentación tres veces.","en":"I practiced the presentation three times."},
-   {"person":1,"es":"¿Practicaste para el examen de manejo?","en":"Did you practice for the driving test?"},
-   {"person":3,"es":"Practicamos los verbos en clase.","en":"We practiced the verbs in class."},
-   {"person":4,"es":"Mis primos practicaron surf en Costa Rica.","en":"My cousins went surfing in Costa Rica."}
-  ],
-  "imperfect": [
-   {"person":2,"es":"Mi papá practicaba béisbol de joven.","en":"My dad played baseball when he was young."},
-   {"person":0,"es":"Yo practicaba guitarra en mi cuarto.","en":"I used to practice guitar in my room."},
-   {"person":1,"es":"Tú practicabas natación, ¿verdad?","en":"You used to swim, right?"},
-   {"person":3,"es":"Practicábamos el baile cada tarde.","en":"We used to practice the dance every afternoon."},
-   {"person":4,"es":"Los niños practicaban fútbol en la calle.","en":"The kids used to play soccer in the street."}
-  ],
-  "future": [
-   {"person":0,"es":"Practicaré más antes del concierto.","en":"I'll practice more before the concert."},
-   {"person":1,"es":"Practicarás con un profesor nuevo.","en":"You'll practice with a new teacher."},
-   {"person":2,"es":"El coro practicará el sábado.","en":"The choir will practice on Saturday."},
-   {"person":3,"es":"Practicaremos la canción hasta que salga perfecta.","en":"We'll practice the song until it's perfect."},
-   {"person":4,"es":"Los estudiantes practicarán la pronunciación.","en":"The students will practice pronunciation."}
-  ],
-  "conditional": [
-   {"person":0,"es":"Yo practicaría más si tuviera tiempo.","en":"I'd practice more if I had time."},
-   {"person":1,"es":"¿Practicarías conmigo?","en":"Would you practice with me?"},
-   {"person":2,"es":"Mi hijo practicaría tenis todo el día.","en":"My son would play tennis all day."},
-   {"person":3,"es":"Practicaríamos en el parque, pero hace frío.","en":"We'd practice in the park, but it's cold."},
-   {"person":4,"es":"Ellos practicarían más con un buen entrenador.","en":"They'd practice more with a good coach."}
-  ],
-  "presentPerfect": [
-   {"person":0,"es":"He practicado mucho para este examen.","en":"I've practiced a lot for this exam."}
-  ],
-  "pluperfect": [
-   {"person":3,"es":"Habíamos practicado toda la semana.","en":"We had practiced all week."}
-  ],
-  "futurePerfect": [
-   {"person":2,"es":"Para junio, ella habrá practicado cien horas.","en":"By June, she'll have practiced a hundred hours."}
-  ],
-  "conditionalPerfect": [
-   {"person":0,"es":"Habría practicado más si lo hubiera sabido.","en":"I would have practiced more if I had known."}
-  ],
-  "subjPresent": [
-   {"person":1,"es":"Es importante que practiques todos los días.","en":"It's important that you practice every day."},
-   {"person":0,"es":"Mi maestra quiere que yo practique más.","en":"My teacher wants me to practice more."},
-   {"person":2,"es":"Ojalá que el equipo practique hoy.","en":"I hope the team practices today."},
-   {"person":3,"es":"Es mejor que practiquemos juntos.","en":"It's better if we practice together."},
-   {"person":4,"es":"El entrenador quiere que los jugadores practiquen temprano.","en":"The coach wants the players to practice early."}
-  ],
-  "subjImperfect": [
-   {"person":0,"es":"Mi mamá quería que yo practicara el piano.","en":"My mom wanted me to practice the piano."}
-  ],
-  "subjImperfectSe": {"rare":true},
-  "subjPresentPerfect": [
-   {"person":1,"es":"Espero que hayas practicado.","en":"I hope you've practiced."}
-  ],
-  "subjPluperfect": [
-   {"person":0,"es":"Si hubiera practicado más, habría ganado.","en":"If I had practiced more, I would have won."}
-  ],
-  "impAffirmative": [
-   {"person":1,"es":"Practica un poco cada día.","en":"Practice a little every day."}
-  ],
-  "impNegative": [
-   {"person":1,"es":"No practiques tan tarde, que los vecinos duermen.","en":"Don't practice so late; the neighbors are sleeping."}
-  ]
  },
  "prender": {
   "present": [

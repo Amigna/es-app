@@ -46,3 +46,12 @@ describe("verb seed", () => {
     assert.ok(searchVerbs("to eat").some((v) => v.inf === "comer"));
   });
 });
+
+describe("verb order", () => {
+  it("keeps everyday verbs among the first 100, which the home page, the A2 drills and Today's review treat as the essentials", () => {
+    const first = new Set(VERBS.slice(0, 100).map((v) => v.inf));
+    for (const inf of ["comer", "beber", "comprar", "correr", "llamarse", "visitar", "practicar", "cantar", "gustar"]) {
+      assert.ok(first.has(inf), `${inf} should be in the first 100`);
+    }
+  });
+});

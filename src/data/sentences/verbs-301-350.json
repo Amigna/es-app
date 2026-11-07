@@ -1,4 +1,72 @@
 {
+ "secar": {
+  "present": [
+   {"person":0,"es":"Seco la ropa al sol.","en":"I dry the clothes in the sun."},
+   {"person":1,"es":"Secas los platos y yo los guardo.","en":"You dry the dishes and I'll put them away."},
+   {"person":2,"es":"El sol seca la ropa en una hora.","en":"The sun dries the clothes in an hour."},
+   {"person":3,"es":"Secamos el café en el patio.","en":"We dry the coffee in the yard."},
+   {"person":4,"es":"Las toallas no secan bien si están viejas.","en":"Towels don't dry well if they're old."}
+  ],
+  "preterite": [
+   {"person":0,"es":"Sequé los platos.","en":"I dried the dishes."},
+   {"person":1,"es":"¿Secaste las sábanas?","en":"Did you dry the sheets?"},
+   {"person":2,"es":"El viento secó el piso.","en":"The wind dried the floor."},
+   {"person":3,"es":"Secamos las sillas después de la lluvia.","en":"We dried off the chairs after the rain."},
+   {"person":4,"es":"Los niños secaron los vasos.","en":"The kids dried the glasses."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi madre secaba el pescado al sol.","en":"My mother used to dry fish in the sun."},
+   {"person":0,"es":"Yo secaba los platos con un paño.","en":"I used to dry the dishes with a cloth."},
+   {"person":1,"es":"Tú secabas el pelo con una toalla.","en":"You used to dry your hair with a towel."},
+   {"person":3,"es":"Secábamos las hojas de tabaco.","en":"We used to dry the tobacco leaves."},
+   {"person":4,"es":"Los pescadores secaban las redes en la playa.","en":"The fishermen dried their nets on the beach."}
+  ],
+  "future": [
+   {"person":3,"es":"Secaremos la ropa en el patio.","en":"We'll dry the clothes in the yard."},
+   {"person":0,"es":"Secaré el baño después de la ducha.","en":"I'll dry the bathroom after the shower."},
+   {"person":1,"es":"Secarás al perro con esta toalla.","en":"You'll dry the dog with this towel."},
+   {"person":2,"es":"El aire secará la pintura.","en":"The air will dry the paint."},
+   {"person":4,"es":"Las sequías secarán el río.","en":"The droughts will dry up the river."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo secaría eso primero.","en":"I'd dry that first."},
+   {"person":1,"es":"¿Secarías estos platos?","en":"Would you dry these dishes?"},
+   {"person":2,"es":"Mi madre secaría las hierbas al sol.","en":"My mother would dry the herbs in the sun."},
+   {"person":3,"es":"Secaríamos la ropa adentro si lloviera.","en":"We'd dry the clothes inside if it rained."},
+   {"person":4,"es":"Ellos secarían el pescado con sal.","en":"They would dry the fish with salt."}
+  ],
+  "presentPerfect": [
+   {"person":1,"es":"¿Has secado los platos?","en":"Have you dried the dishes?"}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"El sol ya había secado la ropa.","en":"The sun had already dried the clothes."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":2,"es":"El sol lo habría secado.","en":"The sun would have dried it."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"Quiero que seques el piso.","en":"I want you to dry the floor."},
+   {"person":0,"es":"Mi mamá quiere que yo seque el baño.","en":"My mom wants me to dry the bathroom."},
+   {"person":2,"es":"Espero que el sol seque el lodo.","en":"I hope the sun dries the mud."},
+   {"person":3,"es":"Es mejor que sequemos el piso antes de salir.","en":"It's better if we dry the floor before leaving."},
+   {"person":4,"es":"Diles a los niños que sequen sus zapatos.","en":"Tell the kids to dry their shoes."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Le pedí que secara los platos.","en":"I asked him to dry the dishes."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": [
+   {"person":1,"es":"Espero que hayas secado la ropa.","en":"I hope you've dried the clothes."}
+  ],
+  "subjPluperfect": [
+   {"person":0,"es":"Si hubiera secado el piso, no te habrías caído.","en":"If I had dried the floor, you wouldn't have fallen."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Seca el piso.","en":"Dry the floor."}
+  ],
+  "impNegative": {"rare":true}
+ },
  "mojar": {
   "present": [
    {"person":0,"es":"Mojo el pan en el café.","en":"I dip my bread in my coffee."},
@@ -3317,73 +3385,5 @@
   ],
   "impAffirmative": {"rare":true},
   "impNegative": {"rare":true}
- },
- "molestar": {
-  "present": [
-   {"person":2,"es":"¿Te molesta la música?","en":"Does the music bother you?"},
-   {"person":0,"es":"¿Te molesto?","en":"Am I bothering you?"},
-   {"person":1,"es":"Me molestas cuando haces eso.","en":"You bug me when you do that."},
-   {"person":3,"es":"Perdón, ¿molestamos?","en":"Sorry, are we interrupting?"},
-   {"person":4,"es":"Me molestan los mosquitos.","en":"The mosquitoes bother me."}
-  ],
-  "preterite": [
-   {"person":2,"es":"Me molestó su comentario.","en":"His comment bothered me."},
-   {"person":0,"es":"Perdona si te molesté.","en":"Sorry if I bothered you."},
-   {"person":1,"es":"Me molestaste toda la tarde.","en":"You bugged me all afternoon."},
-   {"person":3,"es":"Ayer molestamos a los vecinos con la música.","en":"Yesterday we bothered the neighbors with the music."},
-   {"person":4,"es":"Me molestaron sus preguntas.","en":"Their questions bothered me."}
-  ],
-  "imperfect": [
-   {"person":2,"es":"Me molestaba el ruido de la calle.","en":"The street noise bothered me."},
-   {"person":0,"es":"Yo molestaba a mi hermana todo el tiempo.","en":"I used to pester my sister all the time."},
-   {"person":1,"es":"Tú molestabas al gato.","en":"You used to bother the cat."},
-   {"person":3,"es":"Molestábamos al profesor con preguntas.","en":"We'd pester the teacher with questions."},
-   {"person":4,"es":"Me molestaban los zapatos nuevos.","en":"My new shoes hurt."}
-  ],
-  "future": [
-   {"person":0,"es":"No te molestaré más.","en":"I won't bother you anymore."},
-   {"person":1,"es":"Si haces ruido, molestarás al bebé.","en":"If you make noise, you'll bother the baby."},
-   {"person":2,"es":"¿Te molestará el humo?","en":"Will the smoke bother you?"},
-   {"person":3,"es":"No te molestaremos, te lo prometo.","en":"We won't bother you, I promise."},
-   {"person":4,"es":"Las obras molestarán a los vecinos.","en":"The construction will bother the neighbors."}
-  ],
-  "conditional": [
-   {"person":2,"es":"¿Te molestaría bajar el volumen?","en":"Would you mind turning down the volume?"},
-   {"person":0,"es":"Yo no te molestaría si no fuera urgente.","en":"I wouldn't bother you if it weren't urgent."},
-   {"person":1,"es":"Tú nunca molestarías a nadie.","en":"You'd never bother anyone."},
-   {"person":3,"es":"No te molestaríamos a esta hora sin razón.","en":"We wouldn't bother you at this hour without a reason."},
-   {"person":4,"es":"¿Le molestarían unas preguntas?","en":"Would you mind a few questions?"}
-  ],
-  "presentPerfect": [
-   {"person":2,"es":"Me ha molestado mucho tu actitud.","en":"Your attitude has really bothered me."}
-  ],
-  "pluperfect": [
-   {"person":4,"es":"Los vecinos ya se habían molestado por el ruido.","en":"The neighbors had already gotten upset about the noise."}
-  ],
-  "futurePerfect": {"rare":true},
-  "conditionalPerfect": [
-   {"person":0,"es":"No te habría molestado si no fuera importante.","en":"I wouldn't have bothered you if it weren't important."}
-  ],
-  "subjPresent": [
-   {"person":2,"es":"Espero que no te moleste el humo.","en":"I hope the smoke doesn't bother you."},
-   {"person":0,"es":"Avísame si no quieres que yo te moleste.","en":"Let me know if you don't want me to bother you."},
-   {"person":1,"es":"No quiero que molestes a tu hermano.","en":"I don't want you bothering your brother."},
-   {"person":3,"es":"No quiero que molestemos a los vecinos.","en":"I don't want us to bother the neighbors."},
-   {"person":4,"es":"No dejes que te molesten.","en":"Don't let them bother you."}
-  ],
-  "subjImperfect": [
-   {"person":2,"es":"Abrí la ventana para que no te molestara el calor.","en":"I opened the window so the heat wouldn't bother you."}
-  ],
-  "subjImperfectSe": {"rare":true},
-  "subjPresentPerfect": [
-   {"person":2,"es":"Siento que te haya molestado mi comentario.","en":"I'm sorry my comment bothered you."}
-  ],
-  "subjPluperfect": [
-   {"person":2,"es":"Si me hubiera molestado, te lo habría dicho.","en":"If it had bothered me, I would have told you."}
-  ],
-  "impAffirmative": {"rare":true},
-  "impNegative": [
-   {"person":1,"es":"No molestes al perro mientras come.","en":"Don't bother the dog while he's eating."}
-  ]
  }
 }
