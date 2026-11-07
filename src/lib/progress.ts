@@ -35,6 +35,18 @@ export interface StreakRecord {
   day: string;
 }
 
+/**
+ * The streak carried from drill to drill through a day, so it follows the learner between devices. A miss or a new
+ * day starts it again. `at` is when it last changed, so the newest copy wins.
+ */
+export interface RunningStreak {
+  day: string;
+  streak: number;
+  /** The longest it reached that day. */
+  best: number;
+  at: number;
+}
+
 export interface Tally {
   right: number;
   accent: number;
@@ -49,6 +61,8 @@ export type DayTally = Tally & {
   /** Mistakes the person removed from their list. They're kept in `mistakes` and still count in every tally. */
   hiddenMistakes?: Mistake[];
   reviews?: number;
+  /** The longest drill streak that day. */
+  bestStreak?: number;
 };
 
 export interface Summary {
@@ -196,6 +210,19 @@ export function recentWeeks<T>(days: Record<string, T>, today: string, pick: (da
       cursor = previousDay(cursor);
     }
     return week;
+  });
+}
+
+/** The longest drill streak in each seven-day stretch going back from today, newest first. 0 for none. */
+export function weeklyBestStreaks(days: Record<string, { bestStreak?: number }>, today: string, count: number): number[] {
+  let cursor = today;
+  return Array.from({ length: count }, () => {
+    let best = 0;
+    for (let i = 0; i < 7; i++) {
+      best = Math.max(best, days[cursor]?.bestStreak ?? 0);
+      cursor = previousDay(cursor);
+    }
+    return best;
   });
 }
 

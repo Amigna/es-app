@@ -24,7 +24,7 @@ export interface Badge {
 export const LEVEL_HUES: Record<Level, number> = { A1: 150, A2: 205, B1: 270, B2: 25 };
 
 export const DAY_STREAKS = [7, 30, 100];
-export const DRILL_STREAKS = [25, 50];
+export const DRILL_STREAKS = [25, 50, 100, 250, 500];
 export const MASTERED = [25, 100, 250, 500, 1000];
 /** A comeback is a checkpoint retaken from under PASS_SCORE to at least this. */
 export const COMEBACK_SCORE = 90;

@@ -19,7 +19,7 @@ import {
 import { mergeCourse, parseCourse, sameCourse, type CourseProgress } from "./course";
 import { auth, db } from "./firebase";
 import { isLevel, type Level } from "./level";
-import { localDay, summarize, type Answer, type DayTally, type Mistake, type StreakRecord, type Summary, type Tally } from "./progress";
+import { localDay, summarize, type Answer, type DayTally, type Mistake, type RunningStreak, type StreakRecord, type Summary, type Tally } from "./progress";
 import {
   DEFAULT_NEW_PER_DAY,
   DEFAULT_REVIEWS_PER_DAY,
@@ -89,15 +89,33 @@ export async function saveAnswers(answers: Answer[]) {
   await batch.commit();
 }
 
-/** Keeps the higher of this and the saved record. A write can't take a maximum, so it's read first in a transaction. */
-export async function saveBestStreak(best: StreakRecord) {
+/**
+ * Saves the streak carried between drills. The newest copy wins, so an older one from another device can't undo a
+ * miss. The day's best and the all-time record keep the higher number, and a write can't take a maximum, so they're
+ * read first in a transaction.
+ */
+export async function saveDrillStreak(running: RunningStreak) {
   const uid = await currentUid();
   if (!uid) throw new Error("Not signed in");
-  const ref = statsDoc(uid, "records");
+  const records = statsDoc(uid, "records");
+  const day = doc(db(), "users", uid, "days", running.day);
   await runTransaction(db(), async (t) => {
-    const saved = (await t.get(ref)).data()?.drillStreak?.streak ?? 0;
-    if (best.streak > saved) t.set(ref, { drillStreak: best }, { merge: true });
+    const [saved, savedDay] = await Promise.all([t.get(records), t.get(day)]);
+    const data = saved.data();
+    const update: { running?: RunningStreak; drillStreak?: StreakRecord } = {};
+    if (running.at > (data?.running?.at ?? 0)) update.running = running;
+    if (running.best > (data?.drillStreak?.streak ?? 0)) update.drillStreak = { streak: running.best, day: running.day };
+    if (update.running || update.drillStreak) t.set(records, update, { merge: true });
+    // A best of 0 is left out, so a day with only misses isn't written before its answers.
+    if (running.best > (savedDay.data()?.bestStreak ?? 0)) t.set(day, { bestStreak: running.best }, { merge: true });
   });
+}
+
+/** The streak carried between drills, as last saved from any device. Null when signed out or never saved. */
+export async function loadDrillStreak(): Promise<RunningStreak | null> {
+  const uid = await currentUid();
+  if (!uid) return null;
+  return ((await getDoc(statsDoc(uid, "records"))).data()?.running as RunningStreak | undefined) ?? null;
 }
 
 const TALLY_MAPS =["tenses", "verbs", "kinds", "writing", "listening"] as const;

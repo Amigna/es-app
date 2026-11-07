@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { beforeEach, describe, it, mock } from "node:test";
-import type { Answer, StreakRecord } from "./progress";
-import { recordAnswer, recordStreak, saveProgress, setProgressEnabled } from "./progress-queue";
+import { localDay, type Answer, type RunningStreak } from "./progress";
+import { drillStreak, recordAnswer, recordStreak, saveProgress, setProgressEnabled, syncDrillStreak } from "./progress-queue";
 
 const stored = new Map<string, string>();
 Object.defineProperty(globalThis, "localStorage", {
@@ -79,58 +79,93 @@ describe("progress queue", () => {
   });
 });
 
-describe("best drill streak", () => {
-  const best = () => JSON.parse(stored.get("progress-best-streak") ?? "null")?.streak ?? null;
+describe("running drill streak", () => {
+  const local = () => JSON.parse(stored.get("progress-drill-streak") ?? "null");
+  const sends = async () => {
+    let sent: RunningStreak | null = null;
+    await saveProgress(async (_answers, streak) => {
+      sent = streak;
+    });
+    return sent as RunningStreak | null;
+  };
 
   beforeEach(() => {
     setProgressEnabled(false);
     setProgressEnabled(true);
   });
 
-  it("keeps only a new high", () => {
-    recordStreak(3);
-    recordStreak(5);
+  it("carries on into the next drill, and a miss starts it again", () => {
+    recordStreak(1);
     recordStreak(2);
-    assert.equal(best(), 5);
+    assert.equal(drillStreak(), 2);
+    recordStreak(0);
+    assert.equal(drillStreak(), 0);
+  });
+
+  it("keeps the day's best through a miss", () => {
+    recordStreak(5);
+    recordStreak(0);
+    recordStreak(1);
+    assert.equal(local().best, 5);
+  });
+
+  it("starts again on a new day", () => {
+    stored.set("progress-drill-streak", JSON.stringify({ day: "2020-01-01", streak: 8, best: 8, at: 1, unsaved: false }));
+    assert.equal(drillStreak(), 0);
+    recordStreak(1);
+    assert.equal(local().best, 1);
   });
 
   it("ignores streaks when saving is off", () => {
     setProgressEnabled(false);
     recordStreak(4);
-    assert.equal(best(), null);
+    assert.equal(local(), null);
+    assert.equal(drillStreak(), 0);
   });
 
-  it("is sent even with no answers, then cleared", async () => {
+  it("is sent even with no answers, and only once", async () => {
     recordStreak(7);
-    let sent: StreakRecord | null = null;
-    await saveProgress(async (_answers, streak) => {
-      sent = streak;
-    });
-    assert.equal(sent!.streak, 7);
-    assert.equal(best(), null);
+    assert.equal((await sends())?.best, 7);
+    assert.equal(await sends(), null);
+    assert.equal(drillStreak(), 7);
   });
 
-  it("stays queued when a save fails", async () => {
+  it("stays unsaved when a save fails", async () => {
     const logged = mock.method(console, "error", () => {});
     recordStreak(6);
     await saveProgress(() => Promise.reject(new Error("offline")));
     logged.mock.restore();
-    assert.equal(best(), 6);
+    assert.equal((await sends())?.streak, 6);
   });
 
-  it("keeps a longer streak reached during a save", async () => {
+  it("keeps a change made during a save for the next one", async () => {
     recordStreak(4);
     const write = deferred();
     const saved = saveProgress(() => write.promise);
-    recordStreak(9);
+    // A different time, so it's seen as a change.
+    await new Promise((resolve) => setTimeout(resolve, 2));
+    recordStreak(0);
     write.resolve();
     await saved;
-    assert.equal(best(), 9);
+    assert.equal((await sends())?.streak, 0);
+  });
+
+  it("picks up a newer streak from another device", async () => {
+    recordStreak(3);
+    const carried = await syncDrillStreak(async () => ({ day: localDay(), streak: 12, best: 12, at: Date.now() + 1000 }), async () => {});
+    assert.equal(carried, 12);
+    assert.equal(local().unsaved, false);
+  });
+
+  it("keeps this browser's when the other device's is older or from another day", async () => {
+    recordStreak(3);
+    assert.equal(await syncDrillStreak(async () => ({ day: localDay(), streak: 12, best: 12, at: 1 }), async () => {}), 3);
+    assert.equal(await syncDrillStreak(async () => ({ day: "2020-01-01", streak: 12, best: 12, at: Date.now() + 1000 }), async () => {}), 3);
   });
 
   it("is cleared on sign out", () => {
     recordStreak(4);
     setProgressEnabled(false);
-    assert.equal(best(), null);
+    assert.equal(local(), null);
   });
 });

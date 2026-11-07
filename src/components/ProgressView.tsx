@@ -13,7 +13,7 @@ import { syncCourse } from "@/lib/course-progress";
 import { useDrillSettings } from "@/lib/drill-settings";
 import { auth, firebaseConfigured } from "@/lib/firebase";
 import { MAX_PRACTICE_ITEMS, practiceHref, weakSpots, type WeakSpot } from "@/lib/practice";
-import { accentRate, accuracy, answered, currentStreak, lastSevenDays, localDay, recentWeeks, wordsPracticed, type Mistake, type Tally } from "@/lib/progress";
+import { accentRate, accuracy, answered, currentStreak, lastSevenDays, localDay, recentWeeks, weeklyBestStreaks, wordsPracticed, type Mistake, type Tally } from "@/lib/progress";
 import { saveProgress, setProgressEnabled } from "@/lib/progress-queue";
 import { DAYS_TO_LOAD, loadMastered, loadProgress, saveBadges, setMistakeHidden, type ProgressData } from "@/lib/progress-store";
 import { MASTERED_DAYS, reviewsLeft } from "@/lib/schedule";
@@ -181,8 +181,8 @@ const weekCell = (tally: Tally) => (answered(tally) === 0 ? "–" : `${accuracy(
 
 const slipCell = (tally: Tally) => (answered(tally) === 0 ? "–" : `${accentRate(tally)}% (${tally.accent.toLocaleString()})`);
 
-/** Newest first. Weeks with nothing in any column are left out. */
-function WeekTable({ columns }: { columns: { title: string; weeks: Tally[]; cell?: (tally: Tally) => string }[] }) {
+/** Newest first. Weeks with nothing in any column are left out. `streaks` adds each week's longest drill streak. */
+function WeekTable({ columns, streaks }: { columns: { title: string; weeks: Tally[]; cell?: (tally: Tally) => string }[]; streaks?: number[] }) {
   const shown = Array.from({ length: WEEKS_SHOWN }, (_, ago) => ago).filter((ago) => columns.some((c) => answered(c.weeks[ago]) > 0));
   return (
     <div className="overflow-hidden rounded-xl border border-stone-200 bg-white dark:border-stone-800 dark:bg-stone-900">
@@ -193,6 +193,7 @@ function WeekTable({ columns }: { columns: { title: string; weeks: Tally[]; cell
             {columns.map((c) => (
               <th key={c.title} scope="col" className="px-4 py-2 text-right font-medium">{c.title}</th>
             ))}
+            {streaks && <th scope="col" className="px-4 py-2 text-right font-medium">Best streak</th>}
           </tr>
         </thead>
         <tbody>
@@ -202,6 +203,7 @@ function WeekTable({ columns }: { columns: { title: string; weeks: Tally[]; cell
               {columns.map((c) => (
                 <td key={c.title} className="px-4 py-2 text-right tabular-nums">{(c.cell ?? weekCell)(c.weeks[ago])}</td>
               ))}
+              {streaks && <td className="px-4 py-2 text-right tabular-nums">{streaks[ago] ? streaks[ago].toLocaleString() : "–"}</td>}
             </tr>
           ))}
         </tbody>
@@ -270,7 +272,8 @@ function ListeningSection({ data }: { data: ProgressData }) {
   );
 }
 
-const MISTAKES_SHOWN = 20;
+// The same as the practice link's count, so the list and the link match.
+const MISTAKES_SHOWN = MAX_PRACTICE_ITEMS;
 
 function dayLabel(day: string, today: string): string {
   if (day === today) return "Today";
@@ -606,7 +609,8 @@ function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTot
           value={data.drillStreak ? data.drillStreak.streak.toLocaleString() : "–"}
           note={
             data.drillStreak
-              ? `in a row, set ${dayLabel(data.drillStreak.day, today).replace(/^(Today|Yesterday)$/, (w) => w.toLowerCase())}`
+              ? `in a row, set ${dayLabel(data.drillStreak.day, today).replace(/^(Today|Yesterday)$/, (w) => w.toLowerCase())}` +
+                (data.days[today]?.bestStreak && data.drillStreak.day !== today ? ` · ${data.days[today].bestStreak!.toLocaleString()} today` : "")
               : "None saved yet"
           }
         />
@@ -644,6 +648,7 @@ function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTot
               { title: "All questions", weeks: recentWeeks(data.days, today, (day) => day, WEEKS_SHOWN) },
               { title: "Accent slips", weeks: recentWeeks(data.days, today, (day) => day, WEEKS_SHOWN), cell: slipCell },
             ]}
+            streaks={weeklyBestStreaks(data.days, today, WEEKS_SHOWN)}
           />
         </section>
       </div>

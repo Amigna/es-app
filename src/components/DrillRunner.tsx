@@ -9,7 +9,7 @@ import { conjugate } from "@/lib/conjugation/engine";
 import { markVerb } from "@/lib/conjugation/regular";
 import { TENSES } from "@/lib/conjugation/types";
 import { accentTrap, gradeCard, wordDiff, type Card, type Grade, type TenseTable } from "@/lib/drill";
-import { recordAnswer, recordStreak, saveProgress } from "@/lib/progress-queue";
+import { drillStreak, recordAnswer, recordStreak, saveProgress, syncDrillStreak } from "@/lib/progress-queue";
 import { SLOW_RATE, speak } from "@/lib/speech";
 
 const SPECIAL_LETTERS = ["á", "é", "í", "ó", "ú", "ñ", "ü"];
@@ -182,8 +182,10 @@ export default function DrillRunner({
   const [right, setRight] = useState(0);
   const [slips, setSlips] = useState(0);
   const [total, setTotal] = useState(0);
-  const [streak, setStreak] = useState(0);
+  // Drills that save progress carry on today's streak from the last one, on any device.
+  const [streak, setStreak] = useState(() => (first.track ? drillStreak() : 0));
   const [bestStreak, setBestStreak] = useState(0);
+  const answeredRef = useRef(false);
   const [retries, setRetries] = useState<{ card: Card; dueAt: number }[]>([]);
   const [finished, setFinished] = useState(false);
   const [isRetry, setIsRetry] = useState(false);
@@ -192,6 +194,7 @@ export default function DrillRunner({
   const [turn, setTurn] = useState(0);
   const isVocab = !!card.track?.item.startsWith("vocab:");
   const canGiveUp = isVocab || !!card.writing;
+  const tenseMood = TENSES.find((t) => t.id === card.track?.tense)?.mood;
   // The whole sentence replaces the blanked one only once the card is answered, so hearing it can't give the answer away.
   const answeredSentence = result ? card.sentence : undefined;
   const exampleSentence = card.example ? answeredSentence : undefined;
@@ -214,6 +217,16 @@ export default function DrillRunner({
   // Save what's left when the session ends.
   useEffect(() => () => void saveProgress(), []);
 
+  // A streak carried on another device arrives after the first render, and only replaces this one before any answer.
+  useEffect(() => {
+    if (!first.track) return;
+    syncDrillStreak().then((carried) => {
+      if (!answeredRef.current) setStreak(carried);
+    });
+    // Only when the session starts.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // After the render that finished, so the counts include the last answer.
   useEffect(() => {
     if (!finished) return;
@@ -231,9 +244,10 @@ export default function DrillRunner({
 
   /**
    * Returns the new counts, for a flashcard that moves straight on before state updates. `given` is what was typed,
-   * and is left out for self-graded cards where nothing was.
+   * and is left out for self-graded cards where nothing was. `selfGraded` is for the learner's own call, which leaves
+   * the streak alone either way: it counts answers the app checked.
    */
-  function record(g: Grade, given?: string) {
+  function record(g: Grade, given?: string, selfGraded = false) {
     // An accent slip shows the right spelling but doesn't come back or end the streak. It's counted on its own.
     const ok = g !== "wrong";
     const answeredNow = total + 1;
@@ -244,10 +258,14 @@ export default function DrillRunner({
     if (card.track && !isRetry) recordAnswer(card.track, g, given === undefined ? undefined : mistake(given));
     if (g === "correct") setRight(right + 1);
     if (g === "accent") setSlips(slips + 1);
-    setStreak(ok ? streak + 1 : 0);
-    if (ok) setBestStreak(Math.max(bestStreak, streak + 1));
-    // Drills that save progress count toward the record, the same streak that's on screen.
-    if (ok && card.track) recordStreak(streak + 1);
+    answeredRef.current = true;
+    if (!selfGraded) {
+      const now = ok ? streak + 1 : 0;
+      setStreak(now);
+      if (ok) setBestStreak(Math.max(bestStreak, now));
+      // Drills that save progress count toward the record, the same streak that's on screen.
+      if (card.track && now !== streak) recordStreak(now);
+    }
     setRetries(missed);
     return { answeredNow, missed };
   }
@@ -262,7 +280,7 @@ export default function DrillRunner({
   }
 
   function selfGrade(knew: boolean) {
-    const { answeredNow, missed } = record(knew ? "correct" : "wrong", card.writing ? input : undefined);
+    const { answeredNow, missed } = record(knew ? "correct" : "wrong", card.writing ? input : undefined, true);
     advance(answeredNow, missed);
   }
 
@@ -350,7 +368,11 @@ export default function DrillRunner({
       <section className="rounded-xl border border-stone-200 bg-white p-6 dark:border-stone-800 dark:bg-stone-900">
         {card.badge ? (
           <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-stone-500">
-            <span className="rounded-md bg-accent-100 px-2.5 py-1 text-lg font-bold text-accent-900 dark:bg-accent-950 dark:text-accent-200">
+            {/* A tense takes its mood's color, as on the verb pages, so a change of tense stands out from card to card. */}
+            <span
+              style={tenseMood ? moodHue(tenseMood) : undefined}
+              className="rounded-md bg-accent-100 px-2.5 py-1 text-lg font-bold text-accent-900 dark:bg-accent-950 dark:text-accent-200"
+            >
               {card.badge}
             </span>
             {card.context}

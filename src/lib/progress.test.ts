@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { inviteAllowsVulgar, statusOfInvite } from "./firebase";
-import { accentRate, accuracy, calendarWeeks, currentStreak, lastSevenDays, localDay, recentWeeks, summarize, wordsPracticed, type Answer, type Tally } from "./progress";
+import { accentRate, accuracy, calendarWeeks, currentStreak, lastSevenDays, localDay, recentWeeks, summarize, weeklyBestStreaks, wordsPracticed, type Answer, type Tally } from "./progress";
 import { summaryUpdate } from "./progress-store";
 
 const answer = (item: string, grade: Answer["grade"], day = "2026-11-01", tense?: Answer["tense"]): Answer => ({ item, grade, day, tense });
@@ -223,6 +223,13 @@ describe("recentWeeks", () => {
   it("crosses a month and a year", () => {
     const weeks = recentWeeks({ "2025-12-31": right(1), "2026-01-01": right(2) }, "2026-01-03", (d) => d, 1);
     assert.equal(weeks[0].right, 3);
+  });
+});
+
+describe("weeklyBestStreaks", () => {
+  it("takes each week's longest, with 0 for none", () => {
+    const days = { "2026-11-14": { bestStreak: 4 }, "2026-11-09": { bestStreak: 11 }, "2026-11-07": { bestStreak: 6 }, "2026-11-06": {} };
+    assert.deepEqual(weeklyBestStreaks(days, "2026-11-14", 3), [11, 6, 0]);
   });
 });
 
