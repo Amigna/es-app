@@ -2,7 +2,10 @@
 
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { useDrillSettings } from "@/lib/drill-settings";
-import { chooseLevel, LEVELS, storedLevel, storeLevel, useLevel, type Level } from "@/lib/level";
+import { TENSES } from "@/lib/conjugation/types";
+import { chooseLevel, levelInfo, LEVELS, storedLevel, storedLevelAt, storeLevel, useLevel, type Level } from "@/lib/level";
+import { levelReadiness, levelSync, MIN_PER_TENSE, READY_ACCURACY, READY_ANSWERS } from "@/lib/level-up";
+import { localDay, type Tally } from "@/lib/progress";
 import { progressEnabled } from "@/lib/progress-queue";
 
 const subscribe = () => () => {};
@@ -108,6 +111,121 @@ export function LevelUpOffer({ to }: { to: Level }) {
   );
 }
 
+const LATER_KEY = "level-up-later";
+const LATER_DAYS = 14;
+
+/** "Not now" hides the suggestion for this level for a couple of weeks. Only this browser. */
+function laterUntil(level: Level): string | null {
+  try {
+    const [saved, until] = (localStorage.getItem(LATER_KEY) ?? "").split("|");
+    return saved === level ? until : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * The /progress line on how close the level's tenses are to the next level, and the offer to move up once they're
+ * there. Moving up sets the drill's tenses and verbs, like choosing the level on the Drills page.
+ */
+export function LevelSuggestion({ days }: { days: Record<string, { tenses?: Record<string, Tally> }> }) {
+  const level = useLevel();
+  const setLevel = useSetLevel();
+  const [answer, setAnswer] = useState<"pending" | "moved" | "failed" | "later">("pending");
+  const today = localDay();
+  if (!level) return null;
+  const readiness = levelReadiness(days, level);
+  // After moving up this is already the new level.
+  const info = levelInfo(level);
+
+  if (answer === "moved" || answer === "failed") {
+    return (
+      <p role="status">
+        {answer === "moved"
+          ? `Your level is now ${info.name} (${level}). Drills start with its tenses, verbs and words.`
+          : "Saved on this device, but couldn't save it to your account. Check your connection and change it on the Drills page."}
+      </p>
+    );
+  }
+  if (!readiness) return <p className="text-stone-600 dark:text-stone-400">You&apos;re at {info.name} ({level}), the top level. Every tense and verb is in your drills.</p>;
+
+  const next = levelInfo(readiness.next);
+  const until = laterUntil(level);
+  if (readiness.ready && answer !== "later" && !(until && until >= today)) {
+    return (
+      <div className="space-y-3 rounded-xl border border-accent-300 bg-white p-4 dark:border-accent-800 dark:bg-stone-900">
+        <p>
+          You&apos;re getting {readiness.accuracy}% right in the {info.name.toLowerCase()} ({level}) tenses over your last{" "}
+          {readiness.answered.toLocaleString()} answers. Ready for {next.name.toLowerCase()} ({next.id})? Drills would start with its tenses,
+          verbs and words. You can always change back on the Drills page.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <button
+            type="button"
+            onClick={async () => setAnswer((await setLevel(next.id)) ? "moved" : "failed")}
+            className="h-10 rounded-xl bg-accent-700 px-4 font-medium text-white transition hover:bg-accent-800"
+          >
+            Move up to {next.id}
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              const [y, m, d] = today.split("-").map(Number);
+              try {
+                localStorage.setItem(LATER_KEY, `${level}|${localDay(new Date(y, m - 1, d + LATER_DAYS))}`);
+              } catch {
+                // Hidden for this visit only.
+              }
+              setAnswer("later");
+            }}
+            className="h-10 px-2 text-sm text-accent-700 underline dark:text-accent-400"
+          >
+            Not now
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  const thin = readiness.thin.map((t) => TENSES.find((m) => m.id === t)!.name.toLowerCase());
+  return (
+    <div className="space-y-1 text-stone-600 dark:text-stone-400">
+      <p>
+        {readiness.answered === 0
+          ? `Toward ${next.name.toLowerCase()} (${next.id}): this starts counting with your next conjugation or fill-in-the-blank answers.`
+          : `Toward ${next.name.toLowerCase()} (${next.id}): ${readiness.accuracy ?? 0}% right over your last ${readiness.answered.toLocaleString()} answers in the ${level} tenses.` +
+            (readiness.ready ? "" : ` It's suggested at ${READY_ACCURACY}% over ${READY_ANSWERS} answers.`)}
+      </p>
+      {readiness.answered > 0 && thin.length > 0 && (
+        <p className="text-sm">
+          Each tense needs at least {MIN_PER_TENSE} of those answers. Still to practice: {thin.join(", ")}.
+        </p>
+      )}
+      {readiness.ready && <p className="text-sm">Ready for {next.id} whenever you are: change your level on the Drills page.</p>}
+    </div>
+  );
+}
+
+/** Once per page load: the prompt moves between the drill page and the rest, and one check is enough. */
+let synced: Promise<void> | null = null;
+
+/**
+ * Makes this browser and the account agree on the level, the newer one winning, so a change on one device reaches the
+ * others. A level taken from the account also sets the drill's tenses and verbs, as choosing it here would.
+ */
+async function syncLevel(applyToDrill: (level: Level) => void) {
+  const { loadLevel, saveLevel } = await import("@/lib/progress-store");
+  const saved = await loadLevel();
+  const local = { level: storedLevel(), at: storedLevelAt() };
+  const action = levelSync(local, saved);
+  if (action === "take" && saved) {
+    if (saved.level !== local.level) applyToDrill(saved.level);
+    storeLevel(saved.level, saved.at);
+  }
+  // Chosen here while signed out, or a save that didn't get through.
+  if (action === "send" && local.level) await saveLevel(local.level, local.at);
+}
+
 /**
  * Asks for a level when there isn't one. Signed-in people are asked on every page, after checking their account, which
  * may have one from another device. Signed-out people only on the drill setup (`everyone`). Firebase is only loaded for
@@ -116,24 +234,25 @@ export function LevelUpOffer({ to }: { to: Level }) {
 export function LevelPrompt({ everyone = false, className = "" }: { everyone?: boolean; className?: string }) {
   const level = useLevel();
   const signedIn = useSyncExternalStore(subscribe, progressEnabled, onServer);
+  const [, update] = useDrillSettings();
   const [checked, setChecked] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
-    if (!signedIn || storedLevel()) return;
+    if (!signedIn) return;
     let current = true;
-    import("@/lib/progress-store")
-      .then(({ loadLevel }) => loadLevel())
-      .then((saved) => {
-        if (saved && !storedLevel()) storeLevel(saved);
-      })
-      .catch((err) => console.error("Couldn't load the level", err))
-      .finally(() => {
-        if (current) setChecked(true);
-      });
+    synced ??= syncLevel((id) => {
+      const info = LEVELS.find((l) => l.id === id)!;
+      update({ tenses: info.tenses, pool: info.pool });
+    }).catch((err) => console.error("Couldn't sync the level", err));
+    synced.finally(() => {
+      if (current) setChecked(true);
+    });
     return () => {
       current = false;
     };
+    // `update` changes identity with the settings; the sync only needs to start once.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [signedIn]);
 
   if (level || dismissed || !(signedIn ? checked : everyone)) return null;

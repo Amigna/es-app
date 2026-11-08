@@ -73,8 +73,8 @@ export function PracticeCalendar({ days, today }: { days: Record<string, Tally>;
   );
 }
 
-/** Weekly accuracy as a line, oldest week first. Weeks with no answers leave a gap. */
-export function AccuracyTrend({ weeks }: { weeks: Tally[] }) {
+/** Weekly accuracy as a line, oldest week first. Weeks with no answers leave a gap. `levels` marks the weeks the level changed. */
+export function AccuracyTrend({ weeks, levels = [] }: { weeks: Tally[]; levels?: { ago: number; level: string }[] }) {
   const points = [...weeks].reverse().map((tally, i) => ({ i, tally, value: accuracy(tally), ago: weeks.length - 1 - i }));
   const [hovered, setHovered] = useState<number | null>(null);
   const x = (i: number) => (weeks.length === 1 ? 50 : (i / (weeks.length - 1)) * 100);
@@ -89,6 +89,7 @@ export function AccuracyTrend({ weeks }: { weeks: Tally[] }) {
   const shown = points.filter((p) => p.value !== null);
   const last = shown[shown.length - 1];
   const active = hovered === null ? null : points[hovered];
+  const changeIn = (ago: number) => levels.find((l) => l.ago === ago)?.level;
   const weekName = (ago: number) => (ago === 0 ? "Last 7 days" : ago === 1 ? "1 week ago" : `${ago} weeks ago`);
 
   return (
@@ -117,8 +118,31 @@ export function AccuracyTrend({ weeks }: { weeks: Tally[] }) {
                   vectorEffect="non-scaling-stroke"
                 />
               ))}
+            {levels.map((l) => (
+              <line
+                key={l.ago}
+                x1={x(weeks.length - 1 - l.ago)}
+                x2={x(weeks.length - 1 - l.ago)}
+                y1="0"
+                y2="100"
+                className="stroke-accent-400 dark:stroke-accent-600"
+                strokeWidth="1"
+                strokeDasharray="3 3"
+                vectorEffect="non-scaling-stroke"
+              />
+            ))}
             {active && <line x1={x(active.i)} x2={x(active.i)} y1="0" y2="100" className="stroke-stone-300 dark:stroke-stone-600" strokeWidth="1" vectorEffect="non-scaling-stroke" />}
           </svg>
+          {levels.map((l) => (
+            <span
+              key={l.ago}
+              aria-hidden
+              style={{ left: `${x(weeks.length - 1 - l.ago)}%` }}
+              className="absolute -top-5 -translate-x-1/2 rounded bg-accent-100 px-1 text-[10px] font-semibold leading-4 text-accent-800 dark:bg-accent-900 dark:text-accent-200"
+            >
+              {l.level}
+            </span>
+          ))}
           {shown.map((p) => (
             <span
               key={p.i}
@@ -153,8 +177,9 @@ export function AccuracyTrend({ weeks }: { weeks: Tally[] }) {
       </div>
       <p className="mt-2 min-h-5 text-sm text-stone-600 dark:text-stone-400" aria-live="polite">
         {active
-          ? `${weekName(active.ago)}: ${active.value === null ? "no practice" : `${active.value}% correct of ${answered(active.tally).toLocaleString()} questions`}`
-          : "Share answered correctly each week, leaving accent slips out. Hover a week for details."}
+          ? `${weekName(active.ago)}: ${active.value === null ? "no practice" : `${active.value}% correct of ${answered(active.tally).toLocaleString()} questions`}` +
+            (changeIn(active.ago) ? `, level set to ${changeIn(active.ago)}` : "")
+          : `Share answered correctly each week, leaving accent slips out.${levels.length > 0 ? " Dashed lines mark a change of level." : ""} Hover a week for details.`}
       </p>
     </div>
   );

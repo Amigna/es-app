@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AccuracyTrend, PracticeCalendar } from "@/components/ProgressCharts";
 import BadgeArt from "@/components/Badge";
+import { LevelSuggestion } from "@/components/LevelPicker";
 import ReportProblem from "@/components/ReportProblem";
 import { BADGES, earnedBadges, findBadge, nextBadges, withSaved } from "@/lib/badges";
 import { TENSES } from "@/lib/conjugation/types";
@@ -12,6 +13,8 @@ import { CHAPTERS, EXAM_LEVELS, EXAM_PASS_SCORE, PASS_SCORE, chaptersDone, examI
 import { syncCourse } from "@/lib/course-progress";
 import { useDrillSettings } from "@/lib/drill-settings";
 import { auth, firebaseConfigured } from "@/lib/firebase";
+import { useLevel } from "@/lib/level";
+import { levelChangesByWeek } from "@/lib/level-up";
 import { MAX_PRACTICE_ITEMS, practiceHref, weakSpots, type WeakSpot } from "@/lib/practice";
 import { accentRate, accuracy, answered, currentStreak, lastSevenDays, localDay, recentWeeks, weeklyBestStreaks, wordsPracticed, type Mistake, type Tally } from "@/lib/progress";
 import { saveProgress, setProgressEnabled } from "@/lib/progress-queue";
@@ -566,6 +569,7 @@ function CourseSection({ data }: { data: ProgressData }) {
 function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTotal[] }) {
   const [, update] = useDrillSettings();
   const [showMastered, setShowMastered] = useState(false);
+  const level = useLevel();
   const today = localDay();
   const total = answered(data.total);
   const streak = currentStreak(Object.keys(data.days), today);
@@ -633,6 +637,13 @@ function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTot
         </section>
       )}
 
+      {level && (
+        <section>
+          <h2 className="mb-3 text-xl font-semibold">Your level</h2>
+          <LevelSuggestion days={data.days} />
+        </section>
+      )}
+
       {/* Side by side on wide screens, where the calendar alone would leave most of the row empty. */}
       <div className="grid gap-8 lg:grid-cols-[auto_minmax(0,1fr)]">
         <section>
@@ -642,7 +653,7 @@ function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTot
 
         <section className="space-y-3">
           <h2 className="font-display text-2xl font-semibold">Accuracy by week</h2>
-          <AccuracyTrend weeks={recentWeeks(data.days, today, (day) => day, TREND_WEEKS)} />
+          <AccuracyTrend weeks={recentWeeks(data.days, today, (day) => day, TREND_WEEKS)} levels={levelChangesByWeek(data.levelHistory, today, TREND_WEEKS)} />
           <WeekTable
             columns={[
               { title: "All questions", weeks: recentWeeks(data.days, today, (day) => day, WEEKS_SHOWN) },

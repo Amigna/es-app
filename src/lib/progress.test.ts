@@ -32,6 +32,16 @@ describe("summarize", () => {
     assert.deepEqual(s.kinds, { gender: { right: 0, accent: 0, wrong: 1 } });
   });
 
+  it("adds tenses up by day too", () => {
+    const s = summarize([
+      answer("verb:tener:preterite", "correct", "2026-11-01", "preterite"),
+      answer("verb:ir:preterite", "wrong", "2026-11-02", "preterite"),
+      answer("verb:ir:present", "accent", "2026-11-02", "present"),
+    ]);
+    assert.deepEqual(s.tenseDays["2026-11-01"], { preterite: { right: 1, accent: 0, wrong: 0 } });
+    assert.deepEqual(s.tenseDays["2026-11-02"], { preterite: { right: 0, accent: 0, wrong: 1 }, present: { right: 0, accent: 1, wrong: 0 } });
+  });
+
   it("keeps vocabulary out of the tense figures", () => {
     assert.deepEqual(summarize([answer("vocab:casa:gender", "correct")]).tenses, {});
   });

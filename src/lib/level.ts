@@ -49,9 +49,12 @@ export const isLevel = (value: unknown): value is Level => IDS.includes(value as
 export const levelInfo = (level: Level): LevelInfo => LEVELS.find((l) => l.id === level) ?? LEVELS[0];
 
 const KEY = "level";
+// When it was chosen, so the newer of this browser's level and the account's wins on sign-in.
+const AT_KEY = "level-at";
 const listeners = new Set<() => void>();
 // Still works for the visit when storage is blocked.
 let memory: string | null = null;
+let memoryAt = 0;
 
 function read(): Level | null {
   let raw = memory;
@@ -63,11 +66,22 @@ function read(): Level | null {
   return isLevel(raw) ? raw : null;
 }
 
+/** When this browser's level was chosen, in milliseconds. 0 when unknown, as for levels saved before this was kept. */
+export function storedLevelAt(): number {
+  try {
+    return Number(localStorage.getItem(AT_KEY)) || memoryAt;
+  } catch {
+    return memoryAt;
+  }
+}
+
 /** Only this browser. `chooseLevel` also saves it to the account. */
-export function storeLevel(level: Level) {
+export function storeLevel(level: Level, at = Date.now()) {
   memory = level;
+  memoryAt = at;
   try {
     localStorage.setItem(KEY, level);
+    localStorage.setItem(AT_KEY, String(at));
   } catch {
     // Private windows can refuse storage; the in-memory copy covers this visit.
   }
@@ -90,8 +104,9 @@ export function useLevel(): Level | null {
 
 /** Saves the level here and, when signed in, to the account. Firebase is only loaded for signed-in people. */
 export async function chooseLevel(level: Level) {
-  storeLevel(level);
+  const at = Date.now();
+  storeLevel(level, at);
   if (!progressEnabled()) return;
   const { saveLevel } = await import("./progress-store");
-  await saveLevel(level);
+  await saveLevel(level, at);
 }

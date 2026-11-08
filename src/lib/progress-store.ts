@@ -19,6 +19,7 @@ import {
 import { mergeCourse, parseCourse, sameCourse, type CourseProgress } from "./course";
 import { auth, db } from "./firebase";
 import { isLevel, type Level } from "./level";
+import type { LevelChange } from "./level-up";
 import { localDay, summarize, type Answer, type DayTally, type Mistake, type RunningStreak, type StreakRecord, type Summary, type Tally } from "./progress";
 import {
   DEFAULT_NEW_PER_DAY,
@@ -74,13 +75,20 @@ export async function saveAnswers(answers: Answer[]) {
   for (const [day, tally] of Object.entries(days)) {
     const counts = plan.perDay[day];
     const scheduled = counts ? { newItems: increment(counts.newItems), reviews: increment(counts.reviews) } : {};
-    const byKind = (name: "writing" | "listening", kinds: Record<string, Tally> | undefined) =>
+    const byKind = (name: "tenses" | "writing" | "listening", kinds: Record<string, Tally> | undefined) =>
       kinds ? { [name]: Object.fromEntries(Object.entries(kinds).map(([kind, t]) => [kind, bump(t)])) } : {};
     // A re-sent batch adds the same mistakes, and arrayUnion skips exact copies.
     const missed = summary.mistakes[day] ? { mistakes: arrayUnion(...summary.mistakes[day]) } : {};
     batch.set(
       doc(db(), "users", uid, "days", day),
-      { ...bump(tally), ...scheduled, ...byKind("writing", summary.writingDays[day]), ...byKind("listening", summary.listeningDays[day]), ...missed },
+      {
+        ...bump(tally),
+        ...scheduled,
+        ...byKind("tenses", summary.tenseDays[day]),
+        ...byKind("writing", summary.writingDays[day]),
+        ...byKind("listening", summary.listeningDays[day]),
+        ...missed,
+      },
       { merge: true },
     );
   }
@@ -151,6 +159,8 @@ export interface ProgressData {
   course: CourseProgress;
   /** Badges earned, by ID, with the day each was first seen. */
   badges: Record<string, string>;
+  /** Level changes, oldest first, saved from 2026-11-08 on. */
+  levelHistory: LevelChange[];
 }
 
 export async function loadProgress(uid: string): Promise<ProgressData> {
@@ -164,7 +174,7 @@ export async function loadProgress(uid: string): Promise<ProgressData> {
     getCountFromServer(query(items, where("stability", ">=", MASTERED_DAYS))),
     getCountFromServer(query(items, where("due", "<=", localDay()))),
     getDoc(statsDoc(uid, "seen")),
-    loadReviewSettings(uid),
+    getDoc(statsDoc(uid, "settings")),
     getDoc(statsDoc(uid, "records")),
     getDoc(statsDoc(uid, "course")),
     getDoc(statsDoc(uid, "badges")),
@@ -181,11 +191,12 @@ export async function loadProgress(uid: string): Promise<ProgressData> {
     practiced: practiced.data().count,
     mastered: mastered.data().count,
     dueToday: dueToday.data().count,
-    reviewsPerDay: settings.reviewsPerDay,
+    reviewsPerDay: reviewSettings(settings.data()).reviewsPerDay,
     seen: seen.data()?.items ?? [],
     drillStreak: (records.data()?.drillStreak as StreakRecord | undefined) ?? null,
     course: parseCourse(course.data()),
     badges: Object.fromEntries(Object.entries(badges.data() ?? {}).filter((e): e is [string, string] => typeof e[1] === "string")),
+    levelHistory: parseLevelHistory(settings.data()?.levelHistory),
   };
 }
 
@@ -266,18 +277,25 @@ export async function saveCourse(local: CourseProgress): Promise<CourseProgress>
   });
 }
 
-/** Null when nobody is signed in or no level has been saved. */
-export async function loadLevel(): Promise<Level | null> {
+/** The account's level and when it was chosen (0 if saved before that was kept). Null when nobody is signed in or none is saved. */
+export async function loadLevel(): Promise<{ level: Level; at: number } | null> {
   const uid = await currentUid();
   if (!uid) return null;
-  const level = (await getDoc(statsDoc(uid, "settings"))).data()?.level;
-  return isLevel(level) ? level : null;
+  const data = (await getDoc(statsDoc(uid, "settings"))).data();
+  return isLevel(data?.level) ? { level: data.level, at: typeof data.levelAt === "number" ? data.levelAt : 0 } : null;
 }
 
-export async function saveLevel(level: Level) {
+/** Also adds the change to `levelHistory`, with its day, for the trend on /progress. */
+export async function saveLevel(level: Level, at: number) {
   const uid = await currentUid();
   if (!uid) throw new Error("Not signed in");
-  await setDoc(statsDoc(uid, "settings"), { level }, { merge: true });
+  const change: LevelChange = { level, day: localDay(new Date(at)) };
+  await setDoc(statsDoc(uid, "settings"), { level, levelAt: at, levelHistory: arrayUnion(change) }, { merge: true });
+}
+
+function parseLevelHistory(value: unknown): LevelChange[] {
+  if (!Array.isArray(value)) return [];
+  return value.filter((c): c is LevelChange => isLevel(c?.level) && typeof c?.day === "string");
 }
 
 export interface ReviewSettings {
@@ -285,9 +303,13 @@ export interface ReviewSettings {
   reviewsPerDay: number;
 }
 
+const reviewSettings = (data: { newPerDay?: number; reviewsPerDay?: number } | undefined): ReviewSettings => ({
+  newPerDay: data?.newPerDay ?? DEFAULT_NEW_PER_DAY,
+  reviewsPerDay: data?.reviewsPerDay ?? DEFAULT_REVIEWS_PER_DAY,
+});
+
 export async function loadReviewSettings(uid: string): Promise<ReviewSettings> {
-  const data = (await getDoc(statsDoc(uid, "settings"))).data();
-  return { newPerDay: data?.newPerDay ?? DEFAULT_NEW_PER_DAY, reviewsPerDay: data?.reviewsPerDay ?? DEFAULT_REVIEWS_PER_DAY };
+  return reviewSettings((await getDoc(statsDoc(uid, "settings"))).data());
 }
 
 export async function saveReviewSetting(uid: string, setting: Partial<ReviewSettings>) {

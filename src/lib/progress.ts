@@ -55,6 +55,8 @@ export interface Tally {
 
 /** A saved day. `writing` is by direction and `listening` by kind, kept per day so they can be compared over time. */
 export type DayTally = Tally & {
+  /** By tense, for recent accuracy, like the level suggestion. Saved from 2026-11-08 on. */
+  tenses?: Record<string, Tally>;
   writing?: Record<string, Tally>;
   listening?: Record<string, Tally>;
   mistakes?: Mistake[];
@@ -69,6 +71,8 @@ export interface Summary {
   items: Record<string, Tally & { last: string }>;
   days: Record<string, Tally>;
   tenses: Record<string, Tally>;
+  /** The same, by day. */
+  tenseDays: Record<string, Record<string, Tally>>;
   verbs: Record<string, Tally>;
   /** By question type: gender, agreement, toSpanish or toEnglish. */
   kinds: Record<string, Tally>;
@@ -104,6 +108,7 @@ export function summarize(answers: Answer[]): Summary {
     items: {},
     days: {},
     tenses: {},
+    tenseDays: {},
     verbs: {},
     kinds: {},
     writing: {},
@@ -119,7 +124,10 @@ export function summarize(answers: Answer[]): Summary {
     item[field]++;
     if (a.day > item.last) item.last = a.day;
     (out.days[a.day] ??= empty())[field]++;
-    if (a.tense) (out.tenses[a.tense] ??= empty())[field]++;
+    if (a.tense) {
+      (out.tenses[a.tense] ??= empty())[field]++;
+      ((out.tenseDays[a.day] ??= {})[a.tense] ??= empty())[field]++;
+    }
     // Items are verb:hablar:present or vocab:noun:casa:gender. Words and phrases can't contain a colon; a test checks that.
     const [source, first, , kind] = a.item.split(":");
     if (source === "verb") (out.verbs[first] ??= empty())[field]++;
