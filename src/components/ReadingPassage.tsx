@@ -26,7 +26,7 @@ async function loadReviewState(): Promise<ReviewState> {
   return state && { seen: new Set(state.seen), wanted: new Set(state.wanted) };
 }
 
-function AddButton({ match, review, onAdded }: { match: LookupMatch; review: ReviewState; onAdded: (item: string) => void }) {
+function AddButton({ match, review, onAdded }: { match: LookupMatch & { item: string }; review: ReviewState; onAdded: (item: string) => void }) {
   const [state, setState] = useState<"idle" | "saving" | "failed">("idle");
   if (!review) return null;
   if (review.seen.has(match.item)) return <p className="text-sm text-stone-500">Already in your reviews</p>;
@@ -192,7 +192,13 @@ export default function ReadingPassage({ paragraphs, words }: { paragraphs: { es
                       <p className="text-sm text-stone-500">{m.detail}</p>
                     </div>
                     <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-                      <AddButton match={m} review={review} onAdded={(item) => review && setReview({ ...review, wanted: new Set(review.wanted).add(item) })} />
+                      {m.item && (
+                        <AddButton
+                          match={{ ...m, item: m.item }}
+                          review={review}
+                          onAdded={(item) => review && setReview({ ...review, wanted: new Set(review.wanted).add(item) })}
+                        />
+                      )}
                       {m.href && (
                         <Link href={m.href} className="text-sm text-accent-700 underline dark:text-accent-400">
                           See all forms

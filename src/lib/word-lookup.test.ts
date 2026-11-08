@@ -53,6 +53,35 @@ describe("lookupWord", () => {
     assert.deepEqual(lookupWord("Xochimilco"), []);
   });
 
+  it("finds forms the word lists only hint at", () => {
+    assert.equal(find("sus", "su").detail, "Small word");
+    assert.equal(find("miles", "mil").detail, "Small word");
+    assert.match(find("gran", "grande").detail, /short form before a noun/);
+    assert.match(find("ningún", "ninguno").detail, /short form before a noun/);
+    assert.equal(find("unidos", "unir").detail, "Past participle");
+    assert.match(find("hay", "haber").detail, /there is, there are/);
+    assert.equal(find("diseñadoras", "el diseñador").detail, "Noun, feminine plural");
+    assert.equal(find("abogada", "el abogado").item, "vocab:noun:abogado:toEnglish");
+    assert.match(find("embargo", "sin embargo").detail, /part of “sin embargo”/);
+    assert.equal(find("gracias", "Gracias.").item, undefined);
+  });
+
+  it("finds every word in the readings apart from names and places", () => {
+    // Add a new reading's names here. Any other word it uses needs to be in the word lists.
+    const names = new Set(
+      "ana andrés bogotá camila caracas carlos carmen chile cusco daniela elena ernesto europa heredia honduras juan lima luis machu marta mateo mejía miami méxico panamá perú picchu puebla quetzalcóatl santiago sofía valentina".split(" "),
+    );
+    const missing = new Set<string>();
+    for (const r of READINGS) {
+      for (const p of r.paragraphs) {
+        for (const t of tokenize(p.es)) if (t.word && !names.has(t.text.toLowerCase()) && lookupWord(t.text).length === 0) missing.add(`${r.slug}: ${t.text}`);
+      }
+      // A word the story glosses, like ingresos, should also be one people can add to their reviews.
+      for (const w of r.words) if (!/\s/.test(w.es) && lookupWord(w.es).length === 0) missing.add(`${r.slug} glossary: ${w.es}`);
+    }
+    assert.deepEqual([...missing], []);
+  });
+
   it("only offers items Today's review can show", () => {
     const order = new Set(newItemOrder(new Set()));
     const words = READINGS.flatMap((r) => r.paragraphs.flatMap((p) => tokenize(p.es).filter((t) => t.word).map((t) => t.text)));
@@ -60,8 +89,9 @@ describe("lookupWord", () => {
     for (const word of words) {
       for (const match of lookupWord(word)) {
         found++;
-        // Verbs are checked against the order with no rare tenses, which is the widest it gets.
-        assert.ok(order.has(match.item), `${word}: ${match.item}`);
+        // Verbs are checked against the order with no rare tenses, which is the widest it gets. Phrases offer no item.
+        if (match.item) assert.ok(order.has(match.item), `${word}: ${match.item}`);
+        else assert.match(match.key, /^phrase:/, word);
       }
     }
     assert.ok(found > words.length / 2, `${found} matches for ${words.length} words`);

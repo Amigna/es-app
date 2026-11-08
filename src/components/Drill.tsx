@@ -114,7 +114,7 @@ const WORD_TYPES: { id: WordType; title: string; hint: string }[] = [
   { id: "noun", title: "Nouns", hint: "Can be limited by topic" },
   { id: "adjective", title: "Adjectives", hint: "Describing words" },
   { id: "adverb", title: "Adverbs", hint: "Time, place and manner" },
-  { id: "small", title: "Small words", hint: "Prepositions, conjunctions, pronouns, question words" },
+  { id: "small", title: "Small words", hint: "Prepositions, conjunctions, pronouns, question words, articles, numbers" },
 ];
 
 const FLASH_SIDES: { id: FlashSide; title: string; hint: string }[] = [

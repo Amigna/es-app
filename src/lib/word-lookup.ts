@@ -3,7 +3,7 @@ import { conjugate } from "./conjugation/engine";
 import { TENSES, type TenseId } from "./conjugation/types";
 import { personLabel, verbTrack } from "./drill";
 import { VERBS, verbSlug } from "./verbs";
-import { ADJECTIVES, ADVERBS, NOUNS, SMALL_WORDS, adjectiveForms, nounArticle, nounPlural } from "./vocab";
+import { ADJECTIVES, ADVERBS, NOUNS, PHRASES, SMALL_WORDS, adjectiveForms, nounArticle, nounPlural, smallWordForms } from "./vocab";
 
 // Finds a word tapped in a reading passage: which entry it belongs to, and the item to add to the review schedule.
 // Imported on demand, because it pulls in the word lists and conjugates every verb.
@@ -15,8 +15,8 @@ export interface LookupMatch {
   en: string;
   /** What this spelling is: "Plural", "Preterite · yo". */
   detail: string;
-  /** The saved item to put in Today's review. */
-  item: string;
+  /** The saved item to put in Today's review. Phrases have none, since Today's review doesn't introduce them. */
+  item?: string;
   href?: string;
 }
 
@@ -32,22 +32,46 @@ const FORM_NAMES = ["", "Feminine", "Plural", "Feminine plural"];
 const REFLEXIVE = /^(?:me|te|se|nos) /;
 const CLITIC = /(?:me|te|se|nos|lo|la|le|los|las|les)$/;
 
+/** Short forms before a noun: un gran día, el primer mes, ningún dios, San Juan. */
+const SHORT_FORMS: Record<string, string> = {
+  gran: "grande",
+  buen: "bueno",
+  mal: "malo",
+  primer: "primero",
+  tercer: "tercero",
+  algún: "alguno",
+  ningún: "ninguno",
+  cualquier: "cualquiera",
+  san: "santo",
+};
+
+/** Noun topics where a masculine -o or -or noun also has a feminine for a woman: abogada, diseñadora. */
+const PEOPLE_TOPICS = new Set(["people", "work", "family"]);
+
 /** Single words only: a tap lands on one word. */
 const oneWord = (s: string) => !/\s/.test(s);
 const norm = (s: string) => s.toLowerCase();
 
 interface Index {
   words: Map<string, LookupMatch[]>;
+  /** Words only found inside a longer entry, tried when nothing else matches: embargo -> sin embargo. */
+  parts: Map<string, LookupMatch[]>;
+  /** A woman's form of a noun for people, tried when nothing else matches: diseñadora -> diseñador. */
+  feminine: Map<string, LookupMatch[]>;
   verbs: Map<string, Map<string, VerbHit>>;
   /** Infinitives, gerunds and commands, with accents removed, for forms with pronouns attached: decirme, cómelo. */
   attachable: Map<string, Map<string, VerbHit>>;
 }
 
-function addWord(index: Index, spelling: string, match: LookupMatch) {
-  if (!oneWord(spelling)) return;
-  const list = index.words.get(norm(spelling)) ?? [];
+function addTo(map: Map<string, LookupMatch[]>, spelling: string, match: LookupMatch) {
+  const list = map.get(norm(spelling)) ?? [];
   if (!list.some((m) => m.key === match.key)) list.push(match);
-  index.words.set(norm(spelling), list);
+  map.set(norm(spelling), list);
+}
+
+function addWord(index: Index, spelling: string, match: LookupMatch) {
+  if (oneWord(spelling)) return addTo(index.words, spelling, match);
+  for (const part of spelling.split(/[^\p{L}]+/u).filter(Boolean)) addTo(index.parts, part, { ...match, detail: `${match.detail}, part of “${spelling}”` });
 }
 
 function verbHit(map: Map<string, Map<string, VerbHit>>, spelling: string, inf: string, en: string): VerbHit {
@@ -65,12 +89,17 @@ function addUse(hit: VerbHit, tense: TenseId, person: string) {
 }
 
 function buildIndex(): Index {
-  const index: Index = { words: new Map(), verbs: new Map(), attachable: new Map() };
+  const index: Index = { words: new Map(), parts: new Map(), feminine: new Map(), verbs: new Map(), attachable: new Map() };
 
   for (const n of NOUNS) {
     const base = { key: `noun:${n.es}`, headword: `${nounArticle(n)} ${n.es}`, en: n.en, item: `vocab:noun:${n.es}:toEnglish` };
     addWord(index, n.es, { ...base, detail: "Noun" });
     if (nounPlural(n) !== n.es) addWord(index, nounPlural(n), { ...base, detail: "Noun, plural" });
+    if (n.gender === "m" && !n.article && PEOPLE_TOPICS.has(n.topic) && /(?:o|or)$/.test(n.es) && oneWord(n.es)) {
+      const woman = n.es.endsWith("o") ? n.es.slice(0, -1) + "a" : n.es + "a";
+      addTo(index.feminine, woman, { ...base, detail: "Noun, feminine" });
+      addTo(index.feminine, woman + "s", { ...base, detail: "Noun, feminine plural" });
+    }
   }
   for (const a of ADJECTIVES) {
     adjectiveForms(a).forEach((form, i) => {
@@ -89,7 +118,18 @@ function buildIndex(): Index {
   for (const w of SMALL_WORDS) {
     const match = { key: `small:${w.es}:${w.en}`, headword: w.es, en: w.en, detail: "Small word", item: `vocab:small:${w.es}:toEnglish` };
     addWord(index, w.es, match);
-    for (const form of (w.forms ?? "").split(",").map((f) => f.trim()).filter(Boolean)) addWord(index, form, match);
+    for (const form of smallWordForms(w)) addWord(index, form, match);
+  }
+  // Only one-word phrases (Gracias., Hola.): longer ones would make every tap match a phrase.
+  for (const p of PHRASES) {
+    const word = p.es.replace(/[^\p{L}\s]/gu, "").trim();
+    if (oneWord(word)) addWord(index, word, { key: `phrase:${p.es}`, headword: p.es, en: p.en, detail: "Phrase, in the flashcards" });
+  }
+  for (const [short, full] of Object.entries(SHORT_FORMS)) {
+    for (const m of index.words.get(full) ?? []) {
+      if (m.detail !== "Adjective" && m.detail !== "Small word") continue;
+      addTo(index.words, short, { ...m, detail: `${m.detail}, short form before a noun` });
+    }
   }
 
   for (const verb of VERBS) {
@@ -122,7 +162,16 @@ function buildIndex(): Index {
       const hit = verbHit(index.verbs, norm(form), verb.inf, verb.en);
       if (!hit.nonfinite.includes(name)) hit.nonfinite.push(name);
       if (name !== "Past participle") verbHit(index.attachable, stripAccents(norm(form)), verb.inf, verb.en).nonfinite.push(name);
+      // Participles agree like adjectives: Estados Unidos, las puertas cerradas.
+      if (name === "Past participle" && form.endsWith("o")) {
+        for (const ending of ["a", "os", "as"]) {
+          const agreeing = verbHit(index.verbs, norm(form.slice(0, -1) + ending), verb.inf, verb.en);
+          if (!agreeing.nonfinite.includes(name)) agreeing.nonfinite.push(name);
+        }
+      }
     }
+    // Haber's impersonal present, which the él form (ha) doesn't cover.
+    if (verb.inf === "haber") addUse(verbHit(index.verbs, "hay", verb.inf, verb.en), "present", "there is, there are");
   }
   return index;
 }
@@ -154,6 +203,8 @@ export function lookupWord(token: string): LookupMatch[] {
   const words = built.words.get(spelling) ?? [];
   const verbs = [...(built.verbs.get(spelling)?.values() ?? [])].map(verbMatch);
   if (words.length + verbs.length > 0) return [...words, ...verbs];
+  const feminine = built.feminine.get(spelling);
+  if (feminine) return feminine;
 
   // Pronouns attached to the end: dime, decirlo, diciéndome, levantarme.
   let base = spelling;
@@ -166,5 +217,5 @@ export function lookupWord(token: string): LookupMatch[] {
       return { ...verbMatch(hit), detail: `${kinds.join(" or ")}, with a pronoun attached` };
     });
   }
-  return [];
+  return built.parts.get(spelling) ?? [];
 }

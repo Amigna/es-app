@@ -16,6 +16,7 @@ import {
   isPluralOnly,
   levelRank,
   nounArticle,
+  smallWordForms,
   upToLevel,
   type Adjective,
   type Example,
@@ -44,12 +45,14 @@ interface Word {
   shown: string;
   ex?: Example;
   note?: string;
+  gender?: "m" | "f";
 }
 
 const nounWord = (n: Noun): Word => ({
   es: n.es,
   en: n.en,
   type: "noun",
+  gender: n.gender,
   accepted: [n.es, `${nounArticle(n)} ${n.es}`],
   shown: `${nounArticle(n)} ${n.es}`,
   ex: n.ex,
@@ -81,9 +84,13 @@ const agreeingAdjectives = () => ADJECTIVES.filter((a) => new Set(adjectiveForms
 function toSpanishCard(word: Word, everyWord: Word[]): Card {
   // Any word sharing a core meaning is correct: "bus" can't tell the learner whether autobús or guagua is meant.
   // Small words are the exception: "you (formal)" can't take tú, and the gloss is what tells them apart.
+  // A gloss that names a gender, like "cousin (female)", asks for that one: primo isn't right for it.
   const meanings = englishAnswers(word.en);
+  const gender = /\((?:fe)?male\)/.test(word.en) ? word.gender : undefined;
   const sameMeaning = everyWord.filter((w) =>
-    word.type === "small" ? w.type === "small" && w.en === word.en : englishAnswers(w.en).some((m) => meanings.includes(m)),
+    word.type === "small"
+      ? w.type === "small" && w.en === word.en
+      : englishAnswers(w.en).some((m) => meanings.includes(m)) && !(gender && w.gender && w.gender !== gender),
   );
   return {
     id: `es:${word.es}`,
@@ -106,7 +113,7 @@ function allSpellings(): string[] {
     ...NOUNS.map((n) => n.es),
     ...ADJECTIVES.flatMap(adjectiveForms),
     ...ADVERBS.map((a) => a.es),
-    ...SMALL_WORDS.flatMap((w) => [w.es, ...(w.forms ?? "").split(",").map((f) => f.trim())]),
+    ...SMALL_WORDS.flatMap((w) => [w.es, ...smallWordForms(w)]),
   ].filter(Boolean);
   return spellings;
 }

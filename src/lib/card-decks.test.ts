@@ -70,6 +70,17 @@ describe("vocabDeck", () => {
     assert.equal(gradeCard(guagua, "autobús"), "correct");
   });
 
+  it("keeps to the gender a gloss names", () => {
+    const family = vocabDeck(options({ kinds: ["toSpanish"], wordTypes: ["noun"], topics: ["family"] }));
+    const prima = draw(family, (c) => c.title === "cousin (female)");
+    assert.equal(gradeCard(prima, "prima"), "correct");
+    assert.equal(gradeCard(prima, "primo"), "wrong");
+    const primo = draw(family, (c) => c.title === "cousin (male)");
+    assert.equal(gradeCard(primo, "prima"), "wrong");
+    const english = vocabDeck(options({ kinds: ["toEnglish"], wordTypes: ["noun"], topics: ["family"] }));
+    assert.equal(gradeCard(draw(english, (c) => c.title === "prima"), "cousin"), "correct");
+  });
+
   it("accepts the plain word for an affectionate one, and the other way round", () => {
     const people = vocabDeck(options({ kinds: ["toSpanish"], wordTypes: ["noun"], topics: ["people"] }));
     const grandpa = draw(people, (c) => c.title === "grandpa, grandfather");

@@ -114,7 +114,7 @@ describe("vocabulary data", () => {
     }
     for (const n of NOUNS) assert.ok(n.gender === "m" || n.gender === "f", n.es);
     for (const p of PHRASES) assert.ok(p.en && p.topic, p.es);
-    const topics = ["prepositions", "conjunctions", "pronouns", "question words"];
+    const topics = ["prepositions", "conjunctions", "pronouns", "question words", "articles", "numbers"];
     for (const w of SMALL_WORDS) assert.ok(topics.includes(w.topic), w.es);
   });
 

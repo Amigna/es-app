@@ -41,16 +41,23 @@ export interface Adverb {
   ex: Example;
 }
 
-/** Prepositions, conjunctions, pronouns and question words. */
+/** Prepositions, conjunctions, pronouns, question words, articles and numbers. */
 export interface SmallWord {
   es: string;
   en: string;
   topic: string;
   ex: Example;
   note?: string;
-  /** Other forms, shown when browsing: esta, estos, estas. */
+  /** Other forms, shown when browsing: esta, estos, estas, or "plural sus". */
   forms?: string;
 }
+
+/** The spellings in a small word's forms, without the "plural" label: "plural sus" -> ["sus"]. */
+export const smallWordForms = (w: SmallWord): string[] =>
+  (w.forms ?? "")
+    .split(",")
+    .map((f) => f.trim().replace(/^plural /, ""))
+    .filter(Boolean);
 
 export interface Phrase {
   es: string;
