@@ -110,6 +110,21 @@ describe("vocabDeck", () => {
     assert.equal(accentTrap(card, "donde"), "donde");
   });
 
+  it("takes digits for a number", () => {
+    const next = vocabDeck(options({ kinds: ["toEnglish"], wordTypes: ["small"] }));
+    const nineteen = draw(next, (c) => c.title === "diecinueve");
+    assert.equal(gradeCard(nineteen, "19"), "correct");
+    assert.equal(gradeCard(nineteen, "nineteen"), "correct");
+    assert.equal(gradeCard(nineteen, "18"), "wrong");
+    assert.equal(gradeCard(draw(next, (c) => c.title === "cien"), "100"), "correct");
+    assert.equal(gradeCard(draw(next, (c) => c.title === "mil"), "1,000"), "correct");
+  });
+
+  it("takes un poco for a little", () => {
+    const next = vocabDeck(options({ kinds: ["toSpanish"], wordTypes: ["adverb"] }));
+    assert.equal(gradeCard(draw(next, (c) => c.title === "a little, a bit"), "un poco"), "correct");
+  });
+
   it("limits nouns to the chosen topics", () => {
     const foods = new Set(NOUNS.filter((n) => n.topic === "food").map((n) => n.es));
     const next = vocabDeck(options({ kinds: ["gender"], wordTypes: ["noun"], topics: ["food"] }));

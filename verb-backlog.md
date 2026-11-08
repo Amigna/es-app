@@ -12,34 +12,6 @@ When adding a batch:
 - Delete the batch from this file once it's in `verbs.json`, and update the verb count in `plan.md`.
 - If a verb is dropped, move it to "Dropped" at the bottom with the reason, so it isn't suggested again.
 
-## Batch 22
-
-- retar: to challenge; to scold (Southern Cone)
-- rozar: to brush against
-- sellar: to seal, to stamp
-- silbar: to whistle
-- soplar: to blow
-- sortear: to draw lots; to dodge
-- sujetar: to hold, to fasten
-- tachar: to cross out
-- tapar: to cover
-- tararear: to hum
-- torcer: to twist
-- trasnochar: to stay up late
-- tumbar: to knock down
-- ubicar: to locate, to place (Latin America)
-- vendar: to bandage
-- volcar: to tip over
-- amarrar: to tie (Latin America)
-- arrastrar: to drag
-- picar: to chop; to sting; to be spicy
-- interrumpir: to interrupt
-- reemplazar: to replace
-- rescatar: to rescue
-- secuestrar: to kidnap
-- alabar: to praise
-- agradar: to please
-
 ## Batch 23
 
 - aparentar: to pretend; to look (an age)

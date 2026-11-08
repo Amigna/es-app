@@ -118,14 +118,28 @@ function allSpellings(): string[] {
   return spellings;
 }
 
+const ONES = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"];
+const TENS = ["twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
+
+/** Number glosses also take the digits: 19 is as right as nineteen for diecinueve. */
+const DIGITS: Record<string, string[]> = {
+  ...Object.fromEntries(ONES.map((w, i) => [w, [String(i)]])),
+  ...Object.fromEntries(TENS.map((w, i) => [w, [String(20 + i * 10)]])),
+  hundred: ["100"],
+  "one hundred": ["100"],
+  thousand: ["1000", "1,000"],
+  "one thousand": ["1000", "1,000"],
+};
+
 function toEnglishCard(word: Word): Card {
+  const answers = englishAnswers(word.en);
   return {
     id: `en:${word.es}`,
     badge: "Spanish to English",
     title: word.es,
     titleIsSpanish: true,
     ask: "In English",
-    answers: englishAnswers(word.en),
+    answers: [...new Set([...answers, ...answers.flatMap((a) => DIGITS[a] ?? [])])],
     shown: word.en,
     english: true,
     track: vocabTrack(word.type, word.es, "toEnglish"),

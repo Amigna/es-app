@@ -1,0 +1,824 @@
+{
+ "trasnochar": {
+  "present": [
+   {"person":2,"es":"Mi hermano trasnocha todos los fines de semana.","en":"My brother stays up late every weekend."},
+   {"person":0,"es":"Cuando trasnocho, no rindo en el trabajo.","en":"When I stay up late, I'm useless at work."},
+   {"person":1,"es":"Trasnochas demasiado con esos videojuegos.","en":"You stay up way too late with those video games."},
+   {"person":3,"es":"Los viernes trasnochamos viendo películas.","en":"On Fridays we stay up late watching movies."},
+   {"person":4,"es":"Los estudiantes trasnochan antes de los exámenes.","en":"Students stay up late before exams."}
+  ],
+  "preterite": [
+   {"person":0,"es":"Anoche trasnoché terminando el informe.","en":"Last night I stayed up late finishing the report."},
+   {"person":1,"es":"¿Trasnochaste otra vez? Tienes ojeras.","en":"Did you stay up late again? You've got bags under your eyes."},
+   {"person":2,"es":"Mi papá trasnochó esperando a mi hermana.","en":"My dad stayed up late waiting for my sister."},
+   {"person":3,"es":"En Año Nuevo trasnochamos hasta las cinco.","en":"On New Year's we stayed up until five."},
+   {"person":4,"es":"Los invitados trasnocharon en la boda.","en":"The guests stayed up late at the wedding."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo nunca trasnochaba.","en":"My grandfather never stayed up late."},
+   {"person":0,"es":"En la universidad yo trasnochaba casi todos los días.","en":"In college I stayed up late almost every night."},
+   {"person":1,"es":"Tú trasnochabas leyendo novelas.","en":"You used to stay up late reading novels."},
+   {"person":3,"es":"De jóvenes, trasnochábamos en la playa.","en":"When we were young, we'd stay up late on the beach."},
+   {"person":4,"es":"Los vecinos trasnochaban con la música a todo volumen.","en":"The neighbors stayed up late with the music blasting."}
+  ],
+  "future": [
+   {"person":0,"es":"No trasnocharé, mañana madrugo.","en":"I won't stay up late, I'm getting up early tomorrow."},
+   {"person":1,"es":"Si empiezas esa serie, trasnocharás.","en":"If you start that series, you'll be up late."},
+   {"person":2,"es":"Mi hija trasnochará estudiando para el examen.","en":"My daughter will stay up late studying for the exam."},
+   {"person":3,"es":"En las vacaciones trasnocharemos todas las noches.","en":"On vacation we'll stay up late every night."},
+   {"person":4,"es":"Los niños trasnocharán en la pijamada.","en":"The kids will stay up late at the sleepover."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo no trasnocharía antes de un viaje largo.","en":"I wouldn't stay up late before a long trip."},
+   {"person":1,"es":"¿Trasnocharías por ver un partido?","en":"Would you stay up late to watch a game?"},
+   {"person":2,"es":"Mi mamá nunca trasnocharía un día de semana.","en":"My mom would never stay up late on a weeknight."},
+   {"person":3,"es":"Trasnocharíamos más, pero tenemos hijos pequeños.","en":"We'd stay up later, but we have little kids."},
+   {"person":4,"es":"Ellos trasnocharían todos los días.","en":"They'd stay up late every night."}
+  ],
+  "presentPerfect": [
+   {"person":1,"es":"Se nota que has trasnochado.","en":"You can tell you've been up late."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"No quiero que trasnoches antes del examen.","en":"I don't want you to stay up late before the exam."},
+   {"person":0,"es":"El médico no quiere que yo trasnoche.","en":"The doctor doesn't want me staying up late."},
+   {"person":2,"es":"Es raro que mi papá trasnoche.","en":"It's unusual for my dad to stay up late."},
+   {"person":3,"es":"Es mejor que no trasnochemos hoy.","en":"We'd better not stay up late tonight."},
+   {"person":4,"es":"No es bueno que los niños trasnochen.","en":"It's not good for kids to stay up late."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No trasnoches, mañana hay escuela.","en":"Don't stay up late, there's school tomorrow."}
+  ]
+ },
+ "tumbar": {
+  "present": [
+   {"person":2,"es":"El viento tumba los árboles viejos.","en":"The wind knocks down the old trees."},
+   {"person":0,"es":"Cada vez que entro, tumbo algo con la mochila.","en":"Every time I come in, I knock something over with my backpack."},
+   {"person":1,"es":"Siempre tumbas los vasos con el codo.","en":"You're always knocking glasses over with your elbow."},
+   {"person":3,"es":"Tumbamos la pared para agrandar la cocina.","en":"We're knocking down the wall to make the kitchen bigger."},
+   {"person":4,"es":"Los perros tumban la basura cada noche.","en":"The dogs knock over the trash every night."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El huracán tumbó los postes de luz.","en":"The hurricane knocked down the power poles."},
+   {"person":0,"es":"Tumbé el florero sin querer.","en":"I knocked over the vase by accident."},
+   {"person":1,"es":"¿Tumbaste todos los bolos?","en":"Did you knock down all the pins?"},
+   {"person":3,"es":"Tumbamos la casa vieja para construir otra.","en":"We tore down the old house to build a new one."},
+   {"person":4,"es":"Los manifestantes tumbaron la valla.","en":"The protesters knocked down the fence."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El calor me tumbaba en la cama todas las tardes.","en":"The heat laid me out in bed every afternoon."},
+   {"person":0,"es":"De niño, yo tumbaba las torres de bloques de mi hermana.","en":"As a kid, I'd knock down my sister's block towers."},
+   {"person":1,"es":"Tú tumbabas mangos del árbol con una vara.","en":"You'd knock mangoes off the tree with a stick."},
+   {"person":3,"es":"Tumbábamos las latas con piedras.","en":"We'd knock down cans with stones."},
+   {"person":4,"es":"Las olas tumbaban a los surfistas.","en":"The waves knocked the surfers over."}
+  ],
+  "future": [
+   {"person":2,"es":"Esa medicina te tumbará.","en":"That medicine will knock you out."},
+   {"person":0,"es":"Tumbaré esa pared el fin de semana.","en":"I'll knock down that wall on the weekend."},
+   {"person":1,"es":"Con un buen tiro tumbarás todos los bolos.","en":"With a good throw you'll knock down all the pins."},
+   {"person":3,"es":"Tumbaremos los árboles secos antes de la temporada de lluvias.","en":"We'll cut down the dead trees before the rainy season."},
+   {"person":4,"es":"Las autoridades tumbarán el edificio abandonado.","en":"The authorities will tear down the abandoned building."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Un viento así tumbaría la carpa.","en":"A wind like that would knock the tent down."},
+   {"person":0,"es":"Yo tumbaría esa pared para tener más luz.","en":"I'd knock down that wall to get more light."},
+   {"person":1,"es":"¿Tumbarías un árbol tan viejo?","en":"Would you cut down such an old tree?"},
+   {"person":3,"es":"Tumbaríamos la cerca, pero es del vecino.","en":"We'd knock down the fence, but it's the neighbor's."},
+   {"person":4,"es":"Esos niños tumbarían cualquier cosa.","en":"Those kids would knock over anything."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"La gripe me ha tumbado toda la semana.","en":"The flu has knocked me out all week."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Cuidado, no quiero que tumbes la lámpara.","en":"Careful, I don't want you to knock over the lamp."},
+   {"person":0,"es":"Mi mamá tiene miedo de que yo tumbe el pastel.","en":"My mom is afraid I'll knock over the cake."},
+   {"person":2,"es":"Ojalá que el viento no tumbe la antena.","en":"I hope the wind doesn't knock down the antenna."},
+   {"person":3,"es":"El dueño quiere que tumbemos la pared del fondo.","en":"The owner wants us to knock down the back wall."},
+   {"person":4,"es":"No dejes que los perros tumben la basura.","en":"Don't let the dogs knock over the trash."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No tumbes los vasos, ten cuidado.","en":"Don't knock the glasses over, be careful."}
+  ]
+ },
+ "ubicar": {
+  "present": [
+   {"person":2,"es":"El hotel se ubica cerca del centro.","en":"The hotel is located near downtown."},
+   {"person":0,"es":"No ubico bien esa calle.","en":"I can't quite place that street."},
+   {"person":1,"es":"¿Ubicas a mi prima Laura?","en":"Do you know who my cousin Laura is?"},
+   {"person":3,"es":"Ubicamos las sillas en círculo.","en":"We arrange the chairs in a circle."},
+   {"person":4,"es":"Los meseros ubican a los clientes en sus mesas.","en":"The waiters seat the customers at their tables."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La policía ubicó el carro robado.","en":"The police located the stolen car."},
+   {"person":0,"es":"Por fin ubiqué la tienda en el mapa.","en":"I finally found the store on the map."},
+   {"person":1,"es":"¿Dónde ubicaste las plantas?","en":"Where did you put the plants?"},
+   {"person":3,"es":"Ubicamos a los invitados por familias.","en":"We seated the guests by family."},
+   {"person":4,"es":"Los rescatistas ubicaron a los excursionistas perdidos.","en":"The rescuers located the lost hikers."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo ubicaba cualquier país en el mapa.","en":"My grandfather could find any country on the map."},
+   {"person":0,"es":"Yo no ubicaba esa canción.","en":"I couldn't place that song."},
+   {"person":1,"es":"Tú siempre ubicabas los mejores asientos.","en":"You always found the best seats."},
+   {"person":3,"es":"Ubicábamos las estrellas con un libro.","en":"We'd find the stars with a book."},
+   {"person":4,"es":"Los profesores nos ubicaban por orden alfabético.","en":"The teachers seated us in alphabetical order."}
+  ],
+  "future": [
+   {"person":2,"es":"El GPS ubicará la dirección exacta.","en":"The GPS will find the exact address."},
+   {"person":0,"es":"Te ubicaré en la primera fila.","en":"I'll put you in the front row."},
+   {"person":1,"es":"Con este mapa ubicarás el museo fácilmente.","en":"With this map you'll find the museum easily."},
+   {"person":3,"es":"Ubicaremos la mesa junto a la ventana.","en":"We'll put the table by the window."},
+   {"person":4,"es":"Los organizadores ubicarán a los niños adelante.","en":"The organizers will put the kids in front."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo ubicaría el sofá frente a la tele.","en":"I'd put the sofa facing the TV."},
+   {"person":1,"es":"¿Dónde ubicarías el librero?","en":"Where would you put the bookshelf?"},
+   {"person":2,"es":"Un buen mapa ubicaría todos los hospitales.","en":"A good map would show all the hospitals."},
+   {"person":3,"es":"Ubicaríamos la tienda en el centro.","en":"We'd put the store downtown."},
+   {"person":4,"es":"Ellos no ubicarían ese pueblo ni con un mapa.","en":"They couldn't find that town even with a map."}
+  ],
+  "presentPerfect": [
+   {"person":4,"es":"Ya han ubicado al dueño del perro.","en":"They've already found the dog's owner."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Necesito que ubiques este documento.","en":"I need you to find this document."},
+   {"person":0,"es":"El jefe quiere que yo ubique a los nuevos empleados.","en":"The boss wants me to get the new employees settled."},
+   {"person":2,"es":"Ojalá que la policía ubique al ladrón.","en":"I hope the police find the thief."},
+   {"person":3,"es":"Es importante que ubiquemos las salidas de emergencia.","en":"It's important for us to know where the emergency exits are."},
+   {"person":4,"es":"Espera a que te ubiquen en tu mesa.","en":"Wait for them to seat you."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Ubica tu país en el mapa.","en":"Find your country on the map."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "vendar": {
+  "present": [
+   {"person":2,"es":"La enfermera venda la herida con cuidado.","en":"The nurse bandages the wound carefully."},
+   {"person":0,"es":"Antes de cada pelea me vendo las manos.","en":"Before every fight I wrap my hands."},
+   {"person":1,"es":"¿Le vendas los ojos a la niña para la piñata?","en":"Are you blindfolding the girl for the piñata?"},
+   {"person":3,"es":"Vendamos la pata del perro.","en":"We bandage the dog's paw."},
+   {"person":4,"es":"Los paramédicos vendan a los heridos.","en":"The paramedics bandage the injured."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El médico me vendó el brazo.","en":"The doctor bandaged my arm."},
+   {"person":0,"es":"Le vendé el dedo a mi hermanito.","en":"I bandaged my little brother's finger."},
+   {"person":1,"es":"¿Vendaste bien la herida?","en":"Did you bandage the wound properly?"},
+   {"person":3,"es":"Le vendamos los ojos al cumpleañero para la piñata.","en":"We blindfolded the birthday boy for the piñata."},
+   {"person":4,"es":"Los entrenadores le vendaron la rodilla al jugador.","en":"The trainers wrapped the player's knee."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuela vendaba nuestras rodillas raspadas.","en":"My grandmother used to bandage our scraped knees."},
+   {"person":0,"es":"Yo vendaba a los heridos en la Cruz Roja.","en":"I'd bandage the injured at the Red Cross."},
+   {"person":1,"es":"Tú siempre te vendabas las manos antes de entrenar.","en":"You always wrapped your hands before training."},
+   {"person":3,"es":"Nos vendábamos las muñecas para jugar voleibol.","en":"We'd tape our wrists to play volleyball."},
+   {"person":4,"es":"Las enfermeras vendaban a los pacientes muy rápido.","en":"The nurses bandaged patients very quickly."}
+  ],
+  "future": [
+   {"person":2,"es":"La enfermera te vendará el pie.","en":"The nurse will bandage your foot."},
+   {"person":0,"es":"Te vendaré la mano para que no se infecte.","en":"I'll bandage your hand so it doesn't get infected."},
+   {"person":1,"es":"Tú vendarás los ojos de los jugadores.","en":"You'll blindfold the players."},
+   {"person":3,"es":"Vendaremos la herida cuando deje de sangrar.","en":"We'll bandage the wound when it stops bleeding."},
+   {"person":4,"es":"En el hospital te vendarán la rodilla.","en":"At the hospital they'll bandage your knee."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo vendaría ese tobillo enseguida.","en":"I'd bandage that ankle right away."},
+   {"person":1,"es":"¿Me vendarías el dedo?","en":"Would you bandage my finger?"},
+   {"person":2,"es":"Un buen entrenador vendaría la mano del boxeador.","en":"A good trainer would wrap the boxer's hand."},
+   {"person":3,"es":"Te vendaríamos la herida, pero no tenemos gasas.","en":"We'd bandage your wound, but we don't have any gauze."},
+   {"person":4,"es":"Los médicos vendarían la herida después de limpiarla.","en":"The doctors would bandage the wound after cleaning it."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"La enfermera ya le ha vendado la pierna.","en":"The nurse has already bandaged his leg."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Quiero que me vendes la mano.","en":"I want you to bandage my hand."},
+   {"person":0,"es":"¿Quieres que yo te vende la rodilla?","en":"Do you want me to bandage your knee?"},
+   {"person":2,"es":"Es mejor que un médico te vende el brazo.","en":"It's better for a doctor to bandage your arm."},
+   {"person":3,"es":"Es importante que vendemos bien el tobillo.","en":"It's important for us to wrap the ankle well."},
+   {"person":4,"es":"Espera a que los médicos te venden la pierna.","en":"Wait for the doctors to bandage your leg."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Venda la herida con esta gasa.","en":"Bandage the wound with this gauze."}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No vendes el tobillo tan apretado.","en":"Don't wrap the ankle so tight."}
+  ]
+ },
+ "volcar": {
+  "present": [
+   {"person":2,"es":"El camión vuelca la arena en la obra.","en":"The truck dumps the sand at the construction site."},
+   {"person":0,"es":"Siempre vuelco el café sobre los papeles.","en":"I'm always knocking my coffee over onto my papers."},
+   {"person":1,"es":"Vuelcas toda tu energía en el trabajo.","en":"You pour all your energy into work."},
+   {"person":3,"es":"Volcamos la mezcla en el molde.","en":"We pour the batter into the pan."},
+   {"person":4,"es":"Los niños vuelcan los juguetes en el piso.","en":"The kids dump their toys out on the floor."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El autobús volcó en la curva.","en":"The bus overturned on the curve."},
+   {"person":0,"es":"Volqué el vaso de leche sin querer.","en":"I knocked over the glass of milk by accident."},
+   {"person":1,"es":"¿Volcaste la basura en el contenedor?","en":"Did you dump the trash in the dumpster?"},
+   {"person":3,"es":"Volcamos la canoa en el río, pero todos estamos bien.","en":"We tipped the canoe over in the river, but we're all fine."},
+   {"person":4,"es":"Los gatos volcaron la maceta.","en":"The cats knocked over the flowerpot."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo volcaba toda su paciencia en el jardín.","en":"My grandfather poured all his patience into the garden."},
+   {"person":0,"es":"Yo volcaba la tierra en las macetas.","en":"I'd pour the soil into the pots."},
+   {"person":1,"es":"Tú volcabas el cereal en la leche, al revés que todos.","en":"You'd pour the cereal into the milk, the opposite of everyone else."},
+   {"person":3,"es":"Volcábamos las cajas para buscar los juguetes.","en":"We'd dump out the boxes looking for toys."},
+   {"person":4,"es":"Las olas volcaban los botes pequeños.","en":"The waves would capsize the small boats."}
+  ],
+  "future": [
+   {"person":2,"es":"Si sigues así, el carrito volcará.","en":"If you keep that up, the cart will tip over."},
+   {"person":0,"es":"Volcaré el arroz en una fuente.","en":"I'll turn the rice out into a serving dish."},
+   {"person":1,"es":"Volcarás el vaso si lo pones ahí.","en":"You'll knock the glass over if you put it there."},
+   {"person":3,"es":"Volcaremos todas nuestras ideas en el proyecto.","en":"We'll pour all our ideas into the project."},
+   {"person":4,"es":"Los camiones volcarán la tierra aquí.","en":"The trucks will dump the dirt here."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Con tanto peso, la canoa volcaría.","en":"With so much weight, the canoe would tip over."},
+   {"person":0,"es":"Yo volcaría la mezcla con más cuidado.","en":"I'd pour the batter more carefully."},
+   {"person":1,"es":"¿Volcarías todos tus ahorros en un negocio nuevo?","en":"Would you pour all your savings into a new business?"},
+   {"person":3,"es":"Con tantos platos de un lado, volcaríamos la mesa.","en":"With so many plates on one side, we'd tip the table over."},
+   {"person":4,"es":"Esos niños volcarían la piscina inflable.","en":"Those kids would tip over the inflatable pool."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"Un camión ha volcado en la autopista.","en":"A truck has overturned on the highway."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Cuidado, no quiero que vuelques el jugo.","en":"Careful, I don't want you to spill the juice."},
+   {"person":0,"es":"Mi mamá teme que yo vuelque la sopa.","en":"My mom's afraid I'll spill the soup."},
+   {"person":2,"es":"Es peligroso que la canoa vuelque aquí.","en":"It's dangerous for the canoe to tip over here."},
+   {"person":3,"es":"Es mejor que volquemos la masa en la mesa.","en":"We'd better turn the dough out onto the table."},
+   {"person":4,"es":"No dejes que los niños vuelquen la pintura.","en":"Don't let the kids knock over the paint."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Vuelca el contenido de la bolsa en la mesa.","en":"Dump out what's in the bag onto the table."}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No vuelques el agua del florero.","en":"Don't knock over the water in the vase."}
+  ]
+ },
+ "amarrar": {
+  "present": [
+   {"person":2,"es":"Mi papá amarra la lancha al muelle.","en":"My dad ties the boat to the dock."},
+   {"person":0,"es":"Amarro al perro antes de abrir la puerta.","en":"I tie up the dog before opening the door."},
+   {"person":1,"es":"Nunca te amarras los cordones.","en":"You never tie your shoelaces."},
+   {"person":3,"es":"Amarramos las maletas al techo del carro.","en":"We tie the suitcases to the roof of the car."},
+   {"person":4,"es":"Los campesinos amarran los caballos al poste.","en":"The farmers tie the horses to the post."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El pescador amarró el bote con una cuerda.","en":"The fisherman tied up the boat with a rope."},
+   {"person":0,"es":"Amarré los globos a la silla.","en":"I tied the balloons to the chair."},
+   {"person":1,"es":"¿Amarraste bien la carga?","en":"Did you tie down the load properly?"},
+   {"person":3,"es":"Amarramos la hamaca entre dos palmeras.","en":"We tied the hammock between two palm trees."},
+   {"person":4,"es":"Los marineros amarraron el barco al llegar.","en":"The sailors moored the ship when they arrived."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuela se amarraba el pelo con un pañuelo.","en":"My grandmother tied her hair back with a scarf."},
+   {"person":0,"es":"Yo amarraba mi bicicleta a un árbol.","en":"I used to tie my bike to a tree."},
+   {"person":1,"es":"Tú amarrabas los regalos con cintas de colores.","en":"You'd tie the presents with colored ribbons."},
+   {"person":3,"es":"Amarrábamos la cabra en el patio.","en":"We'd tie the goat up in the yard."},
+   {"person":4,"es":"Los vaqueros amarraban las vacas para ordeñarlas.","en":"The cowboys tied up the cows to milk them."}
+  ],
+  "future": [
+   {"person":0,"es":"Amarraré el árbol para que no se caiga.","en":"I'll tie the tree so it doesn't fall over."},
+   {"person":1,"es":"Le amarrarás los zapatos al niño, ¿verdad?","en":"You'll tie the boy's shoes, right?"},
+   {"person":2,"es":"El vecino amarrará al perro durante la fiesta.","en":"The neighbor will tie up his dog during the party."},
+   {"person":3,"es":"Amarraremos las sillas por si hay viento.","en":"We'll tie down the chairs in case it's windy."},
+   {"person":4,"es":"Los pescadores amarrarán las lanchas antes de la tormenta.","en":"The fishermen will tie up their boats before the storm."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo amarraría esa cuerda con doble nudo.","en":"I'd tie that rope with a double knot."},
+   {"person":1,"es":"¿Me amarrarías el delantal?","en":"Would you tie my apron?"},
+   {"person":2,"es":"Un buen marinero amarraría mejor el barco.","en":"A good sailor would moor the boat better."},
+   {"person":3,"es":"Amarraríamos al perro, pero llora toda la noche.","en":"We'd tie the dog up, but he cries all night."},
+   {"person":4,"es":"Ellos nunca amarrarían a un animal al sol.","en":"They'd never tie an animal up in the sun."}
+  ],
+  "presentPerfect": [
+   {"person":1,"es":"¿Ya has amarrado los globos?","en":"Have you tied the balloons yet?"}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Quiero que amarres al perro.","en":"I want you to tie up the dog."},
+   {"person":0,"es":"Mi hijo quiere que yo le amarre los zapatos.","en":"My son wants me to tie his shoes."},
+   {"person":2,"es":"Es mejor que el capitán amarre el barco ya.","en":"The captain had better tie up the boat now."},
+   {"person":3,"es":"Es necesario que amarremos bien la carpa.","en":"We need to tie the tent down well."},
+   {"person":4,"es":"Pídeles que amarren las cajas.","en":"Ask them to tie up the boxes."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Amarra bien los cordones.","en":"Tie your laces tight."}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No amarres al perro tan corto.","en":"Don't tie the dog up on such a short rope."}
+  ]
+ },
+ "arrastrar": {
+  "present": [
+   {"person":2,"es":"El niño arrastra su cobija por toda la casa.","en":"The boy drags his blanket all over the house."},
+   {"person":0,"es":"Arrastro la maleta porque pesa mucho.","en":"I drag the suitcase because it's so heavy."},
+   {"person":1,"es":"Arrastras los pies cuando caminas.","en":"You drag your feet when you walk."},
+   {"person":3,"es":"Arrastramos la mesa hasta el patio.","en":"We drag the table out to the patio."},
+   {"person":4,"es":"Los ríos arrastran mucha basura en la temporada de lluvias.","en":"The rivers carry a lot of trash in the rainy season."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La corriente arrastró la lancha río abajo.","en":"The current dragged the boat downriver."},
+   {"person":0,"es":"Arrastré el sofá hasta la otra pared.","en":"I dragged the sofa over to the other wall."},
+   {"person":1,"es":"¿Arrastraste la silla? Hiciste mucho ruido.","en":"Did you drag the chair? That was really loud."},
+   {"person":3,"es":"Arrastramos las cajas hasta el camión.","en":"We dragged the boxes to the truck."},
+   {"person":4,"es":"Mis amigos me arrastraron a la fiesta.","en":"My friends dragged me to the party."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El perro arrastraba la correa por el suelo.","en":"The dog was dragging its leash along the ground."},
+   {"person":0,"es":"Yo arrastraba los pies de cansancio.","en":"I was dragging my feet, I was so tired."},
+   {"person":1,"es":"Tú arrastrabas las palabras cuando tenías sueño.","en":"You'd slur your words when you were sleepy."},
+   {"person":3,"es":"Arrastrábamos los troncos hasta la fogata.","en":"We'd drag the logs to the campfire."},
+   {"person":4,"es":"Los bueyes arrastraban el arado.","en":"The oxen pulled the plow."}
+  ],
+  "future": [
+   {"person":2,"es":"La tormenta arrastrará árboles y piedras.","en":"The storm will sweep away trees and rocks."},
+   {"person":0,"es":"Te arrastraré al gimnasio si hace falta.","en":"I'll drag you to the gym if I have to."},
+   {"person":1,"es":"Arrastrarás esa tos si no te cuidas.","en":"You'll drag that cough out if you don't take care of yourself."},
+   {"person":3,"es":"Arrastraremos la lancha hasta la orilla.","en":"We'll drag the boat up to the shore."},
+   {"person":4,"es":"Las olas arrastrarán el castillo de arena.","en":"The waves will wash the sandcastle away."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo no arrastraría esa caja; mejor la levantamos.","en":"I wouldn't drag that box; let's lift it instead."},
+   {"person":1,"es":"¿Arrastrarías a tu hermano a una fiesta?","en":"Would you drag your brother to a party?"},
+   {"person":2,"es":"Un río tan fuerte arrastraría a cualquiera.","en":"A river that strong would sweep anyone away."},
+   {"person":3,"es":"Arrastraríamos el piano, pero rayaríamos el piso.","en":"We'd drag the piano, but we'd scratch the floor."},
+   {"person":4,"es":"Esos vientos arrastrarían el techo.","en":"Winds like that would carry the roof away."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"El agua ha arrastrado el puente.","en":"The water has swept the bridge away."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"No quiero que arrastres las sillas.","en":"I don't want you dragging the chairs."},
+   {"person":0,"es":"Mi mamá no quiere que yo arrastre la maleta por la escalera.","en":"My mom doesn't want me dragging the suitcase down the stairs."},
+   {"person":2,"es":"Ten cuidado de que la corriente no te arrastre.","en":"Be careful the current doesn't sweep you away."},
+   {"person":3,"es":"Es mejor que arrastremos la cama en lugar de levantarla.","en":"We'd better drag the bed instead of lifting it."},
+   {"person":4,"es":"No dejes que los niños arrastren la cobija por el patio.","en":"Don't let the kids drag the blanket around the yard."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No arrastres los pies.","en":"Don't drag your feet."}
+  ]
+ },
+ "picar": {
+  "present": [
+   {"person":2,"es":"Este chile pica mucho.","en":"This chili pepper is really spicy."},
+   {"person":0,"es":"Pico la cebolla muy fina.","en":"I chop the onion very fine."},
+   {"person":1,"es":"¿Picas el ajo o lo machacas?","en":"Do you chop the garlic or crush it?"},
+   {"person":3,"es":"Picamos fruta para el desayuno.","en":"We cut up fruit for breakfast."},
+   {"person":4,"es":"Los mosquitos pican más de noche.","en":"Mosquitoes bite more at night."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Una abeja me picó en el brazo.","en":"A bee stung me on the arm."},
+   {"person":0,"es":"Piqué el tomate para la salsa.","en":"I chopped the tomato for the salsa."},
+   {"person":1,"es":"¿Picaste el cilantro?","en":"Did you chop the cilantro?"},
+   {"person":3,"es":"Ayer picamos verduras para toda la semana.","en":"Yesterday we chopped vegetables for the whole week."},
+   {"person":4,"es":"Los peces no picaron en toda la tarde.","en":"The fish didn't bite all afternoon."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"La salsa de mi abuela picaba muchísimo.","en":"My grandmother's salsa was super spicy."},
+   {"person":0,"es":"Yo picaba la carne mientras mi mamá cocinaba.","en":"I'd chop the meat while my mom cooked."},
+   {"person":1,"es":"Tú picabas el hielo con un picahielo.","en":"You'd chip the ice with an ice pick."},
+   {"person":3,"es":"Picábamos papel para hacer confeti.","en":"We'd cut up paper to make confetti."},
+   {"person":4,"es":"Los zancudos nos picaban toda la noche.","en":"The mosquitoes bit us all night."}
+  ],
+  "future": [
+   {"person":2,"es":"Este suéter de lana te picará.","en":"This wool sweater will make you itch."},
+   {"person":0,"es":"Picaré la cebolla y tú pelas las papas.","en":"I'll chop the onion and you peel the potatoes."},
+   {"person":1,"es":"Picarás el perejil para la ensalada.","en":"You'll chop the parsley for the salad."},
+   {"person":3,"es":"Picaremos el pollo para los tacos.","en":"We'll chop the chicken for the tacos."},
+   {"person":4,"es":"Los mosquitos te picarán si no usas repelente.","en":"The mosquitoes will bite you if you don't use repellent."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Con más chile, la salsa picaría demasiado.","en":"With more chili, the salsa would be too spicy."},
+   {"person":0,"es":"Yo picaría el ajo más pequeño.","en":"I'd chop the garlic smaller."},
+   {"person":1,"es":"¿Me picarías las zanahorias?","en":"Would you chop the carrots for me?"},
+   {"person":3,"es":"Picaríamos más verdura, pero no hay cuchillos.","en":"We'd chop more vegetables, but there aren't any knives."},
+   {"person":4,"es":"Esas hormigas picarían a cualquiera.","en":"Those ants would bite anyone."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"Me ha picado un mosquito.","en":"A mosquito has bitten me."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Quiero que piques la cebolla.","en":"I want you to chop the onion."},
+   {"person":0,"es":"Mi abuela prefiere que yo pique la fruta.","en":"My grandmother prefers that I cut up the fruit."},
+   {"person":2,"es":"No me gusta que la comida pique tanto.","en":"I don't like food to be so spicy."},
+   {"person":3,"es":"Es mejor que piquemos todo antes de cocinar.","en":"We'd better chop everything before cooking."},
+   {"person":4,"es":"Ojalá que los peces piquen hoy.","en":"I hope the fish bite today."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Pica el cilantro bien fino.","en":"Chop the cilantro really fine."}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No piques la carne todavía.","en":"Don't chop the meat yet."}
+  ]
+ },
+ "interrumpir": {
+  "present": [
+   {"person":2,"es":"Mi hermanito siempre interrumpe cuando hablo por teléfono.","en":"My little brother always interrupts when I'm on the phone."},
+   {"person":0,"es":"Perdón, ¿interrumpo algo?","en":"Sorry, am I interrupting something?"},
+   {"person":1,"es":"Siempre me interrumpes.","en":"You always interrupt me."},
+   {"person":3,"es":"Interrumpimos el programa para dar una noticia urgente.","en":"We interrupt this program for breaking news."},
+   {"person":4,"es":"Los anuncios interrumpen la película cada diez minutos.","en":"The ads interrupt the movie every ten minutes."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La lluvia interrumpió el partido.","en":"The rain interrupted the game."},
+   {"person":0,"es":"Perdón, te interrumpí.","en":"Sorry, I interrupted you."},
+   {"person":1,"es":"¿Por qué interrumpiste a la maestra?","en":"Why did you interrupt the teacher?"},
+   {"person":3,"es":"Interrumpimos la reunión para almorzar.","en":"We broke off the meeting for lunch."},
+   {"person":4,"es":"Los vecinos interrumpieron la siesta con su música.","en":"The neighbors interrupted our nap with their music."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi tío interrumpía a todo el mundo.","en":"My uncle interrupted everyone."},
+   {"person":0,"es":"De niño, yo interrumpía a los adultos todo el tiempo.","en":"As a kid, I interrupted grown-ups all the time."},
+   {"person":1,"es":"Tú interrumpías las clases con tus chistes.","en":"You'd interrupt class with your jokes."},
+   {"person":3,"es":"Interrumpíamos el juego cuando pasaba un carro.","en":"We'd stop the game whenever a car went by."},
+   {"person":4,"es":"Los apagones interrumpían las clases en línea.","en":"The blackouts interrupted the online classes."}
+  ],
+  "future": [
+   {"person":0,"es":"No te interrumpiré más.","en":"I won't interrupt you again."},
+   {"person":1,"es":"Interrumpirás la ceremonia si entras ahora.","en":"You'll interrupt the ceremony if you go in now."},
+   {"person":2,"es":"El presidente interrumpirá sus vacaciones.","en":"The president will cut his vacation short."},
+   {"person":3,"es":"Interrumpiremos el servicio de agua mañana por la mañana.","en":"We'll shut off the water service tomorrow morning."},
+   {"person":4,"es":"Los trabajadores interrumpirán el tráfico durante la obra.","en":"The workers will stop traffic during the construction."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo nunca interrumpiría a alguien que está llorando.","en":"I'd never interrupt someone who's crying."},
+   {"person":1,"es":"¿Interrumpirías una boda para decir la verdad?","en":"Would you interrupt a wedding to tell the truth?"},
+   {"person":2,"es":"Un buen moderador no interrumpiría tanto.","en":"A good moderator wouldn't interrupt so much."},
+   {"person":3,"es":"Interrumpiríamos el viaje, pero ya estamos lejos.","en":"We'd cut the trip short, but we're already far away."},
+   {"person":4,"es":"Ellos interrumpirían la clase por cualquier cosa.","en":"They'd interrupt class over anything."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"Perdón, ¿te he interrumpido?","en":"Sorry, have I interrupted you?"}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"No me gusta que me interrumpas.","en":"I don't like it when you interrupt me."},
+   {"person":0,"es":"Mi abuela no deja que yo interrumpa a los mayores.","en":"My grandmother doesn't let me interrupt the adults."},
+   {"person":2,"es":"Espero que nadie interrumpa la reunión.","en":"I hope nobody interrupts the meeting."},
+   {"person":3,"es":"Es mejor que no interrumpamos al médico.","en":"We'd better not interrupt the doctor."},
+   {"person":4,"es":"Ojalá que no interrumpan la luz otra vez.","en":"I hope they don't cut the power again."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Le pedí a mi hermano que no me interrumpiera.","en":"I asked my brother not to interrupt me."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No interrumpas cuando alguien habla.","en":"Don't interrupt when someone's talking."}
+  ]
+ },
+ "reemplazar": {
+  "present": [
+   {"person":2,"es":"El suplente reemplaza al profesor esta semana.","en":"The substitute is replacing the teacher this week."},
+   {"person":0,"es":"Reemplazo el azúcar por miel.","en":"I replace sugar with honey."},
+   {"person":1,"es":"¿Reemplazas a tu compañera mañana?","en":"Are you covering for your coworker tomorrow?"},
+   {"person":3,"es":"Cada año reemplazamos el filtro del agua.","en":"Every year we replace the water filter."},
+   {"person":4,"es":"Las máquinas reemplazan a muchos trabajadores.","en":"Machines replace a lot of workers."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El técnico reemplazó la pantalla del teléfono.","en":"The technician replaced the phone screen."},
+   {"person":0,"es":"Reemplacé las pilas del control remoto.","en":"I replaced the batteries in the remote."},
+   {"person":1,"es":"¿Reemplazaste el foco del baño?","en":"Did you replace the bathroom light bulb?"},
+   {"person":3,"es":"Reemplazamos la alfombra por piso de madera.","en":"We replaced the carpet with wood flooring."},
+   {"person":4,"es":"Los entrenadores reemplazaron al portero lesionado.","en":"The coaches replaced the injured goalkeeper."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi tía reemplazaba a mi mamá cuando ella trabajaba.","en":"My aunt filled in for my mom when she was at work."},
+   {"person":0,"es":"Yo reemplazaba la mantequilla con aceite.","en":"I used to replace butter with oil."},
+   {"person":1,"es":"Tú reemplazabas a la recepcionista los sábados.","en":"You covered for the receptionist on Saturdays."},
+   {"person":3,"es":"Reemplazábamos las llantas cada dos años.","en":"We'd replace the tires every two years."},
+   {"person":4,"es":"Los nuevos jugadores reemplazaban a los veteranos.","en":"The new players were replacing the veterans."}
+  ],
+  "future": [
+   {"person":2,"es":"Nadie te reemplazará.","en":"Nobody will replace you."},
+   {"person":0,"es":"Mañana reemplazaré la llave del lavamanos.","en":"Tomorrow I'll replace the bathroom sink faucet."},
+   {"person":1,"es":"Reemplazarás a la profesora mientras está de vacaciones.","en":"You'll fill in for the teacher while she's on vacation."},
+   {"person":3,"es":"Reemplazaremos las ventanas viejas.","en":"We'll replace the old windows."},
+   {"person":4,"es":"Los robots reemplazarán muchos trabajos.","en":"Robots will replace a lot of jobs."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo reemplazaría ese sofá viejo.","en":"I'd replace that old sofa."},
+   {"person":1,"es":"¿Me reemplazarías en la reunión de mañana?","en":"Would you fill in for me at tomorrow's meeting?"},
+   {"person":2,"es":"Nada reemplazaría una comida casera.","en":"Nothing would replace a home-cooked meal."},
+   {"person":3,"es":"Reemplazaríamos el carro, pero no tenemos dinero.","en":"We'd replace the car, but we don't have the money."},
+   {"person":4,"es":"Ellos nunca reemplazarían a su perro.","en":"They'd never replace their dog."}
+  ],
+  "presentPerfect": [
+   {"person":3,"es":"Hemos reemplazado todos los focos por LED.","en":"We've replaced all the light bulbs with LEDs."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Necesito que me reemplaces el viernes.","en":"I need you to fill in for me on Friday."},
+   {"person":0,"es":"El jefe quiere que yo reemplace a Marta.","en":"The boss wants me to replace Marta."},
+   {"person":2,"es":"Es urgente que el mecánico reemplace los frenos.","en":"The mechanic needs to replace the brakes urgently."},
+   {"person":3,"es":"Es mejor que reemplacemos el colchón.","en":"We'd better replace the mattress."},
+   {"person":4,"es":"No creo que reemplacen al entrenador.","en":"I don't think they'll replace the coach."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Reemplaza el aceite por mantequilla si quieres.","en":"Swap the oil for butter if you want."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "rescatar": {
+  "present": [
+   {"person":2,"es":"El salvavidas rescata a un niño en la playa.","en":"The lifeguard rescues a boy at the beach."},
+   {"person":0,"es":"Rescato gatos de la calle.","en":"I rescue stray cats."},
+   {"person":1,"es":"Siempre me rescatas de las reuniones aburridas.","en":"You always rescue me from boring meetings."},
+   {"person":3,"es":"Rescatamos perros abandonados.","en":"We rescue abandoned dogs."},
+   {"person":4,"es":"Los bomberos rescatan a la familia del incendio.","en":"The firefighters rescue the family from the fire."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Un pescador rescató al perro del río.","en":"A fisherman rescued the dog from the river."},
+   {"person":0,"es":"Rescaté unas fotos viejas de la basura.","en":"I rescued some old photos from the trash."},
+   {"person":1,"es":"¿Rescataste algo de la inundación?","en":"Did you save anything from the flood?"},
+   {"person":3,"es":"Rescatamos un pajarito que se cayó del nido.","en":"We rescued a baby bird that fell out of its nest."},
+   {"person":4,"es":"Los guardacostas rescataron a los pescadores.","en":"The coast guard rescued the fishermen."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuela rescataba recetas de otras épocas.","en":"My grandmother would bring back recipes from the old days."},
+   {"person":0,"es":"Yo rescataba libros que la gente tiraba.","en":"I used to rescue books people threw away."},
+   {"person":1,"es":"Tú siempre rescatabas animales heridos.","en":"You were always rescuing hurt animals."},
+   {"person":3,"es":"Rescatábamos tortugas en la playa.","en":"We'd rescue turtles on the beach."},
+   {"person":4,"es":"Los voluntarios rescataban a los animales atrapados por la tormenta.","en":"The volunteers were rescuing animals trapped by the storm."}
+  ],
+  "future": [
+   {"person":2,"es":"El helicóptero rescatará a los excursionistas.","en":"The helicopter will rescue the hikers."},
+   {"person":0,"es":"Te rescataré si te aburres en la fiesta.","en":"I'll rescue you if you get bored at the party."},
+   {"person":1,"es":"Con ese gol rescatarás el partido.","en":"With that goal you'll save the game."},
+   {"person":3,"es":"Rescataremos las tradiciones del pueblo.","en":"We'll bring back the town's traditions."},
+   {"person":4,"es":"Los buzos rescatarán el barco hundido.","en":"The divers will salvage the sunken ship."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo rescataría a todos los perros de la calle.","en":"I'd rescue every stray dog."},
+   {"person":1,"es":"¿Qué rescatarías de un incendio?","en":"What would you save from a fire?"},
+   {"person":2,"es":"Un buen plan rescataría la empresa.","en":"A good plan would save the company."},
+   {"person":3,"es":"Rescataríamos más animales con más voluntarios.","en":"We'd rescue more animals with more volunteers."},
+   {"person":4,"es":"Los bomberos rescatarían al gato del árbol.","en":"The firefighters would get the cat down from the tree."}
+  ],
+  "presentPerfect": [
+   {"person":4,"es":"Han rescatado a todos los mineros.","en":"They've rescued all the miners."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Necesito que me rescates de esta reunión.","en":"I need you to rescue me from this meeting."},
+   {"person":0,"es":"Mis hijos quieren que yo rescate a ese perrito.","en":"My kids want me to rescue that puppy."},
+   {"person":2,"es":"Ojalá que alguien rescate el viejo cine.","en":"I hope someone saves the old movie theater."},
+   {"person":3,"es":"Es importante que rescatemos nuestras tradiciones.","en":"It's important for us to keep our traditions alive."},
+   {"person":4,"es":"Esperamos que rescaten a los mineros pronto.","en":"We hope they rescue the miners soon."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Rescata lo que puedas.","en":"Save what you can."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "secuestrar": {
+  "present": [
+   {"person":2,"es":"En la película, un villano secuestra a la princesa.","en":"In the movie, a villain kidnaps the princess."},
+   {"person":0,"es":"Te secuestro un momento, necesito hablar contigo.","en":"Let me steal you for a moment, I need to talk to you."},
+   {"person":1,"es":"Siempre me secuestras el control remoto.","en":"You always hog the remote."},
+   {"person":3,"es":"Hoy secuestramos a la abuela para llevarla a comer.","en":"Today we're whisking grandma away to take her out to eat."},
+   {"person":4,"es":"En la novela, los piratas secuestran a un niño rico.","en":"In the novel, the pirates kidnap a rich boy."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Un hombre secuestró el avión en 1970.","en":"A man hijacked the plane in 1970."},
+   {"person":0,"es":"Le secuestré el teléfono a mi hijo durante la cena.","en":"I confiscated my son's phone during dinner."},
+   {"person":1,"es":"¿Me secuestraste el cargador?","en":"Did you swipe my charger?"},
+   {"person":3,"es":"Secuestramos a mi papá para su fiesta sorpresa.","en":"We whisked my dad away for his surprise party."},
+   {"person":4,"es":"Los piratas secuestraron el barco.","en":"The pirates hijacked the ship."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"En el cuento, el dragón secuestraba a los viajeros.","en":"In the story, the dragon carried off travelers."},
+   {"person":0,"es":"Yo le secuestraba los juguetes a mi hermano.","en":"I'd steal my brother's toys."},
+   {"person":1,"es":"Tú secuestrabas el baño toda la mañana.","en":"You'd hog the bathroom all morning."},
+   {"person":3,"es":"Secuestrábamos las galletas de la cocina.","en":"We'd snatch the cookies from the kitchen."},
+   {"person":4,"es":"Los piratas secuestraban barcos en el Caribe.","en":"Pirates hijacked ships in the Caribbean."}
+  ],
+  "future": [
+   {"person":2,"es":"En el próximo capítulo, el villano secuestrará al alcalde.","en":"In the next episode, the villain will kidnap the mayor."},
+   {"person":0,"es":"Te secuestraré el sábado para ir al cine.","en":"I'll steal you away on Saturday to go to the movies."},
+   {"person":1,"es":"¿Secuestrarás la tele otra vez?","en":"Are you going to hog the TV again?"},
+   {"person":3,"es":"Secuestraremos a mamá para el Día de las Madres.","en":"We'll whisk mom away for Mother's Day."},
+   {"person":4,"es":"En las caricaturas, los marcianos secuestrarán a la vaca.","en":"In the cartoons, the Martians will abduct the cow."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo te secuestraría para un viaje a la playa.","en":"I'd whisk you away on a trip to the beach."},
+   {"person":1,"es":"¿Secuestrarías el control remoto toda la noche?","en":"Would you hog the remote all night?"},
+   {"person":2,"es":"Ningún villano secuestraría a un gato tan gruñón.","en":"No villain would kidnap such a grumpy cat."},
+   {"person":3,"es":"Te secuestraríamos el fin de semana, pero tienes que trabajar.","en":"We'd steal you away for the weekend, but you have to work."},
+   {"person":4,"es":"Ellos secuestrarían la conversación para hablar de fútbol.","en":"They'd hijack the conversation to talk about soccer."}
+  ],
+  "presentPerfect": [
+   {"person":4,"es":"Mis hijos me han secuestrado el teléfono.","en":"My kids have taken over my phone."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"No quiero que me secuestres el cargador.","en":"I don't want you swiping my charger."},
+   {"person":0,"es":"Mis amigos quieren que yo secuestre al cumpleañero.","en":"My friends want me to whisk the birthday boy away."},
+   {"person":2,"es":"Es probable que el villano secuestre a la heroína.","en":"The villain will probably kidnap the heroine."},
+   {"person":3,"es":"Es mejor que secuestremos a papá antes de la sorpresa.","en":"We'd better whisk dad away before the surprise."},
+   {"person":4,"es":"No dejes que tus hermanos secuestren la tele.","en":"Don't let your brothers hog the TV."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No secuestres el baño, que todos tenemos prisa.","en":"Don't hog the bathroom, we're all in a hurry."}
+  ]
+ },
+ "alabar": {
+  "present": [
+   {"person":2,"es":"La directora alaba el trabajo de los maestros.","en":"The principal praises the teachers' work."},
+   {"person":0,"es":"Siempre alabo la comida de mi suegra.","en":"I always praise my mother-in-law's cooking."},
+   {"person":1,"es":"Alabas a todos menos a mí.","en":"You praise everyone but me."},
+   {"person":3,"es":"Alabamos su valentía.","en":"We praise her courage."},
+   {"person":4,"es":"Los críticos alaban la nueva película.","en":"The critics praise the new movie."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El jefe alabó mi informe.","en":"The boss praised my report."},
+   {"person":0,"es":"Alabé el vestido de mi hermana.","en":"I complimented my sister's dress."},
+   {"person":1,"es":"¿Alabaste el pastel de la abuela?","en":"Did you compliment grandma's cake?"},
+   {"person":3,"es":"Alabamos el esfuerzo de los voluntarios.","en":"We praised the volunteers' effort."},
+   {"person":4,"es":"Todos alabaron su discurso.","en":"Everyone praised his speech."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo alababa a todos sus nietos.","en":"My grandfather praised all his grandchildren."},
+   {"person":0,"es":"Yo siempre alababa los dibujos de mi hijo.","en":"I always praised my son's drawings."},
+   {"person":1,"es":"Tú alababas cada plato de tu mamá.","en":"You praised every dish your mom made."},
+   {"person":3,"es":"Alabábamos al entrenador después de cada victoria.","en":"We praised the coach after every win."},
+   {"person":4,"es":"Los vecinos alababan el jardín de doña Rosa.","en":"The neighbors praised Doña Rosa's garden."}
+  ],
+  "future": [
+   {"person":2,"es":"El público alabará tu actuación.","en":"The audience will praise your performance."},
+   {"person":0,"es":"Alabaré tu esfuerzo delante de todos.","en":"I'll praise your effort in front of everyone."},
+   {"person":1,"es":"Alabarás este café cuando lo pruebes.","en":"You'll rave about this coffee once you try it."},
+   {"person":3,"es":"Alabaremos a los ganadores en la ceremonia.","en":"We'll honor the winners at the ceremony."},
+   {"person":4,"es":"Los turistas alabarán la comida local.","en":"The tourists will praise the local food."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo alabaría más a mis empleados.","en":"I'd praise my employees more."},
+   {"person":1,"es":"¿Alabarías un trabajo tan malo?","en":"Would you praise such bad work?"},
+   {"person":2,"es":"Cualquier chef alabaría estos tomates.","en":"Any chef would praise these tomatoes."},
+   {"person":3,"es":"Con mejores resultados, alabaríamos más al equipo.","en":"With better results, we'd praise the team more."},
+   {"person":4,"es":"Ellos solo alabarían a sus amigos.","en":"They'd only praise their friends."}
+  ],
+  "presentPerfect": [
+   {"person":4,"es":"Todos han alabado tu trabajo.","en":"Everyone has praised your work."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Me gusta que alabes a los niños.","en":"I like it when you praise the kids."},
+   {"person":0,"es":"Mi esposa espera que yo alabe su pastel.","en":"My wife is hoping I'll praise her cake."},
+   {"person":2,"es":"Es bueno que el maestro alabe el esfuerzo.","en":"It's good for the teacher to praise effort."},
+   {"person":3,"es":"Es justo que alabemos su trabajo.","en":"It's only fair for us to praise her work."},
+   {"person":4,"es":"No me importa que me alaben.","en":"I don't care whether they praise me."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Alaba el esfuerzo, no solo el resultado.","en":"Praise the effort, not just the result."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "agradar": {
+  "present": [
+   {"person":2,"es":"Me agrada tu nueva compañera.","en":"I like your new coworker."},
+   {"person":0,"es":"Creo que le agrado a tu mamá.","en":"I think your mom likes me."},
+   {"person":1,"es":"Le agradas mucho a mi abuela.","en":"My grandmother really likes you."},
+   {"person":3,"es":"Parece que no le agradamos al vecino.","en":"It seems the neighbor doesn't like us."},
+   {"person":4,"es":"No me agradan las sorpresas.","en":"I don't like surprises."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Nos agradó mucho la visita.","en":"We really enjoyed the visit."},
+   {"person":0,"es":"Creo que no le agradé a tu papá.","en":"I don't think your dad liked me."},
+   {"person":1,"es":"Le agradaste a todo el mundo en la fiesta.","en":"Everyone at the party liked you."},
+   {"person":3,"es":"Le agradamos tanto al dueño que nos invitó a cenar.","en":"The owner liked us so much he invited us to dinner."},
+   {"person":4,"es":"No me agradaron sus comentarios.","en":"I didn't like his comments."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Me agradaba el olor del pan recién hecho.","en":"I loved the smell of fresh bread."},
+   {"person":0,"es":"Yo no le agradaba a la maestra de inglés.","en":"The English teacher didn't like me."},
+   {"person":1,"es":"Tú le agradabas a todos los perros del barrio.","en":"All the dogs in the neighborhood liked you."},
+   {"person":3,"es":"Le agradábamos a la señora de la tienda.","en":"The lady at the store liked us."},
+   {"person":4,"es":"A mi abuelo le agradaban las tardes tranquilas.","en":"My grandfather liked quiet afternoons."}
+  ],
+  "future": [
+   {"person":2,"es":"Te agradará este restaurante.","en":"You'll like this restaurant."},
+   {"person":0,"es":"Seguro que le agradaré a tu familia.","en":"I'm sure your family will like me."},
+   {"person":1,"es":"Le agradarás a mi hermana, ya verás.","en":"My sister will like you, you'll see."},
+   {"person":3,"es":"Les agradaremos a tus papás, no te preocupes.","en":"Your parents will like us, don't worry."},
+   {"person":4,"es":"Te agradarán las playas de Puerto Rico.","en":"You'll like the beaches in Puerto Rico."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Me agradaría mucho verte otra vez.","en":"I'd really like to see you again."},
+   {"person":0,"es":"No sé si yo le agradaría a tu jefe.","en":"I don't know if your boss would like me."},
+   {"person":1,"es":"Tú le agradarías a mi mamá.","en":"My mom would like you."},
+   {"person":3,"es":"Creo que le agradaríamos al nuevo vecino.","en":"I think the new neighbor would like us."},
+   {"person":4,"es":"Te agradarían mis primos.","en":"You'd like my cousins."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"Nos ha agradado mucho conocerlos.","en":"It's been a real pleasure meeting you."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":2,"es":"Espero que te agrade el regalo.","en":"I hope you like the present."},
+   {"person":0,"es":"Ojalá que yo le agrade a tu familia.","en":"I hope your family likes me."},
+   {"person":1,"es":"Quiero que le agrades a mi papá.","en":"I want my dad to like you."},
+   {"person":3,"es":"Espero que le agrademos a la nueva maestra.","en":"I hope the new teacher likes us."},
+   {"person":4,"es":"Ojalá que te agraden las fotos.","en":"I hope you like the photos."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Me sorprendió que le agradara tanto la comida.","en":"I was surprised he liked the food so much."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
+ }
+}
