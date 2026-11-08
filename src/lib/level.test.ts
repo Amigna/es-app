@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { TENSES } from "./conjugation/types";
 import { isLevel, LEVELS, levelInfo } from "./level";
-import { levelChangesByWeek, levelReadiness, levelSync, type LevelChange } from "./level-up";
+import { beyondLevel, levelChangesByWeek, levelReadiness, levelSync, type LevelChange } from "./level-up";
 import type { Tally } from "./progress";
 
 describe("levels", () => {
@@ -74,6 +74,33 @@ describe("level readiness", () => {
   it("handles days saved before tenses were, and the top level", () => {
     assert.equal(levelReadiness({ "2026-11-01": {} }, "A1")!.answered, 0);
     assert.equal(levelReadiness({}, "B2"), null);
+  });
+});
+
+describe("answers beyond the level", () => {
+  it("counts recent answers that don't count toward the next level", () => {
+    const b = beyondLevel({ "2026-11-08": { tenses: { present: t(5), preterite: t(20, 2), imperfect: t(10, 3) } } }, "A1");
+    assert.equal(b.answered, 40);
+    assert.equal(b.outside, 35);
+    assert.equal(b.ahead, null);
+  });
+
+  it("names the highest level whose added tenses are going well", () => {
+    const b = beyondLevel({ "2026-11-08": { tenses: { present: t(10), preterite: t(30, 10), future: t(40, 2), subjPresent: t(20, 3) } } }, "A1");
+    // A2's tenses are at 75%, B1's at 92% over 65 answers, and the future is the most answered of them.
+    assert.deepEqual(b.ahead, { level: "B1", accuracy: 92, answered: 65, tense: "future" });
+  });
+
+  it("needs enough answers and a high enough share", () => {
+    assert.equal(beyondLevel({ "2026-11-08": { tenses: { preterite: t(40) } } }, "A1").ahead, null);
+    assert.equal(beyondLevel({ "2026-11-08": { tenses: { preterite: t(40, 20) } } }, "A1").ahead, null);
+    assert.equal(beyondLevel({ "2026-11-08": { tenses: { preterite: t(60) } } }, "A1").ahead?.level, "A2");
+  });
+
+  it("only looks at the latest few hundred answers", () => {
+    const b = beyondLevel({ "2026-10-01": { tenses: { preterite: t(100) } }, "2026-11-08": { tenses: { present: t(300) } } }, "A1");
+    assert.equal(b.outside, 0);
+    assert.equal(b.ahead, null);
   });
 });
 

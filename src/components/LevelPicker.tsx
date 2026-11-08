@@ -4,7 +4,7 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 import { useDrillSettings } from "@/lib/drill-settings";
 import { TENSES } from "@/lib/conjugation/types";
 import { chooseLevel, levelInfo, LEVELS, storedLevel, storedLevelAt, storeLevel, useLevel, type Level } from "@/lib/level";
-import { levelReadiness, levelSync, MIN_PER_TENSE, READY_ACCURACY, READY_ANSWERS } from "@/lib/level-up";
+import { beyondLevel, levelReadiness, levelSync, MIN_PER_TENSE, READY_ACCURACY, READY_ANSWERS } from "@/lib/level-up";
 import { localDay, type Tally } from "@/lib/progress";
 import { progressEnabled } from "@/lib/progress-queue";
 
@@ -111,6 +111,11 @@ export function LevelUpOffer({ to }: { to: Level }) {
   );
 }
 
+const tenseName = (id: string) => TENSES.find((t) => t.id === id)!.name.toLowerCase();
+
+/** "present", "present and preterite", "present, preterite and imperfect". */
+const listed = (items: string[]) => (items.length <= 1 ? items.join("") : `${items.slice(0, -1).join(", ")} and ${items.at(-1)}`);
+
 const LATER_KEY = "level-up-later";
 const LATER_DAYS = 14;
 
@@ -150,15 +155,27 @@ export function LevelSuggestion({ days }: { days: Record<string, { tenses?: Reco
   if (!readiness) return <p className="text-stone-600 dark:text-stone-400">You&apos;re at {info.name} ({level}), the top level. Every tense and verb is in your drills.</p>;
 
   const next = levelInfo(readiness.next);
+  const beyond = beyondLevel(days, level);
+  const ahead = beyond.ahead;
   const until = laterUntil(level);
-  if (readiness.ready && answer !== "later" && !(until && until >= today)) {
+  const offering = (readiness.ready || ahead) && answer !== "later" && !(until && until >= today);
+  if (offering) {
     return (
       <div className="space-y-3 rounded-xl border border-accent-300 bg-white p-4 dark:border-accent-800 dark:bg-stone-900">
-        <p>
-          You&apos;re getting {readiness.accuracy}% right in the {info.name.toLowerCase()} ({level}) tenses over your last{" "}
-          {readiness.answered.toLocaleString()} answers. Ready for {next.name.toLowerCase()} ({next.id})? Drills would start with its tenses,
-          verbs and words. You can always change back on the Drills page.
-        </p>
+        {readiness.ready ? (
+          <p>
+            You&apos;re getting {readiness.accuracy}% right in the {info.name.toLowerCase()} ({level}) tenses over your last{" "}
+            {readiness.answered.toLocaleString()} answers. Ready for {next.name.toLowerCase()} ({next.id})? Drills would start with its tenses,
+            verbs and words. You can always change back on the Drills page.
+          </p>
+        ) : (
+          // Drilling above the level and doing well: a hint, so it only ever offers the next level, not the one they're managing.
+          <p>
+            You&apos;re getting {ahead!.accuracy}% right in {ahead!.level} tenses like the {tenseName(ahead!.tense)} ({ahead!.answered.toLocaleString()}{" "}
+            answers lately), above your level of {info.name.toLowerCase()} ({level}). If {level} feels easy, try {next.name.toLowerCase()} ({next.id}):
+            drills would start with its tenses, verbs and words. You can always change back on the Drills page.
+          </p>
+        )}
         <div className="flex flex-wrap gap-3">
           <button
             type="button"
@@ -187,16 +204,26 @@ export function LevelSuggestion({ days }: { days: Record<string, { tenses?: Reco
     );
   }
 
-  const thin = readiness.thin.map((t) => TENSES.find((m) => m.id === t)!.name.toLowerCase());
+  const thin = readiness.thin.map(tenseName);
+  const own = info.tenses.map(tenseName);
+  const counted = own.length === 1 ? `${own[0]}-tense answers count` : own.length <= 3 ? `${listed(own)} answers count` : `answers in the ${level} tenses count`;
   return (
     <div className="space-y-1 text-stone-600 dark:text-stone-400">
       <p>
         {readiness.answered === 0
-          ? `Toward ${next.name.toLowerCase()} (${next.id}): this starts counting with your next conjugation or fill-in-the-blank answers.`
+          ? `Toward ${next.name.toLowerCase()} (${next.id}): this starts counting with your next conjugation or fill-in-the-blank answers${beyond.outside > 0 ? ` in the ${level} tenses` : ""}.`
           : `Toward ${next.name.toLowerCase()} (${next.id}): ${readiness.accuracy ?? 0}% right over your last ${readiness.answered.toLocaleString()} answers in the ${level} tenses.` +
             (readiness.ready ? "" : ` It's suggested at ${READY_ACCURACY}% over ${READY_ANSWERS} answers.`)}
       </p>
-      {readiness.answered > 0 && thin.length > 0 && (
+      {beyond.outside > 0 && (
+        <p className="text-sm">
+          Only {counted} toward {next.id} at your level. {beyond.outside.toLocaleString()} of your last {beyond.answered.toLocaleString()} answers
+          were in other tenses.
+          {ahead && ` Those are going well too: ${ahead.accuracy}% right in ${ahead.level} tenses.`}
+        </p>
+      )}
+      {/* With one tense, like A1, the answer count already says it. */}
+      {readiness.answered > 0 && thin.length > 0 && own.length > 1 && (
         <p className="text-sm">
           Each tense needs at least {MIN_PER_TENSE} of those answers. Still to practice: {thin.join(", ")}.
         </p>

@@ -62,6 +62,64 @@ export function levelSync(local: { level: Level | null; at: number }, saved: { l
   return "none";
 }
 
+/** Answers in the tenses a higher level adds that suggest someone is past their level. */
+export const AHEAD_ANSWERS = 50;
+
+export interface Beyond {
+  /** Answers in any tense, newest days first, stopping once there are READY_ANSWERS. */
+  answered: number;
+  /** How many of those were in tenses outside the level, which don't count toward the next one. */
+  outside: number;
+  /**
+   * The highest level whose added tenses got at least AHEAD_ANSWERS of those answers at READY_ACCURACY or more, with
+   * its share and its most-answered tense. Null when none did.
+   */
+  ahead: { level: Level; accuracy: number; answered: number; tense: TenseId } | null;
+}
+
+/**
+ * Answers outside the level's tenses, from the same saved days as levelReadiness: how many recent answers didn't
+ * count, and whether harder tenses are going well, as a hint for someone drilling above their level.
+ */
+export function beyondLevel(days: Record<string, { tenses?: Record<string, Tally> }>, level: Level): Beyond {
+  const byTense = new Map<string, Tally>();
+  let total = 0;
+  for (const day of Object.keys(days).sort().reverse()) {
+    if (total >= READY_ANSWERS) break;
+    for (const [tense, t] of Object.entries(days[day].tenses ?? {})) {
+      const sum = byTense.get(tense) ?? { right: 0, accent: 0, wrong: 0 };
+      sum.right += t.right;
+      sum.accent += t.accent;
+      sum.wrong += t.wrong;
+      byTense.set(tense, sum);
+      total += answered(t);
+    }
+  }
+  const own = new Set<string>(levelInfo(level).tenses);
+  const outside = [...byTense].filter(([tense]) => !own.has(tense)).reduce((n, [, t]) => n + answered(t), 0);
+
+  let ahead: Beyond["ahead"] = null;
+  const index = LEVELS.findIndex((l) => l.id === level);
+  for (let i = index + 1; i < LEVELS.length; i++) {
+    const added = LEVELS[i].tenses.filter((t) => !LEVELS[i - 1].tenses.includes(t));
+    const sum: Tally = { right: 0, accent: 0, wrong: 0 };
+    let top: { tense: TenseId; n: number } | null = null;
+    for (const tense of added) {
+      const t = byTense.get(tense);
+      if (!t) continue;
+      sum.right += t.right;
+      sum.accent += t.accent;
+      sum.wrong += t.wrong;
+      if (!top || answered(t) > top.n) top = { tense, n: answered(t) };
+    }
+    const pct = accuracy(sum);
+    if (top && answered(sum) >= AHEAD_ANSWERS && pct !== null && pct >= READY_ACCURACY) {
+      ahead = { level: LEVELS[i].id, accuracy: pct, answered: answered(sum), tense: top.tense };
+    }
+  }
+  return { answered: total, outside, ahead };
+}
+
 /** A level change, saved with the day it happened. */
 export interface LevelChange {
   level: Level;
