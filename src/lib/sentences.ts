@@ -1,10 +1,14 @@
 import { TENSES, type Conjugation, type TenseId } from "./conjugation/types";
+import type { Level } from "./level";
+import { atOrBelow } from "./level-order";
 
 /** An example for one tense. `person` is the slot in TenseForms.forms (0 yo ... 4 ellos/ustedes). */
 export interface Sentence {
   person: number;
   es: string;
   en: string;
+  /** Set when the sentence also uses a tense from a higher level than its own (si tuviéramos in a conditional one), so writing and dictation skip it below that level. Checked by a test. */
+  level?: Level;
 }
 
 /** Marks a tense that exists but sounds unnatural for this verb, so a forced example would teach the wrong thing. */
@@ -22,6 +26,17 @@ export type SentenceBank = Record<string, Partial<Record<TenseId, Sentence[] | R
 export function sentencesFor(bank: SentenceBank, inf: string, tense: TenseId): Sentence[] {
   const entry = bank[inf]?.[tense];
   return Array.isArray(entry) ? entry : [];
+}
+
+/** The bank without sentences above the level, for drills that show the whole sentence. No level keeps every one. */
+export function sentencesUpTo(bank: SentenceBank, level: Level | null | undefined): SentenceBank {
+  if (!level) return bank;
+  return Object.fromEntries(
+    Object.entries(bank).map(([inf, tenses]) => [
+      inf,
+      Object.fromEntries(Object.entries(tenses).map(([tense, entry]) => [tense, Array.isArray(entry) ? entry.filter((s) => !s.level || atOrBelow(s.level, level)) : entry])),
+    ]),
+  );
 }
 
 /**

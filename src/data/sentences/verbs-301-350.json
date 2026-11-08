@@ -32,7 +32,7 @@
    {"person":0,"es":"Yo secaría eso primero.","en":"I'd dry that first."},
    {"person":1,"es":"¿Secarías estos platos?","en":"Would you dry these dishes?"},
    {"person":2,"es":"Mi madre secaría las hierbas al sol.","en":"My mother would dry the herbs in the sun."},
-   {"person":3,"es":"Secaríamos la ropa adentro si lloviera.","en":"We'd dry the clothes inside if it rained."},
+   {"person":3,"es":"Secaríamos la ropa adentro si lloviera.","en":"We'd dry the clothes inside if it rained.","level":"B2"},
    {"person":4,"es":"Ellos secarían el pescado con sal.","en":"They would dry the fish with salt."}
   ],
   "presentPerfect": [
@@ -234,7 +234,7 @@
    {"person":0,"es":"Yo herviría el agua primero.","en":"I'd boil the water first."},
    {"person":1,"es":"¿Hervirías esta agua antes de beberla?","en":"Would you boil this water before drinking it?"},
    {"person":2,"es":"Mi abuela herviría estas hojas para el té.","en":"My grandmother would boil these leaves for tea."},
-   {"person":3,"es":"Herviríamos más pasta si tuviéramos otra olla.","en":"We'd boil more pasta if we had another pot."},
+   {"person":3,"es":"Herviríamos más pasta si tuviéramos otra olla.","en":"We'd boil more pasta if we had another pot.","level":"B2"},
    {"person":4,"es":"Estas verduras hervirían en cinco minutos.","en":"These vegetables would boil in five minutes."}
   ],
   "presentPerfect": [
@@ -585,7 +585,7 @@
    {"person":1,"es":"¿Te despedirías sin decir nada?","en":"Would you say goodbye without saying anything?"},
    {"person":2,"es":"Mi hermano se despediría de ti, pero está dormido.","en":"My brother would say goodbye to you, but he's asleep."},
    {"person":3,"es":"Nos despediríamos de todos, pero no hay tiempo.","en":"We'd say goodbye to everyone, but there's no time."},
-   {"person":4,"es":"Ellos se despedirían de ti si pudieran.","en":"They would say goodbye to you if they could."}
+   {"person":4,"es":"Ellos se despedirían de ti si pudieran.","en":"They would say goodbye to you if they could.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":1,"es":"¿Te has despedido de tu abuela?","en":"Have you said goodbye to your grandmother?"}
@@ -655,9 +655,9 @@
   "conditional": [
    {"person":0,"es":"Yo me apuraría.","en":"I'd hurry."},
    {"person":1,"es":"¿Te apurarías por mí?","en":"Would you hurry for me?"},
-   {"person":2,"es":"Mi hermano se apuraría si tuviera hambre.","en":"My brother would hurry if he were hungry."},
+   {"person":2,"es":"Mi hermano se apuraría si tuviera hambre.","en":"My brother would hurry if he were hungry.","level":"B2"},
    {"person":3,"es":"Nos apuraríamos, pero hay mucho tráfico.","en":"We'd hurry, but there's a lot of traffic."},
-   {"person":4,"es":"Ellos se apurarían si supieran la hora.","en":"They would hurry if they knew the time."}
+   {"person":4,"es":"Ellos se apurarían si supieran la hora.","en":"They would hurry if they knew the time.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":3,"es":"Nos hemos apurado mucho.","en":"We've hurried a lot."}
@@ -790,7 +790,7 @@
    {"person":0,"es":"Yo me asustaría.","en":"I would get scared."},
    {"person":1,"es":"¿Te asustarías en un avión pequeño?","en":"Would you get scared on a small plane?"},
    {"person":2,"es":"Mi abuela se asustaría con ese ruido.","en":"My grandmother would get scared by that noise."},
-   {"person":3,"es":"Nos asustaríamos si te vieras así.","en":"We'd get scared if you looked like that."},
+   {"person":3,"es":"Nos asustaríamos si te vieras así.","en":"We'd get scared if you looked like that.","level":"B2"},
    {"person":4,"es":"Ellos se asustarían con esa noticia.","en":"They would get scared by that news."}
   ],
   "presentPerfect": [
@@ -925,7 +925,7 @@
   "conditional": [
    {"person":0,"es":"Yo no me acercaría al perro.","en":"I wouldn't go near the dog."},
    {"person":1,"es":"¿Te acercarías a ese perro?","en":"Would you go near that dog?"},
-   {"person":2,"es":"Mi hija se acercaría si la llamaras.","en":"My daughter would come over if you called her."},
+   {"person":2,"es":"Mi hija se acercaría si la llamaras.","en":"My daughter would come over if you called her.","level":"B2"},
    {"person":3,"es":"Nos acercaríamos, pero hay mucho humo.","en":"We'd come closer, but there's a lot of smoke."},
    {"person":4,"es":"Los pájaros se acercarían con más comida.","en":"The birds would come closer with more food."}
   ],
@@ -1204,7 +1204,7 @@
    {"person":1,"es":"¿Añadirías algo más al informe?","en":"Would you add anything else to the report?"},
    {"person":0,"es":"Yo añadiría un poco más de picante.","en":"I'd add a little more heat."},
    {"person":2,"es":"Mi papá añadiría cebolla a todo.","en":"My dad would add onion to everything."},
-   {"person":3,"es":"Añadiríamos otro cuarto si tuviéramos dinero.","en":"We'd add another room if we had the money."},
+   {"person":3,"es":"Añadiríamos otro cuarto si tuviéramos dinero.","en":"We'd add another room if we had the money.","level":"B2"},
    {"person":4,"es":"Ellos añadirían más música a la fiesta.","en":"They'd add more music to the party."}
   ],
   "presentPerfect": [
@@ -1263,7 +1263,7 @@
    {"person":4,"es":"Muchas cosas sucederán antes de las elecciones.","en":"A lot of things will happen before the elections."}
   ],
   "conditional": [
-   {"person":2,"es":"¿Qué sucedería si no fuéramos?","en":"What would happen if we didn't go?"},
+   {"person":2,"es":"¿Qué sucedería si no fuéramos?","en":"What would happen if we didn't go?","level":"B2"},
    {"person":4,"es":"Esas cosas no sucederían con un buen plan.","en":"Those things wouldn't happen with a good plan."}
   ],
   "presentPerfect": [
@@ -1328,7 +1328,7 @@
    {"person":2,"es":"Un buen mapa indicaría las calles cerradas.","en":"A good map would show the closed streets."},
    {"person":0,"es":"Yo te indicaría el camino, pero no soy de aquí.","en":"I'd show you the way, but I'm not from around here."},
    {"person":1,"es":"¿Me indicarías dónde está el baño?","en":"Could you tell me where the bathroom is?"},
-   {"person":3,"es":"Les indicaríamos el camino si lo supiéramos.","en":"We'd show them the way if we knew it."},
+   {"person":3,"es":"Les indicaríamos el camino si lo supiéramos.","en":"We'd show them the way if we knew it.","level":"B2"},
    {"person":4,"es":"Esos síntomas indicarían una infección.","en":"Those symptoms would point to an infection."}
   ],
   "presentPerfect": [
@@ -1395,8 +1395,8 @@
   "conditional": [
    {"person":2,"es":"Ese viaje representaría un gasto enorme.","en":"That trip would be a huge expense."},
    {"person":0,"es":"Yo representaría a la empresa con mucho gusto.","en":"I'd be glad to represent the company."},
-   {"person":1,"es":"¿Representarías a tu país si te invitaran?","en":"Would you represent your country if they invited you?"},
-   {"person":3,"es":"Representaríamos la obra en la plaza si nos dejaran.","en":"We'd put on the play in the square if they let us."},
+   {"person":1,"es":"¿Representarías a tu país si te invitaran?","en":"Would you represent your country if they invited you?","level":"B2"},
+   {"person":3,"es":"Representaríamos la obra en la plaza si nos dejaran.","en":"We'd put on the play in the square if they let us.","level":"B2"},
    {"person":4,"es":"Dos años más de estudio representarían un gran esfuerzo.","en":"Two more years of study would mean a big effort."}
   ],
   "presentPerfect": [
@@ -1464,7 +1464,7 @@
    {"person":0,"es":"Yo no señalaría a nadie.","en":"I wouldn't point at anyone."},
    {"person":1,"es":"¿Me señalarías en la foto dónde estás?","en":"Would you point out where you are in the photo?"},
    {"person":2,"es":"Un buen jefe señalaría los errores en privado.","en":"A good boss would point out mistakes in private."},
-   {"person":3,"es":"Señalaríamos el problema si supiéramos cuál es.","en":"We'd point out the problem if we knew what it was."},
+   {"person":3,"es":"Señalaríamos el problema si supiéramos cuál es.","en":"We'd point out the problem if we knew what it was.","level":"B2"},
    {"person":4,"es":"Ellos nunca señalarían a un amigo.","en":"They would never point the finger at a friend."}
   ],
   "presentPerfect": [
@@ -1626,9 +1626,9 @@
  "impedir": {
   "present": [
    {"person":2,"es":"La lluvia impide ver la carretera.","en":"The rain makes it hard to see the road."},
-   {"person":0,"es":"No te impido nada, haz lo que quieras.","en":"I'm not stopping you, do what you want."},
+   {"person":0,"es":"No te impido nada, haz lo que quieras.","en":"I'm not stopping you, do what you want.","level":"B1"},
    {"person":1,"es":"Me impides pasar.","en":"You're blocking my way."},
-   {"person":3,"es":"Con esta cerca impedimos que entren los perros.","en":"With this fence we keep the dogs out."},
+   {"person":3,"es":"Con esta cerca impedimos que entren los perros.","en":"With this fence we keep the dogs out.","level":"B1"},
    {"person":4,"es":"Las montañas impiden el paso del viento.","en":"The mountains block the wind."}
   ],
   "preterite": [
@@ -1636,13 +1636,13 @@
    {"person":0,"es":"Le impedí la entrada al perro.","en":"I kept the dog from coming in."},
    {"person":1,"es":"¿Por qué me impediste hablar?","en":"Why did you stop me from talking?"},
    {"person":2,"es":"La niebla impidió el despegue del avión.","en":"The fog kept the plane from taking off."},
-   {"person":3,"es":"Ayer impedimos que el agua entrara en la casa.","en":"Yesterday we kept the water from getting into the house."}
+   {"person":3,"es":"Ayer impedimos que el agua entrara en la casa.","en":"Yesterday we kept the water from getting into the house.","level":"B2"}
   ],
   "imperfect": [
    {"person":2,"es":"El ruido me impedía dormir.","en":"The noise kept me from sleeping."},
    {"person":0,"es":"Yo le impedía a mi hermano entrar en mi cuarto.","en":"I used to keep my brother from coming into my room."},
    {"person":1,"es":"Tú les impedías el paso a todos.","en":"You used to block everyone's way."},
-   {"person":3,"es":"Impedíamos que el gato saliera de noche.","en":"We kept the cat from going out at night."},
+   {"person":3,"es":"Impedíamos que el gato saliera de noche.","en":"We kept the cat from going out at night.","level":"B2"},
    {"person":4,"es":"Los guardias impedían la entrada.","en":"The guards blocked the entrance."}
   ],
   "future": [
@@ -1765,7 +1765,7 @@
  },
  "comprobar": {
   "present": [
-   {"person":0,"es":"Siempre compruebo que la puerta esté cerrada.","en":"I always check that the door is locked."},
+   {"person":0,"es":"Siempre compruebo que la puerta esté cerrada.","en":"I always check that the door is locked.","level":"B1"},
    {"person":1,"es":"¿Compruebas la presión de las llantas?","en":"Do you check the tire pressure?"},
    {"person":2,"es":"El sistema comprueba tu identidad.","en":"The system verifies your identity."},
    {"person":3,"es":"Comprobamos los datos antes de enviarlos.","en":"We check the data before sending it."},
@@ -2074,8 +2074,8 @@
    {"person":0,"es":"Yo no mataría ni una mosca.","en":"I wouldn't hurt a fly."},
    {"person":1,"es":"¿Matarías por un café ahora mismo?","en":"Would you kill for a coffee right now?"},
    {"person":2,"es":"Ese veneno mataría a un caballo.","en":"That poison would kill a horse."},
-   {"person":3,"es":"Mataríamos la planta si la dejáramos al sol.","en":"We'd kill the plant if we left it in the sun."},
-   {"person":4,"es":"Mis padres me matarían si llegara tarde.","en":"My parents would kill me if I got home late."}
+   {"person":3,"es":"Mataríamos la planta si la dejáramos al sol.","en":"We'd kill the plant if we left it in the sun.","level":"B2"},
+   {"person":4,"es":"Mis padres me matarían si llegara tarde.","en":"My parents would kill me if I got home late.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":2,"es":"La sequía ha matado las cosechas.","en":"The drought has killed the crops."}
@@ -2183,7 +2183,7 @@
  },
  "dudar": {
   "present": [
-   {"person":0,"es":"Dudo que venga hoy.","en":"I doubt he's coming today."},
+   {"person":0,"es":"Dudo que venga hoy.","en":"I doubt he's coming today.","level":"B1"},
    {"person":1,"es":"¿Por qué dudas de mí?","en":"Why do you doubt me?"},
    {"person":2,"es":"El niño duda antes de saltar al agua.","en":"The boy hesitates before jumping into the water."},
    {"person":3,"es":"No dudamos de tu palabra.","en":"We don't doubt your word."},
@@ -2533,7 +2533,7 @@
    {"person":4,"es":"Los vecinos notaron el humo.","en":"The neighbors noticed the smoke."}
   ],
   "imperfect": [
-   {"person":2,"es":"La maestra notaba quién no había estudiado.","en":"The teacher could tell who hadn't studied."},
+   {"person":2,"es":"La maestra notaba quién no había estudiado.","en":"The teacher could tell who hadn't studied.","level":"B2"},
    {"person":0,"es":"Yo notaba que algo no estaba bien.","en":"I could tell something wasn't right."},
    {"person":1,"es":"Tú notabas cada cambio en la casa.","en":"You noticed every change in the house."},
    {"person":3,"es":"Notábamos el frío de la montaña.","en":"We could feel the mountain cold."},
@@ -2548,8 +2548,8 @@
   ],
   "conditional": [
    {"person":2,"es":"Nadie notaría la diferencia.","en":"Nobody would notice the difference."},
-   {"person":0,"es":"Yo notaría si faltara algo.","en":"I'd notice if something was missing."},
-   {"person":1,"es":"¿Notarías si cambiara el café?","en":"Would you notice if I changed the coffee?"},
+   {"person":0,"es":"Yo notaría si faltara algo.","en":"I'd notice if something was missing.","level":"B2"},
+   {"person":1,"es":"¿Notarías si cambiara el café?","en":"Would you notice if I changed the coffee?","level":"B2"},
    {"person":3,"es":"Lo notaríamos enseguida.","en":"We'd notice right away."},
    {"person":4,"es":"Los clientes notarían el aumento.","en":"Customers would notice the increase."}
   ],
@@ -2587,11 +2587,11 @@
  },
  "asegurar": {
   "present": [
-   {"person":0,"es":"Te aseguro que no fui yo.","en":"I assure you it wasn't me."},
+   {"person":0,"es":"Te aseguro que no fui yo.","en":"I assure you it wasn't me.","level":"A2"},
    {"person":1,"es":"Siempre aseguras la puerta antes de salir.","en":"You always lock the door before going out."},
    {"person":2,"es":"El médico asegura que no es grave.","en":"The doctor says for sure it's not serious."},
    {"person":3,"es":"Cada año aseguramos la casa contra incendios.","en":"Every year we insure the house against fire."},
-   {"person":4,"es":"Los testigos aseguran que lo vieron.","en":"The witnesses claim they saw him."}
+   {"person":4,"es":"Los testigos aseguran que lo vieron.","en":"The witnesses claim they saw him.","level":"A2"}
   ],
   "preterite": [
    {"person":2,"es":"El vendedor me aseguró que funcionaba.","en":"The salesman assured me it worked."},
@@ -2601,11 +2601,11 @@
    {"person":4,"es":"Los bomberos aseguraron la zona.","en":"The firefighters secured the area."}
   ],
   "imperfect": [
-   {"person":2,"es":"Mi abuela aseguraba que había visto un fantasma.","en":"My grandmother swore she had seen a ghost."},
+   {"person":2,"es":"Mi abuela aseguraba que había visto un fantasma.","en":"My grandmother swore she had seen a ghost.","level":"B2"},
    {"person":0,"es":"Yo aseguraba la puerta con una silla.","en":"I'd secure the door with a chair."},
    {"person":1,"es":"Tú asegurabas que todo estaba bien.","en":"You kept saying everything was fine."},
    {"person":3,"es":"Asegurábamos las ventanas antes de cada tormenta.","en":"We secured the windows before every storm."},
-   {"person":4,"es":"Los políticos aseguraban que bajarían los precios.","en":"The politicians promised prices would go down."}
+   {"person":4,"es":"Los políticos aseguraban que bajarían los precios.","en":"The politicians promised prices would go down.","level":"B1"}
   ],
   "future": [
    {"person":3,"es":"Aseguraremos la casa antes del huracán.","en":"We'll secure the house before the hurricane."},
@@ -2618,7 +2618,7 @@
    {"person":0,"es":"Yo aseguraría el carro contra robo.","en":"I'd insure the car against theft."},
    {"person":1,"es":"¿Me asegurarías que es verdad?","en":"Would you assure me it's true?"},
    {"person":2,"es":"Un buen empleo aseguraría su futuro.","en":"A good job would secure his future."},
-   {"person":3,"es":"Aseguraríamos la casa si tuviéramos dinero.","en":"We'd insure the house if we had the money."},
+   {"person":3,"es":"Aseguraríamos la casa si tuviéramos dinero.","en":"We'd insure the house if we had the money.","level":"B2"},
    {"person":4,"es":"Ellos asegurarían cualquier cosa con tal de vender.","en":"They'd promise anything to make a sale."}
   ],
   "presentPerfect": [
@@ -2807,7 +2807,7 @@
    {"person":2,"es":"Nadie imaginó el final de la película.","en":"Nobody guessed the ending of the movie."},
    {"person":0,"es":"Nunca imaginé vivir en otro país.","en":"I never imagined living in another country."},
    {"person":1,"es":"¿Imaginaste algo así?","en":"Did you imagine anything like this?"},
-   {"person":3,"es":"Ayer imaginamos cómo sería el viaje.","en":"Yesterday we imagined what the trip would be like."},
+   {"person":3,"es":"Ayer imaginamos cómo sería el viaje.","en":"Yesterday we imagined what the trip would be like.","level":"B1"},
    {"person":4,"es":"Mis padres nunca imaginaron tener nietos tan pronto.","en":"My parents never imagined having grandchildren so soon."}
   ],
   "imperfect": [
@@ -2898,7 +2898,7 @@
    {"person":0,"es":"Yo plantearía el tema de otra manera.","en":"I'd approach the subject differently."},
    {"person":1,"es":"¿Cómo plantearías el problema?","en":"How would you frame the problem?"},
    {"person":2,"es":"Un cambio así plantearía muchas dudas.","en":"A change like that would raise a lot of questions."},
-   {"person":3,"es":"Plantearíamos la idea si hubiera tiempo.","en":"We'd bring up the idea if there were time."},
+   {"person":3,"es":"Plantearíamos la idea si hubiera tiempo.","en":"We'd bring up the idea if there were time.","level":"B2"},
    {"person":4,"es":"Ellos plantearían otra propuesta.","en":"They'd put forward another proposal."}
   ],
   "presentPerfect": [
@@ -3001,25 +3001,25 @@
  },
  "afirmar": {
   "present": [
-   {"person":2,"es":"El testigo afirma que vio el accidente.","en":"The witness says he saw the accident."},
+   {"person":2,"es":"El testigo afirma que vio el accidente.","en":"The witness says he saw the accident.","level":"A2"},
    {"person":0,"es":"Afirmo que todo es verdad.","en":"I state that everything is true."},
-   {"person":1,"es":"¿Afirmas que no estuviste allí?","en":"You're saying you weren't there?"},
+   {"person":1,"es":"¿Afirmas que no estuviste allí?","en":"You're saying you weren't there?","level":"A2"},
    {"person":3,"es":"Afirmamos que el producto es seguro.","en":"We affirm that the product is safe."},
    {"person":4,"es":"Los expertos afirman que va a llover.","en":"The experts say it's going to rain."}
   ],
   "preterite": [
-   {"person":2,"es":"El presidente afirmó que bajarán los impuestos.","en":"The president stated that taxes will go down."},
+   {"person":2,"es":"El presidente afirmó que bajarán los impuestos.","en":"The president stated that taxes will go down.","level":"B1"},
    {"person":0,"es":"Afirmé lo mismo ante el juez.","en":"I said the same thing before the judge."},
    {"person":1,"es":"Ayer afirmaste lo contrario.","en":"Yesterday you said the opposite."},
    {"person":3,"es":"En la reunión afirmamos nuestro apoyo al proyecto.","en":"At the meeting we stated our support for the project."},
    {"person":4,"es":"Los médicos afirmaron que estaba sano.","en":"The doctors stated he was healthy."}
   ],
   "imperfect": [
-   {"person":2,"es":"Mi abuelo afirmaba que había conocido a Celia Cruz.","en":"My grandfather claimed he had met Celia Cruz."},
+   {"person":2,"es":"Mi abuelo afirmaba que había conocido a Celia Cruz.","en":"My grandfather claimed he had met Celia Cruz.","level":"B2"},
    {"person":0,"es":"Yo afirmaba que tenía razón.","en":"I insisted I was right."},
-   {"person":1,"es":"Tú afirmabas que nunca te casarías.","en":"You used to say you'd never get married."},
+   {"person":1,"es":"Tú afirmabas que nunca te casarías.","en":"You used to say you'd never get married.","level":"B1"},
    {"person":3,"es":"Afirmábamos que era culpa del árbitro.","en":"We claimed it was the referee's fault."},
-   {"person":4,"es":"Los niños afirmaban que no habían roto nada.","en":"The kids claimed they hadn't broken anything."}
+   {"person":4,"es":"Los niños afirmaban que no habían roto nada.","en":"The kids claimed they hadn't broken anything.","level":"B2"}
   ],
   "future": [
    {"person":2,"es":"El informe afirmará que no hubo errores.","en":"The report will state there were no errors."},
@@ -3098,7 +3098,7 @@
    {"person":1,"es":"¿Me mandarías las fotos?","en":"Would you send me the photos?"},
    {"person":0,"es":"Yo mandaría a los niños a la cama ya.","en":"I'd send the kids to bed now."},
    {"person":2,"es":"Mi madre nunca mandaría una carta sin firmar.","en":"My mother would never send a letter without signing it."},
-   {"person":3,"es":"Te mandaríamos más dinero si pudiéramos.","en":"We'd send you more money if we could."},
+   {"person":3,"es":"Te mandaríamos más dinero si pudiéramos.","en":"We'd send you more money if we could.","level":"B2"},
    {"person":4,"es":"Ellos mandarían a alguien a buscarte.","en":"They'd send someone to pick you up."}
   ],
   "presentPerfect": [
@@ -3238,7 +3238,7 @@
   ],
   "conditional": [
    {"person":2,"es":"¿Te importaría cerrar la ventana?","en":"Would you mind closing the window?"},
-   {"person":0,"es":"Yo importaría más productos si bajaran los impuestos.","en":"I'd import more products if taxes went down."},
+   {"person":0,"es":"Yo importaría más productos si bajaran los impuestos.","en":"I'd import more products if taxes went down.","level":"B2"},
    {"person":1,"es":"Si fueras más amable, les importarías más.","en":"If you were nicer, they'd care more about you."},
    {"person":3,"es":"Importaríamos menos con una fábrica aquí.","en":"We'd import less with a factory here."},
    {"person":4,"es":"A mis padres no les importarían unos días más.","en":"My parents wouldn't mind a few more days."}

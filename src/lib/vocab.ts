@@ -6,6 +6,7 @@ import phrasesRaw from "../data/vocab/phrases.json";
 import smallWordsRaw from "../data/vocab/small-words.json";
 import { nuclei, setStress, stressIndex } from "./conjugation/accent";
 import type { Level } from "./level";
+import { LEVEL_ORDER, atOrBelow } from "./level-order";
 
 export interface Example {
   es: string;
@@ -69,7 +70,6 @@ export type LeveledType = "noun" | "adjective" | "adverb" | "small";
 
 // Judged by frequency and by the topics beginners learn first, from levels.json. Each level includes the ones before.
 const WORD_LEVELS = levelsRaw as Record<LeveledType, Record<Level, string[]>>;
-const LEVEL_ORDER: Level[] = ["A1", "A2", "B1", "B2"];
 const levelOf = new Map(
   Object.entries(WORD_LEVELS).flatMap(([type, levels]) =>
     Object.entries(levels).flatMap(([level, words]) => words.map((es) => [`${type}|${es}`, level as Level] as const)),
@@ -81,7 +81,7 @@ export const wordLevel = (type: LeveledType, es: string): Level => levelOf.get(`
 
 /** Whether a word is at or below the level. With no level, every word is. */
 export const upToLevel = (level: Level | null | undefined, type: LeveledType, es: string): boolean =>
-  !level || LEVEL_ORDER.indexOf(wordLevel(type, es)) <= LEVEL_ORDER.indexOf(level);
+  atOrBelow(wordLevel(type, es), level);
 
 /** For sorting easiest first. */
 export const levelRank = (type: LeveledType, es: string): number => LEVEL_ORDER.indexOf(wordLevel(type, es));

@@ -6,7 +6,8 @@ import DrillRunner from "@/components/DrillRunner";
 import { TENSES, type Mood, type TenseId } from "@/lib/conjugation/types";
 import { LevelPicker, LevelPrompt } from "@/components/LevelPicker";
 import { COMMON_COUNT, CORE_TENSES, conjugationCard, limitedDeck, makeQuestion, poolVerbs, type Card, type VerbPool } from "@/lib/drill";
-import { levelInfo, storedLevel, useLevel } from "@/lib/level";
+import { atOrBelow } from "@/lib/level-order";
+import { type Level, levelInfo, storedLevel, useLevel } from "@/lib/level";
 import StudyRunner from "@/components/StudyRunner";
 import type { StudyCard } from "@/lib/card-decks";
 import {
@@ -23,7 +24,7 @@ import { parsePractice, type PracticeTarget } from "@/lib/practice";
 import { progressEnabled } from "@/lib/progress-queue";
 import { shuffled } from "@/lib/quiz";
 import { itemVerbs, loadSentences } from "@/lib/sentence-loader";
-import { sentencesFor } from "@/lib/sentences";
+import { sentencesFor, sentencesUpTo } from "@/lib/sentences";
 import { canSpeak, subscribeToVoices } from "@/lib/speech";
 import { VERBS, findVerb, type Verb } from "@/lib/verbs";
 
@@ -208,7 +209,7 @@ function TodaySummary({ today }: { today: Today }) {
   );
 }
 
-export default function Drill({ rare, guideList }: { rare: string[]; guideList: { slug: string; title: string }[] }) {
+export default function Drill({ rare, guideList }: { rare: string[]; guideList: { slug: string; title: string; level: Level }[] }) {
   const rareSet = useMemo(() => new Set(rare), [rare]);
 
   const [settings, update] = useDrillSettings();
@@ -276,14 +277,16 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
     if (mode === "conjugation") return conjugationDeck(verbs, tenses);
     if (mode === "grammar") {
       const [{ quizDeck }, { GUIDE_QUIZZES }] = await Promise.all([import("@/lib/quiz"), import("@/lib/quiz-data")]);
-      const chosen = guides.length ? guideList.filter((g) => guides.includes(g.slug)) : guideList;
+      // None picked means every guide up to the level, like words. Picked ones count whatever their level.
+      const chosen = guides.length ? guideList.filter((g) => guides.includes(g.slug)) : guideList.filter((g) => atOrBelow(g.level, level));
       return quizDeck(GUIDE_QUIZZES, chosen);
     }
     const decks = await import("@/lib/card-decks");
     if (mode === "vocabulary") return decks.vocabDeck({ kinds, wordTypes, topics, level });
     if (mode === "flashcards") return limitedDeck(decks.flashcardDeck({ side: flashSide, types: flashTypes, topics, level }), FLASHCARD_SESSION);
-    if (mode === "writing") return limitedDeck(decks.writingDeck(await loadSentences(verbs), verbs, tenses, writingSides), WRITING_SESSION);
-    if (mode === "listening") return limitedDeck(decks.dictationDeck(await loadSentences(verbs), verbs, tenses), DICTATION_SESSION);
+    // Whole sentences are shown, so ones that also use a tense above the level are left out.
+    if (mode === "writing") return limitedDeck(decks.writingDeck(sentencesUpTo(await loadSentences(verbs), level), verbs, tenses, writingSides), WRITING_SESSION);
+    if (mode === "listening") return limitedDeck(decks.dictationDeck(sentencesUpTo(await loadSentences(verbs), level), verbs, tenses), DICTATION_SESSION);
     return decks.blankDeck(await loadSentences(verbs), verbs, tenses);
   }
 
@@ -354,7 +357,11 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
       {mode === "grammar" && (
         <section>
           <h2 className="mb-1 text-xl font-semibold">Which guides?</h2>
-          <p className="mb-3 text-sm text-stone-500">Pick any, or leave them all off for every guide.</p>
+          <p className="mb-3 text-sm text-stone-500">
+            {level
+              ? `Pick any, or leave them all off for every guide up to ${levelInfo(level).name} (${level}).`
+              : "Pick any, or leave them all off for every guide."}
+          </p>
           <div className="flex flex-wrap gap-2">
             {guideList.map((g) => (
               <button
@@ -368,7 +375,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
                     : "border-stone-200 hover:border-accent-600 dark:border-stone-700"
                 }`}
               >
-                {g.title}
+                {g.title} <span className={guides.includes(g.slug) ? "text-white/80" : "text-stone-500"}>{g.level}</span>
               </button>
             ))}
           </div>

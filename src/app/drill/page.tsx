@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Drill from "@/components/Drill";
 import type { TenseId } from "@/lib/conjugation/types";
 import { GUIDES } from "@/lib/guides";
+import { LEVEL_ORDER } from "@/lib/level-order";
 import { SENTENCE_BANK } from "@/lib/sentence-data";
 
 export const metadata: Metadata = { title: "Drills" };
@@ -17,6 +18,10 @@ function rareTenses(): string[] {
   return keys;
 }
 
+/** Easiest level first. The sort is stable, so each level keeps the guides' order. */
+const guideList = () =>
+  GUIDES.map(({ slug, title, level }) => ({ slug, title, level })).sort((a, b) => LEVEL_ORDER.indexOf(a.level) - LEVEL_ORDER.indexOf(b.level));
+
 export default function DrillPage() {
   return (
     <div className="space-y-6">
@@ -26,7 +31,7 @@ export default function DrillPage() {
           Pick what to practice. Anything you miss comes back a few questions later.
         </p>
       </header>
-      <Drill rare={rareTenses()} guideList={GUIDES.map(({ slug, title }) => ({ slug, title }))} />
+      <Drill rare={rareTenses()} guideList={guideList()} />
     </div>
   );
 }

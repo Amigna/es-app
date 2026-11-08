@@ -4,7 +4,8 @@ import { conjugate } from "./conjugation/engine";
 import type { TenseId } from "./conjugation/types";
 import { SENTENCE_BANK, SENTENCE_FILES, getSentences } from "./sentence-data";
 import { VERBS_PER_FILE, filesFor, itemVerbs, loadSentences } from "./sentence-loader";
-import { checkSentences, findForm, sentencesFor, type Sentence } from "./sentences";
+import { formTenses, sentenceLevel, wordForms } from "./sentence-levels";
+import { checkSentences, findForm, sentencesFor, sentencesUpTo, type Sentence } from "./sentences";
 import { VERBS, findVerb } from "./verbs";
 
 describe("findForm", () => {
@@ -17,6 +18,39 @@ describe("findForm", () => {
   it("allows object pronouns inside a negative command", () => {
     assert.ok(findForm("No me digas eso.", "no digas"));
     assert.equal(findForm("No quiero que digas eso.", "no digas"), null);
+  });
+});
+
+describe("sentence levels", () => {
+  it("tag sentences that use a tense above their own level", () => {
+    const forms = formTenses(VERBS);
+    const words = wordForms();
+    const problems: string[] = [];
+    for (const [inf, tenses] of Object.entries(SENTENCE_BANK)) {
+      for (const tense of Object.keys(tenses) as TenseId[]) {
+        for (const s of sentencesFor(SENTENCE_BANK, inf, tense)) {
+          const level = sentenceLevel(s, tense, forms, words);
+          if (s.level !== level) problems.push(`${inf} ${tense} "${s.es}" should have level ${level ?? "none"}, not ${s.level ?? "none"}`);
+        }
+      }
+    }
+    // Rerun the tagging script in plan.md's "Local checks" to fix these.
+    assert.deepEqual(problems.slice(0, 20), []);
+  });
+
+  it("reads compound tenses, and not nouns spelled like verbs", () => {
+    const forms = formTenses(VERBS.filter((v) => ["haber", "comer", "tardar", "tener"].includes(v.inf)));
+    const words = wordForms();
+    assert.equal(sentenceLevel({ person: 0, es: "Ya he comido.", en: "" }, "present", forms, words), "B1");
+    assert.equal(sentenceLevel({ person: 3, es: "Comemos todas las tardes.", en: "" }, "present", forms, words), undefined);
+    assert.equal(sentenceLevel({ person: 3, es: "Comeríamos si tuviéramos hambre.", en: "" }, "conditional", forms, words), "B2");
+  });
+
+  it("leave tagged sentences out below their level", () => {
+    const bank = { comer: { present: [{ person: 0, es: "Como.", en: "" }, { person: 3, es: "Ya hemos comido.", en: "", level: "B1" as const }] } };
+    assert.equal(sentencesFor(sentencesUpTo(bank, "A2"), "comer", "present").length, 1);
+    assert.equal(sentencesFor(sentencesUpTo(bank, "B1"), "comer", "present").length, 2);
+    assert.equal(sentencesUpTo(bank, null), bank);
   });
 });
 

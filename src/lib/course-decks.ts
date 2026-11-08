@@ -3,7 +3,7 @@ import { EXAM_SIZE, type Chapter, type ChapterDrill } from "./course";
 import { TENSES } from "./conjugation/types";
 import { conjugationCard, makeQuestion, type Card } from "./drill";
 import { QUIZ_RUN, freshestFirst, quizCard, shuffled, type QuizQuestion, type QuizSeen } from "./quiz";
-import { sentencesFor, type SentenceBank } from "./sentences";
+import { sentencesFor, sentencesUpTo, type SentenceBank } from "./sentences";
 import type { Verb } from "./verbs";
 
 // The drills inside a chapter, locked to its tenses, verbs, words and guide. Imported on demand like card-decks, which
@@ -145,7 +145,7 @@ export function wordsDeck(chapter: Chapter, random: Random = Math.random): () =>
 }
 
 export function writeDeck({ chapter, verbs, bank }: ChapterData, random: Random = Math.random): () => Card | null {
-  return queue(distinct(writingDeck(bank, verbs, chapter.tenses, ["toEnglish", "toSpanish"], random), WRITE_SIZE));
+  return queue(distinct(writingDeck(sentencesUpTo(bank, chapter.level), verbs, chapter.tenses, ["toEnglish", "toSpanish"], random), WRITE_SIZE));
 }
 
 /**

@@ -1,5 +1,6 @@
 import guidesRaw from "../data/guides.json";
 import regionalRaw from "../data/regional.json";
+import type { Level } from "./level";
 
 export interface GuideExample {
   es: string;
@@ -19,6 +20,8 @@ export interface GuideSection {
 
 export interface Guide {
   slug: string;
+  /** Tagged by hand: the level of the first course chapter that uses the guide. */
+  level: Level;
   title: string;
   summary: string;
   sections: GuideSection[];

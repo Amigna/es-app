@@ -34,7 +34,8 @@ export const LEVELS: LevelInfo[] = [
     id: "B1",
     name: "Intermediate",
     hint: "Comfortable with the past, starting the subjunctive",
-    tenses: ["present", "preterite", "imperfect", "presentPerfect", "future", "conditional", "subjPresent"],
+    // Commands are B1 in the course, so the drill follows.
+    tenses: ["present", "preterite", "imperfect", "presentPerfect", "future", "conditional", "subjPresent", "impAffirmative", "impNegative"],
     commonVerbs: 300,
     pool: "common",
   },

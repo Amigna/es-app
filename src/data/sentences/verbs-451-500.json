@@ -78,7 +78,7 @@
   ],
   "imperfect": [
    {"person":2,"es":"El calor provocaba dolores de cabeza.","en":"The heat used to cause headaches."},
-   {"person":0,"es":"Yo provocaba a mi hermana para que se enojara.","en":"I used to provoke my sister to make her angry."},
+   {"person":0,"es":"Yo provocaba a mi hermana para que se enojara.","en":"I used to provoke my sister to make her angry.","level":"B2"},
    {"person":1,"es":"Tú provocabas risas en toda la clase.","en":"You used to make the whole class laugh."},
    {"person":3,"es":"Provocábamos a los perros del vecino.","en":"We used to tease the neighbor's dogs."},
    {"person":4,"es":"Los apagones provocaban muchos problemas.","en":"The blackouts used to cause a lot of problems."}
@@ -94,7 +94,7 @@
    {"person":0,"es":"Yo no provocaría a ese perro.","en":"I wouldn't provoke that dog."},
    {"person":1,"es":"¿Provocarías una pelea por eso?","en":"Would you start a fight over that?"},
    {"person":2,"es":"Un cambio así provocaría mucha confusión.","en":"A change like that would cause a lot of confusion."},
-   {"person":3,"es":"Provocaríamos un accidente si manejáramos así.","en":"We'd cause an accident if we drove like that."},
+   {"person":3,"es":"Provocaríamos un accidente si manejáramos así.","en":"We'd cause an accident if we drove like that.","level":"B2"},
    {"person":4,"es":"Esas palabras provocarían una guerra.","en":"Those words would start a war."}
   ],
   "presentPerfect": [
@@ -160,7 +160,7 @@
    {"person":0,"es":"Yo no publicaría esa foto.","en":"I wouldn't post that photo."},
    {"person":1,"es":"¿Publicarías tu diario?","en":"Would you publish your diary?"},
    {"person":2,"es":"Ninguna editorial publicaría algo así.","en":"No publisher would publish something like that."},
-   {"person":3,"es":"Publicaríamos más artículos si tuviéramos tiempo.","en":"We'd publish more articles if we had time."},
+   {"person":3,"es":"Publicaríamos más artículos si tuviéramos tiempo.","en":"We'd publish more articles if we had time.","level":"B2"},
    {"person":4,"es":"Ellos publicarían el video sin pedir permiso.","en":"They'd post the video without asking permission."}
   ],
   "presentPerfect": [
@@ -232,7 +232,7 @@
    {"person":0,"es":"Yo nunca quemaría tus cartas.","en":"I'd never burn your letters."},
    {"person":1,"es":"¿Quemarías tus fotos viejas?","en":"Would you burn your old photos?"},
    {"person":2,"es":"Ese horno quemaría cualquier pastel.","en":"That oven would burn any cake."},
-   {"person":3,"es":"Quemaríamos más calorías si subiéramos por las escaleras.","en":"We'd burn more calories if we took the stairs."},
+   {"person":3,"es":"Quemaríamos más calorías si subiéramos por las escaleras.","en":"We'd burn more calories if we took the stairs.","level":"B2"},
    {"person":4,"es":"Ellos quemarían la comida sin tu ayuda.","en":"They'd burn the food without your help."}
   ],
   "presentPerfect": [
@@ -365,7 +365,7 @@
    {"person":4,"es":"Los ciclistas recorrerán doscientos kilómetros.","en":"The cyclists will cover two hundred kilometers."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo recorrería el mundo si pudiera.","en":"I'd travel the world if I could."},
+   {"person":0,"es":"Yo recorrería el mundo si pudiera.","en":"I'd travel the world if I could.","level":"B2"},
    {"person":1,"es":"¿Recorrerías todo el país en autobús?","en":"Would you travel the whole country by bus?"},
    {"person":2,"es":"Mi abuelo recorrería el pueblo entero a pie.","en":"My grandfather would walk the whole town."},
    {"person":3,"es":"Recorreríamos más lugares con más tiempo.","en":"We'd see more places with more time."},
@@ -619,10 +619,10 @@
    {"person":4,"es":"Si siguen así, todos renunciarán.","en":"If things keep going like this, everyone will quit."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo renunciaría hoy mismo si pudiera.","en":"I'd quit today if I could."},
+   {"person":0,"es":"Yo renunciaría hoy mismo si pudiera.","en":"I'd quit today if I could.","level":"B2"},
    {"person":1,"es":"¿Renunciarías a tu trabajo por amor?","en":"Would you quit your job for love?"},
    {"person":2,"es":"Mi papá nunca renunciaría a su café de la mañana.","en":"My dad would never give up his morning coffee."},
-   {"person":3,"es":"Renunciaríamos al carro si hubiera buen transporte público.","en":"We'd give up the car if there were good public transportation."},
+   {"person":3,"es":"Renunciaríamos al carro si hubiera buen transporte público.","en":"We'd give up the car if there were good public transportation.","level":"B2"},
    {"person":4,"es":"Ellos renunciarían antes de trabajar los domingos.","en":"They'd quit before working on Sundays."}
   ],
   "presentPerfect": [
@@ -690,7 +690,7 @@
    {"person":0,"es":"Yo la repararía, pero no tengo herramientas.","en":"I'd fix it, but I don't have tools."},
    {"person":1,"es":"¿Repararías mi teléfono?","en":"Would you fix my phone?"},
    {"person":2,"es":"Un buen carpintero repararía esa mesa.","en":"A good carpenter would fix that table."},
-   {"person":3,"es":"Repararíamos la casa si tuviéramos dinero.","en":"We'd repair the house if we had the money."},
+   {"person":3,"es":"Repararíamos la casa si tuviéramos dinero.","en":"We'd repair the house if we had the money.","level":"B2"},
    {"person":4,"es":"Ellos repararían el techo gratis.","en":"They'd fix the roof for free."}
   ],
   "presentPerfect": [
@@ -760,7 +760,7 @@
    {"person":0,"es":"Yo repartiría el trabajo de otra forma.","en":"I'd divide up the work differently."},
    {"person":1,"es":"¿Repartirías tu premio con tus amigos?","en":"Would you share your prize with your friends?"},
    {"person":2,"es":"La empresa repartiría las ganancias entre los empleados.","en":"The company would share the profits among the employees."},
-   {"person":3,"es":"Repartiríamos más comida si tuviéramos más voluntarios.","en":"We'd hand out more food if we had more volunteers."},
+   {"person":3,"es":"Repartiríamos más comida si tuviéramos más voluntarios.","en":"We'd hand out more food if we had more volunteers.","level":"B2"},
    {"person":4,"es":"Ellos repartirían volantes, pero llueve.","en":"They'd hand out flyers, but it's raining."}
   ],
   "presentPerfect": [
@@ -956,8 +956,8 @@
    {"person":0,"es":"Yo respetaría su privacidad.","en":"I'd respect her privacy."},
    {"person":1,"es":"¿Respetarías a un jefe que grita?","en":"Would you respect a boss who yells?"},
    {"person":2,"es":"Un buen amigo respetaría tu decisión.","en":"A good friend would respect your decision."},
-   {"person":3,"es":"Respetaríamos el acuerdo si ellos lo respetaran también.","en":"We'd honor the agreement if they honored it too."},
-   {"person":4,"es":"Ellos respetarían el plan si lo entendieran.","en":"They'd respect the plan if they understood it."}
+   {"person":3,"es":"Respetaríamos el acuerdo si ellos lo respetaran también.","en":"We'd honor the agreement if they honored it too.","level":"B2"},
+   {"person":4,"es":"Ellos respetarían el plan si lo entendieran.","en":"They'd respect the plan if they understood it.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":0,"es":"Siempre he respetado a mis padres.","en":"I've always respected my parents."}
@@ -1022,7 +1022,7 @@
   ],
   "conditional": [
    {"person":0,"es":"Yo respiraría mejor sin tanto polvo.","en":"I'd breathe better without so much dust."},
-   {"person":1,"es":"¿Respirarías bajo el agua si pudieras?","en":"Would you breathe underwater if you could?"},
+   {"person":1,"es":"¿Respirarías bajo el agua si pudieras?","en":"Would you breathe underwater if you could?","level":"B2"},
    {"person":2,"es":"Mi perro respiraría mejor con menos calor.","en":"My dog would breathe better if it were less hot."},
    {"person":3,"es":"Respiraríamos aire más limpio con menos carros.","en":"We'd breathe cleaner air with fewer cars."},
    {"person":4,"es":"Los niños respirarían mejor lejos de la fábrica.","en":"The kids would breathe better far from the factory."}
@@ -1058,7 +1058,7 @@
  "retirar": {
   "present": [
    {"person":2,"es":"Mi mamá retira dinero del cajero los viernes.","en":"My mom takes money out of the ATM on Fridays."},
-   {"person":0,"es":"Retiro lo que dije.","en":"I take back what I said."},
+   {"person":0,"es":"Retiro lo que dije.","en":"I take back what I said.","level":"A2"},
    {"person":1,"es":"¿Retiras los platos de la mesa?","en":"Will you clear the dishes from the table?"},
    {"person":3,"es":"Retiramos las sillas después del evento.","en":"We take the chairs away after the event."},
    {"person":4,"es":"Los meseros retiran los platos rápidamente.","en":"The waiters clear the plates quickly."}
@@ -1073,7 +1073,7 @@
   "imperfect": [
    {"person":2,"es":"Mi abuela retiraba la olla del fuego justo a tiempo.","en":"My grandmother used to take the pot off the heat just in time."},
    {"person":0,"es":"Yo retiraba libros de la biblioteca cada semana.","en":"I used to check out books from the library every week."},
-   {"person":1,"es":"Tú siempre retirabas tu plato sin que te lo pidieran.","en":"You always cleared your plate without being asked."},
+   {"person":1,"es":"Tú siempre retirabas tu plato sin que te lo pidieran.","en":"You always cleared your plate without being asked.","level":"B2"},
    {"person":3,"es":"Retirábamos las hojas secas del jardín.","en":"We used to clear the dry leaves from the garden."},
    {"person":4,"es":"Los empleados retiraban la basura por la noche.","en":"The workers used to take away the trash at night."}
   ],
@@ -1089,7 +1089,7 @@
    {"person":1,"es":"¿Retirarías todo tu dinero del banco?","en":"Would you take all your money out of the bank?"},
    {"person":2,"es":"El juez retiraría la multa con una buena razón.","en":"The judge would drop the fine with a good reason."},
    {"person":3,"es":"Retiraríamos la mesa para tener más espacio.","en":"We'd move the table out to have more room."},
-   {"person":4,"es":"Ellos retirarían la queja si les pidieras perdón.","en":"They'd withdraw the complaint if you apologized."}
+   {"person":4,"es":"Ellos retirarían la queja si les pidieras perdón.","en":"They'd withdraw the complaint if you apologized.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":2,"es":"El gobierno ha retirado la ley.","en":"The government has withdrawn the law."}
@@ -1150,7 +1150,7 @@
    {"person":0,"es":"Yo revisaría el informe antes de enviarlo.","en":"I'd check the report before sending it."},
    {"person":1,"es":"¿Revisarías mi currículum?","en":"Would you look over my résumé?"},
    {"person":2,"es":"Un buen editor revisaría cada página.","en":"A good editor would check every page."},
-   {"person":3,"es":"Revisaríamos las cuentas si tuviéramos tiempo.","en":"We'd go over the accounts if we had time."},
+   {"person":3,"es":"Revisaríamos las cuentas si tuviéramos tiempo.","en":"We'd go over the accounts if we had time.","level":"B2"},
    {"person":4,"es":"Ellos revisarían todo dos veces.","en":"They'd check everything twice."}
   ],
   "presentPerfect": [
@@ -1222,7 +1222,7 @@
    {"person":0,"es":"Yo nunca robaría nada.","en":"I'd never steal anything."},
    {"person":1,"es":"¿Robarías para salvar a tu familia?","en":"Would you steal to save your family?"},
    {"person":2,"es":"Nadie robaría un carro tan viejo.","en":"No one would steal such an old car."},
-   {"person":3,"es":"Robaríamos la pelota si fuéramos más rápidos.","en":"We'd steal the ball if we were faster."},
+   {"person":3,"es":"Robaríamos la pelota si fuéramos más rápidos.","en":"We'd steal the ball if we were faster.","level":"B2"},
    {"person":4,"es":"Ellos robarían el show con ese baile.","en":"They'd steal the show with that dance."}
   ],
   "presentPerfect": [
@@ -1287,8 +1287,8 @@
   "conditional": [
    {"person":0,"es":"Yo no saltaría desde tan alto.","en":"I wouldn't jump from that high."},
    {"person":1,"es":"¿Saltarías en paracaídas?","en":"Would you go skydiving?"},
-   {"person":2,"es":"Mi perro saltaría la cerca si pudiera.","en":"My dog would jump the fence if he could."},
-   {"person":3,"es":"Saltaríamos de alegría si ganáramos.","en":"We'd jump for joy if we won."},
+   {"person":2,"es":"Mi perro saltaría la cerca si pudiera.","en":"My dog would jump the fence if he could.","level":"B2"},
+   {"person":3,"es":"Saltaríamos de alegría si ganáramos.","en":"We'd jump for joy if we won.","level":"B2"},
    {"person":4,"es":"Ellos saltarían al río sin pensarlo.","en":"They'd jump into the river without thinking twice."}
   ],
   "presentPerfect": [
@@ -1353,7 +1353,7 @@
    {"person":4,"es":"Los rescatistas salvarán a los mineros.","en":"The rescuers will save the miners."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo salvaría a todos los animales si pudiera.","en":"I'd rescue all the animals if I could."},
+   {"person":0,"es":"Yo salvaría a todos los animales si pudiera.","en":"I'd rescue all the animals if I could.","level":"B2"},
    {"person":1,"es":"¿Salvarías a un desconocido?","en":"Would you save a stranger?"},
    {"person":2,"es":"Un buen portero salvaría ese tiro.","en":"A good goalkeeper would save that shot."},
    {"person":3,"es":"Salvaríamos más árboles con menos papel.","en":"We'd save more trees by using less paper."},
@@ -1423,7 +1423,7 @@
    {"person":1,"es":"¿Te concentrarías con la tele prendida?","en":"Would you be able to concentrate with the TV on?"},
    {"person":2,"es":"Mi hijo se concentraría más con una buena silla.","en":"My son would concentrate better with a good chair."},
    {"person":3,"es":"Nos concentraríamos mejor en silencio.","en":"We'd concentrate better in silence."},
-   {"person":4,"es":"Ellos se concentrarían más si estuvieran solos.","en":"They'd concentrate better if they were alone."}
+   {"person":4,"es":"Ellos se concentrarían más si estuvieran solos.","en":"They'd concentrate better if they were alone.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":0,"es":"Hoy no me he concentrado nada.","en":"I haven't been able to concentrate at all today."}
@@ -1609,7 +1609,7 @@
  "solucionar": {
   "present": [
    {"person":2,"es":"Mi tía soluciona cualquier problema.","en":"My aunt can fix any problem."},
-   {"person":0,"es":"Yo soluciono esto, no te preocupes.","en":"I'll sort this out, don't worry."},
+   {"person":0,"es":"Yo soluciono esto, no te preocupes.","en":"I'll sort this out, don't worry.","level":"B1"},
    {"person":1,"es":"¿Así solucionas tus problemas?","en":"Is that how you solve your problems?"},
    {"person":3,"es":"Solucionamos los conflictos hablando.","en":"We solve conflicts by talking."},
    {"person":4,"es":"Los técnicos solucionan las fallas rápido.","en":"The technicians fix breakdowns quickly."}
@@ -1694,7 +1694,7 @@
   "imperfect": [
    {"person":2,"es":"Mi abuela no soportaba la televisión alta.","en":"My grandmother couldn't stand the TV loud."},
    {"person":0,"es":"Yo no soportaba las verduras de niño.","en":"As a kid I couldn't stand vegetables."},
-   {"person":1,"es":"Tú no soportabas que te despertaran temprano.","en":"You couldn't stand being woken up early."},
+   {"person":1,"es":"Tú no soportabas que te despertaran temprano.","en":"You couldn't stand being woken up early.","level":"B2"},
    {"person":3,"es":"Soportábamos el calor sin aire acondicionado.","en":"We put up with the heat without air conditioning."},
    {"person":4,"es":"Mis vecinos no soportaban a mi perro.","en":"My neighbors couldn't stand my dog."}
   ],
@@ -1772,7 +1772,7 @@
   "conditional": [
    {"person":0,"es":"Yo la sorprendería con un viaje.","en":"I'd surprise her with a trip."},
    {"person":1,"es":"¿Sorprenderías a tu mamá con una visita?","en":"Would you surprise your mom with a visit?"},
-   {"person":2,"es":"No me sorprendería que lloviera.","en":"It wouldn't surprise me if it rained."},
+   {"person":2,"es":"No me sorprendería que lloviera.","en":"It wouldn't surprise me if it rained.","level":"B2"},
    {"person":3,"es":"Los sorprenderíamos con una cena.","en":"We'd surprise them with a dinner."},
    {"person":4,"es":"Esos precios sorprenderían a cualquiera.","en":"Those prices would surprise anyone."}
   ],
@@ -2094,7 +2094,7 @@
    {"person":1,"es":"¿Por quién votarías tú?","en":"Who would you vote for?"},
    {"person":2,"es":"Mi mamá nunca votaría por él.","en":"My mom would never vote for him."},
    {"person":3,"es":"Votaríamos, pero no estamos registrados.","en":"We'd vote, but we're not registered."},
-   {"person":4,"es":"Ellos votarían a favor si les explicaras el plan.","en":"They'd vote in favor if you explained the plan to them."}
+   {"person":4,"es":"Ellos votarían a favor si les explicaras el plan.","en":"They'd vote in favor if you explained the plan to them.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":0,"es":"Nunca he votado.","en":"I've never voted."}
@@ -2160,11 +2160,11 @@
    {"person":4,"es":"Las plantas recuperarán su color con el sol.","en":"The plants will get their color back in the sun."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo recuperaría mi viejo trabajo si pudiera.","en":"I'd get my old job back if I could."},
+   {"person":0,"es":"Yo recuperaría mi viejo trabajo si pudiera.","en":"I'd get my old job back if I could.","level":"B2"},
    {"person":1,"es":"¿Recuperarías una amistad perdida?","en":"Would you rebuild a lost friendship?"},
    {"person":2,"es":"Con más descanso, el atleta recuperaría su forma.","en":"With more rest, the athlete would get back in shape."},
    {"person":3,"es":"Recuperaríamos el tiempo perdido con más horas de clase.","en":"We'd make up for lost time with more class hours."},
-   {"person":4,"es":"Ellos recuperarían la casa si pagaran la deuda.","en":"They'd get the house back if they paid the debt."}
+   {"person":4,"es":"Ellos recuperarían la casa si pagaran la deuda.","en":"They'd get the house back if they paid the debt.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":0,"es":"Por fin he recuperado mi contraseña.","en":"I've finally gotten my password back."}
@@ -2294,9 +2294,9 @@
   "conditional": [
    {"person":0,"es":"Me cepillaría el pelo, pero no encuentro el cepillo.","en":"I'd brush my hair, but I can't find the brush."},
    {"person":1,"es":"Te cepillarías más con un cepillo eléctrico.","en":"You'd brush more with an electric toothbrush."},
-   {"person":2,"es":"Mi hijo nunca se cepillaría los dientes sin que se lo pidiera.","en":"My son would never brush his teeth without being told."},
+   {"person":2,"es":"Mi hijo nunca se cepillaría los dientes sin que se lo pidiera.","en":"My son would never brush his teeth without being told.","level":"B2"},
    {"person":3,"es":"Nos cepillaríamos los dientes, pero no hay agua.","en":"We'd brush our teeth, but there's no water."},
-   {"person":4,"es":"Ellos se cepillarían el pelo si tuvieran tiempo.","en":"They'd brush their hair if they had time."}
+   {"person":4,"es":"Ellos se cepillarían el pelo si tuvieran tiempo.","en":"They'd brush their hair if they had time.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":1,"es":"¿Ya te has cepillado los dientes?","en":"Have you brushed your teeth yet?"}
@@ -2359,8 +2359,8 @@
    {"person":0,"es":"Me afeitaría, pero no tengo navaja.","en":"I'd shave, but I don't have a razor."},
    {"person":1,"es":"¿Te afeitarías la cabeza por una apuesta?","en":"Would you shave your head on a bet?"},
    {"person":2,"es":"Mi papá nunca se afeitaría el bigote.","en":"My dad would never shave off his mustache."},
-   {"person":3,"es":"Nos afeitaríamos si hubiera agua caliente.","en":"We'd shave if there were hot water."},
-   {"person":4,"es":"Ellos se afeitarían la barba si el jefe se lo pidiera.","en":"They'd shave their beards if the boss asked them to."}
+   {"person":3,"es":"Nos afeitaríamos si hubiera agua caliente.","en":"We'd shave if there were hot water.","level":"B2"},
+   {"person":4,"es":"Ellos se afeitarían la barba si el jefe se lo pidiera.","en":"They'd shave their beards if the boss asked them to.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":1,"es":"¡Te has afeitado!","en":"You've shaved!"}
@@ -2487,7 +2487,7 @@
    {"person":0,"es":"Yo platicaría con ella antes de decidir.","en":"I'd talk with her before deciding."},
    {"person":1,"es":"¿Platicarías con mi hermano?","en":"Would you talk with my brother?"},
    {"person":2,"es":"Mi abuela platicaría contigo toda la tarde.","en":"My grandmother would chat with you all afternoon."},
-   {"person":3,"es":"Platicaríamos más si no hubiera tanto ruido.","en":"We'd talk more if it weren't so noisy."},
+   {"person":3,"es":"Platicaríamos más si no hubiera tanto ruido.","en":"We'd talk more if it weren't so noisy.","level":"B2"},
    {"person":4,"es":"Ellos platicarían, pero son muy tímidos.","en":"They'd chat, but they're very shy."}
   ],
   "presentPerfect": [
@@ -2616,7 +2616,7 @@
    {"person":1,"es":"¿Jalarías la puerta, por favor?","en":"Would you pull the door, please?"},
    {"person":2,"es":"Un caballo jalaría más que nosotros.","en":"A horse would pull more than we could."},
    {"person":3,"es":"Jalaríamos el sofá, pero pesa mucho.","en":"We'd pull the sofa over, but it's really heavy."},
-   {"person":4,"es":"Ellos jalarían el carro si tuvieran una cuerda.","en":"They'd pull the car if they had a rope."}
+   {"person":4,"es":"Ellos jalarían el carro si tuvieran una cuerda.","en":"They'd pull the car if they had a rope.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":2,"es":"Alguien ha jalado la alarma de incendios.","en":"Someone has pulled the fire alarm."}
@@ -2652,7 +2652,7 @@
    {"person":1,"es":"¿Por qué te paras tan cerca de la puerta?","en":"Why do you stand so close to the door?"},
    {"person":2,"es":"Mi abuelo se para con un bastón.","en":"My grandfather stands up with a cane."},
    {"person":3,"es":"Nos paramos para cantar el himno.","en":"We stand up to sing the anthem."},
-   {"person":4,"es":"Los pasajeros se paran antes de que el avión se detenga.","en":"The passengers stand up before the plane stops."}
+   {"person":4,"es":"Los pasajeros se paran antes de que el avión se detenga.","en":"The passengers stand up before the plane stops.","level":"B1"}
   ],
   "preterite": [
    {"person":2,"es":"Todo el público se paró a aplaudir.","en":"The whole audience stood up to applaud."},
@@ -2743,7 +2743,7 @@
    {"person":0,"es":"Yo rentaría antes de comprar.","en":"I'd rent before buying."},
    {"person":1,"es":"¿Rentarías un departamento sin verlo?","en":"Would you rent an apartment without seeing it?"},
    {"person":2,"es":"Mi hermana nunca rentaría un carro tan caro.","en":"My sister would never rent such an expensive car."},
-   {"person":3,"es":"Rentaríamos una lancha si hiciera buen tiempo.","en":"We'd rent a boat if the weather were nice."},
+   {"person":3,"es":"Rentaríamos una lancha si hiciera buen tiempo.","en":"We'd rent a boat if the weather were nice.","level":"B2"},
    {"person":4,"es":"Ellos rentarían el cuarto a un estudiante.","en":"They'd rent the room to a student."}
   ],
   "presentPerfect": [
@@ -2805,7 +2805,7 @@
   ],
   "conditional": [
    {"person":0,"es":"Yo reprobaría sin tu ayuda.","en":"I'd fail without your help."},
-   {"person":1,"es":"Reprobarías el examen si no estudiaras.","en":"You'd fail the exam if you didn't study."},
+   {"person":1,"es":"Reprobarías el examen si no estudiaras.","en":"You'd fail the exam if you didn't study.","level":"B2"},
    {"person":2,"es":"Mi papá reprobaría esa decisión.","en":"My dad would disapprove of that decision."},
    {"person":3,"es":"Reprobaríamos sin los apuntes de Ana.","en":"We'd fail without Ana's notes."},
    {"person":4,"es":"Ellos reprobarían si el examen fuera mañana.","en":"They'd fail if the exam were tomorrow."}
@@ -3042,7 +3042,7 @@
   "present": [
    {"person":2,"es":"Mi abuela siempre adivina lo que estoy pensando.","en":"My grandmother always guesses what I'm thinking."},
    {"person":0,"es":"Adivino el final de todas las películas.","en":"I guess the ending of every movie."},
-   {"person":1,"es":"¿Adivinas quién llamó?","en":"Guess who called?"},
+   {"person":1,"es":"¿Adivinas quién llamó?","en":"Guess who called?","level":"A2"},
    {"person":3,"es":"Adivinamos las respuestas cuando no sabemos.","en":"We guess the answers when we don't know."},
    {"person":4,"es":"Los niños adivinan qué hay en la caja.","en":"The kids guess what's in the box."}
   ],
@@ -3133,7 +3133,7 @@
   ],
   "conditional": [
    {"person":0,"es":"Me quemaría en dos minutos con este sol.","en":"I'd get burned in two minutes in this sun."},
-   {"person":1,"es":"Te quemarías si tocaras esa plancha.","en":"You'd burn yourself if you touched that iron."},
+   {"person":1,"es":"Te quemarías si tocaras esa plancha.","en":"You'd burn yourself if you touched that iron.","level":"B2"},
    {"person":2,"es":"La carne se quemaría a esa temperatura.","en":"The meat would burn at that temperature."},
    {"person":3,"es":"Nos quemaríamos sin protector solar.","en":"We'd get burned without sunscreen."},
    {"person":4,"es":"Las plantas se quemarían con tanto sol.","en":"The plants would get scorched with so much sun."}
@@ -3172,7 +3172,7 @@
   "present": [
    {"person":2,"es":"Mi hermano nunca admite sus errores.","en":"My brother never admits his mistakes."},
    {"person":0,"es":"Admito que tienes razón.","en":"I admit you're right."},
-   {"person":1,"es":"¿Admites que fuiste tú?","en":"Do you admit it was you?"},
+   {"person":1,"es":"¿Admites que fuiste tú?","en":"Do you admit it was you?","level":"A2"},
    {"person":3,"es":"Admitimos que nos equivocamos.","en":"We admit we were wrong."},
    {"person":4,"es":"En este restaurante no admiten perros.","en":"They don't allow dogs in this restaurant."}
   ],

@@ -149,11 +149,11 @@
  },
  "haber": {
   "present": [
-   {"person":0,"es":"Ya he comido, gracias.","en":"I've already eaten, thanks."},
-   {"person":1,"es":"¿Has comido mangos alguna vez?","en":"Have you ever eaten mangoes?"},
-   {"person":2,"es":"Mi hermana ha viajado mucho este año.","en":"My sister has traveled a lot this year."},
-   {"person":3,"es":"Todavía no hemos terminado.","en":"We haven't finished yet."},
-   {"person":4,"es":"Mis padres han vivido aquí toda la vida.","en":"My parents have lived here all their lives."}
+   {"person":0,"es":"Ya he comido, gracias.","en":"I've already eaten, thanks.","level":"B1"},
+   {"person":1,"es":"¿Has comido mangos alguna vez?","en":"Have you ever eaten mangoes?","level":"B1"},
+   {"person":2,"es":"Mi hermana ha viajado mucho este año.","en":"My sister has traveled a lot this year.","level":"B1"},
+   {"person":3,"es":"Todavía no hemos terminado.","en":"We haven't finished yet.","level":"B1"},
+   {"person":4,"es":"Mis padres han vivido aquí toda la vida.","en":"My parents have lived here all their lives.","level":"B1"}
   ],
   "preterite": [
    {"person":2,"es":"Hubo un apagón anoche en todo el barrio.","en":"There was a blackout last night in the whole neighborhood."},
@@ -164,24 +164,24 @@
   ],
   "imperfect": [
    {"person":2,"es":"Había mucha gente en la playa.","en":"There were a lot of people at the beach."},
-   {"person":0,"es":"Yo ya había visto esa película.","en":"I had already seen that movie."},
-   {"person":1,"es":"¿Habías estado aquí antes?","en":"Had you been here before?"},
-   {"person":3,"es":"Nunca habíamos visto tanta nieve.","en":"We had never seen so much snow."},
-   {"person":4,"es":"Mis amigos ya se habían ido cuando llegué.","en":"My friends had already left when I arrived."}
+   {"person":0,"es":"Yo ya había visto esa película.","en":"I had already seen that movie.","level":"B2"},
+   {"person":1,"es":"¿Habías estado aquí antes?","en":"Had you been here before?","level":"B2"},
+   {"person":3,"es":"Nunca habíamos visto tanta nieve.","en":"We had never seen so much snow.","level":"B2"},
+   {"person":4,"es":"Mis amigos ya se habían ido cuando llegué.","en":"My friends had already left when I arrived.","level":"B2"}
   ],
   "future": [
    {"person":2,"es":"Habrá música en vivo en la plaza.","en":"There will be live music in the square."},
-   {"person":0,"es":"Para el viernes habré terminado el trabajo.","en":"By Friday I'll have finished the job."},
-   {"person":1,"es":"Para junio habrás aprendido mucho.","en":"By June you'll have learned a lot."},
-   {"person":3,"es":"Para las ocho habremos cenado.","en":"By eight we'll have had dinner."},
-   {"person":4,"es":"Para mañana ya habrán llegado.","en":"By tomorrow they'll have arrived."}
+   {"person":0,"es":"Para el viernes habré terminado el trabajo.","en":"By Friday I'll have finished the job.","level":"B2"},
+   {"person":1,"es":"Para junio habrás aprendido mucho.","en":"By June you'll have learned a lot.","level":"B2"},
+   {"person":3,"es":"Para las ocho habremos cenado.","en":"By eight we'll have had dinner.","level":"B2"},
+   {"person":4,"es":"Para mañana ya habrán llegado.","en":"By tomorrow they'll have arrived.","level":"B2"}
   ],
   "conditional": [
-   {"person":2,"es":"Habría más trabajo si abrieran la fábrica.","en":"There would be more work if they opened the factory."},
-   {"person":0,"es":"Yo habría llamado, pero no tenía señal.","en":"I would have called, but I had no signal."},
-   {"person":1,"es":"Tú habrías hecho lo mismo.","en":"You would have done the same."},
-   {"person":3,"es":"Habríamos ido contigo, pero nadie nos avisó.","en":"We would have gone with you, but nobody told us."},
-   {"person":4,"es":"Ellos habrían venido si hubieran podido.","en":"They would have come if they could have."}
+   {"person":2,"es":"Habría más trabajo si abrieran la fábrica.","en":"There would be more work if they opened the factory.","level":"B2"},
+   {"person":0,"es":"Yo habría llamado, pero no tenía señal.","en":"I would have called, but I had no signal.","level":"B2"},
+   {"person":1,"es":"Tú habrías hecho lo mismo.","en":"You would have done the same.","level":"B2"},
+   {"person":3,"es":"Habríamos ido contigo, pero nadie nos avisó.","en":"We would have gone with you, but nobody told us.","level":"B2"},
+   {"person":4,"es":"Ellos habrían venido si hubieran podido.","en":"They would have come if they could have.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":2,"es":"Ha habido muchos cambios en la ciudad.","en":"There have been a lot of changes in the city."}
@@ -197,10 +197,10 @@
   ],
   "subjPresent": [
    {"person":2,"es":"Espero que haya suficiente comida para todos.","en":"I hope there's enough food for everyone."},
-   {"person":0,"es":"No creo que yo haya visto a esa persona.","en":"I don't think I've seen that person."},
-   {"person":1,"es":"Me alegra que hayas venido.","en":"I'm glad you came."},
-   {"person":3,"es":"Espero que hayamos llegado a tiempo.","en":"I hope we've arrived on time."},
-   {"person":4,"es":"Ojalá hayan encontrado las llaves.","en":"I hope they've found the keys."}
+   {"person":0,"es":"No creo que yo haya visto a esa persona.","en":"I don't think I've seen that person.","level":"B2"},
+   {"person":1,"es":"Me alegra que hayas venido.","en":"I'm glad you came.","level":"B2"},
+   {"person":3,"es":"Espero que hayamos llegado a tiempo.","en":"I hope we've arrived on time.","level":"B2"},
+   {"person":4,"es":"Ojalá hayan encontrado las llaves.","en":"I hope they've found the keys.","level":"B2"}
   ],
   "subjImperfect": [
    {"person":2,"es":"Si hubiera más guaguas, no llegaría tarde.","en":"If there were more buses, I wouldn't be late."}
@@ -249,7 +249,7 @@
    {"person":0,"es":"Yo tendría más cuidado con ese perro.","en":"I would be more careful with that dog."},
    {"person":1,"es":"Tú tendrías que hablar con el jefe.","en":"You would have to talk to the boss."},
    {"person":2,"es":"Con más sol, la planta tendría más flores.","en":"With more sun, the plant would have more flowers."},
-   {"person":3,"es":"Tendríamos más tiempo si saliéramos ahora.","en":"We'd have more time if we left now."}
+   {"person":3,"es":"Tendríamos más tiempo si saliéramos ahora.","en":"We'd have more time if we left now.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":0,"es":"He tenido mucho trabajo esta semana.","en":"I've had a lot of work this week."}
@@ -322,7 +322,7 @@
    {"person":1,"es":"¿Qué harías con un millón de dólares?","en":"What would you do with a million dollars?"},
    {"person":0,"es":"Yo haría el viaje en guagua.","en":"I would make the trip by bus."},
    {"person":2,"es":"Mi hermano haría cualquier cosa por sus hijos.","en":"My brother would do anything for his kids."},
-   {"person":3,"es":"Haríamos más si tuviéramos tiempo.","en":"We would do more if we had time."},
+   {"person":3,"es":"Haríamos más si tuviéramos tiempo.","en":"We would do more if we had time.","level":"B2"},
    {"person":4,"es":"Ellos harían el trabajo por menos dinero.","en":"They would do the job for less money."}
   ],
   "presentPerfect": [
@@ -383,7 +383,7 @@
    {"person":0,"es":"Yo siempre decía que quería ser piloto.","en":"I always said I wanted to be a pilot."},
    {"person":1,"es":"¿Qué decías?","en":"What were you saying?"},
    {"person":2,"es":"Mi abuelo decía que el mar lo curaba todo.","en":"My grandfather used to say the sea cured everything."},
-   {"person":3,"es":"Decíamos que algún día volveríamos.","en":"We used to say we'd return someday."}
+   {"person":3,"es":"Decíamos que algún día volveríamos.","en":"We used to say we'd return someday.","level":"B1"}
   ],
   "future": [
    {"person":3,"es":"Te diremos la fecha la semana que viene.","en":"We'll tell you the date next week."},
@@ -471,7 +471,7 @@
    {"person":1,"es":"¿Irías a vivir a otro país?","en":"Would you go live in another country?"},
    {"person":2,"es":"Mi papá iría, pero le duele la rodilla.","en":"My dad would go, but his knee hurts."},
    {"person":3,"es":"Iríamos en carro, pero está en el taller.","en":"We would drive, but the car is at the shop."},
-   {"person":4,"es":"Ellos irían a la fiesta si los invitaras.","en":"They would go to the party if you invited them."}
+   {"person":4,"es":"Ellos irían a la fiesta si los invitaras.","en":"They would go to the party if you invited them.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":1,"es":"¿Has ido alguna vez a Cartagena?","en":"Have you ever been to Cartagena?"}
@@ -545,7 +545,7 @@
    {"person":1,"es":"¿Verías esa película otra vez?","en":"Would you see that movie again?"},
    {"person":2,"es":"Sin esa pared, mi mamá vería el jardín.","en":"Without that wall, my mom would see the garden."},
    {"person":3,"es":"Desde allí veríamos todo el valle.","en":"From there we would see the whole valley."},
-   {"person":4,"es":"Ellos verían el problema si lo explicaras.","en":"They would see the problem if you explained it."}
+   {"person":4,"es":"Ellos verían el problema si lo explicaras.","en":"They would see the problem if you explained it.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":0,"es":"Nunca he visto un atardecer tan bonito.","en":"I've never seen such a beautiful sunset."}
@@ -618,7 +618,7 @@
    {"person":0,"es":"Daría cualquier cosa por volver a verla.","en":"I'd give anything to see her again."},
    {"person":1,"es":"¿Le darías otra oportunidad?","en":"Would you give him another chance?"},
    {"person":2,"es":"Mi papá te daría un buen consejo.","en":"My dad would give you good advice."},
-   {"person":3,"es":"Le daríamos trabajo si pudiéramos.","en":"We would give him a job if we could."},
+   {"person":3,"es":"Le daríamos trabajo si pudiéramos.","en":"We would give him a job if we could.","level":"B2"},
    {"person":4,"es":"Ellos darían todo por sus hijos.","en":"They would give everything for their kids."}
   ],
   "presentPerfect": [
@@ -905,9 +905,9 @@
   "conditional": [
    {"person":1,"es":"Con este tráfico, llegarías tarde.","en":"With this traffic, you'd be late."},
    {"person":0,"es":"Yo llegaría antes en bicicleta.","en":"I would get there sooner by bike."},
-   {"person":2,"es":"Mi hermana llegaría a tiempo si saliera ahora.","en":"My sister would arrive on time if she left now."},
+   {"person":2,"es":"Mi hermana llegaría a tiempo si saliera ahora.","en":"My sister would arrive on time if she left now.","level":"B2"},
    {"person":3,"es":"Por la autopista llegaríamos más rápido.","en":"We would get there faster on the highway."},
-   {"person":4,"es":"Ellos llegarían mañana si consiguieran pasaje.","en":"They would arrive tomorrow if they got tickets."}
+   {"person":4,"es":"Ellos llegarían mañana si consiguieran pasaje.","en":"They would arrive tomorrow if they got tickets.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":4,"es":"Tus primos ya han llegado del aeropuerto.","en":"Your cousins have already arrived from the airport."}
@@ -981,7 +981,7 @@
    {"person":0,"es":"Yo pasaría más tiempo con mis hijos.","en":"I would spend more time with my kids."},
    {"person":2,"es":"Mi hermano pasaría a verte, pero está enfermo.","en":"My brother would stop by to see you, but he's sick."},
    {"person":3,"es":"Pasaríamos las vacaciones aquí si fuera más barato.","en":"We would spend our vacation here if it were cheaper."},
-   {"person":4,"es":"Ellos pasarían por aquí si tuvieran tiempo.","en":"They would come by here if they had time."}
+   {"person":4,"es":"Ellos pasarían por aquí si tuvieran tiempo.","en":"They would come by here if they had time.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":2,"es":"Ha pasado mucho tiempo desde la última vez.","en":"A lot of time has passed since the last time."}
@@ -1116,7 +1116,7 @@
    {"person":1,"es":"¿Dónde pondrías el sofá?","en":"Where would you put the sofa?"},
    {"person":0,"es":"Yo pondría una planta en esa esquina.","en":"I would put a plant in that corner."},
    {"person":2,"es":"Mi papá pondría más sal.","en":"My dad would put in more salt."},
-   {"person":3,"es":"Pondríamos otra cama si hubiera espacio.","en":"We would put in another bed if there were room."},
+   {"person":3,"es":"Pondríamos otra cama si hubiera espacio.","en":"We would put in another bed if there were room.","level":"B2"},
    {"person":4,"es":"Ellos pondrían el dinero, pero no lo tienen.","en":"They would put up the money, but they don't have it."}
   ],
   "presentPerfect": [
@@ -1262,7 +1262,7 @@
    {"person":2,"es":"Este color te quedaría muy bien.","en":"This color would look great on you."},
    {"person":0,"es":"Yo me quedaría, pero tengo que trabajar.","en":"I would stay, but I have to work."},
    {"person":1,"es":"¿Te quedarías una semana más?","en":"Would you stay another week?"},
-   {"person":3,"es":"Nos quedaríamos más tiempo si pudiéramos.","en":"We would stay longer if we could."},
+   {"person":3,"es":"Nos quedaríamos más tiempo si pudiéramos.","en":"We would stay longer if we could.","level":"B2"},
    {"person":4,"es":"Esas cortinas quedarían bien en la sala.","en":"Those curtains would look good in the living room."}
   ],
   "presentPerfect": [
@@ -1407,11 +1407,11 @@
    {"person":4,"es":"Los abogados hablarán con el juez.","en":"The lawyers will talk to the judge."}
   ],
   "conditional": [
-   {"person":4,"es":"Ellos hablarían contigo si tuvieran tiempo.","en":"They would talk to you if they had time."},
+   {"person":4,"es":"Ellos hablarían contigo si tuvieran tiempo.","en":"They would talk to you if they had time.","level":"B2"},
    {"person":0,"es":"Yo hablaría con ella primero.","en":"I would talk to her first."},
    {"person":1,"es":"¿Hablarías en público sin miedo?","en":"Would you speak in public without fear?"},
    {"person":2,"es":"Mi hermano hablaría contigo, pero está ocupado.","en":"My brother would talk to you, but he's busy."},
-   {"person":3,"es":"Hablaríamos más si nos viéramos seguido.","en":"We would talk more if we saw each other often."}
+   {"person":3,"es":"Hablaríamos más si nos viéramos seguido.","en":"We would talk more if we saw each other often.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":0,"es":"Nunca he hablado con el vecino.","en":"I've never talked to the neighbor."}
@@ -1484,8 +1484,8 @@
    {"person":1,"es":"¿Me llevarías al centro en tu carro?","en":"Would you take me downtown in your car?"},
    {"person":0,"es":"Yo llevaría un suéter por si acaso.","en":"I would bring a sweater just in case."},
    {"person":2,"es":"Mi hermano te llevaría, pero no tiene carro.","en":"My brother would take you, but he doesn't have a car."},
-   {"person":3,"es":"Llevaríamos más ropa si tuviéramos otra maleta.","en":"We would bring more clothes if we had another suitcase."},
-   {"person":4,"es":"Ellos llevarían a los niños si hubiera espacio.","en":"They would take the kids if there were room."}
+   {"person":3,"es":"Llevaríamos más ropa si tuviéramos otra maleta.","en":"We would bring more clothes if we had another suitcase.","level":"B2"},
+   {"person":4,"es":"Ellos llevarían a los niños si hubiera espacio.","en":"They would take the kids if there were room.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":0,"es":"He llevado el carro al mecánico.","en":"I've taken the car to the mechanic."}
@@ -1558,8 +1558,8 @@
    {"person":0,"es":"Yo no dejaría ese trabajo ahora.","en":"I wouldn't leave that job now."},
    {"person":1,"es":"¿Dejarías tu país por amor?","en":"Would you leave your country for love?"},
    {"person":2,"es":"Mi hermano dejaría de fumar por sus hijos.","en":"My brother would quit smoking for his kids."},
-   {"person":3,"es":"Dejaríamos la casa si encontráramos otra.","en":"We would leave the house if we found another one."},
-   {"person":4,"es":"Ellos dejarían el trabajo si pudieran.","en":"They would quit their jobs if they could."}
+   {"person":3,"es":"Dejaríamos la casa si encontráramos otra.","en":"We would leave the house if we found another one.","level":"B2"},
+   {"person":4,"es":"Ellos dejarían el trabajo si pudieran.","en":"They would quit their jobs if they could.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":1,"es":"¿Has dejado la puerta abierta?","en":"Have you left the door open?"}
@@ -1630,10 +1630,10 @@
   ],
   "conditional": [
    {"person":1,"es":"¿Seguirías en ese trabajo por menos dinero?","en":"Would you stay in that job for less money?"},
-   {"person":0,"es":"Yo seguiría estudiando si tuviera tiempo.","en":"I would keep studying if I had time."},
-   {"person":2,"es":"Mi papá seguiría trabajando si pudiera.","en":"My dad would keep working if he could."},
+   {"person":0,"es":"Yo seguiría estudiando si tuviera tiempo.","en":"I would keep studying if I had time.","level":"B2"},
+   {"person":2,"es":"Mi papá seguiría trabajando si pudiera.","en":"My dad would keep working if he could.","level":"B2"},
    {"person":3,"es":"Seguiríamos aquí sin tu ayuda.","en":"We would still be here without your help."},
-   {"person":4,"es":"Ellos seguirían el plan si lo entendieran.","en":"They would follow the plan if they understood it."}
+   {"person":4,"es":"Ellos seguirían el plan si lo entendieran.","en":"They would follow the plan if they understood it.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":4,"es":"Los precios han seguido subiendo.","en":"Prices have kept going up."}
@@ -1779,7 +1779,7 @@
    {"person":0,"es":"Yo la llamaría antes de ir.","en":"I would call her before going."},
    {"person":1,"es":"¿Llamarías a tu ex?","en":"Would you call your ex?"},
    {"person":2,"es":"Mi hermana te llamaría, pero perdió el celular.","en":"My sister would call you, but she lost her phone."},
-   {"person":4,"es":"Ellos llamarían si tuvieran noticias.","en":"They would call if they had news."}
+   {"person":4,"es":"Ellos llamarían si tuvieran noticias.","en":"They would call if they had news.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":4,"es":"Mis primos han llamado dos veces.","en":"My cousins have called twice."}
@@ -1850,10 +1850,10 @@
   ],
   "conditional": [
    {"person":1,"es":"¿Vendrías con nosotros a la playa?","en":"Would you come with us to the beach?"},
-   {"person":0,"es":"Yo vendría más seguido si viviera cerca.","en":"I would come more often if I lived nearby."},
+   {"person":0,"es":"Yo vendría más seguido si viviera cerca.","en":"I would come more often if I lived nearby.","level":"B2"},
    {"person":2,"es":"Mi mamá vendría, pero tiene que trabajar.","en":"My mom would come, but she has to work."},
-   {"person":3,"es":"Vendríamos en tren si hubiera uno.","en":"We would come by train if there were one."},
-   {"person":4,"es":"Ellos vendrían si los invitaras.","en":"They would come if you invited them."}
+   {"person":3,"es":"Vendríamos en tren si hubiera uno.","en":"We would come by train if there were one.","level":"B2"},
+   {"person":4,"es":"Ellos vendrían si los invitaras.","en":"They would come if you invited them.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":2,"es":"Ha venido mucha gente a la fiesta.","en":"A lot of people have come to the party."}
@@ -1924,7 +1924,7 @@
   ],
   "conditional": [
    {"person":0,"es":"Nunca pensaría mal de ti.","en":"I would never think badly of you."},
-   {"person":1,"es":"¿Qué pensarías si te dijera la verdad?","en":"What would you think if I told you the truth?"},
+   {"person":1,"es":"¿Qué pensarías si te dijera la verdad?","en":"What would you think if I told you the truth?","level":"B2"},
    {"person":2,"es":"Mi papá pensaría que estoy loco.","en":"My dad would think I'm crazy."},
    {"person":3,"es":"Pensaríamos lo mismo en tu lugar.","en":"We would think the same in your place."},
    {"person":4,"es":"Tus amigos pensarían que estás bromeando.","en":"Your friends would think you're joking."}
@@ -1999,9 +1999,9 @@
   "conditional": [
    {"person":1,"es":"¿Saldrías conmigo el sábado?","en":"Would you go out with me on Saturday?"},
    {"person":0,"es":"Yo saldría, pero estoy muy cansado.","en":"I would go out, but I'm very tired."},
-   {"person":2,"es":"Mi hermana saldría con él si la invitara.","en":"My sister would go out with him if he asked her."},
-   {"person":3,"es":"Saldríamos más si tuviéramos dinero.","en":"We would go out more if we had money."},
-   {"person":4,"es":"Ellos saldrían antes si terminaran a tiempo.","en":"They would leave earlier if they finished on time."}
+   {"person":2,"es":"Mi hermana saldría con él si la invitara.","en":"My sister would go out with him if he asked her.","level":"B2"},
+   {"person":3,"es":"Saldríamos más si tuviéramos dinero.","en":"We would go out more if we had money.","level":"B2"},
+   {"person":4,"es":"Ellos saldrían antes si terminaran a tiempo.","en":"They would leave earlier if they finished on time.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":4,"es":"Los niños ya han salido de la escuela.","en":"The kids have already gotten out of school."}
@@ -2073,9 +2073,9 @@
   "conditional": [
    {"person":1,"es":"¿Volverías a vivir en tu pueblo?","en":"Would you go back to living in your town?"},
    {"person":0,"es":"Yo volvería a Cuba mañana mismo.","en":"I would go back to Cuba tomorrow."},
-   {"person":2,"es":"Mi abuelo volvería a su tierra si pudiera.","en":"My grandfather would go back to his homeland if he could."},
+   {"person":2,"es":"Mi abuelo volvería a su tierra si pudiera.","en":"My grandfather would go back to his homeland if he could.","level":"B2"},
    {"person":3,"es":"Volveríamos a este hotel sin dudarlo.","en":"We would come back to this hotel without a doubt."},
-   {"person":4,"es":"Ellos volverían si les pagaran mejor.","en":"They would come back if they paid them better."}
+   {"person":4,"es":"Ellos volverían si les pagaran mejor.","en":"They would come back if they paid them better.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":4,"es":"Mis hijos ya han vuelto de la escuela.","en":"My kids have already come back from school."}
@@ -2148,7 +2148,7 @@
    {"person":0,"es":"Yo tomaría un taxi a esta hora.","en":"I'd take a taxi at this hour."},
    {"person":1,"es":"¿Tomarías ese trabajo en otra ciudad?","en":"Would you take that job in another city?"},
    {"person":2,"es":"Mi mamá tomaría la guagua, pero está muy llena.","en":"My mom would take the bus, but it's very full."},
-   {"person":3,"es":"Tomaríamos un taxi si tuviéramos efectivo.","en":"We would take a taxi if we had cash."},
+   {"person":3,"es":"Tomaríamos un taxi si tuviéramos efectivo.","en":"We would take a taxi if we had cash.","level":"B2"},
    {"person":4,"es":"Ellos tomarían vacaciones en julio.","en":"They would take vacation in July."}
   ],
   "presentPerfect": [
@@ -2219,8 +2219,8 @@
    {"person":4,"es":"Pronto conocerán a su nieta.","en":"Soon they'll meet their granddaughter."}
   ],
   "conditional": [
-   {"person":2,"es":"Ella conocería mejor la ciudad si caminara más.","en":"She would know the city better if she walked more."},
-   {"person":0,"es":"Yo conocería más lugares si tuviera carro.","en":"I would know more places if I had a car."},
+   {"person":2,"es":"Ella conocería mejor la ciudad si caminara más.","en":"She would know the city better if she walked more.","level":"B2"},
+   {"person":0,"es":"Yo conocería más lugares si tuviera carro.","en":"I would know more places if I had a car.","level":"B2"},
    {"person":1,"es":"Conocerías a mucha gente en ese club.","en":"You would meet a lot of people at that club."},
    {"person":3,"es":"Conoceríamos mejor el país con más tiempo.","en":"We would get to know the country better with more time."},
    {"person":4,"es":"Ellos conocerían a tus padres en la boda.","en":"They would meet your parents at the wedding."}
@@ -2291,11 +2291,11 @@
    {"person":4,"es":"Tus hijos vivirán en un mundo diferente.","en":"Your kids will live in a different world."}
   ],
   "conditional": [
-   {"person":0,"es":"Viviría en la playa si pudiera.","en":"I'd live on the beach if I could."},
+   {"person":0,"es":"Viviría en la playa si pudiera.","en":"I'd live on the beach if I could.","level":"B2"},
    {"person":1,"es":"¿Vivirías en otro país?","en":"Would you live in another country?"},
-   {"person":2,"es":"Mi mamá viviría con nosotros si tuviéramos espacio.","en":"My mom would live with us if we had room."},
+   {"person":2,"es":"Mi mamá viviría con nosotros si tuviéramos espacio.","en":"My mom would live with us if we had room.","level":"B2"},
    {"person":3,"es":"Viviríamos mejor con menos gastos.","en":"We would live better with fewer expenses."},
-   {"person":4,"es":"Ellos vivirían aquí si encontraran trabajo.","en":"They would live here if they found work."}
+   {"person":4,"es":"Ellos vivirían aquí si encontraran trabajo.","en":"They would live here if they found work.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":2,"es":"Mi tía ha vivido siempre en Santiago.","en":"My aunt has always lived in Santiago."}
@@ -2516,7 +2516,7 @@
    {"person":0,"es":"Yo miraría primero el precio.","en":"I'd look at the price first."},
    {"person":1,"es":"¿Mirarías esa película otra vez?","en":"Would you watch that movie again?"},
    {"person":2,"es":"Mi papá miraría el partido, pero se fue la luz.","en":"My dad would watch the game, but the power went out."},
-   {"person":3,"es":"Miraríamos más películas si tuviéramos tiempo.","en":"We would watch more movies if we had time."},
+   {"person":3,"es":"Miraríamos más películas si tuviéramos tiempo.","en":"We would watch more movies if we had time.","level":"B2"},
    {"person":4,"es":"Ellos mirarían las noticias, pero no tienen televisor.","en":"They would watch the news, but they don't have a TV."}
   ],
   "presentPerfect": [
@@ -2561,7 +2561,7 @@
   "present": [
    {"person":2,"es":"Mi abuelo cuenta historias de cuando era joven.","en":"My grandfather tells stories from when he was young."},
    {"person":0,"es":"Cuento los días para las vacaciones.","en":"I'm counting the days until vacation."},
-   {"person":1,"es":"¿Me cuentas qué pasó?","en":"Will you tell me what happened?"},
+   {"person":1,"es":"¿Me cuentas qué pasó?","en":"Will you tell me what happened?","level":"A2"},
    {"person":3,"es":"Contamos contigo para la mudanza.","en":"We're counting on you for the move."},
    {"person":4,"es":"Mis tíos cuentan los mismos chistes cada año.","en":"My uncles tell the same jokes every year."}
   ],
@@ -2591,7 +2591,7 @@
    {"person":0,"es":"Yo no se lo contaría a nadie.","en":"I wouldn't tell anyone."},
    {"person":2,"es":"Mi mamá te contaría la historia completa.","en":"My mom would tell you the whole story."},
    {"person":3,"es":"Te lo contaríamos, pero es un secreto.","en":"We would tell you, but it's a secret."},
-   {"person":4,"es":"Ellos nos contarían si supieran algo.","en":"They would tell us if they knew anything."}
+   {"person":4,"es":"Ellos nos contarían si supieran algo.","en":"They would tell us if they knew anything.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":4,"es":"Me han contado que el restaurante cerró.","en":"They've told me the restaurant closed."}
@@ -2663,8 +2663,8 @@
   "conditional": [
    {"person":0,"es":"Yo empezaría por limpiar la cocina.","en":"I'd start by cleaning the kitchen."},
    {"person":1,"es":"¿Por dónde empezarías?","en":"Where would you start?"},
-   {"person":2,"es":"Mi hermana empezaría hoy si pudiera.","en":"My sister would start today if she could."},
-   {"person":3,"es":"Empezaríamos antes si tuviéramos los materiales.","en":"We would start sooner if we had the materials."},
+   {"person":2,"es":"Mi hermana empezaría hoy si pudiera.","en":"My sister would start today if she could.","level":"B2"},
+   {"person":3,"es":"Empezaríamos antes si tuviéramos los materiales.","en":"We would start sooner if we had the materials.","level":"B2"},
    {"person":4,"es":"Ellos empezarían mañana.","en":"They would start tomorrow."}
   ],
   "presentPerfect": [
@@ -2739,7 +2739,7 @@
    {"person":1,"es":"¿Esperarías un año por ese trabajo?","en":"Would you wait a year for that job?"},
    {"person":2,"es":"Mi hermana esperaría, pero tiene prisa.","en":"My sister would wait, but she's in a hurry."},
    {"person":3,"es":"Esperaríamos más, pero cierran a las seis.","en":"We would wait longer, but they close at six."},
-   {"person":4,"es":"Ellos esperarían si supieran que vienes.","en":"They would wait if they knew you were coming."}
+   {"person":4,"es":"Ellos esperarían si supieran que vienes.","en":"They would wait if they knew you were coming.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":1,"es":"¿Has esperado mucho tiempo?","en":"Have you been waiting long?"}
@@ -2937,7 +2937,7 @@
    {"person":0,"es":"Yo no entraría ahí solo.","en":"I wouldn't go in there alone."},
    {"person":2,"es":"Tu carro no entraría en ese garaje.","en":"Your car wouldn't fit in that garage."},
    {"person":3,"es":"Entraríamos, pero está cerrado.","en":"We would go in, but it's closed."},
-   {"person":4,"es":"Ellos entrarían si tuvieran boletos.","en":"They would go in if they had tickets."}
+   {"person":4,"es":"Ellos entrarían si tuvieran boletos.","en":"They would go in if they had tickets.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":4,"es":"Han entrado a robar en la tienda.","en":"They've broken into the store."}
@@ -3008,10 +3008,10 @@
   ],
   "conditional": [
    {"person":1,"es":"¿Trabajarías los domingos?","en":"Would you work on Sundays?"},
-   {"person":0,"es":"Yo trabajaría menos si pudiera.","en":"I would work less if I could."},
+   {"person":0,"es":"Yo trabajaría menos si pudiera.","en":"I would work less if I could.","level":"B2"},
    {"person":2,"es":"Mi hermano trabajaría allí por ese sueldo.","en":"My brother would work there for that salary."},
-   {"person":3,"es":"Trabajaríamos desde casa si nos dejaran.","en":"We would work from home if they let us."},
-   {"person":4,"es":"Ellos trabajarían más cerca si hubiera empleo.","en":"They would work closer to home if there were jobs."}
+   {"person":3,"es":"Trabajaríamos desde casa si nos dejaran.","en":"We would work from home if they let us.","level":"B2"},
+   {"person":4,"es":"Ellos trabajarían más cerca si hubiera empleo.","en":"They would work closer to home if there were jobs.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":4,"es":"Mis padres han trabajado mucho toda la vida.","en":"My parents have worked hard all their lives."}
@@ -3082,10 +3082,10 @@
   ],
   "conditional": [
    {"person":1,"es":"¿Escribirías un libro sobre tu vida?","en":"Would you write a book about your life?"},
-   {"person":0,"es":"Yo escribiría más si tuviera tiempo.","en":"I would write more if I had time."},
+   {"person":0,"es":"Yo escribiría más si tuviera tiempo.","en":"I would write more if I had time.","level":"B2"},
    {"person":2,"es":"Mi papá escribiría un libro sobre su pueblo.","en":"My dad would write a book about his town."},
    {"person":3,"es":"Te escribiríamos, pero no tenemos tu dirección.","en":"We would write to you, but we don't have your address."},
-   {"person":4,"es":"Ellos escribirían si tuvieran noticias.","en":"They would write if they had news."}
+   {"person":4,"es":"Ellos escribirían si tuvieran noticias.","en":"They would write if they had news.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":4,"es":"Mis estudiantes han escrito cuentos preciosos.","en":"My students have written beautiful stories."}
@@ -3351,9 +3351,9 @@
    {"person":4,"es":"Los clientes entenderán el retraso.","en":"The customers will understand the delay."}
   ],
   "conditional": [
-   {"person":4,"es":"Tus padres entenderían si les explicaras.","en":"Your parents would understand if you explained to them."},
+   {"person":4,"es":"Tus padres entenderían si les explicaras.","en":"Your parents would understand if you explained to them.","level":"B2"},
    {"person":0,"es":"Yo entendería mejor con un ejemplo.","en":"I would understand better with an example."},
-   {"person":1,"es":"Entenderías si vivieras aquí.","en":"You would understand if you lived here."},
+   {"person":1,"es":"Entenderías si vivieras aquí.","en":"You would understand if you lived here.","level":"B2"},
    {"person":2,"es":"Mi abuela entendería la situación.","en":"My grandmother would understand the situation."},
    {"person":3,"es":"Entenderíamos mejor con subtítulos.","en":"We would understand better with subtitles."}
   ],
@@ -3428,7 +3428,7 @@
    {"person":0,"es":"Yo pediría un aumento de sueldo.","en":"I'd ask for a raise."},
    {"person":1,"es":"¿Le pedirías dinero a tu hermano?","en":"Would you ask your brother for money?"},
    {"person":2,"es":"Mi tío pediría ayuda, pero es muy orgulloso.","en":"My uncle would ask for help, but he's very proud."},
-   {"person":3,"es":"Pediríamos otra pizza si tuviéramos hambre.","en":"We would order another pizza if we were hungry."},
+   {"person":3,"es":"Pediríamos otra pizza si tuviéramos hambre.","en":"We would order another pizza if we were hungry.","level":"B2"},
    {"person":4,"es":"Ellos pedirían más tiempo.","en":"They would ask for more time."}
   ],
   "presentPerfect": [
@@ -3543,7 +3543,7 @@
  },
  "recordar": {
   "present": [
-   {"person":0,"es":"No recuerdo dónde dejé el carro.","en":"I don't remember where I left the car."},
+   {"person":0,"es":"No recuerdo dónde dejé el carro.","en":"I don't remember where I left the car.","level":"A2"},
    {"person":1,"es":"¿Recuerdas a tu primera maestra?","en":"Do you remember your first teacher?"},
    {"person":2,"es":"Esta canción me recuerda a mi abuela.","en":"This song reminds me of my grandmother."},
    {"person":3,"es":"Recordamos ese viaje con mucho cariño.","en":"We remember that trip very fondly."},

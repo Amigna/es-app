@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
+import { CHAPTERS } from "./course";
 import { GUIDES, REGIONAL, findGuide } from "./guides";
+import { LEVEL_ORDER, atOrBelow } from "./level-order";
 import { VULGAR } from "./vulgar-data";
 
 describe("guides", () => {
@@ -22,6 +24,21 @@ describe("guides", () => {
         }
       }
     }
+  });
+
+  it("have the level of the first chapter that uses them", () => {
+    for (const g of GUIDES) {
+      assert.ok(LEVEL_ORDER.includes(g.level), g.slug);
+      const levels = CHAPTERS.filter((c) => c.guide?.slug === g.slug).map((c) => LEVEL_ORDER.indexOf(c.level));
+      if (levels.length > 0) assert.equal(g.level, LEVEL_ORDER[Math.min(...levels)], g.slug);
+    }
+  });
+
+  it("filter by level", () => {
+    assert.ok(atOrBelow("A1", "A2"));
+    assert.ok(atOrBelow("A2", "A2"));
+    assert.ok(!atOrBelow("B1", "A2"));
+    assert.ok(atOrBelow("B2", null));
   });
 
   it("look up by slug", () => {

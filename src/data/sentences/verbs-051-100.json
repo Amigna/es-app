@@ -251,7 +251,7 @@
    {"person":3,"es":"Tocaremos tres canciones.","en":"We'll play three songs."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo tocaría el piano si tuviera uno.","en":"I'd play the piano if I had one."},
+   {"person":0,"es":"Yo tocaría el piano si tuviera uno.","en":"I'd play the piano if I had one.","level":"B2"},
    {"person":1,"es":"¿Tocarías algo para nosotros?","en":"Would you play something for us?"},
    {"person":2,"es":"Mi hermano tocaría el tambor.","en":"My brother would play the drum."},
    {"person":3,"es":"Nosotros tocaríamos más fuerte.","en":"We'd play louder."},
@@ -1117,7 +1117,7 @@
   "conditional": [
    {"person":0,"es":"Yo bailaría contigo.","en":"I'd dance with you."},
    {"person":1,"es":"¿Bailarías conmigo?","en":"Would you dance with me?"},
-   {"person":2,"es":"Mi esposo bailaría si supiera.","en":"My husband would dance if he knew how."},
+   {"person":2,"es":"Mi esposo bailaría si supiera.","en":"My husband would dance if he knew how.","level":"B2"},
    {"person":3,"es":"Nosotros bailaríamos, pero la música está mala.","en":"We'd dance, but the music is bad."},
    {"person":4,"es":"Ellos bailarían toda la noche.","en":"They'd dance all night."}
   ],
@@ -1267,7 +1267,7 @@
    {"person":1,"es":"¿Cocinarías para treinta personas?","en":"Would you cook for thirty people?"},
    {"person":2,"es":"Mi abuela cocinaría sin receta.","en":"My grandmother would cook without a recipe."},
    {"person":3,"es":"Nosotros cocinaríamos en casa para ahorrar.","en":"We'd cook at home to save money."},
-   {"person":4,"es":"Ellos cocinarían si tuvieran tiempo.","en":"They'd cook if they had time."}
+   {"person":4,"es":"Ellos cocinarían si tuvieran tiempo.","en":"They'd cook if they had time.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":1,"es":"¿Has cocinado alguna vez ropa vieja?","en":"Have you ever cooked ropa vieja?"}
@@ -1561,8 +1561,8 @@
   "conditional": [
    {"person":0,"es":"Yo no nadaría aquí, hay corriente.","en":"I wouldn't swim here, there's a current."},
    {"person":1,"es":"¿Nadarías en agua tan fría?","en":"Would you swim in water that cold?"},
-   {"person":2,"es":"Mi tío nadaría todos los días si viviera en la costa.","en":"My uncle would swim every day if he lived on the coast."},
-   {"person":3,"es":"Nadaríamos más si tuviéramos tiempo.","en":"We would swim more if we had time."},
+   {"person":2,"es":"Mi tío nadaría todos los días si viviera en la costa.","en":"My uncle would swim every day if he lived on the coast.","level":"B2"},
+   {"person":3,"es":"Nadaríamos más si tuviéramos tiempo.","en":"We would swim more if we had time.","level":"B2"},
    {"person":4,"es":"Ellos no nadarían sin chaleco.","en":"They wouldn't swim without a life jacket."}
   ],
   "presentPerfect": [
@@ -1637,7 +1637,7 @@
    {"person":1,"es":"¿Dormirías en una tienda de campaña?","en":"Would you sleep in a tent?"},
    {"person":2,"es":"Mi hijo dormiría hasta el mediodía.","en":"My son would sleep until noon."},
    {"person":3,"es":"Dormiríamos mejor con aire acondicionado.","en":"We would sleep better with air conditioning."},
-   {"person":4,"es":"Ellos dormirían aquí si tuvieran un colchón.","en":"They would sleep here if they had a mattress."}
+   {"person":4,"es":"Ellos dormirían aquí si tuvieran un colchón.","en":"They would sleep here if they had a mattress.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":4,"es":"Los niños ya han dormido la siesta.","en":"The kids have already had their nap."}
@@ -1711,7 +1711,7 @@
    {"person":1,"es":"¿Lavarías esto con agua caliente?","en":"Would you wash this with hot water?"},
    {"person":2,"es":"Mi abuela lavaría esa mancha con limón.","en":"My grandmother would wash that stain with lemon."},
    {"person":3,"es":"Lavaríamos el carro, pero va a llover.","en":"We would wash the car, but it's going to rain."},
-   {"person":4,"es":"Ellos lavarían los platos si se lo pidieras.","en":"They would wash the dishes if you asked them."}
+   {"person":4,"es":"Ellos lavarían los platos si se lo pidieras.","en":"They would wash the dishes if you asked them.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":1,"es":"¿Has lavado los platos?","en":"Have you washed the dishes?"}
@@ -1785,7 +1785,7 @@
    {"person":1,"es":"¿Limpiarías esto con cloro?","en":"Would you clean this with bleach?"},
    {"person":2,"es":"Mi mamá limpiaría toda la casa otra vez.","en":"My mom would clean the whole house again."},
    {"person":3,"es":"Limpiaríamos el jardín, pero hace mucho calor.","en":"We would clean up the garden, but it's very hot."},
-   {"person":4,"es":"Ellos limpiarían todo si les pagaras.","en":"They would clean everything if you paid them."}
+   {"person":4,"es":"Ellos limpiarían todo si les pagaras.","en":"They would clean everything if you paid them.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":4,"es":"Los niños han limpiado su cuarto.","en":"The kids have cleaned their room."}
@@ -2071,10 +2071,10 @@
    {"person":4,"es":"Los pescadores se levantarán antes del sol.","en":"The fishermen will get up before the sun."}
   ],
   "conditional": [
-   {"person":0,"es":"Me levantaría más tarde si pudiera.","en":"I'd get up later if I could."},
+   {"person":0,"es":"Me levantaría más tarde si pudiera.","en":"I'd get up later if I could.","level":"B2"},
    {"person":1,"es":"¿Te levantarías a las cuatro por ese trabajo?","en":"Would you get up at four for that job?"},
    {"person":2,"es":"Mi hermano se levantaría tarde todos los días.","en":"My brother would get up late every day."},
-   {"person":3,"es":"Nos levantaríamos antes si hubiera sol.","en":"We'd get up earlier if it were sunny."},
+   {"person":3,"es":"Nos levantaríamos antes si hubiera sol.","en":"We'd get up earlier if it were sunny.","level":"B2"},
    {"person":4,"es":"Ellos se levantarían para ayudarte.","en":"They would get up to help you."}
   ],
   "presentPerfect": [
@@ -2148,7 +2148,7 @@
    {"person":0,"es":"Yo me sentaría allá, hay sombra.","en":"I'd sit over there, there's shade."},
    {"person":1,"es":"¿Te sentarías conmigo?","en":"Would you sit with me?"},
    {"person":2,"es":"Mi tío se sentaría aquí, pero le molesta el sol.","en":"My uncle would sit here, but the sun bothers him."},
-   {"person":3,"es":"Nos sentaríamos afuera si no lloviera.","en":"We'd sit outside if it weren't raining."},
+   {"person":3,"es":"Nos sentaríamos afuera si no lloviera.","en":"We'd sit outside if it weren't raining.","level":"B2"},
    {"person":4,"es":"Ellos se sentarían adelante para oír mejor.","en":"They would sit up front to hear better."}
   ],
   "presentPerfect": [
@@ -2220,7 +2220,7 @@
    {"person":0,"es":"Me acostaría, pero tengo trabajo.","en":"I'd go to bed, but I have work."},
    {"person":1,"es":"¿Te acostarías en esa hamaca?","en":"Would you lie down in that hammock?"},
    {"person":2,"es":"Mi mamá se acostaría, pero tiene visita.","en":"My mom would go to bed, but she has company."},
-   {"person":3,"es":"Nos acostaríamos un rato si tuviéramos tiempo.","en":"We'd lie down for a while if we had time."},
+   {"person":3,"es":"Nos acostaríamos un rato si tuviéramos tiempo.","en":"We'd lie down for a while if we had time.","level":"B2"},
    {"person":4,"es":"Los niños se acostarían más temprano sin la tele.","en":"The kids would go to bed earlier without the TV."}
   ],
   "presentPerfect": [
@@ -2366,7 +2366,7 @@
    {"person":0,"es":"Me ducharía, pero no hay agua.","en":"I'd take a shower, but there's no water."},
    {"person":1,"es":"¿Te ducharías con agua fría en invierno?","en":"Would you shower with cold water in the winter?"},
    {"person":2,"es":"Mi abuelo se ducharía, pero le duele la espalda.","en":"My grandfather would shower, but his back hurts."},
-   {"person":3,"es":"Nos ducharíamos aquí si hubiera agua caliente.","en":"We'd shower here if there were hot water."},
+   {"person":3,"es":"Nos ducharíamos aquí si hubiera agua caliente.","en":"We'd shower here if there were hot water.","level":"B2"},
    {"person":4,"es":"Ellos se ducharían antes de salir.","en":"They would shower before going out."}
   ],
   "presentPerfect": [
@@ -2508,8 +2508,8 @@
   ],
   "conditional": [
    {"person":2,"es":"Mi hija se llamaría Lucía.","en":"My daughter would be called Lucía."},
-   {"person":0,"es":"Yo me llamaría Sofía si pudiera elegir.","en":"I'd be called Sofía if I could choose."},
-   {"person":1,"es":"¿Cómo te llamarías si pudieras cambiar de nombre?","en":"What would you call yourself if you could change your name?"},
+   {"person":0,"es":"Yo me llamaría Sofía si pudiera elegir.","en":"I'd be called Sofía if I could choose.","level":"B2"},
+   {"person":1,"es":"¿Cómo te llamarías si pudieras cambiar de nombre?","en":"What would you call yourself if you could change your name?","level":"B2"},
    {"person":3,"es":"Nos llamaríamos La Banda del Barrio.","en":"We'd call ourselves The Neighborhood Band."},
    {"person":4,"es":"Mis gatos se llamarían Tom y Jerry.","en":"My cats would be named Tom and Jerry."}
   ],
@@ -2542,7 +2542,7 @@
    {"person":0,"es":"Me quedo en casa los domingos.","en":"I stay home on Sundays."},
    {"person":1,"es":"¿Te quedas con nosotros esta noche?","en":"Are you staying with us tonight?"},
    {"person":2,"es":"Mi abuela se queda con nosotros en invierno.","en":"My grandmother stays with us in the winter."},
-   {"person":3,"es":"Nos quedamos aquí hasta que pare la lluvia.","en":"We're staying here until the rain stops."},
+   {"person":3,"es":"Nos quedamos aquí hasta que pare la lluvia.","en":"We're staying here until the rain stops.","level":"B1"},
    {"person":4,"es":"Los niños se quedan en casa de su tía.","en":"The kids stay at their aunt's house."}
   ],
   "preterite": [
@@ -2571,7 +2571,7 @@
    {"person":1,"es":"¿Te quedarías en esta ciudad?","en":"Would you stay in this city?"},
    {"person":2,"es":"Mi hijo se quedaría aquí para siempre.","en":"My son would stay here forever."},
    {"person":3,"es":"Nos quedaríamos más tiempo, pero tenemos que trabajar.","en":"We'd stay longer, but we have to work."},
-   {"person":4,"es":"Ellos se quedarían si los invitaras.","en":"They would stay if you invited them."}
+   {"person":4,"es":"Ellos se quedarían si los invitaras.","en":"They would stay if you invited them.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":2,"es":"Mi hermana se ha quedado sin trabajo.","en":"My sister has lost her job."}
@@ -2624,7 +2624,7 @@
    {"person":0,"es":"Me fui de la fiesta a medianoche.","en":"I left the party at midnight."},
    {"person":1,"es":"¿Por qué te fuiste sin despedirte?","en":"Why did you leave without saying goodbye?"},
    {"person":2,"es":"Se fue la luz otra vez.","en":"The power went out again."},
-   {"person":3,"es":"Nos fuimos antes de que empezara la lluvia.","en":"We left before the rain started."}
+   {"person":3,"es":"Nos fuimos antes de que empezara la lluvia.","en":"We left before the rain started.","level":"B2"}
   ],
   "imperfect": [
    {"person":2,"es":"Mi abuelo se iba al campo todos los veranos.","en":"My grandfather would go off to the countryside every summer."},
@@ -2644,7 +2644,7 @@
    {"person":0,"es":"Yo me iría de aquí.","en":"I'd get out of here."},
    {"person":1,"es":"¿Te irías a vivir a otro país?","en":"Would you go live in another country?"},
    {"person":2,"es":"Mi hermano se iría mañana mismo.","en":"My brother would leave tomorrow."},
-   {"person":3,"es":"Nos iríamos si tuviéramos adónde.","en":"We'd leave if we had somewhere to go."},
+   {"person":3,"es":"Nos iríamos si tuviéramos adónde.","en":"We'd leave if we had somewhere to go.","level":"B2"},
    {"person":4,"es":"Ellos se irían sin pagar.","en":"They would leave without paying."}
   ],
   "presentPerfect": [
@@ -2718,7 +2718,7 @@
    {"person":0,"es":"Yo me pondría el vestido azul.","en":"I'd wear the blue dress."},
    {"person":1,"es":"¿Te pondrías ese sombrero?","en":"Would you put on that hat?"},
    {"person":2,"es":"Mi mamá se pondría muy brava.","en":"My mom would get really mad."},
-   {"person":3,"es":"Nos pondríamos de acuerdo si habláramos.","en":"We'd come to an agreement if we talked."},
+   {"person":3,"es":"Nos pondríamos de acuerdo si habláramos.","en":"We'd come to an agreement if we talked.","level":"B2"},
    {"person":4,"es":"Ellos se pondrían contentos con tu visita.","en":"They would be happy with your visit."}
   ],
   "presentPerfect": [
@@ -3010,7 +3010,7 @@
    {"person":0,"es":"Yo desayunaría algo ligero.","en":"I'd have something light for breakfast."},
    {"person":1,"es":"¿Desayunarías conmigo mañana?","en":"Would you have breakfast with me tomorrow?"},
    {"person":2,"es":"Mi esposa desayunaría en la cama.","en":"My wife would have breakfast in bed."},
-   {"person":3,"es":"Desayunaríamos en la terraza si no lloviera.","en":"We'd have breakfast on the terrace if it weren't raining."},
+   {"person":3,"es":"Desayunaríamos en la terraza si no lloviera.","en":"We'd have breakfast on the terrace if it weren't raining.","level":"B2"},
    {"person":4,"es":"Ellos desayunarían con nosotros.","en":"They would have breakfast with us."}
   ],
   "presentPerfect": [
@@ -3084,7 +3084,7 @@
    {"person":0,"es":"Yo cenaría en la playa.","en":"I'd have dinner at the beach."},
    {"person":1,"es":"¿Cenarías conmigo el viernes?","en":"Would you have dinner with me on Friday?"},
    {"person":2,"es":"Mi novia cenaría comida mexicana todos los días.","en":"My girlfriend would have Mexican food every day."},
-   {"person":3,"es":"Cenaríamos afuera si hiciera menos frío.","en":"We'd have dinner outside if it were less cold."},
+   {"person":3,"es":"Cenaríamos afuera si hiciera menos frío.","en":"We'd have dinner outside if it were less cold.","level":"B2"},
    {"person":4,"es":"Ellos cenarían más temprano.","en":"They would have dinner earlier."}
   ],
   "presentPerfect": [
@@ -3158,7 +3158,7 @@
    {"person":0,"es":"Yo subiría por las escaleras.","en":"I'd go up the stairs."},
    {"person":1,"es":"¿Subirías al Everest?","en":"Would you climb Everest?"},
    {"person":2,"es":"Mi jefe subiría los sueldos, pero no hay dinero.","en":"My boss would raise salaries, but there's no money."},
-   {"person":3,"es":"Subiríamos en ascensor si funcionara.","en":"We'd go up in the elevator if it worked."},
+   {"person":3,"es":"Subiríamos en ascensor si funcionara.","en":"We'd go up in the elevator if it worked.","level":"B2"},
    {"person":4,"es":"Ellos subirían los precios en diciembre.","en":"They would raise prices in December."}
   ],
   "presentPerfect": [
@@ -3231,9 +3231,9 @@
   "conditional": [
    {"person":0,"es":"Yo bajaría por las escaleras.","en":"I'd go down the stairs."},
    {"person":1,"es":"¿Bajarías el volumen, por favor?","en":"Would you turn down the volume, please?"},
-   {"person":2,"es":"Mi hijo bajaría de ese árbol si le dieras la mano.","en":"My son would come down from that tree if you gave him your hand."},
+   {"person":2,"es":"Mi hijo bajaría de ese árbol si le dieras la mano.","en":"My son would come down from that tree if you gave him your hand.","level":"B2"},
    {"person":3,"es":"Bajaríamos a saludar, pero estamos cansados.","en":"We'd come down to say hello, but we're tired."},
-   {"person":4,"es":"Ellos bajarían los precios si vendieran más.","en":"They would lower prices if they sold more."}
+   {"person":4,"es":"Ellos bajarían los precios si vendieran más.","en":"They would lower prices if they sold more.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":2,"es":"El agua ha bajado.","en":"The water has gone down."}
@@ -3375,7 +3375,7 @@
   "conditional": [
    {"person":0,"es":"Yo descansaría un poco.","en":"I'd rest a little."},
    {"person":1,"es":"Descansarías mejor con otra almohada.","en":"You'd rest better with another pillow."},
-   {"person":2,"es":"Mi mamá descansaría si la ayudaras.","en":"My mom would rest if you helped her."},
+   {"person":2,"es":"Mi mamá descansaría si la ayudaras.","en":"My mom would rest if you helped her.","level":"B2"},
    {"person":3,"es":"Descansaríamos, pero hay mucho que hacer.","en":"We'd rest, but there's a lot to do."},
    {"person":4,"es":"Ellos descansarían más sin el ruido.","en":"They would rest more without the noise."}
   ],
@@ -3447,9 +3447,9 @@
   "conditional": [
    {"person":0,"es":"Yo regresaría a mi pueblo.","en":"I'd go back to my town."},
    {"person":1,"es":"¿Regresarías a vivir aquí?","en":"Would you come back to live here?"},
-   {"person":2,"es":"Mi tío regresaría a Cuba si pudiera.","en":"My uncle would go back to Cuba if he could."},
+   {"person":2,"es":"Mi tío regresaría a Cuba si pudiera.","en":"My uncle would go back to Cuba if he could.","level":"B2"},
    {"person":3,"es":"Regresaríamos a ese hotel.","en":"We'd go back to that hotel."},
-   {"person":4,"es":"Ellos regresarían si les pagaran mejor.","en":"They would come back if they paid them better."}
+   {"person":4,"es":"Ellos regresarían si les pagaran mejor.","en":"They would come back if they paid them better.","level":"B2"}
   ],
   "presentPerfect": [
    {"person":4,"es":"Mis padres han regresado de Cuba.","en":"My parents have come back from Cuba."}
@@ -3522,7 +3522,7 @@
    {"person":0,"es":"Yo visitaría Cartagena primero.","en":"I'd visit Cartagena first."},
    {"person":1,"es":"¿Qué país visitarías primero?","en":"Which country would you visit first?"},
    {"person":2,"es":"Mi abuelo visitaría su pueblo una vez más.","en":"My grandfather would visit his hometown one more time."},
-   {"person":3,"es":"Te visitaríamos más si vivieras cerca.","en":"We'd visit you more if you lived nearby."},
+   {"person":3,"es":"Te visitaríamos más si vivieras cerca.","en":"We'd visit you more if you lived nearby.","level":"B2"},
    {"person":4,"es":"Ellos visitarían Cuba este año.","en":"They would visit Cuba this year."}
   ],
   "presentPerfect": [
@@ -3591,7 +3591,7 @@
    {"person":4,"es":"Los estudiantes practicarán la pronunciación.","en":"The students will practice pronunciation."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo practicaría más si tuviera tiempo.","en":"I'd practice more if I had time."},
+   {"person":0,"es":"Yo practicaría más si tuviera tiempo.","en":"I'd practice more if I had time.","level":"B2"},
    {"person":1,"es":"¿Practicarías conmigo?","en":"Would you practice with me?"},
    {"person":2,"es":"Mi hijo practicaría tenis todo el día.","en":"My son would play tennis all day."},
    {"person":3,"es":"Practicaríamos en el parque, pero hace frío.","en":"We'd practice in the park, but it's cold."},

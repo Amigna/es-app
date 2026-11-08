@@ -731,7 +731,7 @@
    {"person":4,"es":"Ellos leerán el informe mañana.","en":"They'll read the report tomorrow."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo leería más si tuviera tiempo.","en":"I'd read more if I had time."},
+   {"person":0,"es":"Yo leería más si tuviera tiempo.","en":"I'd read more if I had time.","level":"B2"},
    {"person":1,"es":"¿Leerías mi cuento?","en":"Would you read my story?"},
    {"person":2,"es":"Mi hermano leería más sin el celular.","en":"My brother would read more without his phone."},
    {"person":3,"es":"Nosotros leeríamos más con una biblioteca cerca.","en":"We'd read more with a library nearby."},
@@ -1682,7 +1682,7 @@
   ],
   "conditional": [
    {"person":0,"es":"Moriría de vergüenza.","en":"I would die of embarrassment."},
-   {"person":1,"es":"Te morirías de risa si lo vieras.","en":"You'd die laughing if you saw it."},
+   {"person":1,"es":"Te morirías de risa si lo vieras.","en":"You'd die laughing if you saw it.","level":"B2"},
    {"person":2,"es":"Mi mamá se moriría de susto.","en":"My mom would die of fright."},
    {"person":3,"es":"Nosotros nos moriríamos de calor allí.","en":"We'd die of the heat there."},
    {"person":4,"es":"Estos peces morirían fuera del agua.","en":"These fish would die out of the water."}
@@ -1865,7 +1865,7 @@
  },
  "suponer": {
   "present": [
-   {"person":0,"es":"Supongo que ya llegaron.","en":"I suppose they've already arrived."},
+   {"person":0,"es":"Supongo que ya llegaron.","en":"I suppose they've already arrived.","level":"A2"},
    {"person":1,"es":"Supones demasiado.","en":"You assume too much."},
    {"person":2,"es":"Este cambio supone mucho trabajo.","en":"This change involves a lot of work."},
    {"person":3,"es":"Suponemos que hay una buena razón.","en":"We assume there's a good reason."},
@@ -2077,10 +2077,10 @@
  },
  "reconocer": {
   "present": [
-   {"person":0,"es":"No reconozco este barrio, ha cambiado mucho.","en":"I don't recognize this neighborhood, it has changed a lot."},
+   {"person":0,"es":"No reconozco este barrio, ha cambiado mucho.","en":"I don't recognize this neighborhood, it has changed a lot.","level":"B1"},
    {"person":1,"es":"¿Me reconoces?","en":"Do you recognize me?"},
    {"person":2,"es":"El perro reconoce mi voz.","en":"The dog recognizes my voice."},
-   {"person":3,"es":"Reconocemos que fue un error.","en":"We admit it was a mistake."},
+   {"person":3,"es":"Reconocemos que fue un error.","en":"We admit it was a mistake.","level":"A2"},
    {"person":4,"es":"Ellos reconocen mi carro de lejos.","en":"They recognize my car from far away."}
   ],
   "preterite": [
@@ -2896,7 +2896,7 @@
   "conditional": [
    {"person":1,"es":"¿Repetirías ese viaje?","en":"Would you repeat that trip?"},
    {"person":0,"es":"Yo no repetiría ese postre.","en":"I wouldn't have that dessert again."},
-   {"person":2,"es":"Mi hermano repetiría el año si no estudiara.","en":"My brother would repeat the year if he didn't study."},
+   {"person":2,"es":"Mi hermano repetiría el año si no estudiara.","en":"My brother would repeat the year if he didn't study.","level":"B2"},
    {"person":3,"es":"Repetiríamos todo igual.","en":"We would do it all over again the same way."},
    {"person":4,"es":"Ellos no repetirían ese error.","en":"They wouldn't repeat that mistake."}
   ],
@@ -2970,7 +2970,7 @@
   "conditional": [
    {"person":0,"es":"Yo reiría si no fuera tan triste.","en":"I would laugh if it weren't so sad."},
    {"person":1,"es":"¿Te reirías de un chiste tan malo?","en":"Would you laugh at such a bad joke?"},
-   {"person":2,"es":"Mi papá reiría si te viera así.","en":"My dad would laugh if he saw you like that."},
+   {"person":2,"es":"Mi papá reiría si te viera así.","en":"My dad would laugh if he saw you like that.","level":"B2"},
    {"person":3,"es":"Nos reiríamos mucho con él.","en":"We would laugh a lot with him."},
    {"person":4,"es":"Tus primos reirían con esa historia.","en":"Your cousins would laugh at that story."}
   ],
@@ -3040,9 +3040,9 @@
    {"person":4,"es":"Los niños sonreirán con esta noticia.","en":"The kids will smile at this news."}
   ],
   "conditional": [
-   {"person":0,"es":"Yo sonreiría más si no estuviera tan cansado.","en":"I would smile more if I weren't so tired."},
+   {"person":0,"es":"Yo sonreiría más si no estuviera tan cansado.","en":"I would smile more if I weren't so tired.","level":"B2"},
    {"person":1,"es":"¿Sonreirías en una foto sin dientes?","en":"Would you smile in a photo with no teeth?"},
-   {"person":2,"es":"Mi hija sonreiría si recibiera tu carta.","en":"My daughter would smile if she got your letter."},
+   {"person":2,"es":"Mi hija sonreiría si recibiera tu carta.","en":"My daughter would smile if she got your letter.","level":"B2"},
    {"person":3,"es":"Sonreiríamos más con un poco de descanso.","en":"We would smile more with a little rest."},
    {"person":4,"es":"Mis alumnos sonreirían con esa sorpresa.","en":"My students would smile at that surprise."}
   ],
@@ -3186,7 +3186,7 @@
   "conditional": [
    {"person":0,"es":"Yo construiría una casa frente al mar.","en":"I would build a house facing the sea."},
    {"person":1,"es":"¿Construirías tu propia casa?","en":"Would you build your own house?"},
-   {"person":2,"es":"Mi tío construiría un muelle si tuviera dinero.","en":"My uncle would build a dock if he had money."},
+   {"person":2,"es":"Mi tío construiría un muelle si tuviera dinero.","en":"My uncle would build a dock if he had money.","level":"B2"},
    {"person":3,"es":"Construiríamos otra habitación para mis padres.","en":"We would build another room for my parents."},
    {"person":4,"es":"Ellos construirían un hotel en esta playa.","en":"They would build a hotel on this beach."}
   ],
@@ -3382,7 +3382,7 @@
    {"person":2,"es":"El ladrón huyó por la ventana.","en":"The thief fled through the window."},
    {"person":0,"es":"Hui de la lluvia y me metí en una tienda.","en":"I ran from the rain and ducked into a store."},
    {"person":1,"es":"¿Por qué huiste de la fiesta?","en":"Why did you run away from the party?"},
-   {"person":3,"es":"Huimos antes de que llegara la tormenta.","en":"We fled before the storm arrived."},
+   {"person":3,"es":"Huimos antes de que llegara la tormenta.","en":"We fled before the storm arrived.","level":"B2"},
    {"person":4,"es":"Los ladrones huyeron en una moto.","en":"The thieves fled on a motorcycle."}
   ],
   "imperfect": [
@@ -3403,7 +3403,7 @@
    {"person":0,"es":"Yo huiría de esa situación.","en":"I would run from that situation."},
    {"person":1,"es":"¿Huirías del país por amor?","en":"Would you run away from the country for love?"},
    {"person":2,"es":"Mi gato huiría con tanto ruido.","en":"My cat would run away with so much noise."},
-   {"person":3,"es":"Huiríamos a una isla si pudiéramos.","en":"We would run away to an island if we could."},
+   {"person":3,"es":"Huiríamos a una isla si pudiéramos.","en":"We would run away to an island if we could.","level":"B2"},
    {"person":4,"es":"Ellos huirían antes de pedir perdón.","en":"They would run away before apologizing."}
   ],
   "presentPerfect": [
@@ -3474,8 +3474,8 @@
   "conditional": [
    {"person":0,"es":"Yo contribuiría con gusto.","en":"I'd gladly contribute."},
    {"person":1,"es":"¿Contribuirías a un regalo para la maestra?","en":"Would you contribute to a gift for the teacher?"},
-   {"person":2,"es":"Mi jefe contribuiría si se lo pidieras.","en":"My boss would contribute if you asked him."},
-   {"person":3,"es":"Contribuiríamos más si pudiéramos.","en":"We would contribute more if we could."},
+   {"person":2,"es":"Mi jefe contribuiría si se lo pidieras.","en":"My boss would contribute if you asked him.","level":"B2"},
+   {"person":3,"es":"Contribuiríamos más si pudiéramos.","en":"We would contribute more if we could.","level":"B2"},
    {"person":4,"es":"Mis primos contribuirían con gusto.","en":"My cousins would gladly contribute."}
   ],
   "presentPerfect": [
