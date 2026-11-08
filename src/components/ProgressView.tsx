@@ -82,26 +82,39 @@ function MasteredList({ wordLists }: { wordLists: WordListTotal[] }) {
   if (!items) return <p className="text-stone-500">Loading…</p>;
   if (items.length === 0) return <p className="text-stone-600 dark:text-stone-400">Nothing is mastered yet. Keep reviewing and words will show up here.</p>;
 
-  // A word counts once however many ways it's asked, and a verb lists the tenses that have stuck.
+  // Each way a word is asked is its own item, so a word lists once with how many ways have stuck, and a verb lists its tenses.
   const tenses = new Map<string, string[]>();
-  const words = new Map<string, Set<string>>();
+  const words = new Map<string, Map<string, number>>();
   for (const item of items) {
     const [kind, a, b] = item.split(":");
     if (kind === "verb") {
       tenses.set(a, [...(tenses.get(a) ?? []), TENSES.find((t) => t.id === b)?.name ?? b]);
     } else if (kind === "vocab") {
       const [, type, es] = item.split(":");
-      (words.get(type) ?? words.set(type, new Set()).get(type)!).add(es);
+      const ways = words.get(type) ?? words.set(type, new Map()).get(type)!;
+      ways.set(es, (ways.get(es) ?? 0) + 1);
     }
   }
+  // Headings count items, not rows, so they add up to the tile.
+  const tenseCount = [...tenses.values()].reduce((sum, names) => sum + names.length, 0);
+  const itemsIn = (ways: Map<string, number>) => [...ways.values()].reduce((sum, n) => sum + n, 0);
+  const wordCount = [...words.values()].reduce((sum, ways) => sum + itemsIn(ways), 0);
+  const plural = (n: number, one: string, many: string) => `${n.toLocaleString()} ${n === 1 ? one : many}`;
   const titles = new Map(wordLists.map((l) => [l.type, l.title]));
   const listClass = "divide-y divide-stone-100 overflow-hidden rounded-xl border border-stone-200 bg-white dark:divide-stone-800 dark:border-stone-800 dark:bg-stone-900";
 
   return (
     <div className="space-y-4">
+      <p className="text-sm text-stone-500">
+        {plural(items.length, "item", "items")}
+        {tenseCount > 0 && wordCount > 0 ? `: ${plural(tenseCount, "verb tense", "verb tenses")} and ${plural(wordCount, "word item", "word items")}` : ""}.
+        {" "}Each tense of a verb counts on its own, and so does each way a word is asked (Spanish to English, English to Spanish, gender).
+      </p>
       {tenses.size > 0 && (
         <div>
-          <h3 className="mb-2 font-medium">Verb tenses</h3>
+          <h3 className="mb-2 font-medium">
+            Verb tenses <span className="font-normal text-stone-500">{tenseCount.toLocaleString()}</span>
+          </h3>
           <ul className={listClass}>
             {[...tenses].map(([inf, names]) => (
               <li key={inf} className="flex flex-wrap items-baseline justify-between gap-x-4 px-4 py-2">
@@ -112,12 +125,14 @@ function MasteredList({ wordLists }: { wordLists: WordListTotal[] }) {
           </ul>
         </div>
       )}
-      {[...words].map(([type, set]) => (
+      {[...words].map(([type, ways]) => (
         <div key={type}>
           <h3 className="mb-2 font-medium">
-            {titles.get(type) ?? type} <span className="font-normal text-stone-500">{set.size.toLocaleString()}</span>
+            {titles.get(type) ?? type} <span className="font-normal text-stone-500">{itemsIn(ways).toLocaleString()}</span>
           </h3>
-          <p className="rounded-xl border border-stone-200 bg-white px-4 py-3 dark:border-stone-800 dark:bg-stone-900">{[...set].join(", ")}</p>
+          <p className="rounded-xl border border-stone-200 bg-white px-4 py-3 dark:border-stone-800 dark:bg-stone-900">
+            {[...ways].map(([es, n]) => (n > 1 ? `${es} (${n} ways)` : es)).join(", ")}
+          </p>
         </div>
       ))}
     </div>
