@@ -174,7 +174,7 @@
         "rules": [
           {"rule": "Mi, tu and su add -s for a plural noun", "examples": [{"es": "mi casa, mis hermanos", "en": "my house, my brothers"}, {"es": "tu carro, tus llaves", "en": "your car, your keys"}]},
           {"rule": "Nuestro agrees like any adjective ending in -o", "examples": [{"es": "nuestra familia, nuestros amigos", "en": "our family, our friends"}]},
-          {"rule": "Su can mean 'his', 'her', 'its', 'their' or 'your'", "examples": [{"es": "Su casa es grande.", "en": "His, her, their or your house is big."}, {"es": "La casa de ella es grande.", "en": "Her house is big."}], "note": "When it isn't clear, say de él, de ella, de ellos or de usted after the noun."}
+          {"rule": "Su can mean 'his', 'her', 'its', 'their' or 'your'", "examples": [{"es": "Su casa es grande.", "en": "His, her, their or your house is big."}, {"es": "La casa de ella es grande.", "en": "Her house is big."}], "note": "When it isn't clear, say de él, de ella, de ellos or de usted after the noun. The guide to possessives covers mío, tuyo, el mío and cuyo."}
         ]
       },
       {
@@ -182,7 +182,7 @@
         "rules": [
           {"rule": "Este for 'this' and 'these', ese for 'that' and 'those', aquel for 'that over there'", "examples": [{"es": "este libro, esta mesa", "en": "this book, this table"}, {"es": "estos libros, estas mesas", "en": "these books, these tables"}, {"es": "ese carro, esa casa", "en": "that car, that house"}, {"es": "esos zapatos, esas llaves", "en": "those shoes, those keys"}, {"es": "aquel edificio, aquella montaña", "en": "that building over there, that mountain over there"}, {"es": "aquellos días", "en": "those days, long ago"}], "note": "Ese is for something near the person you're talking to, or just a little away. Aquel is for something far from both of you, in space or in time."},
           {"rule": "On their own, they mean 'this one' or 'that one'", "examples": [{"es": "Quiero este.", "en": "I want this one."}, {"es": "¿Cuál prefieres, esta o esa?", "en": "Which do you prefer, this one or that one?"}]},
-          {"rule": "Esto and eso for ideas, or things you can't name", "examples": [{"es": "¿Qué es esto?", "en": "What's this?"}, {"es": "Eso no es verdad.", "en": "That's not true."}]}
+          {"rule": "Esto and eso for ideas, or things you can't name", "examples": [{"es": "¿Qué es esto?", "en": "What's this?"}, {"es": "Eso no es verdad.", "en": "That's not true."}], "note": "The guide to this and that has more, with its own quiz."}
         ]
       }
     ]
@@ -1040,6 +1040,88 @@
         "heading": "Sayings",
         "rules": [
           {"rule": "Refranes come up all the time, often only the first half", "examples": [{"es": "Más vale tarde que nunca.", "en": "Better late than never."}, {"es": "Al mal tiempo, buena cara.", "en": "Keep your chin up in hard times."}, {"es": "Camarón que se duerme se lo lleva la corriente.", "en": "If you snooze, you lose."}], "note": "Saying camarón que se duerme is enough, since everyone knows the rest."}
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "demonstratives",
+    "level": "A1",
+    "title": "This and that: este, ese, aquel and esto",
+    "summary": "Este, ese and aquel point at things near you, near the listener or far from both, and agree with the noun. Esto, eso and aquello are for things you don't name.",
+    "sections": [
+      {
+        "heading": "Three distances",
+        "rules": [
+          {"rule": "Este is near me, ese is near you, aquel is far from both of us", "examples": [{"es": "Este café está frío.", "en": "This coffee is cold."}, {"es": "¿Me pasas ese plato?", "en": "Can you pass me that plate?"}, {"es": "¿Ves aquella casa en la montaña?", "en": "Do you see that house up on the mountain?"}], "note": "In everyday Latin American Spanish, ese covers most things that aren't right by you, and aquel is for things clearly far away."},
+          {"rule": "Aquel also points back in time", "examples": [{"es": "En aquellos tiempos no había celulares.", "en": "Back in those days there were no cell phones."}, {"es": "Aquel verano fue el mejor de mi vida.", "en": "That summer was the best of my life."}]},
+          {"rule": "Aquí, ahí and allá go with este, ese and aquel", "examples": [{"es": "Esta silla de aquí está rota.", "en": "This chair right here is broken."}, {"es": "Esa mochila de ahí es mía.", "en": "That backpack there, by you, is mine."}, {"es": "Aquel árbol de allá es muy viejo.", "en": "That tree over there is very old."}], "note": "Acá is common for aquí in much of Latin America, and allí for allá."}
+        ]
+      },
+      {
+        "heading": "They agree with the noun",
+        "rules": [
+          {"rule": "Each has four forms, and agrees with the noun", "examples": [{"es": "este perro, esta casa, estos zapatos, estas flores", "en": "this dog, this house, these shoes, these flowers"}, {"es": "ese libro, esa mesa, esos niños, esas llaves", "en": "that book, that table, those kids, those keys"}, {"es": "aquel edificio, aquella playa, aquellos días, aquellas montañas", "en": "that building, that beach, those days, those mountains"}], "note": "The masculine singular has no -o: este, ese and aquel. Esto libro is always wrong."},
+          {"rule": "Feminine nouns that take el still use esta, esa and aquella", "examples": [{"es": "Esta agua está fría.", "en": "This water is cold."}, {"es": "¿Quién vive en esta área?", "en": "Who lives in this area?"}], "note": "El agua and el área use el only because of the sound. The nouns are feminine, so everything else is too: el agua fría, esta agua."},
+          {"rule": "Time words: esta mañana, este año", "examples": [{"es": "Esta mañana fui al médico.", "en": "This morning I went to the doctor."}, {"es": "Este año voy a México.", "en": "This year I'm going to Mexico."}, {"es": "Esta noche hay fiesta.", "en": "There's a party tonight."}]}
+        ]
+      },
+      {
+        "heading": "This one and that one",
+        "rules": [
+          {"rule": "Without a noun, they mean this one or that one", "examples": [{"es": "No quiero esa camisa, quiero esta.", "en": "I don't want that shirt, I want this one."}, {"es": "¿Te gustan estos zapatos o esos?", "en": "Do you like these shoes or those?"}, {"es": "Este libro es mío y ese es tuyo.", "en": "This book is mine and that one is yours."}], "note": "They still agree with the noun you've left out. Older books write éste and ése with an accent, but it isn't needed."},
+          {"rule": "For a person, este or esta, never esto", "examples": [{"es": "Este es mi hermano Daniel.", "en": "This is my brother Daniel."}, {"es": "Esta es mi mamá.", "en": "This is my mom."}]}
+        ]
+      },
+      {
+        "heading": "Esto, eso and aquello",
+        "rules": [
+          {"rule": "Esto, eso and aquello are for things you don't name", "examples": [{"es": "¿Qué es esto?", "en": "What's this?"}, {"es": "Eso que tienes en la mano, ¿qué es?", "en": "That thing in your hand, what is it?"}, {"es": "¿Qué es aquello que brilla en el cielo?", "en": "What's that shining in the sky?"}], "note": "They never change form and never go before a noun. With a noun, use este, ese or aquel."},
+          {"rule": "Esto and eso for ideas and whole situations", "examples": [{"es": "Eso no es verdad.", "en": "That isn't true."}, {"es": "Esto me preocupa mucho.", "en": "This worries me a lot."}, {"es": "No entiendo nada de esto.", "en": "I don't understand any of this."}]},
+          {"rule": "Set phrases with eso", "examples": [{"es": "Estaba enfermo, por eso no vine.", "en": "I was sick, that's why I didn't come."}, {"es": "Llegamos a eso de las ocho.", "en": "We got there around eight."}, {"es": "¡Eso es, muy bien!", "en": "That's it, very good!"}, {"es": "Es caro, eso sí, pero vale la pena.", "en": "It's expensive, sure, but it's worth it."}]},
+          {"rule": "Este as a filler word", "examples": [{"es": "Este... no sé qué decir.", "en": "Um... I don't know what to say."}], "note": "Like um in English, and very common in Mexico and Argentina. Nothing to do with 'this'."}
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "possessives",
+    "level": "A2",
+    "title": "Possessives: mi, mío, el mío and cuyo",
+    "summary": "Mi and tu go before a noun, while mío and tuyo go after it or stand alone. All of them agree with what's owned, not with the owner.",
+    "sections": [
+      {
+        "heading": "Before the noun: mi, tu, su, nuestro",
+        "rules": [
+          {"rule": "Mi, tu, su and nuestro go before the noun", "examples": [{"es": "mi hermana, mis amigos", "en": "my sister, my friends"}, {"es": "tu carro, tus llaves", "en": "your car, your keys"}, {"es": "nuestra casa, nuestros hijos", "en": "our house, our children"}], "note": "Mi, tu and su only add -s. Nuestro has four forms: nuestro, nuestra, nuestros, nuestras."},
+          {"rule": "They agree with what's owned, not the owner", "examples": [{"es": "Ana y Luis viven con sus padres.", "en": "Ana and Luis live with their parents."}, {"es": "Mi papá vendió su casa.", "en": "My dad sold his house."}, {"es": "Nosotros pintamos nuestra casa.", "en": "We painted our house."}], "note": "Two men talking about their house still say nuestra casa, because casa is feminine."},
+          {"rule": "Tu has no accent; tú means you", "examples": [{"es": "Tú tienes tu libro.", "en": "You have your book."}]},
+          {"rule": "Use el, not mi, for the body and clothes", "examples": [{"es": "Me duele la cabeza.", "en": "My head hurts."}, {"es": "Me lavo las manos.", "en": "I wash my hands."}, {"es": "Se puso la chaqueta.", "en": "He put on his jacket."}], "note": "Mi cabeza isn't wrong, but it sounds odd when me, te or se already says whose it is."}
+        ]
+      },
+      {
+        "heading": "After the noun or on their own: mío, tuyo, suyo",
+        "rules": [
+          {"rule": "The long forms: mío, tuyo, suyo, nuestro", "examples": [{"es": "Este libro es mío.", "en": "This book is mine."}, {"es": "¿Esa chaqueta es tuya?", "en": "Is that jacket yours?"}, {"es": "Estas llaves son mías.", "en": "These keys are mine."}, {"es": "La culpa es nuestra.", "en": "It's our fault."}], "note": "Each has four forms, like mío, mía, míos, mías. Mío and mía always have an accent."},
+          {"rule": "After a noun, they mean 'of mine' or 'of yours'", "examples": [{"es": "Es un amigo mío.", "en": "He's a friend of mine."}, {"es": "Ayer vi a una prima tuya.", "en": "Yesterday I saw a cousin of yours."}, {"es": "Unos vecinos nuestros vinieron a cenar.", "en": "Some neighbors of ours came to dinner."}]},
+          {"rule": "With el, la, los or las, they stand in for the noun", "examples": [{"es": "Tu carro es rojo y el mío es azul.", "en": "Your car is red and mine is blue."}, {"es": "Esta no es mi maleta; la mía es negra.", "en": "This isn't my suitcase; mine is black."}, {"es": "Mis papás viven en Lima. ¿Y los tuyos?", "en": "My parents live in Lima. And yours?"}], "note": "After ser the article is usually left out: es mío. Es el mío picks one out of several: that one's mine."},
+          {"rule": "In exclamations and terms of endearment", "examples": [{"es": "¡Dios mío, qué susto!", "en": "My God, what a scare!"}, {"es": "Hasta mañana, amor mío.", "en": "See you tomorrow, my love."}]},
+          {"rule": "Lo mío, lo tuyo: my thing, your part", "examples": [{"es": "Lo mío es la música.", "en": "Music is my thing."}, {"es": "Cada uno paga lo suyo.", "en": "Everyone pays their own share."}]}
+        ]
+      },
+      {
+        "heading": "Su and suyo: whose is it?",
+        "rules": [
+          {"rule": "Su and suyo can mean his, her, its, their or your", "examples": [{"es": "Su casa es muy bonita.", "en": "His, her, their or your house is very pretty."}, {"es": "Señora, ¿este paraguas es suyo?", "en": "Ma'am, is this umbrella yours?"}]},
+          {"rule": "Say de él, de ella or de usted when it isn't clear", "examples": [{"es": "La casa de ella es muy bonita.", "en": "Her house is very pretty."}, {"es": "¿Este libro es de él o de ella?", "en": "Is this book his or hers?"}]},
+          {"rule": "Ustedes uses su and suyo too", "examples": [{"es": "Chicos, ¿ya tienen sus boletos?", "en": "Guys, do you have your tickets yet?"}, {"es": "Señores, ¿estas maletas son suyas?", "en": "Gentlemen, are these suitcases yours?"}], "note": "Spain uses vuestro for vosotros, so you'll see it in books from Spain. Latin America uses su and suyo."}
+        ]
+      },
+      {
+        "heading": "Cuyo and de quién",
+        "rules": [
+          {"rule": "Cuyo means whose and agrees with what's owned", "examples": [{"es": "El chico cuya madre es doctora es mi vecino.", "en": "The boy whose mother is a doctor is my neighbor."}, {"es": "La señora cuyos hijos viven en Miami es muy amable.", "en": "The lady whose children live in Miami is very kind."}], "note": "Cuyo joins two sentences, like que, and sounds a little formal. The guide to relative pronouns has more."},
+          {"rule": "In questions, use de quién, not cuyo", "examples": [{"es": "¿De quién es esta mochila?", "en": "Whose backpack is this?"}, {"es": "¿De quiénes son estos libros?", "en": "Whose books are these?"}]}
         ]
       }
     ]
