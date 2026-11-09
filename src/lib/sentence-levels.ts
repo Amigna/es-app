@@ -33,7 +33,7 @@ export function formTenses(verbs: Verb[]): Map<string, Set<TenseId>> {
 }
 
 /** Words in sentences that look like a verb form but aren't one here, and aren't in the word lists. */
-const NOT_VERBS = ["andes", "apuntes", "cobre", "mate", "monte", "tejas"];
+const NOT_VERBS = ["andes", "apuntes", "choque", "cobre", "mate", "monte", "tejas"];
 
 /** Nouns and adjectives spelled like a verb form (las tardes, agua fría), so they aren't read as one. */
 export function wordForms(): Set<string> {

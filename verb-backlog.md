@@ -12,34 +12,6 @@ When adding a batch:
 - Delete the batch from this file once it's in `verbs.json`, and update the verb count in `plan.md`.
 - If a verb is dropped, move it to "Dropped" at the bottom with the reason, so it isn't suggested again.
 
-## Batch 23
-
-- aparentar: to pretend; to look (an age)
-- arriesgar: to risk
-- avergonzar: to embarrass
-- envejecer: to grow old
-- enriquecer: to enrich
-- favorecer: to favor
-- complacer: to please
-- deducir: to deduce
-- seducir: to seduce
-- abstenerse: to abstain — *reflexive of a tener compound*
-- sobreponerse: to get over, to pull oneself together — *reflexive of a poner compound*
-- fluir: to flow
-- instruir: to instruct
-- proseguir: to continue, to carry on
-- regir: to govern, to rule
-- teñir: to dye
-- gemir: to moan, to groan
-- presentir: to have a feeling, to sense
-- digerir: to digest
-- denunciar: to report, to denounce
-- demorar: to delay; to take long (Latin America)
-- descender: to descend, to go down
-- enfocar: to focus
-- estimular: to stimulate
-- fijar: to fix, to set
-
 ## Batch 24
 
 - anochecer: to get dark — *mostly él*
