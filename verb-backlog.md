@@ -12,34 +12,6 @@ When adding a batch:
 - Delete the batch from this file once it's in `verbs.json`, and update the verb count in `plan.md`.
 - If a verb is dropped, move it to "Dropped" at the bottom with the reason, so it isn't suggested again.
 
-## Batch 27
-
-- garantizar: to guarantee
-- generar: to generate
-- gestionar: to manage, to handle
-- gobernar: to govern
-- habitar: to inhabit
-- heredar: to inherit
-- herir: to wound, to hurt
-- iluminar: to light up
-- implicar: to imply, to involve
-- impresionar: to impress
-- impulsar: to drive, to boost
-- incorporar: to incorporate, to add
-- influir: to influence
-- integrar: to integrate, to make up
-- intercambiar: to exchange
-- involucrar: to involve
-- justificar: to justify
-- liberar: to free, to release
-- limitar: to limit
-- manifestar: to express; to demonstrate
-- modificar: to modify
-- motivar: to motivate
-- pretender: to intend, to try
-- proceder: to proceed
-- procurar: to try, to make sure
-
 ## Batch 28
 
 - programar: to program, to schedule

@@ -9,10 +9,12 @@ import { IRREGULARS } from "@/lib/conjugation/irregulars";
 import { markVerb } from "@/lib/conjugation/regular";
 import { practiceHref } from "@/lib/practice";
 import { getSentences } from "@/lib/sentence-data";
-import { VERBS, VERB_SHAPE, findVerb, verbSlug, type Verb } from "@/lib/verbs";
+import { ESSENTIAL_COUNT, VERBS, VERB_SHAPE, findVerb, verbSlug, type Verb } from "@/lib/verbs";
 
+// Only the essentials are prerendered: every verb page adds ~80 KB to the build, and prerendering all of them
+// pushed the output past Amplify's 220 MB limit. The rest render on request, like unlisted verbs already do.
 export function generateStaticParams() {
-  return VERBS.map((v) => ({ inf: verbSlug(v.inf) }));
+  return VERBS.slice(0, ESSENTIAL_COUNT).map((v) => ({ inf: verbSlug(v.inf) }));
 }
 
 function resolve(slug: string): { verb: Verb; listed: boolean } | null {
