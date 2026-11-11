@@ -9,6 +9,8 @@ export interface Reading {
   en: string;
   level: ReadingLevel;
   place: string;
+  /** Made up by us, so it gets a note saying so. False for true accounts and retold legends, which say what they are. */
+  fiction: boolean;
   paragraphs: { es: string; en: string }[];
   words: { es: string; en: string }[];
   questions: QuizQuestion[];

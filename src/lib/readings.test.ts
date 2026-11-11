@@ -28,6 +28,8 @@ describe("reading data", () => {
   it("translates every paragraph", () => {
     for (const r of READINGS) {
       assert.ok(r.title && r.en && r.place, r.slug);
+      // Each passage says whether it's made up, so a story isn't taken for a true account.
+      assert.equal(typeof r.fiction, "boolean", r.slug);
       assert.ok(r.paragraphs.length > 0, r.slug);
       for (const p of r.paragraphs) assert.ok(p.es && p.en, r.slug);
     }

@@ -44,6 +44,7 @@ async function ReadingContent({ params }: { params: PageProps<"/reading/[slug]">
           {reading.title}
         </h1>
         <p className="text-lg text-stone-600 dark:text-stone-400">{reading.en}</p>
+        {reading.fiction && <p className="pt-1 text-sm text-stone-500 italic">A made-up story. The places are real, but the people and events aren&apos;t.</p>}
       </header>
 
       <section className="space-y-4">
