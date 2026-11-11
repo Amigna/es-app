@@ -2218,5 +2218,611 @@
   "impNegative": [
    {"person":1,"es":"No fijes el cartel con clavos, usa cinta.","en":"Don't put the poster up with nails, use tape."}
   ]
+ },
+ "anochecer": {
+  "present": [
+   {"person":2,"es":"En invierno anochece muy temprano.","en":"In winter it gets dark very early."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Anocheció mientras volvíamos a casa.","en":"It got dark while we were heading home."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Ya anochecía cuando llegamos al pueblo.","en":"It was already getting dark when we reached the town."}
+  ],
+  "future": [
+   {"person":2,"es":"Hoy anochecerá a las seis.","en":"Today it'll get dark at six."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Nos dijeron que anochecería pronto.","en":"They told us it would get dark soon."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"Ya ha anochecido, enciende las luces.","en":"It's already dark, turn on the lights."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":2,"es":"Volvamos antes de que anochezca.","en":"Let's head back before it gets dark."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Queríamos llegar antes de que anocheciera.","en":"We wanted to get there before it got dark."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
+ },
+ "ensayar": {
+  "present": [
+   {"person":2,"es":"La banda ensaya todos los sábados.","en":"The band rehearses every Saturday."},
+   {"person":0,"es":"Ensayo el discurso frente al espejo.","en":"I rehearse the speech in front of the mirror."},
+   {"person":1,"es":"¿Ensayas tu parte de la obra todos los días?","en":"Do you rehearse your part of the play every day?"},
+   {"person":3,"es":"Ensayamos el baile para la boda.","en":"We're rehearsing the dance for the wedding."},
+   {"person":4,"es":"Los actores ensayan hasta tarde.","en":"The actors rehearse until late."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El coro ensayó toda la tarde.","en":"The choir rehearsed all afternoon."},
+   {"person":0,"es":"Ensayé mi presentación tres veces.","en":"I practiced my presentation three times."},
+   {"person":1,"es":"¿Ensayaste la canción?","en":"Did you rehearse the song?"},
+   {"person":3,"es":"Ayer ensayamos con el vestuario.","en":"Yesterday we rehearsed in costume."},
+   {"person":4,"es":"Los bailarines ensayaron sin música.","en":"The dancers rehearsed without music."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi hermana ensayaba piano todas las mañanas.","en":"My sister practiced piano every morning."},
+   {"person":0,"es":"Yo ensayaba las respuestas antes de cada entrevista.","en":"I'd rehearse my answers before every interview."},
+   {"person":1,"es":"Tú ensayabas en el garaje con tu banda.","en":"You used to rehearse in the garage with your band."},
+   {"person":3,"es":"Ensayábamos en la iglesia los domingos.","en":"We used to rehearse at the church on Sundays."},
+   {"person":4,"es":"Los niños ensayaban la obra de Navidad.","en":"The kids were rehearsing the Christmas play."}
+  ],
+  "future": [
+   {"person":2,"es":"La orquesta ensayará en el teatro mañana.","en":"The orchestra will rehearse at the theater tomorrow."},
+   {"person":0,"es":"Ensayaré hasta que me salga perfecto.","en":"I'll practice until I get it perfect."},
+   {"person":1,"es":"Ensayarás con nosotros el jueves.","en":"You'll rehearse with us on Thursday."},
+   {"person":3,"es":"Ensayaremos la ceremonia el viernes.","en":"We'll rehearse the ceremony on Friday."},
+   {"person":4,"es":"Los músicos ensayarán dos horas antes del concierto.","en":"The musicians will rehearse for two hours before the concert."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo ensayaría más antes del estreno.","en":"I'd rehearse more before opening night."},
+   {"person":1,"es":"¿Ensayarías conmigo esta noche?","en":"Would you rehearse with me tonight?"},
+   {"person":2,"es":"Un buen actor ensayaría cada escena.","en":"A good actor would rehearse every scene."},
+   {"person":3,"es":"Ensayaríamos más, pero no tenemos lugar.","en":"We'd rehearse more, but we don't have a place."},
+   {"person":4,"es":"Ellos ensayarían todo el día.","en":"They'd rehearse all day."}
+  ],
+  "presentPerfect": [
+   {"person":3,"es":"Hemos ensayado mucho para hoy.","en":"We've rehearsed a lot for today."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Es importante que ensayes antes del examen oral.","en":"It's important for you to practice before the oral exam."},
+   {"person":0,"es":"El director quiere que yo ensaye otra vez.","en":"The director wants me to rehearse again."},
+   {"person":2,"es":"Ojalá que la banda ensaye más.","en":"I hope the band rehearses more."},
+   {"person":3,"es":"Es mejor que ensayemos una vez más.","en":"We'd better rehearse one more time."},
+   {"person":4,"es":"Pídeles a los niños que ensayen la canción.","en":"Ask the kids to rehearse the song."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Ensaya frente al espejo.","en":"Practice in front of the mirror."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "amanecer": {
+  "present": [
+   {"person":2,"es":"En verano amanece muy temprano.","en":"In summer the sun comes up very early."},
+   {"person":0,"es":"Siempre amanezco con hambre.","en":"I always wake up hungry."},
+   {"person":1,"es":"Si duermes poco, amaneces de mal humor.","en":"If you don't sleep much, you wake up grumpy."},
+   {"person":3,"es":"Cuando acampamos, amanecemos con el canto de los pájaros.","en":"When we camp, we wake up to the birds singing."},
+   {"person":4,"es":"Los niños amanecen llenos de energía.","en":"The kids wake up full of energy."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Amaneció nublado.","en":"The day dawned cloudy."},
+   {"person":0,"es":"Amanecí con dolor de cabeza.","en":"I woke up with a headache."},
+   {"person":1,"es":"¿Cómo amaneciste?","en":"How did you sleep?"},
+   {"person":3,"es":"Amanecimos en la playa después de la fiesta.","en":"We were still at the beach at dawn after the party."},
+   {"person":4,"es":"Los niños amanecieron con fiebre.","en":"The kids woke up with a fever."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Cuando salimos, apenas amanecía.","en":"When we left, the sun was just coming up."},
+   {"person":0,"es":"Yo amanecía cansado todos los días.","en":"I'd wake up tired every day."},
+   {"person":1,"es":"Tú siempre amanecías de buen humor.","en":"You always woke up in a good mood."},
+   {"person":3,"es":"Amanecíamos con el canto del gallo.","en":"We'd wake up to the rooster crowing."},
+   {"person":4,"es":"Los campos amanecían cubiertos de neblina.","en":"The fields were covered in mist at dawn."}
+  ],
+  "future": [
+   {"person":2,"es":"Mañana amanecerá soleado.","en":"Tomorrow will dawn sunny."},
+   {"person":0,"es":"Con este té amaneceré mejor.","en":"With this tea I'll wake up feeling better."},
+   {"person":1,"es":"Amanecerás con la espalda adolorida en esa cama.","en":"You'll wake up with a sore back in that bed."},
+   {"person":3,"es":"Amaneceremos en Cusco.","en":"We'll wake up in Cusco."},
+   {"person":4,"es":"Los niños amanecerán cansados después del viaje.","en":"The kids will wake up tired after the trip."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Sin esas nubes, amanecería despejado.","en":"Without those clouds, it would dawn clear."},
+   {"person":0,"es":"Yo amanecería mejor en mi propia cama.","en":"I'd wake up feeling better in my own bed."},
+   {"person":1,"es":"Tú amanecerías más contento con ocho horas de sueño.","en":"You'd wake up happier with eight hours of sleep."},
+   {"person":3,"es":"Amaneceríamos frente al mar en esa cabaña.","en":"We'd wake up facing the sea in that cabin."},
+   {"person":4,"es":"Los perros amanecerían con hambre.","en":"The dogs would wake up hungry."}
+  ],
+  "presentPerfect": [
+   {"person":1,"es":"¿Cómo has amanecido?","en":"How are you feeling this morning?"}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Ojalá que amanezcas mejor mañana.","en":"I hope you wake up feeling better tomorrow."},
+   {"person":0,"es":"Mi mamá espera que yo amanezca sin fiebre.","en":"My mom hopes I'll wake up without a fever."},
+   {"person":2,"es":"Saldremos en cuanto amanezca.","en":"We'll leave as soon as it gets light."},
+   {"person":3,"es":"Ojalá que amanezcamos con buen tiempo en la montaña.","en":"I hope we wake up to good weather on the mountain."},
+   {"person":4,"es":"Espero que los niños amanezcan bien.","en":"I hope the kids wake up feeling fine."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
+ },
+ "disminuir": {
+  "present": [
+   {"person":2,"es":"El dolor disminuye con el hielo.","en":"The pain goes down with ice."},
+   {"person":0,"es":"Disminuyo el azúcar del café poco a poco.","en":"I'm cutting down on sugar in my coffee little by little."},
+   {"person":1,"es":"Si disminuyes la velocidad, gastas menos gasolina.","en":"If you slow down, you use less gas."},
+   {"person":3,"es":"Este mes disminuimos los gastos.","en":"This month we're cutting back on expenses."},
+   {"person":4,"es":"Los accidentes disminuyen con buena iluminación.","en":"Accidents go down with good lighting."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La fiebre disminuyó por la noche.","en":"The fever went down during the night."},
+   {"person":0,"es":"Disminuí mis horas de trabajo.","en":"I cut back my working hours."},
+   {"person":1,"es":"¿Disminuiste la dosis?","en":"Did you lower the dose?"},
+   {"person":3,"es":"Disminuimos el ruido con cortinas gruesas.","en":"We cut down the noise with thick curtains."},
+   {"person":4,"es":"Las ventas disminuyeron en enero.","en":"Sales dropped in January."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El agua del río disminuía cada verano.","en":"The river water went down every summer."},
+   {"person":0,"es":"Yo disminuía el paso al llegar a la curva.","en":"I'd slow down as I got to the curve."},
+   {"person":1,"es":"Tú disminuías la importancia de todo.","en":"You'd play everything down."},
+   {"person":3,"es":"Disminuíamos la velocidad en la zona escolar.","en":"We'd slow down in the school zone."},
+   {"person":4,"es":"Los turistas disminuían en temporada de lluvias.","en":"Tourists dropped off in the rainy season."}
+  ],
+  "future": [
+   {"person":2,"es":"El tráfico disminuirá después de las ocho.","en":"Traffic will ease after eight."},
+   {"person":0,"es":"Disminuiré el café a una taza al día.","en":"I'll cut coffee down to one cup a day."},
+   {"person":1,"es":"Disminuirás el riesgo si usas casco.","en":"You'll reduce the risk if you wear a helmet."},
+   {"person":3,"es":"Disminuiremos el consumo de plástico.","en":"We'll cut down on plastic."},
+   {"person":4,"es":"Los precios disminuirán en enero.","en":"Prices will drop in January."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Un semáforo disminuiría los accidentes.","en":"A traffic light would cut down on accidents."},
+   {"person":0,"es":"Yo disminuiría las horas de pantalla.","en":"I'd cut down screen time."},
+   {"person":1,"es":"¿Disminuirías tu sueldo por trabajar desde casa?","en":"Would you take a pay cut to work from home?"},
+   {"person":3,"es":"Disminuiríamos los gastos con paneles solares.","en":"We'd cut expenses with solar panels."},
+   {"person":4,"es":"Esas medidas disminuirían la contaminación.","en":"Those measures would reduce pollution."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"El dolor ha disminuido bastante.","en":"The pain has eased quite a bit."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":2,"es":"Espero que la fiebre disminuya pronto.","en":"I hope the fever goes down soon."},
+   {"person":0,"es":"El médico quiere que yo disminuya la sal.","en":"The doctor wants me to cut down on salt."},
+   {"person":1,"es":"Es importante que disminuyas la velocidad aquí.","en":"It's important for you to slow down here."},
+   {"person":3,"es":"Es necesario que disminuyamos los gastos.","en":"We need to cut back on spending."},
+   {"person":4,"es":"Ojalá que los precios disminuyan.","en":"I hope prices go down."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Disminuye la velocidad, hay niños.","en":"Slow down, there are kids."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "dañar": {
+  "present": [
+   {"person":2,"es":"El sol daña la piel.","en":"The sun damages your skin."},
+   {"person":0,"es":"Si cargo mucho peso, me daño la espalda.","en":"If I carry a lot of weight, I hurt my back."},
+   {"person":1,"es":"Dañas la pantalla si la limpias con alcohol.","en":"You damage the screen if you clean it with alcohol."},
+   {"person":3,"es":"Dañamos el planeta con tanto plástico.","en":"We harm the planet with so much plastic."},
+   {"person":4,"es":"Las plagas dañan los cultivos.","en":"Pests damage crops."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La tormenta dañó el techo.","en":"The storm damaged the roof."},
+   {"person":0,"es":"Dañé el carro de mi papá.","en":"I damaged my dad's car."},
+   {"person":1,"es":"¿Dañaste el teléfono con agua?","en":"Did you damage the phone with water?"},
+   {"person":3,"es":"Dañamos la mesa al moverla.","en":"We damaged the table when we moved it."},
+   {"person":4,"es":"Los ratones dañaron los cables.","en":"The mice damaged the wires."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"La humedad dañaba los libros viejos.","en":"The damp was damaging the old books."},
+   {"person":0,"es":"Yo dañaba mis zapatos jugando fútbol.","en":"I'd wreck my shoes playing soccer."},
+   {"person":1,"es":"Tú dañabas todo lo que tocabas.","en":"You broke everything you touched."},
+   {"person":3,"es":"Dañábamos el jardín con la pelota.","en":"We'd damage the garden with the ball."},
+   {"person":4,"es":"Las heladas dañaban las cosechas.","en":"The frosts damaged the harvests."}
+  ],
+  "future": [
+   {"person":2,"es":"Tanta sal dañará tu salud.","en":"So much salt will harm your health."},
+   {"person":0,"es":"No dañaré tu libro, te lo prometo.","en":"I won't damage your book, I promise."},
+   {"person":1,"es":"Dañarás la alfombra con esos zapatos.","en":"You'll ruin the carpet with those shoes."},
+   {"person":3,"es":"No dañaremos nada durante la mudanza.","en":"We won't damage anything during the move."},
+   {"person":4,"es":"Las lluvias dañarán las carreteras.","en":"The rains will damage the roads."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Ese químico dañaría la tela.","en":"That chemical would damage the fabric."},
+   {"person":0,"es":"Yo nunca dañaría a un animal.","en":"I'd never hurt an animal."},
+   {"person":1,"es":"¿Dañarías tu amistad por dinero?","en":"Would you damage your friendship over money?"},
+   {"person":3,"es":"Dañaríamos el piso con esos muebles.","en":"We'd damage the floor with that furniture."},
+   {"person":4,"es":"Esas raíces dañarían la tubería.","en":"Those roots would damage the pipes."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"El agua ha dañado las paredes.","en":"The water has damaged the walls."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"No quiero que dañes la computadora.","en":"I don't want you to damage the computer."},
+   {"person":0,"es":"Mi mamá tiene miedo de que yo dañe el piano.","en":"My mom's afraid I'll damage the piano."},
+   {"person":2,"es":"Cubre las plantas para que el frío no las dañe.","en":"Cover the plants so the cold doesn't damage them."},
+   {"person":3,"es":"Es mejor que no dañemos la relación.","en":"We'd better not damage the relationship."},
+   {"person":4,"es":"No dejes que los niños dañen los libros.","en":"Don't let the kids damage the books."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No dañes las flores del parque.","en":"Don't damage the flowers in the park."}
+  ]
+ },
+ "culpar": {
+  "present": [
+   {"person":2,"es":"Mi hermano siempre me culpa de todo.","en":"My brother always blames me for everything."},
+   {"person":0,"es":"No te culpo.","en":"I don't blame you."},
+   {"person":1,"es":"¿Por qué me culpas a mí?","en":"Why are you blaming me?"},
+   {"person":3,"es":"Culpamos al tráfico por el retraso.","en":"We blame the traffic for the delay."},
+   {"person":4,"es":"Muchos culpan al gobierno de la crisis.","en":"Many people blame the government for the crisis."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La maestra me culpó del ruido.","en":"The teacher blamed me for the noise."},
+   {"person":0,"es":"Culpé al perro de la mancha.","en":"I blamed the dog for the stain."},
+   {"person":1,"es":"¿Culpaste a tu hermana?","en":"Did you blame your sister?"},
+   {"person":3,"es":"Culpamos a la lluvia por la derrota.","en":"We blamed the rain for the loss."},
+   {"person":4,"es":"Los vecinos culparon a los niños del vidrio roto.","en":"The neighbors blamed the kids for the broken window."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi padre culpaba a la suerte de todo.","en":"My father blamed luck for everything."},
+   {"person":0,"es":"Yo me culpaba por cosas que no eran mi culpa.","en":"I blamed myself for things that weren't my fault."},
+   {"person":1,"es":"Tú siempre culpabas a los demás.","en":"You always blamed others."},
+   {"person":3,"es":"Culpábamos al gato de todo.","en":"We blamed the cat for everything."},
+   {"person":4,"es":"Los jugadores culpaban al árbitro.","en":"The players blamed the referee."}
+  ],
+  "future": [
+   {"person":2,"es":"Nadie te culpará.","en":"Nobody will blame you."},
+   {"person":0,"es":"No te culparé si no puedes venir.","en":"I won't blame you if you can't come."},
+   {"person":1,"es":"Culparás al clima, como siempre.","en":"You'll blame the weather, as always."},
+   {"person":3,"es":"No culparemos a nadie.","en":"We won't blame anyone."},
+   {"person":4,"es":"Te culparán a ti si algo sale mal.","en":"They'll blame you if something goes wrong."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo no te culparía.","en":"I wouldn't blame you."},
+   {"person":1,"es":"¿Culparías a tu mejor amigo?","en":"Would you blame your best friend?"},
+   {"person":2,"es":"Nadie culparía a un niño por eso.","en":"Nobody would blame a child for that."},
+   {"person":3,"es":"No culparíamos al conductor.","en":"We wouldn't blame the driver."},
+   {"person":4,"es":"Ellos culparían a cualquiera menos a sí mismos.","en":"They'd blame anyone but themselves."}
+  ],
+  "presentPerfect": [
+   {"person":1,"es":"Me has culpado sin pruebas.","en":"You've blamed me without any proof."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"No quiero que te culpes.","en":"I don't want you to blame yourself."},
+   {"person":0,"es":"Mi jefe no quiere que yo culpe al equipo.","en":"My boss doesn't want me to blame the team."},
+   {"person":2,"es":"Es injusto que el profesor culpe a toda la clase.","en":"It's unfair for the teacher to blame the whole class."},
+   {"person":3,"es":"Es mejor que no culpemos a nadie todavía.","en":"We'd better not blame anyone yet."},
+   {"person":4,"es":"No dejes que te culpen.","en":"Don't let them blame you."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No me culpes a mí.","en":"Don't blame me."}
+  ]
+ },
+ "conquistar": {
+  "present": [
+   {"person":2,"es":"Esa sonrisa conquista a cualquiera.","en":"That smile wins anyone over."},
+   {"person":0,"es":"Conquisto a mis suegros con mi comida.","en":"I win my in-laws over with my cooking."},
+   {"person":1,"es":"Conquistas a todos con tu simpatía.","en":"You win everyone over with your charm."},
+   {"person":3,"es":"Cada año conquistamos un nuevo pico.","en":"Every year we conquer a new peak."},
+   {"person":4,"es":"Los mariachis conquistan al público.","en":"The mariachis win over the crowd."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El equipo conquistó el campeonato.","en":"The team won the championship."},
+   {"person":0,"es":"Conquisté a mi esposa con una serenata.","en":"I won my wife over with a serenade."},
+   {"person":1,"es":"Conquistaste al jurado con tu canción.","en":"You won the jury over with your song."},
+   {"person":3,"es":"Conquistamos la cima al amanecer.","en":"We reached the summit at dawn."},
+   {"person":4,"es":"Los españoles conquistaron Tenochtitlan en 1521.","en":"The Spanish conquered Tenochtitlan in 1521."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El circo conquistaba a los niños del pueblo.","en":"The circus won over the town's kids."},
+   {"person":0,"es":"Yo conquistaba a la gente con chistes.","en":"I'd win people over with jokes."},
+   {"person":1,"es":"Tú conquistabas a todos los perros del barrio.","en":"You won over every dog in the neighborhood."},
+   {"person":3,"es":"Conquistábamos montañas cada verano.","en":"We'd conquer mountains every summer."},
+   {"person":4,"es":"Los incas conquistaban a los pueblos vecinos.","en":"The Incas conquered neighboring peoples."}
+  ],
+  "future": [
+   {"person":2,"es":"Esta receta conquistará a tu familia.","en":"This recipe will win your family over."},
+   {"person":0,"es":"Conquistaré ese trabajo, ya verás.","en":"I'll land that job, you'll see."},
+   {"person":1,"es":"Conquistarás al público con tu voz.","en":"You'll win the audience over with your voice."},
+   {"person":3,"es":"Conquistaremos el torneo este año.","en":"We'll win the tournament this year."},
+   {"person":4,"es":"Los nuevos sabores conquistarán a los clientes.","en":"The new flavors will win over the customers."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo conquistaría a tus papás con flores.","en":"I'd win your parents over with flowers."},
+   {"person":1,"es":"¿Cómo conquistarías a alguien tímido?","en":"How would you win over someone shy?"},
+   {"person":2,"es":"Ese plato conquistaría a cualquiera.","en":"That dish would win anyone over."},
+   {"person":3,"es":"Conquistaríamos la final con un poco de suerte.","en":"We'd win the final with a bit of luck."},
+   {"person":4,"es":"Esas playas conquistarían a cualquier turista.","en":"Those beaches would win over any tourist."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"La cocina peruana ha conquistado el mundo.","en":"Peruvian food has won over the world."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Espero que conquistes al jurado.","en":"I hope you win over the jury."},
+   {"person":0,"es":"Mi novia quiere que yo conquiste a su abuela.","en":"My girlfriend wants me to win over her grandmother."},
+   {"person":2,"es":"Ojalá que nuestro equipo conquiste la copa.","en":"I hope our team wins the cup."},
+   {"person":3,"es":"Es necesario que conquistemos nuevos clientes.","en":"We need to win new customers."},
+   {"person":4,"es":"Ojalá que mis tamales conquisten a los invitados.","en":"I hope my tamales win over the guests."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
+ },
+ "complicar": {
+  "present": [
+   {"person":2,"es":"La lluvia complica el tráfico.","en":"The rain makes traffic worse."},
+   {"person":0,"es":"Siempre me complico la vida.","en":"I always make life hard for myself."},
+   {"person":1,"es":"Complicas todo con tantas preguntas.","en":"You complicate everything with so many questions."},
+   {"person":3,"es":"A veces complicamos lo que es fácil.","en":"Sometimes we complicate what's easy."},
+   {"person":4,"es":"Los cambios de horario complican la rutina.","en":"Schedule changes complicate the routine."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El accidente complicó el viaje.","en":"The accident made the trip harder."},
+   {"person":0,"es":"Me compliqué con la tarea.","en":"I got tangled up with the homework."},
+   {"person":1,"es":"Complicaste las cosas con esa mentira.","en":"You made things complicated with that lie."},
+   {"person":3,"es":"Complicamos demasiado la receta.","en":"We made the recipe too complicated."},
+   {"person":4,"es":"Las lluvias complicaron la cosecha.","en":"The rains made the harvest harder."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi jefe complicaba cada proyecto.","en":"My boss made every project complicated."},
+   {"person":0,"es":"Yo complicaba las cosas más simples.","en":"I'd overcomplicate the simplest things."},
+   {"person":1,"es":"Tú te complicabas por nada.","en":"You'd get worked up over nothing."},
+   {"person":3,"es":"Complicábamos los juegos con reglas nuevas.","en":"We'd make the games more complicated with new rules."},
+   {"person":4,"es":"Los papeles complicaban todo.","en":"The paperwork made everything complicated."}
+  ],
+  "future": [
+   {"person":2,"es":"Ese cambio complicará las cosas.","en":"That change will complicate things."},
+   {"person":0,"es":"No complicaré más el asunto.","en":"I won't complicate the matter any further."},
+   {"person":1,"es":"Complicarás el problema si mientes.","en":"You'll make the problem worse if you lie."},
+   {"person":3,"es":"No nos complicaremos: pediremos pizza.","en":"We won't make it complicated: we'll order pizza."},
+   {"person":4,"es":"Las obras complicarán el tráfico.","en":"The roadwork will make traffic worse."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Una mentira complicaría todo.","en":"A lie would complicate everything."},
+   {"person":0,"es":"Yo no complicaría tanto el diseño.","en":"I wouldn't make the design so complicated."},
+   {"person":1,"es":"¿Por qué complicarías algo tan fácil?","en":"Why would you complicate something so easy?"},
+   {"person":3,"es":"Complicaríamos el viaje con tantas paradas.","en":"We'd make the trip complicated with so many stops."},
+   {"person":4,"es":"Esas reglas complicarían el juego.","en":"Those rules would complicate the game."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"La situación se ha complicado.","en":"The situation has gotten complicated."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"No quiero que te compliques la vida.","en":"I don't want you to make life hard for yourself."},
+   {"person":0,"es":"Mi esposa no quiere que yo complique las cosas.","en":"My wife doesn't want me to complicate things."},
+   {"person":2,"es":"Ojalá que la lluvia no complique el partido.","en":"I hope the rain doesn't mess up the game."},
+   {"person":3,"es":"Es mejor que no compliquemos el plan.","en":"We'd better not complicate the plan."},
+   {"person":4,"es":"No dejes que los demás te compliquen el día.","en":"Don't let other people ruin your day."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No te compliques, hazlo fácil.","en":"Don't overthink it, keep it simple."}
+  ]
+ },
+ "combatir": {
+  "present": [
+   {"person":2,"es":"Este jarabe combate la tos.","en":"This syrup fights coughs."},
+   {"person":0,"es":"Combato el estrés con ejercicio.","en":"I fight stress with exercise."},
+   {"person":1,"es":"¿Cómo combates el calor?","en":"How do you beat the heat?"},
+   {"person":3,"es":"Combatimos los mosquitos con mallas.","en":"We fight mosquitoes with screens."},
+   {"person":4,"es":"Los bomberos combaten el incendio.","en":"The firefighters are fighting the fire."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Mi abuelo combatió en la guerra.","en":"My grandfather fought in the war."},
+   {"person":0,"es":"Combatí el sueño con café.","en":"I fought off sleepiness with coffee."},
+   {"person":1,"es":"¿Cómo combatiste la gripe?","en":"How did you fight off the flu?"},
+   {"person":3,"es":"Combatimos la plaga con remedios naturales.","en":"We fought the pests with natural remedies."},
+   {"person":4,"es":"Los vecinos combatieron el fuego con baldes.","en":"The neighbors fought the fire with buckets."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuela combatía el frío con caldo.","en":"My grandmother fought off the cold with broth."},
+   {"person":0,"es":"Yo combatía el aburrimiento leyendo.","en":"I'd fight boredom by reading."},
+   {"person":1,"es":"Tú combatías la timidez con humor.","en":"You fought your shyness with humor."},
+   {"person":3,"es":"Combatíamos el calor con limonada.","en":"We'd beat the heat with lemonade."},
+   {"person":4,"es":"Los médicos combatían la epidemia sin descanso.","en":"The doctors fought the epidemic tirelessly."}
+  ],
+  "future": [
+   {"person":2,"es":"La campaña combatirá la obesidad infantil.","en":"The campaign will fight childhood obesity."},
+   {"person":0,"es":"Combatiré el cansancio con una siesta.","en":"I'll fight the tiredness with a nap."},
+   {"person":1,"es":"Combatirás la gripe con descanso.","en":"You'll fight off the flu with rest."},
+   {"person":3,"es":"Combatiremos la basura en el barrio.","en":"We'll fight litter in the neighborhood."},
+   {"person":4,"es":"Los científicos combatirán la enfermedad con una vacuna.","en":"The scientists will fight the disease with a vaccine."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Una buena ley combatiría la corrupción.","en":"A good law would fight corruption."},
+   {"person":0,"es":"Yo combatiría el calor con un ventilador.","en":"I'd beat the heat with a fan."},
+   {"person":1,"es":"¿Cómo combatirías el estrés?","en":"How would you fight stress?"},
+   {"person":3,"es":"Combatiríamos la contaminación con más árboles.","en":"We'd fight pollution with more trees."},
+   {"person":4,"es":"Esas medidas combatirían la pobreza.","en":"Those measures would fight poverty."}
+  ],
+  "presentPerfect": [
+   {"person":3,"es":"Hemos combatido las hormigas todo el verano.","en":"We've been fighting the ants all summer."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Es importante que combatas el estrés.","en":"It's important for you to fight stress."},
+   {"person":0,"es":"El médico quiere que yo combata el insomnio con una rutina.","en":"The doctor wants me to fight my insomnia with a routine."},
+   {"person":2,"es":"Es necesario que el gobierno combata la pobreza.","en":"The government needs to fight poverty."},
+   {"person":3,"es":"Es urgente que combatamos el dengue.","en":"We urgently need to fight dengue."},
+   {"person":4,"es":"Ojalá que las nuevas leyes combatan la corrupción.","en":"I hope the new laws fight corruption."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Combate el calor con mucha agua.","en":"Beat the heat with lots of water."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "competir": {
+  "present": [
+   {"person":2,"es":"Mi hija compite en natación.","en":"My daughter competes in swimming."},
+   {"person":0,"es":"Compito en el maratón de la ciudad.","en":"I compete in the city marathon."},
+   {"person":1,"es":"¿Compites con tu hermano en todo?","en":"Do you compete with your brother at everything?"},
+   {"person":3,"es":"Competimos contra el mejor equipo del país.","en":"We're competing against the best team in the country."},
+   {"person":4,"es":"Las tiendas compiten por los clientes.","en":"The stores compete for customers."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El atleta compitió en los Juegos Olímpicos.","en":"The athlete competed in the Olympics."},
+   {"person":0,"es":"Competí en un concurso de baile.","en":"I competed in a dance contest."},
+   {"person":1,"es":"¿Competiste en el torneo de ajedrez?","en":"Did you compete in the chess tournament?"},
+   {"person":3,"es":"Competimos en la feria de ciencias.","en":"We competed in the science fair."},
+   {"person":4,"es":"Treinta países compitieron en el mundial.","en":"Thirty countries competed in the World Cup."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo competía en carreras de caballos.","en":"My grandfather competed in horse races."},
+   {"person":0,"es":"De niña, yo competía en gimnasia.","en":"As a girl, I competed in gymnastics."},
+   {"person":1,"es":"Tú competías con todos por las mejores notas.","en":"You competed with everyone for the best grades."},
+   {"person":3,"es":"Competíamos por ver quién comía más.","en":"We'd compete to see who could eat more."},
+   {"person":4,"es":"Los hermanos competían por la atención de su mamá.","en":"The brothers competed for their mom's attention."}
+  ],
+  "future": [
+   {"person":2,"es":"Mi equipo competirá en la final.","en":"My team will compete in the final."},
+   {"person":0,"es":"Competiré en el próximo campeonato.","en":"I'll compete in the next championship."},
+   {"person":1,"es":"Competirás contra los mejores.","en":"You'll compete against the best."},
+   {"person":3,"es":"Competiremos en la categoría juvenil.","en":"We'll compete in the youth category."},
+   {"person":4,"es":"Diez escuelas competirán en el concurso.","en":"Ten schools will compete in the contest."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo no competiría contra un profesional.","en":"I wouldn't compete against a professional."},
+   {"person":1,"es":"¿Competirías en un programa de cocina?","en":"Would you compete on a cooking show?"},
+   {"person":2,"es":"Una tienda pequeña no competiría con esos precios.","en":"A small store couldn't compete with those prices."},
+   {"person":3,"es":"Competiríamos mejor con más entrenamiento.","en":"We'd compete better with more training."},
+   {"person":4,"es":"Ellos competirían por cualquier premio.","en":"They'd compete for any prize."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"Mi hijo nunca ha competido fuera del país.","en":"My son has never competed abroad."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Me alegra que compitas en el torneo.","en":"I'm glad you're competing in the tournament."},
+   {"person":0,"es":"Mi entrenador quiere que yo compita en los cien metros.","en":"My coach wants me to compete in the hundred meters."},
+   {"person":2,"es":"Es injusto que un adulto compita con niños.","en":"It's unfair for an adult to compete with children."},
+   {"person":3,"es":"Es importante que compitamos limpio.","en":"It's important for us to compete fairly."},
+   {"person":4,"es":"No es sano que los hermanos compitan todo el tiempo.","en":"It's not healthy for siblings to compete all the time."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
+ },
+ "concluir": {
+  "present": [
+   {"person":2,"es":"La reunión concluye a las cinco.","en":"The meeting ends at five."},
+   {"person":0,"es":"Concluyo que no vale la pena.","en":"I conclude it's not worth it."},
+   {"person":1,"es":"¿Qué concluyes de todo esto?","en":"What do you conclude from all this?"},
+   {"person":3,"es":"Concluimos la clase con un juego.","en":"We wrap up the class with a game."},
+   {"person":4,"es":"Los científicos concluyen que el agua está contaminada.","en":"The scientists conclude the water is contaminated."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El juicio concluyó ayer.","en":"The trial ended yesterday."},
+   {"person":0,"es":"Concluí el informe a medianoche.","en":"I finished the report at midnight."},
+   {"person":1,"es":"¿Concluiste tus estudios?","en":"Did you finish your studies?"},
+   {"person":3,"es":"Concluimos que era mejor esperar.","en":"We concluded it was better to wait."},
+   {"person":4,"es":"Las obras concluyeron antes de tiempo.","en":"The construction finished ahead of schedule."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Cada clase concluía con una canción.","en":"Every class ended with a song."},
+   {"person":0,"es":"Yo siempre concluía mis cartas con un abrazo.","en":"I always ended my letters with a hug."},
+   {"person":1,"es":"Tú concluías que nadie te entendía.","en":"You'd conclude that nobody understood you."},
+   {"person":3,"es":"Concluíamos el día con una caminata.","en":"We'd end the day with a walk."},
+   {"person":4,"es":"Todos los estudios concluían lo mismo.","en":"All the studies concluded the same thing."}
+  ],
+  "future": [
+   {"person":2,"es":"El festival concluirá con fuegos artificiales.","en":"The festival will end with fireworks."},
+   {"person":0,"es":"Concluiré la tesis en junio.","en":"I'll finish my thesis in June."},
+   {"person":1,"es":"Concluirás que tenía razón.","en":"You'll conclude I was right."},
+   {"person":3,"es":"Concluiremos la visita en el museo.","en":"We'll end the tour at the museum."},
+   {"person":4,"es":"Las negociaciones concluirán esta semana.","en":"The negotiations will wrap up this week."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo concluiría lo mismo.","en":"I'd come to the same conclusion."},
+   {"person":1,"es":"¿Qué concluirías tú?","en":"What would you conclude?"},
+   {"person":2,"es":"Cualquiera concluiría que es culpable.","en":"Anyone would conclude he's guilty."},
+   {"person":3,"es":"Concluiríamos antes con más ayuda.","en":"We'd finish sooner with more help."},
+   {"person":4,"es":"Los expertos concluirían que es falso.","en":"The experts would conclude it's fake."}
+  ],
+  "presentPerfect": [
+   {"person":3,"es":"Hemos concluido el proyecto.","en":"We've finished the project."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":2,"es":"Esperemos a que concluya la reunión.","en":"Let's wait for the meeting to end."},
+   {"person":0,"es":"Mi profesor quiere que yo concluya el ensayo con una pregunta.","en":"My teacher wants me to end the essay with a question."},
+   {"person":1,"es":"Es importante que concluyas tus estudios.","en":"It's important for you to finish your studies."},
+   {"person":3,"es":"Es mejor que concluyamos por hoy.","en":"We'd better wrap up for today."},
+   {"person":4,"es":"Ojalá que las obras concluyan pronto.","en":"I hope the construction finishes soon."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
  }
 }

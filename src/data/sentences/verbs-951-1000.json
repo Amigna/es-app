@@ -1,0 +1,802 @@
+{
+ "ejercer": {
+  "present": [
+   {"person":2,"es":"Mi tía ejerce como abogada en Bogotá.","en":"My aunt practices law in Bogotá."},
+   {"person":0,"es":"Ejerzo de enfermera desde hace diez años.","en":"I've worked as a nurse for ten years."},
+   {"person":1,"es":"¿Ejerces tu profesión o trabajas en otra cosa?","en":"Do you work in your field or do something else?"},
+   {"person":3,"es":"Ejercemos nuestro derecho al voto.","en":"We exercise our right to vote."},
+   {"person":4,"es":"Los padres ejercen mucha influencia en los hijos.","en":"Parents have a lot of influence on their kids."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Mi abuelo ejerció de médico toda su vida.","en":"My grandfather worked as a doctor all his life."},
+   {"person":0,"es":"Ejercí de maestra en un pueblo pequeño.","en":"I worked as a teacher in a small town."},
+   {"person":1,"es":"¿Ejerciste de abogado alguna vez?","en":"Did you ever practice law?"},
+   {"person":3,"es":"Ejercimos presión hasta que nos escucharon.","en":"We kept up the pressure until they listened."},
+   {"person":4,"es":"Los vecinos ejercieron su derecho a protestar.","en":"The residents exercised their right to protest."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El entrenador ejercía mucha presión sobre los jugadores.","en":"The coach put a lot of pressure on the players."},
+   {"person":0,"es":"Yo ejercía de traductor los fines de semana.","en":"I worked as a translator on weekends."},
+   {"person":1,"es":"Tú ejercías de líder sin darte cuenta.","en":"You were acting as leader without realizing it."},
+   {"person":3,"es":"Ejercíamos de guías para los turistas.","en":"We'd work as guides for the tourists."},
+   {"person":4,"es":"Los abuelos ejercían de niñeros.","en":"The grandparents acted as babysitters."}
+  ],
+  "future": [
+   {"person":2,"es":"Mi hija ejercerá de veterinaria.","en":"My daughter will work as a vet."},
+   {"person":0,"es":"Ejerceré mi derecho a no contestar.","en":"I'll exercise my right not to answer."},
+   {"person":1,"es":"Ejercerás de capitán en el partido.","en":"You'll act as captain in the game."},
+   {"person":3,"es":"Ejerceremos de anfitriones en la fiesta.","en":"We'll be the hosts at the party."},
+   {"person":4,"es":"Los nuevos médicos ejercerán en el campo.","en":"The new doctors will practice in the countryside."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Un buen padre no ejercería tanta presión.","en":"A good father wouldn't put on so much pressure."},
+   {"person":0,"es":"Yo ejercería de maestra con gusto.","en":"I'd be happy to work as a teacher."},
+   {"person":1,"es":"¿Ejercerías de abogado en otro país?","en":"Would you practice law in another country?"},
+   {"person":3,"es":"Ejerceríamos nuestro derecho a reclamar.","en":"We'd exercise our right to complain."},
+   {"person":4,"es":"Ellos ejercerían de voluntarios si tuvieran tiempo.","en":"They'd volunteer if they had time.","level":"B2"}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"Mi madre nunca ha ejercido su profesión.","en":"My mother has never worked in her field."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Es importante que ejerzas tu derecho al voto.","en":"It's important for you to exercise your right to vote."},
+   {"person":0,"es":"Mi familia quiere que yo ejerza de médico.","en":"My family wants me to work as a doctor."},
+   {"person":2,"es":"No es justo que el jefe ejerza tanta presión.","en":"It's not fair for the boss to put on so much pressure."},
+   {"person":3,"es":"Es necesario que ejerzamos nuestros derechos.","en":"We need to exercise our rights."},
+   {"person":4,"es":"Esperamos que los nuevos maestros ejerzan en el pueblo.","en":"We hope the new teachers will work in the town."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
+ },
+ "esforzarse": {
+  "present": [
+   {"person":2,"es":"Mi hijo se esfuerza mucho en la escuela.","en":"My son works really hard at school."},
+   {"person":0,"es":"Me esfuerzo por llegar a tiempo.","en":"I try hard to be on time."},
+   {"person":1,"es":"Te esfuerzas más que nadie.","en":"You try harder than anyone."},
+   {"person":3,"es":"Nos esforzamos por hablar solo en español.","en":"We make an effort to speak only Spanish."},
+   {"person":4,"es":"Los jugadores se esfuerzan en cada partido.","en":"The players give it their all every game."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La niña se esforzó y ganó la carrera.","en":"The girl gave it her all and won the race."},
+   {"person":0,"es":"Me esforcé mucho en el examen.","en":"I worked really hard on the exam."},
+   {"person":1,"es":"Te esforzaste y lo lograste.","en":"You worked hard and you did it."},
+   {"person":3,"es":"Nos esforzamos por terminar a tiempo.","en":"We made an effort to finish on time."},
+   {"person":4,"es":"Los alumnos se esforzaron todo el semestre.","en":"The students worked hard all semester."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi papá se esforzaba por darnos lo mejor.","en":"My dad worked hard to give us the best."},
+   {"person":0,"es":"Yo me esforzaba, pero no me salía.","en":"I'd try hard, but I couldn't get it."},
+   {"person":1,"es":"Tú siempre te esforzabas por ayudar.","en":"You always made an effort to help."},
+   {"person":3,"es":"Nos esforzábamos por no hacer ruido.","en":"We tried hard not to make noise."},
+   {"person":4,"es":"Los niños se esforzaban por leer en voz alta.","en":"The kids were trying hard to read out loud."}
+  ],
+  "future": [
+   {"person":2,"es":"El equipo se esforzará en el próximo partido.","en":"The team will give it their all in the next game."},
+   {"person":0,"es":"Me esforzaré más este año.","en":"I'll try harder this year."},
+   {"person":1,"es":"Te esforzarás y verás los resultados.","en":"You'll work hard and see the results."},
+   {"person":3,"es":"Nos esforzaremos por mejorar.","en":"We'll make an effort to improve."},
+   {"person":4,"es":"Los empleados se esforzarán por atender mejor.","en":"The staff will try hard to give better service."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Un buen alumno se esforzaría más.","en":"A good student would try harder."},
+   {"person":0,"es":"Yo me esforzaría por entenderte.","en":"I'd make an effort to understand you."},
+   {"person":1,"es":"¿Te esforzarías por un trabajo así?","en":"Would you work hard for a job like that?"},
+   {"person":3,"es":"Nos esforzaríamos más con un buen entrenador.","en":"We'd try harder with a good coach."},
+   {"person":4,"es":"Ellos se esforzarían si les dieran una oportunidad.","en":"They'd work hard if they were given a chance.","level":"B2"}
+  ],
+  "presentPerfect": [
+   {"person":1,"es":"Te has esforzado mucho este año.","en":"You've worked really hard this year."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Quiero que te esfuerces un poco más.","en":"I want you to try a little harder."},
+   {"person":0,"es":"Mis papás esperan que yo me esfuerce en la universidad.","en":"My parents expect me to work hard in college."},
+   {"person":2,"es":"Es importante que cada jugador se esfuerce.","en":"It's important for every player to give it their all."},
+   {"person":3,"es":"Es necesario que nos esforcemos más.","en":"We need to try harder."},
+   {"person":4,"es":"Ojalá que los niños se esfuercen en el examen.","en":"I hope the kids work hard on the test."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Esfuérzate y lo vas a lograr.","en":"Work hard and you'll make it."}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No te esfuerces tanto, descansa un poco.","en":"Don't push yourself so hard, rest a little."}
+  ]
+ },
+ "estimar": {
+  "present": [
+   {"person":2,"es":"El mecánico estima el costo en mil pesos.","en":"The mechanic estimates the cost at a thousand pesos."},
+   {"person":0,"es":"Te estimo mucho.","en":"I think very highly of you."},
+   {"person":1,"es":"¿Cuánto tiempo estimas para el viaje?","en":"How much time do you figure for the trip?"},
+   {"person":3,"es":"Estimamos que llegaremos a las seis.","en":"We figure we'll arrive at six.","level":"B1"},
+   {"person":4,"es":"Los expertos estiman que lloverá mucho este año.","en":"The experts estimate it'll rain a lot this year.","level":"B1"}
+  ],
+  "preterite": [
+   {"person":2,"es":"El ingeniero estimó mal el presupuesto.","en":"The engineer misjudged the budget."},
+   {"person":0,"es":"Estimé que necesitaba tres días.","en":"I figured I needed three days."},
+   {"person":1,"es":"¿Cuánto estimaste para la comida?","en":"How much did you budget for food?"},
+   {"person":3,"es":"Estimamos el daño en miles de dólares.","en":"We put the damage at thousands of dollars."},
+   {"person":4,"es":"Los médicos estimaron la recuperación en un mes.","en":"The doctors estimated a month's recovery."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo estimaba mucho a sus vecinos.","en":"My grandfather thought very highly of his neighbors."},
+   {"person":0,"es":"Yo estimaba que el viaje duraba dos horas.","en":"I figured the trip took two hours."},
+   {"person":1,"es":"Tú estimabas mucho a tu maestra de piano.","en":"You thought the world of your piano teacher."},
+   {"person":3,"es":"Estimábamos el tiempo por el sol.","en":"We'd judge the time by the sun."},
+   {"person":4,"es":"Los científicos estimaban la edad del árbol.","en":"The scientists were estimating the age of the tree."}
+  ],
+  "future": [
+   {"person":2,"es":"El banco estimará el valor de la casa.","en":"The bank will estimate the value of the house."},
+   {"person":0,"es":"Estimaré el costo antes de empezar.","en":"I'll estimate the cost before starting."},
+   {"person":1,"es":"Estimarás el tiempo con la aplicación.","en":"You'll estimate the time with the app."},
+   {"person":3,"es":"Estimaremos los gastos del viaje.","en":"We'll estimate the trip expenses."},
+   {"person":4,"es":"Los expertos estimarán los daños mañana.","en":"The experts will estimate the damage tomorrow."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Un buen contador estimaría mejor los gastos.","en":"A good accountant would estimate the expenses better."},
+   {"person":0,"es":"Yo estimaría unas tres horas de trabajo.","en":"I'd figure about three hours of work."},
+   {"person":1,"es":"¿Cuánto estimarías por este carro?","en":"How much would you figure for this car?"},
+   {"person":3,"es":"Estimaríamos el precio con más información.","en":"We'd estimate the price with more information."},
+   {"person":4,"es":"Ellos estimarían un costo más alto.","en":"They'd estimate a higher cost."}
+  ],
+  "presentPerfect": [
+   {"person":4,"es":"Han estimado que el puente estará listo en mayo.","en":"They've estimated the bridge will be ready in May."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Necesito que estimes cuánto va a costar.","en":"I need you to estimate how much it'll cost."},
+   {"person":0,"es":"El cliente quiere que yo estime el precio.","en":"The customer wants me to estimate the price."},
+   {"person":2,"es":"Es mejor que un experto estime el valor.","en":"It's better for an expert to estimate the value."},
+   {"person":3,"es":"Es importante que estimemos bien el tiempo.","en":"It's important for us to judge the time well."},
+   {"person":4,"es":"Esperamos que estimen los daños pronto.","en":"We hope they estimate the damage soon."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
+ },
+ "evaluar": {
+  "present": [
+   {"person":2,"es":"La maestra evalúa a los alumnos cada mes.","en":"The teacher assesses the students every month."},
+   {"person":0,"es":"Evalúo los pros y los contras.","en":"I weigh the pros and cons."},
+   {"person":1,"es":"¿Cómo evalúas tu trabajo?","en":"How do you rate your work?"},
+   {"person":3,"es":"Evaluamos las opciones antes de decidir.","en":"We look at the options before deciding."},
+   {"person":4,"es":"Los médicos evalúan al paciente.","en":"The doctors assess the patient."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El jefe evaluó mi desempeño.","en":"The boss reviewed my performance."},
+   {"person":0,"es":"Evalué la situación y me fui.","en":"I sized up the situation and left."},
+   {"person":1,"es":"¿Evaluaste los riesgos?","en":"Did you weigh the risks?"},
+   {"person":3,"es":"Evaluamos el proyecto en la reunión.","en":"We reviewed the project at the meeting."},
+   {"person":4,"es":"Los jueces evaluaron a los bailarines.","en":"The judges scored the dancers."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El profesor evaluaba con exámenes orales.","en":"The teacher graded with oral exams."},
+   {"person":0,"es":"Yo evaluaba los trabajos de los alumnos.","en":"I'd grade the students' papers."},
+   {"person":1,"es":"Tú evaluabas a todos por su ropa.","en":"You'd judge everyone by their clothes."},
+   {"person":3,"es":"Evaluábamos los daños después de cada tormenta.","en":"We'd assess the damage after every storm."},
+   {"person":4,"es":"Los inspectores evaluaban los restaurantes.","en":"The inspectors rated the restaurants."}
+  ],
+  "future": [
+   {"person":2,"es":"Un experto evaluará la casa.","en":"An expert will appraise the house."},
+   {"person":0,"es":"Evaluaré tu propuesta esta semana.","en":"I'll review your proposal this week."},
+   {"person":1,"es":"Evaluarás a tus compañeros al final del curso.","en":"You'll evaluate your classmates at the end of the course."},
+   {"person":3,"es":"Evaluaremos los resultados en enero.","en":"We'll review the results in January."},
+   {"person":4,"es":"Los médicos evaluarán si necesita cirugía.","en":"The doctors will assess whether he needs surgery."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Un buen gerente evaluaría a cada empleado.","en":"A good manager would evaluate each employee."},
+   {"person":0,"es":"Yo evaluaría otras opciones.","en":"I'd look at other options."},
+   {"person":1,"es":"¿Cómo evaluarías esta película?","en":"How would you rate this movie?"},
+   {"person":3,"es":"Evaluaríamos el plan con más datos.","en":"We'd assess the plan with more data."},
+   {"person":4,"es":"Ellos evaluarían el riesgo primero.","en":"They'd weigh the risk first."}
+  ],
+  "presentPerfect": [
+   {"person":4,"es":"Ya han evaluado los daños.","en":"They've already assessed the damage."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Es importante que evalúes todas las opciones.","en":"It's important for you to weigh all the options."},
+   {"person":0,"es":"Mi jefe quiere que yo evalúe a los nuevos empleados.","en":"My boss wants me to evaluate the new employees."},
+   {"person":2,"es":"Es mejor que un médico evalúe la herida.","en":"It's better for a doctor to look at the wound."},
+   {"person":3,"es":"Es necesario que evaluemos los riesgos.","en":"We need to weigh the risks."},
+   {"person":4,"es":"Esperamos que evalúen nuestro proyecto.","en":"We hope they review our project."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Evalúa bien antes de firmar.","en":"Think it over carefully before you sign."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "evolucionar": {
+  "present": [
+   {"person":2,"es":"La tecnología evoluciona muy rápido.","en":"Technology evolves very fast."},
+   {"person":0,"es":"Evoluciono como persona con cada experiencia.","en":"I grow as a person with every experience."},
+   {"person":1,"es":"Evolucionas mucho como músico.","en":"You're really developing as a musician."},
+   {"person":3,"es":"Evolucionamos juntos como equipo.","en":"We're growing together as a team."},
+   {"person":4,"es":"Los idiomas evolucionan con el tiempo.","en":"Languages change over time."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El paciente evolucionó bien después de la operación.","en":"The patient recovered well after the operation."},
+   {"person":0,"es":"Evolucioné mucho en mi primer año de trabajo.","en":"I grew a lot in my first year at work."},
+   {"person":1,"es":"Evolucionaste mucho como jugador.","en":"You came a long way as a player."},
+   {"person":3,"es":"Evolucionamos de un grupo pequeño a una empresa.","en":"We grew from a small group into a company."},
+   {"person":4,"es":"Las especies evolucionaron durante millones de años.","en":"The species evolved over millions of years."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"La ciudad evolucionaba muy despacio.","en":"The city was changing very slowly."},
+   {"person":0,"es":"Yo evolucionaba poco a poco en el piano.","en":"I was slowly getting better at piano."},
+   {"person":1,"es":"Tú evolucionabas con cada partido.","en":"You got better with every game."},
+   {"person":3,"es":"Evolucionábamos como banda cada año.","en":"We grew as a band every year."},
+   {"person":4,"es":"Los teléfonos evolucionaban cada año.","en":"Phones were changing every year."}
+  ],
+  "future": [
+   {"person":2,"es":"La medicina evolucionará mucho en los próximos años.","en":"Medicine will advance a lot in the coming years."},
+   {"person":0,"es":"Evolucionaré con la práctica.","en":"I'll improve with practice."},
+   {"person":1,"es":"Evolucionarás como artista.","en":"You'll grow as an artist."},
+   {"person":3,"es":"Evolucionaremos con los clientes.","en":"We'll grow with our customers."},
+   {"person":4,"es":"Las ciudades evolucionarán hacia el transporte limpio.","en":"Cities will move toward clean transportation."}
+  ],
+  "conditional": [
+   {"person":2,"es":"El proyecto evolucionaría mejor con más apoyo.","en":"The project would develop better with more support."},
+   {"person":0,"es":"Yo evolucionaría más con un buen maestro.","en":"I'd improve more with a good teacher."},
+   {"person":1,"es":"¿Cómo evolucionarías tu negocio?","en":"How would you grow your business?"},
+   {"person":3,"es":"Evolucionaríamos más rápido con críticas honestas.","en":"We'd improve faster with honest feedback."},
+   {"person":4,"es":"Esas ideas evolucionarían con el tiempo.","en":"Those ideas would develop over time."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"El español ha evolucionado mucho.","en":"Spanish has changed a lot."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":2,"es":"Es normal que la lengua evolucione.","en":"It's normal for language to change."},
+   {"person":0,"es":"Mi entrenador quiere que yo evolucione como jugador.","en":"My coach wants me to grow as a player."},
+   {"person":1,"es":"Espero que evoluciones en tu nuevo trabajo.","en":"I hope you grow in your new job."},
+   {"person":3,"es":"Es importante que evolucionemos con el mercado.","en":"It's important for us to keep up with the market."},
+   {"person":4,"es":"Ojalá que los pacientes evolucionen bien.","en":"I hope the patients recover well."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
+ },
+ "examinar": {
+  "present": [
+   {"person":2,"es":"El médico examina al niño con cuidado.","en":"The doctor examines the boy carefully."},
+   {"person":0,"es":"Examino los documentos antes de firmar.","en":"I go over the documents before signing."},
+   {"person":1,"es":"¿Examinas bien la fruta antes de comprarla?","en":"Do you check the fruit carefully before buying it?"},
+   {"person":3,"es":"Examinamos las pruebas una por una.","en":"We go through the evidence one piece at a time."},
+   {"person":4,"es":"Los profesores examinan a los alumnos en junio.","en":"The teachers test the students in June."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La dentista me examinó los dientes.","en":"The dentist checked my teeth."},
+   {"person":0,"es":"Examiné el carro antes de comprarlo.","en":"I looked the car over before buying it."},
+   {"person":1,"es":"¿Examinaste el contrato?","en":"Did you go over the contract?"},
+   {"person":3,"es":"Examinamos el mapa antes de salir.","en":"We studied the map before leaving."},
+   {"person":4,"es":"Los mecánicos examinaron el motor.","en":"The mechanics examined the engine."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuela examinaba cada tomate en el mercado.","en":"My grandmother checked every tomato at the market."},
+   {"person":0,"es":"Yo examinaba las facturas cada mes.","en":"I'd go over the bills every month."},
+   {"person":1,"es":"Tú examinabas todo con lupa.","en":"You went over everything with a fine-tooth comb."},
+   {"person":3,"es":"Examinábamos las piedras del río.","en":"We'd look closely at the stones in the river."},
+   {"person":4,"es":"Los científicos examinaban las muestras.","en":"The scientists were examining the samples."}
+  ],
+  "future": [
+   {"person":2,"es":"El veterinario examinará al perro mañana.","en":"The vet will examine the dog tomorrow."},
+   {"person":0,"es":"Examinaré tu propuesta con calma.","en":"I'll look over your proposal carefully."},
+   {"person":1,"es":"Examinarás a los pacientes en la clínica.","en":"You'll see the patients at the clinic."},
+   {"person":3,"es":"Examinaremos las opciones con el abogado.","en":"We'll go over the options with the lawyer."},
+   {"person":4,"es":"Los inspectores examinarán el edificio.","en":"The inspectors will examine the building."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Un buen médico examinaría todo.","en":"A good doctor would check everything."},
+   {"person":0,"es":"Yo examinaría bien la casa antes de comprarla.","en":"I'd look the house over carefully before buying it."},
+   {"person":1,"es":"¿Examinarías el carro tú mismo?","en":"Would you look the car over yourself?"},
+   {"person":3,"es":"Examinaríamos el problema con más tiempo.","en":"We'd look at the problem with more time."},
+   {"person":4,"es":"Ellos examinarían cada detalle.","en":"They'd go over every detail."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"El médico ya me ha examinado.","en":"The doctor has already examined me."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Quiero que examines este informe.","en":"I want you to look over this report."},
+   {"person":0,"es":"El jefe quiere que yo examine las cuentas.","en":"The boss wants me to go over the accounts."},
+   {"person":2,"es":"Es mejor que un médico te examine.","en":"It's better for a doctor to examine you."},
+   {"person":3,"es":"Es necesario que examinemos el contrato.","en":"We need to go over the contract."},
+   {"person":4,"es":"Pídeles que examinen el motor.","en":"Ask them to check the engine."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Examina bien el producto antes de pagar.","en":"Check the product carefully before you pay."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "excluir": {
+  "present": [
+   {"person":2,"es":"El precio excluye las bebidas.","en":"The price doesn't include drinks."},
+   {"person":0,"es":"No excluyo ninguna opción.","en":"I'm not ruling out any option."},
+   {"person":1,"es":"¿Por qué me excluyes de tus planes?","en":"Why are you leaving me out of your plans?"},
+   {"person":3,"es":"No excluimos a nadie del grupo.","en":"We don't leave anyone out of the group."},
+   {"person":4,"es":"Los niños a veces excluyen al nuevo.","en":"Kids sometimes leave out the new kid."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El entrenador me excluyó del equipo.","en":"The coach left me off the team."},
+   {"person":0,"es":"Excluí el azúcar de mi dieta.","en":"I cut sugar out of my diet."},
+   {"person":1,"es":"¿Excluiste a tu primo de la lista?","en":"Did you leave your cousin off the list?"},
+   {"person":3,"es":"Excluimos esa posibilidad desde el principio.","en":"We ruled out that possibility from the start."},
+   {"person":4,"es":"Los organizadores excluyeron a dos participantes.","en":"The organizers disqualified two participants."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El club excluía a las mujeres.","en":"The club didn't let women in."},
+   {"person":0,"es":"Yo me excluía de las fiestas por timidez.","en":"I'd keep myself out of parties out of shyness."},
+   {"person":1,"es":"Tú excluías a tu hermana de los juegos.","en":"You'd leave your sister out of the games."},
+   {"person":3,"es":"No excluíamos a nadie de la mesa.","en":"We didn't leave anyone out at the table."},
+   {"person":4,"es":"Las reglas excluían a los menores de edad.","en":"The rules excluded minors."}
+  ],
+  "future": [
+   {"person":2,"es":"El nuevo plan no excluirá a nadie.","en":"The new plan won't leave anyone out."},
+   {"person":0,"es":"No excluiré ninguna idea.","en":"I won't rule out any idea."},
+   {"person":1,"es":"Excluirás la carne de tu dieta un mes.","en":"You'll cut meat from your diet for a month."},
+   {"person":3,"es":"Excluiremos los gastos personales del informe.","en":"We'll leave personal expenses out of the report."},
+   {"person":4,"es":"Los jueces excluirán las pruebas falsas.","en":"The judges will throw out the false evidence."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Un buen maestro no excluiría a ningún alumno.","en":"A good teacher wouldn't leave any student out."},
+   {"person":0,"es":"Yo no excluiría esa posibilidad.","en":"I wouldn't rule out that possibility."},
+   {"person":1,"es":"¿Excluirías a alguien de tu boda?","en":"Would you leave anyone out of your wedding?"},
+   {"person":3,"es":"Excluiríamos los dulces de la fiesta, pero los niños se enojarían.","en":"We'd leave candy out of the party, but the kids would get upset."},
+   {"person":4,"es":"Esas reglas excluirían a muchos estudiantes.","en":"Those rules would shut out a lot of students."}
+  ],
+  "presentPerfect": [
+   {"person":4,"es":"Me han excluido del grupo de WhatsApp.","en":"They've kicked me out of the WhatsApp group."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"No quiero que excluyas a tu hermano.","en":"I don't want you to leave your brother out."},
+   {"person":0,"es":"Mi médico quiere que yo excluya la sal.","en":"My doctor wants me to cut out salt."},
+   {"person":2,"es":"Es injusto que la ley excluya a los inmigrantes.","en":"It's unfair for the law to exclude immigrants."},
+   {"person":3,"es":"Es mejor que no excluyamos a nadie.","en":"We'd better not leave anyone out."},
+   {"person":4,"es":"No dejes que te excluyan.","en":"Don't let them leave you out."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No excluyas a nadie del juego.","en":"Don't leave anyone out of the game."}
+  ]
+ },
+ "experimentar": {
+  "present": [
+   {"person":2,"es":"Mi hermano experimenta con recetas nuevas.","en":"My brother experiments with new recipes."},
+   {"person":0,"es":"Experimento con colores en mis pinturas.","en":"I experiment with colors in my paintings."},
+   {"person":1,"es":"Experimentas mucho con tu pelo.","en":"You experiment a lot with your hair."},
+   {"person":3,"es":"Experimentamos con plantas en la clase de ciencias.","en":"We do experiments with plants in science class."},
+   {"person":4,"es":"Los niños experimentan emociones fuertes.","en":"Children experience strong emotions."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La ciudad experimentó un gran cambio.","en":"The city went through a big change."},
+   {"person":0,"es":"Experimenté mucho miedo en el avión.","en":"I felt a lot of fear on the plane."},
+   {"person":1,"es":"¿Experimentaste algún síntoma?","en":"Did you have any symptoms?"},
+   {"person":3,"es":"Experimentamos con una nueva forma de enseñar.","en":"We tried out a new way of teaching."},
+   {"person":4,"es":"Los científicos experimentaron con ratones.","en":"The scientists experimented on mice."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi tía experimentaba con plantas medicinales.","en":"My aunt experimented with medicinal plants."},
+   {"person":0,"es":"Yo experimentaba con la cámara de mi papá.","en":"I'd experiment with my dad's camera."},
+   {"person":1,"es":"Tú experimentabas con todos los estilos de música.","en":"You experimented with every style of music."},
+   {"person":3,"es":"Experimentábamos con colores en el taller.","en":"We'd experiment with colors in the workshop."},
+   {"person":4,"es":"Los inventores experimentaban en su garaje.","en":"The inventors experimented in their garage."}
+  ],
+  "future": [
+   {"person":2,"es":"El país experimentará un crecimiento este año.","en":"The country will see growth this year."},
+   {"person":0,"es":"Experimentaré con harina de maíz.","en":"I'll experiment with cornflour."},
+   {"person":1,"es":"Experimentarás cosas nuevas en el viaje.","en":"You'll experience new things on the trip."},
+   {"person":3,"es":"Experimentaremos con un horario nuevo.","en":"We'll try out a new schedule."},
+   {"person":4,"es":"Los alumnos experimentarán en el laboratorio.","en":"The students will do experiments in the lab."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Un buen cocinero experimentaría con especias.","en":"A good cook would experiment with spices."},
+   {"person":0,"es":"Yo experimentaría con otro color.","en":"I'd experiment with another color."},
+   {"person":1,"es":"¿Experimentarías con comida de otros países?","en":"Would you try food from other countries?"},
+   {"person":3,"es":"Experimentaríamos más con un laboratorio mejor.","en":"We'd experiment more with a better lab."},
+   {"person":4,"es":"Ellos experimentarían con cualquier cosa.","en":"They'd experiment with anything."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"Nunca he experimentado algo así.","en":"I've never experienced anything like it."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Quiero que experimentes con la receta.","en":"I want you to experiment with the recipe."},
+   {"person":0,"es":"Mi profesor quiere que yo experimente con otros materiales.","en":"My teacher wants me to experiment with other materials."},
+   {"person":2,"es":"Es normal que un bebé experimente con todo.","en":"It's normal for a baby to experiment with everything."},
+   {"person":3,"es":"Es bueno que experimentemos cosas nuevas.","en":"It's good for us to try new things."},
+   {"person":4,"es":"Esperamos que los alumnos experimenten en el laboratorio.","en":"We hope the students get to do experiments in the lab."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Experimenta con otros sabores.","en":"Try out other flavors."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "explotar": {
+  "present": [
+   {"person":2,"es":"Cuando se enoja, mi papá explota.","en":"When he gets angry, my dad blows up."},
+   {"person":0,"es":"Exploto de risa con sus chistes.","en":"I crack up at his jokes."},
+   {"person":1,"es":"Explotas por cualquier cosa.","en":"You blow up over anything."},
+   {"person":3,"es":"Explotamos los globos al final de la fiesta.","en":"We pop the balloons at the end of the party."},
+   {"person":4,"es":"Las palomitas explotan en el microondas.","en":"The popcorn pops in the microwave."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La llanta explotó en la carretera.","en":"The tire blew out on the highway."},
+   {"person":0,"es":"Exploté de alegría cuando me dieron la noticia.","en":"I burst with joy when they gave me the news."},
+   {"person":1,"es":"¿Por qué explotaste así?","en":"Why did you blow up like that?"},
+   {"person":3,"es":"Explotamos de risa en la película.","en":"We burst out laughing at the movie."},
+   {"person":4,"es":"Los fuegos artificiales explotaron sobre el mar.","en":"The fireworks went off over the sea."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El volcán explotaba cada pocos años.","en":"The volcano would erupt every few years."},
+   {"person":0,"es":"Yo explotaba cuando me interrumpían.","en":"I'd blow up when people interrupted me."},
+   {"person":1,"es":"Tú explotabas por cualquier tontería.","en":"You'd blow up over any little thing."},
+   {"person":3,"es":"Explotábamos burbujas en el patio.","en":"We'd pop bubbles in the yard."},
+   {"person":4,"es":"Las compañías explotaban las minas sin control.","en":"Companies exploited the mines without any controls."}
+  ],
+  "future": [
+   {"person":2,"es":"Si sigues inflándolo, el globo explotará.","en":"If you keep blowing it up, the balloon will pop."},
+   {"person":0,"es":"Si me dices eso otra vez, explotaré.","en":"If you say that to me again, I'll blow up."},
+   {"person":1,"es":"Explotarás de risa con esta película.","en":"You'll crack up at this movie."},
+   {"person":3,"es":"Explotaremos el potencial del equipo.","en":"We'll make the most of the team's potential."},
+   {"person":4,"es":"Los cohetes explotarán a medianoche.","en":"The fireworks will go off at midnight."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Esa botella explotaría con el calor.","en":"That bottle would burst in the heat."},
+   {"person":0,"es":"Yo explotaría con tanta presión.","en":"I'd blow up under so much pressure."},
+   {"person":1,"es":"¿Explotarías si te dijeran eso?","en":"Would you blow up if they told you that?","level":"B2"},
+   {"person":3,"es":"Explotaríamos mejor nuestros recursos con un plan.","en":"We'd make better use of our resources with a plan."},
+   {"person":4,"es":"Esas empresas explotarían a los trabajadores.","en":"Those companies would exploit the workers."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"Ha explotado una tubería en la calle.","en":"A pipe has burst in the street."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"No quiero que explotes con los niños.","en":"I don't want you blowing up at the kids."},
+   {"person":0,"es":"Mi esposa tiene miedo de que yo explote en la reunión.","en":"My wife is afraid I'll blow up at the meeting."},
+   {"person":2,"es":"Aléjate antes de que explote el cohete.","en":"Step back before the firework goes off."},
+   {"person":3,"es":"Es mejor que explotemos los globos afuera.","en":"We'd better pop the balloons outside."},
+   {"person":4,"es":"No es justo que las empresas exploten a los niños.","en":"It's not right for companies to exploit children."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No explotes, cuenta hasta diez.","en":"Don't blow up, count to ten."}
+  ]
+ },
+ "fabricar": {
+  "present": [
+   {"person":2,"es":"Esta empresa fabrica zapatos.","en":"This company makes shoes."},
+   {"person":0,"es":"Fabrico muebles en mi taller.","en":"I make furniture in my workshop."},
+   {"person":1,"es":"¿Fabricas tus propias velas?","en":"Do you make your own candles?"},
+   {"person":3,"es":"Fabricamos juguetes de madera.","en":"We make wooden toys."},
+   {"person":4,"es":"Las abejas fabrican miel.","en":"Bees make honey."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Mi abuelo fabricó esta mesa a mano.","en":"My grandfather made this table by hand."},
+   {"person":0,"es":"Fabriqué una casita para el perro.","en":"I built a little house for the dog."},
+   {"person":1,"es":"¿Fabricaste tú esa lámpara?","en":"Did you make that lamp yourself?"},
+   {"person":3,"es":"Fabricamos un barco con botellas.","en":"We made a boat out of bottles."},
+   {"person":4,"es":"Los niños fabricaron máscaras para el carnaval.","en":"The kids made masks for carnival."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"La fábrica fabricaba telas para todo el país.","en":"The factory made fabric for the whole country."},
+   {"person":0,"es":"Yo fabricaba mis propios juguetes.","en":"I used to make my own toys."},
+   {"person":1,"es":"Tú fabricabas excusas para no estudiar.","en":"You'd come up with excuses not to study."},
+   {"person":3,"es":"Fabricábamos cometas con papel y cañas.","en":"We'd make kites out of paper and reeds."},
+   {"person":4,"es":"Los artesanos fabricaban guitarras.","en":"The craftsmen made guitars."}
+  ],
+  "future": [
+   {"person":2,"es":"La nueva planta fabricará carros eléctricos.","en":"The new plant will make electric cars."},
+   {"person":0,"es":"Fabricaré un estante para los libros.","en":"I'll build a shelf for the books."},
+   {"person":1,"es":"Fabricarás tu propio jabón en el taller.","en":"You'll make your own soap at the workshop."},
+   {"person":3,"es":"Fabricaremos los adornos para la fiesta.","en":"We'll make the decorations for the party."},
+   {"person":4,"es":"Los alumnos fabricarán un robot.","en":"The students will build a robot."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Una máquina así fabricaría mil piezas al día.","en":"A machine like that would make a thousand parts a day."},
+   {"person":0,"es":"Yo fabricaría mis propios muebles.","en":"I'd make my own furniture."},
+   {"person":1,"es":"¿Fabricarías algo para vender?","en":"Would you make something to sell?"},
+   {"person":3,"es":"Fabricaríamos más con otra máquina.","en":"We'd make more with another machine."},
+   {"person":4,"es":"Ellos fabricarían un producto más barato.","en":"They'd make a cheaper product."}
+  ],
+  "presentPerfect": [
+   {"person":4,"es":"Han fabricado un millón de unidades este año.","en":"They've made a million units this year."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Quiero que fabriques una caja para las herramientas.","en":"I want you to make a box for the tools."},
+   {"person":0,"es":"Mi hijo quiere que yo le fabrique una espada de madera.","en":"My son wants me to make him a wooden sword."},
+   {"person":2,"es":"Es importante que la empresa fabrique productos seguros.","en":"It's important for the company to make safe products."},
+   {"person":3,"es":"Es mejor que fabriquemos los adornos nosotros.","en":"We'd better make the decorations ourselves."},
+   {"person":4,"es":"Ojalá que fabriquen ese modelo otra vez.","en":"I hope they make that model again."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
+ },
+ "facilitar": {
+  "present": [
+   {"person":2,"es":"La tecnología facilita la vida.","en":"Technology makes life easier."},
+   {"person":0,"es":"Te facilito el número del médico.","en":"I'll get you the doctor's number."},
+   {"person":1,"es":"Facilitas mucho el trabajo del equipo.","en":"You make the team's work a lot easier."},
+   {"person":3,"es":"Facilitamos el transporte a los invitados.","en":"We provide transportation for the guests."},
+   {"person":4,"es":"Los mapas facilitan el viaje.","en":"Maps make the trip easier."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El nuevo puente facilitó el tráfico.","en":"The new bridge made traffic easier."},
+   {"person":0,"es":"Les facilité los documentos a tiempo.","en":"I got them the documents on time."},
+   {"person":1,"es":"Me facilitaste mucho las cosas.","en":"You made things a lot easier for me."},
+   {"person":3,"es":"Facilitamos la mudanza con un camión grande.","en":"We made the move easier with a big truck."},
+   {"person":4,"es":"Los vecinos nos facilitaron una escalera.","en":"The neighbors lent us a ladder."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El metro facilitaba mucho los viajes.","en":"The subway made getting around much easier."},
+   {"person":0,"es":"Yo le facilitaba la tarea a mi hermano.","en":"I'd make homework easier for my brother."},
+   {"person":1,"es":"Tú siempre facilitabas las cosas.","en":"You always made things easier."},
+   {"person":3,"es":"Facilitábamos la comida a los voluntarios.","en":"We'd provide food for the volunteers."},
+   {"person":4,"es":"Los dibujos facilitaban la explicación.","en":"The drawings made the explanation easier."}
+  ],
+  "future": [
+   {"person":2,"es":"Esta aplicación facilitará tus compras.","en":"This app will make your shopping easier."},
+   {"person":0,"es":"Te facilitaré toda la información.","en":"I'll get you all the information."},
+   {"person":1,"es":"Facilitarás el trabajo si llegas temprano.","en":"You'll make the job easier if you arrive early."},
+   {"person":3,"es":"Facilitaremos el acceso para sillas de ruedas.","en":"We'll make access easier for wheelchairs."},
+   {"person":4,"es":"Los nuevos horarios facilitarán la organización.","en":"The new schedules will make planning easier."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Un buen mapa facilitaría mucho el viaje.","en":"A good map would make the trip much easier."},
+   {"person":0,"es":"Yo te facilitaría el trabajo, pero no puedo.","en":"I'd make the job easier for you, but I can't."},
+   {"person":1,"es":"¿Me facilitarías tu correo?","en":"Would you give me your email?"},
+   {"person":3,"es":"Facilitaríamos el proceso con formularios en línea.","en":"We'd make the process easier with online forms."},
+   {"person":4,"es":"Esas herramientas facilitarían el trabajo.","en":"Those tools would make the work easier."}
+  ],
+  "presentPerfect": [
+   {"person":1,"es":"Me has facilitado mucho la vida.","en":"You've made my life a lot easier."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Te agradezco que me facilites los datos.","en":"Thank you for getting me the details."},
+   {"person":0,"es":"El cliente pide que yo le facilite un recibo.","en":"The customer is asking me to give him a receipt."},
+   {"person":2,"es":"Esperamos que la nueva ley facilite los trámites.","en":"We hope the new law makes the paperwork easier."},
+   {"person":3,"es":"Es importante que facilitemos el acceso a todos.","en":"It's important for us to make access easy for everyone."},
+   {"person":4,"es":"Ojalá que nos faciliten el proceso.","en":"I hope they make the process easier for us."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
+ },
+ "financiar": {
+  "present": [
+   {"person":2,"es":"El banco financia el carro en tres años.","en":"The bank finances the car over three years."},
+   {"person":0,"es":"Financio mis estudios con una beca.","en":"I'm paying for my studies with a scholarship."},
+   {"person":1,"es":"¿Cómo financias tu viaje?","en":"How are you paying for your trip?"},
+   {"person":3,"es":"Financiamos la casa con un préstamo.","en":"We're financing the house with a loan."},
+   {"person":4,"es":"Los vecinos financian la fiesta del barrio.","en":"The neighbors pay for the neighborhood party."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Mi tío financió mi primer negocio.","en":"My uncle funded my first business."},
+   {"person":0,"es":"Financié la boda con mis ahorros.","en":"I paid for the wedding with my savings."},
+   {"person":1,"es":"¿Financiaste el teléfono a meses?","en":"Did you buy the phone in installments?"},
+   {"person":3,"es":"Financiamos el proyecto con donaciones.","en":"We funded the project with donations."},
+   {"person":4,"es":"Las empresas financiaron el nuevo estadio.","en":"The companies paid for the new stadium."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El gobierno financiaba los libros escolares.","en":"The government paid for school books."},
+   {"person":0,"es":"Yo financiaba mis estudios trabajando de mesera.","en":"I paid my way through school working as a waitress."},
+   {"person":1,"es":"Tú financiabas los viajes de la familia.","en":"You paid for the family trips."},
+   {"person":3,"es":"Financiábamos la escuela con rifas.","en":"We'd raise money for the school with raffles."},
+   {"person":4,"es":"Los padres financiaban las excursiones.","en":"The parents paid for the field trips."}
+  ],
+  "future": [
+   {"person":2,"es":"La universidad financiará tu investigación.","en":"The university will fund your research."},
+   {"person":0,"es":"Financiaré el carro en dos años.","en":"I'll finance the car over two years."},
+   {"person":1,"es":"Financiarás la computadora a meses sin intereses.","en":"You'll buy the computer in interest-free installments."},
+   {"person":3,"es":"Financiaremos la reparación entre todos.","en":"We'll all chip in for the repair."},
+   {"person":4,"es":"Los socios financiarán la nueva tienda.","en":"The partners will fund the new store."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Un banco no financiaría ese proyecto.","en":"A bank wouldn't finance that project."},
+   {"person":0,"es":"Yo financiaría tu idea.","en":"I'd back your idea."},
+   {"person":1,"es":"¿Cómo financiarías una casa?","en":"How would you pay for a house?"},
+   {"person":3,"es":"Financiaríamos el viaje con un préstamo.","en":"We'd pay for the trip with a loan."},
+   {"person":4,"es":"Ellos financiarían el proyecto si fuera rentable.","en":"They'd fund the project if it were profitable."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"La alcaldía ha financiado el nuevo parque.","en":"The city has paid for the new park."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"No quiero que financies el carro con la tarjeta.","en":"I don't want you to pay for the car with your credit card."},
+   {"person":0,"es":"Mis papás no quieren que yo financie mis estudios solo.","en":"My parents don't want me to pay for school on my own."},
+   {"person":2,"es":"Esperamos que el gobierno financie el hospital.","en":"We hope the government pays for the hospital."},
+   {"person":3,"es":"Es mejor que financiemos la casa a quince años.","en":"We'd better finance the house over fifteen years."},
+   {"person":4,"es":"Ojalá que financien más becas.","en":"I hope they fund more scholarships."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
+ },
+ "fomentar": {
+  "present": [
+   {"person":2,"es":"La escuela fomenta la lectura.","en":"The school encourages reading."},
+   {"person":0,"es":"Fomento el deporte en mis hijos.","en":"I encourage my kids to play sports."},
+   {"person":1,"es":"Fomentas la confianza en tu equipo.","en":"You build trust on your team."},
+   {"person":3,"es":"Fomentamos el respeto en casa.","en":"We encourage respect at home."},
+   {"person":4,"es":"Las redes sociales fomentan la comparación.","en":"Social media encourages comparison."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El nuevo alcalde fomentó el turismo.","en":"The new mayor promoted tourism."},
+   {"person":0,"es":"Fomenté el diálogo en la reunión.","en":"I encouraged dialogue in the meeting."},
+   {"person":1,"es":"Fomentaste el trabajo en equipo.","en":"You encouraged teamwork."},
+   {"person":3,"es":"Fomentamos el uso de la bicicleta.","en":"We promoted cycling."},
+   {"person":4,"es":"Los profesores fomentaron la participación.","en":"The teachers encouraged participation."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuela fomentaba nuestra curiosidad.","en":"My grandmother encouraged our curiosity."},
+   {"person":0,"es":"Yo fomentaba la lectura con cuentos.","en":"I'd encourage reading with stories."},
+   {"person":1,"es":"Tú fomentabas las peleas entre tus hermanos.","en":"You'd stir up fights between your brothers."},
+   {"person":3,"es":"Fomentábamos el reciclaje en el barrio.","en":"We were promoting recycling in the neighborhood."},
+   {"person":4,"es":"Los clubes fomentaban el deporte.","en":"The clubs promoted sports."}
+  ],
+  "future": [
+   {"person":2,"es":"El programa fomentará el empleo juvenil.","en":"The program will promote youth employment."},
+   {"person":0,"es":"Fomentaré la creatividad en mis clases.","en":"I'll encourage creativity in my classes."},
+   {"person":1,"es":"Fomentarás buenos hábitos con el ejemplo.","en":"You'll encourage good habits by setting an example."},
+   {"person":3,"es":"Fomentaremos la música en la escuela.","en":"We'll promote music at school."},
+   {"person":4,"es":"Las nuevas leyes fomentarán la inversión.","en":"The new laws will encourage investment."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Un parque fomentaría el ejercicio.","en":"A park would encourage exercise."},
+   {"person":0,"es":"Yo fomentaría más el arte en las escuelas.","en":"I'd promote art more in schools."},
+   {"person":1,"es":"¿Cómo fomentarías la lectura en los niños?","en":"How would you get kids to read more?"},
+   {"person":3,"es":"Fomentaríamos el comercio local con una feria.","en":"We'd support local business with a fair."},
+   {"person":4,"es":"Esas medidas fomentarían el turismo.","en":"Those measures would boost tourism."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"El club ha fomentado el deporte entre los jóvenes.","en":"The club has promoted sports among young people."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Es importante que fomentes la curiosidad de tus hijos.","en":"It's important for you to encourage your kids' curiosity."},
+   {"person":0,"es":"La directora quiere que yo fomente la lectura.","en":"The principal wants me to encourage reading."},
+   {"person":2,"es":"Esperamos que el gobierno fomente el empleo.","en":"We hope the government creates more jobs."},
+   {"person":3,"es":"Es necesario que fomentemos el respeto.","en":"We need to encourage respect."},
+   {"person":4,"es":"Ojalá que las escuelas fomenten el deporte.","en":"I hope schools promote sports."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Fomenta el diálogo en tu familia.","en":"Encourage conversation in your family."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "fortalecer": {
+  "present": [
+   {"person":2,"es":"El ejercicio fortalece los músculos.","en":"Exercise strengthens your muscles."},
+   {"person":0,"es":"Fortalezco las piernas con la bicicleta.","en":"I build up my legs by cycling."},
+   {"person":1,"es":"Fortaleces tu sistema inmune con buena comida.","en":"You strengthen your immune system with good food."},
+   {"person":3,"es":"Fortalecemos la amistad con cada viaje.","en":"We strengthen our friendship with every trip."},
+   {"person":4,"es":"Las dificultades fortalecen a las familias.","en":"Hard times make families stronger."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La crisis fortaleció a la comunidad.","en":"The crisis brought the community closer."},
+   {"person":0,"es":"Fortalecí la espalda con yoga.","en":"I strengthened my back with yoga."},
+   {"person":1,"es":"Fortaleciste tu español en México.","en":"You improved your Spanish in Mexico."},
+   {"person":3,"es":"Fortalecimos el techo antes del huracán.","en":"We reinforced the roof before the hurricane."},
+   {"person":4,"es":"Los vecinos fortalecieron los lazos con la escuela.","en":"The neighbors built closer ties with the school."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"La leche fortalecía los huesos, decía mi abuela.","en":"Milk made your bones strong, my grandmother said."},
+   {"person":0,"es":"Yo fortalecía los brazos cargando cajas.","en":"I built up my arms carrying boxes."},
+   {"person":1,"es":"Tú fortalecías al equipo con tu ejemplo.","en":"You made the team stronger by your example."},
+   {"person":3,"es":"Fortalecíamos las cercas antes de la temporada de lluvias.","en":"We'd reinforce the fences before the rainy season."},
+   {"person":4,"es":"Los partidos fortalecían la unión del barrio.","en":"The games brought the neighborhood together."}
+  ],
+  "future": [
+   {"person":2,"es":"Este acuerdo fortalecerá la relación entre los dos países.","en":"This agreement will strengthen the relationship between the two countries."},
+   {"person":0,"es":"Fortaleceré mi inglés en el curso de verano.","en":"I'll improve my English in the summer course."},
+   {"person":1,"es":"Fortalecerás tu confianza con la práctica.","en":"You'll build your confidence with practice."},
+   {"person":3,"es":"Fortaleceremos el equipo con dos jugadores nuevos.","en":"We'll strengthen the team with two new players."},
+   {"person":4,"es":"Las vitaminas fortalecerán tus defensas.","en":"The vitamins will boost your defenses."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Un poco de ejercicio fortalecería tu espalda.","en":"A little exercise would strengthen your back."},
+   {"person":0,"es":"Yo fortalecería la puerta con otra cerradura.","en":"I'd secure the door with another lock."},
+   {"person":1,"es":"¿Cómo fortalecerías la confianza del equipo?","en":"How would you build the team's confidence?"},
+   {"person":3,"es":"Fortaleceríamos el negocio con más publicidad.","en":"We'd strengthen the business with more advertising."},
+   {"person":4,"es":"Esas medidas fortalecerían la economía.","en":"Those measures would strengthen the economy."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"Esta experiencia nos ha fortalecido.","en":"This experience has made us stronger."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Es importante que fortalezcas las rodillas.","en":"It's important for you to strengthen your knees."},
+   {"person":0,"es":"Mi entrenador quiere que yo fortalezca los brazos.","en":"My coach wants me to build up my arms."},
+   {"person":2,"es":"Ojalá que este viaje fortalezca nuestra amistad.","en":"I hope this trip strengthens our friendship."},
+   {"person":3,"es":"Es necesario que fortalezcamos la defensa.","en":"We need to strengthen our defense."},
+   {"person":4,"es":"Queremos que los niños fortalezcan su autoestima.","en":"We want the kids to build their self-esteem."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
+ }
+}
