@@ -75,6 +75,8 @@ When adding a batch:
 - bancar: to put up with; to support (Argentina, Uruguay)
 - chorear: to steal (Argentina, Chile, Peru)
 - chamullar: to sweet-talk, to make things up (Argentina, Chile)
+- protestar: to protest, to complain
+- anotar: to write down, to note; to score (a goal, a point)
 
 ## Dropped
 

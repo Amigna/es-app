@@ -69,7 +69,7 @@ describe("lookupWord", () => {
   it("finds every word in the readings apart from names and places", () => {
     // Add a new reading's names here. Any other word it uses needs to be in the word lists.
     const names = new Set(
-      "ana andrés bogotá camila caracas carlos carmen chile cusco daniela elena ernesto europa heredia honduras juan lima luis machu marta mateo mejía miami méxico panamá perú picchu puebla quetzalcóatl santiago sofía valentina".split(" "),
+      "américa ana andrés argentina bogotá camila caracas caribe carlos carmen centroamérica chile cocibolca cuba cusco daniela diego elena ernesto europa habana heredia honduras juan lima luis machu marta mateo mejía miami montevideo méxico nicaragua panamá perú picchu puebla quetzalcóatl rafael santiago sofía uruguay valentina venezuela".split(" "),
     );
     const missing = new Set<string>();
     for (const r of READINGS) {

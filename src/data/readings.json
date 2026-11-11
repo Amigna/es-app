@@ -433,5 +433,179 @@
       { "q": "¿Por qué se convirtió en hormiga?", "en": "Why did he turn into an ant?", "choices": ["Porque el camino era muy estrecho", "Porque le tenía miedo a la hormiga", "Porque quería comer maíz"], "answer": "Porque el camino era muy estrecho", "why": "The path was so narrow that no god could get through." },
       { "q": "Según el texto, ¿qué ha sido el maíz desde entonces?", "en": "According to the text, what has corn been since then?", "choices": ["La base de la comida mexicana", "Un alimento solo para los dioses", "Una planta poco común"], "answer": "La base de la comida mexicana", "why": "\"Ha sido la base de la comida mexicana.\"" }
     ]
+  },
+  {
+    "slug": "celulares-en-el-aula",
+    "title": "¿Celulares en el aula?",
+    "en": "Cell phones in the classroom?",
+    "level": "B2",
+    "place": "Uruguay",
+    "paragraphs": [
+      {
+        "es": "El año pasado, varias escuelas de Montevideo decidieron que los estudiantes dejaran el celular en una caja al entrar a clase. Al principio, muchos padres se quejaron, porque temían que sus hijos no pudieran comunicarse con ellos en caso de emergencia. Hoy, sin embargo, la mayoría de los maestros dice que la medida ha funcionado mejor de lo que esperaban.",
+        "en": "Last year, several schools in Montevideo decided that students should leave their cell phones in a box when they came into class. At first, many parents complained, because they were afraid their children wouldn't be able to reach them in an emergency. Today, however, most teachers say the measure has worked better than they expected."
+      },
+      {
+        "es": "Según la directora de un liceo del centro, los recreos cambiaron casi de inmediato. «Antes, los chicos se sentaban en el patio, cada uno mirando su pantalla. Ahora juegan, discuten y hasta se aburren. Y aburrirse también es necesario», explica. Algunos profesores añaden que los alumnos se concentran más y que las peleas por mensajes o fotos han disminuido.",
+        "en": "According to the principal of a high school downtown, recess changed almost immediately. \"Before, the kids sat in the schoolyard, each one looking at their screen. Now they play, argue and even get bored. And getting bored is necessary too,\" she explains. Some teachers add that students concentrate more and that fights over messages or photos have gone down."
+      },
+      {
+        "es": "No todos están de acuerdo. Un grupo de estudiantes le escribió una carta al periódico en la que decía que prohibir el teléfono era tratarlos como niños. «Si nos enseñaran a usarlo bien, no haría falta esconderlo», afirmaba la carta. Para ellos, el celular también es una herramienta: sirve para buscar información, traducir una palabra o grabar una explicación.",
+        "en": "Not everyone agrees. A group of students wrote a letter to the newspaper saying that banning phones was treating them like children. \"If they taught us to use it well, there'd be no need to hide it,\" the letter said. For them, the cell phone is also a tool: it's useful for looking up information, translating a word or recording an explanation."
+      },
+      {
+        "es": "Quizás los dos lados tengan algo de razón. Prohibir es más fácil que enseñar, pero enseñar lleva tiempo, y las escuelas rara vez lo tienen. Lo ideal sería que la regla no fuera el final de la conversación, sino el principio. Si dentro de unos años los estudiantes saben cuándo guardar el teléfono sin que nadie se lo pida, la medida habrá cumplido su objetivo.",
+        "en": "Maybe both sides are partly right. Banning is easier than teaching, but teaching takes time, and schools rarely have it. Ideally, the rule wouldn't be the end of the conversation, but the beginning. If in a few years students know when to put their phones away without anyone asking them, the measure will have done its job."
+      }
+    ],
+    "words": [
+      { "es": "temían", "en": "they were afraid" },
+      { "es": "medida", "en": "measure, step" },
+      { "es": "liceo", "en": "high school (Uruguay)" },
+      { "es": "recreos", "en": "recess, breaks" },
+      { "es": "pantalla", "en": "screen" },
+      { "es": "disminuido", "en": "gone down, decreased" },
+      { "es": "no haría falta", "en": "there'd be no need" },
+      { "es": "herramienta", "en": "tool" },
+      { "es": "rara vez", "en": "rarely" }
+    ],
+    "questions": [
+      { "q": "¿Por qué se quejaron muchos padres al principio?", "en": "Why did many parents complain at first?", "choices": ["Temían no poder comunicarse con sus hijos", "Querían que sus hijos usaran más el celular", "No les gustaba la directora"], "answer": "Temían no poder comunicarse con sus hijos", "why": "They were afraid their children couldn't reach them in an emergency. \"Temían que… no pudieran\" puts the imperfect subjunctive after a past fear." },
+      { "q": "Según la directora, ¿qué cambió en los recreos?", "en": "According to the principal, what changed at recess?", "choices": ["Los chicos juegan y hablan más", "Los chicos estudian en el patio", "Los recreos son más cortos"], "answer": "Los chicos juegan y hablan más", "why": "Before, each one looked at a screen. Now they play, argue and even get bored." },
+      { "q": "¿Qué decía la carta de los estudiantes?", "en": "What did the students' letter say?", "choices": ["Que deberían enseñarles a usar el celular", "Que el celular no sirve para nada", "Que querían más recreos"], "answer": "Que deberían enseñarles a usar el celular", "why": "\"Si nos enseñaran a usarlo bien, no haría falta esconderlo\" is a si clause about something that isn't happening." },
+      { "q": "¿Cuál es la opinión del autor?", "en": "What is the author's opinion?", "choices": ["Los dos lados tienen algo de razón", "Hay que prohibir los celulares en todo el país", "Los estudiantes tienen toda la razón"], "answer": "Los dos lados tienen algo de razón", "why": "The last paragraph says both sides are partly right, and the rule should start a conversation." },
+      { "q": "¿Cuándo habrá cumplido su objetivo la medida?", "en": "When will the measure have done its job?", "choices": ["Cuando los estudiantes guarden el teléfono solos", "Cuando todas las escuelas tengan cajas", "Cuando los padres estén de acuerdo"], "answer": "Cuando los estudiantes guarden el teléfono solos", "why": "Its goal is that students put their phones away without anyone asking them." }
+    ]
+  },
+  {
+    "slug": "che-vos-de-donde-sos",
+    "title": "«Che, ¿vos de dónde sos?»",
+    "en": "\"Hey, where are you from?\"",
+    "level": "B2",
+    "place": "Argentina",
+    "paragraphs": [
+      {
+        "es": "Cuando Diego se mudó de Lima a Buenos Aires, pensaba que no tendría problemas con el idioma. Al fin y al cabo, allí también se hablaba español. Pero el primer día, en la oficina, un compañero le preguntó: «Che, ¿vos de dónde sos?», y Diego tardó unos segundos en entender que solo quería saber de dónde era.",
+        "en": "When Diego moved from Lima to Buenos Aires, he thought he wouldn't have any trouble with the language. After all, they spoke Spanish there too. But on the first day at the office, a coworker asked him, \"Che, ¿vos de dónde sos?\", and it took Diego a few seconds to understand that he only wanted to know where he was from."
+      },
+      {
+        "es": "En Argentina, como en Uruguay y en buena parte de Centroamérica, mucha gente usa vos en lugar de tú, y algunos verbos cambian un poco: vos tenés, vos querés, vos sos. «Che» sirve para llamar la atención de alguien, más o menos como «oye». Y al trabajo muchos le dicen laburo, una palabra que llegó con los inmigrantes italianos hace más de un siglo.",
+        "en": "In Argentina, as in Uruguay and much of Central America, many people use vos instead of tú, and some verbs change a little: vos tenés, vos querés, vos sos. \"Che\" is used to get someone's attention, more or less like \"oye\". And many people call work laburo, a word that arrived with Italian immigrants more than a century ago."
+      },
+      {
+        "es": "Durante las primeras semanas, Diego apuntaba en el celular cada palabra nueva. Aprendió que el colectivo es el autobús, que la birome es el bolígrafo y que, si alguien dice que algo está «re lindo», quiere decir que es muy bonito. También descubrió que, aunque llegara tarde a una cena, nadie se enojaba, porque casi nadie llegaba a la hora.",
+        "en": "During the first few weeks, Diego wrote down every new word on his phone. He learned that a colectivo is a bus, that a birome is a ballpoint pen, and that if someone says something is \"re lindo\", they mean it's very pretty. He also found out that even if he got to a dinner late, nobody got annoyed, because hardly anyone arrived on time."
+      },
+      {
+        "es": "Seis meses después, su mamá lo llamó desde Lima y se rio al escucharlo. «Hijo, ¿desde cuándo hablas así?», le preguntó. Diego no se había dado cuenta de que había empezado a decir «che» sin pensarlo. Le dijo que no se preocupara, que seguía siendo el mismo de siempre, aunque ahora tomara mate todas las mañanas con sus compañeros del laburo.",
+        "en": "Six months later, his mom called him from Lima and laughed when she heard him. \"Son, since when do you talk like that?\" she asked. Diego hadn't noticed that he'd started saying \"che\" without thinking about it. He told her not to worry, that he was still the same as always, even if he now drank mate every morning with his coworkers."
+      }
+    ],
+    "words": [
+      { "es": "al fin y al cabo", "en": "after all" },
+      { "es": "che", "en": "hey (Argentina, Uruguay)" },
+      { "es": "vos", "en": "you (informal, instead of tú)" },
+      { "es": "sos", "en": "you are (with vos)" },
+      { "es": "laburo", "en": "work, job (Argentina, Uruguay)" },
+      { "es": "birome", "en": "ballpoint pen (Argentina, Uruguay)" },
+      { "es": "re", "en": "really, very (Argentina, Uruguay)" },
+      { "es": "se enojaba", "en": "got annoyed, got angry" },
+      { "es": "no se había dado cuenta", "en": "hadn't noticed" },
+      { "es": "mate", "en": "mate, a bitter herbal tea shared from a gourd" }
+    ],
+    "questions": [
+      { "q": "¿Qué pensaba Diego antes de mudarse?", "en": "What did Diego think before moving?", "choices": ["Que no tendría problemas con el idioma", "Que no encontraría trabajo", "Que extrañaría mucho a su mamá"], "answer": "Que no tendría problemas con el idioma", "why": "He thought it would be easy, since they speak Spanish there too." },
+      { "q": "¿Para qué sirve la palabra «che»?", "en": "What is the word \"che\" for?", "choices": ["Para llamar la atención de alguien", "Para decir que algo es bonito", "Para hablar del trabajo"], "answer": "Para llamar la atención de alguien", "why": "It works more or less like \"oye\"." },
+      { "q": "¿De dónde viene la palabra «laburo»?", "en": "Where does the word \"laburo\" come from?", "choices": ["De los inmigrantes italianos", "Del inglés", "De Perú"], "answer": "De los inmigrantes italianos", "why": "It arrived with Italian immigrants more than a century ago." },
+      { "q": "¿Qué quiere decir «re lindo»?", "en": "What does \"re lindo\" mean?", "choices": ["Muy bonito", "Otra vez bonito", "Un poco feo"], "answer": "Muy bonito", "why": "In Argentina and Uruguay, re before an adjective means very." },
+      { "q": "¿Por qué se rio la mamá de Diego?", "en": "Why did Diego's mom laugh?", "choices": ["Porque Diego hablaba como un argentino", "Porque Diego llegó tarde", "Porque Diego no tomaba mate"], "answer": "Porque Diego hablaba como un argentino", "why": "He had started saying \"che\" without noticing, and she asked since when he talked like that." }
+    ]
+  },
+  {
+    "slug": "los-tiburones-del-lago",
+    "title": "Los tiburones del lago",
+    "en": "The sharks in the lake",
+    "level": "B2",
+    "place": "Nicaragua",
+    "paragraphs": [
+      {
+        "es": "Durante siglos, los pescadores del lago Cocibolca, en Nicaragua, contaban que en sus aguas vivían tiburones. Los científicos que visitaban el país no les creían. Era imposible, decían, que un tiburón viviera en agua dulce, tan lejos del mar. Muchos pensaban que los pescadores habían confundido a los tiburones con otro pez grande, o que exageraban, como suele pasar con las historias de pescadores.",
+        "en": "For centuries, fishermen on Lake Cocibolca, in Nicaragua, said that sharks lived in its waters. The scientists who visited the country didn't believe them. It was impossible, they said, for a shark to live in fresh water, so far from the sea. Many thought the fishermen had mistaken the sharks for some other big fish, or that they were exaggerating, as tends to happen with fishermen's stories."
+      },
+      {
+        "es": "Sin embargo, los pescadores tenían razón. En los años sesenta, un grupo de investigadores marcó a cientos de tiburones en el lago y, con el tiempo, volvió a encontrar a algunos de ellos en el mar Caribe. Así comprobaron que los animales no se habían quedado atrapados en el lago, como se había creído, sino que viajaban por el río San Juan, subiendo los rápidos casi como lo hacen los salmones.",
+        "en": "However, the fishermen were right. In the sixties, a group of researchers tagged hundreds of sharks in the lake and, over time, found some of them again in the Caribbean Sea. That's how they proved that the animals hadn't been trapped in the lake, as had been believed, but traveled along the San Juan River, going up the rapids almost the way salmon do."
+      },
+      {
+        "es": "Se trataba del tiburón toro, una especie que puede pasar del agua salada al agua dulce sin problemas. Hoy se sabe que también sube por otros ríos de América.",
+        "en": "It was the bull shark, a species that can move from salt water to fresh water without trouble. Today it's known that it also swims up other rivers in the Americas."
+      },
+      {
+        "es": "La historia no tiene un final feliz. Durante años, se pagó por cada tiburón que se sacara del lago, y se pescaron tantos que hoy casi no se ven. Si se hubiera escuchado antes a los pescadores, quizás se habría entendido a tiempo lo que estaba en juego. Ahora, algunos biólogos esperan que, si se protege el río, los tiburones vuelvan algún día a las aguas donde nadie creía que pudieran vivir.",
+        "en": "The story doesn't have a happy ending. For years, money was paid for every shark taken out of the lake, and so many were caught that today they're hardly ever seen. If people had listened to the fishermen sooner, maybe they would have understood in time what was at stake. Now, some biologists hope that, if the river is protected, the sharks will one day come back to the waters where no one believed they could live."
+      }
+    ],
+    "words": [
+      { "es": "pescadores", "en": "fishermen" },
+      { "es": "tiburones", "en": "sharks" },
+      { "es": "agua dulce", "en": "fresh water" },
+      { "es": "suele", "en": "tends to, usually" },
+      { "es": "comprobaron", "en": "they proved, they confirmed" },
+      { "es": "atrapados", "en": "trapped" },
+      { "es": "especie", "en": "species" },
+      { "es": "salada", "en": "salty, salt" },
+      { "es": "lo que estaba en juego", "en": "what was at stake" }
+    ],
+    "questions": [
+      { "q": "¿Por qué los científicos no les creían a los pescadores?", "en": "Why didn't the scientists believe the fishermen?", "choices": ["Pensaban que un tiburón no podía vivir en agua dulce", "Nunca habían visitado Nicaragua", "Los pescadores no tenían fotos"], "answer": "Pensaban que un tiburón no podía vivir en agua dulce", "why": "\"Era imposible que un tiburón viviera en agua dulce\": the imperfect subjunctive after a judgment in the past." },
+      { "q": "¿Qué descubrieron los investigadores en los años sesenta?", "en": "What did the researchers discover in the sixties?", "choices": ["Que los tiburones viajaban entre el lago y el mar", "Que los tiburones estaban atrapados en el lago", "Que eran otro pez grande"], "answer": "Que los tiburones viajaban entre el lago y el mar", "why": "Some sharks tagged in the lake turned up in the Caribbean, so they traveled along the San Juan River." },
+      { "q": "¿Qué tiene de especial el tiburón toro?", "en": "What is special about the bull shark?", "choices": ["Puede vivir en agua salada y en agua dulce", "Solo vive en lagos", "Es el tiburón más grande del mundo"], "answer": "Puede vivir en agua salada y en agua dulce", "why": "It can move from salt water to fresh water without trouble." },
+      { "q": "¿Por qué hoy casi no se ven tiburones en el lago?", "en": "Why are sharks hardly ever seen in the lake today?", "choices": ["Porque se pescaron demasiados", "Porque el agua se volvió salada", "Porque se fueron al río"], "answer": "Porque se pescaron demasiados", "why": "People were paid for every shark taken out, and so many were caught that few are left." },
+      { "q": "¿Qué esperan algunos biólogos?", "en": "What do some biologists hope?", "choices": ["Que los tiburones vuelvan si se protege el río", "Que los pescadores dejen el lago", "Que se construya otro río"], "answer": "Que los tiburones vuelvan si se protege el río", "why": "\"Esperan que… vuelvan\": hope takes the subjunctive." }
+    ]
+  },
+  {
+    "slug": "las-cartas-de-rafael",
+    "title": "Las cartas de Rafael",
+    "en": "Rafael's letters",
+    "level": "B2",
+    "place": "Cuba",
+    "paragraphs": [
+      {
+        "es": "Cuando murió mi abuela, encontramos en su armario una caja de zapatos llena de cartas. Todas estaban escritas por la misma persona, un tal Rafael, y habían sido enviadas desde Santiago de Cuba entre 1958 y 1961. Ninguno de nosotros había oído hablar de él. Mi madre, que siempre había creído conocer todos los secretos de la familia, se quedó callada un buen rato.",
+        "en": "When my grandmother died, we found a shoebox full of letters in her closet. They were all written by the same person, a certain Rafael, and had been sent from Santiago de Cuba between 1958 and 1961. None of us had ever heard of him. My mother, who had always thought she knew all the family's secrets, was quiet for a good while."
+      },
+      {
+        "es": "Leímos las cartas una noche, en la cocina. Rafael y mi abuela se habían conocido en un baile cuando ella tenía diecisiete años. Él le pedía que lo esperara, porque pensaba ahorrar dinero para mudarse a La Habana y casarse con ella. En la última carta le decía que, si las cosas no cambiaban pronto, se iría a vivir con un tío a Venezuela, y que le escribiría en cuanto llegara.",
+        "en": "We read the letters one night, in the kitchen. Rafael and my grandmother had met at a dance when she was seventeen. He asked her to wait for him, because he planned to save money to move to Havana and marry her. In the last letter he told her that, if things didn't change soon, he'd go live with an uncle in Venezuela, and that he'd write to her as soon as he arrived."
+      },
+      {
+        "es": "Pero nunca volvió a escribir, o, si lo hizo, sus cartas no llegaron. Un año después, mi abuela se casó con mi abuelo, con quien vivió cincuenta años y tuvo cuatro hijos. Nunca le contó a nadie lo de Rafael. Tal vez pensó que no valía la pena, o tal vez temía que alguien la juzgara.",
+        "en": "But he never wrote again, or, if he did, his letters never arrived. A year later, my grandmother married my grandfather, with whom she lived for fifty years and had four children. She never told anyone about Rafael. Maybe she thought it wasn't worth it, or maybe she was afraid someone would judge her."
+      },
+      {
+        "es": "Mi madre dice que, si la abuela hubiera querido olvidarlo, habría quemado las cartas. No sabemos por qué las guardó durante más de sesenta años. Lo que sí sabemos es que, al final de cada carta, Rafael escribía la misma frase: «No me olvides, aunque la vida nos lleve por caminos distintos». Y, de algún modo, ella nunca lo olvidó.",
+        "en": "My mother says that if Grandma had wanted to forget him, she would have burned the letters. We don't know why she kept them for more than sixty years. What we do know is that at the end of every letter, Rafael wrote the same sentence: \"Don't forget me, even if life takes us down different paths.\" And, somehow, she never forgot him."
+      }
+    ],
+    "words": [
+      { "es": "armario", "en": "closet, wardrobe" },
+      { "es": "un tal", "en": "a certain, someone called" },
+      { "es": "habían sido enviadas", "en": "had been sent" },
+      { "es": "callada", "en": "quiet, silent" },
+      { "es": "ahorrar", "en": "to save (money)" },
+      { "es": "en cuanto", "en": "as soon as" },
+      { "es": "no valía la pena", "en": "it wasn't worth it" },
+      { "es": "juzgara", "en": "would judge" },
+      { "es": "quemado", "en": "burned" },
+      { "es": "de algún modo", "en": "somehow" }
+    ],
+    "questions": [
+      { "q": "¿Qué encontraron en el armario de la abuela?", "en": "What did they find in the grandmother's closet?", "choices": ["Una caja llena de cartas", "Un vestido de baile", "Fotos de Venezuela"], "answer": "Una caja llena de cartas", "why": "A shoebox full of letters, all from Rafael." },
+      { "q": "¿Cómo se conocieron Rafael y la abuela?", "en": "How did Rafael and the grandmother meet?", "choices": ["En un baile", "En La Habana", "Por carta"], "answer": "En un baile", "why": "\"Se habían conocido en un baile\": the pluperfect, because it happened before the letters." },
+      { "q": "¿Qué le pedía Rafael a la abuela?", "en": "What did Rafael ask the grandmother?", "choices": ["Que lo esperara", "Que se mudara a Venezuela", "Que quemara las cartas"], "answer": "Que lo esperara", "why": "\"Le pedía que lo esperara\": a request in the past takes the imperfect subjunctive." },
+      { "q": "¿Qué pasó después de la última carta?", "en": "What happened after the last letter?", "choices": ["Rafael no volvió a escribir", "Rafael llegó a La Habana", "La abuela se fue a Venezuela"], "answer": "Rafael no volvió a escribir", "why": "He never wrote again, or his letters never arrived." },
+      { "q": "Según la madre, ¿qué muestra que la abuela guardara las cartas?", "en": "According to the mother, what does the grandmother keeping the letters show?", "choices": ["Que no quería olvidar a Rafael", "Que se le olvidó tirarlas", "Que quería que alguien las leyera"], "answer": "Que no quería olvidar a Rafael", "why": "\"Si hubiera querido olvidarlo, habría quemado las cartas\": if she'd wanted to forget, she'd have burned them." }
+    ]
   }
 ]

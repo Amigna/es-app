@@ -1,7 +1,7 @@
 import type { Card } from "./drill";
 import { quizCard, type QuizQuestion } from "./quiz";
 
-export type ReadingLevel = "A1" | "A2" | "B1";
+export type ReadingLevel = "A1" | "A2" | "B1" | "B2";
 
 export interface Reading {
   slug: string;
@@ -19,6 +19,7 @@ export const LEVELS: { id: ReadingLevel; name: string; grammar: string; minWords
   { id: "A1", name: "Beginner", grammar: "Present tense and plans with ir a", minWords: 45, maxWords: 90 },
   { id: "A2", name: "Elementary", grammar: "Adds the preterite and imperfect", minWords: 90, maxWords: 150 },
   { id: "B1", name: "Intermediate", grammar: "Adds the perfect, future, conditional and subjunctive", minWords: 140, maxWords: 230 },
+  { id: "B2", name: "Advanced", grammar: "Adds the imperfect subjunctive, si clauses, the pluperfect and the passive", minWords: 220, maxWords: 350 },
 ];
 
 export const wordCount = (r: Reading) => r.paragraphs.flatMap((p) => p.es.split(/\s+/)).length;
