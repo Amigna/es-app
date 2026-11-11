@@ -1,4 +1,140 @@
 {
+ "odiar": {
+  "present": [
+   {"person":0,"es":"Odio el tráfico.","en":"I hate traffic."},
+   {"person":1,"es":"¿Odias el frío tanto como yo?","en":"Do you hate the cold as much as I do?"},
+   {"person":2,"es":"Mi hija odia las espinacas.","en":"My daughter hates spinach."},
+   {"person":3,"es":"Odiamos madrugar.","en":"We hate getting up early."},
+   {"person":4,"es":"Los gatos odian el agua.","en":"Cats hate water."}
+  ],
+  "preterite": [
+   {"person":0,"es":"Odié esa película, era demasiado larga.","en":"I hated that movie, it was way too long."},
+   {"person":1,"es":"¿Odiaste vivir en la ciudad?","en":"Did you hate living in the city?"},
+   {"person":2,"es":"Mi hermano odió ese trabajo desde el primer día.","en":"My brother hated that job from day one."},
+   {"person":3,"es":"Odiamos cada minuto de ese viaje en bus.","en":"We hated every minute of that bus trip."},
+   {"person":4,"es":"Los vecinos odiaron el ruido de la obra.","en":"The neighbors hated the noise from the construction."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi hermano odiaba la escuela.","en":"My brother hated school."},
+   {"person":0,"es":"Yo odiaba las matemáticas.","en":"I hated math."},
+   {"person":1,"es":"Tú odiabas ese uniforme.","en":"You hated that uniform."},
+   {"person":3,"es":"Odiábamos los lunes.","en":"We hated Mondays."},
+   {"person":4,"es":"Mis hermanos odiaban las sopas de la abuela.","en":"My brothers hated grandma's soups."}
+  ],
+  "future": [
+   {"person":1,"es":"Odiarás este calor.","en":"You'll hate this heat."},
+   {"person":0,"es":"Odiaré dejar esta casa.","en":"I'll hate leaving this house."},
+   {"person":2,"es":"Tu hijo odiará ese corte de pelo.","en":"Your son will hate that haircut."},
+   {"person":3,"es":"Odiaremos levantarnos tan temprano.","en":"We'll hate getting up so early."},
+   {"person":4,"es":"Los niños odiarán esa medicina.","en":"The kids will hate that medicine."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo odiaría vivir allí.","en":"I'd hate to live there."},
+   {"person":1,"es":"¿Odiarías vivir en el campo?","en":"Would you hate living in the country?"},
+   {"person":2,"es":"Mi esposa odiaría ese color.","en":"My wife would hate that color."},
+   {"person":3,"es":"Odiaríamos perder esta oportunidad.","en":"We'd hate to lose this opportunity."},
+   {"person":4,"es":"Ellos odiarían trabajar los domingos.","en":"They would hate working on Sundays."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"Siempre he odiado las cucarachas.","en":"I've always hated cockroaches."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Ella siempre había odiado el frío.","en":"She had always hated the cold."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":0,"es":"Yo habría odiado ese trabajo.","en":"I would have hated that job."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"No quiero que me odies.","en":"I don't want you to hate me."},
+   {"person":0,"es":"No creo que yo odie a nadie.","en":"I don't think I hate anyone."},
+   {"person":2,"es":"No me sorprende que tu gato odie al perro.","en":"I'm not surprised your cat hates the dog."},
+   {"person":3,"es":"No quiero que nos odiemos por esto.","en":"I don't want us to hate each other over this."},
+   {"person":4,"es":"Espero que los vecinos no nos odien.","en":"I hope the neighbors don't hate us."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Temía que mi hija me odiara.","en":"I was afraid my daughter would hate me."}
+  ],
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No odies a nadie.","en":"Don't hate anyone."}
+  ]
+ },
+ "gritar": {
+  "present": [
+   {"person":0,"es":"No grito nunca a mis hijos.","en":"I never shout at my kids."},
+   {"person":1,"es":"¿Por qué gritas?","en":"Why are you shouting?"},
+   {"person":2,"es":"Mi abuelo grita porque no oye bien.","en":"My grandfather shouts because he doesn't hear well."},
+   {"person":3,"es":"Gritamos de emoción en cada gol.","en":"We shout with excitement at every goal."},
+   {"person":4,"es":"Los niños gritan en el recreo.","en":"The kids shout at recess."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El niño gritó de alegría.","en":"The boy shouted with joy."},
+   {"person":0,"es":"Grité al ver la cucaracha.","en":"I screamed when I saw the cockroach."},
+   {"person":1,"es":"¿Le gritaste al árbitro?","en":"Did you yell at the referee?"},
+   {"person":3,"es":"Gritamos desde la orilla.","en":"We shouted from the shore."},
+   {"person":4,"es":"Todos gritaron cuando se fue la luz.","en":"Everyone screamed when the power went out."}
+  ],
+  "imperfect": [
+   {"person":4,"es":"Los vendedores gritaban en la calle.","en":"The vendors were shouting in the street."},
+   {"person":0,"es":"Yo gritaba en todos los partidos.","en":"I used to shout at every game."},
+   {"person":1,"es":"Tú gritabas cuando veías una araña.","en":"You used to scream when you saw a spider."},
+   {"person":2,"es":"El vendedor gritaba los precios.","en":"The vendor would shout out the prices."},
+   {"person":3,"es":"Gritábamos desde el balcón.","en":"We used to shout from the balcony."}
+  ],
+  "future": [
+   {"person":1,"es":"Gritarás cuando veas la sorpresa.","en":"You'll shout when you see the surprise."},
+   {"person":0,"es":"Gritaré tu nombre en la graduación.","en":"I'll shout your name at the graduation."},
+   {"person":2,"es":"El público gritará al ver a la cantante.","en":"The audience will scream when they see the singer."},
+   {"person":3,"es":"Gritaremos de alegría si ganamos.","en":"We'll shout with joy if we win."},
+   {"person":4,"es":"Los fanáticos gritarán en el estadio.","en":"The fans will shout in the stadium."}
+  ],
+  "conditional": [
+   {"person":0,"es":"Yo gritaría de alegría.","en":"I'd shout with joy."},
+   {"person":1,"es":"¿Gritarías en la montaña rusa?","en":"Would you scream on the roller coaster?"},
+   {"person":2,"es":"Mi mamá gritaría al ver este cuarto.","en":"My mom would scream if she saw this room."},
+   {"person":3,"es":"Gritaríamos, pero nadie nos oiría.","en":"We'd shout, but nobody would hear us."},
+   {"person":4,"es":"Ellos gritarían de miedo en esa casa.","en":"They would scream with fear in that house."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"Mi vecino ha gritado toda la noche.","en":"My neighbor has been shouting all night."}
+  ],
+  "pluperfect": [
+   {"person":2,"es":"Nunca me había gritado.","en":"He had never shouted at me."}
+  ],
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": [
+   {"person":0,"es":"Yo habría gritado.","en":"I would have shouted."}
+  ],
+  "subjPresent": [
+   {"person":1,"es":"No quiero que grites.","en":"I don't want you to shout."},
+   {"person":0,"es":"Mis hijos no quieren que yo grite.","en":"My kids don't want me to shout."},
+   {"person":2,"es":"Espero que el bebé no grite en el avión.","en":"I hope the baby doesn't scream on the plane."},
+   {"person":3,"es":"Es mejor que no gritemos en el hospital.","en":"It's better if we don't shout in the hospital."},
+   {"person":4,"es":"No me gusta que los maestros griten.","en":"I don't like it when teachers shout."}
+  ],
+  "subjImperfect": [
+   {"person":2,"es":"Le pedí que no gritara.","en":"I asked him not to shout."}
+  ],
+  "subjImperfectSe": [
+   {"person":4,"es":"Pedí que no gritasen.","en":"I asked them not to shout."}
+  ],
+  "subjPresentPerfect": [
+   {"person":2,"es":"Siento que te haya gritado así.","en":"I'm sorry he shouted at you like that."}
+  ],
+  "subjPluperfect": [
+   {"person":0,"es":"Si hubiera gritado, me habrían oído.","en":"If I had shouted, they would have heard me."}
+  ],
+  "impAffirmative": [
+   {"person":1,"es":"Grita si necesitas ayuda.","en":"Shout if you need help."}
+  ],
+  "impNegative": [
+   {"person":4,"es":"No griten, el bebé duerme.","en":"Don't shout, the baby is sleeping."}
+  ]
+ },
  "secar": {
   "present": [
    {"person":0,"es":"Seco la ropa al sol.","en":"I dry the clothes in the sun."},
@@ -1831,80 +1967,6 @@
   ],
   "impNegative": {"rare":true}
  },
- "preparar": {
-  "present": [
-   {"person":2,"es":"Mi abuela prepara el mejor sancocho del barrio.","en":"My grandmother makes the best sancocho in the neighborhood."},
-   {"person":0,"es":"Preparo el desayuno para todos.","en":"I make breakfast for everyone."},
-   {"person":1,"es":"¿Preparas la ensalada?","en":"Are you making the salad?"},
-   {"person":3,"es":"Preparamos la fiesta sorpresa en secreto.","en":"We're planning the surprise party in secret."},
-   {"person":4,"es":"Los estudiantes preparan sus exámenes.","en":"The students are preparing for their exams."}
-  ],
-  "preterite": [
-   {"person":0,"es":"Preparé arepas para la cena.","en":"I made arepas for dinner."},
-   {"person":1,"es":"¿Preparaste tu maleta?","en":"Did you pack your suitcase?"},
-   {"person":2,"es":"El entrenador preparó al equipo para la final.","en":"The coach got the team ready for the final."},
-   {"person":3,"es":"Anoche preparamos todo para el viaje.","en":"Last night we got everything ready for the trip."},
-   {"person":4,"es":"Mis hijos me prepararon una sorpresa.","en":"My kids prepared a surprise for me."}
-  ],
-  "imperfect": [
-   {"person":2,"es":"Mi mamá preparaba tamales en Navidad.","en":"My mom made tamales at Christmas."},
-   {"person":0,"es":"Yo preparaba el café todas las mañanas.","en":"I made the coffee every morning."},
-   {"person":1,"es":"Tú preparabas las mejores empanadas.","en":"You made the best empanadas."},
-   {"person":3,"es":"Preparábamos los exámenes en la biblioteca.","en":"We studied for exams at the library."},
-   {"person":4,"es":"Los niños preparaban regalos para el Día de la Madre.","en":"The kids made gifts for Mother's Day."}
-  ],
-  "future": [
-   {"person":0,"es":"Prepararé una sopa para la cena.","en":"I'll make soup for dinner."},
-   {"person":1,"es":"Prepararás la presentación con tu equipo.","en":"You'll prepare the presentation with your team."},
-   {"person":2,"es":"El chef preparará un menú especial.","en":"The chef will prepare a special menu."},
-   {"person":3,"es":"Prepararemos todo con tiempo.","en":"We'll get everything ready ahead of time."},
-   {"person":4,"es":"Los maestros prepararán a los alumnos para el examen.","en":"The teachers will prepare the students for the exam."}
-  ],
-  "conditional": [
-   {"person":1,"es":"¿Me prepararías un café?","en":"Would you make me a coffee?"},
-   {"person":0,"es":"Yo prepararía algo más sencillo.","en":"I'd make something simpler."},
-   {"person":2,"es":"Mi abuela prepararía comida para todo el barrio.","en":"My grandmother would cook for the whole neighborhood."},
-   {"person":3,"es":"Prepararíamos la casa para la visita.","en":"We'd get the house ready for the visit."},
-   {"person":4,"es":"Ellos prepararían el discurso.","en":"They would prepare the speech."}
-  ],
-  "presentPerfect": [
-   {"person":0,"es":"He preparado una sorpresa para ti.","en":"I've prepared a surprise for you."}
-  ],
-  "pluperfect": [
-   {"person":2,"es":"Mi madre ya había preparado la cena.","en":"My mother had already made dinner."}
-  ],
-  "futurePerfect": [
-   {"person":3,"es":"Para las seis habremos preparado todo.","en":"By six we'll have everything ready."}
-  ],
-  "conditionalPerfect": [
-   {"person":0,"es":"Yo habría preparado más comida.","en":"I would have made more food."}
-  ],
-  "subjPresent": [
-   {"person":1,"es":"Quiero que prepares tus cosas esta noche.","en":"I want you to pack your things tonight."},
-   {"person":0,"es":"¿Quieres que yo prepare la cena?","en":"Do you want me to make dinner?"},
-   {"person":2,"es":"Es importante que el equipo prepare bien el partido.","en":"It's important for the team to prepare well for the game."},
-   {"person":3,"es":"Es mejor que preparemos la maleta hoy.","en":"We'd better pack the suitcase today."},
-   {"person":4,"es":"Pide que preparen la habitación.","en":"Ask them to get the room ready."}
-  ],
-  "subjImperfect": [
-   {"person":2,"es":"Le pedí a mi abuela que preparara su famoso flan.","en":"I asked my grandmother to make her famous flan."}
-  ],
-  "subjImperfectSe": [
-   {"person":4,"es":"Pidieron que preparasen las camas para los invitados.","en":"They asked for the beds to be made up for the guests."}
-  ],
-  "subjPresentPerfect": [
-   {"person":1,"es":"Me alegra que hayas preparado todo.","en":"I'm glad you've gotten everything ready."}
-  ],
-  "subjPluperfect": [
-   {"person":3,"es":"Si hubiéramos preparado mejor el viaje, no habría problemas.","en":"If we had planned the trip better, there wouldn't be any problems."}
-  ],
-  "impAffirmative": [
-   {"person":1,"es":"Prepara café, que vienen visitas.","en":"Make some coffee, we've got visitors coming."}
-  ],
-  "impNegative": [
-   {"person":1,"es":"No prepares nada, vamos a comer fuera.","en":"Don't cook anything, we're eating out."}
-  ]
- },
  "dedicar": {
   "present": [
    {"person":2,"es":"Mi papá dedica los domingos a la familia.","en":"My dad spends Sundays with the family."},
@@ -2313,80 +2375,6 @@
   "impAffirmative": {"rare":true},
   "impNegative": [
    {"person":1,"es":"No le desees el mal a nadie.","en":"Don't wish harm on anyone."}
-  ]
- },
- "decidir": {
-  "present": [
-   {"person":2,"es":"El jurado decide hoy.","en":"The jury decides today."},
-   {"person":0,"es":"Siempre decido en el último momento.","en":"I always decide at the last minute."},
-   {"person":1,"es":"Tú decides dónde comemos.","en":"You decide where we eat."},
-   {"person":3,"es":"Decidimos juntos los gastos de la casa.","en":"We decide on household expenses together."},
-   {"person":4,"es":"Los votantes deciden el futuro del país.","en":"Voters decide the country's future."}
-  ],
-  "preterite": [
-   {"person":0,"es":"Decidí estudiar medicina.","en":"I decided to study medicine."},
-   {"person":1,"es":"¿Ya decidiste qué vas a pedir?","en":"Have you decided what you're going to order?"},
-   {"person":2,"es":"Mi hermana decidió mudarse a Bogotá.","en":"My sister decided to move to Bogotá."},
-   {"person":3,"es":"Anoche decidimos ir a la playa.","en":"Last night we decided to go to the beach."},
-   {"person":4,"es":"Mis padres decidieron vender la casa.","en":"My parents decided to sell the house."}
-  ],
-  "imperfect": [
-   {"person":2,"es":"Mi abuelo decidía todo en la familia.","en":"My grandfather made all the decisions in the family."},
-   {"person":0,"es":"Yo nunca decidía nada sin mi madre.","en":"I never decided anything without my mother."},
-   {"person":1,"es":"Tú decidías la música en las fiestas.","en":"You picked the music at parties."},
-   {"person":3,"es":"Decidíamos los planes del fin de semana el viernes.","en":"We'd decide our weekend plans on Friday."},
-   {"person":4,"es":"Los mayores decidían por nosotros.","en":"The adults decided for us."}
-  ],
-  "future": [
-   {"person":1,"es":"Tú decidirás cuando estés listo.","en":"You'll decide when you're ready."},
-   {"person":0,"es":"Decidiré mañana.","en":"I'll decide tomorrow."},
-   {"person":2,"es":"El juez decidirá el caso la próxima semana.","en":"The judge will decide the case next week."},
-   {"person":3,"es":"Decidiremos la fecha de la boda pronto.","en":"We'll set the wedding date soon."},
-   {"person":4,"es":"Los aficionados decidirán el mejor jugador.","en":"The fans will choose the best player."}
-  ],
-  "conditional": [
-   {"person":0,"es":"Yo decidiría con calma.","en":"I'd take my time deciding."},
-   {"person":1,"es":"¿Qué decidirías en mi lugar?","en":"What would you decide in my place?"},
-   {"person":2,"es":"Un buen líder decidiría rápido.","en":"A good leader would decide quickly."},
-   {"person":3,"es":"Decidiríamos mejor con más información.","en":"We'd decide better with more information."},
-   {"person":4,"es":"Ellos decidirían por votación.","en":"They'd decide by vote."}
-  ],
-  "presentPerfect": [
-   {"person":0,"es":"He decidido cambiar de trabajo.","en":"I've decided to change jobs."}
-  ],
-  "pluperfect": [
-   {"person":4,"es":"Ya habían decidido el nombre del bebé.","en":"They had already decided on the baby's name."}
-  ],
-  "futurePerfect": [
-   {"person":3,"es":"Para el lunes habremos decidido.","en":"By Monday we'll have decided."}
-  ],
-  "conditionalPerfect": [
-   {"person":0,"es":"Yo habría decidido lo mismo.","en":"I would have decided the same thing."}
-  ],
-  "subjPresent": [
-   {"person":1,"es":"Avísame cuando decidas.","en":"Let me know when you decide."},
-   {"person":0,"es":"Mis padres esperan que yo decida pronto.","en":"My parents hope I decide soon."},
-   {"person":2,"es":"Lo que el jefe decida está bien.","en":"Whatever the boss decides is fine."},
-   {"person":3,"es":"Es mejor que decidamos entre todos.","en":"It's better if we all decide together."},
-   {"person":4,"es":"Esperamos que decidan a nuestro favor.","en":"We hope they decide in our favor."}
-  ],
-  "subjImperfect": [
-   {"person":2,"es":"Me sorprendió que mi hermana decidiera irse.","en":"It surprised me that my sister decided to leave."}
-  ],
-  "subjImperfectSe": [
-   {"person":4,"es":"Esperaban que los jueces decidiesen esa misma noche.","en":"They hoped the judges would decide that same night."}
-  ],
-  "subjPresentPerfect": [
-   {"person":1,"es":"Me alegra que hayas decidido venir.","en":"I'm glad you've decided to come."}
-  ],
-  "subjPluperfect": [
-   {"person":0,"es":"Si hubiera decidido antes, habría conseguido boletos.","en":"If I had decided sooner, I would have gotten tickets."}
-  ],
-  "impAffirmative": [
-   {"person":1,"es":"Decide tú, a mí me da igual.","en":"You decide, it's all the same to me."}
-  ],
-  "impNegative": [
-   {"person":1,"es":"No decidas nada todavía.","en":"Don't decide anything yet."}
   ]
  },
  "funcionar": {

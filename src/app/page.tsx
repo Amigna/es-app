@@ -3,7 +3,7 @@ import Link from "next/link";
 import CourseShortcut from "@/components/CourseShortcut";
 import VerbSearch from "@/components/VerbSearch";
 import { verbGroup, type VerbGroup } from "@/lib/conjugation/regular";
-import { VERBS, verbSlug, type Verb } from "@/lib/verbs";
+import { ESSENTIAL_COUNT, VERBS, verbSlug, type Verb } from "@/lib/verbs";
 
 // A hue per verb ending, for the edge of each verb card.
 const ENDINGS = [
@@ -68,9 +68,6 @@ const endingOf = (inf: string) =>
       : "ir";
 
 const byName = (a: Verb, b: Verb) => a.inf.localeCompare(b.inf, "es");
-
-// VERBS runs from the most common down, with everyday verbs like comer and cantar placed among the first 100.
-const ESSENTIAL_COUNT = 100;
 
 const SECTIONS = [
   { id: "common", title: "Essential verbs", verbs: VERBS.slice(0, ESSENTIAL_COUNT) },

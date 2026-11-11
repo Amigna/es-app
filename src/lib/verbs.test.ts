@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { VERBS, findVerb, searchVerbs, verbSlug, VERB_SHAPE } from "./verbs";
+import { levelInfo } from "./level";
+import { ESSENTIAL_COUNT, VERBS, findVerb, searchVerbs, verbSlug, VERB_SHAPE } from "./verbs";
 import { conjugate } from "./conjugation/engine";
 import { TENSES } from "./conjugation/types";
 
@@ -48,10 +49,12 @@ describe("verb seed", () => {
 });
 
 describe("verb order", () => {
-  it("keeps everyday verbs among the first 100, which the home page, the A2 drills and Today's review treat as the essentials", () => {
-    const first = new Set(VERBS.slice(0, 100).map((v) => v.inf));
-    for (const inf of ["comer", "beber", "comprar", "correr", "llamarse", "visitar", "practicar", "cantar", "gustar"]) {
-      assert.ok(first.has(inf), `${inf} should be in the first 100`);
+  it("keeps everyday verbs among the essentials, which the home page and the A2 drills use", () => {
+    const first = new Set(VERBS.slice(0, ESSENTIAL_COUNT).map((v) => v.inf));
+    const everyday = ["comer", "beber", "comprar", "correr", "llamarse", "visitar", "practicar", "cantar", "gustar"];
+    for (const inf of [...everyday, "necesitar", "leer", "abrir", "almorzar", "costar", "doler", "preparar", "decidir", "llover", "lavarse"]) {
+      assert.ok(first.has(inf), `${inf} should be in the first ${ESSENTIAL_COUNT}`);
     }
+    assert.equal(levelInfo("A2").commonVerbs, ESSENTIAL_COUNT);
   });
 });

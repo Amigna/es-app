@@ -27,7 +27,8 @@ export const LEVELS: LevelInfo[] = [
     name: "Elementary",
     hint: "Can talk about everyday things and the past a little",
     tenses: ["present", "preterite", "imperfect"],
-    commonVerbs: 100,
+    // The home page's essential verbs, ESSENTIAL_COUNT in verbs.ts. Not imported, to keep the verb list out of this file's bundle.
+    commonVerbs: 135,
     pool: "common",
   },
   {

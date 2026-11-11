@@ -10,6 +10,9 @@ export interface Verb extends VerbInput {
 
 export const VERBS = raw as Verb[];
 
+/** VERBS runs from the most common down, with everyday verbs like comer, leer and almorzar hand-placed among the first 135. */
+export const ESSENTIAL_COUNT = 135;
+
 export const VERB_SHAPE = /^([a-zñáéíóúü]+(ar|er|ir|ír)|ir)(se)?$/;
 
 const norm = (s: string) => stripAccents(s.trim().toLowerCase());
