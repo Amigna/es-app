@@ -13,9 +13,10 @@ import {
   PHRASES,
   SMALL_WORDS,
   adjectiveForms,
-  isPluralOnly,
+  inGenderDrill,
   levelRank,
   nounArticle,
+  nounHeadword,
   smallWordForms,
   upToLevel,
   type Adjective,
@@ -53,8 +54,8 @@ const nounWord = (n: Noun): Word => ({
   en: n.en,
   type: "noun",
   gender: n.gender,
-  accepted: [n.es, `${nounArticle(n)} ${n.es}`],
-  shown: `${nounArticle(n)} ${n.es}`,
+  accepted: [...new Set([n.es, nounHeadword(n)])],
+  shown: nounHeadword(n),
   ex: n.ex,
   note: n.note,
 });
@@ -192,7 +193,7 @@ export function vocabDeck({ kinds, wordTypes, topics, level }: VocabOptions, ran
     ...smallWords.map(plainWord("small")),
   ];
   const everyWord = allWords();
-  const genderNouns = nouns.filter((n) => !n.article && !isPluralOnly(n));
+  const genderNouns = nouns.filter(inGenderDrill);
   const agreeing = has("adjective") ? agreeingAdjectives().filter((a) => upToLevel(level, "adjective", a.es)) : [];
 
   // Drop question types with nothing to ask, e.g. noun gender with only adverbs selected.
@@ -463,7 +464,7 @@ export function listedWordCard(id: string, kind: "flashcard" | "toSpanish" | "ge
   if (type === "phrase") return kind === "flashcard" ? vocabReviewCard(type, es, "toEnglish", random) : null;
   if (kind === "gender") {
     const noun = type === "noun" ? NOUNS.find((n) => n.es === es) : undefined;
-    return noun && !noun.article && !isPluralOnly(noun) ? genderCard(noun) : null;
+    return noun && inGenderDrill(noun) ? genderCard(noun) : null;
   }
   if (kind === "agreement") {
     const adjective = type === "adjective" ? agreeingAdjectives().find((a) => a.es === es) : undefined;
@@ -535,7 +536,7 @@ function wordItems(): string[] {
     ).flat();
   };
   const gender = easiestFirst("noun", NOUNS)
-    .filter((n) => !n.article && !isPluralOnly(n))
+    .filter(inGenderDrill)
     .map((n) => vocabTrack("noun", n.es, "gender").item);
   const agreement = easiestFirst("adjective", agreeingAdjectives()).map((a) => vocabTrack("adjective", a.es, "agreement").item);
   return [...meanings("toEnglish"), ...meanings("toSpanish"), ...gender, ...agreement];

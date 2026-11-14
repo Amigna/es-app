@@ -3,7 +3,7 @@ import { conjugate } from "./conjugation/engine";
 import { TENSES, type TenseId } from "./conjugation/types";
 import { personLabel, verbTrack } from "./drill";
 import { VERBS, verbSlug } from "./verbs";
-import { ADJECTIVES, ADVERBS, NOUNS, PHRASES, SMALL_WORDS, adjectiveForms, nounArticle, nounPlural, smallWordForms } from "./vocab";
+import { ADJECTIVES, ADVERBS, NOUNS, PHRASES, SMALL_WORDS, adjectiveForms, isGeoName, nounHeadword, nounPlural, smallWordForms } from "./vocab";
 
 // Finds a word tapped in a reading passage: which entry it belongs to, and the item to add to the review schedule.
 // Imported on demand, because it pulls in the word lists and conjugates every verb.
@@ -92,9 +92,9 @@ function buildIndex(): Index {
   const index: Index = { words: new Map(), parts: new Map(), feminine: new Map(), verbs: new Map(), attachable: new Map() };
 
   for (const n of NOUNS) {
-    const base = { key: `noun:${n.es}`, headword: `${nounArticle(n)} ${n.es}`, en: n.en, item: `vocab:noun:${n.es}:toEnglish` };
+    const base = { key: `noun:${n.es}`, headword: nounHeadword(n), en: n.en, item: `vocab:noun:${n.es}:toEnglish` };
     addWord(index, n.es, { ...base, detail: "Noun" });
-    if (nounPlural(n) !== n.es) addWord(index, nounPlural(n), { ...base, detail: "Noun, plural" });
+    if (!isGeoName(n) && nounPlural(n) !== n.es) addWord(index, nounPlural(n), { ...base, detail: "Noun, plural" });
     if (n.gender === "m" && !n.article && PEOPLE_TOPICS.has(n.topic) && /(?:o|or)$/.test(n.es) && oneWord(n.es)) {
       const woman = n.es.endsWith("o") ? n.es.slice(0, -1) + "a" : n.es + "a";
       addTo(index.feminine, woman, { ...base, detail: "Noun, feminine" });

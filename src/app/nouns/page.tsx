@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import WordList from "@/components/WordList";
-import { NOUNS, isPluralOnly, nounArticle, nounPlural } from "@/lib/vocab";
+import { NOUNS, hasPlural, isGeoName, nounHeadword, nounPlural } from "@/lib/vocab";
 
 export const metadata: Metadata = { title: "Nouns" };
 
@@ -9,9 +9,14 @@ export default function NounsPage() {
     .sort((a, b) => a.es.localeCompare(b.es, "es"))
     .map((n) => ({
       id: n.es,
-      word: `${nounArticle(n)} ${n.es}`,
-      gender: n.gender,
-      forms: isPluralOnly(n) ? undefined : `plural: ${n.gender === "m" ? "los" : "las"} ${nounPlural(n)}`,
+      word: nounHeadword(n),
+      // A country has no article to color (and Costa Rica's first word isn't one), so its gender is spelled out instead.
+      gender: isGeoName(n) && !n.article ? undefined : n.gender,
+      forms: hasPlural(n)
+        ? `plural: ${n.gender === "m" ? "los" : "las"} ${nounPlural(n)}`
+        : isGeoName(n)
+          ? n.gender === "m" ? "masculine" : "feminine"
+          : undefined,
       en: n.en,
       topic: n.topic,
       note: n.note,

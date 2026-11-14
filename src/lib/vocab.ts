@@ -138,6 +138,20 @@ export const nounPlural = (n: Noun) => n.plural ?? pluralOf(n.es);
 export const nounArticle = (n: Noun) => n.article ?? (n.gender === "m" ? "el" : "la");
 export const isPluralOnly = (n: Noun) => /^l[ao]s$/.test(nounArticle(n));
 
+export const GEO_TOPIC = "countries and continents";
+/**
+ * Countries, continents and regions are names: capitalized, with no plural, and without an article unless the name usually
+ * takes one (la India, el Caribe), which goes in `article`. They still have a gender, which adjectives agree with:
+ * Colombia es preciosa.
+ */
+export const isGeoName = (n: Noun) => n.topic === GEO_TOPIC;
+/** The noun as it's shown and spoken: la casa, los lentes, México. */
+export const nounHeadword = (n: Noun) => (isGeoName(n) && !n.article ? n.es : `${nounArticle(n)} ${n.es}`);
+/** Whether the noun has a plural worth showing. */
+export const hasPlural = (n: Noun) => !isPluralOnly(n) && !isGeoName(n);
+/** Whether "el or la?" is a fair question: not when the article is fixed (el agua, el dentista), plural-only, or a place name. */
+export const inGenderDrill = (n: Noun) => !n.article && !isPluralOnly(n) && !isGeoName(n);
+
 /** Masculine, feminine, masculine plural, feminine plural. */
 export function adjectiveForms(a: Adjective): [string, string, string, string] {
   const feminine = a.feminine ?? (a.es.endsWith("o") ? a.es.slice(0, -1) + "a" : a.es);

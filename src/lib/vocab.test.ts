@@ -9,12 +9,17 @@ import {
   REGIONS,
   SMALL_WORDS,
   adjectiveForms,
+  hasPlural,
+  inGenderDrill,
+  isGeoName,
   isPluralOnly,
   nounArticle,
+  nounHeadword,
   nounPlural,
   pluralOf,
   type Noun,
 } from "./vocab";
+import { lookupWord } from "./word-lookup";
 
 const noun = (es: string) => {
   const n = NOUNS.find((x) => x.es === es);
@@ -64,6 +69,27 @@ describe("plurals and articles", () => {
     assert.equal(nounArticle(noun("agua")), "el");
     assert.equal(nounArticle(noun("mano")), "la");
     assert.equal(nounArticle(noun("día")), "el");
+  });
+
+  it("shows countries as names: no article unless the name takes one, no plural, no gender question", () => {
+    assert.equal(nounHeadword(noun("México")), "México");
+    assert.equal(nounHeadword(noun("Costa Rica")), "Costa Rica");
+    assert.equal(nounHeadword(noun("India")), "la India");
+    assert.equal(nounHeadword(noun("Reino Unido")), "el Reino Unido");
+    assert.equal(nounHeadword(noun("casa")), "la casa");
+    for (const n of NOUNS.filter(isGeoName)) {
+      assert.equal(hasPlural(n), false, n.es);
+      assert.equal(inGenderDrill(n), false, n.es);
+      assert.ok(/^\p{Lu}/u.test(n.es), `${n.es} should be capitalized`);
+    }
+    assert.ok(inGenderDrill(noun("casa")));
+    assert.equal(inGenderDrill(noun("agua")), false);
+  });
+
+  it("finds a country by name, without inventing a plural", () => {
+    const match = lookupWord("méxico").find((m) => m.key === "noun:México");
+    assert.equal(match?.headword, "México");
+    assert.equal(lookupWord("méxicos").length, 0);
   });
 
   it("builds the four adjective forms", () => {

@@ -7,6 +7,11 @@ export interface QuizQuestion {
   en: string;
   choices?: string[];
   answer: string;
+  /**
+   * Other answers that are also right, for typed questions where the blank can't rule them out: te llamo luego is the
+   * point, but te llamaré luego and te voy a llamar luego aren't wrong. `answer` is the one shown and taught.
+   */
+  also?: string[];
   why: string;
   /** The guide rule it tests, by its text. */
   rule?: string;
@@ -33,7 +38,7 @@ export function quizCard(slug: string, index: number, guideTitle: string, q: Qui
     titleIsSpanish: true,
     subtitle: q.en,
     ask: q.choices ? "Choose the answer" : "Type the answer",
-    answers: [q.answer],
+    answers: [q.answer, ...(q.also ?? [])],
     shown: q.answer,
     choices: q.choices && shuffled(q.choices, random),
     explain: q.why,

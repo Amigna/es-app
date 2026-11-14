@@ -18,6 +18,7 @@ export const NOUN_TOPICS = [
   "arts",
   "body",
   "clothes",
+  "countries and continents",
   "family",
   "feelings",
   "food",

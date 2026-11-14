@@ -31,6 +31,12 @@ describe("quiz data", () => {
           assert.ok(q.choices.includes(q.answer), `answer not in choices: ${label}`);
           assert.equal(new Set(q.choices).size, q.choices.length, label);
         }
+        // Other right answers only make sense when typing, and each must be new.
+        if (q.also) {
+          assert.ok(!q.choices, `also on a multiple-choice question: ${label}`);
+          assert.ok(q.also.length > 0 && !q.also.includes(q.answer), label);
+          assert.equal(new Set(q.also).size, q.also.length, label);
+        }
       }
     }
   });
@@ -53,6 +59,14 @@ describe("quiz cards", () => {
     assert.equal(gradeCard(card, "Son"), "wrong");
     assert.equal(card.explain, "Singular.");
     assert.equal(card.lesson, undefined);
+  });
+
+  it("accepts the other right answers of a typed question, still showing the main one", () => {
+    const typed: QuizQuestion = { q: "Te _____ luego. (llamar, yo)", en: "I'll call you later.", answer: "llamo", also: ["llamaré", "voy a llamar"], why: "." };
+    const card = quizCard("talking-about-the-future", 0, "Future", typed);
+    for (const ok of ["llamo", "llamaré", "voy a llamar"]) assert.equal(gradeCard(card, ok), "correct", ok);
+    assert.equal(gradeCard(card, "llamaría"), "wrong");
+    assert.equal(card.shown, "llamo");
   });
 
   it("carries the lesson's rule, to show after a miss, and never a link away", () => {
