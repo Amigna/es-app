@@ -41,6 +41,27 @@ service cloud.firestore {
       allow read, update, delete: if false;
     }
 
+    // Translations marked "Mine works" in the writing drill, kept for review so good alternatives can be accepted.
+    // Read and clear them in the Firebase console.
+    match /mineWorks/{id} {
+      allow create: if canSaveProgress()
+        && request.resource.data.keys().hasOnly(['card', 'prompt', 'typed', 'expected', 'email', 'createdAt'])
+        && request.resource.data.keys().hasAll(['card', 'prompt', 'typed', 'expected', 'email', 'createdAt'])
+        && request.resource.data.card is string
+        && request.resource.data.card.size() > 0
+        && request.resource.data.card.size() <= 200
+        && request.resource.data.prompt is string
+        && request.resource.data.prompt.size() <= 300
+        && request.resource.data.typed is string
+        && request.resource.data.typed.size() > 0
+        && request.resource.data.typed.size() <= 300
+        && request.resource.data.expected is string
+        && request.resource.data.expected.size() <= 300
+        && request.resource.data.email == ownEmail()
+        && request.resource.data.createdAt == request.time;
+      allow read, update, delete: if false;
+    }
+
     // Each person's data is private to them.
     match /users/{uid}/{document=**} {
       allow read, write: if signedIn() && request.auth.uid == uid && canSaveProgress();

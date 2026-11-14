@@ -9,7 +9,7 @@ import { conjugate } from "@/lib/conjugation/engine";
 import { markVerb } from "@/lib/conjugation/regular";
 import { TENSES } from "@/lib/conjugation/types";
 import { accentTrap, gradeCard, wordDiff, type Card, type Grade, type TenseTable } from "@/lib/drill";
-import { drillStreak, recordAnswer, recordStreak, saveProgress, syncDrillStreak } from "@/lib/progress-queue";
+import { drillStreak, progressEnabled, recordAnswer, recordStreak, saveProgress, syncDrillStreak } from "@/lib/progress-queue";
 import { SLOW_RATE, speak } from "@/lib/speech";
 
 const SPECIAL_LETTERS = ["á", "é", "í", "ó", "ú", "ñ", "ü"];
@@ -236,6 +236,17 @@ export default function DrillRunner({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [finished]);
 
+  /**
+   * What a problem report says the card was. Once something was typed, it adds that and how it was graded, so a report
+   * of a missing synonym can be told apart from a typo.
+   */
+  function reportAbout(typed?: string) {
+    const about = [card.badge, card.title, card.shown].filter(Boolean).join(": ");
+    if (typed === undefined) return about;
+    const graded = result === "correct" ? "marked right" : result === "accent" ? "accent slip" : result === "wrong" ? "marked wrong" : "not matched";
+    return `${about} | typed "${typed.trim() || "didn't know"}", ${graded}`;
+  }
+
   /** What gets saved about a miss. Dictation leaves the prompt out, since the sentence is the answer. */
   function mistake(given: string) {
     const prompt = card.dictation ? "" : [card.title, card.ask].filter(Boolean).join(" · ");
@@ -280,6 +291,13 @@ export default function DrillRunner({
   }
 
   function selfGrade(knew: boolean) {
+    // "Mine works" on a translation that didn't match goes to a list for review, to find answers worth accepting.
+    // Only signed-in people's are kept, like reports, and a failure to send never gets in the way of the drill.
+    if (knew && card.writing && input.trim() && progressEnabled()) {
+      import("@/lib/report")
+        .then(({ sendMineWorks }) => sendMineWorks(card.id, card.title, input.trim(), card.shown))
+        .catch((err) => console.error("Mine works not saved", err));
+    }
     const { answeredNow, missed } = record(knew ? "correct" : "wrong", card.writing ? input : undefined, true);
     advance(answeredNow, missed);
   }
@@ -463,7 +481,7 @@ export default function DrillRunner({
                     Knew it
                   </button>
                 </div>
-                <ReportProblem key={card.id} about={[card.badge, card.title, card.shown].filter(Boolean).join(": ")} />
+                <ReportProblem key={card.id} about={reportAbout()} />
               </>
             ) : (
               <button
@@ -588,7 +606,7 @@ export default function DrillRunner({
                 Mine works
               </button>
             </div>
-            <ReportProblem key={card.id} about={[card.badge, card.title, card.shown].filter(Boolean).join(": ")} />
+            <ReportProblem key={card.id} about={reportAbout(input)} />
           </div>
         )}
 
@@ -609,7 +627,7 @@ export default function DrillRunner({
             >
               Next
             </button>
-            <ReportProblem key={card.id} about={[card.badge, card.title, card.shown].filter(Boolean).join(": ")} />
+            <ReportProblem key={card.id} about={reportAbout(card.flashcard ? undefined : input)} />
           </div>
         )}
       </section>
