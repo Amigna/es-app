@@ -107,7 +107,8 @@ export default function CourseExam({ level, quizzes, review }: { level: Level; q
               <span className="block text-base font-normal">The {level} badge is yours.</span>
             </p>
           </div>
-          <LevelUpOffer to={level} />
+          {/* Passing a level's exam means you're ready for the next one; B2 is the top, so it offers itself. */}
+          <LevelUpOffer passed={level} to={nextLevel ?? level} />
           {nextChapter ? (
             <Link href={`/course/${nextChapter.id}`} className={`inline-flex items-center ${buttonClass.replace("h-11", "min-h-11 py-2")}`}>
               On to {nextLevel}: {nextChapter.title}

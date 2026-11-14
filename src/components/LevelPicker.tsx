@@ -70,14 +70,15 @@ export function LevelPicker({ onChosen }: { onChosen?: () => void }) {
 }
 
 /**
- * After passing a level's course exam, asks whether to set that as the level, when the saved one is lower or
- * missing. Asked, not done, because the level also resets the drill's tenses and verbs.
+ * After passing a level's course exam, offers the next level (the exam's own for B2, the last), when the saved one is
+ * lower or missing. Asked, not done, because the level also resets the drill's tenses and verbs.
  */
-export function LevelUpOffer({ to }: { to: Level }) {
+export function LevelUpOffer({ passed, to }: { passed: Level; to: Level }) {
   const level = useLevel();
   const setLevel = useSetLevel();
   const [answer, setAnswer] = useState<"pending" | "moved" | "failed" | "later">("pending");
   const info = LEVELS.find((l) => l.id === to)!;
+  const passedName = LEVELS.find((l) => l.id === passed)!.name.toLowerCase();
   const below = !level || LEVELS.findIndex((l) => l.id === level) < LEVELS.findIndex((l) => l.id === to);
   if (answer === "later" || (answer === "pending" && !below)) return null;
   if (answer !== "pending") {
@@ -92,8 +93,10 @@ export function LevelUpOffer({ to }: { to: Level }) {
   return (
     <div className="space-y-2 rounded-lg border border-accent-300 p-3 dark:border-accent-800">
       <p>
-        You&apos;ve passed the {info.name.toLowerCase()} ({to}) exam. Set your level to {to}? Drills will start with its tenses, verbs and
-        words.
+        {passed === to
+          ? `You've passed the ${passedName} (${passed}) exam. Set your level to ${to}?`
+          : `You've passed the ${passedName} (${passed}) exam, so you're ready for ${info.name.toLowerCase()} (${to}). Move up to ${to}?`}{" "}
+        Drills will start with its tenses, verbs and words.
       </p>
       <div className="flex flex-wrap gap-3">
         <button
@@ -101,7 +104,7 @@ export function LevelUpOffer({ to }: { to: Level }) {
           onClick={async () => setAnswer((await setLevel(to)) ? "moved" : "failed")}
           className="h-10 rounded-xl bg-accent-700 px-4 font-medium text-white transition hover:bg-accent-800"
         >
-          Set my level to {to}
+          {passed === to ? `Set my level to ${to}` : `Move up to ${to}`}
         </button>
         <button type="button" onClick={() => setAnswer("later")} className="h-10 px-2 text-sm text-accent-700 underline dark:text-accent-400">
           Not now
