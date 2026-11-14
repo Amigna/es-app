@@ -343,6 +343,37 @@ describe("derived verbs (like)", () => {
     assert.deepEqual(alsoAccepted(run("hablar"), "he hablado"), []);
   });
 
+  it("predecir / contradecir / bendecir / maldecir: like decir, with a regular future", () => {
+    check("predecir", "present", P5("predigo predices predice predecimos predicen"), "predecís");
+    check("predecir", "preterite", P5("predije predijiste predijo predijimos predijeron"));
+    check("predecir", "future", P5("predeciré predecirás predecirá predeciremos predecirán"));
+    check("predecir", "subjImperfect", P5("predijera predijeras predijera predijéramos predijeran"));
+    check("predecir", "impAffirmative", [null, "predice", "prediga", "predigamos", "predigan"], "predecí");
+    assert.equal(run("predecir").participle, "predicho");
+    assert.equal(run("predecir").gerund, "prediciendo");
+    check("contradecir", "preterite", P5("contradije contradijiste contradijo contradijimos contradijeron"));
+    check("contradecir", "impAffirmative", [null, "contradice", "contradiga", "contradigamos", "contradigan"]);
+    assert.equal(run("contradecir").participle, "contradicho");
+    check("bendecir", "present", P5("bendigo bendices bendice bendecimos bendicen"));
+    check("bendecir", "preterite", P5("bendije bendijiste bendijo bendijimos bendijeron"));
+    check("bendecir", "conditional", P5("bendeciría bendecirías bendeciría bendeciríamos bendecirían"));
+    check("bendecir", "subjPresent", P5("bendiga bendigas bendiga bendigamos bendigan"));
+    assert.equal(run("bendecir").participle, "bendecido");
+    check("maldecir", "impAffirmative", [null, "maldice", "maldiga", "maldigamos", "maldigan"]);
+    assert.equal(run("maldecir").participle, "maldecido");
+  });
+
+  it("satisfacer conjugates like hacer", () => {
+    check("satisfacer", "present", P5("satisfago satisfaces satisface satisfacemos satisfacen"));
+    check("satisfacer", "preterite", P5("satisfice satisficiste satisfizo satisficimos satisficieron"));
+    check("satisfacer", "future", P5("satisfaré satisfarás satisfará satisfaremos satisfarán"));
+    check("satisfacer", "subjPresent", P5("satisfaga satisfagas satisfaga satisfagamos satisfagan"));
+    check("satisfacer", "subjImperfect", P5("satisficiera satisficieras satisficiera satisficiéramos satisficieran"));
+    check("satisfacer", "impAffirmative", [null, "satisfaz", "satisfaga", "satisfagamos", "satisfagan"]);
+    assert.equal(run("satisfacer").participle, "satisfecho");
+    assert.equal(run("satisfacer").gerund, "satisfaciendo");
+  });
+
   it("rehacer marks the stressed i after h", () => {
     check("rehacer", "preterite", P5("rehíce rehiciste rehízo rehicimos rehicieron"));
     check("rehacer", "present", P5("rehago rehaces rehace rehacemos rehacen"));

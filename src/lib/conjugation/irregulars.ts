@@ -101,6 +101,21 @@ export const IRREGULARS: Record<string, Spec> = {
     impTu: "di",
     participle: "dicho",
   },
+  // Like decir except the future and conditional, which are regular (DPD: bendeciré; predeciré and contradeciré are now
+  // the usual forms, though prediré and contradiré are also correct), the tú command (predice, not predí) and, for
+  // bendecir and maldecir, the participle (bendecido; bendito is only an adjective).
+  predecir: { boot: "e>i", yoStem: "predig", pretStem: "predij", impTu: "predice", participle: "predicho" },
+  contradecir: { boot: "e>i", yoStem: "contradig", pretStem: "contradij", impTu: "contradice", participle: "contradicho" },
+  bendecir: { boot: "e>i", yoStem: "bendig", pretStem: "bendij", impTu: "bendice" },
+  maldecir: { boot: "e>i", yoStem: "maldig", pretStem: "maldij", impTu: "maldice" },
+  // Own entry: it ends in -facer, so `like: "hacer"` can't add a prefix. Satisface is also accepted for the command.
+  satisfacer: {
+    yoStem: "satisfag",
+    pret: ["satisfice", "satisficiste", "satisfizo", "satisficimos", "satisficieron"],
+    futStem: "satisfar",
+    impTu: "satisfaz",
+    participle: "satisfecho",
+  },
   traer: { yoStem: "traig", pretStem: "traj" },
   caer: { yoStem: "caig" },
   oír: {
