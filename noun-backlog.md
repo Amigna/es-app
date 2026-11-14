@@ -1,0 +1,716 @@
+# Noun backlog
+
+Nouns still to add, so a new batch doesn't need to scan `src/data/vocab/nouns.json` for duplicates. Every noun here was checked against `nouns.json`, `adjectives.json`, `adverbs.json` and `small-words.json` when this list was made (2,314 nouns, 2026-11-13). Work from the top, one batch at a time.
+
+The order is a rough guess at usefulness, from memory and not checked against a source: everyday words first, then school, work, tech and society, then health, animals and nature in more detail, then less common words, with regional synonyms and slang last. Each line gives the gender, a starting gloss for the `en` field and the topic. Glosses already list common synonyms, since a typed English answer only counts if it matches one.
+
+How lines are written:
+
+- `(m)` or `(f)` is the gender. `(f, el)` is a feminine noun that takes el (el ave), and `(m/f, el)` is a noun shared by men and women, entered with `"article":"el"` so it stays out of the gender drill.
+- `(m, los)` or `(f, las)` is a noun used in the plural (los apuntes), entered with that article.
+- `plural ...` is an irregular or multi-word plural, for the `plural` field.
+- A note in brackets after the gloss is for the `note` field or for the person writing the example.
+
+When adding a batch:
+
+- Follow "How content gets added" in `plan.md`: append to the end of `nouns.json`, with an example sentence for each, and give each word a level in `src/data/vocab/levels.json`.
+- Use the topics in `NOUN_TOPICS` in `src/lib/drill-settings.ts`. A new topic needs adding there too.
+- Check glosses don't clash with an existing noun's gloss in a way that makes an English-to-Spanish card unanswerable. Where two words share a meaning (refrigerador and nevera), the grader accepts either, which is fine.
+- Delete the batch from this file once it's in `nouns.json`, and update the noun count in `plan.md`.
+- If a noun is dropped, move it to "Dropped" at the bottom with the reason, so it isn't suggested again.
+
+## Batch 2
+
+- cubo (m): bucket, pail; cube — home
+- cemento (m): cement — home
+- taladro (m): drill (tool) — home
+- destornillador (m): screwdriver — home
+- tuerca (f): nut (for a bolt) — home
+- secador (m): hair dryer, dryer — home
+- pinza (f): clothespin, tweezers, pliers, clip — home
+- bolsa de basura (f): garbage bag, trash bag, plural bolsas de basura — home
+- telaraña (f): cobweb, spiderweb — home
+- gotera (f): leak (in a roof) — home
+- moho (m): mold, mildew — home
+- baldosa (f): floor tile, tile — home
+- cerámica (f): ceramics, pottery, ceramic tile — home
+- antena (f): antenna, aerial — home
+- hipoteca (f): mortgage — money
+- transferencia (f): transfer, bank transfer — money
+- saldo (m): balance (of an account), credit (on a phone) — money
+- cuota (f): installment, payment, fee, quota — money
+- comprobante (m): receipt, proof, voucher — money
+- reembolso (m): refund, reimbursement — money
+- devolución (f): return, refund — money
+- rebaja (f): discount, markdown, sale — money
+- lotería (f): lottery — money
+- dólar (m): dollar — money
+- centavo (m): cent — money
+- alcancía (f): piggy bank, money box — money
+- estafa (f): scam, fraud, swindle — money
+- remesa (f): remittance, money sent home — money
+- donación (f): donation — money
+- inflación (f): inflation — money
+- calamar (m): squid — food
+- almeja (f): clam — food
+- mejillón (m): mussel — food
+- quinua (f): quinoa — food
+- mazorca (f): ear of corn, corncob — food
+- torta (f): cake; sandwich (Mexico) — food
+- tarta (f): tart, pie, cake — food
+- burrito (m): burrito — food
+- enchilada (f): enchilada — food
+- paella (f): paella — food
+- estofado (m): stew — food
+- barbacoa (f): barbecue — food
+- pasa (f): raisin — food
+- frambuesa (f): raspberry — food
+- mora (f): blackberry — food
+- arándano (m): blueberry, cranberry — food
+- kiwi (m): kiwi, kiwi fruit — food
+- granada (f): pomegranate; grenade — food
+- higo (m): fig — food
+- camote (m): sweet potato — food
+- apio (m): celery — food
+- calabacín (m): zucchini, courgette — food
+- rábano (m): radish — food
+- espárrago (m): asparagus — food
+- champiñón (m): mushroom, button mushroom — food
+- chile (m): chili pepper, hot pepper — food
+- col (f): cabbage — food
+- especia (f): spice — food
+- albahaca (f): basil — food
+- menta (f): mint — food
+- kétchup (m): ketchup — food
+- paleta (f): popsicle, lollipop; palette — food
+- cóctel (m): cocktail — food
+- malteada (f): milkshake, shake — food
+- pajita (f): drinking straw, straw — food
+- comida chatarra (f): junk food, plural comidas chatarra — food
+- ración (f): portion, serving, ration — food
+- olla de presión (f): pressure cooker, plural ollas de presión — food
+- lonchera (f): lunchbox, lunch box — food
+- frustración (f): frustration — feelings
+- angustia (f): anguish, distress — feelings
+- timidez (f): shyness — feelings
+- valentía (f): bravery, courage — feelings
+- admiración (f): admiration — feelings
+- satisfacción (f): satisfaction — feelings
+- asombro (m): amazement, astonishment — feelings
+- melancolía (f): melancholy, sadness — feelings
+- ira (f): anger, rage, wrath — feelings
+- inseguridad (f): insecurity; lack of safety — feelings
+- amabilidad (f): kindness, friendliness — feelings
+- generosidad (f): generosity — feelings
+- carcajada (f): loud laugh, burst of laughter — feelings
+- estado de ánimo (m): mood, state of mind, plural estados de ánimo — feelings
+- navegador (m): browser, web browser; navigator — tech
+- buscador (m): search engine — tech
+- publicación (f): post, publication — tech
+- altavoz (m): loudspeaker, speaker — tech
+- auriculares (m, los): headphones, earphones — tech
+- perfil (m): profile — tech
+- chat (m): chat, plural chats — tech
+- mensaje de texto (m): text message, text, plural mensajes de texto — tech
+- recarga (f): top-up, recharge, reload — tech
+- cobertura (f): coverage, signal; frosting — tech
+- tecla (f): key (on a keyboard) — tech
+- clic (m): click, plural clics — tech
+- meme (m): meme — tech
+- cancelación (f): cancellation — travel
+- migración (f): immigration (at the airport), migration — travel
+- tránsito (m): traffic, transit — travel
+- embotellamiento (m): traffic jam — travel
+- protector solar (m): sunscreen, sunblock, plural protectores solares — travel
+
+## Batch 3
+
+- pizarrón (m): blackboard, chalkboard, board — school
+- marcador (m): marker; scoreboard, score — school
+- libro de texto (m): textbook, plural libros de texto — school
+- enciclopedia (f): encyclopedia — school
+- crayón (m): crayon — school
+- goma (f): eraser, rubber; glue; gum — school
+- compás (m): compass (for drawing circles), beat — school
+- estuche (m): pencil case, case — school
+- boletín (m): report card, bulletin, newsletter — school
+- matrícula (f): enrollment, tuition; license plate — school
+- inscripción (f): registration, enrollment, sign-up — school
+- compañero de clase (m): classmate, plural compañeros de clase — school
+- tutor (m): tutor, guardian — school
+- asignatura (f): subject, course — school
+- álgebra (f, el): algebra — school
+- geometría (f): geometry — school
+- filosofía (f): philosophy — school
+- psicología (f): psychology — school
+- educación física (f): physical education, PE, gym (class), plural educación física — school
+- informática (f): computer science, IT, computing — school
+- tesis (f): thesis, plural tesis — school
+- escritura (f): writing, handwriting — school
+- dictado (m): dictation — school
+- sílaba (f): syllable — school
+- vocal (f): vowel — school
+- consonante (f): consonant — school
+- abecedario (m): alphabet, ABC — school
+- resta (f): subtraction — school
+- multiplicación (f): multiplication — school
+- división (f): division — school
+- fracción (f): fraction — school
+- ecuación (f): equation — school
+- fórmula (f): formula — school
+- gráfico (m): chart, graph — school
+- círculo (m): circle — school
+- triángulo (m): triangle — school
+- rectángulo (m): rectangle — school
+- ángulo (m): angle — school
+- egresado (m): graduate, alumnus — school
+- doctorado (m): doctorate, PhD — school
+- enseñanza (f): teaching, education — school
+- aprendizaje (m): learning — school
+- asistencia (f): attendance; assistance, help — school
+- horas extra (f, las): overtime — work
+- compañero de trabajo (m): coworker, colleague, plural compañeros de trabajo — work
+- proveedor (m): supplier, provider — work
+- socio (m): partner, member — work
+- junta (f): meeting, board — work
+- presentación (f): presentation; introduction — work
+- reporte (m): report — work
+- expediente (m): file, record — work
+- fotocopia (f): photocopy, copy — work
+- fotocopiadora (f): photocopier, copier — work
+- escáner (m): scanner, scan — work
+- credencial (f): ID badge, ID card, credential — work
+- mercancía (f): goods, merchandise — work
+- entrega (f): delivery, handover — work
+- contabilidad (f): accounting, bookkeeping — work
+- jardinero (m): gardener — work
+- minero (m): miner — work
+- secretario (m): secretary (male) — work
+- banquero (m): banker — work
+- conserje (m/f, el): janitor, caretaker, concierge — work
+- vigilante (m/f, el): security guard, watchman — work
+- cartero (m): mail carrier, mailman, postman — work
+- repartidor (m): delivery person, delivery driver — work
+- mensajero (m): messenger, courier — work
+- traductor (m): translator — work
+- intérprete (m/f, el): interpreter; performer — work
+- bibliotecario (m): librarian — work
+- terapeuta (m/f, el): therapist — work
+- estilista (m/f, el): stylist, hairstylist — work
+- paramédico (m): paramedic — work
+- becario (m): intern, scholarship student — work
+- diputado (m): representative, member of congress, deputy — society
+- senador (m): senator — society
+- congreso (m): congress, conference — society
+- dictador (m): dictator — society
+- partido político (m): political party, plural partidos políticos — society
+- votación (f): vote, voting, ballot — society
+- constitución (f): constitution — society
+- derechos humanos (m, los): human rights — society
+- sentencia (f): sentence (in court), ruling — society
+- condena (f): sentence (in prison), conviction, condemnation — society
+- preso (m): prisoner, inmate — society
+- delincuente (m/f, el): criminal, offender — society
+- asesino (m): murderer, killer — society
+- asalto (m): robbery, mugging, assault — society
+- soborno (m): bribe, bribery — society
+- mafia (f): mafia, mob — society
+- acoso (m): harassment, bullying — society
+- patrulla (f): patrol, patrol car — society
+- conflicto (m): conflict — society
+- pistola (f): pistol, gun, handgun — society
+- bala (f): bullet — society
+- bomba (f): bomb; pump — society
+- inmigración (f): immigration — society
+- exilio (m): exile — society
+- asilo (m): asylum; nursing home — society
+- manifestación (f): demonstration, protest, rally — society
+- caridad (f): charity — society
+- voluntariado (m): volunteering, volunteer work — society
+- prensa (f): press, the press — society
+- periodismo (m): journalism — society
+
+## Batch 4
+
+- célula (f): cell (in the body) — body
+- órgano (m): organ — body
+- intestino (m): intestine, gut, bowel — body
+- saliva (f): saliva, spit — body
+- orina (f): urine — body
+- articulación (f): joint (in the body) — body
+- antebrazo (m): forearm — body
+- nudillo (m): knuckle — body
+- esguince (m): sprain — body
+- calambre (m): cramp; electric shock — body
+- hinchazón (f): swelling — body
+- sarpullido (m): rash — body
+- acné (m): acne — body
+- caspa (f): dandruff — body
+- anestesia (f): anesthesia, anesthetic — body
+- latido (m): heartbeat, beat — body
+- aliento (m): breath; encouragement — body
+- cosquillas (f, las): tickling, tickle — body
+- desmayo (m): fainting, faint, blackout — body
+- náusea (f): nausea — body
+- olfato (m): sense of smell, smell — body
+- oído (m): hearing, inner ear, ear — body
+- tacto (m): touch, sense of touch; tact — body
+- caloría (f): calorie — body
+- proteína (f): protein — body
+- nutrición (f): nutrition — body
+- obesidad (f): obesity — body
+- diabetes (f): diabetes, plural diabetes — body
+- asma (f, el): asthma — body
+- radiografía (f): X-ray, X-ray image — body
+- terapia (f): therapy — body
+- depresión (f): depression — body
+- trauma (m): trauma — body
+- psiquiatra (m/f, el): psychiatrist — body
+- discapacidad (f): disability — body
+- caries (f): cavity, tooth decay, plural caries — body
+- chupete (m): pacifier, dummy — body
+- yegua (f): mare — animals
+- potro (m): colt, foal — animals
+- buey (m): ox, plural bueyes — animals
+- ternero (m): calf — animals
+- hámster (m): hamster, plural hámsteres — animals
+- perico (m): parakeet, small parrot — animals
+- lechuza (f): owl, barn owl — animals
+- halcón (m): falcon, hawk — animals
+- buitre (m): vulture — animals
+- flamenco (m): flamingo; flamenco — animals
+- avestruz (m): ostrich — animals
+- garza (f): heron, egret — animals
+- canario (m): canary — animals
+- foca (f): seal — animals
+- caimán (m): caiman, alligator — animals
+- camaleón (m): chameleon — animals
+- culebra (f): snake — animals
+- sapo (m): toad — animals
+- grillo (m): cricket — animals
+- saltamontes (m): grasshopper, plural saltamontes — animals
+- escarabajo (m): beetle — animals
+- mariquita (f): ladybug, ladybird — animals
+- libélula (f): dragonfly — animals
+- pulga (f): flea — animals
+- piojo (m): louse, lice — animals
+- alacrán (m): scorpion — animals
+- oruga (f): caterpillar — animals
+- lombriz (f): earthworm, worm — animals
+- leopardo (m): leopard — animals
+- hipopótamo (m): hippopotamus, hippo — animals
+- rinoceronte (m): rhinoceros, rhino — animals
+- canguro (m): kangaroo — animals
+- panda (m): panda — animals
+- chimpancé (m): chimpanzee, chimp — animals
+- armadillo (m): armadillo — animals
+- erizo (m): hedgehog; sea urchin — animals
+- dinosaurio (m): dinosaur — animals
+- pluma (f): feather; pen — animals
+- pico (m): beak; peak; pickaxe — animals
+- garra (f): claw, talon — animals
+- cuerno (m): horn (of an animal) — animals
+- colmillo (m): fang, tusk, canine tooth — animals
+- aleta (f): fin, flipper — animals
+- jaula (f): cage — animals
+- establo (m): stable, barn — animals
+- manada (f): herd, pack — animals
+- rebaño (m): flock, herd — animals
+- ganado (m): cattle, livestock — animals
+- helada (f): frost — weather
+- nevada (f): snowfall — weather
+- chubasco (m): shower, rain shower — weather
+- ola de calor (f): heat wave, plural olas de calor — weather
+- barro (m): mud, clay — nature
+- estanque (m): pond — nature
+- pradera (f): meadow, prairie, grassland — nature
+- manglar (m): mangrove, mangrove swamp — nature
+- caverna (f): cavern, cave — nature
+- glaciar (m): glacier — nature
+- horizonte (m): horizon — nature
+- universo (m): universe — nature
+- espacio (m): space, room — nature
+- galaxia (f): galaxy — nature
+- cometa (m): comet — nature
+- alga (f, el): seaweed, algae — nature
+- sauce (m): willow — nature
+- olivo (m): olive tree — nature
+- hierro (m): iron (metal) — nature
+- cobre (m): copper — nature
+- diamante (m): diamond — nature
+- medio ambiente (m): environment, plural medios ambientes — nature
+- ecosistema (m): ecosystem — nature
+- reciclaje (m): recycling — nature
+- deforestación (f): deforestation — nature
+- cambio climático (m): climate change, plural cambios climáticos — nature
+
+## Batch 5
+
+- tiempo libre (m): free time, spare time, plural tiempos libres — free time
+- ocio (m): leisure, free time — free time
+- afición (f): hobby, fondness; fans — free time
+- entretenimiento (m): entertainment — free time
+- muñeco (m): doll, action figure, figure — free time
+- baraja (f): deck of cards, pack of cards — free time
+- dado (m): die, dice — free time
+- damas (f, las): checkers, draughts — free time
+- bingo (m): bingo — free time
+- crucigrama (m): crossword, crossword puzzle — free time
+- boxeo (m): boxing — free time
+- atletismo (m): track and field, athletics — free time
+- maratón (m): marathon — free time
+- gimnasia (f): gymnastics — free time
+- esquí (m): skiing, ski, plural esquís — free time
+- surf (m): surfing — free time
+- golf (m): golf — free time
+- caza (f): hunting, hunt — free time
+- lucha libre (f): wrestling, professional wrestling, lucha libre, plural luchas libres — free time
+- yoga (m): yoga — free time
+- liga (f): league; rubber band — free time
+- jonrón (m): home run, homer — free time
+- bate (m): bat (baseball) — free time
+- raqueta (f): racket — free time
+- perdedor (m): loser — free time
+- serenata (f): serenade — free time
+- karaoke (m): karaoke — free time
+- jardinería (f): gardening — free time
+- manualidad (f): craft, handicraft — free time
+- confeti (m): confetti — free time
+- obra de arte (f): work of art, artwork, plural obras de arte — arts
+- retrato (m): portrait — arts
+- mural (m): mural — arts
+- guion (m): script, screenplay; hyphen — arts
+- villano (m): villain — arts
+- trama (f): plot — arts
+- estreno (m): premiere, debut, opening — arts
+- escenario (m): stage, setting — arts
+- comedia (f): comedy — arts
+- drama (m): drama — arts
+- tragedia (f): tragedy — arts
+- documental (m): documentary — arts
+- caricatura (f): cartoon, caricature — arts
+- titular (m): headline — arts
+- portada (f): cover, front page — arts
+- reseña (f): review — arts
+- rima (f): rhyme — arts
+- biografía (f): biography — arts
+- historieta (f): comic strip, comic — arts
+- melodía (f): melody, tune — arts
+- compositor (m): composer, songwriter — arts
+- álbum (m): album, plural álbumes — arts
+- emisora (f): radio station, station — arts
+- género (m): genre, gender, kind; fabric — arts
+- ballet (m): ballet — arts
+- arquitectura (f): architecture — arts
+- inspiración (f): inspiration — arts
+- acordeón (m): accordion — arts
+- maracas (f, las): maracas — arts
+- saxofón (m): saxophone, sax — arts
+- arpa (f, el): harp — arts
+- mariachi (m): mariachi, mariachi band — arts
+- rival (m/f, el): rival, opponent — people
+- individuo (m): individual, person — people
+- aliado (m): ally — people
+- residente (m/f, el): resident — people
+- raza (f): race, breed — people
+- nacionalidad (f): nationality — people
+- minoría (f): minority — people
+- esclavo (m): slave — people
+- guerrero (m): warrior — people
+- decena (f): ten, about ten — amounts
+- centenar (m): hundred, about a hundred — amounts
+- millar (m): thousand, about a thousand — amounts
+- pizca (f): pinch, bit — amounts
+- puñado (m): handful — amounts
+- kilogramo (m): kilogram — amounts
+- libra (f): pound — amounts
+- tonelada (f): ton — amounts
+- galón (m): gallon — amounts
+- milímetro (m): millimeter — amounts
+- milla (f): mile — amounts
+- pulgada (f): inch — amounts
+- tasa (f): rate — amounts
+- estadística (f): statistic, statistics — amounts
+- tarro (m): jar — things
+- envase (m): container, packaging — things
+- soga (f): rope — things
+- navaja (f): pocketknife, razor — things
+- alfiler (m): pin — things
+- cinta adhesiva (f): tape, sticky tape, plural cintas adhesivas — things
+- cesta (f): basket — things
+- barril (m): barrel — things
+- tubo (m): tube, pipe — things
+- bastón (m): cane, walking stick — things
+- póster (m): poster, plural pósteres — things
+- ficha (f): token, chip, index card, game piece — things
+- cenicero (m): ashtray — things
+- tapón (m): plug, stopper, cap; earplug — things
+- corcho (m): cork — things
+- grieta (f): crack — things
+
+## Batch 6
+
+Less common, more specialist or more formal.
+
+- monarquía (f): monarchy — society
+- régimen (m): regime, diet, plural regímenes — society
+- referéndum (m): referendum, plural referéndums — society
+- homicidio (m): homicide, murder — society
+- narcotráfico (m): drug trafficking — society
+- abuso (m): abuse — society
+- violación (f): rape; violation, breach (a serious word; keep the example plainly about breaking a rule) — society
+- terrorismo (m): terrorism — society
+- invasión (f): invasion — society
+- deportación (f): deportation — society
+- imperio (m): empire — society
+- conquista (f): conquest — society
+- esclavitud (f): slavery — society
+- machismo (m): machismo, sexism — society
+- censura (f): censorship — society
+- propaganda (f): propaganda; advertising — society
+- polémica (f): controversy — society
+- vocero (m): spokesperson, spokesman — society
+- obispo (m): bishop — society
+- demonio (m): demon, devil — society
+- paraíso (m): paradise, heaven — society
+- pecado (m): sin — society
+- espíritu (m): spirit — society
+- himno (m): anthem, hymn — society
+- ciudadanía (f): citizenship; citizens — society
+- patria (f): homeland, native land, country — society
+- rencor (m): grudge, resentment — feelings
+- afecto (m): affection — feelings
+- desilusión (f): disappointment, disillusionment — feelings
+- furia (f): fury, rage — feelings
+- terror (m): terror; horror (films) — feelings
+- desesperación (f): despair, desperation — feelings
+- arrepentimiento (m): regret, repentance — feelings
+- empatía (f): empathy — feelings
+- simpatía (f): friendliness, liking, charm (not English "sympathy") — feelings
+- desprecio (m): contempt, scorn — feelings
+- cortesía (f): courtesy, politeness — feelings
+- humildad (f): humility, modesty — feelings
+- sinceridad (f): sincerity, honesty — feelings
+- egoísmo (m): selfishness — feelings
+- vanidad (f): vanity — feelings
+- arrogancia (f): arrogance — feelings
+- terquedad (f): stubbornness — feelings
+- sensibilidad (f): sensitivity — feelings
+- caricia (f): caress, stroke — feelings
+- enamoramiento (m): falling in love, infatuation, crush — feelings
+- agotamiento (m): exhaustion — feelings
+- impaciencia (f): impatience — feelings
+- fidelidad (f): faithfulness, loyalty, fidelity — feelings
+- software (m): software — tech
+- captura de pantalla (f): screenshot, plural capturas de pantalla — tech
+- algoritmo (m): algorithm — tech
+- inteligencia artificial (f): artificial intelligence, AI, plural inteligencias artificiales — tech
+- consola (f): game console, console — tech
+- transmisión (f): broadcast, stream, transmission — tech
+- podcast (m): podcast, plural podcasts — tech
+- suscripción (f): subscription — tech
+- plataforma (f): platform — tech
+- programación (f): programming, schedule (TV) — tech
+- satélite (m): satellite — tech
+- hacker (m/f, el): hacker, plural hackers — tech
+- influencer (m/f, el): influencer, plural influencers — tech
+- icono (m): icon — tech
+- chip (m): chip, SIM card, plural chips — tech
+- puerta de embarque (f): boarding gate, gate, plural puertas de embarque — travel
+- turbulencia (f): turbulence — travel
+- vía (f): track, lane, way, route — travel
+- monopatín (m): scooter, skateboard — travel
+- kayak (m): kayak, plural kayaks — travel
+- diésel (m): diesel — travel
+- estación de servicio (f): service station, gas station, plural estaciones de servicio — travel
+- embrague (m): clutch — travel
+- radiador (m): radiator — travel
+- limpiaparabrisas (m): windshield wiper, wiper, plural limpiaparabrisas — travel
+- claxon (m): horn (of a car), plural cláxones — travel
+- bolsa de aire (f): airbag, plural bolsas de aire — travel
+- capó (m): hood (of a car), bonnet, plural capós — travel
+- souvenir (m): souvenir, plural souvenirs — travel
+- suburbio (m): suburb; poor outskirts (in much of Latin America) — places
+- afueras (f, las): outskirts — places
+- paseo (m): walk, stroll, outing; promenade — places
+- jardín botánico (m): botanical garden, plural jardines botánicos — places
+- acuario (m): aquarium — places
+- centro de salud (m): health center, clinic, plural centros de salud — places
+- estación de policía (f): police station, plural estaciones de policía — places
+- estación de bomberos (f): fire station, plural estaciones de bomberos — places
+- palacio (m): palace — places
+- capilla (f): chapel — places
+- mezquita (f): mosque — places
+- sinagoga (f): synagogue — places
+- monasterio (m): monastery — places
+- instituto (m): institute, high school — places
+- kínder (m): kindergarten, preschool, plural kínderes — places
+- albergue (m): shelter, hostel — places
+- mina (f): mine; pencil lead — places
+- pirámide (f): pyramid — places
+- muralla (f): wall (of a city), city wall — places
+- estatua (f): statue — places
+- hemisferio (m): hemisphere — places
+- ecuador (m): equator — places
+- trópico (m): tropics, tropic — places
+- Nochevieja (f): New Year's Eve — time
+- Día de Reyes (m): Three Kings' Day, Epiphany, plural Día de Reyes — time
+- Pascua (f): Easter; Passover — time
+- Día de la Madre (m): Mother's Day, plural Día de la Madre — time
+- día libre (m): day off, plural días libres — time
+- adultez (f): adulthood — time
+- madrugón (m): early start, getting up very early — time
+- desvelo (m): sleeplessness, sleepless night — time
+- intervalo (m): interval, break — time
+- espera (f): wait, waiting — time
+- cuenta regresiva (f): countdown, plural cuentas regresivas — time
+- cronómetro (m): stopwatch, timer — time
+- crepúsculo (m): twilight, dusk — time
+- shorts (m, los): shorts — clothes
+- brasier (m): bra — clothes
+- bikini (m): bikini — clothes
+- sortija (f): ring — clothes
+- brazalete (m): bracelet, armband — clothes
+- lentes de sol (m, los): sunglasses — clothes
+- dobladillo (m): hem — clothes
+- probador (m): fitting room, changing room — clothes
+- máquina de coser (f): sewing machine, plural máquinas de coser — clothes
+- costurera (f): seamstress, dressmaker — clothes
+- zapatero (m): shoemaker, cobbler; shoe rack — clothes
+- telón (m): curtain (in a theater) — arts
+- butaca (f): seat (in a theater or cinema), armchair — arts
+- taquilla (f): box office, ticket office — arts
+- coreografía (f): choreography, dance routine — arts
+- folclor (m): folklore — arts
+- estrofa (f): verse, stanza — arts
+- clarinete (m): clarinet — arts
+- marimba (f): marimba — arts
+- avellana (f): hazelnut — food
+- pistacho (m): pistachio — food
+- castaña (f): chestnut — food
+- ajonjolí (m): sesame, plural ajonjolíes — food
+- tomillo (m): thyme — food
+- romero (m): rosemary — food
+- laurel (m): bay leaf, laurel — food
+- azafrán (m): saffron — food
+- alcachofa (f): artichoke — food
+- puerro (m): leek — food
+- acelga (f): Swiss chard, chard — food
+- chayote (m): chayote — food
+- nopal (m): prickly pear cactus, nopal — food
+- pitahaya (f): dragon fruit, pitaya — food
+- dátil (m): date (fruit) — food
+- mortadela (f): bologna, mortadella — food
+- pernil (m): roast pork leg, pork shoulder — food
+- whisky (m): whiskey, whisky, plural whiskies — food
+- sidra (f): cider — food
+- infusión (f): herbal tea, infusion — food
+- bocado (m): bite, mouthful — food
+- bufé (m): buffet, plural bufés — food
+- plato fuerte (m): main course, entree, plural platos fuertes — food
+- destapador (m): bottle opener — food
+- freidora (f): fryer, deep fryer, air fryer — food
+- tabla de cortar (f): cutting board, chopping board, plural tablas de cortar — food
+- termostato (m): thermostat — home
+- generador (m): generator — home
+- rastrillo (m): rake — home
+- carretilla (f): wheelbarrow — home
+- serrucho (m): handsaw, saw — home
+- brocha (f): paintbrush, brush — home
+- mármol (m): marble — home
+- teja (f): roof tile — home
+- felpudo (m): doormat — home
+- portarretrato (m): picture frame, photo frame — home
+- ropero (m): wardrobe, closet — home
+- lavadero (m): laundry room, utility sink — home
+- barandal (m): railing, banister, handrail — home
+- papel tapiz (m): wallpaper, plural papeles tapiz — home
+- plaga (f): pest, plague, infestation — home
+
+## Batch 7
+
+Regional synonyms of words already in the lists, and slang. These count for less than common words, so they come last. Each needs a `note` naming the countries.
+
+- refrigeradora (f): refrigerator, fridge (Peru, Central America) — home
+- heladera (f): refrigerator, fridge (Argentina, Uruguay) — home
+- canilla (f): faucet, tap (Argentina, Uruguay) — home
+- regadera (f): shower (Mexico); watering can — home
+- tina (f): bathtub, tub — home
+- cubeta (f): bucket (Mexico) — home
+- recámara (f): bedroom (Mexico) — home
+- cochera (f): carport, garage — home
+- renta (f): rent (Mexico); income — money
+- boleta (f): receipt, ticket; ballot — money
+- tiquete (m): ticket (Colombia, Costa Rica) — travel
+- valija (f): suitcase (Argentina, Uruguay) — travel
+- bus (m): bus, plural buses — travel
+- buseta (f): minibus, small bus (Colombia, Venezuela, Ecuador) — travel
+- subte (m): subway, metro (Buenos Aires) — travel
+- trancón (m): traffic jam (Colombia) — travel
+- nafta (f): gasoline, gas (Argentina, Uruguay) — travel
+- cajuela (f): trunk (of a car) (Mexico) — travel
+- baúl (m): trunk (of a car); chest — travel
+- ponchadura (f): flat tire (Mexico) — travel
+- banqueta (f): sidewalk (Mexico) — places
+- vereda (f): sidewalk (Southern Cone, Peru); path, lane — places
+- alberca (f): swimming pool, pool (Mexico) — places
+- pileta (f): swimming pool, pool (Argentina, Uruguay); sink — places
+- parqueadero (m): parking lot (Colombia, Ecuador) — places
+- glorieta (f): traffic circle, roundabout (Mexico, Colombia); gazebo — places
+- tianguis (m): open-air market (Mexico), plural tianguis — places
+- abarrotes (m, los): groceries, grocery store (Mexico) — places
+- verdulería (f): greengrocer, produce store — places
+- droguería (f): drugstore, pharmacy (Colombia) — places
+- panteón (m): cemetery (Mexico); pantheon — places
+- palta (f): avocado (Southern Cone, Peru) — food
+- frutilla (f): strawberry (Southern Cone) — food
+- melocotón (m): peach (Spain; durazno is the Latin American word, already in) — food
+- banana (f): banana (Southern Cone) — food
+- guineo (m): banana (Puerto Rico, Dominican Republic, Panama) — food
+- lechosa (f): papaya (Venezuela, Dominican Republic) — food
+- chinola (f): passion fruit (Dominican Republic) — food
+- parchita (f): passion fruit (Venezuela) — food
+- patilla (f): watermelon (Venezuela, Colombia) — food
+- poroto (m): bean (Southern Cone) — food
+- caraota (f): bean, black bean (Venezuela) — food
+- elote (m): corn on the cob, ear of corn (Mexico, Central America) — food
+- choclo (m): corn on the cob, ear of corn (South America) — food
+- jitomate (m): tomato (Mexico) — food
+- batata (f): sweet potato (Caribbean, Southern Cone) — food
+- zapallo (m): squash, pumpkin (Southern Cone) — food
+- auyama (f): squash, pumpkin (Venezuela, Colombia, Dominican Republic) — food
+- cacahuate (m): peanut (Mexico) — food
+- popote (m): drinking straw, straw (Mexico) — food
+- pitillo (m): drinking straw, straw (Colombia, Venezuela) — food
+- chela (f): beer (Mexico, Peru, informal) — food
+- patacón (m): fried green plantain, tostón (Colombia, Panama, Ecuador) — food
+- mangú (m): mashed plantains (Dominican Republic) — food
+- gallo pinto (m): rice and beans (Costa Rica, Nicaragua), plural gallos pintos — food
+- remera (f): T-shirt (Argentina, Uruguay) — clothes
+- playera (f): T-shirt (Mexico) — clothes
+- polera (f): T-shirt, polo shirt (Chile); turtleneck (Argentina) — clothes
+- franela (f): T-shirt (Venezuela); flannel — clothes
+- chompa (f): sweater (Peru, Bolivia) — clothes
+- buzo (m): tracksuit, sweatshirt (Southern Cone); diver — clothes
+- campera (f): jacket (Argentina, Uruguay) — clothes
+- pollera (f): skirt (Southern Cone); traditional full skirt (Panama, Andes) — clothes
+- chancla (f): flip-flop, sandal — clothes
+- calzón (m): underwear, panties — clothes
+- aro (m): earring, hoop (Southern Cone); ring, hoop — clothes
+- zíper (m): zipper (Mexico, Central America), plural zíperes — clothes
+- chamba (f): work, job (Mexico, Peru, Central America) — work
+- fontanero (m): plumber (Spain) — work
+- pibe (m): kid, boy (Argentina, Uruguay) — people
+- chamo (m): kid, young guy (Venezuela) — people
+- chamaco (m): kid, boy (Mexico) — people
+- cuate (m): buddy, pal (Mexico) — people
+- pana (m/f, el): buddy, pal (Venezuela, Puerto Rico, Dominican Republic) — people
+- gringo (m): American, foreigner (can be friendly or rude depending on tone; explain in the note) — people
+- papalote (m): kite (Mexico, Cuba) — free time
+- chiringa (f): kite (Puerto Rico) — free time
+- rumba (f): party; rumba — free time
+- pachanga (f): party, bash — free time
+
+## Dropped
+
+None yet.

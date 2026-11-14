@@ -12,7 +12,31 @@ export type FlashSide = "toEnglish" | "toSpanish";
 export type StudySide = FlashSide | "mixed";
 
 /** Listed here so the setup screen doesn't have to load the word lists. A test keeps this in step with the data. */
-export const NOUN_TOPICS = ["body", "clothes", "family", "food", "home", "nature", "people", "places", "things", "time", "travel", "work"];
+export const NOUN_TOPICS = [
+  "amounts",
+  "animals",
+  "arts",
+  "body",
+  "clothes",
+  "family",
+  "feelings",
+  "food",
+  "free time",
+  "home",
+  "ideas",
+  "money",
+  "nature",
+  "people",
+  "places",
+  "school",
+  "society",
+  "tech",
+  "things",
+  "time",
+  "travel",
+  "weather",
+  "work",
+];
 
 export interface DrillSettings {
   mode: Mode;
