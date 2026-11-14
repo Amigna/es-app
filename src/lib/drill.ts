@@ -97,6 +97,8 @@ export interface Card {
   badge?: string;
   /** Small text above the prompt, beside the badge when there is one. */
   context?: string;
+  /** Who the verb is for, shown beside the badge so it stays visible when a phone keyboard covers the prompt below. */
+  person?: string;
   title: string;
   titleIsSpanish: boolean;
   subtitle?: string;
@@ -168,6 +170,7 @@ export function conjugationCard(q: Question, sentences: Sentence[] = []): Card {
     id: `${q.verb.inf}:${q.tense}:${q.person}`,
     badge: meta.name,
     context: meta.hint,
+    person: q.label,
     title: q.verb.inf,
     titleIsSpanish: true,
     subtitle: q.verb.en,

@@ -12,34 +12,6 @@ When adding a batch:
 - Delete the batch from this file once it's in `verbs.json`, and update the verb count in `plan.md`.
 - If a verb is dropped, move it to "Dropped" at the bottom with the reason, so it isn't suggested again.
 
-## Batch 28
-
-- programar: to program, to schedule
-- promover: to promote
-- proporcionar: to provide
-- provenir: to come from
-- recurrir: to turn to, to resort to
-- reforzar: to reinforce
-- regular: to regulate
-- rendir: to perform, to yield
-- reproducir: to reproduce; to play (media)
-- residir: to reside
-- resistir: to resist, to withstand
-- revelar: to reveal
-- seleccionar: to select
-- situar: to place, to locate
-- someter: to subject, to submit
-- subrayar: to underline
-- suprimir: to suppress, to remove
-- suspender: to suspend, to call off
-- sustituir: to replace
-- tender: to tend; to hang out (laundry)
-- transmitir: to transmit, to broadcast
-- trasladar: to move, to transfer
-- valorar: to value
-- verificar: to verify
-- vincular: to link
-
 ## Batch 29
 
 - referir: to refer

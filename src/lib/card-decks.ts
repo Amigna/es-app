@@ -317,15 +317,17 @@ export function blankCard(bank: SentenceBank, verb: Verb, tense: TenseId, random
   if (!hit) return null;
   const meta = TENSES.find((t) => t.id === tense)!;
   const answer = sentence.es.slice(hit.start, hit.end);
+  const person = agreesWithThing(verb.inf, sentence.person) ?? personLabel(tense, sentence.person);
   return {
     id: `blank:${verb.inf}:${tense}:${sentence.person}`,
     badge: meta.name,
     context: meta.hint,
+    person,
     title: blankOut(sentence.es, form!),
     titleIsSpanish: true,
     subtitle: sentence.en,
     sentence: sentence.es,
-    ask: `${verb.inf}, ${agreesWithThing(verb.inf, sentence.person) ?? personLabel(tense, sentence.person)}`,
+    ask: `${verb.inf}, ${person}`,
     answers: [answer, ...alsoAccepted(conjugation, answer)],
     shown: answer.toLowerCase(),
     table: tenseTable(verb, tense, sentence.person, sentences, sentence),

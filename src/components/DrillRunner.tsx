@@ -393,6 +393,13 @@ export default function DrillRunner({
             >
               {card.badge}
             </span>
+            {card.person && (
+              <span
+                className="rounded-md border border-stone-300 px-2.5 py-1 text-lg font-bold text-stone-800 dark:border-stone-600 dark:text-stone-100"
+              >
+                {card.person}
+              </span>
+            )}
             {card.context}
           </p>
         ) : (
