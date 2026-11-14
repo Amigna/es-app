@@ -15,6 +15,7 @@ export default function NounsPage() {
       en: n.en,
       topic: n.topic,
       note: n.note,
+      where: n.where,
       example: n.ex,
     }));
 

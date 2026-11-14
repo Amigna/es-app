@@ -25,7 +25,38 @@ export interface Noun {
   article?: string;
   /** Shown on the browse page, for words that mean something else in some countries. */
   note?: string;
+  /**
+   * Where this is the usual word for its meaning, for regional words like guagua or heladera. Left off for words used
+   * everywhere, and for warnings like "vulgar in Cuba", which say where to avoid a word, not where it's used.
+   */
+  where?: Region[];
 }
+
+/** The values `where` can take. Central America is for words used across much of it, where each country can't be vouched for. */
+export const REGIONS = [
+  "Argentina",
+  "Bolivia",
+  "Chile",
+  "Colombia",
+  "Costa Rica",
+  "Cuba",
+  "Dominican Republic",
+  "Ecuador",
+  "El Salvador",
+  "Guatemala",
+  "Honduras",
+  "Mexico",
+  "Nicaragua",
+  "Panama",
+  "Paraguay",
+  "Peru",
+  "Puerto Rico",
+  "Spain",
+  "Uruguay",
+  "Venezuela",
+  "Central America",
+] as const;
+export type Region = (typeof REGIONS)[number];
 
 export interface Adjective {
   es: string;

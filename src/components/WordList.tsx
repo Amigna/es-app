@@ -16,6 +16,8 @@ export interface WordRow {
   en: string;
   topic?: string;
   note?: string;
+  /** Countries where a regional word is the usual one. */
+  where?: readonly string[];
   example?: { es: string; en: string };
 }
 
@@ -118,6 +120,7 @@ export default function WordList({ rows, placeholder }: { rows: WordRow[]; place
               </p>
             )}
             <p className="text-stone-600 dark:text-stone-400">{r.en}</p>
+            {r.where && <p className="mt-1 text-sm text-stone-500">Used in: {r.where.join(", ")}</p>}
             {r.note && <p className="mt-1 text-sm italic text-stone-500">{r.note}</p>}
             {r.example && (
               <div className="mt-3 border-t border-stone-100 pt-3 dark:border-stone-800">

@@ -212,8 +212,11 @@ export function englishCore(text: string): string {
     .trim();
 }
 
-/** Every acceptable reading of a gloss like "to say, to tell" or "want; love". */
-export const englishAnswers = (gloss: string) => gloss.split(/[,;]/).map(englishCore).filter(Boolean);
+/**
+ * Every acceptable reading of a gloss like "to say, to tell" or "want; love". Commas inside brackets don't split, so
+ * "work, job (Argentina, Uruguay)" is work and job, not "job (Argentina" and "Uruguay)".
+ */
+export const englishAnswers = (gloss: string) => gloss.split(/[,;](?![^(]*\))/).map(englishCore).filter(Boolean);
 
 /** Sentences are compared on their words, so a missing period or a phone's curly apostrophe doesn't matter. */
 const wordsOnly = (s: string) => s.replace(/[’‘]/g, "'").replace(/[.,;:!?¿¡"“”]/g, " ");

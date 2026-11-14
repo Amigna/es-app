@@ -6,6 +6,7 @@ import {
   ADVERBS,
   NOUNS,
   PHRASES,
+  REGIONS,
   SMALL_WORDS,
   adjectiveForms,
   isPluralOnly,
@@ -116,6 +117,15 @@ describe("vocabulary data", () => {
     for (const p of PHRASES) assert.ok(p.en && p.topic, p.es);
     const topics = ["prepositions", "conjunctions", "pronouns", "question words", "articles", "numbers"];
     for (const w of SMALL_WORDS) assert.ok(topics.includes(w.topic), w.es);
+  });
+
+  it("names regions from the fixed list, once each", () => {
+    for (const n of NOUNS) {
+      if (n.where === undefined) continue;
+      assert.ok(n.where.length > 0, n.es);
+      assert.equal(new Set(n.where).size, n.where.length, n.es);
+      for (const r of n.where) assert.ok((REGIONS as readonly string[]).includes(r), `${n.es}: ${r}`);
+    }
   });
 
   it("keeps commas out of small word glosses' brackets, where they would split the answers", () => {

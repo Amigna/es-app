@@ -38,6 +38,8 @@ describe("English answers", () => {
     assert.deepEqual(englishAnswers("to say, to tell"), ["say", "tell"]);
     assert.deepEqual(englishAnswers("to want; to love"), ["want", "love"]);
     assert.deepEqual(englishAnswers("fish (as food)"), ["fish"]);
+    assert.deepEqual(englishAnswers("work, job (Argentina, Uruguay)"), ["work", "job"]);
+    assert.deepEqual(englishAnswers("window (of a car, plane or ticket counter)"), ["window"]);
   });
 });
 
