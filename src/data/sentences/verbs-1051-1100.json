@@ -1,0 +1,214 @@
+{
+ "apestar": {
+  "present": [
+   {"person":2,"es":"Este basurero apesta.","en":"This trash can stinks."},
+   {"person":0,"es":"Después del partido apesto a sudor.","en":"After the game I stink of sweat."},
+   {"person":1,"es":"¡Apestas a cebolla!","en":"You stink of onion!"},
+   {"person":3,"es":"Apestamos a humo después de la fogata.","en":"We stink of smoke after the campfire."},
+   {"person":4,"es":"Tus zapatos apestan.","en":"Your shoes stink."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La cocina apestó a pescado toda la tarde.","en":"The kitchen stank of fish all afternoon."},
+   {"person":0,"es":"Apesté a gasolina todo el día.","en":"I reeked of gasoline all day."},
+   {"person":1,"es":"Apestaste a perfume en la fiesta.","en":"You reeked of perfume at the party."},
+   {"person":3,"es":"Después del campamento apestamos durante días.","en":"After camp we stank for days."},
+   {"person":4,"es":"Los calcetines del niño apestaron todo el carro.","en":"The boy's socks stank up the whole car."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El río apestaba en verano.","en":"The river used to stink in summer."},
+   {"person":0,"es":"Yo apestaba a cloro después de la piscina.","en":"I used to smell of chlorine after the pool."},
+   {"person":1,"es":"Tú apestabas a ajo después de cocinar.","en":"You smelled of garlic after cooking."},
+   {"person":3,"es":"Apestábamos a caballo después de cada clase de equitación.","en":"We smelled of horse after every riding lesson."},
+   {"person":4,"es":"Los botes de basura apestaban en la calle.","en":"The trash cans stank in the street."}
+  ],
+  "future": [
+   {"person":2,"es":"La casa apestará a pintura unos días.","en":"The house will smell of paint for a few days."},
+   {"person":0,"es":"Apestaré a pescado si limpio el refrigerador.","en":"I'll stink of fish if I clean the fridge."},
+   {"person":1,"es":"Apestarás a humo si te sientas junto a la parrilla.","en":"You'll stink of smoke if you sit next to the grill."},
+   {"person":3,"es":"Apestaremos a sudor después de la caminata.","en":"We'll stink of sweat after the hike."},
+   {"person":4,"es":"Esos tenis apestarán si no los lavas.","en":"Those sneakers will stink if you don't wash them."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Este cuarto apestaría sin la ventana abierta.","en":"This room would stink without the window open."},
+   {"person":0,"es":"Yo apestaría a gasolina después de arreglar el carro.","en":"I'd stink of gasoline after fixing the car."},
+   {"person":1,"es":"Apestarías a pescado si trabajaras en el mercado.","en":"You'd stink of fish if you worked at the market.","level":"B2"},
+   {"person":3,"es":"Apestaríamos a humo si nos quedáramos más tiempo.","en":"We'd stink of smoke if we stayed any longer.","level":"B2"},
+   {"person":4,"es":"Ellos apestarían sin desodorante.","en":"They'd stink without deodorant."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"La basura ha apestado toda la semana.","en":"The trash has stunk all week."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"No quiero que apestes a cigarro.","en":"I don't want you smelling of cigarettes."},
+   {"person":0,"es":"Mi mamá no quiere que yo apeste a pescado en el bus.","en":"My mom doesn't want me to smell of fish on the bus."},
+   {"person":2,"es":"Ojalá el refrigerador no apeste cuando volvamos.","en":"I hope the fridge doesn't stink when we get back."},
+   {"person":3,"es":"Es mejor que nos bañemos antes de que apestemos más.","en":"We'd better shower before we stink any worse."},
+   {"person":4,"es":"Lava los calcetines antes de que apesten.","en":"Wash the socks before they start to stink."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
+ },
+ "apetecer": {
+  "present": [
+   {"person":2,"es":"¿Te apetece un café?","en":"Do you feel like a coffee?"},
+   {"person":4,"es":"No me apetecen las verduras hoy.","en":"I don't feel like vegetables today."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Ayer no me apeteció salir.","en":"Yesterday I didn't feel like going out."},
+   {"person":4,"es":"Esos dulces no me apetecieron nada.","en":"I didn't fancy those sweets at all."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Me apetecía mucho verte.","en":"I really wanted to see you."},
+   {"person":4,"es":"De niño no me apetecían las verduras.","en":"As a kid I never felt like eating vegetables."}
+  ],
+  "future": [
+   {"person":2,"es":"Seguro que mañana te apetecerá ir a la playa.","en":"I'm sure you'll feel like going to the beach tomorrow."},
+   {"person":4,"es":"Después del gimnasio te apetecerán unas fresas.","en":"After the gym you'll fancy some strawberries."}
+  ],
+  "conditional": [
+   {"person":2,"es":"¿Te apetecería ir al cine esta noche?","en":"Would you like to go to the movies tonight?"},
+   {"person":4,"es":"Me apetecerían unas vacaciones en la playa.","en":"I could really go for a beach vacation."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"Hoy no me ha apetecido cocinar.","en":"I haven't felt like cooking today."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":2,"es":"Haz lo que te apetezca.","en":"Do whatever you feel like."},
+   {"person":4,"es":"Pide los platos que te apetezcan.","en":"Order whatever dishes you like."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
+ },
+ "largarse": {
+  "present": [
+   {"person":2,"es":"Mi hermano siempre se larga cuando hay que lavar los platos.","en":"My brother always takes off when there are dishes to wash."},
+   {"person":0,"es":"Estoy harta; me largo de aquí.","en":"I'm fed up; I'm out of here."},
+   {"person":1,"es":"¿Ya te largas? Si acabas de llegar.","en":"You're leaving already? You just got here."},
+   {"person":3,"es":"Nos largamos antes de que empiece a llover.","en":"We're taking off before it starts to rain.","level":"B1"},
+   {"person":4,"es":"Los invitados se largan sin despedirse.","en":"The guests take off without saying goodbye."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El cliente se largó sin pagar.","en":"The customer took off without paying."},
+   {"person":0,"es":"Me largué de la fiesta a las diez.","en":"I left the party at ten."},
+   {"person":1,"es":"¿Por qué te largaste tan temprano?","en":"Why did you take off so early?"},
+   {"person":3,"es":"Anoche nos largamos antes del final de la película.","en":"Last night we left before the end of the movie."},
+   {"person":4,"es":"Los ladrones se largaron en una moto.","en":"The thieves took off on a motorcycle."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi tío siempre se largaba antes del postre.","en":"My uncle always left before dessert."},
+   {"person":0,"es":"Yo me largaba en cuanto sonaba el timbre.","en":"I'd be out the door as soon as the bell rang."},
+   {"person":1,"es":"Tú te largabas sin decir nada.","en":"You used to take off without saying anything."},
+   {"person":3,"es":"Nos largábamos a la playa cada fin de semana.","en":"We'd take off to the beach every weekend."},
+   {"person":4,"es":"Los niños se largaban a jugar después de comer.","en":"The kids would run off to play after lunch."}
+  ],
+  "future": [
+   {"person":2,"es":"Si sigue lloviendo, mi papá se largará a casa.","en":"If it keeps raining, my dad will head home."},
+   {"person":0,"es":"Me largaré en cuanto termine.","en":"I'll be off as soon as I finish."},
+   {"person":1,"es":"¿Te largarás sin probar el pastel? No me lo creo.","en":"You'll take off without trying the cake? I don't believe it."},
+   {"person":3,"es":"Nos largaremos temprano para evitar el tráfico.","en":"We'll head off early to avoid the traffic."},
+   {"person":4,"es":"Los turistas se largarán cuando empiece el frío.","en":"The tourists will clear off when the cold starts."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Cualquiera se largaría con ese jefe.","en":"Anyone would quit with that boss."},
+   {"person":0,"es":"Yo me largaría de esta ciudad si pudiera.","en":"I'd get out of this city if I could.","level":"B2"},
+   {"person":1,"es":"¿Te largarías sin despedirte?","en":"Would you take off without saying goodbye?"},
+   {"person":3,"es":"Nos largaríamos ahora, pero llueve mucho.","en":"We'd head off now, but it's pouring."},
+   {"person":4,"es":"Ellos se largarían si no hubiera comida.","en":"They'd take off if there were no food.","level":"B2"}
+  ],
+  "presentPerfect": [
+   {"person":4,"es":"Los invitados ya se han largado.","en":"The guests have already taken off."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"No quiero que te largues todavía.","en":"I don't want you to leave yet."},
+   {"person":0,"es":"Mis amigos no quieren que yo me largue tan pronto.","en":"My friends don't want me to leave so soon."},
+   {"person":2,"es":"Es raro que el perro se largue solo.","en":"It's strange for the dog to wander off on his own."},
+   {"person":3,"es":"Es mejor que nos larguemos antes de que cierren.","en":"We'd better clear off before they close."},
+   {"person":4,"es":"Ojalá los vecinos ruidosos se larguen pronto.","en":"I hope the noisy neighbors move out soon."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"¡Lárgate de mi cuarto!","en":"Get out of my room!"}
+  ],
+  "impNegative": [
+   {"person":1,"es":"No te largues sin despedirte.","en":"Don't take off without saying goodbye."}
+  ]
+ },
+ "asesinar": {
+  "present": [
+   {"person":2,"es":"En la novela, el mayordomo asesina al conde.","en":"In the novel, the butler murders the count."},
+   {"person":0,"es":"En el karaoke asesino todas las canciones.","en":"At karaoke I butcher every song."},
+   {"person":1,"es":"¡Asesinas esa canción cada vez que la cantas!","en":"You murder that song every time you sing it!"},
+   {"person":3,"es":"En el juego, asesinamos zombis para ganar puntos.","en":"In the game, we kill zombies to earn points."},
+   {"person":4,"es":"En las películas de terror siempre asesinan al primero que se separa del grupo.","en":"In horror movies they always kill off the first one who leaves the group."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Un actor asesinó a Lincoln en un teatro.","en":"An actor assassinated Lincoln in a theater."},
+   {"person":0,"es":"Anoche asesiné \"La bamba\" en el karaoke.","en":"Last night I butchered \"La bamba\" at karaoke."},
+   {"person":1,"es":"Asesinaste el chiste al contar el final primero.","en":"You killed the joke by telling the ending first."},
+   {"person":3,"es":"Anoche asesinamos la canción de cumpleaños.","en":"Last night we butchered the birthday song."},
+   {"person":4,"es":"Los senadores asesinaron a Julio César en el año 44 antes de Cristo.","en":"The senators assassinated Julius Caesar in 44 BC."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"En la serie, el villano asesinaba a sus rivales uno por uno.","en":"In the series, the villain murdered his rivals one by one."},
+   {"person":0,"es":"Yo asesinaba el inglés cuando empecé a estudiarlo.","en":"I used to butcher English when I started learning it."},
+   {"person":1,"es":"Tú asesinabas las canciones de los Beatles.","en":"You used to butcher Beatles songs."},
+   {"person":3,"es":"Asesinábamos el himno en cada acto escolar.","en":"We butchered the anthem at every school event."},
+   {"person":4,"es":"En la leyenda, los piratas asesinaban a quienes encontraban el tesoro.","en":"In the legend, the pirates killed whoever found the treasure."}
+  ],
+  "future": [
+   {"person":2,"es":"En el último capítulo, el villano asesinará al rey.","en":"In the last chapter, the villain will murder the king."},
+   {"person":0,"es":"Asesinaré esa canción, pero la voy a cantar.","en":"I'll butcher that song, but I'm going to sing it."},
+   {"person":1,"es":"Si cantas tan alto, asesinarás la melodía.","en":"If you sing that loud, you'll butcher the melody."},
+   {"person":3,"es":"Asesinaremos el baile, pero nos vamos a divertir.","en":"We'll butcher the dance, but we'll have fun."},
+   {"person":4,"es":"En la próxima temporada asesinarán a un personaje importante.","en":"Next season they'll kill off an important character."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Según la novela, nadie asesinaría al alcalde sin un motivo.","en":"According to the novel, nobody would murder the mayor without a motive."},
+   {"person":0,"es":"Yo asesinaría esa canción si la cantara.","en":"I'd butcher that song if I sang it.","level":"B2"},
+   {"person":1,"es":"¿Asesinarías a tu personaje favorito si escribieras la serie?","en":"Would you kill off your favorite character if you wrote the series?","level":"B2"},
+   {"person":3,"es":"Asesinaríamos el francés si intentáramos hablarlo.","en":"We'd butcher French if we tried to speak it.","level":"B2"},
+   {"person":4,"es":"Los guionistas nunca asesinarían al protagonista.","en":"The writers would never kill off the main character."}
+  ],
+  "presentPerfect": [
+   {"person":4,"es":"Han asesinado a un periodista, según las noticias.","en":"A journalist has been murdered, according to the news."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"No quiero que asesines mi canción favorita.","en":"I don't want you to butcher my favorite song."},
+   {"person":0,"es":"Mis amigos temen que yo asesine el himno en la ceremonia.","en":"My friends are afraid I'll butcher the anthem at the ceremony."},
+   {"person":2,"es":"No creo que el mayordomo asesine a nadie; es muy amable.","en":"I don't think the butler murders anyone; he's very kind."},
+   {"person":3,"es":"Es probable que asesinemos el baile de la boda.","en":"We'll probably butcher the wedding dance."},
+   {"person":4,"es":"Ojalá no asesinen a mi personaje favorito.","en":"I hope they don't kill off my favorite character."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No asesines esa canción, por favor.","en":"Please don't butcher that song."}
+  ]
+ }
+}

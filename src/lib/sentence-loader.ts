@@ -28,6 +28,7 @@ const FILES: (() => Promise<{ default: unknown }>)[] = [
   () => import("../data/sentences/verbs-901-950.json"),
   () => import("../data/sentences/verbs-951-1000.json"),
   () => import("../data/sentences/verbs-1001-1050.json"),
+  () => import("../data/sentences/verbs-1051-1100.json"),
 ];
 
 const positions = new Map(VERBS.map((v, i) => [v.inf, i]));

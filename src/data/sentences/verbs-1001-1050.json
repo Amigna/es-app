@@ -2658,5 +2658,233 @@
    {"person":1,"es":"Anota mi número, por favor.","en":"Write down my number, please."}
   ],
   "impNegative": {"rare":true}
+ },
+ "cometer": {
+  "present": [
+   {"person":2,"es":"Todo el mundo comete errores.","en":"Everybody makes mistakes."},
+   {"person":0,"es":"Siempre cometo el mismo error con los acentos.","en":"I always make the same mistake with accents."},
+   {"person":1,"es":"Cometes muchos errores cuando escribes rápido.","en":"You make a lot of mistakes when you write fast."},
+   {"person":3,"es":"Cometemos errores, pero aprendemos de ellos.","en":"We make mistakes, but we learn from them."},
+   {"person":4,"es":"Los estudiantes cometen errores en el examen.","en":"The students make mistakes on the test."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El árbitro cometió un error grave.","en":"The referee made a serious mistake."},
+   {"person":0,"es":"Cometí un error y pedí perdón.","en":"I made a mistake and apologized."},
+   {"person":1,"es":"¿Qué error cometiste en la tarea?","en":"What mistake did you make on the homework?"},
+   {"person":3,"es":"Ayer cometimos un error con la reserva del hotel.","en":"Yesterday we made a mistake with the hotel booking."},
+   {"person":4,"es":"Los ladrones cometieron el robo de noche.","en":"The thieves committed the robbery at night."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo nunca cometía errores en las cuentas.","en":"My grandfather never made mistakes in the accounts."},
+   {"person":0,"es":"Yo cometía muchas faltas de ortografía de niño.","en":"I made a lot of spelling mistakes as a kid."},
+   {"person":1,"es":"Tú cometías los mismos errores que yo.","en":"You made the same mistakes I did."},
+   {"person":3,"es":"Cometíamos errores por ir tan deprisa.","en":"We made mistakes because we went so fast."},
+   {"person":4,"es":"Los jugadores cometían demasiadas faltas.","en":"The players committed too many fouls."}
+  ],
+  "future": [
+   {"person":2,"es":"El equipo no cometerá el mismo error dos veces.","en":"The team won't make the same mistake twice."},
+   {"person":0,"es":"No cometeré ese error otra vez.","en":"I won't make that mistake again."},
+   {"person":1,"es":"Si no lees con cuidado, cometerás errores.","en":"If you don't read carefully, you'll make mistakes."},
+   {"person":3,"es":"Cometeremos errores, y está bien.","en":"We'll make mistakes, and that's fine."},
+   {"person":4,"es":"Los nuevos empleados cometerán algunos errores al principio.","en":"The new employees will make a few mistakes at first."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Un buen piloto nunca cometería ese error.","en":"A good pilot would never make that mistake."},
+   {"person":0,"es":"Yo no cometería la misma tontería dos veces.","en":"I wouldn't do the same silly thing twice."},
+   {"person":1,"es":"¿Cometerías un error así a propósito?","en":"Would you make a mistake like that on purpose?"},
+   {"person":3,"es":"Sin el mapa, cometeríamos muchos errores.","en":"Without the map, we'd make a lot of mistakes."},
+   {"person":4,"es":"Ellos cometerían menos faltas con más práctica.","en":"They'd commit fewer fouls with more practice."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"He cometido un error enorme.","en":"I've made a huge mistake."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Es normal que cometas errores al principio.","en":"It's normal for you to make mistakes at first."},
+   {"person":0,"es":"Mi jefe teme que yo cometa un error con los números.","en":"My boss is afraid I'll make a mistake with the numbers."},
+   {"person":2,"es":"Es raro que el profesor cometa un error así.","en":"It's unusual for the teacher to make a mistake like that."},
+   {"person":3,"es":"Ojalá no cometamos los mismos errores que nuestros padres.","en":"I hope we don't make the same mistakes as our parents."},
+   {"person":4,"es":"Es normal que los niños cometan errores al aprender.","en":"It's normal for kids to make mistakes when they learn."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No cometas el mismo error que yo.","en":"Don't make the same mistake I did."}
+  ]
+ },
+ "adorar": {
+  "present": [
+   {"person":2,"es":"Mi hija adora a su abuela.","en":"My daughter adores her grandmother."},
+   {"person":0,"es":"Adoro el olor del café por la mañana.","en":"I love the smell of coffee in the morning."},
+   {"person":1,"es":"¿Adoras a tus sobrinos?","en":"Do you adore your nieces and nephews?"},
+   {"person":3,"es":"Adoramos la comida de mi tía.","en":"We love my aunt's cooking."},
+   {"person":4,"es":"Los niños adoran a su perro.","en":"The kids adore their dog."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El público adoró la película.","en":"The audience loved the movie."},
+   {"person":0,"es":"Adoré cada minuto del viaje.","en":"I loved every minute of the trip."},
+   {"person":1,"es":"¿Adoraste el regalo?","en":"Did you love the present?"},
+   {"person":3,"es":"El verano pasado adoramos ese hotel.","en":"Last summer we loved that hotel."},
+   {"person":4,"es":"Los críticos adoraron el nuevo disco.","en":"The critics loved the new album."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo adoraba la música de Celia Cruz.","en":"My grandfather adored Celia Cruz's music."},
+   {"person":0,"es":"Yo adoraba a mi maestra de primer grado.","en":"I adored my first-grade teacher."},
+   {"person":1,"es":"Tú adorabas los dibujos animados.","en":"You loved cartoons."},
+   {"person":3,"es":"Adorábamos las vacaciones en la playa.","en":"We loved vacations at the beach."},
+   {"person":4,"es":"Los mayas adoraban al dios del maíz.","en":"The Maya worshipped the god of corn."}
+  ],
+  "future": [
+   {"person":2,"es":"Tu mamá adorará este pastel.","en":"Your mom will love this cake."},
+   {"person":0,"es":"Sé que adoraré esa ciudad.","en":"I know I'll love that city."},
+   {"person":1,"es":"Adorarás a tu nuevo hermanito.","en":"You'll adore your new little brother."},
+   {"person":3,"es":"Adoraremos la casa nueva.","en":"We'll love the new house."},
+   {"person":4,"es":"Los niños adorarán el parque.","en":"The kids will love the park."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Mi hermana adoraría vivir en París.","en":"My sister would love to live in Paris."},
+   {"person":0,"es":"Yo adoraría tener un jardín.","en":"I'd love to have a garden."},
+   {"person":1,"es":"¿Adorarías un perro tan grande?","en":"Would you love a dog that big?"},
+   {"person":3,"es":"Adoraríamos conocer Japón.","en":"We'd love to visit Japan."},
+   {"person":4,"es":"Ellos adorarían esta playa.","en":"They'd love this beach."}
+  ],
+  "presentPerfect": [
+   {"person":0,"es":"Siempre he adorado los libros de misterio.","en":"I've always loved mystery books."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Espero que adores tu regalo.","en":"I hope you love your present."},
+   {"person":0,"es":"Mi abuela quiere que yo adore la cocina tanto como ella.","en":"My grandmother wants me to love cooking as much as she does."},
+   {"person":2,"es":"Es normal que un niño adore a sus abuelos.","en":"It's normal for a child to adore their grandparents."},
+   {"person":3,"es":"Ojalá adoremos la nueva escuela.","en":"I hope we love the new school."},
+   {"person":4,"es":"Ojalá tus amigos adoren la comida mexicana.","en":"I hope your friends love Mexican food."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
+ },
+ "hallar": {
+  "present": [
+   {"person":2,"es":"El detective siempre halla la respuesta.","en":"The detective always finds the answer."},
+   {"person":0,"es":"No hallo las palabras para agradecerte.","en":"I can't find the words to thank you."},
+   {"person":1,"es":"¿Hallas algún error en el texto?","en":"Do you find any mistakes in the text?"},
+   {"person":3,"es":"Hallamos paz en el campo.","en":"We find peace in the countryside."},
+   {"person":4,"es":"Los científicos hallan nuevas especies cada año.","en":"Scientists find new species every year."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Un pescador halló una botella con un mensaje.","en":"A fisherman found a bottle with a message."},
+   {"person":0,"es":"Hallé la carta de mi abuela en un cajón.","en":"I found my grandmother's letter in a drawer."},
+   {"person":1,"es":"¿Hallaste lo que buscabas?","en":"Did you find what you were looking for?"},
+   {"person":3,"es":"Al final hallamos la salida del museo.","en":"In the end we found the museum's exit."},
+   {"person":4,"es":"Los arqueólogos hallaron una tumba maya.","en":"The archaeologists found a Maya tomb."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo siempre hallaba una solución.","en":"My grandfather always found a solution."},
+   {"person":0,"es":"Yo no hallaba la manera de decírselo.","en":"I couldn't find a way to tell her."},
+   {"person":1,"es":"Tú siempre hallabas las mejores ofertas.","en":"You always found the best deals."},
+   {"person":3,"es":"Hallábamos conchas en la playa cada mañana.","en":"We found shells on the beach every morning."},
+   {"person":4,"es":"Los marineros hallaban el camino por las estrellas.","en":"Sailors found their way by the stars."}
+  ],
+  "future": [
+   {"person":2,"es":"La policía hallará al perro perdido.","en":"The police will find the lost dog."},
+   {"person":0,"es":"Hallaré la forma de ayudarte.","en":"I'll find a way to help you."},
+   {"person":1,"es":"Hallarás la respuesta en el capítulo tres.","en":"You'll find the answer in chapter three."},
+   {"person":3,"es":"Hallaremos una solución juntos.","en":"We'll find a solution together."},
+   {"person":4,"es":"Los buzos hallarán el barco hundido.","en":"The divers will find the sunken ship."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Un buen abogado hallaría otra salida.","en":"A good lawyer would find another way out."},
+   {"person":0,"es":"Yo no hallaría el camino sin el mapa.","en":"I wouldn't find the way without the map."},
+   {"person":1,"es":"¿Hallarías tu casa con los ojos cerrados?","en":"Could you find your house with your eyes closed?"},
+   {"person":3,"es":"Hallaríamos más conchas si fuéramos temprano.","en":"We'd find more shells if we went early.","level":"B2"},
+   {"person":4,"es":"Ellos hallarían trabajo en la capital.","en":"They'd find work in the capital."}
+  ],
+  "presentPerfect": [
+   {"person":4,"es":"Han hallado restos de dinosaurios en el desierto.","en":"They've found dinosaur remains in the desert."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"Espero que halles lo que buscas.","en":"I hope you find what you're looking for."},
+   {"person":0,"es":"Ojalá que yo halle trabajo pronto.","en":"I hope I find a job soon."},
+   {"person":2,"es":"Es importante que el equipo halle una solución.","en":"It's important for the team to find a solution."},
+   {"person":3,"es":"Ojalá hallemos un buen lugar para acampar.","en":"I hope we find a good place to camp."},
+   {"person":4,"es":"Esperamos que los médicos hallen la causa.","en":"We hope the doctors find the cause."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Halla el valor de x.","en":"Find the value of x."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "lidiar": {
+  "present": [
+   {"person":2,"es":"Mi mamá lidia con tres niños y un trabajo.","en":"My mom deals with three kids and a job."},
+   {"person":0,"es":"Lidio con clientes difíciles todos los días.","en":"I deal with difficult customers every day."},
+   {"person":1,"es":"¿Cómo lidias con el estrés?","en":"How do you cope with stress?"},
+   {"person":3,"es":"Lidiamos con el tráfico cada mañana.","en":"We deal with traffic every morning."},
+   {"person":4,"es":"Los maestros lidian con clases muy grandes.","en":"Teachers cope with very big classes."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La enfermera lidió con la emergencia muy bien.","en":"The nurse handled the emergency very well."},
+   {"person":0,"es":"Lidié con el problema yo solo.","en":"I dealt with the problem on my own."},
+   {"person":1,"es":"¿Cómo lidiaste con la mudanza?","en":"How did you cope with the move?"},
+   {"person":3,"es":"El mes pasado lidiamos con una gotera en el techo.","en":"Last month we dealt with a leak in the roof."},
+   {"person":4,"es":"Los vecinos lidiaron con el ruido de la obra durante meses.","en":"The neighbors put up with the construction noise for months."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi papá lidiaba con un jefe muy exigente.","en":"My dad dealt with a very demanding boss."},
+   {"person":0,"es":"Yo lidiaba con la timidez cuando era niño.","en":"I struggled with shyness when I was a kid."},
+   {"person":1,"es":"Tú lidiabas con dos trabajos a la vez.","en":"You were juggling two jobs at once."},
+   {"person":3,"es":"Lidiábamos con cortes de luz cada semana.","en":"We dealt with power cuts every week."},
+   {"person":4,"es":"Los campesinos lidiaban con la sequía.","en":"The farmers coped with the drought."}
+  ],
+  "future": [
+   {"person":2,"es":"El nuevo gerente lidiará con las quejas.","en":"The new manager will deal with the complaints."},
+   {"person":0,"es":"Lidiaré con eso mañana.","en":"I'll deal with that tomorrow."},
+   {"person":1,"es":"Lidiarás con muchos cambios en la universidad.","en":"You'll deal with a lot of changes at college."},
+   {"person":3,"es":"Lidiaremos con el problema cuando llegue.","en":"We'll deal with the problem when it comes."},
+   {"person":4,"es":"Los bomberos lidiarán con el incendio toda la noche.","en":"The firefighters will battle the fire all night."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Un buen líder lidiaría con la crisis con calma.","en":"A good leader would handle the crisis calmly."},
+   {"person":0,"es":"Yo no lidiaría con ese cliente.","en":"I wouldn't deal with that customer."},
+   {"person":1,"es":"¿Cómo lidiarías con un vecino ruidoso?","en":"How would you deal with a noisy neighbor?"},
+   {"person":3,"es":"Lidiaríamos mejor con el calor si tuviéramos aire acondicionado.","en":"We'd cope better with the heat if we had air conditioning.","level":"B2"},
+   {"person":4,"es":"Ellos lidiarían con cualquier problema.","en":"They'd deal with any problem."}
+  ],
+  "presentPerfect": [
+   {"person":3,"es":"Hemos lidiado con cosas peores.","en":"We've dealt with worse."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":1,"es":"No quiero que lidies con esto solo.","en":"I don't want you to deal with this alone."},
+   {"person":0,"es":"Mi jefa prefiere que yo lidie con los clientes.","en":"My boss prefers that I deal with the customers."},
+   {"person":2,"es":"Es mejor que un experto lidie con el problema.","en":"It's better for an expert to deal with the problem."},
+   {"person":3,"es":"Es mejor que lidiemos con esto ahora.","en":"We'd better deal with this now."},
+   {"person":4,"es":"Ojalá los nuevos no lidien con tantos problemas como nosotros.","en":"I hope the new people don't have to deal with as many problems as we did."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
  }
 }
