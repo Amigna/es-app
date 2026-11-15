@@ -7,6 +7,7 @@ import { AccuracyTrend, PracticeCalendar, Sparkline } from "@/components/Progres
 import BadgeArt from "@/components/Badge";
 import { LevelSuggestion } from "@/components/LevelPicker";
 import ReportProblem from "@/components/ReportProblem";
+import StruggleList from "@/components/Struggles";
 import { BADGES, earnedBadges, findBadge, nextBadges, withSaved } from "@/lib/badges";
 import { TENSES } from "@/lib/conjugation/types";
 import { CHAPTERS, EXAM_LEVELS, EXAM_PASS_SCORE, PASS_SCORE, chaptersDone, examId, levelChapters } from "@/lib/course";
@@ -36,6 +37,7 @@ import {
 import { saveProgress, setProgressEnabled, syncDrillStreak } from "@/lib/progress-queue";
 import { DAYS_TO_LOAD, loadMastered, loadProgress, saveBadges, setMistakeHidden, type ProgressData } from "@/lib/progress-store";
 import { MASTERED_DAYS, reviewsLeft } from "@/lib/schedule";
+import { ITEM_BELOW, ITEM_MIN_MISSES, VERB_BELOW, VERB_MIN_ANSWERS, VERB_MIN_MISSES, itemStruggles, verbStruggles } from "@/lib/struggles";
 
 const SAVE_WAIT_MS = 5000;
 const WEEKS_SHOWN = 6;
@@ -202,6 +204,34 @@ function SpotList({ title, spots }: { title: string; spots: WeakSpot[] }) {
         ))}
       </ul>
     </div>
+  );
+}
+
+/** Shown on /progress: the worst few, so the list reads as a nudge rather than a report. */
+const STRUGGLING_VERBS = 3;
+const STRUGGLING_ITEMS = 8;
+
+function StrugglesSection({ data }: { data: ProgressData }) {
+  const verbs = verbStruggles(data.verbs).slice(0, STRUGGLING_VERBS);
+  const items = itemStruggles(data.struggling).slice(0, STRUGGLING_ITEMS);
+  return (
+    <section>
+      <h2 className="mb-3 text-xl font-semibold">Keeps tripping you up</h2>
+      {verbs.length + items.length === 0 ? (
+        <p className="text-stone-600 dark:text-stone-400">
+          Nothing right now. A word or verb tense shows up here once you&apos;ve missed it {ITEM_MIN_MISSES} times.
+        </p>
+      ) : (
+        <>
+          <StruggleList verbs={verbs} items={items} />
+          <p className="mt-2 text-sm text-stone-500">
+            A word or verb tense shows up after {ITEM_MIN_MISSES} or more misses with under {ITEM_BELOW}% right, and a verb after{" "}
+            {VERB_MIN_MISSES} misses in {VERB_MIN_ANSWERS} or more answers with under {VERB_BELOW}% right, counting first tries all time.
+            A verb tense covers all its forms.
+          </p>
+        </>
+      )}
+    </section>
   );
 }
 
@@ -718,6 +748,8 @@ function Stats({ data, drillNow, wordLists }: { data: ProgressData; drillNow: nu
           <MasteredList wordLists={wordLists} />
         </section>
       )}
+
+      <StrugglesSection data={data} />
 
       {level && (
         <section>

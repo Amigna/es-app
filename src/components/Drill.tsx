@@ -342,7 +342,20 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (session) return <DrillRunner first={session.first} next={session.next} onStop={() => setSession(null)} />;
+  if (session) {
+    return (
+      <DrillRunner
+        first={session.first}
+        next={session.next}
+        onStop={() => setSession(null)}
+        // Clearing the session first unmounts this runner, so the practice session starts with fresh counts.
+        onPractice={(target) => {
+          setSession(null);
+          void start(target);
+        }}
+      />
+    );
+  }
   if (study) return <StudyRunner cards={study} onStop={() => setStudy(null)} />;
 
   const usesVerbs = mode === "conjugation" || mode === "blanks" || mode === "writing" || mode === "listening";

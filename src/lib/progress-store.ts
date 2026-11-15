@@ -2,6 +2,7 @@ import {
   arrayRemove,
   arrayUnion,
   collection,
+  deleteField,
   doc,
   documentId,
   getCountFromServer,
@@ -31,6 +32,7 @@ import {
   type Schedule,
   type TodayData,
 } from "./schedule";
+import { watched, watchUpdate } from "./struggles";
 
 // Everything lives under users/{uid}: `items` per thing practiced, `days` per calendar day, and `stats` for the
 // summary, the list of scheduled items, settings and personal records. Pages read those instead of scanning items.
@@ -47,16 +49,28 @@ async function currentUid(): Promise<string | null> {
   return auth().currentUser?.uid ?? null;
 }
 
-/** The schedules saved so far. A next review depends on the last one, so these have to be read before writing. */
-async function storedSchedules(uid: string, ids: string[]): Promise<Record<string, Schedule>> {
+const tallyOf = (data: Record<string, unknown> | undefined): Tally => ({
+  right: Number(data?.right ?? 0),
+  accent: Number(data?.accent ?? 0),
+  wrong: Number(data?.wrong ?? 0),
+});
+
+/**
+ * The schedules saved so far, and each item's all-time totals. A next review depends on the last one, so these have to
+ * be read before writing, and the totals come along for free.
+ */
+async function storedItems(uid: string, ids: string[]): Promise<{ schedules: Record<string, Schedule>; tallies: Record<string, Tally> }> {
   const snapshots = await Promise.all(ids.map((id) => getDoc(itemDoc(uid, id))));
-  const stored: Record<string, Schedule> = {};
+  const schedules: Record<string, Schedule> = {};
+  const tallies: Record<string, Tally> = {};
   for (const snapshot of snapshots) {
     const data = snapshot.data();
+    if (!data) continue;
+    tallies[snapshot.id] = tallyOf(data);
     // Items answered before scheduling existed have tallies only, and start fresh here.
-    if (data?.stability) stored[snapshot.id] = { stability: data.stability, difficulty: data.difficulty, due: data.due, last: data.last };
+    if (data.stability) schedules[snapshot.id] = { stability: data.stability, difficulty: data.difficulty, due: data.due, last: data.last };
   }
-  return stored;
+  return { schedules, tallies };
 }
 
 export async function saveAnswers(answers: Answer[]) {
@@ -66,7 +80,9 @@ export async function saveAnswers(answers: Answer[]) {
 
   const summary = summarize(answers);
   const { items, days } = summary;
-  const plan = planReviews(answers, await storedSchedules(uid, Object.keys(items).filter(schedulable)));
+  const stored = await storedItems(uid, Object.keys(items).filter(schedulable));
+  const plan = planReviews(answers, stored.schedules);
+  const watch = watchUpdate(stored.tallies, items);
 
   const batch = writeBatch(db());
   for (const [id, item] of Object.entries(items)) {
@@ -95,7 +111,41 @@ export async function saveAnswers(answers: Answer[]) {
   }
   batch.set(statsDoc(uid, "summary"), summaryUpdate(summary), { merge: true });
   if (plan.fresh.length > 0) batch.set(statsDoc(uid, "seen"), { items: arrayUnion(...plan.fresh) }, { merge: true });
+  // Only written when an item joins, changes on or leaves the watch list, so most saves skip it.
+  if (Object.keys(watch).length > 0) {
+    const changes = Object.fromEntries(Object.entries(watch).map(([id, t]) => [id, t ?? deleteField()]));
+    batch.set(statsDoc(uid, "struggling"), { items: changes }, { merge: true });
+  }
   await batch.commit();
+}
+
+/**
+ * Words and verb tenses that keep going wrong, with their all-time totals (see `struggles.ts`). Kept up to date by
+ * saves. The first time, it's built from every item with 2 or more misses, a one-off query, and marked `built`.
+ */
+async function loadWatched(uid: string): Promise<Record<string, Tally>> {
+  const ref = statsDoc(uid, "struggling");
+  const saved = await getDoc(ref);
+  const parse = (items: Record<string, Record<string, unknown>> | undefined) =>
+    Object.fromEntries(Object.entries(items ?? {}).map(([id, t]) => [id, tallyOf(t)]));
+  if (saved.data()?.built) return parse(saved.data()?.items);
+  const found = await getDocs(query(collection(db(), "users", uid, "items"), where("wrong", ">=", 2)));
+  const items: Record<string, Tally> = {};
+  for (const d of found.docs) {
+    const t = tallyOf(d.data());
+    if (schedulable(d.id) && watched(t)) items[d.id] = t;
+  }
+  // Merged, so a save from another device in between keeps its changes.
+  await setDoc(ref, { built: true, items }, { merge: true });
+  return items;
+}
+
+/** For a drill: the watch list, and all-time totals by verb. Two reads when the drill starts. Null when signed out. */
+export async function loadDrillStruggles(): Promise<{ items: Record<string, Tally>; verbs: Record<string, Tally> } | null> {
+  const uid = await currentUid();
+  if (!uid) return null;
+  const [items, summary] = await Promise.all([loadWatched(uid), getDoc(statsDoc(uid, "summary"))]);
+  return { items, verbs: (summary.data()?.verbs ?? {}) as Record<string, Tally> };
 }
 
 /**
@@ -162,12 +212,14 @@ export interface ProgressData {
   badges: Record<string, string>;
   /** Level changes, oldest first, saved from 2026-11-08 on. */
   levelHistory: LevelChange[];
+  /** Words and verb tenses on the watch list, with all-time totals (see `struggles.ts`). */
+  struggling: Record<string, Tally>;
 }
 
 export async function loadProgress(uid: string): Promise<ProgressData> {
   const items = collection(db(), "users", uid, "items");
   const cutoff = localDay(new Date(Date.now() - DAYS_TO_LOAD * 24 * 60 * 60 * 1000));
-  const [summary, recent, practiced, mastered, dueToday, seen, settings, records, course, badges] = await Promise.all([
+  const [summary, recent, practiced, mastered, dueToday, seen, settings, records, course, badges, struggling] = await Promise.all([
     getDoc(statsDoc(uid, "summary")),
     // Days are keyed by date, so a range on the ID needs no custom index, unlike sorting it descending.
     getDocs(query(collection(db(), "users", uid, "days"), where(documentId(), ">=", cutoff))),
@@ -179,6 +231,7 @@ export async function loadProgress(uid: string): Promise<ProgressData> {
     getDoc(statsDoc(uid, "records")),
     getDoc(statsDoc(uid, "course")),
     getDoc(statsDoc(uid, "badges")),
+    loadWatched(uid),
   ]);
   const data = summary.data() ?? {};
   return {
@@ -198,6 +251,7 @@ export async function loadProgress(uid: string): Promise<ProgressData> {
     course: parseCourse(course.data()),
     badges: Object.fromEntries(Object.entries(badges.data() ?? {}).filter((e): e is [string, string] => typeof e[1] === "string")),
     levelHistory: parseLevelHistory(settings.data()?.levelHistory),
+    struggling,
   };
 }
 

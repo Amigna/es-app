@@ -9,8 +9,21 @@ import { conjugate } from "@/lib/conjugation/engine";
 import { markVerb } from "@/lib/conjugation/regular";
 import { TENSES } from "@/lib/conjugation/types";
 import { accentTrap, gradeCard, wordDiff, type Card, type Grade, type TenseTable } from "@/lib/drill";
+import StruggleList from "@/components/Struggles";
+import type { PracticeTarget } from "@/lib/practice";
+import type { Tally } from "@/lib/progress";
 import { drillStreak, progressEnabled, recordAnswer, recordStreak, saveProgress, syncDrillStreak } from "@/lib/progress-queue";
 import { SLOW_RATE, speak } from "@/lib/speech";
+import { schedulable } from "@/lib/schedule";
+import { addTally, drillStruggles, missNudge } from "@/lib/struggles";
+
+// What the results screen lists as still going wrong in this drill.
+const RESULT_VERBS = 2;
+const RESULT_ITEMS = 5;
+
+type Saved = { items: Record<string, Tally>; verbs: Record<string, Tally> };
+
+const tallyFor = (g: Grade): Tally => ({ right: g === "correct" ? 1 : 0, accent: g === "accent" ? 1 : 0, wrong: g === "wrong" ? 1 : 0 });
 
 const SPECIAL_LETTERS = ["á", "é", "í", "ó", "ú", "ñ", "ü"];
 
@@ -36,7 +49,22 @@ function DictationAnswer({ input, card }: { input: string; card: Card }) {
   );
 }
 
-function Feedback({ result, card, input, speak, retry }: { result: Grade; card: Card; input: string; speak?: string; retry: boolean }) {
+function Feedback({
+  result,
+  card,
+  input,
+  speak,
+  retry,
+  nudge,
+}: {
+  result: Grade;
+  card: Card;
+  input: string;
+  speak?: string;
+  retry: boolean;
+  /** Says this keeps going wrong. Text only: a link here could end the drill with a stray tap. */
+  nudge?: string | null;
+}) {
   const comesBack = retry ? " This one will come back." : "";
   const styles = {
     correct: "border-emerald-300 bg-emerald-50 text-emerald-900 dark:border-emerald-800 dark:bg-emerald-950 dark:text-emerald-200",
@@ -92,6 +120,7 @@ function Feedback({ result, card, input, speak, retry }: { result: Grade; card: 
         {speak && <SpeakButton text={speak} />}
       </div>
       {card.explain && <p className="mt-1">{card.explain}</p>}
+      {result === "wrong" && nudge && <p className="mt-2 font-medium">{nudge}</p>}
       {/* Seeing the word in a sentence helps it stick. Only after a miss, since the sentence contains the answer. */}
       {result === "wrong" && card.missedExample && (
         <div className="mt-3 flex items-start justify-between gap-2 border-l-2 border-current/30 pl-3">
@@ -171,12 +200,15 @@ export default function DrillRunner({
   next,
   onStop,
   onFinish,
+  onPractice,
   retry = true,
   stopLabel = "Change settings",
 }: {
   first: Card;
   next: () => Card | null;
   onStop: () => void;
+  /** Starts a practice session from the results screen in place. Without it, practice links go to /drill. */
+  onPractice?: (target: PracticeTarget) => void;
   /** Called once when the last card is answered, with the score as the results screen shows it. */
   onFinish?: (score: number) => void;
   /** Off for a test, where a miss shouldn't come back and the score is a first try. */
@@ -204,6 +236,13 @@ export default function DrillRunner({
   const [revealed, setRevealed] = useState(false);
   // Counts cards shown, so a card that comes straight back still plays its sentence again.
   const [turn, setTurn] = useState(0);
+  // Repeated mistakes: saved totals loaded when the drill starts, plus this drill's first tries. Not in tests, where
+  // misses don't come back, and only for signed-in drills that save.
+  const nudges = retry && !!first.track;
+  const [saved, setSaved] = useState<Saved | null>(null);
+  const [tallies, setTallies] = useState<Record<string, Tally>>({});
+  const nudgedRef = useRef(new Set<string>());
+  const [nudge, setNudge] = useState<string | null>(null);
   const isVocab = !!card.track?.item.startsWith("vocab:");
   const canGiveUp = isVocab || !!card.writing;
   const tenseMood = TENSES.find((t) => t.id === card.track?.tense)?.mood;
@@ -235,6 +274,23 @@ export default function DrillRunner({
     syncDrillStreak().then((carried) => {
       if (!answeredRef.current) setStreak(carried);
     });
+    // Only when the session starts.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Two reads when the drill starts, none per card. A failure just means no nudges.
+  useEffect(() => {
+    if (!nudges || !progressEnabled()) return;
+    let current = true;
+    import("@/lib/progress-store")
+      .then(({ loadDrillStruggles }) => loadDrillStruggles())
+      .then((loaded) => {
+        if (current && loaded) setSaved(loaded);
+      })
+      .catch((err) => console.error("Couldn't load repeated mistakes", err));
+    return () => {
+      current = false;
+    };
     // Only when the session starts.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -278,7 +334,18 @@ export default function DrillRunner({
     setResult(g);
     setTotal(answeredNow);
     // Only the first try counts, so a retry can't inflate progress.
-    if (card.track && !isRetry) recordAnswer(card.track, g, given === undefined ? undefined : mistake(given));
+    if (card.track && !isRetry) {
+      recordAnswer(card.track, g, given === undefined ? undefined : mistake(given));
+      const item = card.track.item;
+      if (nudges && schedulable(item)) {
+        const mine = addTally(tallies[item], tallyFor(g));
+        setTallies({ ...tallies, [item]: mine });
+        // Once per item per drill, and only once the saved totals have arrived, so the count is all-time.
+        const line = g === "wrong" && saved && !nudgedRef.current.has(item) ? missNudge(item, addTally(saved.items[item], mine)) : null;
+        if (line) nudgedRef.current.add(item);
+        setNudge(line);
+      }
+    }
     if (g === "correct") setRight(right + 1);
     if (g === "accent") setSlips(slips + 1);
     answeredRef.current = true;
@@ -332,6 +399,7 @@ export default function DrillRunner({
     setInput("");
     setResult(null);
     setRevealed(false);
+    setNudge(null);
   }
 
   function insertLetter(letter: string) {
@@ -349,6 +417,7 @@ export default function DrillRunner({
     // Accent slips are left out of the score, the same way /progress counts accuracy.
     const counted = total - slips;
     const score = counted ? Math.round((right / counted) * 100) : 100;
+    const struggles = saved ? drillStruggles(saved, tallies, { verbs: RESULT_VERBS, items: RESULT_ITEMS }) : null;
     // The confetti sits outside the card: the card's pop-in transform would otherwise trap it inside.
     return (
       <>
@@ -369,6 +438,12 @@ export default function DrillRunner({
           {bestStreak >= 3 && <p className="text-stone-600 dark:text-stone-400">Best streak: {bestStreak} in a row</p>}
           {right < counted && retry && (
             <p className="text-sm text-stone-500">Questions you missed came back, so they count more than once.</p>
+          )}
+          {struggles && struggles.verbs.length + struggles.items.length > 0 && (
+            <div className="space-y-2 pt-2">
+              <h3 className="text-left font-semibold">Keeps tripping you up</h3>
+              <StruggleList verbs={struggles.verbs} items={struggles.items} onPractice={onPractice} />
+            </div>
           )}
           <button
             type="button"
@@ -637,7 +712,14 @@ export default function DrillRunner({
 
         {result && (
           <div className="mt-4 space-y-3">
-            <Feedback result={result} card={card} input={input} retry={retry} speak={(canGiveUp || card.dictation) && !card.english ? card.shown : undefined} />
+            <Feedback
+              result={result}
+              card={card}
+              input={input}
+              retry={retry}
+              nudge={nudge}
+              speak={(canGiveUp || card.dictation) && !card.english ? card.shown : undefined}
+            />
             <button
               ref={nextRef}
               type="button"
