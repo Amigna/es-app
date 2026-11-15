@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { BADGES, earnedBadges, findBadge, nextBadges, withSaved } from "./badges";
+import { BADGES, earnedBadges, findBadge, newestFirst, nextBadges, withSaved } from "./badges";
 import { CHAPTERS, EXAM_LEVELS, examId, levelChapters, type CourseProgress } from "./course";
 
 const TODAY = "2026-11-05";
@@ -11,6 +11,13 @@ describe("badges", () => {
     assert.equal(new Set(BADGES.map((b) => b.id)).size, BADGES.length);
     for (const c of CHAPTERS) assert.ok(findBadge(`chapter:${c.id}`), c.id);
     for (const level of new Set(CHAPTERS.map((c) => c.level))) assert.ok(findBadge(`level:${level}`), level);
+  });
+
+  it("lists the newest first, and the later chapter first when two were passed the same day", () => {
+    const [one, two, three] = CHAPTERS.map((c) => `chapter:${c.id}`);
+    const ids = newestFirst({ [one]: "2026-11-15", [two]: "2026-11-15", [three]: "2026-11-01", "drill:25": "2026-11-15", "drill:50": "2026-11-15" }).map((e) => e.badge.id);
+    assert.deepEqual(ids, ["drill:50", "drill:25", two, one, three]);
+    assert.deepEqual(newestFirst({ unknown: "2026-11-15" }), []);
   });
 
   it("gives a chapter its badge on the day it was passed", () => {

@@ -8,7 +8,7 @@ import BadgeArt from "@/components/Badge";
 import { LevelSuggestion } from "@/components/LevelPicker";
 import ReportProblem from "@/components/ReportProblem";
 import StruggleList from "@/components/Struggles";
-import { BADGES, earnedBadges, findBadge, nextBadges, withSaved } from "@/lib/badges";
+import { BADGES, earnedBadges, newestFirst, nextBadges, withSaved } from "@/lib/badges";
 import { TENSES } from "@/lib/conjugation/types";
 import { CHAPTERS, EXAM_LEVELS, EXAM_PASS_SCORE, PASS_SCORE, chaptersDone, examId, levelChapters } from "@/lib/course";
 import { syncCourse } from "@/lib/course-progress";
@@ -557,12 +557,7 @@ function VocabularySection({ data, wordLists }: { data: ProgressData; wordLists:
 /** Earned badges, newest first, and a few to aim for next. */
 function BadgesSection({ data }: { data: ProgressData }) {
   const today = localDay();
-  const earned = Object.entries(data.badges)
-    .flatMap(([id, day]) => {
-      const badge = findBadge(id);
-      return badge ? [{ badge, day }] : [];
-    })
-    .sort((a, b) => b.day.localeCompare(a.day) || BADGES.indexOf(a.badge) - BADGES.indexOf(b.badge));
+  const earned = newestFirst(data.badges);
   const next = nextBadges(data.badges);
   return (
     <section>

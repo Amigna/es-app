@@ -72,6 +72,20 @@ export const BADGES: Badge[] = [
 
 export const findBadge = (id: string) => BADGES.find((b) => b.id === id);
 
+/**
+ * Earned badges, newest first. Only the day is saved, so badges from the same day go in reverse list order: chapters
+ * come in course order, then exams, then the course, and bigger milestones after smaller ones, so the one listed later
+ * is almost always the one earned later (chapter 2 after chapter 1, 50 in a row after 25).
+ */
+export function newestFirst(badges: Record<string, string>): { badge: Badge; day: string }[] {
+  return Object.entries(badges)
+    .flatMap(([id, day]) => {
+      const badge = findBadge(id);
+      return badge ? [{ badge, day }] : [];
+    })
+    .sort((a, b) => b.day.localeCompare(a.day) || BADGES.indexOf(b.badge) - BADGES.indexOf(a.badge));
+}
+
 /** What badges are worked out from. Everything but the course is only known when signed in. */
 export interface BadgeData {
   course: CourseProgress;
