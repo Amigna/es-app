@@ -9,6 +9,8 @@ export interface Sentence {
   en: string;
   /** Set when the sentence also uses a tense from a higher level than its own (si tuviéramos in a conditional one), so writing and dictation skip it below that level. Checked by a test. */
   level?: Level;
+  /** Other good English translations, accepted by Spanish-to-English writing cards. Added from "Mine works" reports. */
+  alt?: string[];
 }
 
 /** Marks a tense that exists but sounds unnatural for this verb, so a forced example would teach the wrong thing. */

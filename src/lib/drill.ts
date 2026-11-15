@@ -121,6 +121,8 @@ export interface Card {
   lesson?: GuideRule;
   /** The tense to show in full after a miss, with the person asked marked. */
   table?: TenseTable;
+  /** A word's example sentence, shown after a miss so the word is seen in use. Never before answering: it contains the word. */
+  missedExample?: { es: string; en: string };
   /** Present on a card you flip and grade yourself instead of answering. Shown with the answer. */
   flashcard?: { example?: { es: string; en: string }; note?: string };
   /** A sentence to translate. Many answers can be right, so one that doesn't match is compared by the learner. */
@@ -282,7 +284,9 @@ export function gradeCard(card: Card, input: string): Grade {
 function gradeLoosely(card: Card, input: string): Grade {
   if (card.dictation) return compare(card, input, card.answers[0]);
   if (card.writing) {
-    const result = compare(card, input, card.answers[0]);
+    // Any accepted translation counts, the best match winning.
+    const results = card.answers.map((a) => compare(card, input, a));
+    const result = results.includes("correct") ? "correct" : results.includes("accent") ? "accent" : "wrong";
     return card.english && result === "accent" ? "correct" : result;
   }
   if (card.english) return card.answers.includes(englishCore(input)) ? "correct" : "wrong";

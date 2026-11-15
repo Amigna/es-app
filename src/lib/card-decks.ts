@@ -103,6 +103,7 @@ function toSpanishCard(word: Word, everyWord: Word[]): Card {
     shown: word.shown,
     track: vocabTrack(word.type, word.es, "toSpanish"),
     lookalikes: allSpellings(),
+    ...(word.ex ? { missedExample: word.ex } : {}),
   };
 }
 
@@ -144,6 +145,7 @@ function toEnglishCard(word: Word): Card {
     shown: word.en,
     english: true,
     track: vocabTrack(word.type, word.es, "toEnglish"),
+    ...(word.ex ? { missedExample: word.ex } : {}),
   };
 }
 
@@ -398,7 +400,8 @@ export function writingCard(bank: SentenceBank, verb: Verb, tense: TenseId, side
     title: toEnglish ? sentence.es : sentence.en,
     titleIsSpanish: toEnglish,
     ask: toEnglish ? "Write it in English" : "Write it in Spanish",
-    answers: [shown],
+    // The sentence's own translation is the one shown; `alt` lists others that are just as good.
+    answers: toEnglish ? [shown, ...(sentence.alt ?? [])] : [shown],
     shown,
     english: toEnglish,
     writing: true,

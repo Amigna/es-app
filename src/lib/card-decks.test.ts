@@ -157,6 +157,32 @@ describe("adjectives in Spanish", () => {
   });
 });
 
+describe("writing alternatives", () => {
+  const sentence = { person: 2, es: "Mi hermano va a cumplir quince años.", en: "My brother is going to turn fifteen.", alt: ["My brother is turning fifteen years old."] };
+  const bank = { ir: { present: [sentence] } };
+  it("accept a sentence's alt translations in English, and still show the main one", () => {
+    const card = writingCard(bank, findVerb("ir")!, "present", "toEnglish")!;
+    assert.equal(gradeCard(card, "My brother is turning fifteen years old"), "correct");
+    assert.equal(gradeCard(card, "my brother is going to turn fifteen"), "correct");
+    assert.equal(gradeCard(card, "My brother is fifteen."), "wrong");
+    assert.equal(card.shown, sentence.en);
+  });
+  it("don't turn English alternatives into Spanish answers", () => {
+    const card = writingCard(bank, findVerb("ir")!, "present", "toSpanish")!;
+    assert.deepEqual(card.answers, [sentence.es]);
+  });
+});
+
+describe("word cards", () => {
+  it("carry the word's example sentence for after a miss, in both directions", () => {
+    const candado = NOUNS.find((n) => n.es === "candado")!;
+    const toSpanish = reviewCard("vocab:noun:candado:toSpanish", SENTENCE_BANK, new Set())!;
+    const toEnglish = reviewCard("vocab:noun:candado:toEnglish", SENTENCE_BANK, new Set())!;
+    assert.deepEqual(toSpanish.missedExample, candado.ex);
+    assert.deepEqual(toEnglish.missedExample, candado.ex);
+  });
+});
+
 describe("progress IDs", () => {
   const itemIds = (type: VocabOptions["wordTypes"][number], count: number) =>
     Array.from({ length: count }, (_, n) => {

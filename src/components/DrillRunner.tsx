@@ -92,6 +92,18 @@ function Feedback({ result, card, input, speak, retry }: { result: Grade; card: 
         {speak && <SpeakButton text={speak} />}
       </div>
       {card.explain && <p className="mt-1">{card.explain}</p>}
+      {/* Seeing the word in a sentence helps it stick. Only after a miss, since the sentence contains the answer. */}
+      {result === "wrong" && card.missedExample && (
+        <div className="mt-3 flex items-start justify-between gap-2 border-l-2 border-current/30 pl-3">
+          <p>
+            <span lang="es" className="block font-medium">
+              {card.missedExample.es}
+            </span>
+            <span className="opacity-80">{card.missedExample.en}</span>
+          </p>
+          <SpeakButton text={card.missedExample.es} />
+        </div>
+      )}
     </div>
   );
 }
