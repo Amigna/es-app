@@ -134,6 +134,10 @@ describe("stem-changing verbs", () => {
     check({ inf: "errar", boot: "e>ye" }, "present", P5("yerro yerras yerra erramos yerran"));
     check({ inf: "adquirir", boot: "i>ie" }, "present", P5("adquiero adquieres adquiere adquirimos adquieren"));
     check({ inf: "adquirir", boot: "i>ie" }, "preterite", P5("adquirí adquiriste adquirió adquirimos adquirieron"));
+    // concernir and discernir change only in the present: no e>i like sentir's sintió.
+    check({ inf: "concernir", boot: "e>ie" }, "present", P5("concierno conciernes concierne concernimos conciernen"));
+    check({ inf: "concernir", boot: "e>ie" }, "preterite", P5("concerní concerniste concernió concernimos concernieron"));
+    check({ inf: "discernir", boot: "e>ie" }, "subjPresent", P5("discierna disciernas discierna discernamos disciernan"));
   });
 
   it("-ir verbs also change in the preterite, gerund and nosotros subjunctive", () => {

@@ -36,6 +36,8 @@ const CLITICS = ["me", "te", "se", "nos", "se"];
 
 // The -ir stem changes of the preterite, gerund and nosotros subjunctive (dormir -> durmió).
 export const IR_CHANGE: Partial<Record<Boot, string>> = { "e>ie": "e>i", "e>i": "e>i", "o>ue": "o>u" };
+/** -ir verbs whose e>ie stops at the present, with no e>i: concernió, discernimos, not concirnió. */
+export const NO_IR_CHANGE = new Set(["concernir", "discernir", "cernir"]);
 const NO_ZC = new Set(["mecer", "remecer", "cocer", "escocer", "recocer"]);
 
 export function applyChange(stem: string, change: string): string {
@@ -111,7 +113,7 @@ function simple(input: VerbInput): Simple {
 
   const boot = input.boot ?? spec.boot;
   const bootStem = boot ? applyChange(base, boot) : base;
-  const changeKey = boot ? IR_CHANGE[boot] : undefined;
+  const changeKey = boot && !NO_IR_CHANGE.has(inf) ? IR_CHANGE[boot] : undefined;
   const irStem = type === "ir" && changeKey ? applyChange(base, changeKey) : base;
   const hiatusStem = input.accent ? accentStem(bootStem, input.accent) : bootStem;
   const uirY = /[^gq]uir$/.test(inf) ? base + "y" : null;

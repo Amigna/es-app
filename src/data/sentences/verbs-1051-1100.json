@@ -1563,5 +1563,223 @@
   "impNegative": [
    {"person":1,"es":"No estropees el final, ¡no lo he visto!","en":"Don't spoil the ending, I haven't seen it!"}
   ]
+ },
+ "concernir": {
+  "present": [
+   {"person":2,"es":"Este problema nos concierne a todos.","en":"This problem concerns all of us."},
+   {"person":4,"es":"Estas reglas conciernen solo a los alumnos de primaria.","en":"These rules only apply to the elementary school students."}
+  ],
+  "preterite": {"rare":true},
+  "imperfect": [
+   {"person":2,"es":"El asunto no le concernía a nadie más.","en":"The matter didn't concern anyone else."},
+   {"person":4,"es":"Las quejas concernían al ruido de la fiesta.","en":"The complaints concerned the noise from the party."}
+  ],
+  "future": [
+   {"person":2,"es":"La nueva ley concernirá a todas las escuelas.","en":"The new law will apply to all schools."},
+   {"person":4,"es":"Los cambios concernirán solo a los empleados nuevos.","en":"The changes will only concern new employees."}
+  ],
+  "conditional": {"rare":true},
+  "presentPerfect": {"rare":true},
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":2,"es":"Aunque no te concierna, escucha.","en":"Even if it doesn't concern you, listen."},
+   {"person":4,"es":"Lee las reglas que te conciernan.","en":"Read the rules that apply to you."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
+ },
+ "constar": {
+  "present": [
+   {"person":2,"es":"El examen consta de tres partes.","en":"The exam consists of three parts."},
+   {"person":4,"es":"Tus datos constan en el formulario.","en":"Your details are on the form."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El viaje constó de cinco etapas.","en":"The trip consisted of five stages."},
+   {"person":4,"es":"Las pruebas constaron de dos partes.","en":"The tests consisted of two parts."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"El menú constaba de tres platos.","en":"The set menu consisted of three courses."},
+   {"person":4,"es":"Las clases constaban de teoría y práctica.","en":"The classes consisted of theory and practice."}
+  ],
+  "future": [
+   {"person":2,"es":"El curso constará de diez clases.","en":"The course will consist of ten classes."},
+   {"person":4,"es":"Tus notas constarán en el certificado.","en":"Your grades will appear on the certificate."}
+  ],
+  "conditional": {"rare":true},
+  "presentPerfect": {"rare":true},
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":2,"es":"Que conste que yo te avisé.","en":"For the record, I warned you."},
+   {"person":4,"es":"Asegúrate de que tus datos consten en la lista.","en":"Make sure your details are on the list."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
+ },
+ "basar": {
+  "present": [
+   {"person":2,"es":"La película se basa en un libro.","en":"The movie is based on a book."},
+   {"person":0,"es":"Baso mis recetas en las de mi abuela.","en":"I base my recipes on my grandmother's."},
+   {"person":1,"es":"¿En qué basas tu opinión?","en":"What do you base your opinion on?"},
+   {"person":3,"es":"Basamos el proyecto en una encuesta a los alumnos.","en":"We're basing the project on a survey of the students."},
+   {"person":4,"es":"Las telenovelas se basan casi siempre en el amor.","en":"Soap operas are almost always based on love."}
+  ],
+  "preterite": [
+   {"person":2,"es":"La directora basó la obra en una leyenda maya.","en":"The director based the play on a Maya legend."},
+   {"person":0,"es":"Basé mi disfraz en un personaje de la serie.","en":"I based my costume on a character from the show."},
+   {"person":1,"es":"¿En qué basaste tu respuesta?","en":"What did you base your answer on?"},
+   {"person":3,"es":"Basamos la decisión en los datos.","en":"We based the decision on the data."},
+   {"person":4,"es":"Los científicos basaron el estudio en mil familias.","en":"The scientists based the study on a thousand families."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo basaba todo en la confianza.","en":"My grandfather based everything on trust."},
+   {"person":0,"es":"Yo basaba mis cuentos en sueños que tenía.","en":"I based my stories on dreams I had."},
+   {"person":1,"es":"Tú basabas tus opiniones en lo que decía la tele.","en":"You based your opinions on what the TV said."},
+   {"person":3,"es":"Basábamos el menú en lo que había en el mercado.","en":"We based the menu on what was at the market."},
+   {"person":4,"es":"Los marineros antiguos basaban su ruta en las estrellas.","en":"Sailors of old based their route on the stars."}
+  ],
+  "future": [
+   {"person":2,"es":"La nueva serie se basará en un videojuego.","en":"The new series will be based on a video game."},
+   {"person":0,"es":"Basaré mi ensayo en la vida de mi bisabuela.","en":"I'll base my essay on my great-grandmother's life."},
+   {"person":1,"es":"¿En qué basarás tu proyecto de ciencias?","en":"What will you base your science project on?"},
+   {"person":3,"es":"Basaremos el diseño en los colores de la escuela.","en":"We'll base the design on the school colors."},
+   {"person":4,"es":"Los jueces basarán su decisión en las pruebas.","en":"The judges will base their decision on the evidence."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Un buen juez no basaría su decisión en rumores.","en":"A good judge wouldn't base a decision on rumors."},
+   {"person":0,"es":"Yo basaría la fiesta en los años ochenta.","en":"I'd base the party on the eighties."},
+   {"person":1,"es":"¿En qué basarías tu novela?","en":"What would you base your novel on?"},
+   {"person":3,"es":"Basaríamos el viaje en lo que quieran los niños.","en":"We'd plan the trip around what the kids want."},
+   {"person":4,"es":"Ellos basarían la película en hechos reales.","en":"They'd base the movie on real events."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"La autora ha basado el libro en su infancia.","en":"The author has based the book on her childhood."}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":2,"es":"Ojalá que la película se base en el libro original.","en":"I hope the movie is based on the original book."},
+   {"person":0,"es":"La maestra quiere que base mi ensayo en una entrevista.","en":"The teacher wants me to base my essay on an interview."},
+   {"person":1,"es":"Es importante que bases tu opinión en hechos.","en":"It's important that you base your opinion on facts."},
+   {"person":3,"es":"El jefe pide que basemos el informe en datos reales.","en":"The boss asks us to base the report on real data."},
+   {"person":4,"es":"No es justo que basen la nota en un solo examen.","en":"It's not fair that they base the grade on a single test."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": [
+   {"person":1,"es":"Basa tu respuesta en el texto.","en":"Base your answer on the text."}
+  ],
+  "impNegative": {"rare":true}
+ },
+ "enfadarse": {
+  "present": [
+   {"person":2,"es":"Mi madre se enfada cuando llego tarde.","en":"My mother gets angry when I get home late."},
+   {"person":0,"es":"Me enfado cuando pierdo al parchís.","en":"I get annoyed when I lose at parcheesi."},
+   {"person":1,"es":"¿Por qué te enfadas tanto?","en":"Why do you get so angry?"},
+   {"person":3,"es":"Nos enfadamos, pero luego hacemos las paces.","en":"We get angry, but then we make up."},
+   {"person":4,"es":"Los niños se enfadan cuando apagamos la tele.","en":"The kids get annoyed when we turn off the TV."}
+  ],
+  "preterite": [
+   {"person":2,"es":"El profesor se enfadó con toda la clase.","en":"The teacher got angry with the whole class."},
+   {"person":0,"es":"Me enfadé con mi hermano por romper mi móvil.","en":"I got angry with my brother for breaking my phone."},
+   {"person":1,"es":"¿Te enfadaste por la broma?","en":"Did you get annoyed about the joke?"},
+   {"person":3,"es":"Nos enfadamos un poco, pero ya está.","en":"We got a bit angry, but it's over now."},
+   {"person":4,"es":"Los vecinos se enfadaron por el ruido.","en":"The neighbors got angry about the noise."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"Mi abuelo nunca se enfadaba.","en":"My grandfather never got angry."},
+   {"person":0,"es":"De pequeño me enfadaba por todo.","en":"As a kid I got angry about everything."},
+   {"person":1,"es":"Te enfadabas si te despertábamos temprano.","en":"You'd get annoyed if we woke you up early."},
+   {"person":3,"es":"Nos enfadábamos por quién se sentaba delante.","en":"We'd get angry over who sat in the front."},
+   {"person":4,"es":"Mis padres se enfadaban si no hacíamos los deberes.","en":"My parents got angry if we didn't do our homework."}
+  ],
+  "future": [
+   {"person":2,"es":"Tu madre se enfadará si no la llamas.","en":"Your mother will be angry if you don't call her."},
+   {"person":0,"es":"No me enfadaré, te lo prometo.","en":"I won't get angry, I promise."},
+   {"person":1,"es":"Te enfadarás cuando veas el desorden.","en":"You'll be annoyed when you see the mess."},
+   {"person":3,"es":"Si llegamos tarde, nos enfadaremos con nosotros mismos.","en":"If we're late, we'll be annoyed with ourselves."},
+   {"person":4,"es":"Los clientes se enfadarán si el tren no llega.","en":"The customers will get angry if the train doesn't come."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Mi jefa se enfadaría si lo supiera.","en":"My boss would be angry if she knew.","level":"B2"},
+   {"person":0,"es":"Yo no me enfadaría por eso.","en":"I wouldn't get angry about that."},
+   {"person":1,"es":"¿Te enfadarías si me llevo tu chaqueta?","en":"Would you be annoyed if I took your jacket?"},
+   {"person":3,"es":"Nos enfadaríamos si nos mintieran.","en":"We'd be angry if they lied to us.","level":"B2"},
+   {"person":4,"es":"Ellos no se enfadarían por una tontería así.","en":"They wouldn't get angry over something so silly."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"¿Por qué se ha enfadado tu hermana?","en":"Why is your sister angry?"}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":2,"es":"No quiero que mi madre se enfade.","en":"I don't want my mother to get angry."},
+   {"person":0,"es":"Mi novia tiene miedo de que me enfade.","en":"My girlfriend is afraid I'll get angry."},
+   {"person":1,"es":"No te lo digo para que te enfades.","en":"I'm not telling you so you'll get angry."},
+   {"person":3,"es":"Es normal que nos enfademos a veces.","en":"It's normal for us to get angry sometimes."},
+   {"person":4,"es":"Ojalá que los vecinos no se enfaden.","en":"I hope the neighbors don't get angry."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": [
+   {"person":1,"es":"No te enfades, era una broma.","en":"Don't be angry, it was a joke."}
+  ]
+ },
+ "molar": {
+  "present": [
+   {"person":2,"es":"¡Me mola tu camiseta!","en":"I love your T-shirt!"},
+   {"person":1,"es":"Tú me molas mucho.","en":"I really like you."},
+   {"person":4,"es":"Me molan las películas de miedo.","en":"I love horror movies."}
+  ],
+  "preterite": [
+   {"person":2,"es":"Me moló mucho el concierto.","en":"I really loved the concert."},
+   {"person":4,"es":"A mis amigos les molaron las fotos.","en":"My friends loved the photos."}
+  ],
+  "imperfect": [
+   {"person":2,"es":"De pequeño me molaba el fútbol.","en":"As a kid I was into soccer."},
+   {"person":4,"es":"Me molaban los dibujos animados japoneses.","en":"I was into Japanese cartoons."}
+  ],
+  "future": [
+   {"person":2,"es":"Te molará este sitio, ya verás.","en":"You'll love this place, you'll see."},
+   {"person":4,"es":"A tus primos les molarán los regalos.","en":"Your cousins will love the presents."}
+  ],
+  "conditional": [
+   {"person":2,"es":"Me molaría ir a la playa este finde.","en":"I'd love to go to the beach this weekend."},
+   {"person":4,"es":"Te molarían esos zapatos.","en":"You'd love those shoes."}
+  ],
+  "presentPerfect": [
+   {"person":2,"es":"¿Te ha molado la peli?","en":"Did you like the movie?"}
+  ],
+  "pluperfect": {"rare":true},
+  "futurePerfect": {"rare":true},
+  "conditionalPerfect": {"rare":true},
+  "subjPresent": [
+   {"person":2,"es":"Espero que te mole el regalo.","en":"I hope you like the present."},
+   {"person":4,"es":"Ojalá que les molen las canciones.","en":"I hope they like the songs."}
+  ],
+  "subjImperfect": {"rare":true},
+  "subjImperfectSe": {"rare":true},
+  "subjPresentPerfect": {"rare":true},
+  "subjPluperfect": {"rare":true},
+  "impAffirmative": {"rare":true},
+  "impNegative": {"rare":true}
  }
 }
