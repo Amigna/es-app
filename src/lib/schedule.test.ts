@@ -125,7 +125,7 @@ describe("pickToday", () => {
   });
 
   it("takes what's due plus new items that haven't started", () => {
-    assert.deepEqual(pickToday(data, order), { reviews: ["a", "b"], fresh: ["d", "e"] });
+    assert.deepEqual(pickToday(data, order), { reviews: ["a", "b"], fresh: ["d", "e"], paused: false });
   });
 
   it("counts new items already done today", () => {
@@ -137,6 +137,42 @@ describe("pickToday", () => {
     assert.deepEqual(pickToday({ ...data, reviewsDone: 49 }, order).reviews, ["a"]);
     assert.deepEqual(pickToday({ ...data, reviewsDone: 50 }, order).reviews, []);
     assert.deepEqual(pickToday({ ...data, reviewsPerDay: 1 }, order).reviews, ["a"]);
+  });
+
+  describe("pausing new items while the pile is bigger than a day's limit", () => {
+    const pile = (n: number) => Array.from({ length: n }, (_, i) => `due${i}`);
+
+    it("pauses them, wanted ones included, when more is due than the limit", () => {
+      const today = pickToday({ ...data, due: pile(51), wanted: ["f"] }, order);
+      assert.equal(today.paused, true);
+      assert.deepEqual(today.fresh, []);
+      assert.equal(today.reviews.length, 50);
+    });
+
+    it("keeps them when exactly a day's worth is due", () => {
+      const today = pickToday({ ...data, due: pile(50) }, order);
+      assert.equal(today.paused, false);
+      assert.deepEqual(today.fresh, ["d", "e"]);
+    });
+
+    it("counts reviews already done today against the limit", () => {
+      assert.equal(pickToday({ ...data, due: pile(21), reviewsDone: 30 }, order).paused, true);
+      assert.equal(pickToday({ ...data, due: pile(20), reviewsDone: 30 }, order).paused, false);
+      // The limit is used up and some are still due: tomorrow starts behind, so nothing new today either.
+      assert.equal(pickToday({ ...data, due: pile(1), reviewsDone: 50 }, order).paused, true);
+    });
+
+    it("lets a pile of 343 shrink by the limit each day, and resumes new items once it fits", () => {
+      // The real account: 343 due, 50 a day. Leaving out reviewed items that come due again, it fits on day 7.
+      let due = 343;
+      const days: boolean[] = [];
+      while (due > 0) {
+        const today = pickToday({ ...data, due: pile(Math.min(due, 101)) }, order);
+        days.push(today.paused);
+        due -= today.reviews.length;
+      }
+      assert.deepEqual(days, [true, true, true, true, true, true, false]);
+    });
   });
 });
 

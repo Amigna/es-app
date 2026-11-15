@@ -13,7 +13,7 @@ export interface Schedule extends Memory {
 
 export const DEFAULT_REVIEWS_PER_DAY = 50;
 export const REVIEWS_PER_DAY_OPTIONS = [25, 50, 100];
-/** The most reviews any setting allows, which is how many due items Today's review loads. */
+/** The most reviews any setting allows. Today's review loads one more due item than this, to tell when more are due than a day can clear. */
 export const MAX_REVIEWS_PER_DAY = Math.max(...REVIEWS_PER_DAY_OPTIONS);
 export const DEFAULT_NEW_PER_DAY = 10;
 export const NEW_PER_DAY_OPTIONS = [5, 10, 20];
@@ -96,13 +96,22 @@ export const reviewsLeft = (reviewsPerDay: number, reviewsDone: number) => Math.
 /**
  * Wanted items still count toward the new-item limit, because they add the same review load. Only items in the usual
  * order are taken, which leaves out rare tenses and words no longer in the data.
+ *
+ * New items are paused while more is due than today's review limit can clear. Each new item asks for several reviews
+ * over its first weeks, so otherwise the overdue pile can grow faster than the limit clears it. Paused, the pile
+ * shrinks by a day's limit each day, and new items come back once it fits. Wanted items wait too, still first in line.
+ * `due` must hold at least one more item than `reviewsPerDay` when that many are due, so the pause can be told apart
+ * from a day that's exactly full.
  */
 export function pickToday({ due, seen, newDone, reviewsDone, reviewsPerDay, newPerDay, wanted }: TodayData, order: string[]) {
   const started = new Set(seen);
   const known = new Set(order);
   const queue = [...new Set([...wanted.filter((item) => known.has(item)), ...order])];
+  const left = reviewsLeft(reviewsPerDay, reviewsDone);
+  const paused = due.length > left;
   return {
-    reviews: due.slice(0, reviewsLeft(reviewsPerDay, reviewsDone)),
-    fresh: queue.filter((item) => !started.has(item)).slice(0, Math.max(0, newPerDay - newDone)),
+    reviews: due.slice(0, left),
+    fresh: paused ? [] : queue.filter((item) => !started.has(item)).slice(0, Math.max(0, newPerDay - newDone)),
+    paused,
   };
 }

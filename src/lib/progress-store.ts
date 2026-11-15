@@ -217,8 +217,9 @@ export async function loadToday(): Promise<TodayData | null> {
   const today = localDay();
   const items = collection(db(), "users", uid, "items");
   const [due, seen, day, settings, wanted] = await Promise.all([
-    // Loads enough for the highest setting, so this can run alongside reading the setting.
-    getDocs(query(items, where("due", "<=", today), orderBy("due"), limit(MAX_REVIEWS_PER_DAY))),
+    // Loads enough for the highest setting, so this can run alongside reading the setting, plus one to tell when more
+    // are due than a day's limit, which pauses new items (see pickToday).
+    getDocs(query(items, where("due", "<=", today), orderBy("due"), limit(MAX_REVIEWS_PER_DAY + 1))),
     getDoc(statsDoc(uid, "seen")),
     getDoc(doc(db(), "users", uid, "days", today)),
     loadReviewSettings(uid),

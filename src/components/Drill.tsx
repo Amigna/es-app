@@ -168,7 +168,11 @@ function OptionCard({
 
 const toggled = <T,>(list: T[], value: T) => (list.includes(value) ? list.filter((v) => v !== value) : [...list, value]);
 
-type Today = { status: "loading" } | { status: "signedOut" } | { status: "failed" } | { status: "ready"; reviews: string[]; fresh: string[] };
+type Today =
+  | { status: "loading" }
+  | { status: "signedOut" }
+  | { status: "failed" }
+  | { status: "ready"; reviews: string[]; fresh: string[]; paused: boolean };
 
 const plural = (count: number, word: string) => `${count} ${word}${count === 1 ? "" : "s"}`;
 
@@ -199,13 +203,29 @@ function TodaySummary({ today }: { today: Today }) {
       </p>
     );
   }
+  const pausedNote = today.paused && (
+    <p className="mt-1 text-sm text-stone-500">
+      New items are paused: more reviews are due than your daily limit clears, so the pile would keep growing. They come back
+      once it&apos;s under the limit.
+    </p>
+  );
   if (today.reviews.length + today.fresh.length === 0) {
-    return <p className="text-stone-600 dark:text-stone-400">All done for today. New reviews will be ready tomorrow.</p>;
+    return (
+      <div>
+        <p className="text-stone-600 dark:text-stone-400">All done for today. New reviews will be ready tomorrow.</p>
+        {pausedNote}
+      </div>
+    );
   }
   return (
-    <p className="text-stone-600 dark:text-stone-400">
-      {plural(today.reviews.length, "review")} and {plural(today.fresh.length, "new item")} today.
-    </p>
+    <div>
+      <p className="text-stone-600 dark:text-stone-400">
+        {today.paused
+          ? `${plural(today.reviews.length, "review")} today.`
+          : `${plural(today.reviews.length, "review")} and ${plural(today.fresh.length, "new item")} today.`}
+      </p>
+      {pausedNote}
+    </div>
   );
 }
 
