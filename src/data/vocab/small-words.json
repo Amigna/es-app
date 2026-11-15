@@ -164,7 +164,7 @@
   {"es":"del","en":"of the, from the","topic":"articles","ex":{"es":"Es el carro del doctor.","en":"It's the doctor's car."},"note":"De plus el always joins into del. De la, de los and de las don't join."},
   {"es":"cada","en":"each, every","topic":"pronouns","ex":{"es":"Voy al gimnasio cada mañana.","en":"I go to the gym every morning."}},
   {"es":"demás","en":"the rest, the others","topic":"pronouns","ex":{"es":"Yo lavo los platos y los demás limpian la cocina.","en":"I wash the dishes and the others clean the kitchen."},"note":"Usually with los or las: los demás, las demás."},
-  {"es":"tal","en":"such, such a","topic":"pronouns","ex":{"es":"Nunca vi tal cosa.","en":"I never saw such a thing."},"note":"Tal vez means maybe, and qué tal asks how something is."},
+  {"es":"tal","en":"such, such a","topic":"pronouns","ex":{"es":"Nunca vi tal cosa.","en":"I never saw such a thing."},"note":"Tal vez means maybe, and qué tal asks how something is.","forms":"tales"},
   {"es":"tanto","en":"so much, as much","topic":"pronouns","ex":{"es":"Comí tanto que no puedo moverme.","en":"I ate so much that I can't move."},"note":"Tantos and tantas mean so many: tantas personas.","forms":"tanta, tantos, tantas"},
   {"es":"varios","en":"several, various","topic":"pronouns","ex":{"es":"Tengo varios primos en Lima.","en":"I have several cousins in Lima."},"forms":"varias"},
   {"es":"cero","en":"zero","topic":"numbers","ex":{"es":"Afuera estamos a cero grados.","en":"It's zero degrees outside."}},
@@ -199,5 +199,6 @@
   {"es":"ambos","en":"both","topic":"pronouns","ex":{"es":"Ambos hermanos juegan fútbol.","en":"Both brothers play soccer."},"forms":"ambas"},
   {"es":"con respecto a","en":"regarding, with regard to","topic":"prepositions","ex":{"es":"Con respecto a tu pregunta, todavía no tengo respuesta.","en":"Regarding your question, I don't have an answer yet."}},
   {"es":"ello","en":"it (an idea or situation)","topic":"pronouns","ex":{"es":"No tenía dinero, y por ello no pudo viajar.","en":"He had no money, and because of that he couldn't travel."},"note":"Formal. It refers to an idea or a situation, never to a thing: por ello, para ello."},
-  {"es":"cuán","en":"how (literary)","topic":"question words","ex":{"es":"¡Cuán equivocado estaba!","en":"How wrong I was!"},"note":"A literary form of cuánto, used before an adjective or adverb."}
+  {"es":"cuán","en":"how (literary)","topic":"question words","ex":{"es":"¡Cuán equivocado estaba!","en":"How wrong I was!"},"note":"A literary form of cuánto, used before an adjective or adverb."},
+  {"es":"quienquiera","en":"whoever","topic":"pronouns","ex":{"es":"Quienquiera que haya sido, que lo diga.","en":"Whoever it was, speak up."},"note":"Formal. Usually followed by que and the subjunctive."}
 ]

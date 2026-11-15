@@ -803,7 +803,8 @@
           {"rule": "Más + adjective + que", "examples": [{"es": "Mi hermano es más alto que yo.", "en": "My brother is taller than me."}]},
           {"rule": "Menos + adjective + que", "examples": [{"es": "Este carro es menos caro que el otro.", "en": "This car is less expensive than the other one."}]},
           {"rule": "It also works with nouns, verbs and adverbs", "examples": [{"es": "Tengo más trabajo que tú.", "en": "I have more work than you."}, {"es": "Ella corre más que yo.", "en": "She runs more than I do."}, {"es": "Llegué más tarde que él.", "en": "I arrived later than he did."}]},
-          {"rule": "Use de, not que, before a number", "examples": [{"es": "Tengo más de veinte primos.", "en": "I have more than twenty cousins."}, {"es": "Cuesta menos de diez dólares.", "en": "It costs less than ten dollars."}], "note": "In a negative sentence, no más que means only: No tengo más que diez dólares."}
+          {"rule": "Use de, not que, before a number", "examples": [{"es": "Tengo más de veinte primos.", "en": "I have more than twenty cousins."}, {"es": "Cuesta menos de diez dólares.", "en": "It costs less than ten dollars."}]},
+          {"rule": "No más que + a number means only", "examples": [{"es": "No tengo más que diez dólares.", "en": "I only have ten dollars."}, {"es": "No tengo más de diez dólares.", "en": "I don't have more than ten dollars."}], "note": "Both are correct, but they say different things. No más que means only that and nothing else; no más de means no more than, so it could be less."}
         ]
       },
       {

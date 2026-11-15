@@ -30,9 +30,10 @@ export default function VulgarWords() {
 
   return (
     <section>
-      <h2 className="mb-1 text-xl font-semibold">Vulgar words</h2>
+      <h2 className="mb-1 text-xl font-semibold">Vulgar and offensive words</h2>
       <p className="mb-3 text-sm text-stone-600 dark:text-stone-400">
-        Turned on for your account. These are here so you can recognize them and avoid slipping up, and some are strong.
+        Turned on for your account. Swearing, insults and slurs, here so you can recognize them, know why they hurt and
+        avoid slipping up. Some are strong.
       </p>
       <div className="grid gap-3 md:grid-cols-2">
         {entries.map((r) => (

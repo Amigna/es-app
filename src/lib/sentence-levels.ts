@@ -13,16 +13,20 @@ import { ADJECTIVES, ADVERBS, NOUNS, SMALL_WORDS, pluralOf } from "./vocab";
 /** The first level whose drill includes the tense. */
 export const tenseLevel = (tense: TenseId): Level => LEVELS.find((l) => l.tenses.includes(tense))?.id ?? "B2";
 
-const PRONOUN = /^(me|te|se|nos|os|no)$/;
+const NEGATION = /^no$/;
+const PRONOUN = /^(me|te|se|nos|os)$/;
 
-/** Every verb form, as one word or "auxiliary participle", with the tenses it belongs to. */
+/**
+ * Every verb form, as one word or "auxiliary participle", with the tenses it belongs to. A reflexive form keeps its
+ * pronoun ("se venga"), so vengarse's present doesn't make venir's "venga" look like an easier tense.
+ */
 export function formTenses(verbs: Verb[]): Map<string, Set<TenseId>> {
   const index = new Map<string, Set<TenseId>>();
   for (const verb of verbs) {
     for (const [tense, forms] of Object.entries(conjugate(verb).tenses)) {
       for (const form of [...forms.forms, forms.vos]) {
         if (!form) continue;
-        const parts = form.toLowerCase().split(/\s+/).filter((p) => !PRONOUN.test(p));
+        const parts = form.toLowerCase().split(/\s+/).filter((p) => !NEGATION.test(p));
         const key = parts.slice(-2).join(" ");
         if (!index.has(key)) index.set(key, new Set());
         index.get(key)!.add(tense as TenseId);
@@ -63,8 +67,11 @@ export function sentenceLevel(sentence: Sentence, tense: TenseId, forms: Map<str
     needed = Math.max(needed, Math.min(...[...tenses].map((t) => LEVEL_ORDER.indexOf(tenseLevel(t)))));
   };
   tokens.forEach((token, i) => {
+    const pair = i > 0 ? `${tokens[i - 1]} ${token}` : "";
+    // A reflexive form ("se venga") is read as a whole, not also as the bare word (venir's "venga").
+    if (PRONOUN.test(tokens[i - 1] ?? "") && forms.has(pair)) return check(pair);
     check(token);
-    if (i > 0) check(`${tokens[i - 1]} ${token}`);
+    if (pair) check(pair);
   });
   return needed > own ? LEVEL_ORDER[needed] : undefined;
 }
