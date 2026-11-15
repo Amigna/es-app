@@ -1,6 +1,6 @@
 import type { Grade } from "./drill";
 import { firstMemory, intervalDays, nextMemory, type Memory, type Rating } from "./fsrs";
-import { localDay, type Answer } from "./progress";
+import { localDay, type Answer, type Tally } from "./progress";
 
 // Turns answers into review dates. No Firebase here, so it's safe to load anywhere.
 
@@ -48,8 +48,15 @@ export interface ReviewPlan {
   schedules: Record<string, Schedule>;
   /** Items seen for the first time. */
   fresh: string[];
-  perDay: Record<string, { newItems: number; reviews: number }>;
+  /**
+   * Counts toward the daily limits, by day. `recall` is how the reviews of items that had come due went: whether they'd
+   * stuck. An item practiced before its due day counts as a review but not toward `recall`, since it wasn't a test of
+   * memory at the interval the schedule chose.
+   */
+  perDay: Record<string, { newItems: number; reviews: number; recall: Tally }>;
 }
+
+const RECALL_FIELD: Record<Grade, keyof Tally> = { correct: "right", accent: "accent", wrong: "wrong" };
 
 /**
  * Only the first answer to an item each day moves its schedule, matching "only the first try counts". It also means
@@ -63,7 +70,9 @@ export function planReviews(answers: Answer[], stored: Record<string, Schedule>)
     if (previous && day <= previous.last) continue;
     plan.schedules[item] = reviewItem(previous, grade, day);
     if (!previous) plan.fresh.push(item);
-    (plan.perDay[day] ??= { newItems: 0, reviews: 0 })[previous ? "reviews" : "newItems"]++;
+    const counts = (plan.perDay[day] ??= { newItems: 0, reviews: 0, recall: { right: 0, accent: 0, wrong: 0 } });
+    counts[previous ? "reviews" : "newItems"]++;
+    if (previous && day >= previous.due) counts.recall[RECALL_FIELD[grade]]++;
   }
   return plan;
 }

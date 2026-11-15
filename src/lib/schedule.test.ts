@@ -53,7 +53,8 @@ describe("planReviews", () => {
     );
     assert.equal(plan.schedules["verb:ir:present"].due, "2026-11-02");
     assert.deepEqual(plan.fresh, ["verb:ir:present"]);
-    assert.deepEqual(plan.perDay["2026-11-01"], { newItems: 1, reviews: 0 });
+    const { newItems, reviews } = plan.perDay["2026-11-01"];
+    assert.deepEqual({ newItems, reviews }, { newItems: 1, reviews: 0 });
   });
 
   it("doesn't move a schedule when a batch is sent twice", () => {
@@ -67,8 +68,40 @@ describe("planReviews", () => {
   it("separates new items from reviews", () => {
     const stored = { "verb:ir:present": reviewItem(undefined, "correct", "2026-11-01") };
     const plan = planReviews([answer("verb:ir:present", "correct", "2026-11-03"), answer("verb:ser:present", "correct", "2026-11-03")], stored);
-    assert.deepEqual(plan.perDay["2026-11-03"], { newItems: 1, reviews: 1 });
+    const { newItems, reviews } = plan.perDay["2026-11-03"];
+    assert.deepEqual({ newItems, reviews }, { newItems: 1, reviews: 1 });
     assert.deepEqual(plan.fresh, ["verb:ser:present"]);
+  });
+
+  it("counts recall only for items that had come due, by how they went", () => {
+    const learned = reviewItem(undefined, "correct", "2026-11-01");
+    const stored = {
+      "verb:ir:present": learned,
+      "verb:ser:present": learned,
+      "verb:ver:present": learned,
+      "verb:dar:present": learned,
+    };
+    const due = learned.due;
+    const plan = planReviews(
+      [
+        answer("verb:ir:present", "correct", due),
+        answer("verb:ser:present", "accent", due),
+        answer("verb:ver:present", "wrong", addDays(due, 2)),
+        // A second answer the same day doesn't count again.
+        answer("verb:ir:present", "wrong", due),
+      ],
+      stored,
+    );
+    assert.deepEqual(plan.perDay[due].recall, { right: 1, accent: 1, wrong: 0 });
+    assert.deepEqual(plan.perDay[addDays(due, 2)].recall, { right: 0, accent: 0, wrong: 1 });
+    // Practiced before its due day: a review, but not a test of memory.
+    const before = addDays(due, -1);
+    assert.ok(before > learned.last, "the item needs a day between its last review and its due day");
+    const practiced = planReviews([answer("verb:dar:present", "correct", before)], stored).perDay[before];
+    assert.equal(practiced.reviews, 1);
+    assert.deepEqual(practiced.recall, { right: 0, accent: 0, wrong: 0 });
+    // A new item isn't a recall either.
+    assert.deepEqual(planReviews([answer("verb:tener:present", "correct", due)], stored).perDay[due].recall, { right: 0, accent: 0, wrong: 0 });
   });
 
   it("handles days in a backlog in order", () => {

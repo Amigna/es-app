@@ -63,6 +63,8 @@ export type DayTally = Tally & {
   /** Mistakes the person removed from their list. They're kept in `mistakes` and still count in every tally. */
   hiddenMistakes?: Mistake[];
   reviews?: number;
+  /** First answers to items that had come due: how often they'd stuck. Saved from 2026-11-15 on. */
+  recall?: Tally;
   /** The longest drill streak that day. */
   bestStreak?: number;
 };
@@ -232,6 +234,27 @@ export function weeklyBestStreaks(days: Record<string, { bestStreak?: number }>,
     }
     return best;
   });
+}
+
+/** Below this many graded answers in a week, its percentage is shown faded: too few to read much into. */
+export const FEW_ANSWERS = 50;
+/** The same for reviews of due items, and for one tense, writing direction or dictation, which come in smaller numbers. */
+export const FEW_REVIEWS = 20;
+export const FEW_IN_GROUP = 10;
+
+/** Answers that count toward a percentage: accent slips are left out of accuracy. */
+const graded = (t: Tally) => t.right + t.wrong;
+
+/**
+ * How accuracy moved, in percentage points, from the oldest week with at least `min` graded answers to the newest one.
+ * Weeks are newest first, as recentWeeks gives them. Null without two such weeks, so a thin week can't make a trend.
+ */
+export function trendChange(weeks: Tally[], min: number): { change: number; since: number } | null {
+  const solid = weeks.map((t, ago) => ({ t, ago })).filter(({ t }) => graded(t) >= min);
+  if (solid.length < 2) return null;
+  const newest = solid[0];
+  const oldest = solid[solid.length - 1];
+  return { change: accuracy(newest.t)! - accuracy(oldest.t)!, since: oldest.ago };
 }
 
 export interface CalendarDay {

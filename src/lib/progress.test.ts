@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { inviteAllowsVulgar, statusOfInvite } from "./firebase";
-import { accentRate, accuracy, calendarWeeks, currentStreak, lastSevenDays, localDay, recentWeeks, summarize, weeklyBestStreaks, wordsPracticed, type Answer, type Tally } from "./progress";
+import { accentRate, accuracy, calendarWeeks, currentStreak, lastSevenDays, localDay, recentWeeks, summarize, trendChange, weeklyBestStreaks, wordsPracticed, type Answer, type Tally } from "./progress";
 import { summaryUpdate } from "./progress-store";
 
 const answer = (item: string, grade: Answer["grade"], day = "2026-11-01", tense?: Answer["tense"]): Answer => ({ item, grade, day, tense });
@@ -207,6 +207,31 @@ describe("writing answers", () => {
 
   it("leaves other answers out", () => {
     assert.deepEqual(summarize([answer("verb:ser:present", "correct")]).writingDays, {});
+  });
+});
+
+describe("trendChange", () => {
+  const week = (right: number, wrong: number, accent = 0): Tally => ({ right, accent, wrong });
+
+  it("compares the newest week with the oldest one that has enough answers", () => {
+    // Newest first: 90% now, a quiet week, then 70%, then 60% three weeks ago.
+    const weeks = [week(18, 2), week(3, 0), week(14, 6), week(12, 8)];
+    assert.deepEqual(trendChange(weeks, 10), { change: 30, since: 3 });
+  });
+
+  it("skips quiet weeks at either end, counting slips out", () => {
+    // The newest week has 9 graded answers plus slips, so the week before stands in for now.
+    const weeks = [week(9, 0, 5), week(16, 4), week(10, 10), week(0, 0)];
+    assert.deepEqual(trendChange(weeks, 10), { change: 30, since: 2 });
+  });
+
+  it("needs two weeks with enough answers", () => {
+    assert.equal(trendChange([week(18, 2), week(3, 1)], 10), null);
+    assert.equal(trendChange([], 10), null);
+  });
+
+  it("can go down", () => {
+    assert.deepEqual(trendChange([week(10, 10), week(20, 0)], 10), { change: -50, since: 1 });
   });
 });
 

@@ -2,8 +2,8 @@
 
 import { onAuthStateChanged, type User } from "firebase/auth";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { AccuracyTrend, PracticeCalendar } from "@/components/ProgressCharts";
+import { useEffect, useState, type ReactNode } from "react";
+import { AccuracyTrend, PracticeCalendar, Sparkline } from "@/components/ProgressCharts";
 import BadgeArt from "@/components/Badge";
 import { LevelSuggestion } from "@/components/LevelPicker";
 import ReportProblem from "@/components/ReportProblem";
@@ -16,8 +16,24 @@ import { auth, firebaseConfigured } from "@/lib/firebase";
 import { useLevel } from "@/lib/level";
 import { levelChangesByWeek } from "@/lib/level-up";
 import { MAX_PRACTICE_ITEMS, practiceHref, weakSpots, type WeakSpot } from "@/lib/practice";
-import { accentRate, accuracy, answered, currentStreak, lastSevenDays, localDay, recentWeeks, weeklyBestStreaks, wordsPracticed, type Mistake, type Tally } from "@/lib/progress";
-import { saveProgress, setProgressEnabled } from "@/lib/progress-queue";
+import {
+  FEW_ANSWERS,
+  FEW_IN_GROUP,
+  FEW_REVIEWS,
+  accentRate,
+  accuracy,
+  answered,
+  currentStreak,
+  lastSevenDays,
+  localDay,
+  recentWeeks,
+  trendChange,
+  weeklyBestStreaks,
+  wordsPracticed,
+  type Mistake,
+  type Tally,
+} from "@/lib/progress";
+import { saveProgress, setProgressEnabled, syncDrillStreak } from "@/lib/progress-queue";
 import { DAYS_TO_LOAD, loadMastered, loadProgress, saveBadges, setMistakeHidden, type ProgressData } from "@/lib/progress-store";
 import { MASTERED_DAYS, reviewsLeft } from "@/lib/schedule";
 
@@ -36,9 +52,23 @@ type State =
   | { status: "loading" }
   | { status: "signedOut" }
   | { status: "failed" }
-  | { status: "ready"; data: ProgressData };
+  | { status: "ready"; data: ProgressData; drillNow: number };
 
-function Tile({ label, value, note, onClick, expanded }: { label: string; value: string; note?: string; onClick?: () => void; expanded?: boolean }) {
+function Tile({
+  label,
+  value,
+  note,
+  onClick,
+  expanded,
+  className = "",
+}: {
+  label: string;
+  value: string;
+  note?: string;
+  onClick?: () => void;
+  expanded?: boolean;
+  className?: string;
+}) {
   const body = (
     <>
       <p className="text-sm text-stone-500">{label}</p>
@@ -46,7 +76,7 @@ function Tile({ label, value, note, onClick, expanded }: { label: string; value:
       {note && <p className="mt-1 text-sm text-stone-500">{note}</p>}
     </>
   );
-  const box = "rounded-xl border border-stone-200 bg-white p-4 dark:border-stone-800 dark:bg-stone-900";
+  const box = `rounded-xl border border-stone-200 bg-white p-4 dark:border-stone-800 dark:bg-stone-900 ${className}`;
   if (!onClick) return <div className={box}>{body}</div>;
   return (
     <button
@@ -195,13 +225,33 @@ function WeakSpotsSection({ data }: { data: ProgressData }) {
 
 const weekLabel = (ago: number) => (ago === 0 ? "Last 7 days" : ago === 1 ? "1 week ago" : `${ago} weeks ago`);
 
-const weekCell = (tally: Tally) => (answered(tally) === 0 ? "–" : `${accuracy(tally) ?? "–"}% of ${answered(tally).toLocaleString()}`);
+/** A percentage over the count it comes from, on two lines so narrow columns don't wrap mid-number. */
+const twoLine = (main: string, sub: string) => (
+  <>
+    <span className="block">{main}</span>
+    <span className="block text-xs text-stone-500">{sub}</span>
+  </>
+);
 
-const slipCell = (tally: Tally) => (answered(tally) === 0 ? "–" : `${accentRate(tally)}% (${tally.accent.toLocaleString()})`);
+const weekCell = (tally: Tally): ReactNode => (answered(tally) === 0 ? "–" : twoLine(`${accuracy(tally) ?? "–"}%`, `of ${answered(tally).toLocaleString()}`));
 
-/** Newest first. Weeks with nothing in any column are left out. `streaks` adds each week's longest drill streak. */
-function WeekTable({ columns, streaks }: { columns: { title: string; weeks: Tally[]; cell?: (tally: Tally) => string }[]; streaks?: number[] }) {
+const slipCell = (tally: Tally): ReactNode =>
+  answered(tally) === 0 ? "–" : twoLine(`${accentRate(tally)}%`, `${tally.accent.toLocaleString()} ${tally.accent === 1 ? "slip" : "slips"}`);
+
+/**
+ * Newest first. Weeks with nothing in any column are left out. `streaks` adds each week's longest drill streak. A cell
+ * with fewer graded answers than its column's `few` is shown pale, with a note under the table saying why.
+ */
+function WeekTable({
+  columns,
+  streaks,
+}: {
+  columns: { title: string; weeks: Tally[]; cell?: (tally: Tally) => ReactNode; few?: number }[];
+  streaks?: number[];
+}) {
   const shown = Array.from({ length: WEEKS_SHOWN }, (_, ago) => ago).filter((ago) => columns.some((c) => answered(c.weeks[ago]) > 0));
+  const faint = (c: (typeof columns)[number], tally: Tally) => answered(tally) > 0 && tally.right + tally.wrong < (c.few ?? FEW_ANSWERS);
+  const anyFaint = shown.some((ago) => columns.some((c) => faint(c, c.weeks[ago])));
   return (
     <div className="overflow-hidden rounded-xl border border-stone-200 bg-white dark:border-stone-800 dark:bg-stone-900">
       <table className="w-full text-left">
@@ -219,13 +269,20 @@ function WeekTable({ columns, streaks }: { columns: { title: string; weeks: Tall
             <tr key={ago} className="border-b border-stone-100 last:border-0 dark:border-stone-800">
               <th scope="row" className="px-4 py-2 font-normal">{weekLabel(ago)}</th>
               {columns.map((c) => (
-                <td key={c.title} className="px-4 py-2 text-right tabular-nums">{(c.cell ?? weekCell)(c.weeks[ago])}</td>
+                <td key={c.title} className={`px-4 py-2 text-right tabular-nums ${faint(c, c.weeks[ago]) ? "text-stone-400 dark:text-stone-500" : ""}`}>
+                  {(c.cell ?? weekCell)(c.weeks[ago])}
+                </td>
               ))}
               {streaks && <td className="px-4 py-2 text-right tabular-nums">{streaks[ago] ? streaks[ago].toLocaleString() : "–"}</td>}
             </tr>
           ))}
         </tbody>
       </table>
+      {anyFaint && (
+        <p className="border-t border-stone-100 px-4 py-2 text-sm text-stone-500 dark:border-stone-800">
+          Pale numbers come from a quiet week, too few answers to read much into.
+        </p>
+      )}
     </div>
   );
 }
@@ -249,7 +306,7 @@ function WritingSection({ data }: { data: ProgressData }) {
               return <Tile key={id} label={title} value={tally ? `${accuracy(tally)}%` : "–"} note={tally ? `of ${answered(tally).toLocaleString()} sentences` : "None yet"} />;
             })}
           </div>
-          <WeekTable columns={sides.map(({ id, title }) => ({ title, weeks: recentWeeks(data.days, today, (day) => day.writing?.[id], WEEKS_SHOWN) }))} />
+          <WeekTable columns={sides.map(({ id, title }) => ({ title, weeks: recentWeeks(data.days, today, (day) => day.writing?.[id], WEEKS_SHOWN), few: FEW_IN_GROUP }))} />
           <p className="text-sm text-stone-500">Includes the sentences you marked as right yourself.</p>
         </div>
       ) : (
@@ -275,7 +332,7 @@ function ListeningSection({ data }: { data: ProgressData }) {
           <div className="grid grid-cols-2 gap-3">
             <Tile label="Dictation" value={`${accuracy(tally)}%`} note={`of ${answered(tally).toLocaleString()} sentences`} />
           </div>
-          <WeekTable columns={[{ title: "Dictation", weeks: recentWeeks(data.days, localDay(), (day) => day.listening?.dictation, WEEKS_SHOWN) }]} />
+          <WeekTable columns={[{ title: "Dictation", weeks: recentWeeks(data.days, localDay(), (day) => day.listening?.dictation, WEEKS_SHOWN), few: FEW_IN_GROUP }]} />
           <p className="text-sm text-stone-500">Correct means every word. Sentences with only accent slips are left out of the percentage.</p>
         </div>
       ) : (
@@ -581,7 +638,7 @@ function CourseSection({ data }: { data: ProgressData }) {
   );
 }
 
-function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTotal[] }) {
+function Stats({ data, drillNow, wordLists }: { data: ProgressData; drillNow: number; wordLists: WordListTotal[] }) {
   const [, update] = useDrillSettings();
   const [showMastered, setShowMastered] = useState(false);
   const level = useLevel();
@@ -592,7 +649,9 @@ function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTot
   const inSession = Math.min(data.dueToday, reviewsLeft(data.reviewsPerDay, data.days[today]?.reviews ?? 0));
   const tenseRows = TENSES.flatMap((t) => {
     const tally = data.tenses[t.id];
-    return tally && answered(tally) > 0 ? [{ meta: t, tally }] : [];
+    if (!tally || answered(tally) === 0) return [];
+    const weeks = recentWeeks(data.days, today, (day) => day.tenses?.[t.id], TREND_WEEKS);
+    return [{ meta: t, tally, weeks, change: trendChange(weeks, FEW_IN_GROUP) }];
   });
 
   if (total === 0) {
@@ -621,8 +680,15 @@ function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTot
         </p>
       )}
 
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
-        <Tile label="Current streak" value={`${streak} ${streak === 1 ? "day" : "days"}`} />
+      {/* Seven tiles: Mastered spans two columns, so phones get pairs and wider screens two full rows of four. */}
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+        <Tile label="Days streak" value={`${streak} ${streak === 1 ? "day" : "days"}`} />
+        {/* The same number as the chip on a drill: it carries across drills and devices, and starts again on a miss or a new day. */}
+        <Tile
+          label="Current drill streak"
+          value={drillNow.toLocaleString()}
+          note={drillNow > 0 ? "in a row today, still going" : "Get one right in a drill to start"}
+        />
         <Tile
           label="Longest drill streak"
           value={data.drillStreak ? data.drillStreak.streak.toLocaleString() : "–"}
@@ -642,6 +708,7 @@ function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTot
           note={`of ${data.practiced.toLocaleString()} practiced`}
           onClick={data.mastered > 0 ? () => setShowMastered(!showMastered) : undefined}
           expanded={showMastered}
+          className="col-span-2"
         />
       </div>
 
@@ -668,11 +735,18 @@ function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTot
 
         <section className="space-y-3">
           <h2 className="font-display text-2xl font-semibold">Accuracy by week</h2>
-          <AccuracyTrend weeks={recentWeeks(data.days, today, (day) => day, TREND_WEEKS)} levels={levelChangesByWeek(data.levelHistory, today, TREND_WEEKS)} />
+          <AccuracyTrend
+            weeks={recentWeeks(data.days, today, (day) => day, TREND_WEEKS)}
+            recall={recentWeeks(data.days, today, (day) => day.recall, TREND_WEEKS)}
+            levels={levelChangesByWeek(data.levelHistory, today, TREND_WEEKS)}
+          />
           <WeekTable
             columns={[
               { title: "All questions", weeks: recentWeeks(data.days, today, (day) => day, WEEKS_SHOWN) },
-              { title: "Accent slips", weeks: recentWeeks(data.days, today, (day) => day, WEEKS_SHOWN), cell: slipCell },
+              // Counted from 2026-11-15, so earlier weeks show a dash.
+              { title: "Remembered on review", weeks: recentWeeks(data.days, today, (day) => day.recall, WEEKS_SHOWN), few: FEW_REVIEWS },
+              // Not faded on its own: the All questions cell in the same row already marks a quiet week.
+              { title: "Accent slips", weeks: recentWeeks(data.days, today, (day) => day, WEEKS_SHOWN), cell: slipCell, few: 0 },
             ]}
             streaks={weeklyBestStreaks(data.days, today, WEEKS_SHOWN)}
           />
@@ -701,21 +775,46 @@ function Stats({ data, wordLists }: { data: ProgressData; wordLists: WordListTot
               <thead>
                 <tr className="border-b border-stone-200 text-sm text-stone-500 dark:border-stone-800">
                   <th scope="col" className="px-4 py-2 font-medium">Tense</th>
-                  <th scope="col" className="px-4 py-2 text-right font-medium">Answered</th>
+                  <th scope="col" className="hidden px-4 py-2 text-right font-medium sm:table-cell">Answered</th>
                   <th scope="col" className="px-4 py-2 text-right font-medium">Correct</th>
+                  <th scope="col" className="hidden px-4 py-2 text-right font-medium sm:table-cell">By week</th>
+                  <th scope="col" className="px-4 py-2 text-right font-medium">Change</th>
                 </tr>
               </thead>
               <tbody>
-                {tenseRows.map(({ meta, tally }) => (
+                {tenseRows.map(({ meta, tally, weeks, change }) => (
                   <tr key={meta.id} className="border-b border-stone-100 last:border-0 dark:border-stone-800">
                     <th scope="row" className="px-4 py-2 font-normal">{meta.name}</th>
-                    <td className="px-4 py-2 text-right tabular-nums">{answered(tally).toLocaleString()}</td>
-                    <td className="px-4 py-2 text-right tabular-nums">{accuracy(tally)}%</td>
+                    <td className="hidden px-4 py-2 text-right tabular-nums sm:table-cell">{answered(tally).toLocaleString()}</td>
+                    <td className="px-4 py-2 text-right tabular-nums">
+                      {accuracy(tally)}%
+                      {/* Phones hide the Answered column, so the count sits under the percentage instead. */}
+                      <span className="block text-xs text-stone-500 sm:hidden">of {answered(tally).toLocaleString()}</span>
+                    </td>
+                    <td className="hidden px-4 py-2 text-right sm:table-cell">
+                      <Sparkline weeks={weeks} few={FEW_IN_GROUP} label={meta.name} />
+                    </td>
+                    <td className="px-4 py-2 text-right tabular-nums">
+                      {change ? (
+                        <>
+                          <span className="block font-medium whitespace-nowrap">
+                            {change.change === 0 ? "No change" : `${change.change > 0 ? "▲ +" : "▼ "}${change.change} pts`}
+                          </span>
+                          <span className="block text-xs text-stone-500">since {weekLabel(change.since).toLowerCase()}</span>
+                        </>
+                      ) : (
+                        <span className="text-stone-500">–</span>
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
+          <p className="mt-2 text-sm text-stone-500">
+            Change compares the newest week with the oldest one that has at least {FEW_IN_GROUP} answers for that tense, from the last {TREND_WEEKS} weeks.
+            Weekly results by tense are saved from November 8, 2026.
+          </p>
         </section>
       ) : (
         <p className="text-stone-600 dark:text-stone-400">Accuracy by tense shows up after a conjugation or fill-in-the-blank drill.</p>
@@ -745,12 +844,13 @@ export default function ProgressView({ wordLists }: { wordLists: WordListTotal[]
         setProgressEnabled(true);
         // Include any answers still waiting to be saved. Offline, a write waits for the connection, so don't wait forever.
         await Promise.race([Promise.all([saveProgress(), syncCourse()]), new Promise((resolve) => setTimeout(resolve, SAVE_WAIT_MS))]);
-        const data = await loadProgress(user.uid);
+        // The running drill streak, newest across devices, as a drill would start from it. It handles its own errors.
+        const [data, drillNow] = await Promise.all([loadProgress(user.uid), syncDrillStreak()]);
         // New badges get today's date, or the day the data shows, and keep it from then on.
         const earned = earnedBadges({ course: data.course, days: Object.keys(data.days), mastered: data.mastered, drillStreak: data.drillStreak }, localDay());
         const fresh = Object.fromEntries(Object.entries(earned).filter(([id]) => !data.badges[id]));
         saveBadges(user.uid, fresh).catch((err) => console.error("Couldn't save badges", err));
-        setState({ status: "ready", data: { ...data, badges: withSaved(earned, data.badges) } });
+        setState({ status: "ready", data: { ...data, badges: withSaved(earned, data.badges) }, drillNow });
       } catch (err) {
         console.error("Couldn't load progress", err);
         setState({ status: "failed" });
@@ -769,5 +869,5 @@ export default function ProgressView({ wordLists }: { wordLists: WordListTotal[]
     );
   }
   if (state.status === "failed") return <Message>Couldn&apos;t load your progress. Check your connection and try again.</Message>;
-  return <Stats data={state.data} wordLists={wordLists} />;
+  return <Stats data={state.data} drillNow={state.drillNow} wordLists={wordLists} />;
 }
