@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import BadgeArt from "@/components/Badge";
 import DrillRunner from "@/components/DrillRunner";
 import { LevelUpOffer } from "@/components/LevelPicker";
-import { findBadge } from "@/lib/badges";
+import { findBadge, type Badge } from "@/lib/badges";
 import { CHAPTERS, EXAM_LEVELS, EXAM_PASS_SCORE, EXAM_REVIEW, EXAM_SIZE, examId, isDone, levelChapters } from "@/lib/course";
-import { recordCheckpoint, syncCourse, useCourseProgress } from "@/lib/course-progress";
+import { recordCheckpointBadges, syncCourse, useCourseProgress } from "@/lib/course-progress";
 import type { ChapterQuiz } from "@/lib/course-decks";
 import type { Card } from "@/lib/drill";
 import { levelInfo, type Level } from "@/lib/level";
@@ -31,6 +31,8 @@ export default function CourseExam({ level, quizzes, review }: { level: Level; q
 
   const [session, setSession] = useState<Session | null>(null);
   const [score, setScore] = useState<number | null>(null);
+  // Badges the exam earned: the level's, and the course star after the last one.
+  const [earned, setEarned] = useState<Badge[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -47,6 +49,7 @@ export default function CourseExam({ level, quizzes, review }: { level: Level; q
       const first = next();
       if (first) {
         setScore(null);
+        setEarned([]);
         setSession({ first, next });
       } else setError("Couldn't find questions for this exam.");
     } catch {
@@ -57,7 +60,7 @@ export default function CourseExam({ level, quizzes, review }: { level: Level; q
   }
 
   function finish(result: number) {
-    recordCheckpoint(id, result, EXAM_PASS_SCORE);
+    setEarned(recordCheckpointBadges(id, result, EXAM_PASS_SCORE));
     setScore(result);
   }
 
@@ -71,6 +74,7 @@ export default function CourseExam({ level, quizzes, review }: { level: Level; q
           window.scrollTo({ top: 0 });
         }}
         onFinish={finish}
+        badges={earned}
         retry={false}
         stopLabel="Back to the exam"
       />

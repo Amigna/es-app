@@ -9,7 +9,9 @@ import { conjugate } from "@/lib/conjugation/engine";
 import { markVerb } from "@/lib/conjugation/regular";
 import { TENSES } from "@/lib/conjugation/types";
 import { accentTrap, gradeCard, wordDiff, wrongNote, type Card, type Grade, type TenseTable } from "@/lib/drill";
+import BadgeArt from "@/components/Badge";
 import StruggleList from "@/components/Struggles";
+import { streakBadge, type Badge } from "@/lib/badges";
 import type { PracticeTarget } from "@/lib/practice";
 import type { Tally } from "@/lib/progress";
 import { drillStreak, progressEnabled, recordAnswer, recordStreak, saveProgress, syncDrillStreak } from "@/lib/progress-queue";
@@ -197,12 +199,34 @@ function Confetti() {
   );
 }
 
+/** How long a badge earned mid-drill stays on screen. */
+const CELEBRATION_MS = 4000;
+
+/** A badge earned mid-drill: confetti and a short note at the top that doesn't take focus, so typing carries on. */
+function BadgeToast({ badge }: { badge: Badge }) {
+  return (
+    <>
+      <Confetti />
+      <div role="status" className="pointer-events-none fixed inset-x-0 top-4 z-50 flex justify-center px-4">
+        <div className="animate-pop-in flex items-center gap-3 rounded-xl border border-stone-200 bg-white px-4 py-3 shadow-lg dark:border-stone-700 dark:bg-stone-900">
+          <BadgeArt badge={badge} size={44} />
+          <p>
+            <span className="block font-semibold">You earned a badge!</span>
+            <span className="block text-sm text-stone-600 dark:text-stone-400">{badge.title}</span>
+          </p>
+        </div>
+      </div>
+    </>
+  );
+}
+
 export default function DrillRunner({
   first,
   next,
   onStop,
   onFinish,
   onPractice,
+  badges = [],
   retry = true,
   stopLabel = "Change settings",
 }: {
@@ -211,6 +235,8 @@ export default function DrillRunner({
   onStop: () => void;
   /** Starts a practice session from the results screen in place. Without it, practice links go to /drill. */
   onPractice?: (target: PracticeTarget) => void;
+  /** Badges the session earned as a whole, like a passed checkpoint's, shown on the results screen. */
+  badges?: Badge[];
   /** Called once when the last card is answered, with the score as the results screen shows it. */
   onFinish?: (score: number) => void;
   /** Off for a test, where a miss shouldn't come back and the score is a first try. */
@@ -245,6 +271,12 @@ export default function DrillRunner({
   const [tallies, setTallies] = useState<Record<string, Tally>>({});
   const nudgedRef = useRef(new Set<string>());
   const [nudge, setNudge] = useState<string | null>(null);
+  // The longest streak ever saved, loaded once the carried streak is synced, so a new streak badge can be celebrated.
+  // Null until then, and for anyone signed out, whose streak badges aren't kept.
+  const [streakRecord, setStreakRecord] = useState<number | null>(null);
+  const [celebration, setCelebration] = useState<{ badge: Badge; at: number } | null>(null);
+  // Streak badges earned in this drill, listed again on the results screen.
+  const [streakBadges, setStreakBadges] = useState<Badge[]>([]);
   const isVocab = !!card.track?.item.startsWith("vocab:");
   const canGiveUp = isVocab || !!card.writing;
   const tenseMood = TENSES.find((t) => t.id === card.track?.tense)?.mood;
@@ -273,9 +305,16 @@ export default function DrillRunner({
   // A streak carried on another device arrives after the first render, and only replaces this one before any answer.
   useEffect(() => {
     if (!first.track) return;
-    syncDrillStreak().then((carried) => {
-      if (!answeredRef.current) setStreak(carried);
-    });
+    syncDrillStreak()
+      .then((carried) => {
+        if (!answeredRef.current) setStreak(carried);
+        // After the sync, so today's best from earlier drills is already in the saved record.
+        return progressEnabled() ? import("@/lib/progress-store").then(({ loadStreakRecord }) => loadStreakRecord()) : null;
+      })
+      .then((saved) => {
+        if (saved !== null) setStreakRecord((now) => Math.max(saved, now ?? 0));
+      })
+      .catch((err) => console.error("Couldn't load the streak record", err));
     // Only when the session starts.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -296,6 +335,12 @@ export default function DrillRunner({
     // Only when the session starts.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (!celebration) return;
+    const timer = setTimeout(() => setCelebration(null), CELEBRATION_MS);
+    return () => clearTimeout(timer);
+  }, [celebration]);
 
   // After the render that finished, so the counts include the last answer.
   useEffect(() => {
@@ -357,6 +402,15 @@ export default function DrillRunner({
       if (ok) setBestStreak(Math.max(bestStreak, now));
       // Drills that save progress count toward the record, the same streak that's on screen.
       if (card.track && now !== streak) recordStreak(now);
+      if (card.track && streakRecord !== null && now > streakRecord) {
+        const badge = streakBadge(now, streakRecord);
+        if (badge) {
+          // Keyed by the answer it came on, so a second badge in one drill replays the confetti.
+          setCelebration({ badge, at: answeredNow });
+          setStreakBadges([...streakBadges, badge]);
+        }
+        setStreakRecord(now);
+      }
     }
     setRetries(missed);
     return { answeredNow, missed };
@@ -420,6 +474,7 @@ export default function DrillRunner({
     const counted = total - slips;
     const score = counted ? Math.round((right / counted) * 100) : 100;
     const struggles = saved ? drillStruggles(saved, tallies, { verbs: RESULT_VERBS, items: RESULT_ITEMS }) : null;
+    const earned = [...badges, ...streakBadges];
     // The confetti sits outside the card: the card's pop-in transform would otherwise trap it inside.
     return (
       <>
@@ -438,6 +493,22 @@ export default function DrillRunner({
             </p>
           )}
           {bestStreak >= 3 && <p className="text-stone-600 dark:text-stone-400">Best streak: {bestStreak} in a row</p>}
+          {earned.length > 0 && (
+            <div className="space-y-2 rounded-xl border border-stone-200 p-3 text-left dark:border-stone-700">
+              <p className="font-semibold">{earned.length === 1 ? "You earned a badge!" : "You earned new badges!"}</p>
+              <ul className="space-y-2">
+                {earned.map((badge) => (
+                  <li key={badge.id} className="flex items-center gap-3">
+                    <BadgeArt badge={badge} size={44} />
+                    <span>
+                      <span className="block font-medium">{badge.title}</span>
+                      <span className="block text-sm text-stone-500">{badge.detail}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
           {right < counted && retry && (
             <p className="text-sm text-stone-500">Questions you missed came back, so they count more than once.</p>
           )}
@@ -461,6 +532,7 @@ export default function DrillRunner({
 
   return (
     <div className="mx-auto max-w-xl space-y-6">
+      {celebration && <BadgeToast key={celebration.at} badge={celebration.badge} />}
       <div className="flex items-center justify-between text-sm text-stone-500">
         <span className="flex items-center gap-2">
           {right} of {total - slips} correct

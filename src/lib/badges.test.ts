@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { BADGES, earnedBadges, findBadge, newestFirst, nextBadges, withSaved } from "./badges";
+import { BADGES, earnedBadges, findBadge, newBadges, newestFirst, nextBadges, streakBadge, withSaved } from "./badges";
 import { CHAPTERS, EXAM_LEVELS, examId, levelChapters, type CourseProgress } from "./course";
 
 const TODAY = "2026-11-05";
@@ -18,6 +18,16 @@ describe("badges", () => {
     const ids = newestFirst({ [one]: "2026-11-15", [two]: "2026-11-15", [three]: "2026-11-01", "drill:25": "2026-11-15", "drill:50": "2026-11-15" }).map((e) => e.badge.id);
     assert.deepEqual(ids, ["drill:50", "drill:25", two, one, three]);
     assert.deepEqual(newestFirst({ unknown: "2026-11-15" }), []);
+  });
+
+  it("finds what a step just earned, and a drill streak milestone only the first time", () => {
+    const chapter = `chapter:${CHAPTERS[0].id}`;
+    assert.deepEqual(newBadges({}, { [chapter]: TODAY }).map((b) => b.id), [chapter]);
+    assert.deepEqual(newBadges({ [chapter]: TODAY }, { [chapter]: TODAY }), []);
+    assert.equal(streakBadge(25, 10)?.id, "drill:25");
+    assert.equal(streakBadge(25, 25), null, "already reached once");
+    assert.equal(streakBadge(26, 10), null, "only on the milestone itself");
+    assert.equal(streakBadge(50, 30)?.id, "drill:50");
   });
 
   it("gives a chapter its badge on the day it was passed", () => {

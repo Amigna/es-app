@@ -146,6 +146,18 @@ export function earnedBadges(data: BadgeData, today: string): Record<string, str
   return out;
 }
 
+/** Badges in `after` but not in `before`, in list order: what one step, like a passed checkpoint, just earned. */
+export const newBadges = (before: Record<string, string>, after: Record<string, string>): Badge[] =>
+  BADGES.filter((b) => after[b.id] && !before[b.id]);
+
+/**
+ * The drill-streak badge a streak just reached, if it's new: the streak is exactly a milestone and beats the best
+ * ever saved, so reaching 25 again on another day doesn't celebrate twice.
+ */
+export function streakBadge(streak: number, record: number): Badge | null {
+  return DRILL_STREAKS.includes(streak) && streak > record ? (findBadge(`drill:${streak}`) ?? null) : null;
+}
+
 /** Saved days win, since a badge stays earned once seen: a streak ends, but the badge for it doesn't. */
 export const withSaved = (earned: Record<string, string>, saved: Record<string, string>): Record<string, string> => ({ ...earned, ...saved });
 

@@ -11,7 +11,8 @@ import { markVerb } from "@/lib/conjugation/regular";
 import { TENSES, type TenseId } from "@/lib/conjugation/types";
 import { findBadge } from "@/lib/badges";
 import { CHAPTERS, PASS_SCORE, STEPS, chapterSteps, examId, isDone, levelChapters, nextStep, type Chapter, type StepId } from "@/lib/course";
-import { completeStep, recordCheckpoint, storedCourse, syncCourse, useCourseProgress } from "@/lib/course-progress";
+import { completeStep, recordCheckpointBadges, storedCourse, syncCourse, useCourseProgress } from "@/lib/course-progress";
+import type { Badge } from "@/lib/badges";
 import type { ChapterQuiz } from "@/lib/course-decks";
 import type { Card } from "@/lib/drill";
 import { QUIZ_RUN } from "@/lib/quiz";
@@ -135,6 +136,8 @@ export default function CourseChapter({
   const [open, setOpen] = useState<StepId | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [finishedStep, setFinishedStep] = useState<{ step: StepId; score: number } | null>(null);
+  // Badges the last checkpoint earned, for its results screen.
+  const [earned, setEarned] = useState<Badge[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -178,6 +181,7 @@ export default function CourseChapter({
       const first = dealt();
       if (first) {
         setFinishedStep(null);
+        setEarned([]);
         setSession({ step, first, next: dealt });
       } else setError("Couldn't find questions for this step.");
     } catch {
@@ -188,7 +192,7 @@ export default function CourseChapter({
   }
 
   function finish(step: StepId, score: number) {
-    if (step === "checkpoint") recordCheckpoint(chapter.id, score);
+    if (step === "checkpoint") setEarned(recordCheckpointBadges(chapter.id, score));
     else if (step !== "learn" && step !== "see") completeStep(chapter.id, step);
     setFinishedStep({ step, score });
   }
@@ -209,6 +213,7 @@ export default function CourseChapter({
         next={session.next}
         onStop={stop}
         onFinish={(score) => finish(session.step, score)}
+        badges={earned}
         retry={session.step !== "checkpoint"}
         stopLabel="Back to the chapter"
       />

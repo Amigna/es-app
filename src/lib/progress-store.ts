@@ -170,6 +170,13 @@ export async function saveDrillStreak(running: RunningStreak) {
   });
 }
 
+/** The longest drill streak ever saved, so a drill can tell a new streak badge. 0 when there's none; null signed out. */
+export async function loadStreakRecord(): Promise<number | null> {
+  const uid = await currentUid();
+  if (!uid) return null;
+  return ((await getDoc(statsDoc(uid, "records"))).data()?.drillStreak as StreakRecord | undefined)?.streak ?? 0;
+}
+
 /** The streak carried between drills, as last saved from any device. Null when signed out or never saved. */
 export async function loadDrillStreak(): Promise<RunningStreak | null> {
   const uid = await currentUid();

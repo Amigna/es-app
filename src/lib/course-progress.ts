@@ -1,4 +1,5 @@
 import { useSyncExternalStore } from "react";
+import { earnedBadges, newBadges, type Badge } from "./badges";
 import { MAX_TRIES, PASS_SCORE, STEP_IDS, mergeCourse, parseCourse, sameCourse, type ChapterProgress, type CourseProgress, type StepId } from "./course";
 import { localDay } from "./progress";
 import { progressEnabled } from "./progress-queue";
@@ -111,6 +112,13 @@ export function recordCheckpoint(id: string, score: number, passScore = PASS_SCO
     }
     return out;
   });
+}
+
+/** Saves the try like `recordCheckpoint`, and returns the badges it earned: a chapter, a level, the course or a comeback. */
+export function recordCheckpointBadges(id: string, score: number, passScore = PASS_SCORE): Badge[] {
+  const before = earnedBadges({ course: read() }, "");
+  recordCheckpoint(id, score, passScore);
+  return newBadges(before, earnedBadges({ course: read() }, ""));
 }
 
 /** On sign-out, so the next person on this browser doesn't start with someone else's chapters. */
