@@ -16,6 +16,8 @@ import {
   type CardType,
   type FlashSide,
   type Mode,
+  type NumberKind,
+  type NumberMax,
   type StudySide,
   type VocabKind,
   type WordType,
@@ -45,6 +47,25 @@ const MODES: { id: Mode; title: string; hint: string }[] = [
   { id: "writing", title: "Writing", hint: "Translate whole sentences" },
   { id: "listening", title: "Dictation", hint: "Hear a sentence, type it" },
   { id: "grammar", title: "Grammar", hint: "Quizzes from the guides" },
+  { id: "numbers", title: "Numbers", hint: "Numbers, dates and times" },
+];
+
+const NUMBER_SESSION = 15;
+
+const NUMBER_OPTIONS: { id: NumberKind; title: string; hint: string }[] = [
+  { id: "words", title: "Numbers in words", hint: "537 → quinientos treinta y siete" },
+  { id: "noun", title: "With a noun", hint: "200 personas → doscientas personas" },
+  { id: "digits", title: "Words to numbers", hint: "setecientos cuatro → 704" },
+  { id: "ordinal", title: "Ordinals", hint: "el ___ piso, 3rd → tercer" },
+  { id: "date", title: "Dates", hint: "June 15 → el quince de junio" },
+  { id: "year", title: "Dates with years", hint: "6/10/1990, day first" },
+  { id: "time", title: "Times", hint: "3:30 → son las tres y media" },
+];
+
+const NUMBER_RANGES: { id: NumberMax; title: string; hint: string }[] = [
+  { id: 100, title: "Up to 100", hint: "Counting, 16 to 29, tens and ones" },
+  { id: 1000, title: "Up to 1,000", hint: "Adds cien, ciento and the hundreds" },
+  { id: 1000000, title: "Up to a million", hint: "Adds mil and millón" },
 ];
 
 const MOODS: { id: Mood; title: string }[] = [
@@ -233,7 +254,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
   const rareSet = useMemo(() => new Set(rare), [rare]);
 
   const [settings, update] = useDrillSettings();
-  const { mode, pool, tenses, kinds, wordTypes, topics, guides, flashSide, flashTypes, writingSides, studySide } = settings;
+  const { mode, pool, tenses, kinds, wordTypes, topics, guides, flashSide, flashTypes, writingSides, studySide, numberKinds, numberMax } = settings;
   const [session, setSession] = useState<{ first: Card; next: () => Card | null } | null>(null);
   const [study, setStudy] = useState<StudyCard[] | null>(null);
   const hasVoice = useSyncExternalStore(subscribeToVoices, canSpeak, noVoiceOnServer);
@@ -301,6 +322,10 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
       const chosen = guides.length ? guideList.filter((g) => guides.includes(g.slug)) : guideList.filter((g) => atOrBelow(g.level, level));
       return quizDeck(GUIDE_QUIZZES, chosen);
     }
+    if (mode === "numbers") {
+      const { numberDeck } = await import("@/lib/number-cards");
+      return limitedDeck(numberDeck({ kinds: numberKinds, max: numberMax }), NUMBER_SESSION);
+    }
     const decks = await import("@/lib/card-decks");
     if (mode === "vocabulary") return decks.vocabDeck({ kinds, wordTypes, topics, level });
     if (mode === "flashcards") return limitedDeck(decks.flashcardDeck({ side: flashSide, types: flashTypes, topics, level }), FLASHCARD_SESSION);
@@ -364,7 +389,13 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
   const vocabReady = kinds.length > 0 && wordTypes.length > 0;
   const verbsReady = tenses.length > 0 && (mode !== "writing" || writingSides.length > 0) && (mode !== "listening" || hasVoice);
   const ready =
-    mode === "review" ? todayReady : usesCards ? flashTypes.length > 0 : mode === "grammar" || (usesVerbs ? verbsReady : vocabReady);
+    mode === "review"
+      ? todayReady
+      : mode === "numbers"
+        ? numberKinds.length > 0
+        : usesCards
+          ? flashTypes.length > 0
+          : mode === "grammar" || (usesVerbs ? verbsReady : vocabReady);
   const showTopics = (mode === "vocabulary" && wordTypes.includes("noun")) || (usesCards && flashTypes.includes("noun"));
 
   return (
@@ -413,6 +444,41 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
             ))}
           </div>
         </section>
+      )}
+
+      {mode === "numbers" && (
+        <>
+          <section>
+            <h2 className="mb-1 text-xl font-semibold">Which questions?</h2>
+            <p className="mb-3 text-sm text-stone-500">
+              Each session is {NUMBER_SESSION} questions, made up fresh each time. Capitals and punctuation don&apos;t matter, accents do.
+              These add to your totals but not to your review schedule.
+            </p>
+            <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+              {NUMBER_OPTIONS.map((k) => (
+                <OptionCard
+                  key={k.id}
+                  name={`number-${k.id}`}
+                  type="checkbox"
+                  title={k.title}
+                  hint={k.hint}
+                  checked={numberKinds.includes(k.id)}
+                  onChange={() => update({ numberKinds: toggled(numberKinds, k.id) })}
+                />
+              ))}
+            </div>
+          </section>
+
+          <section>
+            <h2 className="mb-1 text-xl font-semibold">How big?</h2>
+            <p className="mb-3 text-sm text-stone-500">For numbers and nouns. Ordinals go to tenth, and dates and times stay as they are.</p>
+            <div className="grid gap-2 sm:grid-cols-3">
+              {NUMBER_RANGES.map((r) => (
+                <OptionCard key={r.id} name="numberMax" title={r.title} hint={r.hint} checked={numberMax === r.id} onChange={() => update({ numberMax: r.id })} />
+              ))}
+            </div>
+          </section>
+        </>
       )}
 
       {mode === "writing" && (

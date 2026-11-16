@@ -2,7 +2,13 @@ import { useCallback, useMemo, useSyncExternalStore } from "react";
 import { TENSES, type TenseId } from "./conjugation/types";
 import type { VerbPool } from "./drill";
 
-export type Mode = "review" | "conjugation" | "vocabulary" | "flashcards" | "study" | "writing" | "listening" | "blanks" | "grammar";
+export type Mode = "review" | "conjugation" | "vocabulary" | "flashcards" | "study" | "writing" | "listening" | "blanks" | "grammar" | "numbers";
+/** Numbers drill questions: numerals to words, with a noun, words to numerals, ordinals, dates, dates with a year, times. */
+export type NumberKind = "words" | "noun" | "digits" | "ordinal" | "date" | "year" | "time";
+/** The largest number asked. */
+export type NumberMax = 100 | 1000 | 1000000;
+export const NUMBER_KINDS: NumberKind[] = ["words", "noun", "digits", "ordinal", "date", "year", "time"];
+export const NUMBER_MAXES: NumberMax[] = [100, 1000, 1000000];
 export type VocabKind = "toSpanish" | "toEnglish" | "gender" | "agreement";
 export type WordType = "noun" | "adjective" | "adverb" | "small";
 /** Phrases are flashcards only: typing a whole sentence exactly is a test of punctuation more than memory. */
@@ -56,6 +62,8 @@ export interface DrillSettings {
   writingSides: FlashSide[];
   /** Which side of a learning card shows first. */
   studySide: StudySide;
+  numberKinds: NumberKind[];
+  numberMax: NumberMax;
 }
 
 export const DEFAULT_SETTINGS: DrillSettings = {
@@ -70,9 +78,11 @@ export const DEFAULT_SETTINGS: DrillSettings = {
   flashTypes: ["noun", "adjective", "adverb", "small", "phrase"],
   writingSides: ["toEnglish", "toSpanish"],
   studySide: "mixed",
+  numberKinds: ["words", "noun", "ordinal", "date", "time"],
+  numberMax: 1000,
 };
 
-const MODES: Mode[] = ["review", "conjugation", "vocabulary", "flashcards", "study", "writing", "listening", "blanks", "grammar"];
+const MODES: Mode[] = ["review", "conjugation", "vocabulary", "flashcards", "study", "writing", "listening", "blanks", "grammar", "numbers"];
 const POOLS: VerbPool[] = ["common", "irregular", "all"];
 const KINDS: VocabKind[] = ["toSpanish", "toEnglish", "gender", "agreement"];
 const WORD_TYPES: WordType[] = ["noun", "adjective", "adverb", "small"];
@@ -104,6 +114,8 @@ export function parseSettings(raw: string | null): DrillSettings {
       flashTypes: someOf(saved.flashTypes, CARD_TYPES, DEFAULT_SETTINGS.flashTypes),
       writingSides: someOf(saved.writingSides, FLASH_SIDES, DEFAULT_SETTINGS.writingSides),
       studySide: oneOf(saved.studySide, STUDY_SIDES, DEFAULT_SETTINGS.studySide),
+      numberKinds: someOf(saved.numberKinds, NUMBER_KINDS, DEFAULT_SETTINGS.numberKinds),
+      numberMax: oneOf(saved.numberMax, NUMBER_MAXES, DEFAULT_SETTINGS.numberMax),
     };
   } catch {
     return DEFAULT_SETTINGS;

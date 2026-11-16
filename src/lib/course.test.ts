@@ -83,7 +83,7 @@ describe("course chapters", () => {
         assert.ok(listedWordCard(id, "toSpanish"), `${c.id}: no typed card for ${id}`);
         assert.ok(upToLevel(c.level, type as LeveledType, es), `${c.id}: ${id} is above ${c.level}`);
       }
-      if (c.lesson) assert.equal(c.words.length + c.drills.length + c.verbs.length, 0, `${c.id} is a short lesson`);
+      if (c.lesson) assert.equal(c.words.length + c.drills.filter((d) => d !== "numbers").length + c.verbs.length, 0, `${c.id} is a short lesson`);
       else assert.ok(c.words.length >= 12 && c.words.length <= 25, `${c.id} has ${c.words.length} words`);
     }
   });

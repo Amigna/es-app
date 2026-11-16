@@ -134,6 +134,10 @@ export interface Card {
    * a slip. Usually every form of the card's verb, or every word in the lists.
    */
   lookalikes?: readonly string[];
+  /** Short typed phrases, like a time or a date: capitals and punctuation don't matter, accents still do. */
+  loosePunctuation?: boolean;
+  /** Known wrong answers, like quinientos y seis, each with a note on the rule it breaks, shown instead of `explain`. */
+  wrongNotes?: { answers: string[]; note: string }[];
 }
 
 /** Pairs where the accent alone tells two common words apart: tú and tu, qué and que, está and esta. */
@@ -261,7 +265,7 @@ export function wordDiff(input: string, answer: string): { word: string; mark: W
 
 /** The answer's words against what was typed. Single answers are compared as one string; sentences ignore punctuation. */
 const compare = (card: Card, input: string, answer: string): Grade =>
-  card.dictation || card.writing ? grade(wordsOnly(input), wordsOnly(answer)) : grade(input, answer);
+  card.dictation || card.writing || card.loosePunctuation ? grade(wordsOnly(input), wordsOnly(answer)) : grade(input, answer);
 
 /**
  * A typed word that differs from the answer only by its accent and is a real word in its own right, like hablo for
@@ -274,6 +278,11 @@ export function accentTrap(card: Card, input: string): string | null {
   const known = new Set([...PAIRED_WORDS, ...(card.lookalikes ?? []).flatMap((f) => clean(f).split(" "))]);
   const trap = wordDiff(input, answer).find((w) => w.mark === "accent" && w.typed && known.has(w.typed));
   return trap?.typed ?? null;
+}
+
+/** The note for a known wrong answer, compared the way the card is graded, so a missing accent still matches. */
+export function wrongNote(card: Card, input: string): string | null {
+  return card.wrongNotes?.find((w) => w.answers.some((a) => compare(card, input, a) !== "wrong"))?.note ?? null;
 }
 
 export function gradeCard(card: Card, input: string): Grade {
@@ -290,7 +299,7 @@ function gradeLoosely(card: Card, input: string): Grade {
     return card.english && result === "accent" ? "correct" : result;
   }
   if (card.english) return card.answers.includes(englishCore(input)) ? "correct" : "wrong";
-  const grades = card.answers.map((a) => grade(input, a));
+  const grades = card.answers.map((a) => compare(card, input, a));
   if (grades.includes("correct")) return "correct";
   return grades.includes("accent") ? "accent" : "wrong";
 }

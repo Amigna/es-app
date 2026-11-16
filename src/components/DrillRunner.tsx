@@ -8,7 +8,7 @@ import SpeakButton from "@/components/SpeakButton";
 import { conjugate } from "@/lib/conjugation/engine";
 import { markVerb } from "@/lib/conjugation/regular";
 import { TENSES } from "@/lib/conjugation/types";
-import { accentTrap, gradeCard, wordDiff, type Card, type Grade, type TenseTable } from "@/lib/drill";
+import { accentTrap, gradeCard, wordDiff, wrongNote, type Card, type Grade, type TenseTable } from "@/lib/drill";
 import StruggleList from "@/components/Struggles";
 import type { PracticeTarget } from "@/lib/practice";
 import type { Tally } from "@/lib/progress";
@@ -73,6 +73,8 @@ function Feedback({
   };
   // Only on a miss: an accent that turns the answer into another real word is why it's wrong.
   const trap = result === "wrong" ? accentTrap(card, input) : null;
+  // A known mistake, like quinientos y seis, gets the note on the rule it breaks instead of the general one.
+  const note = (result === "wrong" ? wrongNote(card, input) : null) ?? card.explain;
   const trapNote = trap && (
     <p className="mt-1">
       <span lang="es" className="font-semibold">
@@ -119,7 +121,7 @@ function Feedback({
         )}
         {speak && <SpeakButton text={speak} />}
       </div>
-      {card.explain && <p className="mt-1">{card.explain}</p>}
+      {note && <p className="mt-1">{note}</p>}
       {result === "wrong" && nudge && <p className="mt-2 font-medium">{nudge}</p>}
       {/* Seeing the word in a sentence helps it stick. Only after a miss, since the sentence contains the answer. */}
       {result === "wrong" && card.missedExample && (

@@ -938,44 +938,51 @@
       {
         "heading": "Numbers up to 100",
         "rules": [
-          {"rule": "16 to 29 are written as one word", "examples": [{"es": "dieciséis, diecisiete, dieciocho, diecinueve", "en": "16, 17, 18, 19"}, {"es": "veintidós, veintitrés, veintiséis", "en": "22, 23, 26"}], "note": "Several take an accent: dieciséis, veintidós, veintitrés, veintiséis."},
-          {"rule": "From 31 on, use tens + y + ones", "examples": [{"es": "treinta y uno, cuarenta y cinco", "en": "31, 45"}, {"es": "noventa y nueve", "en": "99"}]},
+          {"rule": "0 to 15 each have their own word", "examples": [{"es": "cero, uno, dos, tres, cuatro, cinco", "en": "0, 1, 2, 3, 4, 5"}, {"es": "seis, siete, ocho, nueve, diez", "en": "6, 7, 8, 9, 10"}, {"es": "once, doce, trece, catorce, quince", "en": "11, 12, 13, 14, 15"}]},
+          {"rule": "16 to 29 are written as one word", "examples": [{"es": "dieciséis, diecisiete, dieciocho, diecinueve", "en": "16, 17, 18, 19"}, {"es": "veinte, veintiuno, veintidós, veintitrés, veinticuatro", "en": "20, 21, 22, 23, 24"}, {"es": "veinticinco, veintiséis, veintisiete, veintiocho, veintinueve", "en": "25, 26, 27, 28, 29"}], "note": "Several take an accent: dieciséis, veintidós, veintitrés, veintiséis. Diez y seis and veinte y dos are old spellings, now wrong."},
+          {"rule": "The tens", "examples": [{"es": "diez, veinte, treinta, cuarenta, cincuenta", "en": "10, 20, 30, 40, 50"}, {"es": "sesenta, setenta, ochenta, noventa", "en": "60, 70, 80, 90"}], "note": "Sesenta (60) and setenta (70) are easy to mix up: seis gives sesenta, siete gives setenta."},
+          {"rule": "From 31 on, use tens + y + ones", "examples": [{"es": "treinta y uno, cuarenta y cinco", "en": "31, 45"}, {"es": "noventa y nueve", "en": "99"}, {"es": "ciento cuarenta y dos", "en": "142"}], "note": "The y only goes between the tens and the ones, never after the hundreds or mil: quinientos seis, mil dos, not quinientos y seis."},
           {"rule": "Uno shortens before a masculine noun and changes before a feminine one", "examples": [{"es": "un hermano, una hermana", "en": "one brother, one sister"}, {"es": "veintiún años", "en": "twenty-one years"}, {"es": "treinta y una personas", "en": "thirty-one people"}]}
         ]
       },
       {
         "heading": "Hundreds and thousands",
         "rules": [
-          {"rule": "Cien alone or before a noun, ciento in combinations", "examples": [{"es": "cien dólares", "en": "a hundred dollars"}, {"es": "ciento cinco", "en": "105"}], "note": "Never un cien."},
-          {"rule": "Hundreds agree with feminine nouns", "examples": [{"es": "doscientos hombres", "en": "200 men"}, {"es": "doscientas personas", "en": "200 people"}]},
-          {"rule": "Watch the irregular hundreds", "examples": [{"es": "quinientos, setecientos, novecientos", "en": "500, 700, 900"}]},
-          {"rule": "Mil has no un, and doesn't go plural in counting", "examples": [{"es": "mil personas", "en": "a thousand people"}, {"es": "tres mil dólares", "en": "three thousand dollars"}]},
-          {"rule": "Millón takes un and de", "examples": [{"es": "un millón de dólares", "en": "a million dollars"}, {"es": "dos millones de personas", "en": "two million people"}]}
+          {"rule": "Every hundred from 100 to 900", "examples": [{"es": "cien, doscientos, trescientos", "en": "100, 200, 300"}, {"es": "cuatrocientos, quinientos, seiscientos", "en": "400, 500, 600"}, {"es": "setecientos, ochocientos, novecientos", "en": "700, 800, 900"}]},
+          {"rule": "Cien alone or before a noun, ciento in combinations", "examples": [{"es": "cien dólares", "en": "a hundred dollars"}, {"es": "ciento cinco", "en": "105"}, {"es": "cien mil", "en": "100,000"}], "note": "Never un cien."},
+          {"rule": "Hundreds agree with feminine nouns", "examples": [{"es": "doscientos hombres", "en": "200 men"}, {"es": "doscientas personas", "en": "200 people"}, {"es": "quinientas mil personas", "en": "500,000 people"}], "note": "The agreement carries on into the thousands. Cien and ciento never change."},
+          {"rule": "Watch the irregular hundreds", "examples": [{"es": "quinientos, setecientos, novecientos", "en": "500, 700, 900"}], "note": "Not cincocientos, sietecientos or nuevecientos."},
+          {"rule": "Mil has no un, and doesn't go plural in counting", "examples": [{"es": "mil personas", "en": "a thousand people"}, {"es": "tres mil dólares", "en": "three thousand dollars"}, {"es": "mil dos", "en": "1,002"}, {"es": "veintiún mil", "en": "21,000"}]},
+          {"rule": "Millón takes un and de", "examples": [{"es": "un millón de dólares", "en": "a million dollars"}, {"es": "dos millones de personas", "en": "two million people"}], "note": "De only comes straight after millón or millones: un millón doscientos mil dólares has none."},
+          {"rule": "Thousands are written with a point or a comma", "examples": [{"es": "1.000 o 1,000", "en": "a thousand"}, {"es": "2.500.000 o 2,500,000", "en": "two and a half million"}], "note": "Most of South America writes 1.000 with a point; Mexico, much of Central America and the Caribbean write 1,000. Both are fine in the drills."}
         ]
       },
       {
         "heading": "Ordinals",
         "rules": [
-          {"rule": "First through tenth agree with the noun", "examples": [{"es": "la segunda calle", "en": "the second street"}, {"es": "el cuarto piso", "en": "the fourth floor"}], "note": "The series is primero, segundo, tercero, cuarto, quinto, sexto, séptimo, octavo, noveno, décimo."},
-          {"rule": "Primero and tercero shorten before a masculine singular noun", "examples": [{"es": "el primer día", "en": "the first day"}, {"es": "el tercer piso", "en": "the third floor"}]}
+          {"rule": "First to tenth", "examples": [{"es": "primero, segundo, tercero", "en": "1st, 2nd, 3rd"}, {"es": "cuarto, quinto, sexto", "en": "4th, 5th, 6th"}, {"es": "séptimo, octavo, noveno, décimo", "en": "7th, 8th, 9th, 10th"}], "note": "Séptimo and décimo take an accent. Past tenth, people usually use the plain number after the noun: el piso doce."},
+          {"rule": "First through tenth agree with the noun", "examples": [{"es": "la segunda calle", "en": "the second street"}, {"es": "el cuarto piso", "en": "the fourth floor"}, {"es": "la décima vez", "en": "the tenth time"}, {"es": "las primeras semanas", "en": "the first weeks"}], "note": "They work like adjectives ending in -o: segundo, segunda, segundos, segundas."},
+          {"rule": "Primero and tercero shorten before a masculine singular noun", "examples": [{"es": "el primer día", "en": "the first day"}, {"es": "el tercer piso", "en": "the third floor"}], "note": "Only there: la primera vez, la tercera calle and los primeros días keep the full form."}
         ]
       },
       {
         "heading": "Days and dates",
         "rules": [
+          {"rule": "The months", "examples": [{"es": "enero, febrero, marzo, abril", "en": "January, February, March, April"}, {"es": "mayo, junio, julio, agosto", "en": "May, June, July, August"}, {"es": "septiembre, octubre, noviembre, diciembre", "en": "September, October, November, December"}], "note": "Setiembre is also correct, and common in Peru and Uruguay."},
+          {"rule": "The days of the week", "examples": [{"es": "lunes, martes, miércoles, jueves", "en": "Monday, Tuesday, Wednesday, Thursday"}, {"es": "viernes, sábado, domingo", "en": "Friday, Saturday, Sunday"}], "note": "Calendars start the week on Monday."},
           {"rule": "Days and months aren't capitalized", "examples": [{"es": "Hoy es martes.", "en": "Today is Tuesday."}, {"es": "Mi cumpleaños es en enero.", "en": "My birthday is in January."}]},
           {"rule": "El means on with days, and los means every", "examples": [{"es": "Voy el lunes.", "en": "I'm going on Monday."}, {"es": "Trabajo los lunes.", "en": "I work on Mondays."}]},
-          {"rule": "Dates are el + number + de + month", "examples": [{"es": "Hoy es el cinco de mayo.", "en": "Today is May 5th."}, {"es": "Nací el diez de junio de 1990.", "en": "I was born on June 10, 1990."}], "note": "Written dates put the day first, so 5/6 is June 5th."},
+          {"rule": "Dates are el + number + de + month", "examples": [{"es": "Hoy es el cinco de mayo.", "en": "Today is May 5th."}, {"es": "Nací el diez de junio de 1990.", "en": "I was born on June 10, 1990."}], "note": "Written dates put the day first, so 5/6 is June 5th, not May 6th. Every other day uses the plain number: el veintiuno de marzo."},
           {"rule": "Latin America uses primero for the first of the month", "examples": [{"es": "el primero de enero", "en": "January 1st"}], "note": "Spain usually says el uno de enero."},
-          {"rule": "Years are read as whole numbers", "examples": [{"es": "mil novecientos noventa y cinco", "en": "1995"}, {"es": "dos mil veintiséis", "en": "2026"}]}
+          {"rule": "Years are read as whole numbers", "examples": [{"es": "mil novecientos noventa y cinco", "en": "1995"}, {"es": "dos mil", "en": "2000"}, {"es": "dos mil veintiséis", "en": "2026"}], "note": "Never in pairs like English nineteen ninety-five. From 2000 on, many people say del: el cinco de mayo del 2024."}
         ]
       },
       {
         "heading": "Telling time",
         "rules": [
-          {"rule": "Es la una, and son las for everything else", "examples": [{"es": "Es la una.", "en": "It's one o'clock."}, {"es": "Son las tres.", "en": "It's three o'clock."}]},
-          {"rule": "Add minutes with y", "examples": [{"es": "Son las dos y diez.", "en": "It's 2:10."}, {"es": "Son las cuatro y media.", "en": "It's 4:30."}, {"es": "Son las cinco y cuarto.", "en": "It's 5:15."}]},
-          {"rule": "Before the hour, Latin America often uses faltan or para", "examples": [{"es": "Faltan diez para las ocho.", "en": "It's ten to eight."}, {"es": "Son las ocho menos diez.", "en": "It's ten to eight."}]},
+          {"rule": "Es la una, and son las for everything else", "examples": [{"es": "Es la una.", "en": "It's one o'clock."}, {"es": "Son las tres.", "en": "It's three o'clock."}, {"es": "Son las doce en punto.", "en": "It's twelve o'clock exactly."}], "note": "La and las stand for la hora and las horas, so it's la una, never el uno."},
+          {"rule": "Add minutes with y", "examples": [{"es": "Son las dos y diez.", "en": "It's 2:10."}, {"es": "Son las cuatro y media.", "en": "It's 4:30."}, {"es": "Son las cinco y cuarto.", "en": "It's 5:15."}, {"es": "Son las seis y veinticinco.", "en": "It's 6:25."}], "note": "Y cuarto and y media are the usual way to say quarter past and half past; y quince and y treinta are fine too."},
+          {"rule": "Before the hour, Latin America often uses faltan or para", "examples": [{"es": "Faltan diez para las ocho.", "en": "It's ten to eight."}, {"es": "Son las ocho menos diez.", "en": "It's ten to eight."}, {"es": "Son las tres menos cuarto.", "en": "It's a quarter to three."}, {"es": "Un cuarto para las tres.", "en": "A quarter to three."}], "note": "Both count down from the next hour, so 2:45 is las tres menos cuarto. Reading the clock straight, son las dos y cuarenta y cinco, is fine too."},
           {"rule": "Use a la or a las for at", "examples": [{"es": "La clase es a las nueve.", "en": "The class is at nine."}, {"es": "Llego a la una.", "en": "I arrive at one."}]},
           {"rule": "Parts of the day use de with a clock time, por without", "examples": [{"es": "Son las ocho de la mañana.", "en": "It's eight in the morning."}, {"es": "Trabajo por la mañana.", "en": "I work in the morning."}]}
         ]

@@ -273,7 +273,9 @@ export default function CourseChapter({
                 `${chapter.words.length} ${chapter.words.every((w) => w.startsWith("phrase:")) ? "expressions" : "words"} that go with this chapter. Flip each card and say whether you knew it. When you're signed in, they join your review schedule and come back in Today's review.`}
               {open === "quiz" && `${Math.min(quiz?.questions.length ?? 0, QUIZ_RUN)} questions on the lesson${(quiz?.questions.length ?? 0) > QUIZ_RUN ? ", starting with ones you haven't seen lately" : ""}. Each answer comes with a short explanation, and anything you miss comes back.`}
               {open === "practice" &&
-                (chapter.tenses.length === 0
+                (chapter.drills.includes("numbers")
+                  ? "15 questions, new each time: numbers up to 1,000 in words and back, with nouns they agree with, ordinals, dates and times. Anything you miss comes back."
+                  : chapter.tenses.length === 0
                   ? "15 questions on this chapter's words: el or la for each noun, and the right form of each adjective. Anything you miss comes back."
                   : chapter.drills.includes("chooseVerb")
                     ? `15 sentences with the verb hidden. Decide from the sentence whether it needs ${listNames(chapter.verbs).replace(" and ", " or ")}, then type the form. Anything you miss comes back.`
@@ -365,7 +367,11 @@ export default function CourseChapter({
                     {i + 1}. {info.title}
                   </span>
                   <span className="block text-sm text-stone-500">
-                    {id === "checkpoint" && mine?.best !== undefined ? `Best: ${mine.best}%` : info.hint}
+                    {id === "checkpoint" && mine?.best !== undefined
+                      ? `Best: ${mine.best}%`
+                      : id === "practice" && chapter.drills.includes("numbers")
+                        ? "Numbers, dates and times"
+                        : info.hint}
                   </span>
                 </span>
                 {id === upcoming && <span className="text-sm font-medium text-accent-700 dark:text-accent-300">Next</span>}

@@ -2,6 +2,8 @@ import { blankDeck, listedWordCard, writingDeck } from "./card-decks";
 import { EXAM_SIZE, type Chapter, type ChapterDrill } from "./course";
 import { TENSES } from "./conjugation/types";
 import { conjugationCard, makeQuestion, type Card } from "./drill";
+import { NUMBER_KINDS } from "./drill-settings";
+import { numberDeck } from "./number-cards";
 import { QUIZ_RUN, freshestFirst, quizCard, shuffled, type QuizQuestion, type QuizSeen } from "./quiz";
 import { sentencesFor, sentencesUpTo, type SentenceBank } from "./sentences";
 import type { Verb } from "./verbs";
@@ -91,6 +93,8 @@ function drillDeck(data: ChapterData, random: Random): () => Card | null {
     agreement: () => wordQuestion(chapter.words, "agreement", random),
     choose: () => chooseTenseDeck(data, random),
     chooseVerb: () => chooseVerbDeck(data, random),
+    // Up to 1,000, as the A1 lesson covers, with every kind of question.
+    numbers: () => numberDeck({ kinds: NUMBER_KINDS, max: 1000 }, random),
   };
   const kinds = chapter.drills.map((d) => decks[d]());
   let turn = Math.floor(random() * Math.max(1, kinds.length));

@@ -10,9 +10,10 @@ export type StepId = "learn" | "see" | "words" | "quiz" | "practice" | "write" |
 /**
  * Verb forms; `choose`, fill in the blank with the tense hidden, for chapters about choosing between tenses;
  * `chooseVerb`, the same with the verb hidden, for choosing between verbs like ser and estar; or for
- * chapters about nouns and adjectives, gender and agreement questions on the chapter's words.
+ * chapters about nouns and adjectives, gender and agreement questions on the chapter's words; or `numbers`, generated
+ * number, date and time questions, which a short lesson may have too.
  */
-export type ChapterDrill = "conjugation" | "blanks" | "choose" | "chooseVerb" | "gender" | "agreement";
+export type ChapterDrill = "conjugation" | "blanks" | "choose" | "chooseVerb" | "gender" | "agreement" | "numbers";
 
 export interface Chapter {
   id: string;
@@ -28,7 +29,7 @@ export interface Chapter {
   verbs: string[];
   /** Empty when there's nothing to drill beyond the quiz, like object pronouns. */
   drills: ChapterDrill[];
-  /** A short lesson between chapters: the guide and its quiz, with no words or practice. */
+  /** A short lesson between chapters: the guide and its quiz, with no words, and no practice beyond `numbers`. */
   lesson?: boolean;
   /** Words for the chapter's theme, written `type:es`, like `noun:casa` or `phrase:Tengo prisa.`. */
   words: string[];
