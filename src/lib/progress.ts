@@ -67,6 +67,8 @@ export type DayTally = Tally & {
   recall?: Tally;
   /** The longest drill streak that day. */
   bestStreak?: number;
+  /** Items that crossed into mastered that day, minus any that fell out. Written, even as 0, on every day with reviews from 2026-11-21 on. */
+  masteredChange?: number;
 };
 
 export interface Summary {
@@ -233,6 +235,41 @@ export function weeklyBestStreaks(days: Record<string, { bestStreak?: number }>,
       cursor = previousDay(cursor);
     }
     return best;
+  });
+}
+
+/** A week's mastered count at its end, and how much it changed during the week. `partial` when tracking began that week. */
+export interface MasteredWeek {
+  total: number;
+  change: number;
+  partial: boolean;
+}
+
+/**
+ * The mastered count by week, newest first, worked back from today's count using each day's `masteredChange`. Null for
+ * weeks before tracking began, which is the first day saved with the field: earlier changes weren't recorded, so totals
+ * from then can't be worked out. Days with no saves count as no change.
+ */
+export function masteredWeeks(days: Record<string, { masteredChange?: number }>, today: string, current: number, count: number): (MasteredWeek | null)[] {
+  const tracked = Object.keys(days)
+    .filter((day) => typeof days[day].masteredChange === "number")
+    .sort();
+  const first = tracked[0];
+  let cursor = today;
+  // Changes after the week being looked at, to take off today's count.
+  let later = 0;
+  return Array.from({ length: count }, () => {
+    const end = cursor;
+    let change = 0;
+    let start = end;
+    for (let i = 0; i < 7; i++) {
+      change += days[cursor]?.masteredChange ?? 0;
+      start = cursor;
+      cursor = previousDay(cursor);
+    }
+    const week = first && end >= first ? { total: current - later, change, partial: start < first } : null;
+    later += change;
+    return week;
   });
 }
 

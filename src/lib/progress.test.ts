@@ -1,10 +1,36 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { inviteAllowsVulgar, statusOfInvite } from "./firebase";
-import { accentRate, accuracy, calendarWeeks, currentStreak, lastSevenDays, localDay, recentWeeks, summarize, trendChange, weeklyBestStreaks, wordsPracticed, type Answer, type Tally } from "./progress";
+import { accentRate, accuracy, calendarWeeks, currentStreak, lastSevenDays, localDay, masteredWeeks, recentWeeks, summarize, trendChange, weeklyBestStreaks, wordsPracticed, type Answer, type Tally } from "./progress";
 import { summaryUpdate } from "./progress-store";
 
 const answer = (item: string, grade: Answer["grade"], day = "2026-11-01", tense?: Answer["tense"]): Answer => ({ item, grade, day, tense });
+
+describe("masteredWeeks", () => {
+  const today = "2026-12-10";
+
+  it("works each week's count back from today's, and leaves weeks before recording empty", () => {
+    const days = {
+      "2026-12-09": { masteredChange: 3 },
+      "2026-12-02": { masteredChange: 2 },
+      // Recording began on this day; nothing before it is known.
+      "2026-11-28": { masteredChange: 0 },
+      "2026-11-20": {},
+    };
+    const weeks = masteredWeeks(days, today, 40, 3);
+    // Dec 4 to Dec 10.
+    assert.deepEqual(weeks[0], { total: 40, change: 3, partial: false });
+    // Nov 27 to Dec 3: recording began on Nov 28, partway through.
+    assert.deepEqual(weeks[1], { total: 37, change: 2, partial: true });
+    // Nov 20 to Nov 26 ended before recording began.
+    assert.equal(weeks[2], null);
+  });
+
+  it("counts a loss, and knows nothing before any day is recorded", () => {
+    assert.deepEqual(masteredWeeks({ "2026-12-08": { masteredChange: -2 } }, today, 10, 1)[0], { total: 10, change: -2, partial: true });
+    assert.deepEqual(masteredWeeks({ "2026-12-08": {} }, today, 10, 2), [null, null]);
+  });
+});
 
 describe("summarize", () => {
   it("adds answers up by item, day, tense and overall", () => {

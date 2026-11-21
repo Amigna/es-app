@@ -94,7 +94,6 @@ B2 already turns on every tense, every verb and every word, so the app has no gr
 - [ ] More audio, after the word lists pass the phone check in "To verify": example sentences on regional pages, then reading passages a sentence at a time. Verb page sentences and drill sentences have it already
 - [ ] Better text-to-speech if the device voices aren't good enough: generate audio files once and serve them as static files, so there's no runtime API key
 - [ ] Conversation or writing practice with Claude (would need an API key)
-- [ ] "Mastered" as a trend on /progress (suggested 2026-11-15): mastered items growing week over week is the cleanest sign of progress, but only today's count is known (a count query on stability), so it needs a daily snapshot saved from then on, say `mastered` on `days/{day}` written with the day's first save, then a small line or a "+N this week" note on the Mastered tile
 - [ ] Optional voseo in drills
 - [ ] Maybe a color per tense, not just per mood, if three colors don't set tenses apart enough
 - [ ] Split the word lists like the sentence files if vocabulary drills feel slow to start on a phone. Starting a vocabulary, flashcard or review drill now downloads all of them, about 140 KB gzipped (nouns 96, adjectives 35, adverbs 10), up from about 65 KB
@@ -348,6 +347,7 @@ These live in `.verify/`, which is gitignored, so keep a copy if you change mach
 - [x] "Report a problem" on each recent mistake on /progress, prefilled with "I think my answer was correct." Its `about` starts with `Mistake <item>:` and holds what was typed, the answer, the label and the prompt
 - [x] Trash button on each recent mistake to remove it from the list, with Undo. It's added to the day's `hiddenMistakes`, and the mistake stays in `mistakes` and in every tally, so a teacher view could still show it later
 - [x] Vulgar words section on the regional page, shown only to invites with `vulgar: true`. Offensive words stay public with the reason explained. Vulgar ones say so publicly, and only this section says what they mean
+- [x] "Mastered" as a trend on /progress (suggested 2026-11-15, built 2026-11-21). No daily count query: stability only changes when an item is reviewed, and every save already reads each item's old stability and works out the new one, so `planReviews` counts items crossing 21 days that day, up minus down, and the save adds it to `days/{day}` as `masteredChange` (written even as 0, so a recorded day can be told from one before recording began). No extra reads or writes. `masteredWeeks` works each week's count back from today's mastered count. /progress shows "+N in the last 7 days" on the Mastered tile ("since recording began" in the first week) and a Mastered column in the weekly table: the count at the end of each week with the change under it, a dash before recording began and * on a partly recorded week. The table now scrolls sideways on its own if it doesn't fit a phone. Not checked signed in yet
 
 ### Content
 

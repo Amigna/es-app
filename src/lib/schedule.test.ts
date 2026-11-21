@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import type { Answer } from "./progress";
-import { RECALL_STABILITY, addDays, daysBetween, pickToday, planReviews, reviewItem, schedulable, type TodayData } from "./schedule";
+import { MASTERED_DAYS, RECALL_STABILITY, addDays, daysBetween, pickToday, planReviews, reviewItem, schedulable, type Schedule, type TodayData } from "./schedule";
 
 const answer = (item: string, grade: Answer["grade"], day: string): Answer => ({ item, grade, day });
 
@@ -102,6 +102,29 @@ describe("planReviews", () => {
     assert.deepEqual(practiced.recall, { right: 0, accent: 0, wrong: 0 });
     // A new item isn't a recall either.
     assert.deepEqual(planReviews([answer("verb:tener:present", "correct", due)], stored).perDay[due].recall, { right: 0, accent: 0, wrong: 0 });
+  });
+
+  it("counts items crossing into mastered and falling out, by day, once", () => {
+    const day = "2026-11-21";
+    const schedule = (stability: number): Schedule => ({ stability, difficulty: 5, due: addDays(day, -1), last: addDays(day, -20) });
+    const stored = { "verb:ir:present": schedule(MASTERED_DAYS - 3), "verb:ser:present": schedule(MASTERED_DAYS + 30), "verb:ver:present": schedule(MASTERED_DAYS + 30) };
+    const plan = planReviews(
+      [
+        answer("verb:ir:present", "correct", day),
+        answer("verb:ser:present", "wrong", day),
+        answer("verb:ver:present", "correct", day),
+        answer("verb:dar:present", "correct", day),
+      ],
+      stored,
+    );
+    // Preconditions: ir crosses up, ser falls out, ver stays mastered, dar is new.
+    assert.ok(plan.schedules["verb:ir:present"].stability >= MASTERED_DAYS);
+    assert.ok(plan.schedules["verb:ser:present"].stability < MASTERED_DAYS);
+    assert.equal(plan.perDay[day].mastered, 0, "one up and one down");
+    assert.equal(planReviews([answer("verb:ir:present", "correct", day)], stored).perDay[day].mastered, 1);
+    // A batch sent twice doesn't count again.
+    const saved = { ...stored, "verb:ir:present": plan.schedules["verb:ir:present"] };
+    assert.deepEqual(planReviews([answer("verb:ir:present", "correct", day)], saved).perDay, {});
   });
 
   it("handles days in a backlog in order", () => {

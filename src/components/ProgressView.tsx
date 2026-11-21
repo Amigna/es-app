@@ -27,10 +27,12 @@ import {
   currentStreak,
   lastSevenDays,
   localDay,
+  masteredWeeks,
   recentWeeks,
   trendChange,
   weeklyBestStreaks,
   wordsPracticed,
+  type MasteredWeek,
   type Mistake,
   type Tally,
 } from "@/lib/progress";
@@ -272,18 +274,33 @@ const slipCell = (tally: Tally): ReactNode =>
  * Newest first. Weeks with nothing in any column are left out. `streaks` adds each week's longest drill streak. A cell
  * with fewer graded answers than its column's `few` is shown pale, with a note under the table saying why.
  */
+/** The Mastered tile's addition: the change over the last 7 days, or since recording began if that's more recent. */
+function masteredNote(week: MasteredWeek | null): string {
+  if (!week) return "";
+  const sign = week.change > 0 ? "+" : week.change < 0 ? "−" : "";
+  return ` · ${sign}${Math.abs(week.change).toLocaleString()} ${week.partial ? "since recording began" : "in the last 7 days"}`;
+}
+
+/** A week's mastered count, with the change under it: +3, −1, or 0. */
+const masteredCell = (week: MasteredWeek | null): ReactNode =>
+  week ? twoLine(week.total.toLocaleString(), `${week.change > 0 ? "+" : week.change < 0 ? "−" : ""}${Math.abs(week.change).toLocaleString()}${week.partial ? "*" : ""}`) : "–";
+
 function WeekTable({
   columns,
   streaks,
+  mastered,
 }: {
   columns: { title: string; weeks: Tally[]; cell?: (tally: Tally) => ReactNode; few?: number }[];
   streaks?: number[];
+  /** Each week's mastered count and change; null before tracking began. */
+  mastered?: (MasteredWeek | null)[];
 }) {
   const shown = Array.from({ length: WEEKS_SHOWN }, (_, ago) => ago).filter((ago) => columns.some((c) => answered(c.weeks[ago]) > 0));
   const faint = (c: (typeof columns)[number], tally: Tally) => answered(tally) > 0 && tally.right + tally.wrong < (c.few ?? FEW_ANSWERS);
   const anyFaint = shown.some((ago) => columns.some((c) => faint(c, c.weeks[ago])));
   return (
-    <div className="overflow-hidden rounded-xl border border-stone-200 bg-white dark:border-stone-800 dark:bg-stone-900">
+    // Scrolls sideways on its own if the columns don't fit a phone, so the page never does.
+    <div className="overflow-x-auto rounded-xl border border-stone-200 bg-white dark:border-stone-800 dark:bg-stone-900">
       <table className="w-full text-left">
         <thead>
           <tr className="border-b border-stone-200 text-sm text-stone-500 dark:border-stone-800">
@@ -292,6 +309,7 @@ function WeekTable({
               <th key={c.title} scope="col" className="px-4 py-2 text-right font-medium">{c.title}</th>
             ))}
             {streaks && <th scope="col" className="px-4 py-2 text-right font-medium">Best streak</th>}
+            {mastered && <th scope="col" className="px-4 py-2 text-right font-medium">Mastered</th>}
           </tr>
         </thead>
         <tbody>
@@ -304,6 +322,7 @@ function WeekTable({
                 </td>
               ))}
               {streaks && <td className="px-4 py-2 text-right tabular-nums">{streaks[ago] ? streaks[ago].toLocaleString() : "–"}</td>}
+              {mastered && <td className="px-4 py-2 text-right tabular-nums">{masteredCell(mastered[ago])}</td>}
             </tr>
           ))}
         </tbody>
@@ -311,6 +330,12 @@ function WeekTable({
       {anyFaint && (
         <p className="border-t border-stone-100 px-4 py-2 text-sm text-stone-500 dark:border-stone-800">
           Pale numbers come from a quiet week, too few answers to read much into.
+        </p>
+      )}
+      {mastered && (
+        <p className="border-t border-stone-100 px-4 py-2 text-sm text-stone-500 dark:border-stone-800">
+          Mastered is the count at the end of each week, with the change under it. It&apos;s recorded from late November 2026, so earlier
+          weeks show a dash{shown.some((ago) => mastered[ago]?.partial) ? ", and * marks a week only partly recorded" : ""}.
         </p>
       )}
     </div>
@@ -672,6 +697,7 @@ function Stats({ data, drillNow, wordLists }: { data: ProgressData; drillNow: nu
   const streak = currentStreak(Object.keys(data.days), today);
   const overall = accuracy(data.total);
   const inSession = Math.min(data.dueToday, reviewsLeft(data.reviewsPerDay, data.days[today]?.reviews ?? 0));
+  const masteredByWeek = masteredWeeks(data.days, today, data.mastered, WEEKS_SHOWN);
   const tenseRows = TENSES.flatMap((t) => {
     const tally = data.tenses[t.id];
     if (!tally || answered(tally) === 0) return [];
@@ -730,7 +756,7 @@ function Stats({ data, drillNow, wordLists }: { data: ProgressData; drillNow: nu
         <Tile
           label="Mastered"
           value={data.mastered.toLocaleString()}
-          note={`of ${data.practiced.toLocaleString()} practiced`}
+          note={`of ${data.practiced.toLocaleString()} practiced${masteredNote(masteredByWeek[0])}`}
           onClick={data.mastered > 0 ? () => setShowMastered(!showMastered) : undefined}
           expanded={showMastered}
           className="col-span-2"
@@ -776,6 +802,7 @@ function Stats({ data, drillNow, wordLists }: { data: ProgressData; drillNow: nu
               { title: "Accent slips", weeks: recentWeeks(data.days, today, (day) => day, WEEKS_SHOWN), cell: slipCell, few: 0 },
             ]}
             streaks={weeklyBestStreaks(data.days, today, WEEKS_SHOWN)}
+            mastered={masteredByWeek.some(Boolean) ? masteredByWeek : undefined}
           />
         </section>
       </div>

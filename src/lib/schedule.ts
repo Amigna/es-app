@@ -51,10 +51,14 @@ export interface ReviewPlan {
   /**
    * Counts toward the daily limits, by day. `recall` is how the reviews of items that had come due went: whether they'd
    * stuck. An item practiced before its due day counts as a review but not toward `recall`, since it wasn't a test of
-   * memory at the interval the schedule chose.
+   * memory at the interval the schedule chose. `mastered` is how many items crossed MASTERED_DAYS that day, up minus
+   * down, so /progress can show the mastered count over time. Stability only changes when an item is reviewed, so these
+   * add up to the exact change in the mastered count.
    */
-  perDay: Record<string, { newItems: number; reviews: number; recall: Tally }>;
+  perDay: Record<string, { newItems: number; reviews: number; recall: Tally; mastered: number }>;
 }
+
+const isMastered = (schedule: Schedule | undefined) => (schedule?.stability ?? 0) >= MASTERED_DAYS;
 
 const RECALL_FIELD: Record<Grade, keyof Tally> = { correct: "right", accent: "accent", wrong: "wrong" };
 
@@ -68,11 +72,13 @@ export function planReviews(answers: Answer[], stored: Record<string, Schedule>)
     if (!schedulable(item)) continue;
     const previous = plan.schedules[item] ?? stored[item];
     if (previous && day <= previous.last) continue;
-    plan.schedules[item] = reviewItem(previous, grade, day);
+    const next = reviewItem(previous, grade, day);
+    plan.schedules[item] = next;
     if (!previous) plan.fresh.push(item);
-    const counts = (plan.perDay[day] ??= { newItems: 0, reviews: 0, recall: { right: 0, accent: 0, wrong: 0 } });
+    const counts = (plan.perDay[day] ??= { newItems: 0, reviews: 0, recall: { right: 0, accent: 0, wrong: 0 }, mastered: 0 });
     counts[previous ? "reviews" : "newItems"]++;
     if (previous && day >= previous.due) counts.recall[RECALL_FIELD[grade]]++;
+    if (isMastered(next) !== isMastered(previous)) counts.mastered += isMastered(next) ? 1 : -1;
   }
   return plan;
 }

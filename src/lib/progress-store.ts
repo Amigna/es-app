@@ -91,7 +91,10 @@ export async function saveAnswers(answers: Answer[]) {
   for (const [day, tally] of Object.entries(days)) {
     const counts = plan.perDay[day];
     const recalled = counts && counts.recall.right + counts.recall.accent + counts.recall.wrong > 0 ? { recall: bump(counts.recall) } : {};
-    const scheduled = counts ? { newItems: increment(counts.newItems), reviews: increment(counts.reviews), ...recalled } : {};
+    // masteredChange is written even when 0, so /progress can tell a tracked day from one before tracking began.
+    const scheduled = counts
+      ? { newItems: increment(counts.newItems), reviews: increment(counts.reviews), masteredChange: increment(counts.mastered), ...recalled }
+      : {};
     const byKind = (name: "tenses" | "writing" | "listening", kinds: Record<string, Tally> | undefined) =>
       kinds ? { [name]: Object.fromEntries(Object.entries(kinds).map(([kind, t]) => [kind, bump(t)])) } : {};
     // A re-sent batch adds the same mistakes, and arrayUnion skips exact copies.
