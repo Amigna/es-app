@@ -62,6 +62,13 @@ describe("vocabDeck", () => {
     assert.equal(gradeCard(card, card.shown.slice(3)), "correct");
   });
 
+  it("accepts the meaning of any word spelled the same in Spanish to English", () => {
+    const morning = reviewCard("vocab:noun:mañana:toEnglish", SENTENCE_BANK, new Set())!;
+    assert.equal(gradeCard(morning, "tomorrow"), "correct");
+    assert.equal(gradeCard(morning, "morning"), "correct");
+    assert.equal(morning.shown, "morning");
+  });
+
   it("accepts regional synonyms in both directions", () => {
     const next = vocabDeck(options({ kinds: ["toSpanish"], wordTypes: ["noun"], topics: ["travel"] }));
     const bus = draw(next, (c) => c.title === "bus");

@@ -699,7 +699,11 @@ export default function DrillRunner({
               spellCheck={false}
               value={input}
               readOnly={!!result || revealed}
-              onChange={(e) => setInput(e.target.value)}
+              // A phone's autocorrect can land after Enter. Once graded, the box keeps what was graded, so the screen
+              // and any report show that instead of a correction that came too late.
+              onChange={(e) => {
+                if (!result && !revealed) setInput(e.target.value);
+              }}
               className="h-12 w-full rounded-xl border border-stone-300 bg-white px-4 text-lg outline-none transition focus:border-accent-600 focus:ring-2 focus:ring-accent-600/30 dark:border-stone-700 dark:bg-stone-950"
             />
             {!card.english && (

@@ -133,8 +133,9 @@ const DIGITS: Record<string, string[]> = {
   "one thousand": ["1000", "1,000"],
 };
 
-function toEnglishCard(word: Word): Card {
-  const answers = englishAnswers(word.en);
+function toEnglishCard(word: Word, everyWord: Word[]): Card {
+  // The card shows only the spelling, so every word spelled the same counts: mañana is "tomorrow" as well as "morning".
+  const answers = everyWord.filter((w) => w.es === word.es).flatMap((w) => englishAnswers(w.en));
   return {
     id: `en:${word.es}`,
     badge: "Spanish to English",
@@ -209,7 +210,7 @@ export function vocabDeck({ kinds, wordTypes, topics, level }: VocabOptions, ran
     if (usable.length === 0) return null;
     const kind = pick(usable, random);
     if (kind === "toSpanish") return toSpanishCard(pick(words, random), everyWord);
-    if (kind === "toEnglish") return toEnglishCard(pick(words, random));
+    if (kind === "toEnglish") return toEnglishCard(pick(words, random), everyWord);
     if (kind === "gender") return genderCard(pick(genderNouns, random));
     return agreementCard(pick(agreeing, random), random);
   };
@@ -454,7 +455,7 @@ function vocabReviewCard(type: string, es: string, kind: string, random: Random)
   const everyWord = allWords();
   const word = everyWord.find((w) => w.type === type && w.es === es);
   if (!word) return null;
-  return kind === "toSpanish" ? toSpanishCard(word, everyWord) : toEnglishCard(word);
+  return kind === "toSpanish" ? toSpanishCard(word, everyWord) : toEnglishCard(word, everyWord);
 }
 
 /**
