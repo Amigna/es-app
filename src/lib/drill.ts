@@ -204,7 +204,8 @@ export function personLabel(tense: TenseId, person: number): string {
   return (tense === "impAffirmative" || tense === "impNegative" ? IMPERATIVE_PERSONS : PERSONS)[person] ?? "";
 }
 
-const clean = (s: string) => s.trim().toLowerCase().replace(/\s+/g, " ");
+// On-screen keyboards (a car's, say) can send invisible characters or an accent as a separate mark, so those are evened out.
+const clean = (s: string) => s.normalize("NFC").replace(/\p{Cf}/gu, "").trim().toLowerCase().replace(/\s+/g, " ");
 const loose = (s: string) => stripAccents(clean(s)).replace(/ü/g, "u");
 
 /** Right letters with a missing or wrong accent is its own result, so it can be taught instead of marked wrong. */

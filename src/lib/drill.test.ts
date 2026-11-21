@@ -19,6 +19,11 @@ describe("grade", () => {
     assert.equal(grade("  He   Hablado ", "he hablado"), "correct");
   });
 
+  it("ignores invisible characters and how an accent was encoded", () => {
+    assert.equal(grade("car​ta﻿", "carta"), "correct");
+    assert.equal(grade("sábado", "sábado"), "correct");
+  });
+
   it("separates accent mistakes from wrong answers", () => {
     assert.equal(grade("hablo", "habló"), "accent");
     assert.equal(grade("averigue", "averigüe"), "accent");
