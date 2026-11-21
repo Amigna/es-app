@@ -3,7 +3,8 @@ import { describe, it } from "node:test";
 import { listedWordCard } from "./card-decks";
 import { TENSES, type TenseId } from "./conjugation/types";
 import { conjugate } from "./conjugation/engine";
-import { CHAPTERS, EXAM_LEVELS, EXAM_REVIEW, EXAM_SIZE, chapterSteps, levelChapters, mergeCourse, nextStep, parseCourse, suggestedChapter, type CourseProgress } from "./course";
+import { findReading } from "./reading-data";
+import { CHAPTERS, EXAM_LEVELS, EXAM_REVIEW, EXAM_SIZE, chapterForReading, chapterSteps, levelChapters, mergeCourse, nextStep, parseCourse, stepsLeft, suggestedChapter, type CourseProgress, type StepId } from "./course";
 import { checkpointCards, examCards, examWithReview, practiceDeck, quizCards, writeDeck, type ChapterData, type ChapterQuiz } from "./course-decks";
 import { findGuide } from "./guides";
 import { LEVELS } from "./level";
@@ -126,6 +127,33 @@ describe("course chapters", () => {
       assert.equal(steps.at(-1), "checkpoint", c.id);
       assert.ok(steps.includes("practice") || steps.includes("quiz"), c.id);
     }
+  });
+
+  it("have their own reading at their level, one chapter to a passage, and none for short lessons", () => {
+    const used = new Set<string>();
+    for (const c of CHAPTERS.filter((ch) => ch.reading)) {
+      const reading = findReading(c.reading!);
+      assert.ok(reading, `${c.id}: no reading ${c.reading}`);
+      assert.equal(reading.level, c.level, c.id);
+      assert.ok(!c.lesson, `${c.id} is a short lesson`);
+      assert.ok(!used.has(c.reading!), `${c.reading} is in two chapters`);
+      used.add(c.reading!);
+      assert.equal(chapterForReading(c.reading!), c);
+    }
+  });
+
+  it("name steps still to do in a finished chapter, like one added after it was passed", () => {
+    const c = CHAPTERS.find((ch) => ch.id === "present-regular")!;
+    const before: StepId[] = ["learn", "see", "quiz", "words", "practice", "write", "checkpoint"];
+    assert.deepEqual(stepsLeft(c, { [c.id]: { steps: before, done: "2026-11-10", best: 90 } }), ["read"]);
+    assert.deepEqual(stepsLeft(c, { [c.id]: { steps: [...before, "read"], done: "2026-11-10", best: 90 } }), []);
+    // Unfinished chapters already show a step count.
+    assert.deepEqual(stepsLeft(c, { [c.id]: { steps: ["learn"] } }), []);
+  });
+
+  it("put the reading between the typed steps", () => {
+    const c = CHAPTERS.find((ch) => ch.id === "present-regular")!;
+    assert.deepEqual(chapterSteps(c), ["learn", "see", "quiz", "words", "practice", "read", "write", "checkpoint"]);
   });
 });
 

@@ -6,11 +6,12 @@ import { Example, TenseCard, moodHue } from "@/components/ConjugationView";
 import BadgeArt from "@/components/Badge";
 import DrillRunner from "@/components/DrillRunner";
 import GuideSections from "@/components/GuideSections";
+import ReadingPassage from "@/components/ReadingPassage";
 import { conjugate } from "@/lib/conjugation/engine";
 import { markVerb } from "@/lib/conjugation/regular";
 import { TENSES, type TenseId } from "@/lib/conjugation/types";
 import { findBadge } from "@/lib/badges";
-import { CHAPTERS, PASS_SCORE, STEPS, chapterSteps, examId, isDone, levelChapters, nextStep, type Chapter, type StepId } from "@/lib/course";
+import { CHAPTERS, PASS_SCORE, STEPS, chapterSteps, examId, isDone, levelChapters, nextStep, stepsLeft, type Chapter, type StepId } from "@/lib/course";
 import { completeStep, recordCheckpointBadges, storedCourse, syncCourse, useCourseProgress } from "@/lib/course-progress";
 import type { Badge } from "@/lib/badges";
 import type { ChapterQuiz } from "@/lib/course-decks";
@@ -18,6 +19,7 @@ import type { Card } from "@/lib/drill";
 import { QUIZ_RUN } from "@/lib/quiz";
 import type { GuideSection } from "@/lib/guides";
 import { levelInfo } from "@/lib/level";
+import { readingDeck, type Reading } from "@/lib/readings";
 import { loadSentences } from "@/lib/sentence-loader";
 import { withExtraSentences, type Sentence, type SentenceBank } from "@/lib/sentences";
 import { findVerb, type Verb } from "@/lib/verbs";
@@ -111,6 +113,7 @@ export default function CourseChapter({
   examples,
   rare,
   extra,
+  reading,
 }: {
   chapter: Chapter;
   sections: GuideSection[];
@@ -120,11 +123,15 @@ export default function CourseChapter({
   rare: string[];
   /** The chapter's own sentences, added to the bank's. */
   extra: SentenceBank;
+  /** The passage for the Read step, also on /reading. */
+  reading: Reading | null;
 }) {
   const progress = useCourseProgress();
   const mine = progress[chapter.id];
   const steps = chapterSteps(chapter);
   const upcoming = nextStep(chapter, progress);
+  // Finished, but with a step added since (or skipped).
+  const left = stepsLeft(chapter, progress);
   // By ID: the chapter arrives from the server as a copy, not the object in CHAPTERS.
   const number = CHAPTERS.findIndex((c) => c.id === chapter.id) + 1;
   const following = CHAPTERS[number];
@@ -174,7 +181,9 @@ export default function CourseChapter({
             ? decks.chapterQuizDeck(quiz, seen)
             : step === "practice"
               ? decks.practiceDeck(data)
-              : step === "write"
+              : step === "read" && reading
+                ? readingDeck(reading)
+                : step === "write"
                 ? decks.writeDeck(data)
                 : decks.checkpointDeck(data);
       const dealt = remembering(next);
@@ -271,7 +280,49 @@ export default function CourseChapter({
           </div>
         )}
 
-        {open !== "learn" && open !== "see" && (
+        {open === "read" && reading && (
+          <article className="max-w-2xl space-y-8">
+            <header className="space-y-1">
+              <p className="text-sm text-stone-500" lang="es">
+                {reading.place}
+              </p>
+              <h2 lang="es" className="text-2xl font-semibold tracking-tight">
+                {reading.title}
+              </h2>
+              <p className="text-stone-600 dark:text-stone-400">{reading.en}</p>
+              {reading.fiction && <p className="pt-1 text-sm text-stone-500 italic">A made-up story. The places are real, but the people and events aren&apos;t.</p>}
+            </header>
+            <ReadingPassage paragraphs={reading.paragraphs} words={reading.words} />
+            <section>
+              <h3 className="mb-3 text-lg font-semibold">Words to know</h3>
+              <dl className="grid gap-x-6 gap-y-2 sm:grid-cols-2">
+                {reading.words.map((w) => (
+                  <div key={w.es}>
+                    <dt lang="es" className="font-medium text-accent-800 dark:text-accent-300">
+                      {w.es}
+                    </dt>
+                    <dd className="text-sm text-stone-500">{w.en}</dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
+            <section className="space-y-3">
+              <p className="text-stone-600 dark:text-stone-400">
+                {reading.questions.length} questions about the story to finish the step. You can come back to the text first.
+              </p>
+              {error && (
+                <p role="alert" className="text-sm text-red-600 dark:text-red-400">
+                  {error}
+                </p>
+              )}
+              <button type="button" onClick={() => start("read")} disabled={loading} className={buttonClass}>
+                {loading ? "Loading…" : "Answer the questions"}
+              </button>
+            </section>
+          </article>
+        )}
+
+        {open !== "learn" && open !== "see" && open !== "read" && (
           <section className="space-y-4">
             <p className="text-stone-600 dark:text-stone-400">
               {open === "words" &&
@@ -332,6 +383,14 @@ export default function CourseChapter({
               )}
             </p>
           </div>
+          {left.length > 0 && (
+            <p className="rounded-lg border border-amber-300 bg-amber-50 px-4 py-2 text-amber-900 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-200">
+              <span className="font-medium">Not done yet: {listNames(left.map((s) => stepInfo(s).title))}.</span>{" "}
+              <button type="button" onClick={() => show(left[0])} className="min-h-10 font-medium underline">
+                Go to {stepInfo(left[0]).title}
+              </button>
+            </p>
+          )}
           {levelChaptersDone && !examPassed && (
             <Link href={`/course/exam/${chapter.level.toLowerCase()}`} className={`mr-3 inline-flex items-center ${buttonClass.replace("h-11", "min-h-11 py-2")}`}>
               Take the {chapter.level} exam

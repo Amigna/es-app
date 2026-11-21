@@ -4,17 +4,25 @@ import Link from "next/link";
 import BadgeArt from "@/components/Badge";
 import { earnedBadges, findBadge } from "@/lib/badges";
 import { useEffect } from "react";
-import { CHAPTERS, EXAM_PASS_SCORE, chapterSteps, chaptersDone, examId, suggestedChapter, type ChapterProgress } from "@/lib/course";
+import { CHAPTERS, EXAM_PASS_SCORE, STEPS, chapterSteps, chaptersDone, examId, stepsLeft, suggestedChapter, type ChapterProgress, type CourseProgress } from "@/lib/course";
 import { syncCourse, useCourseProgress } from "@/lib/course-progress";
 import { LEVELS, levelInfo, useLevel } from "@/lib/level";
 
-function status(chapter: (typeof CHAPTERS)[number], mine: ChapterProgress | undefined): string {
+function status(chapter: (typeof CHAPTERS)[number], progress: CourseProgress): string {
+  const mine = progress[chapter.id];
   const kind = chapter.lesson ? "Short lesson · " : "";
   if (mine?.done) return `${kind}Done · best ${mine.best}%`;
   const total = chapterSteps(chapter).length;
   const finished = mine?.steps.length ?? 0;
   if (finished > 0) return `${kind}${finished} of ${total} steps${mine?.best !== undefined ? ` · best ${mine.best}%` : ""}`;
   return `${kind}${total} steps`;
+}
+
+/** A finished chapter with a step still to do, like Read added after it was passed. Null when there's nothing left. */
+function leftNote(chapter: (typeof CHAPTERS)[number], progress: CourseProgress): string | null {
+  const left = stepsLeft(chapter, progress);
+  if (left.length === 0) return null;
+  return left.length === 1 ? `${STEPS.find((s) => s.id === left[0])!.title} not done yet` : `${left.length} steps not done yet`;
 }
 
 function examStatus(mine: ChapterProgress | undefined, chapters: number): string {
@@ -96,7 +104,12 @@ export default function CourseList() {
                           <span className="sr-only">Chapter {n}: </span>
                           {c.title}
                         </span>
-                        <span className="block text-sm text-stone-500">{status(c, mine)}</span>
+                        <span className="block text-sm text-stone-500">{status(c, progress)}</span>
+                        {leftNote(c, progress) && (
+                          <span className="mt-1 inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-sm font-medium text-amber-900 dark:bg-amber-950 dark:text-amber-200">
+                            {leftNote(c, progress)}
+                          </span>
+                        )}
                       </span>
                       {c === suggested && <span className="text-sm font-medium text-accent-700 dark:text-accent-300">Next</span>}
                     </Link>

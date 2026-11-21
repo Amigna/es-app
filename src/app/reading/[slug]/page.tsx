@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import ReadingPassage from "@/components/ReadingPassage";
 import ReadingQuiz from "@/components/ReadingQuiz";
 import ReportProblem from "@/components/ReportProblem";
+import { chapterForReading, chapterNumber } from "@/lib/course";
 import { READINGS, findReading } from "@/lib/reading-data";
 
 export function generateStaticParams() {
@@ -33,6 +34,7 @@ export default function ReadingPassagePage({ params }: PageProps<"/reading/[slug
 async function ReadingContent({ params }: { params: PageProps<"/reading/[slug]">["params"] }) {
   const reading = findReading((await params).slug);
   if (!reading) notFound();
+  const chapter = chapterForReading(reading.slug);
 
   return (
     <article className="max-w-2xl space-y-8">
@@ -45,6 +47,14 @@ async function ReadingContent({ params }: { params: PageProps<"/reading/[slug]">
         </h1>
         <p className="text-lg text-stone-600 dark:text-stone-400">{reading.en}</p>
         {reading.fiction && <p className="pt-1 text-sm text-stone-500 italic">A made-up story. The places are real, but the people and events aren&apos;t.</p>}
+        {chapter && (
+          <p className="pt-1 text-sm text-stone-500">
+            Written for{" "}
+            <Link href={`/course/${chapter.id}`} className="text-accent-700 underline dark:text-accent-400">
+              chapter {chapterNumber(chapter)}: {chapter.title}
+            </Link>
+          </p>
+        )}
       </header>
 
       <section className="space-y-4">

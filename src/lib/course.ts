@@ -6,7 +6,7 @@ import type { Level } from "./level";
 // has. Every chapter stays open: the level only suggests where to start. Progress is kept in this browser, and for
 // signed-in people merged into users/{uid}/stats/course.
 
-export type StepId = "learn" | "see" | "words" | "quiz" | "practice" | "write" | "checkpoint";
+export type StepId = "learn" | "see" | "words" | "quiz" | "practice" | "read" | "write" | "checkpoint";
 /**
  * Verb forms; `choose`, fill in the blank with the tense hidden, for chapters about choosing between tenses;
  * `chooseVerb`, the same with the verb hidden, for choosing between verbs like ser and estar; or for
@@ -33,6 +33,8 @@ export interface Chapter {
   lesson?: boolean;
   /** Words for the chapter's theme, written `type:es`, like `noun:casa` or `phrase:Tengo prisa.`. */
   words: string[];
+  /** The slug of a passage in readings.json written for this chapter: its grammar and words, nothing later. */
+  reading?: string;
 }
 
 export const CHAPTERS = courseRaw as Chapter[];
@@ -43,14 +45,20 @@ export const PASS_SCORE = 80;
 export const STEPS: { id: StepId; title: string; hint: string }[] = [
   { id: "learn", title: "Learn", hint: "A short lesson" },
   { id: "see", title: "See it", hint: "The pattern and real sentences" },
-  { id: "words", title: "Words", hint: "Flashcards for the chapter's theme" },
+  // The quiz comes right after the lesson, while it's fresh, and the flashcards and the reading sit between the typed
+  // steps, so they don't all run back to back before the checkpoint.
   { id: "quiz", title: "Quiz", hint: "Questions on the lesson" },
+  { id: "words", title: "Words", hint: "Flashcards for the chapter's theme" },
   { id: "practice", title: "Practice", hint: "Conjugation and fill in the blank" },
+  { id: "read", title: "Read", hint: "A short story using the chapter" },
   { id: "write", title: "Write", hint: "Translate a few sentences" },
   { id: "checkpoint", title: "Checkpoint", hint: `A short mixed test. ${PASS_SCORE}% finishes the chapter` },
 ];
 
 export const findChapter = (id: string) => CHAPTERS.find((c) => c.id === id);
+
+/** The chapter a reading was written for, if any, so /reading can link back to it. */
+export const chapterForReading = (slug: string) => CHAPTERS.find((c) => c.reading === slug);
 
 export const chapterNumber = (chapter: Chapter) => CHAPTERS.indexOf(chapter) + 1;
 
@@ -62,6 +70,7 @@ export function chapterSteps(chapter: Chapter): StepId[] {
     words: chapter.words.length > 0,
     quiz: !!chapter.guide && chapter.guide.quiz?.length !== 0,
     practice: chapter.drills.length > 0,
+    read: !!chapter.reading,
     write: chapter.tenses.length > 0 && chapter.verbs.length > 0,
     checkpoint: true,
   };
@@ -152,6 +161,16 @@ export function nextStep(chapter: Chapter, progress: CourseProgress): StepId | n
   if (isDone(progress, chapter.id)) return null;
   const finished = progress[chapter.id]?.steps ?? [];
   return chapterSteps(chapter).find((s) => !finished.includes(s)) ?? "checkpoint";
+}
+
+/**
+ * Steps not done yet in a finished chapter, like a step added after it was passed (Read, in 2026-11) or one skipped.
+ * Empty for an unfinished chapter, where the step count already says it.
+ */
+export function stepsLeft(chapter: Chapter, progress: CourseProgress): StepId[] {
+  const mine = progress[chapter.id];
+  if (!mine?.done) return [];
+  return chapterSteps(chapter).filter((s) => s !== "checkpoint" && !mine.steps.includes(s));
 }
 
 /** Where the level suggests starting: its first chapter. With no level, the beginning. */

@@ -130,6 +130,214 @@
     ]
   },
   {
+    "slug": "la-clase-de-camila",
+    "title": "La clase de Camila",
+    "en": "Camila's class",
+    "level": "A1",
+    "place": "Colombia",
+    "fiction": true,
+    "paragraphs": [
+      {
+        "es": "Camila vive en Medellín y trabaja en una oficina. Todos los días, después del trabajo, estudia inglés en una escuela de idiomas. Siempre llega temprano a la clase.",
+        "en": "Camila lives in Medellín and works in an office. Every day, after work, she studies English at a language school. She always gets to class early."
+      },
+      {
+        "es": "En la clase, los estudiantes leen, escriben y hablan mucho. Andrés, el maestro, pregunta y Camila contesta. A veces no comprende una palabra y busca la respuesta en el libro.",
+        "en": "In class, the students read, write and talk a lot. Andrés, the teacher, asks and Camila answers. Sometimes she doesn't understand a word and looks for the answer in the book."
+      },
+      {
+        "es": "Mañana hay examen. Hoy Camila estudia con su compañero Mateo en la biblioteca y después come en casa.",
+        "en": "Tomorrow there's a test. Today Camila studies with her classmate Mateo at the library, and afterwards she eats at home."
+      }
+    ],
+    "words": [
+      { "es": "oficina", "en": "office" },
+      { "es": "idiomas", "en": "languages" },
+      { "es": "temprano", "en": "early" },
+      { "es": "contesta", "en": "answers" },
+      { "es": "comprende", "en": "understands" },
+      { "es": "compañero", "en": "classmate" }
+    ],
+    "questions": [
+      { "q": "¿Dónde trabaja Camila?", "en": "Where does Camila work?", "choices": ["En una oficina", "En una escuela", "En una biblioteca"], "answer": "En una oficina", "why": "Camila works in an office. She studies at the school after work." },
+      { "q": "¿Qué estudia Camila?", "en": "What does Camila study?", "choices": ["Inglés", "Español", "Francés"], "answer": "Inglés", "why": "She studies English at a language school." },
+      { "q": "¿Quién es Andrés?", "en": "Who is Andrés?", "choices": ["El maestro", "Un compañero", "El hermano de Camila"], "answer": "El maestro", "why": "Andrés is the teacher. Mateo is her classmate." },
+      { "q": "¿Qué hace Camila cuando no comprende una palabra?", "en": "What does Camila do when she doesn't understand a word?", "choices": ["Busca la respuesta en el libro", "Llama a Mateo", "Habla con su familia"], "answer": "Busca la respuesta en el libro", "why": "When she doesn't understand a word, she looks for the answer in the book." }
+    ]
+  },
+  {
+    "slug": "una-casa-en-antigua",
+    "title": "Una casa en Antigua",
+    "en": "A house in Antigua",
+    "level": "A1",
+    "place": "Guatemala",
+    "fiction": true,
+    "paragraphs": [
+      {
+        "es": "Antigua es una ciudad pequeña y bonita de Guatemala. Las calles son viejas y las casas son blancas, amarillas o rojas. Hay montañas grandes cerca de la ciudad.",
+        "en": "Antigua is a small, pretty city in Guatemala. The streets are old and the houses are white, yellow or red. There are big mountains near the city."
+      },
+      {
+        "es": "Elena vive en una casa vieja con una ventana grande. En su cuarto hay una mesa negra, dos sillas rojas y muchos libros. Los libros son nuevos, pero la mesa es muy vieja: es de su abuela. En la pared, Elena tiene un mapa de la ciudad.",
+        "en": "Elena lives in an old house with a big window. In her room there's a black table, two red chairs and lots of books. The books are new, but the table is very old: it was her grandmother's. On the wall, Elena has a map of the city."
+      }
+    ],
+    "words": [
+      { "es": "calles", "en": "streets" },
+      { "es": "montañas", "en": "mountains" },
+      { "es": "ventana", "en": "window" },
+      { "es": "sillas", "en": "chairs" },
+      { "es": "pared", "en": "wall" },
+      { "es": "mapa", "en": "map (masculine: el mapa)" }
+    ],
+    "questions": [
+      { "q": "¿Cómo es Antigua?", "en": "What is Antigua like?", "choices": ["Pequeña y bonita", "Grande y nueva", "Fea y moderna"], "answer": "Pequeña y bonita", "why": "Antigua is a small, pretty city. It's the mountains near it that are big." },
+      { "q": "¿De qué color son las sillas?", "en": "What color are the chairs?", "choices": ["Rojas", "Negras", "Blancas"], "answer": "Rojas", "why": "The two chairs are red. The table is the black one." },
+      { "q": "¿De quién es la mesa?", "en": "Whose table is it?", "choices": ["De su abuela", "De Elena", "De su mamá"], "answer": "De su abuela", "why": "The table is very old and was her grandmother's." },
+      { "q": "¿Qué hay en la pared?", "en": "What's on the wall?", "choices": ["Un mapa", "Una ventana", "Unos libros"], "answer": "Un mapa", "why": "Elena has a map of the city on the wall. Note it's un mapa: mapa is masculine, though it ends in -a." }
+    ]
+  },
+  {
+    "slug": "dos-hermanas",
+    "title": "Dos hermanas",
+    "en": "Two sisters",
+    "level": "A1",
+    "place": "República Dominicana",
+    "fiction": true,
+    "paragraphs": [
+      {
+        "es": "Gabriela y Paula son hermanas y son de Santo Domingo. Gabriela es alta, simpática y muy trabajadora. Paula es baja y tranquila, y es muy inteligente.",
+        "en": "Gabriela and Paula are sisters and they're from Santo Domingo. Gabriela is tall, friendly and very hard-working. Paula is short and calm, and she's very smart."
+      },
+      {
+        "es": "Hoy es lunes y las dos están ocupadas. Gabriela está en la oficina y está cansada, porque hay mucho trabajo. Paula está en casa. Está enferma y un poco triste.",
+        "en": "Today is Monday and they're both busy. Gabriela is at the office and she's tired, because there's a lot of work. Paula is at home. She's sick and a little sad."
+      },
+      {
+        "es": "Por la noche, Gabriela llega a casa con sopa y chocolate. Ahora Paula está contenta.",
+        "en": "In the evening, Gabriela gets home with soup and chocolate. Now Paula is happy."
+      }
+    ],
+    "words": [
+      { "es": "trabajadora", "en": "hard-working" },
+      { "es": "tranquila", "en": "calm" },
+      { "es": "ocupadas", "en": "busy" },
+      { "es": "cansada", "en": "tired" },
+      { "es": "enferma", "en": "sick" },
+      { "es": "sopa", "en": "soup" }
+    ],
+    "questions": [
+      { "q": "¿De dónde son Gabriela y Paula?", "en": "Where are Gabriela and Paula from?", "choices": ["De Santo Domingo", "De Puebla", "De Lima"], "answer": "De Santo Domingo", "why": "They're from Santo Domingo. Where someone is from takes ser: son de Santo Domingo." },
+      { "q": "¿Cómo es Paula?", "en": "What is Paula like?", "choices": ["Baja y tranquila", "Alta y simpática", "Enferma y triste"], "answer": "Baja y tranquila", "why": "¿Cómo es? asks what she's like, which takes ser: she's short and calm. Sick and sad is how she is today, with estar." },
+      { "q": "¿Dónde está Gabriela hoy?", "en": "Where is Gabriela today?", "choices": ["En la oficina", "En casa", "En la escuela"], "answer": "En la oficina", "why": "Gabriela is at the office. Where someone is takes estar." },
+      { "q": "¿Cómo está Paula al final?", "en": "How is Paula at the end?", "choices": ["Contenta", "Cansada", "Ocupada"], "answer": "Contenta", "why": "After the soup and chocolate, Paula is happy. ¿Cómo está? asks how she feels right now." }
+    ]
+  },
+  {
+    "slug": "el-sabado-de-diego",
+    "title": "El sábado de Diego",
+    "en": "Diego's Saturday",
+    "level": "A1",
+    "place": "Chile",
+    "fiction": true,
+    "paragraphs": [
+      {
+        "es": "Diego vive en Valparaíso. Los sábados duerme hasta las nueve y después desayuna con su familia. Su papá prefiere café, pero Diego quiere chocolate caliente.",
+        "en": "Diego lives in Valparaíso. On Saturdays he sleeps until nine and then has breakfast with his family. His dad prefers coffee, but Diego wants hot chocolate."
+      },
+      {
+        "es": "Por la tarde, juega al fútbol con sus amigos en el parque. El partido empieza a las tres, pero no pueden jugar mucho tiempo, porque el parque cierra a las seis.",
+        "en": "In the afternoon, he plays soccer with his friends in the park. The game starts at three, but they can't play for long, because the park closes at six."
+      },
+      {
+        "es": "Diego vuelve a casa antes de la cena. El lunes tiene un examen y no entiende bien los problemas, pero hoy no quiere pensar en eso.",
+        "en": "Diego comes back home before dinner. On Monday he has a test and doesn't really understand the problems, but today he doesn't want to think about that."
+      }
+    ],
+    "words": [
+      { "es": "duerme", "en": "sleeps (dormir)" },
+      { "es": "prefiere", "en": "prefers (preferir)" },
+      { "es": "juega", "en": "plays (jugar)" },
+      { "es": "empieza", "en": "starts (empezar)" },
+      { "es": "cierra", "en": "closes (cerrar)" },
+      { "es": "vuelve", "en": "comes back (volver)" }
+    ],
+    "questions": [
+      { "q": "¿Hasta qué hora duerme Diego los sábados?", "en": "Until what time does Diego sleep on Saturdays?", "choices": ["Hasta las nueve", "Hasta las tres", "Hasta las seis"], "answer": "Hasta las nueve", "why": "He sleeps until nine. The game starts at three and the park closes at six." },
+      { "q": "¿Qué quiere Diego en el desayuno?", "en": "What does Diego want at breakfast?", "choices": ["Chocolate caliente", "Café", "Fruta"], "answer": "Chocolate caliente", "why": "Diego wants hot chocolate. His dad is the one who prefers coffee." },
+      { "q": "¿Por qué no pueden jugar mucho tiempo?", "en": "Why can't they play for long?", "choices": ["Porque el parque cierra a las seis", "Porque tienen un examen", "Porque Diego duerme mucho"], "answer": "Porque el parque cierra a las seis", "why": "The park closes at six, so the game can't go on for long." },
+      { "q": "¿Qué no entiende bien Diego?", "en": "What doesn't Diego understand well?", "choices": ["Los problemas del examen", "El partido", "A su papá"], "answer": "Los problemas del examen", "why": "He has a test on Monday and doesn't really understand the problems." }
+    ]
+  },
+  {
+    "slug": "la-cocina-de-la-abuela",
+    "title": "La cocina de la abuela",
+    "en": "Grandma's cooking",
+    "level": "A1",
+    "place": "Puerto Rico",
+    "fiction": true,
+    "paragraphs": [
+      {
+        "es": "A Sofía le encanta visitar a su abuela en San Juan. A su abuela le gusta mucho cocinar. Su pescado con arroz es delicioso, y de postre siempre hay pastel.",
+        "en": "Sofía loves visiting her grandmother in San Juan. Her grandmother really likes to cook. Her fish with rice is delicious, and for dessert there's always cake."
+      },
+      {
+        "es": "A Sofía no le gustan las verduras, pero le encantan las frutas. A su hermano Juan le interesan los deportes, y a los dos les gusta la música.",
+        "en": "Sofía doesn't like vegetables, but she loves fruit. Her brother Juan is interested in sports, and they both like music."
+      },
+      {
+        "es": "Después de la comida, a la abuela le duelen los pies, pero no le importa. ¡Le gusta ver a sus nietos contentos!",
+        "en": "After the meal, the grandmother's feet hurt, but she doesn't mind. She likes seeing her grandchildren happy!"
+      }
+    ],
+    "words": [
+      { "es": "le encanta", "en": "she loves" },
+      { "es": "cocinar", "en": "to cook" },
+      { "es": "postre", "en": "dessert" },
+      { "es": "verduras", "en": "vegetables" },
+      { "es": "le duelen", "en": "hurt her (more than one thing)" },
+      { "es": "nietos", "en": "grandchildren" }
+    ],
+    "questions": [
+      { "q": "¿Qué le gusta hacer a la abuela?", "en": "What does the grandmother like to do?", "choices": ["Cocinar", "Bailar", "Jugar al fútbol"], "answer": "Cocinar", "why": "A su abuela le gusta mucho cocinar: she really likes to cook." },
+      { "q": "¿Qué no le gusta a Sofía?", "en": "What doesn't Sofía like?", "choices": ["Las verduras", "Las frutas", "La música"], "answer": "Las verduras", "why": "No le gustan las verduras. Gustan agrees with verduras, which is plural." },
+      { "q": "¿Qué le interesa a Juan?", "en": "What is Juan interested in?", "choices": ["Los deportes", "La cocina", "El pastel"], "answer": "Los deportes", "why": "A Juan le interesan los deportes: he's interested in sports." },
+      { "q": "¿Qué le duele a la abuela?", "en": "What hurts the grandmother?", "choices": ["Los pies", "La cabeza", "Las manos"], "answer": "Los pies", "why": "Le duelen los pies: her feet hurt, but she doesn't mind." }
+    ]
+  },
+  {
+    "slug": "vacaciones-en-la-costa",
+    "title": "Vacaciones en la costa",
+    "en": "A vacation on the coast",
+    "level": "A1",
+    "place": "Ecuador",
+    "fiction": true,
+    "paragraphs": [
+      {
+        "es": "Mañana empiezan las vacaciones de verano, y la familia de Carmen va a viajar a la costa de Ecuador. Van a ir en autobús. Carmen va a llevar su libro favorito.",
+        "en": "Tomorrow summer vacation starts, and Carmen's family is going to travel to the coast of Ecuador. They're going to go by bus. Carmen is going to bring her favorite book."
+      },
+      {
+        "es": "En la playa, sus papás van a descansar y su hermano Luis va a nadar todo el día. Carmen va a visitar el museo y el mercado del pueblo. El sábado van a cenar en un restaurante: es el cumpleaños de su mamá.",
+        "en": "At the beach, her parents are going to rest and her brother Luis is going to swim all day. Carmen is going to visit the museum and the town market. On Saturday they're going to have dinner at a restaurant: it's her mom's birthday."
+      }
+    ],
+    "words": [
+      { "es": "vacaciones", "en": "vacation" },
+      { "es": "viajar", "en": "to travel" },
+      { "es": "costa", "en": "coast" },
+      { "es": "llevar", "en": "to bring, to take" },
+      { "es": "descansar", "en": "to rest" },
+      { "es": "nadar", "en": "to swim" }
+    ],
+    "questions": [
+      { "q": "¿Adónde va a viajar la familia?", "en": "Where is the family going to travel?", "choices": ["A la costa de Ecuador", "A las montañas", "A otra ciudad"], "answer": "A la costa de Ecuador", "why": "They're going to the coast of Ecuador." },
+      { "q": "¿Cómo van a ir?", "en": "How are they going to get there?", "choices": ["En autobús", "En avión", "En carro"], "answer": "En autobús", "why": "Van a ir en autobús: they're going by bus." },
+      { "q": "¿Qué va a hacer Luis?", "en": "What is Luis going to do?", "choices": ["Nadar todo el día", "Visitar el museo", "Leer un libro"], "answer": "Nadar todo el día", "why": "Luis is going to swim all day. Carmen is the one visiting the museum." },
+      { "q": "¿Por qué van a cenar en un restaurante?", "en": "Why are they going to have dinner at a restaurant?", "choices": ["Es el cumpleaños de su mamá", "Es el último día", "No quieren cocinar"], "answer": "Es el cumpleaños de su mamá", "why": "On Saturday it's Carmen's mom's birthday." }
+    ]
+  },
+  {
     "slug": "un-viaje-a-peru",
     "title": "Un viaje a Perú",
     "en": "A trip to Peru",

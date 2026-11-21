@@ -6,6 +6,7 @@ import type { TenseId } from "@/lib/conjugation/types";
 import { chapterQuiz, chapterSentences } from "@/lib/chapter-quiz";
 import { CHAPTERS, findChapter, type Chapter } from "@/lib/course";
 import { findGuide } from "@/lib/guides";
+import { findReading } from "@/lib/reading-data";
 import { SENTENCE_BANK } from "@/lib/sentence-data";
 import { sentencesFor } from "@/lib/sentences";
 
@@ -79,6 +80,7 @@ async function ChapterContent({ params }: { params: PageProps<"/course/[id]">["p
       examples={examples}
       rare={rareKeys(chapter)}
       extra={chapterSentences(chapter.id)}
+      reading={(chapter.reading && findReading(chapter.reading)) || null}
     />
   );
 }
