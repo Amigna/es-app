@@ -191,6 +191,46 @@ export function conjugationCard(q: Question, sentences: Sentence[] = []): Card {
   };
 }
 
+/**
+ * A verb's meanings as written, each its own entry: "to take; to drink" is take and drink. Brackets stay, so "to be
+ * (identity, traits)" and "to be (location, state)" don't count as the same meaning, and ser and estar stay apart.
+ */
+const meanings = (gloss: string) =>
+  gloss
+    .split(/[,;](?![^(]*\))/)
+    .map((m) => clean(m).replace(/^to /, ""))
+    .filter(Boolean);
+
+/** Other verbs sharing one of this verb's meanings, like regresar for volver ("to return"). */
+export function sameMeaningVerbs(verb: Verb, verbs: readonly Verb[]): Verb[] {
+  const mine = new Set(meanings(verb.en));
+  return verbs.filter((v) => v.inf !== verb.inf && meanings(v.en).some((m) => mine.has(m)));
+}
+
+/**
+ * The verb forms card with only the verb's meaning shown, so the learner recalls the verb as well as its form. Any verb
+ * with the same meaning in the same tense and person is accepted too, since "to return" could be volver or regresar.
+ * The verb the sentence used is named after answering. It counts toward the same item as the normal card.
+ */
+export function recallCard(q: Question, sentences: Sentence[], verbs: readonly Verb[]): Card {
+  const card = conjugationCard(q, sentences);
+  const others = sameMeaningVerbs(q.verb, verbs);
+  const otherForms = others.flatMap((v) => {
+    const form = conjugate(v).tenses[q.tense]?.forms[q.person];
+    return form ? [form, ...alsoAccepted(conjugate(v), form)] : [];
+  });
+  const fits = others.filter((v) => conjugate(v).tenses[q.tense]?.forms[q.person]).map((v) => v.inf);
+  return {
+    ...card,
+    id: `recall:${card.id}`,
+    title: q.verb.en,
+    titleIsSpanish: false,
+    subtitle: undefined,
+    answers: [...new Set([...card.answers, ...otherForms])],
+    explain: `The verb here is ${q.verb.inf}.${fits.length ? ` Also accepted: ${fits.join(", ")}.` : ""}`,
+  };
+}
+
 /** Conjugation and fill-in-the-blank share an item, so either one counts as practicing that verb and tense. */
 export const verbTrack = (inf: string, tense: TenseId): Track => ({ item: `verb:${inf}:${tense}`, tense });
 

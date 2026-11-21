@@ -88,7 +88,15 @@ export interface TodayData {
   newPerDay: number;
   /** Items the learner asked for, like a word tapped while reading. They come first among new items. */
   wanted: string[];
+  /** Stability in days of the due items, read with them. Missing for an item means it's treated as not yet learned. */
+  stability?: Record<string, number>;
 }
+
+/**
+ * Due verb tenses this well learned are asked from the verb's meaning in Today's review, so recalling the verb is part
+ * of the test once the form itself is easy. New and shaky ones keep showing the infinitive.
+ */
+export const RECALL_STABILITY = MASTERED_DAYS;
 
 /** How many more reviews today's limit allows. */
 export const reviewsLeft = (reviewsPerDay: number, reviewsDone: number) => Math.max(0, reviewsPerDay - reviewsDone);
@@ -103,15 +111,18 @@ export const reviewsLeft = (reviewsPerDay: number, reviewsDone: number) => Math.
  * `due` must hold at least one more item than `reviewsPerDay` when that many are due, so the pause can be told apart
  * from a day that's exactly full.
  */
-export function pickToday({ due, seen, newDone, reviewsDone, reviewsPerDay, newPerDay, wanted }: TodayData, order: string[]) {
+export function pickToday({ due, seen, newDone, reviewsDone, reviewsPerDay, newPerDay, wanted, stability = {} }: TodayData, order: string[]) {
   const started = new Set(seen);
   const known = new Set(order);
   const queue = [...new Set([...wanted.filter((item) => known.has(item)), ...order])];
   const left = reviewsLeft(reviewsPerDay, reviewsDone);
   const paused = due.length > left;
+  const reviews = due.slice(0, left);
   return {
-    reviews: due.slice(0, left),
+    reviews,
     fresh: paused ? [] : queue.filter((item) => !started.has(item)).slice(0, Math.max(0, newPerDay - newDone)),
     paused,
+    /** Reviews to ask from the verb's meaning: verb tenses at RECALL_STABILITY or more. */
+    recall: reviews.filter((item) => item.startsWith("verb:") && (stability[item] ?? 0) >= RECALL_STABILITY),
   };
 }

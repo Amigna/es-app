@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import type { Answer } from "./progress";
-import { addDays, daysBetween, pickToday, planReviews, reviewItem, schedulable, type TodayData } from "./schedule";
+import { RECALL_STABILITY, addDays, daysBetween, pickToday, planReviews, reviewItem, schedulable, type TodayData } from "./schedule";
 
 const answer = (item: string, grade: Answer["grade"], day: string): Answer => ({ item, grade, day });
 
@@ -125,7 +125,13 @@ describe("pickToday", () => {
   });
 
   it("takes what's due plus new items that haven't started", () => {
-    assert.deepEqual(pickToday(data, order), { reviews: ["a", "b"], fresh: ["d", "e"], paused: false });
+    assert.deepEqual(pickToday(data, order), { reviews: ["a", "b"], fresh: ["d", "e"], paused: false, recall: [] });
+  });
+
+  it("asks well-learned verb tenses from the meaning, and nothing else", () => {
+    const due = ["verb:volver:preterite", "verb:ir:present", "vocab:noun:casa:gender", "verb:ser:present"];
+    const stability = { "verb:volver:preterite": RECALL_STABILITY, "verb:ir:present": RECALL_STABILITY - 1, "vocab:noun:casa:gender": 90 };
+    assert.deepEqual(pickToday({ ...data, due, stability }, order).recall, ["verb:volver:preterite"]);
   });
 
   it("counts new items already done today", () => {

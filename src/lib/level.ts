@@ -47,6 +47,9 @@ const IDS = LEVELS.map((l) => l.id);
 
 export const isLevel = (value: unknown): value is Level => IDS.includes(value as Level);
 
+/** The level that first adds a tense to the drill, which is about when courses teach it. */
+export const tenseLevel = (tense: TenseId): Level => LEVELS.find((l) => l.tenses.includes(tense))?.id ?? "B2";
+
 export const levelInfo = (level: Level): LevelInfo => LEVELS.find((l) => l.id === level) ?? LEVELS[0];
 
 const KEY = "level";

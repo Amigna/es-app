@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { conjugate } from "./conjugation/engine";
 import { TENSES } from "./conjugation/types";
-import { accentTrap, conjugationCard, grade, gradeCard, isIrregular, limitedDeck, makeQuestion, poolVerbs, wordDiff } from "./drill";
+import { accentTrap, conjugationCard, grade, gradeCard, isIrregular, limitedDeck, makeQuestion, poolVerbs, recallCard, sameMeaningVerbs, wordDiff } from "./drill";
 import { SENTENCE_BANK } from "./sentence-data";
 import { findForm, sentencesFor } from "./sentences";
 import { VERBS, findVerb } from "./verbs";
@@ -87,6 +87,40 @@ describe("conjugationCard", () => {
     const main = { person: 0, es: "Yo te llamaba.", en: "I used to call you." };
     assert.equal(conjugationCard(q, [main, sentence]).table?.sentence, main);
     assert.equal(conjugationCard(q, [sentence, main]).table?.sentence, undefined);
+  });
+});
+
+describe("recalling the verb from its meaning", () => {
+  const question = (inf: string, tense: (typeof TENSES)[number]["id"], person: number, label: string) => {
+    const v = verb(inf);
+    return { verb: v, tense, person, label, answer: conjugate(v).tenses[tense]!.forms[person]! };
+  };
+
+  it("shows the meaning, not the verb, and keeps the sentence and the tense and person", () => {
+    const q = question("celebrar", "present", 0, "yo");
+    const sentence = { person: 0, es: "Celebro mi cumpleaños con mi familia.", en: "I celebrate my birthday with my family." };
+    const card = recallCard(q, [sentence], VERBS);
+    assert.equal(card.title, "to celebrate");
+    assert.equal(card.titleIsSpanish, false);
+    assert.equal(card.subtitle, undefined);
+    assert.ok(!card.ask.includes("celebrar"));
+    assert.equal(card.example?.es, "_____ mi cumpleaños con mi familia.");
+    // Same saved item as the normal card, so either one practices it.
+    assert.deepEqual(card.track, conjugationCard(q, [sentence]).track);
+    assert.match(card.explain!, /The verb here is celebrar/);
+  });
+
+  it("accepts a verb with the same meaning in the same tense and person, and says so", () => {
+    const card = recallCard(question("volver", "preterite", 0, "yo"), [], VERBS);
+    assert.equal(gradeCard(card, "volví"), "correct");
+    assert.equal(gradeCard(card, "regresé"), "correct");
+    assert.equal(gradeCard(card, "regresó"), "wrong");
+    assert.match(card.explain!, /Also accepted: .*regresar/);
+  });
+
+  it("keeps ser and estar apart, since their meanings are told apart in brackets", () => {
+    assert.ok(!sameMeaningVerbs(verb("ser"), VERBS).some((v) => v.inf === "estar"));
+    assert.equal(gradeCard(recallCard(question("ser", "present", 0, "yo"), [], VERBS), "estoy"), "wrong");
   });
 });
 

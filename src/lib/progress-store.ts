@@ -288,6 +288,8 @@ export async function loadToday(): Promise<TodayData | null> {
   ]);
   return {
     due: due.docs.map((d) => d.id),
+    // Already in the docs just read, so no extra reads.
+    stability: Object.fromEntries(due.docs.flatMap((d) => (typeof d.data().stability === "number" ? [[d.id, d.data().stability as number]] : []))),
     seen: seen.data()?.items ?? [],
     newDone: day.data()?.newItems ?? 0,
     reviewsDone: day.data()?.reviews ?? 0,

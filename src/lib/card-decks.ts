@@ -1,6 +1,6 @@
 import { alsoAccepted, conjugate } from "./conjugation/engine";
 import { TENSES, type TenseId } from "./conjugation/types";
-import { COMMON_COUNT, CORE_TENSES, conjugationCard, englishAnswers, makeQuestion, personLabel, rareKey, tenseTable, verbForms, verbTrack, type Card } from "./drill";
+import { COMMON_COUNT, CORE_TENSES, conjugationCard, englishAnswers, makeQuestion, recallCard, personLabel, rareKey, tenseTable, verbForms, verbTrack, type Card } from "./drill";
 import type { CardType, FlashSide, StudySide, VocabKind, WordType } from "./drill-settings";
 import { shuffled } from "./quiz";
 import { blankOut, findForm, sentencesFor, type SentenceBank } from "./sentences";
@@ -479,8 +479,11 @@ export function listedWordCard(id: string, kind: "flashcard" | "toSpanish" | "ge
   return word ? flashcard(word, "toEnglish") : null;
 }
 
-/** Rebuilds a card from a saved item ID, or null when its verb or word is no longer in the data. */
-export function reviewCard(item: string, bank: SentenceBank, rare: Set<string>, random: Random = Math.random): Card | null {
+/**
+ * Rebuilds a card from a saved item ID, or null when its verb or word is no longer in the data. `recall` asks a verb
+ * tense from the verb's meaning, for ones already well learned (see RECALL_STABILITY).
+ */
+export function reviewCard(item: string, bank: SentenceBank, rare: Set<string>, random: Random = Math.random, recall = false): Card | null {
   const [source, ...parts] = item.split(":");
   if (source === "vocab") return vocabReviewCard(parts[0], parts[1], parts[2], random);
   if (source !== "verb") return null;
@@ -489,17 +492,19 @@ export function reviewCard(item: string, bank: SentenceBank, rare: Set<string>, 
   if (verb?.inf !== inf) return null;
   const question = makeQuestion([verb], [tense], rare, random);
   if (!question) return null;
+  if (recall) return recallCard(question, sentencesFor(bank, inf, tense), VERBS);
   // Either kind of question works the same item, so mix them.
   const blank = random() < 0.5 ? blankCard(bank, verb, tense, random) : null;
   return blank ?? conjugationCard(question, sentencesFor(bank, inf, tense));
 }
 
 /** Skips anything that can't be rebuilt, so one removed word doesn't end the session. */
-export function reviewDeck(items: string[], bank: SentenceBank, rare: Set<string>, random: Random = Math.random): () => Card | null {
+export function reviewDeck(items: string[], bank: SentenceBank, rare: Set<string>, random: Random = Math.random, recall: ReadonlySet<string> = new Set()): () => Card | null {
   let next = 0;
   return () => {
     while (next < items.length) {
-      const card = reviewCard(items[next++], bank, rare, random);
+      const item = items[next++];
+      const card = reviewCard(item, bank, rare, random, recall.has(item));
       if (card) return card;
     }
     return null;

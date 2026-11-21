@@ -14,6 +14,8 @@ export type WordType = "noun" | "adjective" | "adverb" | "small";
 /** Phrases are flashcards only: typing a whole sentence exactly is a test of punctuation more than memory. */
 export type CardType = WordType | "phrase";
 export type FlashSide = "toEnglish" | "toSpanish";
+/** How the verb forms drill names the verb: the Spanish infinitive, only its English meaning (recall the verb too), or either. */
+export type VerbCue = "spanish" | "english" | "mixed";
 /** Learning cards can also mix which side comes first. */
 export type StudySide = FlashSide | "mixed";
 
@@ -64,6 +66,7 @@ export interface DrillSettings {
   studySide: StudySide;
   numberKinds: NumberKind[];
   numberMax: NumberMax;
+  verbCue: VerbCue;
 }
 
 export const DEFAULT_SETTINGS: DrillSettings = {
@@ -80,6 +83,7 @@ export const DEFAULT_SETTINGS: DrillSettings = {
   studySide: "mixed",
   numberKinds: ["words", "noun", "ordinal", "date", "time"],
   numberMax: 1000,
+  verbCue: "spanish",
 };
 
 const MODES: Mode[] = ["review", "conjugation", "vocabulary", "flashcards", "study", "writing", "listening", "blanks", "grammar", "numbers"];
@@ -88,6 +92,7 @@ const KINDS: VocabKind[] = ["toSpanish", "toEnglish", "gender", "agreement"];
 const WORD_TYPES: WordType[] = ["noun", "adjective", "adverb", "small"];
 const FLASH_SIDES: FlashSide[] = ["toEnglish", "toSpanish"];
 const STUDY_SIDES: StudySide[] = [...FLASH_SIDES, "mixed"];
+const VERB_CUES: VerbCue[] = ["spanish", "english", "mixed"];
 const CARD_TYPES: CardType[] = [...WORD_TYPES, "phrase"];
 const TENSE_IDS = TENSES.map((t) => t.id);
 
@@ -116,6 +121,7 @@ export function parseSettings(raw: string | null): DrillSettings {
       studySide: oneOf(saved.studySide, STUDY_SIDES, DEFAULT_SETTINGS.studySide),
       numberKinds: someOf(saved.numberKinds, NUMBER_KINDS, DEFAULT_SETTINGS.numberKinds),
       numberMax: oneOf(saved.numberMax, NUMBER_MAXES, DEFAULT_SETTINGS.numberMax),
+      verbCue: oneOf(saved.verbCue, VERB_CUES, DEFAULT_SETTINGS.verbCue),
     };
   } catch {
     return DEFAULT_SETTINGS;

@@ -1,9 +1,33 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { TENSES } from "./conjugation/types";
-import { isLevel, LEVELS, levelInfo } from "./level";
+import { isLevel, LEVELS, levelInfo, tenseLevel } from "./level";
+import { TENSE_USE, byUse } from "./tense-use";
 import { beyondLevel, levelChangesByWeek, levelReadiness, levelSync, type LevelChange } from "./level-up";
 import type { Tally } from "./progress";
+
+describe("tense levels and how much each is used", () => {
+  it("gives each tense the level that first adds it", () => {
+    assert.equal(tenseLevel("present"), "A1");
+    assert.equal(tenseLevel("preterite"), "A2");
+    assert.equal(tenseLevel("subjPresent"), "B1");
+    assert.equal(tenseLevel("subjImperfectSe"), "B2");
+    for (const t of TENSES) assert.ok(levelInfo(tenseLevel(t.id)).tenses.includes(t.id), t.id);
+  });
+
+  it("rates every tense, with a note on any that isn't everyday", () => {
+    for (const t of TENSES) {
+      const entry = TENSE_USE[t.id];
+      assert.ok(entry, t.id);
+      if (entry.use === "less" || entry.use === "rare") assert.ok(entry.note, `${t.id} needs a note on what to focus on`);
+    }
+  });
+
+  it("lists the most used first within a mood, keeping the usual order among equals", () => {
+    const subjunctive = TENSES.filter((t) => t.mood === "subjunctive").map((t) => t.id);
+    assert.deepEqual(byUse(subjunctive), ["subjPresent", "subjImperfect", "subjPresentPerfect", "subjPluperfect", "subjImperfectSe"]);
+  });
+});
 
 describe("levels", () => {
   it("each level keeps the tenses of the one before", () => {

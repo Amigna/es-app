@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
+import { Fragment, useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import DrillRunner from "@/components/DrillRunner";
 import { TENSES, type Mood, type TenseId } from "@/lib/conjugation/types";
 import { LevelPicker, LevelPrompt } from "@/components/LevelPicker";
-import { COMMON_COUNT, CORE_TENSES, conjugationCard, limitedDeck, makeQuestion, poolVerbs, type Card, type VerbPool } from "@/lib/drill";
+import { COMMON_COUNT, CORE_TENSES, conjugationCard, limitedDeck, recallCard, makeQuestion, poolVerbs, type Card, type VerbPool } from "@/lib/drill";
 import { atOrBelow } from "@/lib/level-order";
-import { type Level, levelInfo, storedLevel, useLevel } from "@/lib/level";
+import { type Level, levelInfo, storedLevel, tenseLevel, useLevel } from "@/lib/level";
+import { TENSE_USE, USE_LABELS, byUse, type TenseUse } from "@/lib/tense-use";
 import StudyRunner from "@/components/StudyRunner";
 import type { StudyCard } from "@/lib/card-decks";
 import {
@@ -19,6 +20,7 @@ import {
   type NumberKind,
   type NumberMax,
   type StudySide,
+  type VerbCue,
   type VocabKind,
   type WordType,
 } from "@/lib/drill-settings";
@@ -149,6 +151,21 @@ const STUDY_SIDES: { id: StudySide; title: string; hint: string }[] = [
   { id: "toSpanish", title: "English first", hint: "Flip for the Spanish" },
 ];
 
+const USE_STYLES: Record<TenseUse, string> = {
+  everyday: "bg-emerald-100 text-emerald-900 dark:bg-emerald-950 dark:text-emerald-200",
+  common: "bg-sky-100 text-sky-900 dark:bg-sky-950 dark:text-sky-200",
+  less: "bg-stone-100 text-stone-700 dark:bg-stone-800 dark:text-stone-300",
+  rare: "bg-amber-100 text-amber-900 dark:bg-amber-950 dark:text-amber-200",
+};
+
+const lessUsed = (use: TenseUse) => use === "less" || use === "rare";
+
+const VERB_CUES: { id: VerbCue; title: string; hint: string }[] = [
+  { id: "spanish", title: "The Spanish verb", hint: "celebrar · to celebrate, then type the form" },
+  { id: "english", title: "Only its meaning", hint: "to celebrate: recall the verb as well as the form" },
+  { id: "mixed", title: "A mix", hint: "Some of each" },
+];
+
 const WRITING_SIDES: { id: FlashSide; title: string; hint: string }[] = [
   { id: "toEnglish", title: "Spanish to English", hint: "Read the Spanish, write the English" },
   { id: "toSpanish", title: "English to Spanish", hint: "Read the English, write the Spanish" },
@@ -193,7 +210,7 @@ type Today =
   | { status: "loading" }
   | { status: "signedOut" }
   | { status: "failed" }
-  | { status: "ready"; reviews: string[]; fresh: string[]; paused: boolean };
+  | { status: "ready"; reviews: string[]; fresh: string[]; paused: boolean; recall: string[] };
 
 const plural = (count: number, word: string) => `${count} ${word}${count === 1 ? "" : "s"}`;
 
@@ -254,7 +271,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
   const rareSet = useMemo(() => new Set(rare), [rare]);
 
   const [settings, update] = useDrillSettings();
-  const { mode, pool, tenses, kinds, wordTypes, topics, guides, flashSide, flashTypes, writingSides, studySide, numberKinds, numberMax } = settings;
+  const { mode, pool, tenses, kinds, wordTypes, topics, guides, flashSide, flashTypes, writingSides, studySide, numberKinds, numberMax, verbCue } = settings;
   const [session, setSession] = useState<{ first: Card; next: () => Card | null } | null>(null);
   const [study, setStudy] = useState<StudyCard[] | null>(null);
   const hasVoice = useSyncExternalStore(subscribeToVoices, canSpeak, noVoiceOnServer);
@@ -276,11 +293,16 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
     };
   }, [mode, session, rareSet]);
 
-  async function conjugationDeck(verbs: Verb[], chosen: TenseId[]): Promise<() => Card | null> {
+  /** `cue` is the saved setting for this mode only; practice links from /progress always name the verb. */
+  async function conjugationDeck(verbs: Verb[], chosen: TenseId[], cue: VerbCue = "spanish"): Promise<() => Card | null> {
     const bank = await loadSentences(verbs);
     return () => {
       const q = makeQuestion(verbs, chosen, rareSet);
-      return q && conjugationCard(q, sentencesFor(bank, q.verb.inf, q.tense));
+      if (!q) return null;
+      const sentences = sentencesFor(bank, q.verb.inf, q.tense);
+      const recall = cue === "english" || (cue === "mixed" && Math.random() < 0.5);
+      // Against every verb, not just the drill's, so any verb with the same meaning is accepted.
+      return recall ? recallCard(q, sentences, VERBS) : conjugationCard(q, sentences);
     };
   }
 
@@ -314,10 +336,11 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
       if (plan.status !== "ready") return () => null;
       const items = [...shuffled(plan.reviews), ...plan.fresh];
       const [{ reviewDeck }, bank] = await Promise.all([import("@/lib/card-decks"), loadSentences(itemVerbs(items))]);
-      return reviewDeck(items, bank, rareSet);
+      // Well-learned verb tenses are asked from the verb's meaning.
+      return reviewDeck(items, bank, rareSet, Math.random, new Set(plan.recall));
     }
     const verbs = poolVerbs(VERBS, pool, commonVerbs);
-    if (mode === "conjugation") return conjugationDeck(verbs, tenses);
+    if (mode === "conjugation") return conjugationDeck(verbs, tenses, verbCue);
     if (mode === "grammar") {
       const [{ quizDeck }, { GUIDE_QUIZZES }] = await Promise.all([import("@/lib/quiz"), import("@/lib/quiz-data")]);
       // None picked means every guide up to the level, like words. Picked ones count whatever their level.
@@ -506,6 +529,21 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
         </section>
       )}
 
+      {mode === "conjugation" && (
+        <section>
+          <h2 className="mb-1 text-xl font-semibold">Show the verb as</h2>
+          <p className="mb-3 text-sm text-stone-500">
+            With only its meaning, you need the verb as well as the form, so it&apos;s harder. Any verb with the same meaning counts, like
+            regresar for &quot;to return&quot;.
+          </p>
+          <div className="grid gap-2 sm:grid-cols-3">
+            {VERB_CUES.map((c) => (
+              <OptionCard key={c.id} name="verbCue" title={c.title} hint={c.hint} checked={verbCue === c.id} onChange={() => update({ verbCue: c.id })} />
+            ))}
+          </div>
+        </section>
+      )}
+
       {usesVerbs && (
         <>
           <section>
@@ -518,23 +556,50 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
           </section>
 
           <section>
-            <h2 className="mb-3 text-xl font-semibold">Which tenses?</h2>
+            <h2 className="mb-1 text-xl font-semibold">Which tenses?</h2>
+            <p className="mb-3 text-sm text-stone-500">
+              Each shows the level it&apos;s usually taught at and how often it comes up in everyday Latin American Spanish, most used first.
+              Everyday and common tenses are where practice pays off most; the rest are worth recognizing, and you can still drill them.
+            </p>
             <div className="grid gap-6 md:grid-cols-3">
               {MOODS.map((mood) => (
                 <fieldset key={mood.id}>
                   <legend className="mb-2 font-medium">{mood.title}</legend>
-                  <div>
-                    {TENSES.filter((t) => t.mood === mood.id).map((t) => (
-                      <label key={t.id} className="flex min-h-10 cursor-pointer items-center gap-2 text-sm">
-                        <input
-                          type="checkbox"
-                          checked={tenses.includes(t.id)}
-                          onChange={() => update({ tenses: toggled(tenses, t.id) })}
-                          className="size-4 accent-accent-700"
-                        />
-                        {t.name}
-                      </label>
-                    ))}
+                  <div className="space-y-1">
+                    {byUse(TENSES.filter((t) => t.mood === mood.id).map((t) => t.id)).map((id, i, ids) => {
+                      const t = TENSES.find((x) => x.id === id)!;
+                      const { use, note } = TENSE_USE[id];
+                      // A line above the first less-used tense, so the ones to focus on stand apart.
+                      const divider = lessUsed(use) && (i === 0 || !lessUsed(TENSE_USE[ids[i - 1]].use));
+                      return (
+                        <Fragment key={id}>
+                          {divider && (
+                            <p className="!mt-4 border-t-2 border-stone-400 pt-2 text-xs font-semibold tracking-wide text-stone-600 uppercase dark:border-stone-500 dark:text-stone-400">
+                              Less used
+                            </p>
+                          )}
+                          <label className="flex min-h-10 cursor-pointer items-start gap-2 py-1 text-sm">
+                            <input
+                              type="checkbox"
+                              checked={tenses.includes(id)}
+                              onChange={() => update({ tenses: toggled(tenses, id) })}
+                              className="mt-0.5 size-4 shrink-0 accent-accent-700"
+                            />
+                            <span className="min-w-0">
+                              <span className="flex flex-wrap items-center gap-x-1.5 gap-y-1">
+                                <span>{t.name}</span>
+                                <span className="rounded border border-stone-300 px-1 text-xs font-medium text-stone-600 dark:border-stone-600 dark:text-stone-300">
+                                  {tenseLevel(id)}
+                                </span>
+                                <span className={`rounded px-1.5 text-xs font-medium ${USE_STYLES[use]}`}>{USE_LABELS[use]}</span>
+                              </span>
+                              {/* Only where it changes what to focus on; everyday tenses speak for themselves. */}
+                              {note && use !== "everyday" && <span className="mt-0.5 block text-xs text-stone-500">{note}</span>}
+                            </span>
+                          </label>
+                        </Fragment>
+                      );
+                    })}
                   </div>
                 </fieldset>
               ))}

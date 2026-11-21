@@ -321,6 +321,18 @@ describe("today's review", () => {
     assert.equal(typed.title, "tener");
   });
 
+  it("asks a well-learned verb tense from its meaning, on the same item, and leaves the rest as they were", () => {
+    const next = reviewDeck(["verb:tener:present", "verb:volver:preterite", "vocab:noun:candado:toSpanish"], SENTENCE_BANK, rare, () => 0.9, new Set(["verb:volver:preterite", "vocab:noun:candado:toSpanish"]));
+    assert.equal(next()?.title, "tener");
+    const recall = next()!;
+    assert.equal(recall.title, verb("volver").en);
+    assert.equal(recall.titleIsSpanish, false);
+    assert.equal(recall.track?.item, "verb:volver:preterite");
+    assert.match(recall.explain!, /Also accepted: .*regresar/);
+    // Recall only changes verb cards.
+    assert.equal(next()?.track?.item, "vocab:noun:candado:toSpanish");
+  });
+
   it("skips items whose word is gone instead of ending the session", () => {
     const next = reviewDeck(["vocab:noun:nope:gender", "verb:nope:present", "quiz:ser:0", "verb:tener:present"], SENTENCE_BANK, rare);
     assert.equal(next()?.track?.item, "verb:tener:present");
@@ -348,6 +360,12 @@ describe("drill settings", () => {
     assert.deepEqual(s.tenses, ["future"]);
     assert.deepEqual(s.kinds, []);
     assert.deepEqual(s.topics, ["food"]);
+  });
+
+  it("keeps how the verb is shown, defaulting to the Spanish verb", () => {
+    assert.equal(DEFAULT_SETTINGS.verbCue, "spanish");
+    assert.equal(parseSettings(JSON.stringify({ verbCue: "english" })).verbCue, "english");
+    assert.equal(parseSettings(JSON.stringify({ verbCue: "sideways" })).verbCue, "spanish");
   });
 
   it("keeps flashcard choices and drops unknown ones", () => {
