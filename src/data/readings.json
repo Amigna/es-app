@@ -493,6 +493,222 @@
     ]
   },
   {
+    "slug": "las-mananas-de-valentina",
+    "title": "Las mañanas de Valentina",
+    "en": "Valentina's mornings",
+    "level": "A2",
+    "place": "Panamá",
+    "fiction": true,
+    "paragraphs": [
+      {
+        "es": "Valentina vive en la Ciudad de Panamá y trabaja en un hotel. Todos los días se despierta a las cinco y media, cuando suena el despertador. No se levanta enseguida: se queda cinco minutos más en la cama.",
+        "en": "Valentina lives in Panama City and works at a hotel. Every day she wakes up at five thirty, when the alarm clock goes off. She doesn't get up right away: she stays in bed five more minutes."
+      },
+      {
+        "es": "Después se ducha con agua fría, se lava la cara y se lava los dientes. Luego se viste: se pone una camisa blanca, un pantalón negro y unos zapatos cómodos. Se peina delante del espejo y sale de casa a las seis y cuarto.",
+        "en": "Then she showers with cold water, washes her face and brushes her teeth. Next she gets dressed: she puts on a white shirt, black pants and comfortable shoes. She combs her hair in front of the mirror and leaves home at a quarter past six."
+      },
+      {
+        "es": "Su hermano Mateo es muy diferente. Él se acuesta tarde y nunca se despierta temprano. Los sábados, los dos se quedan en casa y se divierten juntos, y Valentina por fin puede dormir hasta las diez.",
+        "en": "Her brother Mateo is very different. He goes to bed late and never wakes up early. On Saturdays they both stay home and have fun together, and Valentina can finally sleep until ten."
+      }
+    ],
+    "words": [
+      { "es": "se despierta", "en": "wakes up" },
+      { "es": "despertador", "en": "alarm clock" },
+      { "es": "se ducha", "en": "showers" },
+      { "es": "se viste", "en": "gets dressed" },
+      { "es": "espejo", "en": "mirror" },
+      { "es": "se acuesta", "en": "goes to bed" }
+    ],
+    "questions": [
+      { "q": "¿A qué hora se despierta Valentina?", "en": "What time does Valentina wake up?", "choices": ["A las cinco y media", "A las seis y cuarto", "A las diez"], "answer": "A las cinco y media", "why": "She wakes up at five thirty. She leaves home at a quarter past six, and sleeps until ten only on Saturdays." },
+      { "q": "¿Qué hace después de ducharse?", "en": "What does she do after showering?", "choices": ["Se lava la cara y los dientes", "Se acuesta otra vez", "Sale de casa enseguida"], "answer": "Se lava la cara y los dientes", "why": "After the shower she washes her face and brushes her teeth, then gets dressed." },
+      { "q": "¿Qué ropa se pone para el trabajo?", "en": "What clothes does she put on for work?", "choices": ["Una camisa blanca y un pantalón negro", "Una camisa negra y un pantalón blanco", "Un vestido rojo"], "answer": "Una camisa blanca y un pantalón negro", "why": "Se pone una camisa blanca y un pantalón negro: the shirt is white and the pants are black." },
+      { "q": "¿En qué es diferente Mateo?", "en": "How is Mateo different?", "choices": ["Se acuesta tarde y se despierta tarde", "Se levanta a las cinco", "Trabaja en un hotel"], "answer": "Se acuesta tarde y se despierta tarde", "why": "Mateo goes to bed late and never wakes up early. Valentina is the one who works at the hotel." }
+    ]
+  },
+  {
+    "slug": "una-semana-en-bolivia",
+    "title": "Una semana en Bolivia",
+    "en": "A week in Bolivia",
+    "level": "A2",
+    "place": "Bolivia",
+    "fiction": true,
+    "paragraphs": [
+      {
+        "es": "El verano pasado, Daniela y su amiga Sofía viajaron de Lima a Bolivia. Compraron los boletos en octubre y prepararon las maletas una semana antes. El vuelo salió muy temprano y llegó a La Paz a las nueve de la mañana.",
+        "en": "Last summer, Daniela and her friend Sofía traveled from Lima to Bolivia. They bought the tickets in October and packed their suitcases a week before. The flight left very early and arrived in La Paz at nine in the morning."
+      },
+      {
+        "es": "En La Paz, caminaron mucho por el centro y visitaron un mercado enorme. Probaron la comida típica y tomaron muchas fotos.",
+        "en": "In La Paz, they walked a lot around the center and visited a huge market. They tried the local food and took lots of photos."
+      },
+      {
+        "es": "Después, tomaron un autobús al lago Titicaca. Allí pasaron dos noches en un hotel pequeño, subieron una montaña y miraron el lago desde arriba. Esa noche, Daniela escribió en su cuaderno: «El mejor viaje de mi vida». El domingo volvieron a Lima, cansadas pero muy contentas.",
+        "en": "Then they took a bus to Lake Titicaca. There they spent two nights in a small hotel, climbed a mountain and looked at the lake from above. That night, Daniela wrote in her notebook: \"The best trip of my life.\" On Sunday they went back to Lima, tired but very happy."
+      }
+    ],
+    "words": [
+      { "es": "viajaron", "en": "traveled" },
+      { "es": "boletos", "en": "tickets" },
+      { "es": "maletas", "en": "suitcases" },
+      { "es": "vuelo", "en": "flight" },
+      { "es": "probaron", "en": "tried, tasted" },
+      { "es": "volvieron", "en": "went back" }
+    ],
+    "questions": [
+      { "q": "¿Cuándo compraron los boletos?", "en": "When did they buy the tickets?", "choices": ["En octubre", "Una semana antes", "El domingo"], "answer": "En octubre", "why": "They bought the tickets in October. They packed a week before the trip." },
+      { "q": "¿A qué ciudad llegó el vuelo?", "en": "Which city did the flight arrive in?", "choices": ["A La Paz", "A Lima", "A Cusco"], "answer": "A La Paz", "why": "The flight left Lima and arrived in La Paz at nine in the morning." },
+      { "q": "¿Dónde pasaron dos noches?", "en": "Where did they spend two nights?", "choices": ["En un hotel pequeño cerca del lago", "En el mercado de La Paz", "En casa de una amiga"], "answer": "En un hotel pequeño cerca del lago", "why": "At Lake Titicaca they spent two nights in a small hotel." },
+      { "q": "¿Qué escribió Daniela en su cuaderno?", "en": "What did Daniela write in her notebook?", "choices": ["El mejor viaje de mi vida", "Una carta a su mamá", "Los precios del mercado"], "answer": "El mejor viaje de mi vida", "why": "She wrote «El mejor viaje de mi vida»: the best trip of her life." }
+    ]
+  },
+  {
+    "slug": "la-boda-de-elena",
+    "title": "La boda de Elena",
+    "en": "Elena's wedding",
+    "level": "A2",
+    "place": "México",
+    "fiction": true,
+    "paragraphs": [
+      {
+        "es": "El sábado pasado fue la boda de mi prima Elena en Oaxaca. Toda la familia vino de lejos: mis tíos hicieron un viaje de diez horas en carro, y mi abuela vino en avión desde Tijuana.",
+        "en": "Last Saturday was my cousin Elena's wedding in Oaxaca. The whole family came from far away: my aunt and uncle made a ten-hour trip by car, and my grandmother came by plane from Tijuana."
+      },
+      {
+        "es": "La ceremonia estuvo muy bonita. Cuando los novios dijeron «sí», mi tía no pudo dejar de llorar. Después hubo una fiesta enorme con música y baile. Yo traje el regalo de mi familia, una caja con platos y vasos, y mi papá puso la caja en la mesa de los regalos.",
+        "en": "The ceremony was very beautiful. When the bride and groom said \"yes,\" my aunt couldn't stop crying. Afterwards there was a huge party with music and dancing. I brought my family's gift, a box of plates and glasses, and my dad put the box on the gift table."
+      },
+      {
+        "es": "A medianoche, mi hermano quiso cantar una canción para los novios, pero cantó muy mal y todos se rieron. Al final de la noche, supimos una gran noticia: ¡los novios van a vivir en nuestra ciudad! Fue una noche increíble.",
+        "en": "At midnight, my brother wanted to sing a song for the couple, but he sang very badly and everyone laughed. At the end of the night, we found out some big news: the couple is going to live in our city! It was an incredible night."
+      }
+    ],
+    "words": [
+      { "es": "boda", "en": "wedding" },
+      { "es": "hicieron", "en": "made, did (hacer)" },
+      { "es": "novios", "en": "bride and groom, couple" },
+      { "es": "hubo", "en": "there was (haber)" },
+      { "es": "traje", "en": "I brought (traer)" },
+      { "es": "supimos", "en": "we found out (saber)" }
+    ],
+    "questions": [
+      { "q": "¿Cómo vino la abuela a la boda?", "en": "How did the grandmother come to the wedding?", "choices": ["En avión", "En carro", "En autobús"], "answer": "En avión", "why": "The grandmother came by plane from Tijuana. The aunt and uncle were the ones who came by car." },
+      { "q": "¿Quién no pudo dejar de llorar?", "en": "Who couldn't stop crying?", "choices": ["La tía", "La abuela", "Elena"], "answer": "La tía", "why": "Mi tía no pudo dejar de llorar when the couple said yes." },
+      { "q": "¿Qué regalo trajo la persona que cuenta la historia?", "en": "What gift did the person telling the story bring?", "choices": ["Una caja con platos y vasos", "Flores para la novia", "Un pastel"], "answer": "Una caja con platos y vasos", "why": "Traje el regalo de mi familia: a box of plates and glasses." },
+      { "q": "¿Qué noticia supieron al final de la noche?", "en": "What news did they find out at the end of the night?", "choices": ["Los novios van a vivir en su ciudad", "La abuela va a vivir con ellos", "Hay otra boda el próximo mes"], "answer": "Los novios van a vivir en su ciudad", "why": "Supimos una gran noticia: the couple is going to live in their city. Saber in the preterite means to find out." }
+    ]
+  },
+  {
+    "slug": "el-pueblo-del-abuelo",
+    "title": "El pueblo del abuelo",
+    "en": "Grandpa's village",
+    "level": "A2",
+    "place": "El Salvador",
+    "fiction": true,
+    "paragraphs": [
+      {
+        "es": "Mi abuelo Ernesto siempre me cuenta cómo era su vida cuando era niño. Vivía en un pueblo pequeño de El Salvador, cerca de un río. Su casa tenía un patio grande con árboles de mango, y allí jugaba todas las tardes con sus hermanos.",
+        "en": "My grandpa Ernesto always tells me what his life was like when he was a boy. He lived in a small village in El Salvador, near a river. His house had a big yard with mango trees, and he played there every afternoon with his brothers and sisters."
+      },
+      {
+        "es": "No tenían muchos juguetes. Normalmente jugaban con una pelota vieja o hacían carros de madera. Su perro, Canelo, siempre corría detrás de ellos. De vez en cuando, iban al río a nadar con los otros niños del barrio.",
+        "en": "They didn't have many toys. Usually they played with an old ball or made wooden cars. Their dog, Canelo, always ran after them. Every now and then, they went to the river to swim with the other kids from the neighborhood."
+      },
+      {
+        "es": "Los domingos, toda la familia comía en casa de su abuela. Ella cocinaba tortillas y frijoles, y los vecinos venían de visita. Mi abuelo dice que era un niño tímido, pero feliz. «No teníamos mucho», me dice, «pero nunca nos faltaba nada».",
+        "en": "On Sundays, the whole family ate at his grandmother's house. She cooked tortillas and beans, and the neighbors came over to visit. My grandpa says he was a shy boy, but a happy one. \"We didn't have much,\" he tells me, \"but we never went without anything.\""
+      }
+    ],
+    "words": [
+      { "es": "era", "en": "was (ser)" },
+      { "es": "patio", "en": "yard" },
+      { "es": "juguetes", "en": "toys" },
+      { "es": "pelota", "en": "ball" },
+      { "es": "barrio", "en": "neighborhood" },
+      { "es": "vecinos", "en": "neighbors" }
+    ],
+    "questions": [
+      { "q": "¿Dónde vivía el abuelo cuando era niño?", "en": "Where did the grandfather live when he was a boy?", "choices": ["En un pueblo cerca de un río", "En la capital", "Cerca de la playa"], "answer": "En un pueblo cerca de un río", "why": "Vivía en un pueblo pequeño, cerca de un río." },
+      { "q": "¿Con qué jugaban normalmente?", "en": "What did they usually play with?", "choices": ["Con una pelota vieja", "Con muchos juguetes nuevos", "Con el gato del vecino"], "answer": "Con una pelota vieja", "why": "They didn't have many toys, so they usually played with an old ball or made wooden cars." },
+      { "q": "¿Quién era Canelo?", "en": "Who was Canelo?", "choices": ["El perro", "Un vecino", "Un hermano"], "answer": "El perro", "why": "Canelo was their dog, who always ran after them." },
+      { "q": "¿Qué hacía la familia los domingos?", "en": "What did the family do on Sundays?", "choices": ["Comía en casa de la abuela", "Iba al río a nadar", "Trabajaba en el patio"], "answer": "Comía en casa de la abuela", "why": "On Sundays the whole family ate at his grandmother's house. The imperfect, comía, says it happened regularly." }
+    ]
+  },
+  {
+    "slug": "la-tormenta",
+    "title": "La tormenta",
+    "en": "The storm",
+    "level": "A2",
+    "place": "Paraguay",
+    "fiction": true,
+    "paragraphs": [
+      {
+        "es": "Era un sábado de enero y hacía mucho calor en Asunción. El cielo estaba azul y no había viento. Martina y su hermano Pablo estaban en el parque con su perro. Pablo jugaba con la pelota y Martina leía un libro debajo de un árbol.",
+        "en": "It was a Saturday in January and it was very hot in Asunción. The sky was blue and there was no wind. Martina and her brother Pablo were in the park with their dog. Pablo was playing with the ball and Martina was reading a book under a tree."
+      },
+      {
+        "es": "De repente, el cielo se puso oscuro y empezó a hacer mucho viento. Martina cerró el libro y llamó a su hermano. Entonces empezó a llover muy fuerte. Los dos corrieron hacia la casa, pero el perro no quería caminar: tenía miedo de la tormenta.",
+        "en": "Suddenly, the sky went dark and it got very windy. Martina closed the book and called her brother. Then it started to rain very hard. They both ran toward the house, but the dog didn't want to walk: it was afraid of the storm."
+      },
+      {
+        "es": "Cuando por fin llegaron a casa, estaban mojados de pies a cabeza. Su mamá preparó chocolate caliente para los dos. Una hora después, salió el sol otra vez, y el perro, ya tranquilo, se durmió en el sofá.",
+        "en": "When they finally got home, they were wet from head to toe. Their mom made hot chocolate for the two of them. An hour later, the sun came out again, and the dog, calm now, fell asleep on the sofa."
+      }
+    ],
+    "words": [
+      { "es": "cielo", "en": "sky" },
+      { "es": "viento", "en": "wind" },
+      { "es": "de repente", "en": "suddenly" },
+      { "es": "entonces", "en": "then" },
+      { "es": "tormenta", "en": "storm" },
+      { "es": "mojados", "en": "wet" }
+    ],
+    "questions": [
+      { "q": "¿Qué tiempo hacía al principio?", "en": "What was the weather like at first?", "choices": ["Hacía calor y el cielo estaba azul", "Llovía mucho", "Hacía frío y viento"], "answer": "Hacía calor y el cielo estaba azul", "why": "It was hot and the sky was blue. The imperfect sets the scene before anything happens." },
+      { "q": "¿Qué hacía Martina en el parque?", "en": "What was Martina doing in the park?", "choices": ["Leía un libro", "Jugaba con la pelota", "Dormía debajo de un árbol"], "answer": "Leía un libro", "why": "Martina was reading a book. Pablo was the one playing with the ball." },
+      { "q": "¿Qué pasó de repente?", "en": "What happened suddenly?", "choices": ["El cielo se puso oscuro", "Llegó su mamá", "El perro se perdió"], "answer": "El cielo se puso oscuro", "why": "De repente, el cielo se puso oscuro: the preterite tells what happened and broke into the scene." },
+      { "q": "¿Por qué el perro no quería caminar?", "en": "Why didn't the dog want to walk?", "choices": ["Tenía miedo de la tormenta", "Estaba cansado", "Quería jugar más"], "answer": "Tenía miedo de la tormenta", "why": "The dog was afraid of the storm." }
+    ]
+  },
+  {
+    "slug": "el-apartamento-nuevo",
+    "title": "El apartamento nuevo",
+    "en": "The new apartment",
+    "level": "A2",
+    "place": "Venezuela",
+    "fiction": true,
+    "paragraphs": [
+      {
+        "es": "Andrés se mudó a un apartamento nuevo en Caracas la semana pasada. Tenía muchas cajas, así que llamó a su amiga Carmen y le pidió ayuda. Ella le dijo: «Claro, te ayudo el sábado».",
+        "en": "Andrés moved to a new apartment in Caracas last week. He had lots of boxes, so he called his friend Carmen and asked her for help. She told him, \"Sure, I'll help you on Saturday.\""
+      },
+      {
+        "es": "El sábado, Carmen llegó temprano y trajo a su hermano Luis. Los tres subieron las cajas al cuarto piso. Luis encontró una caja muy pesada y le preguntó a Andrés: «¿Qué hay aquí?». «Libros», le contestó Andrés. «Los voy a poner en la sala».",
+        "en": "On Saturday, Carmen arrived early and brought her brother Luis. The three of them carried the boxes up to the fourth floor. Luis found a very heavy box and asked Andrés, \"What's in here?\" \"Books,\" Andrés answered. \"I'm going to put them in the living room.\""
+      },
+      {
+        "es": "Por la tarde, Andrés no encontraba sus llaves. Las buscó en todas las cajas. Al final, Carmen las vio en la cocina, dentro de una olla. Se las dio y todos se rieron. Para darles las gracias, Andrés les compró pizza.",
+        "en": "In the afternoon, Andrés couldn't find his keys. He looked for them in every box. In the end, Carmen saw them in the kitchen, inside a pot. She gave them to him and everyone laughed. To thank them, Andrés bought them pizza."
+      }
+    ],
+    "words": [
+      { "es": "se mudó", "en": "moved (to a new home)" },
+      { "es": "cajas", "en": "boxes" },
+      { "es": "le pidió", "en": "asked her for" },
+      { "es": "pesada", "en": "heavy" },
+      { "es": "llaves", "en": "keys" },
+      { "es": "se las dio", "en": "gave them to him" }
+    ],
+    "questions": [
+      { "q": "¿Qué le pidió Andrés a Carmen?", "en": "What did Andrés ask Carmen for?", "choices": ["Ayuda con las cajas", "Un libro", "Sus llaves"], "answer": "Ayuda con las cajas", "why": "He had lots of boxes, so he called Carmen y le pidió ayuda. Le stands for Carmen." },
+      { "q": "¿Qué había en la caja pesada?", "en": "What was in the heavy box?", "choices": ["Libros", "Platos", "Ropa"], "answer": "Libros", "why": "It was full of books. «Los voy a poner en la sala»: los stands for the books." },
+      { "q": "¿Dónde encontró Carmen las llaves?", "en": "Where did Carmen find the keys?", "choices": ["En una olla", "En una caja de libros", "En la sala"], "answer": "En una olla", "why": "Carmen las vio en la cocina, dentro de una olla. Las stands for the keys." },
+      { "q": "¿Qué les compró Andrés a sus amigos?", "en": "What did Andrés buy his friends?", "choices": ["Pizza", "Una mesa", "Chocolate"], "answer": "Pizza", "why": "To thank them, Andrés les compró pizza. Les stands for Carmen and Luis." }
+    ]
+  },
+  {
     "slug": "carta-desde-miami",
     "title": "Carta desde Miami",
     "en": "A letter from Miami",
