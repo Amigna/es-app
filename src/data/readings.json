@@ -871,6 +871,258 @@
     ]
   },
   {
+    "slug": "la-receta-de-la-abuela",
+    "title": "La receta de la abuela",
+    "en": "Grandma's recipe",
+    "level": "B1",
+    "place": "Costa Rica",
+    "fiction": true,
+    "paragraphs": [
+      {
+        "es": "Querida Ana: Me pediste mi receta de arroz con pollo, así que aquí está. Es fácil, pero lee todo antes de empezar y no tengas prisa.",
+        "en": "Dear Ana: You asked me for my chicken and rice recipe, so here it is. It's easy, but read everything before you start and don't rush."
+      },
+      {
+        "es": "Primero, lava bien el pollo y córtalo en pedazos con un cuchillo grande. Pon un poco de aceite en una olla y enciende la estufa. Pica una cebolla y dos dientes de ajo y cocínalos unos minutos en el aceite. Después, añade el pollo y la sal.",
+        "en": "First, wash the chicken well and cut it into pieces with a big knife. Put a little oil in a pot and turn on the stove. Chop an onion and two cloves of garlic and cook them in the oil for a few minutes. Then add the chicken and the salt."
+      },
+      {
+        "es": "Cuando el pollo esté listo, echa el arroz y el agua, tapa la olla y baja el fuego. No abras la olla y no toques el arroz: ten paciencia. En veinte minutos, más o menos, la comida va a estar lista. Sírvela en platos grandes y come despacio.",
+        "en": "When the chicken is ready, add the rice and the water, cover the pot and turn down the heat. Don't open the pot and don't touch the rice: be patient. In twenty minutes, more or less, the food will be ready. Serve it on big plates and eat slowly."
+      },
+      {
+        "es": "Y una cosa más: después de comer, lava la olla, el sartén y los cuchillos. ¡No dejes la cocina sucia como la última vez! Llámame el domingo y dime cómo te quedó. Un abrazo, tu abuela Inés.",
+        "en": "And one more thing: after eating, wash the pot, the frying pan and the knives. Don't leave the kitchen dirty like last time! Call me on Sunday and tell me how it turned out. A hug, your grandma Inés."
+      }
+    ],
+    "words": [
+      { "es": "receta", "en": "recipe" },
+      { "es": "córtalo", "en": "cut it" },
+      { "es": "olla", "en": "pot" },
+      { "es": "estufa", "en": "stove" },
+      { "es": "tapa", "en": "cover (a command here)" },
+      { "es": "no toques", "en": "don't touch" },
+      { "es": "sartén", "en": "frying pan" },
+      { "es": "sucia", "en": "dirty" }
+    ],
+    "questions": [
+      { "q": "¿Qué le pide la abuela a Ana antes de empezar?", "en": "What does the grandmother ask Ana to do before she starts?", "choices": ["Que lea todo", "Que llame a su mamá", "Que compre más arroz"], "answer": "Que lea todo", "why": "Lee todo antes de empezar: read everything before you start." },
+      { "q": "¿Qué cocina Ana primero en el aceite?", "en": "What does Ana cook first in the oil?", "choices": ["La cebolla y el ajo", "El arroz", "El pollo con agua"], "answer": "La cebolla y el ajo", "why": "The onion and garlic go in the oil first. The chicken comes after, and the rice last." },
+      { "q": "¿Qué no debe hacer Ana mientras se cocina el arroz?", "en": "What shouldn't Ana do while the rice cooks?", "choices": ["Abrir la olla", "Bajar el fuego", "Esperar veinte minutos"], "answer": "Abrir la olla", "why": "No abras la olla y no toques el arroz. Negative tú commands take the subjunctive form: no abras, no toques." },
+      { "q": "¿Qué pasó la última vez?", "en": "What happened last time?", "choices": ["Ana dejó la cocina sucia", "El arroz se quemó", "Ana no llamó a su abuela"], "answer": "Ana dejó la cocina sucia", "why": "¡No dejes la cocina sucia como la última vez! So last time she left it dirty." }
+    ]
+  },
+  {
+    "slug": "mi-primer-mes",
+    "title": "Mi primer mes",
+    "en": "My first month",
+    "level": "B1",
+    "place": "Perú",
+    "fiction": true,
+    "paragraphs": [
+      {
+        "es": "Hola, mamá: Ya he terminado mi primer mes en la empresa y quiero contarte cómo me ha ido. Hasta ahora, todo ha sido muy interesante. He conocido a mucha gente y he aprendido más que en toda mi carrera.",
+        "en": "Hi, Mom: I've now finished my first month at the company and I want to tell you how it's gone. So far, everything has been very interesting. I've met lots of people and I've learned more than in my whole degree."
+      },
+      {
+        "es": "Esta semana he tenido mi primera reunión importante. Mi jefa me ha pedido un informe sobre un proyecto nuevo y lo he escrito yo solo. Todavía no me ha dicho qué piensa, pero creo que le ha gustado.",
+        "en": "This week I've had my first important meeting. My boss has asked me for a report on a new project and I've written it on my own. She still hasn't told me what she thinks, but I think she liked it."
+      },
+      {
+        "es": "También he cometido algunos errores. El martes envié un correo a la persona equivocada. ¡Qué vergüenza! Pero mi jefa me ha dicho que todos se equivocan al principio y que lo importante es ser responsable.",
+        "en": "I've also made a few mistakes. On Tuesday I sent an email to the wrong person. How embarrassing! But my boss has told me that everyone makes mistakes at first and that what matters is being responsible."
+      },
+      {
+        "es": "Sé que no ha sido fácil para ti tenerme lejos. Todavía no he decidido si voy a volver a Arequipa en diciembre, pero ya he comprado el boleto para tu cumpleaños. Un beso, Diego.",
+        "en": "I know it hasn't been easy for you having me far away. I still haven't decided whether I'm going back to Arequipa in December, but I've already bought the ticket for your birthday. A kiss, Diego."
+      }
+    ],
+    "words": [
+      { "es": "empresa", "en": "company" },
+      { "es": "carrera", "en": "degree, studies" },
+      { "es": "reunión", "en": "meeting" },
+      { "es": "informe", "en": "report" },
+      { "es": "proyecto", "en": "project" },
+      { "es": "todavía", "en": "still, yet" },
+      { "es": "equivocada", "en": "wrong" },
+      { "es": "responsable", "en": "responsible" }
+    ],
+    "questions": [
+      { "q": "¿Cuánto tiempo lleva Diego en la empresa?", "en": "How long has Diego been at the company?", "choices": ["Un mes", "Una semana", "Un año"], "answer": "Un mes", "why": "Ya he terminado mi primer mes: he has just finished his first month." },
+      { "q": "¿Qué le ha pedido su jefa?", "en": "What has his boss asked him for?", "choices": ["Un informe sobre un proyecto nuevo", "Un boleto a Arequipa", "Un correo a otra empresa"], "answer": "Un informe sobre un proyecto nuevo", "why": "Mi jefa me ha pedido un informe sobre un proyecto nuevo, and he wrote it on his own." },
+      { "q": "¿Qué error cometió Diego el martes?", "en": "What mistake did Diego make on Tuesday?", "choices": ["Envió un correo a la persona equivocada", "Llegó tarde a la reunión", "Perdió el informe"], "answer": "Envió un correo a la persona equivocada", "why": "El martes envié un correo a la persona equivocada. A finished moment on a named day takes the preterite: envié, not he enviado." },
+      { "q": "¿Qué no ha decidido Diego todavía?", "en": "What hasn't Diego decided yet?", "choices": ["Si va a volver a Arequipa en diciembre", "Si va a comprar el boleto", "Si le gusta su trabajo"], "answer": "Si va a volver a Arequipa en diciembre", "why": "Todavía no he decidido si voy a volver a Arequipa en diciembre. The ticket for his mom's birthday he has already bought." }
+    ]
+  },
+  {
+    "slug": "dentro-de-diez-anos",
+    "title": "Dentro de diez años",
+    "en": "Ten years from now",
+    "level": "B1",
+    "place": "Nicaragua",
+    "fiction": true,
+    "paragraphs": [
+      {
+        "es": "¿Cómo será mi vida dentro de diez años? Es difícil saberlo, pero tengo algunos planes. Primero, terminaré la universidad. Estudiaré derecho, porque mi sueño es ser abogada como mi tía. Tal vez viviré en Managua, o quizás en otro país.",
+        "en": "What will my life be like ten years from now? It's hard to know, but I have some plans. First, I'll finish university. I'll study law, because my dream is to be a lawyer like my aunt. Maybe I'll live in Managua, or perhaps in another country."
+      },
+      {
+        "es": "Mi hermano dice que nunca saldré de León, porque me encanta mi ciudad. A lo mejor tiene razón. Si me quedo aquí, abriré una oficina pequeña y ayudaré a la gente del barrio.",
+        "en": "My brother says I'll never leave León, because I love my city. Maybe he's right. If I stay here, I'll open a small office and help the people in the neighborhood."
+      },
+      {
+        "es": "Mi amiga Valentina tiene otros planes. Ella dice que con mucho dinero compraría una casa en la playa, viajaría por todo el mundo y nunca trabajaría. Yo no haría eso, porque me aburriría. Pero me gustaría tener tiempo para visitar a mi familia y para cuidar el planeta.",
+        "en": "My friend Valentina has other plans. She says that with a lot of money she'd buy a house on the beach, travel all over the world and never work. I wouldn't do that, because I'd get bored. But I'd like to have time to visit my family and to take care of the planet."
+      },
+      {
+        "es": "No sé si todo será posible. Pero de una cosa estoy segura: dentro de diez años, todavía tendré este cuaderno.",
+        "en": "I don't know if it will all be possible. But I'm sure of one thing: ten years from now, I'll still have this notebook."
+      }
+    ],
+    "words": [
+      { "es": "universidad", "en": "university" },
+      { "es": "sueño", "en": "dream" },
+      { "es": "abogada", "en": "lawyer" },
+      { "es": "tal vez", "en": "maybe" },
+      { "es": "a lo mejor", "en": "maybe" },
+      { "es": "compraría", "en": "would buy" },
+      { "es": "planeta", "en": "planet (masculine: el planeta)" },
+      { "es": "segura", "en": "sure" }
+    ],
+    "questions": [
+      { "q": "¿Qué quiere estudiar la persona que escribe?", "en": "What does the writer want to study?", "choices": ["Derecho", "Medicina", "Negocios"], "answer": "Derecho", "why": "Estudiaré derecho, porque mi sueño es ser abogada: she'll study law to become a lawyer like her aunt." },
+      { "q": "¿Qué hará si se queda en León?", "en": "What will she do if she stays in León?", "choices": ["Abrirá una oficina pequeña", "Comprará una casa en la playa", "Viajará por todo el mundo"], "answer": "Abrirá una oficina pequeña", "why": "Si me quedo aquí, abriré una oficina pequeña. The house on the beach and the travel are Valentina's ideas." },
+      { "q": "¿Qué haría Valentina con mucho dinero?", "en": "What would Valentina do with a lot of money?", "choices": ["Nunca trabajaría", "Abriría una oficina", "Estudiaría derecho"], "answer": "Nunca trabajaría", "why": "She'd buy a house on the beach, travel and never work. The conditional (trabajaría) is for what she'd do, not what she will do." },
+      { "q": "¿Por qué la persona que escribe no haría lo mismo que Valentina?", "en": "Why wouldn't the writer do the same as Valentina?", "choices": ["Porque se aburriría", "Porque no le gusta la playa", "Porque no tiene dinero"], "answer": "Porque se aburriría", "why": "Yo no haría eso, porque me aburriría: she'd get bored." }
+    ]
+  },
+  {
+    "slug": "una-gripe-fuerte",
+    "title": "Una gripe fuerte",
+    "en": "A bad flu",
+    "level": "B1",
+    "place": "Ecuador",
+    "fiction": true,
+    "paragraphs": [
+      {
+        "es": "Ramón vive en Cuenca y lleva tres días con tos, fiebre y dolor de garganta. Su esposa quiere que vaya al médico, pero a él no le gustan los médicos. Al final, el jueves pide una cita.",
+        "en": "Ramón lives in Cuenca and has had a cough, a fever and a sore throat for three days. His wife wants him to go to the doctor, but he doesn't like doctors. In the end, on Thursday he makes an appointment."
+      },
+      {
+        "es": "La doctora lo examina y le dice: «Usted tiene gripe. No es nada grave, pero es importante que descanse unos días y que beba mucha agua. Le recomiendo que no vaya a trabajar hasta el lunes». Luego le da una receta para una medicina.",
+        "en": "The doctor examines him and tells him, \"You have the flu. It's nothing serious, but it's important that you rest for a few days and drink lots of water. I recommend you don't go to work until Monday.\" Then she gives him a prescription for some medicine."
+      },
+      {
+        "es": "Ramón no está contento. «Doctora, tengo mucho trabajo. ¿Es necesario que me quede en casa?». «Sí», contesta ella. «No quiero que sus compañeros se enfermen también».",
+        "en": "Ramón isn't happy. \"Doctor, I have a lot of work. Is it necessary for me to stay home?\" \"Yes,\" she answers. \"I don't want your coworkers to get sick too.\""
+      },
+      {
+        "es": "En casa, su esposa le prepara una sopa de pollo y le dice: «Ojalá te mejores pronto. Y la próxima vez, espero que me hagas caso desde el primer día». Ramón se ríe, toma la medicina y se va a dormir.",
+        "en": "At home, his wife makes him chicken soup and tells him, \"I hope you feel better soon. And next time, I hope you listen to me from the first day.\" Ramón laughs, takes the medicine and goes to sleep."
+      }
+    ],
+    "words": [
+      { "es": "tos", "en": "cough" },
+      { "es": "fiebre", "en": "fever" },
+      { "es": "garganta", "en": "throat" },
+      { "es": "cita", "en": "appointment" },
+      { "es": "grave", "en": "serious" },
+      { "es": "receta", "en": "prescription" },
+      { "es": "ojalá", "en": "I hope, hopefully" },
+      { "es": "hagas caso", "en": "listen to, pay attention to (hacer caso)" }
+    ],
+    "questions": [
+      { "q": "¿Qué quiere la esposa de Ramón?", "en": "What does Ramón's wife want?", "choices": ["Que vaya al médico", "Que trabaje más", "Que prepare la sopa"], "answer": "Que vaya al médico", "why": "Su esposa quiere que vaya al médico. Querer que + a different subject takes the subjunctive: vaya." },
+      { "q": "¿Qué tiene Ramón, según la doctora?", "en": "What does Ramón have, according to the doctor?", "choices": ["Gripe", "Una enfermedad grave", "Un resfriado sin fiebre"], "answer": "Gripe", "why": "Usted tiene gripe. No es nada grave: it's the flu, nothing serious." },
+      { "q": "¿Qué le recomienda la doctora?", "en": "What does the doctor recommend?", "choices": ["Que no vaya a trabajar hasta el lunes", "Que tome café", "Que vuelva mañana"], "answer": "Que no vaya a trabajar hasta el lunes", "why": "Le recomiendo que no vaya a trabajar hasta el lunes, and that he rest and drink lots of water." },
+      { "q": "¿Qué espera la esposa para la próxima vez?", "en": "What does his wife hope for next time?", "choices": ["Que Ramón le haga caso desde el primer día", "Que Ramón cocine la sopa", "Que la doctora venga a casa"], "answer": "Que Ramón le haga caso desde el primer día", "why": "Espero que me hagas caso desde el primer día: she hopes he'll listen to her from day one." }
+    ]
+  },
+  {
+    "slug": "el-helado-del-viernes",
+    "title": "El helado del viernes",
+    "en": "Friday's ice cream",
+    "level": "B1",
+    "place": "Chile",
+    "fiction": true,
+    "paragraphs": [
+      {
+        "es": "Joaquín está enamorado de Isabel, una compañera de su clase en Santiago, pero tiene miedo de hablar con ella. No cree que ella sienta lo mismo, y le da vergüenza acercarse. Cada vez que la ve, se pone rojo.",
+        "en": "Joaquín is in love with Isabel, a classmate of his in Santiago, but he's afraid to talk to her. He doesn't think she feels the same, and he's too embarrassed to go up to her. Every time he sees her, he turns red."
+      },
+      {
+        "es": "Su mejor amiga, Josefina, está segura de que Isabel también lo quiere. «Es obvio que le gustas», le dice. «Siempre se sienta a tu lado. Dudo que sea casualidad». Pero Joaquín no está convencido. «Es raro que nunca me hable», contesta.",
+        "en": "His best friend, Josefina, is sure that Isabel likes him too. \"It's obvious she likes you,\" she tells him. \"She always sits next to you. I doubt it's a coincidence.\" But Joaquín isn't convinced. \"It's strange that she never talks to me,\" he answers."
+      },
+      {
+        "es": "Josefina pierde la paciencia. «Mira, a menos que hables con ella, nunca vas a saber la verdad. Habla con ella antes de que termine el año. No vas a morir de vergüenza, te lo prometo».",
+        "en": "Josefina loses her patience. \"Look, unless you talk to her, you'll never know the truth. Talk to her before the year ends. You're not going to die of embarrassment, I promise.\""
+      },
+      {
+        "es": "El viernes, después de clase, Joaquín por fin le pregunta a Isabel si quiere tomar un helado con él. Ella sonríe: «¡Me alegra que por fin me lo preguntes! Pensaba que nunca ibas a hablar conmigo». Desde lejos, Josefina está muy orgullosa.",
+        "en": "On Friday, after class, Joaquín finally asks Isabel if she wants to get ice cream with him. She smiles: \"I'm glad you finally asked me! I thought you were never going to talk to me.\" From a distance, Josefina is very proud."
+      }
+    ],
+    "words": [
+      { "es": "enamorado", "en": "in love" },
+      { "es": "miedo", "en": "fear" },
+      { "es": "vergüenza", "en": "embarrassment" },
+      { "es": "obvio", "en": "obvious" },
+      { "es": "dudo", "en": "I doubt" },
+      { "es": "raro", "en": "strange" },
+      { "es": "a menos que", "en": "unless" },
+      { "es": "orgullosa", "en": "proud" }
+    ],
+    "questions": [
+      { "q": "¿Por qué Joaquín no habla con Isabel?", "en": "Why doesn't Joaquín talk to Isabel?", "choices": ["Tiene miedo y le da vergüenza", "Está enojado con ella", "No la conoce"], "answer": "Tiene miedo y le da vergüenza", "why": "He's afraid, and he doesn't think she feels the same: no cree que ella sienta lo mismo. Doubt takes the subjunctive." },
+      { "q": "¿Qué piensa Josefina?", "en": "What does Josefina think?", "choices": ["Que es obvio que Isabel quiere a Joaquín", "Que Isabel quiere a otro chico", "Que Joaquín no debe hablar con Isabel"], "answer": "Que es obvio que Isabel quiere a Joaquín", "why": "Es obvio que le gustas. Certainty (es obvio que) takes the indicative: gustas, not gustes." },
+      { "q": "¿Cuándo debe hablar Joaquín con Isabel, según Josefina?", "en": "When should Joaquín talk to Isabel, according to Josefina?", "choices": ["Antes de que termine el año", "Después de las vacaciones", "Nunca"], "answer": "Antes de que termine el año", "why": "Habla con ella antes de que termine el año. Antes de que always takes the subjunctive." },
+      { "q": "¿Cómo reacciona Isabel?", "en": "How does Isabel react?", "choices": ["Se alegra", "Se enoja", "Dice que no"], "answer": "Se alegra", "why": "¡Me alegra que por fin me lo preguntes! An emotion (me alegra que) takes the subjunctive: preguntes." }
+    ]
+  },
+  {
+    "slug": "un-dia-de-esos",
+    "title": "Un día de esos",
+    "en": "One of those days",
+    "level": "B1",
+    "place": "México",
+    "fiction": true,
+    "paragraphs": [
+      {
+        "es": "Ayer fue un día de esos. A las seis de la mañana se fue la luz, así que no sonó el despertador. Me desperté tarde, me vestí a oscuras y salí corriendo, porque tenía prisa. En el metro me di cuenta: se me olvidó la billetera en la casa.",
+        "en": "Yesterday was one of those days. At six in the morning the power went out, so the alarm didn't go off. I woke up late, got dressed in the dark and ran out, because I was in a hurry. On the subway I realized: I'd forgotten my wallet at home."
+      },
+      {
+        "es": "Llegué a la oficina media hora tarde. Mi jefe me miró, pero solo dijo: «Más vale tarde que nunca». A la hora del almuerzo, mi compañera Marta me contó que nuestro jefe va a dejar la empresa. —¡No me digas! —le contesté.",
+        "en": "I got to the office half an hour late. My boss looked at me, but only said, \"Better late than never.\" At lunchtime, my coworker Marta told me that our boss is going to leave the company. \"You don't say!\" I answered."
+      },
+      {
+        "es": "Yo quería su puesto, pero Lupita lo pidió primero. Como dice mi abuela, camarón que se duerme se lo lleva la corriente. ¡Qué lástima!",
+        "en": "I wanted his job, but Lupita asked for it first. As my grandmother says, you snooze, you lose. What a shame!"
+      },
+      {
+        "es": "Por la tarde empezó a llover y yo no tenía paraguas. Ni modo: al mal tiempo, buena cara. Llegué a la casa mojado, pero mi hija me esperaba con un chocolate caliente. Al final, el día no fue tan malo.",
+        "en": "In the afternoon it started to rain and I didn't have an umbrella. Oh well: you have to make the best of it. I got home wet, but my daughter was waiting for me with a hot chocolate. In the end, the day wasn't so bad."
+      }
+    ],
+    "words": [
+      { "es": "se fue la luz", "en": "the power went out" },
+      { "es": "tenía prisa", "en": "I was in a hurry" },
+      { "es": "se me olvidó", "en": "I forgot (it slipped my mind)" },
+      { "es": "más vale tarde que nunca", "en": "better late than never" },
+      { "es": "no me digas", "en": "you don't say, no way" },
+      { "es": "qué lástima", "en": "what a shame" },
+      { "es": "ni modo", "en": "oh well, nothing to be done" },
+      { "es": "al mal tiempo, buena cara", "en": "make the best of a bad situation" }
+    ],
+    "questions": [
+      { "q": "¿Por qué no sonó el despertador?", "en": "Why didn't the alarm go off?", "choices": ["Porque se fue la luz", "Porque se le olvidó ponerlo", "Porque estaba roto"], "answer": "Porque se fue la luz", "why": "Se fue la luz: the power went out at six in the morning." },
+      { "q": "¿Qué se le olvidó en la casa?", "en": "What did he forget at home?", "choices": ["La billetera", "El paraguas", "Las llaves"], "answer": "La billetera", "why": "Se me olvidó la billetera en la casa. He didn't have an umbrella either, but that comes later." },
+      { "q": "¿Qué quiere decir «camarón que se duerme se lo lleva la corriente» aquí?", "en": "What does «camarón que se duerme se lo lleva la corriente» mean here?", "choices": ["Lupita pidió el puesto antes que él", "El jefe se durmió en la oficina", "Llovió mucho por la tarde"], "answer": "Lupita pidió el puesto antes que él", "why": "The shrimp that falls asleep gets carried off by the current: he waited, and Lupita asked for the job first." },
+      { "q": "¿Qué quiere decir «ni modo»?", "en": "What does «ni modo» mean?", "choices": ["Oh well, there's nothing to be done", "No way, I don't believe it", "Better late than never"], "answer": "Oh well, there's nothing to be done", "why": "Ni modo, common in Mexico, accepts something you can't change, like rain with no umbrella. «¡No me digas!» is the one for surprise." }
+    ]
+  },
+  {
     "slug": "celulares-en-el-aula",
     "title": "¿Celulares en el aula?",
     "en": "Cell phones in the classroom?",
