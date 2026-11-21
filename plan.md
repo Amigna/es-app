@@ -6,7 +6,7 @@ Aprendalgo (aprendalgo.com), a Spanish learning app for me, friends and family. 
 
 Content shouldn't hold up everything else: the other ten tenses (about 19,000 sentences) add up to dozens of sessions. Classrooms mostly use the top 150 to 200 verbs, and all 1,054 already have the six core tenses.
 
-1. Run the signed-in checks in "To verify". Most passed on 2026-11-08, including real schedule writes. The section exam, the streak across devices and the streak record passed on 2026-11-15. Still left: an account with no invite saving progress, which the teacher features build on (all 5 current accounts had invites).
+1. Run the signed-in checks in "To verify". Most passed on 2026-11-08, including real schedule writes. The section exam, the streak across devices and the streak record passed on 2026-11-15. An account with no invite saving progress passed on 2026-11-21, so every signed-in check is done.
 2. Ask the teachers the questions at the end of "Teacher classes". Their answers decide which teacher steps come first.
 3. Get a native speaker to spot-check a sample of a few hundred sentences across files, so any repeated mistake is caught before 30,000 more sentences are written.
 4. Present perfect and -ra imperfect subjunctive for the current verbs, about 4,450 sentences, starting from the most common verbs.
@@ -180,7 +180,7 @@ Asked 2026-11-10: tutor profiles with an intro video, booking a session, ratings
 - **Code changes:** `loadProgress(uid)` in `progress-store.ts` already takes a uid. `loadMastered` and `loadToday` use the signed-in uid and would need one passed in. The student view must not write: /progress saves newly seen badges with `saveBadges`, which the rules would refuse for a tutor, so the student view skips it. A test should check no save function runs from it
 - **Cost:** each read a tutor makes also costs one `exists()` lookup, so a student view is about 20 reads instead of 10. Nothing next to the Spark limits
 - **Safety:** tutoring is adults only at first. Sharing asks "I'm 18 or older", which is a promise, not a check, but it's honest about who it's for. Profiles carry a "Report this tutor" link into `reports`. Learners meet tutors on Zoom, Meet or whatever the tutor uses, not in the app
-- **Effort:** about one session for profiles, the directory and the video embed, and one for sharing, the rules and the student view, plus a signed-in check with two real accounts. That check depends on the second-account save in "To verify" passing first
+- **Effort:** about one session for profiles, the directory and the video embed, and one for sharing, the rules and the student view, plus a signed-in check with two real accounts. The second-account save it depends on passed on 2026-11-21
 
 **Phase 2, if people use phase 1:**
 
@@ -232,7 +232,6 @@ Reviewed on 2026-11-08. Nobody can read or change someone else's progress: there
 - [ ] Skim `src/data/readings.json` for natural phrasing, translations and regional fit, especially the Chilean, Costa Rican and Venezuelan details, the retold Quetzalcóatl legend, the Argentine slang in the B2 voseo story, and the Lake Nicaragua shark facts (1960s tagging, sharks taken out of the lake for money). Tests only check structure, length and that listed words appear in the passage. These come from my own knowledge, not a source
 - [ ] The haber preterite sentences (hube, hubiste) are literary, and hardly anyone says these forms. Decide whether drills should skip them
 - [ ] Have a native speaker check the regional words and slang, including `src/data/vulgar.json` and the notes on offensive words. Usage varies and these come from my own knowledge, not a source
-- [ ] Sign in with a second account that has no invite and confirm its progress saves straight away. The published rules were confirmed to match `firestore.rules` on 2026-11-07; this was skipped in the 2026-11-08 run. Still untested as of 2026-11-15: the app's 5 accounts all saved progress, but every one of them had an invite first, so none is the uninvited case. The next person to sign up without one would settle it
 - [ ] Try a backlog of 25 different items at once, because Firestore rules allow 20 lookups per batch and the docs say repeated lookups are cached, but that isn't confirmed (the rules no longer look up invites, so this mostly matters if a lookup comes back)
 - [ ] A save interrupted by a closed tab can be sent twice, which overcounts stats slightly. Accepted, since the alternative was losing answers
 - [ ] Read the grammar guides and their quizzes for accuracy. Tests check the structure, not the grammar
@@ -502,3 +501,4 @@ Best after levels step 3, since chapters lean on levels for words and verbs.
 - [x] Signed in, the drill streak carries between drills and devices (2026-11-15, by the user): a streak built on desktop showed the same number on mobile, and `running` on `stats/records` holds the current streak, so the save transaction works against real Firestore
 - [x] Signed in, the drill streak record after a miss (2026-11-15, by the user): a 67 streak ended on a miss, and "Longest drill streak" then showed "67, in a row, set yesterday · 15 today", with 67 in the week table's "Best streak" for the last 7 days. So the record (`drillStreak` on `stats/records`) keeps the higher number and its day, and each day's best (`bestStreak` on `days/{day}`) is kept apart
 - [x] Signed in, a section exam (2026-11-15, by the user): passed the A1 exam and earned its badge
+- [x] An account with no invite saves progress (2026-11-21, by the user): someone new signed up with Google, did a few drills, and their progress saved. That was the last case untested, since the first 5 accounts all had invites. The teacher features and tutor sharing build on this
