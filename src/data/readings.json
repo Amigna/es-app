@@ -1299,5 +1299,90 @@
       { "q": "¿Qué pasó después de la última carta?", "en": "What happened after the last letter?", "choices": ["Rafael no volvió a escribir", "Rafael llegó a La Habana", "La abuela se fue a Venezuela"], "answer": "Rafael no volvió a escribir", "why": "He never wrote again, or his letters never arrived." },
       { "q": "Según la madre, ¿qué muestra que la abuela guardara las cartas?", "en": "According to the mother, what does the grandmother keeping the letters show?", "choices": ["Que no quería olvidar a Rafael", "Que se le olvidó tirarlas", "Que quería que alguien las leyera"], "answer": "Que no quería olvidar a Rafael", "why": "\"Si hubiera querido olvidarlo, habría quemado las cartas\": if she'd wanted to forget, she'd have burned them." }
     ]
+  },
+  {
+    "slug": "si-ganaramos-un-millon",
+    "title": "Si ganáramos un millón",
+    "en": "If we won a million",
+    "level": "B2",
+    "place": "Honduras",
+    "fiction": true,
+    "paragraphs": [
+      {
+        "es": "Una noche de diciembre, en la casa de los Mejía en Roatán, alguien preguntó durante la cena: «¿Qué harían ustedes si ganaran un millón de dólares?». Era una pregunta tonta, pero todos quisieron contestar.",
+        "en": "One December night, at the Mejías' house on Roatán, someone asked during dinner, \"What would you all do if you won a million dollars?\" It was a silly question, but everyone wanted to answer."
+      },
+      {
+        "es": "Mi hermana Daniela dijo que, si tuviera tanto dinero, se compraría una isla pequeña y viviría allí con sus perros, lejos del mundo. Mi papá se rio y le explicó que con el precio de una isla no le alcanzaría ni para la casa. Él, en cambio, pagaría todas las cuentas del banco y abriría un restaurante, porque ese es su sueño desde joven.",
+        "en": "My sister Daniela said that if she had that much money, she'd buy a small island and live there with her dogs, far from the world. My dad laughed and explained that at the price of an island, she wouldn't even have enough left for the house. He, on the other hand, would pay off all the bills at the bank and open a restaurant, because that's been his dream since he was young."
+      },
+      {
+        "es": "Mi mamá contestó que, si fuera rica, no dejaría de trabajar. «Me aburriría», dijo. «Pero ayudaría a las familias pobres del barrio y pagaría la universidad de mis hijos». Luego me miró como si esperara algo bonito de mí, y yo le dije que le compraría un carro nuevo. Todos aplaudieron.",
+        "en": "My mom answered that if she were rich, she wouldn't stop working. \"I'd get bored,\" she said. \"But I'd help the poor families in the neighborhood and pay for my kids' university.\" Then she looked at me as if she expected something nice from me, and I told her I'd buy her a new car. Everyone clapped."
+      },
+      {
+        "es": "Al final habló mi abuelo, que hasta ese momento estaba callado. «Cuando yo era joven, mi padre me pidió que nunca olvidara una cosa: el dinero no compra la paz ni la libertad. Si fuera así, los ricos serían las personas más felices del mundo». Nadie supo qué decir. Después, mi hermana le preguntó: «Entonces, abuelo, ¿tú qué harías con el millón?». Él pensó un momento y contestó: «Con un poco de suerte, sería capaz de gastarlo todo en una semana». Y la cena terminó entre risas.",
+        "en": "At the end my grandfather spoke, who had been quiet until then. \"When I was young, my father asked me never to forget one thing: money doesn't buy peace or freedom. If it did, rich people would be the happiest people in the world.\" Nobody knew what to say. Then my sister asked him, \"So, Grandpa, what would you do with the million?\" He thought for a moment and answered, \"With a bit of luck, I'd manage to spend it all in a week.\" And dinner ended in laughter."
+      }
+    ],
+    "words": [
+      { "es": "ganaran", "en": "(you all) won, imperfect subjunctive" },
+      { "es": "isla", "en": "island" },
+      { "es": "precio", "en": "price" },
+      { "es": "cuentas", "en": "bills" },
+      { "es": "como si", "en": "as if" },
+      { "es": "olvidara", "en": "(I) forgot, imperfect subjunctive" },
+      { "es": "libertad", "en": "freedom" },
+      { "es": "capaz", "en": "capable, able" }
+    ],
+    "questions": [
+      { "q": "¿Qué haría Daniela si tuviera tanto dinero?", "en": "What would Daniela do if she had that much money?", "choices": ["Se compraría una isla pequeña", "Abriría un restaurante", "Pagaría la universidad de sus hermanos"], "answer": "Se compraría una isla pequeña", "why": "Si tuviera tanto dinero, se compraría una isla pequeña: an imagined si clause, with the imperfect subjunctive (tuviera) and the conditional (compraría)." },
+      { "q": "¿Qué haría la mamá si fuera rica?", "en": "What would the mom do if she were rich?", "choices": ["Seguiría trabajando y ayudaría a otras familias", "Dejaría de trabajar", "Viviría en una isla"], "answer": "Seguiría trabajando y ayudaría a otras familias", "why": "No dejaría de trabajar: she wouldn't stop working, because she'd get bored. She'd help poor families and pay for her kids' university." },
+      { "q": "¿Qué le pidió al abuelo su padre?", "en": "What did the grandfather's father ask him?", "choices": ["Que nunca olvidara que el dinero no compra la paz", "Que ganara mucho dinero", "Que abriera un restaurante"], "answer": "Que nunca olvidara que el dinero no compra la paz", "why": "Mi padre me pidió que nunca olvidara: pedir que in the past takes the imperfect subjunctive." },
+      { "q": "¿Qué contestó el abuelo al final?", "en": "What did the grandfather answer at the end?", "choices": ["Que sería capaz de gastarlo todo en una semana", "Que lo guardaría en el banco", "Que se lo daría a sus nietos"], "answer": "Que sería capaz de gastarlo todo en una semana", "why": "Con un poco de suerte, sería capaz de gastarlo todo en una semana: a joke after his serious advice." }
+    ]
+  },
+  {
+    "slug": "la-caja-del-tiempo",
+    "title": "La caja del tiempo",
+    "en": "The time capsule",
+    "level": "B2",
+    "place": "Colombia",
+    "fiction": true,
+    "paragraphs": [
+      {
+        "es": "En el año 2001, los estudiantes de un colegio de Bogotá enterraron una caja de metal en el patio. Dentro pusieron cartas, fotos y un periódico de esa semana. La profesora Beatriz les había pedido que escribieran cómo imaginaban su vida 25 años después.",
+        "en": "In 2001, the students at a school in Bogotá buried a metal box in the yard. Inside they put letters, photos and a newspaper from that week. Their teacher, Beatriz, had asked them to write how they imagined their lives twenty-five years later."
+      },
+      {
+        "es": "Este año, por fin, abrieron la caja. Muchos de los antiguos alumnos ya no vivían en la ciudad, pero casi todos volvieron para la ocasión. Algunos no se habían visto desde que terminaron el colegio. Al principio nadie sabía qué decir; después, todos hablaban a la vez.",
+        "en": "This year, at last, they opened the box. Many of the former students no longer lived in the city, but almost all of them came back for the occasion. Some hadn't seen each other since they finished school. At first nobody knew what to say; then everyone was talking at once."
+      },
+      {
+        "es": "Las cartas eran divertidas y, a veces, un poco tristes. Andrés había escrito: «Para 2026, ya habré ganado un premio famoso y habré viajado por todo el mundo». Hoy trabaja en un banco y casi nunca ha salido del país. Se rio al leerla: «Si hubiera sabido lo difícil que es la vida, habría sido más modesto». Camila, en cambio, había escrito que quería ser presidenta para cambiar las leyes. No llegó a ser presidenta, pero trabaja en el gobierno y ha ayudado a aprobar una ley importante.",
+        "en": "The letters were funny and, sometimes, a little sad. Andrés had written, \"By 2026, I'll have won a famous prize and I'll have traveled all over the world.\" Today he works at a bank and has hardly ever left the country. He laughed as he read it: \"If I'd known how hard life is, I'd have been more modest.\" Camila, on the other hand, had written that she wanted to be president to change the laws. She didn't become president, but she works for the government and has helped pass an important law."
+      },
+      {
+        "es": "La profesora Beatriz, que ya tiene más de setenta años, también estaba allí. Les dijo que, para ella, era un recuerdo muy especial. «Espero que hayan aprendido algo en mis clases, aunque haya pasado tanto tiempo», dijo. Antes de irse, los antiguos alumnos escribieron cartas nuevas y enterraron otra caja. ¿Qué habrá pasado con sus vidas dentro de 25 años? Nadie lo sabe, pero todos se pusieron de acuerdo en volver.",
+        "en": "Beatriz, who is now over seventy, was there too. She told them that, for her, it was a very special memory. \"I hope you learned something in my classes, even though so much time has gone by,\" she said. Before leaving, the former students wrote new letters and buried another box. What will have happened in their lives twenty-five years from now? Nobody knows, but they all agreed to come back."
+      }
+    ],
+    "words": [
+      { "es": "enterraron", "en": "buried" },
+      { "es": "había pedido", "en": "had asked" },
+      { "es": "ya no", "en": "no longer" },
+      { "es": "antiguos alumnos", "en": "former students" },
+      { "es": "habré ganado", "en": "I'll have won" },
+      { "es": "hubiera sabido", "en": "had known, after si" },
+      { "es": "gobierno", "en": "government" },
+      { "es": "recuerdo", "en": "memory" },
+      { "es": "de acuerdo", "en": "in agreement" }
+    ],
+    "questions": [
+      { "q": "¿Qué les había pedido la profesora a los estudiantes en 2001?", "en": "What had the teacher asked the students in 2001?", "choices": ["Que escribieran cómo imaginaban su vida en 25 años", "Que enterraran sus libros en el patio", "Que escribieran la historia de Bogotá"], "answer": "Que escribieran cómo imaginaban su vida en 25 años", "why": "Les había pedido que escribieran: the pluperfect puts the request before the burial, and pedir que in the past takes the imperfect subjunctive." },
+      { "q": "¿Qué había escrito Andrés en su carta?", "en": "What had Andrés written in his letter?", "choices": ["Que para 2026 habría ganado un premio y viajado por el mundo", "Que quería ser presidente", "Que trabajaría en un banco"], "answer": "Que para 2026 habría ganado un premio y viajado por el mundo", "why": "Ya habré ganado un premio famoso y habré viajado por todo el mundo: the future perfect, for what will be done by a point in the future." },
+      { "q": "¿Qué dijo Andrés al leer su carta?", "en": "What did Andrés say when he read his letter?", "choices": ["Que habría sido más modesto si hubiera sabido lo difícil que es la vida", "Que todavía va a ganar el premio", "Que nunca escribió esa carta"], "answer": "Que habría sido más modesto si hubiera sabido lo difícil que es la vida", "why": "Si hubiera sabido…, habría sido más modesto: a si clause about the past, with the pluperfect subjunctive and the conditional perfect." },
+      { "q": "¿Qué hicieron los antiguos alumnos antes de irse?", "en": "What did the former students do before leaving?", "choices": ["Escribieron cartas nuevas y enterraron otra caja", "Visitaron la casa de la profesora", "Se llevaron la caja vieja"], "answer": "Escribieron cartas nuevas y enterraron otra caja", "why": "They wrote new letters and buried another box, and agreed to come back in twenty-five years." }
+    ]
   }
 ]
