@@ -4,7 +4,7 @@ import { listedWordCard } from "./card-decks";
 import { TENSES, type TenseId } from "./conjugation/types";
 import { conjugate } from "./conjugation/engine";
 import { findReading } from "./reading-data";
-import { CHAPTERS, EXAM_LEVELS, EXAM_REVIEW, EXAM_SIZE, chapterForReading, chapterSteps, levelChapters, mergeCourse, nextStep, parseCourse, stepsLeft, suggestedChapter, type CourseProgress, type StepId } from "./course";
+import { CHAPTERS, EXAM_LEVELS, EXAM_REVIEW, EXAM_SIZE, chapterForReading, chapterSteps, levelChapters, levelComplete, mergeCourse, nextStep, parseCourse, stepsLeft, suggestedChapter, type CourseProgress, type StepId } from "./course";
 import { checkpointCards, examCards, examWithReview, practiceDeck, quizCards, writeDeck, type ChapterData, type ChapterQuiz } from "./course-decks";
 import { findGuide } from "./guides";
 import { LEVELS } from "./level";
@@ -149,6 +149,19 @@ describe("course chapters", () => {
     assert.deepEqual(stepsLeft(c, { [c.id]: { steps: [...before, "read"], done: "2026-11-10", best: 90 } }), []);
     // Unfinished chapters already show a step count.
     assert.deepEqual(stepsLeft(c, { [c.id]: { steps: ["learn"] } }), []);
+  });
+
+  it("count a level complete when every chapter has its badge and every step done, whatever the scores or exam", () => {
+    // 80 passes, so a score under 100 still counts.
+    const passed = (c: (typeof CHAPTERS)[number]) => ({ steps: chapterSteps(c), done: "2026-11-10", best: 80 });
+    const all: CourseProgress = Object.fromEntries(levelChapters("A1").map((c) => [c.id, passed(c)]));
+    assert.equal(levelComplete("A1", all), true);
+    const first = levelChapters("A1")[0];
+    const missingRead = { ...all, [first.id]: { ...passed(first), steps: chapterSteps(first).filter((s) => s !== "read") } };
+    assert.equal(levelComplete("A1", missingRead), false, "a step still to do");
+    const noBadge = { ...all, [first.id]: { steps: chapterSteps(first).filter((s) => s !== "checkpoint"), best: 60 } };
+    assert.equal(levelComplete("A1", noBadge), false, "a checkpoint not passed");
+    assert.equal(levelComplete("A2", all), false);
   });
 
   it("put the reading between the typed steps", () => {

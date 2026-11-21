@@ -208,5 +208,12 @@ export const examId = (level: Level) => `exam:${level}`;
 
 export const levelChapters = (level: Level) => CHAPTERS.filter((c) => c.level === level);
 
+/**
+ * Every chapter at a level has its badge (checkpoint passed) and no step still to do. Scores don't matter. /course starts
+ * such a level closed. The exam isn't part of it; a closed level says when its exam is still to pass.
+ */
+export const levelComplete = (level: Level, progress: CourseProgress) =>
+  levelChapters(level).every((c) => isDone(progress, c.id) && stepsLeft(c, progress).length === 0);
+
 /** Chapters finished, counting only chapters still in the course. */
 export const chaptersDone = (progress: CourseProgress) => Object.keys(progress).filter((id) => CHAPTER_IDS.has(id) && isDone(progress, id)).length;

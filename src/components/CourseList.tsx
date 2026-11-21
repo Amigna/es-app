@@ -3,10 +3,10 @@
 import Link from "next/link";
 import BadgeArt from "@/components/Badge";
 import { earnedBadges, findBadge } from "@/lib/badges";
-import { useEffect } from "react";
-import { CHAPTERS, EXAM_PASS_SCORE, STEPS, chapterSteps, chaptersDone, examId, stepsLeft, suggestedChapter, type ChapterProgress, type CourseProgress } from "@/lib/course";
+import { useEffect, useState } from "react";
+import { CHAPTERS, EXAM_PASS_SCORE, STEPS, chapterSteps, chaptersDone, examId, isDone, levelComplete, stepsLeft, suggestedChapter, type ChapterProgress, type CourseProgress } from "@/lib/course";
 import { syncCourse, useCourseProgress } from "@/lib/course-progress";
-import { LEVELS, levelInfo, useLevel } from "@/lib/level";
+import { LEVELS, levelInfo, useLevel, type Level } from "@/lib/level";
 
 function status(chapter: (typeof CHAPTERS)[number], progress: CourseProgress): string {
   const mine = progress[chapter.id];
@@ -38,6 +38,8 @@ export default function CourseList() {
   const suggested = suggestedChapter(progress, level);
   const done = chaptersDone(progress);
   const earned = earnedBadges({ course: progress }, "");
+  // Levels opened or closed by hand this visit; the rest follow levelComplete.
+  const [toggled, setToggled] = useState<Partial<Record<Level, boolean>>>({});
 
   useEffect(() => {
     void syncCourse();
@@ -69,14 +71,37 @@ export default function CourseList() {
       {LEVELS.map((l) => {
         const chapters = CHAPTERS.filter((c) => c.level === l.id);
         if (chapters.length === 0) return null;
+        const complete = levelComplete(l.id, progress);
+        // A finished level starts closed; any level opens and closes with a tap.
+        const open = toggled[l.id] ?? !complete;
         return (
-          <section key={l.id}>
-            <h2 className="mb-3 flex items-center gap-2 text-xl font-semibold">
-              <BadgeArt badge={findBadge(`level:${l.id}`)!} size={32} locked={!earned[`level:${l.id}`]} />
-              <span>
-                {l.name} <span className="text-base font-normal text-stone-500">{l.id}</span>
-              </span>
-            </h2>
+          <details key={l.id} open={open} className="group">
+            <summary
+              // Kept in state rather than left to the browser, so a level still closes once progress loads.
+              onClick={(e) => {
+                e.preventDefault();
+                setToggled((t) => ({ ...t, [l.id]: !open }));
+              }}
+              className="mb-3 flex cursor-pointer list-none items-center gap-2 rounded-lg [&::-webkit-details-marker]:hidden"
+            >
+              <h2 className="flex flex-1 flex-wrap items-center gap-x-2 text-xl font-semibold">
+                <BadgeArt badge={findBadge(`level:${l.id}`)!} size={32} locked={!earned[`level:${l.id}`]} />
+                <span>
+                  {l.name} <span className="text-base font-normal text-stone-500">{l.id}</span>
+                </span>
+                {complete &&
+                  (isDone(progress, examId(l.id)) ? (
+                    <span className="text-sm font-normal text-emerald-700 dark:text-emerald-400">All done</span>
+                  ) : (
+                    <span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-sm font-medium text-amber-900 dark:bg-amber-950 dark:text-amber-200">
+                      Chapters done · exam not passed yet
+                    </span>
+                  ))}
+              </h2>
+              <svg aria-hidden viewBox="0 0 20 20" className="size-5 shrink-0 text-stone-500 transition group-open:rotate-180">
+                <path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </summary>
             <ol className="divide-y divide-stone-100 overflow-hidden rounded-xl border border-stone-200 bg-white dark:divide-stone-800 dark:border-stone-800 dark:bg-stone-900">
               {chapters.map((c) => {
                 const n = CHAPTERS.indexOf(c) + 1;
@@ -129,7 +154,7 @@ export default function CourseList() {
                 </Link>
               </li>
             </ol>
-          </section>
+          </details>
         );
       })}
 
