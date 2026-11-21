@@ -300,8 +300,10 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
       const [{ verbPracticeDeck }, bank] = await Promise.all([import("@/lib/card-decks"), loadSentences([verb])]);
       // The level's tenses, so a beginner isn't asked forms they haven't learned. A1's present alone gives about 10 questions.
       // Read from storage: this runs on arrival, when the first render may not have the level yet.
+      // A tense given by the link, like one verb tense on /progress, comes first.
       const saved = storedLevel();
-      return verbPracticeDeck(verb, bank, saved ? levelInfo(saved).tenses : CORE_TENSES, rareSet, PRACTICE_SIZE);
+      const tenses = target.tenses?.length ? target.tenses : saved ? levelInfo(saved).tenses : CORE_TENSES;
+      return verbPracticeDeck(verb, bank, tenses, rareSet, PRACTICE_SIZE);
     }
     return conjugationDeck(poolVerbs(VERBS, pool, commonVerbs), target.tenses);
   }

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { MAX_PRACTICE_ITEMS, practiceHref, type PracticeTarget } from "@/lib/practice";
+import { MAX_PRACTICE_ITEMS, practiceHref, verbTenseTarget, type PracticeTarget } from "@/lib/practice";
 import { accuracy, answered, type Tally } from "@/lib/progress";
 import { describeItem, timesText, type Struggle } from "@/lib/struggles";
 
@@ -58,14 +58,21 @@ export default function StruggleList({
             <PracticeLink target={{ verb }} label={`Practice ${verb}`} onPractice={onPractice} />
           </li>
         ))}
-        {items.map(({ item, tally }) => (
-          <li key={item} className="px-4 py-2">
-            <span className="block">
-              You&apos;ve missed <span className="font-semibold">{describeItem(item)}</span> {timesText(tally.wrong)}.
-            </span>
-            <span className="block text-sm text-stone-500">{itemDetail(tally)}</span>
-          </li>
-        ))}
+        {items.map(({ item, tally }) => {
+          // A verb tense gets its own link, to a short drill on that verb in that tense. Words share the one below.
+          const verbTense = verbTenseTarget(item);
+          return (
+            <li key={item} className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 px-4 py-2">
+              <span>
+                <span className="block">
+                  You&apos;ve missed <span className="font-semibold">{describeItem(item)}</span> {timesText(tally.wrong)}.
+                </span>
+                <span className="block text-sm text-stone-500">{itemDetail(tally)}</span>
+              </span>
+              {verbTense && <PracticeLink target={verbTense} label={`Practice ${verbTense.verb}`} onPractice={onPractice} />}
+            </li>
+          );
+        })}
       </ul>
       {items.length > 0 && (
         <PracticeLink

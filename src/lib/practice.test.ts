@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { MAX_PRACTICE_ITEMS, parsePractice, practiceHref, weakSpots } from "./practice";
+import { MAX_PRACTICE_ITEMS, parsePractice, practiceHref, verbTenseTarget, weakSpots } from "./practice";
 import type { Tally } from "./progress";
 
 const tally = (right: number, wrong: number, accent = 0): Tally => ({ right, accent, wrong });
@@ -76,6 +76,20 @@ describe("practice links", () => {
 
   it("drops unknown tenses and keeps the rest", () => {
     assert.deepEqual(parsePractice("?tenses=nope,present"), { tenses: ["present"] });
+  });
+});
+
+describe("practicing one verb tense", () => {
+  it("round-trips a verb with a tense, and a verb without one stays as it was", () => {
+    assert.deepEqual(parsePractice(practiceHref({ verb: "tener", tenses: ["preterite"] }).split("?")[1]), { verb: "tener", tenses: ["preterite"] });
+    assert.equal(practiceHref({ verb: "tener" }), "/drill?verb=tener");
+    assert.deepEqual(parsePractice("?verb=tener&tenses=nope"), { verb: "tener" });
+  });
+
+  it("turns a saved verb item into a practice on that verb and tense, and nothing else", () => {
+    assert.deepEqual(verbTenseTarget("verb:celebrar:present"), { verb: "celebrar", tenses: ["present"] });
+    assert.equal(verbTenseTarget("vocab:noun:casa:gender"), null);
+    assert.equal(verbTenseTarget("verb:ir:nope"), null);
   });
 });
 

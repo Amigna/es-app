@@ -5,7 +5,14 @@ import { accuracy, answered, type Tally } from "./progress";
 // Finds what someone keeps missing, and links each one to a short drill. No Firebase here, so it's safe to load anywhere.
 
 /** `items` are saved item IDs, like the ones in a list of recent mistakes. */
-export type PracticeTarget = { tenses: TenseId[] } | { verb: string } | { kind: VocabKind } | { items: string[] };
+/** A verb alone practices it in the level's tenses; with `tenses`, only those, like one verb tense someone keeps missing. */
+export type PracticeTarget = { tenses: TenseId[] } | { verb: string; tenses?: TenseId[] } | { kind: VocabKind } | { items: string[] };
+
+/** A saved verb item, like `verb:hablar:preterite`, as a practice on that verb in that tense. Null for anything else. */
+export function verbTenseTarget(item: string): { verb: string; tenses: TenseId[] } | null {
+  const [source, verb, tense] = item.split(":");
+  return source === "verb" && verb && isTense(tense) ? { verb, tenses: [tense] } : null;
+}
 
 /** Item IDs hold colons and spaces but never this, so it separates them in an address. */
 const ITEM_SEPARATOR = "|";
@@ -92,7 +99,7 @@ export function weakSpots(stats: Stats): WeakSpots {
 
 export function practiceHref(target: PracticeTarget): string {
   if ("items" in target) return `/drill?items=${encodeURIComponent(target.items.slice(0, MAX_PRACTICE_ITEMS).join(ITEM_SEPARATOR))}`;
-  if ("verb" in target) return `/drill?verb=${encodeURIComponent(target.verb)}`;
+  if ("verb" in target) return `/drill?verb=${encodeURIComponent(target.verb)}${target.tenses?.length ? `&tenses=${target.tenses.join(",")}` : ""}`;
   if ("kind" in target) return `/drill?kind=${target.kind}`;
   return `/drill?tenses=${target.tenses.join(",")}`;
 }
@@ -105,10 +112,10 @@ export function parsePractice(search: string): PracticeTarget | null {
     .filter((item) => item.startsWith("verb:") || item.startsWith("vocab:"))
     .slice(0, MAX_PRACTICE_ITEMS);
   if (items.length > 0) return { items };
+  const tenses = (params.get("tenses") ?? "").split(",").filter(isTense);
   const verb = params.get("verb");
-  if (verb) return { verb };
+  if (verb) return tenses.length > 0 ? { verb, tenses } : { verb };
   const kind = params.get("kind");
   if (kind && isKind(kind)) return { kind };
-  const tenses = (params.get("tenses") ?? "").split(",").filter(isTense);
   return tenses.length > 0 ? { tenses } : null;
 }
