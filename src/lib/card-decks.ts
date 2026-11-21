@@ -400,8 +400,8 @@ export function writingCard(bank: SentenceBank, verb: Verb, tense: TenseId, side
     title: toEnglish ? sentence.es : sentence.en,
     titleIsSpanish: toEnglish,
     ask: toEnglish ? "Write it in English" : "Write it in Spanish",
-    // The sentence's own translation is the one shown; `alt` lists others that are just as good.
-    answers: toEnglish ? [shown, ...(sentence.alt ?? [])] : [shown],
+    // The sentence's own translation is the one shown; `alt` and `altEs` list others that are just as good.
+    answers: [shown, ...((toEnglish ? sentence.alt : sentence.altEs) ?? [])],
     shown,
     english: toEnglish,
     writing: true,

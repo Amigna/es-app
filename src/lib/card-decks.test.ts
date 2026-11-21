@@ -171,6 +171,16 @@ describe("writing alternatives", () => {
     const card = writingCard(bank, findVerb("ir")!, "present", "toSpanish")!;
     assert.deepEqual(card.answers, [sentence.es]);
   });
+  it("accept a sentence's altEs translations in Spanish, and keep them out of English answers", () => {
+    const spanish = { person: 4, es: "Ellos trabajaron sin descanso.", en: "They worked without rest.", altEs: ["Trabajaron sin descanso."] };
+    const withEs = { trabajar: { preterite: [spanish] } };
+    const toSpanish = writingCard(withEs, findVerb("trabajar")!, "preterite", "toSpanish")!;
+    assert.equal(gradeCard(toSpanish, "trabajaron sin descanso"), "correct");
+    assert.equal(gradeCard(toSpanish, "ellos trabajaron sin descanso"), "correct");
+    assert.equal(toSpanish.shown, spanish.es);
+    const toEnglish = writingCard(withEs, findVerb("trabajar")!, "preterite", "toEnglish")!;
+    assert.deepEqual(toEnglish.answers, [spanish.en]);
+  });
 });
 
 describe("word cards", () => {

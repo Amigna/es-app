@@ -1242,7 +1242,7 @@
    {"person":4,"es":"Ellos cocinan para toda la familia.","en":"They cook for the whole family."}
   ],
   "preterite": [
-   {"person":2,"es":"Mi tía cocinó un sancocho delicioso.","en":"My aunt cooked a delicious sancocho."},
+   {"person":2,"es":"Mi tía cocinó un sancocho delicioso.","en":"My aunt cooked a delicious sancocho.","alt":["My aunt cooked a delicious stew."]},
    {"person":0,"es":"Cociné arroz con pollo.","en":"I cooked chicken and rice."},
    {"person":1,"es":"¿Qué cocinaste anoche?","en":"What did you cook last night?"},
    {"person":3,"es":"Ayer cocinamos para veinte personas.","en":"Yesterday we cooked for twenty people."},
@@ -1623,7 +1623,7 @@
    {"person":0,"es":"Yo dormía con mi hermano en el mismo cuarto.","en":"I used to sleep in the same room as my brother."},
    {"person":1,"es":"Tú dormías cuando te llamé.","en":"You were sleeping when I called you."},
    {"person":2,"es":"El abuelo dormía la siesta después de almorzar.","en":"Grandpa used to take a nap after lunch."},
-   {"person":4,"es":"Todos dormían cuando empezó la tormenta.","en":"Everyone was sleeping when the storm started."}
+   {"person":4,"es":"Todos dormían cuando empezó la tormenta.","en":"Everyone was sleeping when the storm started.","alt":["Everyone was sleeping when the storm began."]}
   ],
   "future": [
    {"person":1,"es":"Dormirás mejor sin café.","en":"You'll sleep better without coffee."},
@@ -2541,7 +2541,7 @@
   "present": [
    {"person":0,"es":"Me quedo en casa los domingos.","en":"I stay home on Sundays."},
    {"person":1,"es":"¿Te quedas con nosotros esta noche?","en":"Are you staying with us tonight?"},
-   {"person":2,"es":"Mi abuela se queda con nosotros en invierno.","en":"My grandmother stays with us in the winter."},
+   {"person":2,"es":"Mi abuela se queda con nosotros en invierno.","en":"My grandmother stays with us in the winter.","alt":["My grandma stays with us in the winter.","My grandmother stays with us in winter.","My grandma stays with us in winter."]},
    {"person":3,"es":"Nos quedamos aquí hasta que pare la lluvia.","en":"We're staying here until the rain stops.","level":"B1"},
    {"person":4,"es":"Los niños se quedan en casa de su tía.","en":"The kids stay at their aunt's house."}
   ],

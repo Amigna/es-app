@@ -11,6 +11,8 @@ export interface Sentence {
   level?: Level;
   /** Other good English translations, accepted by Spanish-to-English writing cards. Added from "Mine works" reports. */
   alt?: string[];
+  /** Other good Spanish translations, accepted by English-to-Spanish writing cards. Added from "Mine works" reports. */
+  altEs?: string[];
 }
 
 /** Marks a tense that exists but sounds unnatural for this verb, so a forced example would teach the wrong thing. */

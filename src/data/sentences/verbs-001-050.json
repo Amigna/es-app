@@ -308,7 +308,7 @@
    {"person":3,"es":"De niños, hacíamos la tarea en la mesa de la cocina.","en":"As kids, we did our homework at the kitchen table."},
    {"person":0,"es":"Yo hacía la tarea después de la cena.","en":"I used to do my homework after dinner."},
    {"person":1,"es":"¿Qué hacías cuando eras joven?","en":"What did you do when you were young?"},
-   {"person":2,"es":"Mi abuela hacía el mejor flan del barrio.","en":"My grandmother made the best flan in the neighborhood."},
+   {"person":2,"es":"Mi abuela hacía el mejor flan del barrio.","en":"My grandmother made the best flan in the neighborhood.","alt":["My grandma made the best flan in the neighborhood.","My grandmother used to make the best flan in the neighborhood.","My grandma used to make the best flan in the neighborhood."]},
    {"person":4,"es":"Los vecinos hacían pan todos los domingos.","en":"The neighbors made bread every Sunday."}
   ],
   "future": [
@@ -1387,17 +1387,17 @@
   ],
   "preterite": [
    {"person":2,"es":"La maestra habló con mis padres.","en":"The teacher spoke with my parents."},
-   {"person":0,"es":"Hablé con el dueño esta mañana.","en":"I talked to the owner this morning."},
+   {"person":0,"es":"Hablé con el dueño esta mañana.","en":"I talked to the owner this morning.","alt":["I spoke with the owner this morning.","I spoke to the owner this morning.","I talked with the owner this morning."]},
    {"person":1,"es":"¿Hablaste con tu mamá?","en":"Did you talk to your mom?"},
    {"person":3,"es":"Hablamos toda la noche.","en":"We talked all night."},
-   {"person":4,"es":"Mis padres hablaron con el maestro.","en":"My parents talked to the teacher."}
+   {"person":4,"es":"Mis padres hablaron con el maestro.","en":"My parents talked to the teacher.","altEs":["Mis padres hablaron con la maestra.","Mis padres hablaron con el profesor.","Mis padres hablaron con la profesora."]}
   ],
   "imperfect": [
    {"person":0,"es":"Hablaba con mi abuela todos los domingos.","en":"I used to talk with my grandmother every Sunday."},
    {"person":1,"es":"¿De qué hablabas con ella?","en":"What were you talking to her about?"},
    {"person":2,"es":"Mi abuelo hablaba muy despacio.","en":"My grandfather spoke very slowly."},
    {"person":3,"es":"Hablábamos por horas en el portal.","en":"We talked for hours on the porch."},
-   {"person":4,"es":"Los vecinos hablaban de la tormenta.","en":"The neighbors were talking about the storm."}
+   {"person":4,"es":"Los vecinos hablaban de la tormenta.","en":"The neighbors were talking about the storm.","altEs":["Los vecinos hablaban sobre la tormenta.","Los vecinos hablaban acerca de la tormenta."]}
   ],
   "future": [
    {"person":0,"es":"Hablaré con el dueño mañana.","en":"I'll talk to the owner tomorrow."},
@@ -2348,7 +2348,7 @@
    {"person":0,"es":"Sentí un dolor en la espalda.","en":"I felt a pain in my back."},
    {"person":1,"es":"¿Sentiste el temblor anoche?","en":"Did you feel the tremor last night?"},
    {"person":3,"es":"Sentimos mucha tristeza al irnos.","en":"We felt very sad when we left."},
-   {"person":4,"es":"Todos sintieron el calor en el salón.","en":"Everyone felt the heat in the room."}
+   {"person":4,"es":"Todos sintieron el calor en el salón.","en":"Everyone felt the heat in the room.","altEs":["Todos sintieron el calor en el cuarto.","Todos sintieron el calor en la sala.","Todos sintieron el calor en la habitación."]}
   ],
   "imperfect": [
    {"person":0,"es":"Yo sentía el calor del sol en la cara.","en":"I could feel the heat of the sun on my face."},
@@ -2990,13 +2990,13 @@
    {"person":0,"es":"Trabajé doce horas ayer.","en":"I worked twelve hours yesterday."},
    {"person":1,"es":"¿Trabajaste el domingo?","en":"Did you work on Sunday?"},
    {"person":2,"es":"Mi tío trabajó toda su vida en el campo.","en":"My uncle worked in the fields all his life."},
-   {"person":4,"es":"Ellos trabajaron sin descanso.","en":"They worked without rest."}
+   {"person":4,"es":"Ellos trabajaron sin descanso.","en":"They worked without rest.","altEs":["Trabajaron sin descanso."]}
   ],
   "imperfect": [
    {"person":2,"es":"Mi mamá trabajaba en una fábrica de tabaco.","en":"My mom used to work in a tobacco factory."},
    {"person":0,"es":"Yo trabajaba en un hotel en aquella época.","en":"I worked at a hotel back then."},
    {"person":1,"es":"¿Trabajabas cuando estudiabas?","en":"Did you work while you were studying?"},
-   {"person":3,"es":"Trabajábamos de lunes a sábado.","en":"We worked Monday through Saturday."},
+   {"person":3,"es":"Trabajábamos de lunes a sábado.","en":"We worked Monday through Saturday.","alt":["We used to work Monday through Saturday.","We worked from Monday to Saturday.","We used to work from Monday to Saturday."]},
    {"person":4,"es":"Mis abuelos trabajaban la tierra.","en":"My grandparents worked the land."}
   ],
   "future": [
