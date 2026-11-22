@@ -12,6 +12,7 @@ import { accentTrap, gradeCard, rightNote, wordDiff, wrongNote, type Card, type 
 import BadgeArt from "@/components/Badge";
 import StruggleList from "@/components/Struggles";
 import { streakBadge, type Badge } from "@/lib/badges";
+import { usageNote } from "@/lib/usage-notes";
 import type { PracticeTarget } from "@/lib/practice";
 import type { Tally } from "@/lib/progress";
 import { drillStreak, progressEnabled, recordAnswer, recordStreak, saveProgress, syncDrillStreak } from "@/lib/progress-queue";
@@ -288,6 +289,8 @@ export default function DrillRunner({
   const answeredSentence = result ? card.sentence : undefined;
   const exampleSentence = card.example ? answeredSentence : undefined;
   const titleSentence = card.example ? undefined : answeredSentence;
+  // A Spanish answer that doesn't match may have a known slip, like queríamos a comprar.
+  const usage = card.writing && !card.english && revealed ? card.answers.map((a) => usageNote(input, a)).find(Boolean) : null;
 
   // A dictation card starts by playing its sentence. Some phones only allow that after a first tap on Play.
   useEffect(() => {
@@ -763,6 +766,7 @@ export default function DrillRunner({
                   is a different word, so here the accent changes the meaning.
                 </p>
               )}
+              {usage && <p className="mt-1 text-sm">{usage}</p>}
             </div>
             <p className="text-sm text-stone-600 dark:text-stone-400">
               Yours doesn&apos;t match exactly{card.english ? "" : ". Words that differ from this answer are underlined"}, but it can still be right. Count it if it

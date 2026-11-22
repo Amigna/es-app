@@ -405,10 +405,10 @@
   ],
   "preterite": [
    {"person":0,"es":"Le dije la verdad a mi hermano.","en":"I told my brother the truth."},
-   {"person":1,"es":"¿Qué le dijiste a tu mamá?","en":"What did you tell your mom?"},
+   {"person":1,"es":"¿Qué le dijiste a tu mamá?","en":"What did you tell your mom?","alt":["What did you say to your mom?"]},
    {"person":2,"es":"El médico dijo que estoy bien.","en":"The doctor said I'm fine."},
    {"person":3,"es":"Le dijimos adiós en el aeropuerto.","en":"We said goodbye to him at the airport."},
-   {"person":4,"es":"Mis amigos no me dijeron nada.","en":"My friends didn't tell me anything."}
+   {"person":4,"es":"Mis amigos no me dijeron nada.","en":"My friends didn't tell me anything.","alt":["My friends didn't say anything to me."]}
   ],
   "imperfect": [
    {"person":4,"es":"Mis padres decían que estudiar era importante.","en":"My parents used to say that studying was important."},
@@ -432,14 +432,14 @@
    {"person":4,"es":"Ellos dirían cualquier cosa para ganar.","en":"They would say anything to win."}
   ],
   "presentPerfect": [
-   {"person":1,"es":"¿Qué le has dicho a tu jefe?","en":"What have you told your boss?"},
+   {"person":1,"es":"¿Qué le has dicho a tu jefe?","en":"What have you told your boss?","alt":["What have you said to your boss?"]},
    {"person":0,"es":"Te he dicho mil veces que no corras en la casa.","en":"I've told you a thousand times not to run in the house."},
    {"person":2,"es":"El médico me ha dicho que descanse.","en":"The doctor has told me to rest."},
-   {"person":3,"es":"No le hemos dicho nada a mamá.","en":"We haven't told Mom anything."},
-   {"person":4,"es":"¿Qué te han dicho en la entrevista?","en":"What have they told you in the interview?"}
+   {"person":3,"es":"No le hemos dicho nada a mamá.","en":"We haven't told Mom anything.","alt":["We haven't said anything to Mom."]},
+   {"person":4,"es":"¿Qué te han dicho en la entrevista?","en":"What have they told you in the interview?","alt":["What have they said to you in the interview?"]}
   ],
   "pluperfect": [
-   {"person":2,"es":"Ella nunca me había dicho eso.","en":"She had never told me that."}
+   {"person":2,"es":"Ella nunca me había dicho eso.","en":"She had never told me that.","alt":["She had never said that to me."]}
   ],
   "futurePerfect": [
    {"person":4,"es":"A estas horas ya le habrán dicho la noticia.","en":"By now they will have told him the news."}
@@ -452,12 +452,12 @@
    {"person":0,"es":"Mi hermana quiere que yo le diga la verdad.","en":"My sister wants me to tell her the truth."},
    {"person":2,"es":"No importa lo que él diga.","en":"It doesn't matter what he says."},
    {"person":3,"es":"Es mejor que digamos la verdad.","en":"It's better that we tell the truth."},
-   {"person":4,"es":"Espero que me digan algo pronto.","en":"I hope they tell me something soon."}
+   {"person":4,"es":"Espero que me digan algo pronto.","en":"I hope they tell me something soon.","alt":["I hope they say something to me soon."]}
   ],
   "subjImperfect": [
    {"person":2,"es":"Me sorprendió que dijera eso delante de todos.","en":"It surprised me that she said that in front of everyone."},
    {"person":0,"es":"Mi hermana quería que yo le dijera la verdad.","en":"My sister wanted me to tell her the truth."},
-   {"person":1,"es":"Me sorprendió que no me dijeras nada.","en":"I was surprised you didn't tell me anything."},
+   {"person":1,"es":"Me sorprendió que no me dijeras nada.","en":"I was surprised you didn't tell me anything.","alt":["I was surprised you didn't say anything to me."]},
    {"person":3,"es":"Nos pidieron que no dijéramos nada de la sorpresa.","en":"They asked us not to say anything about the surprise."},
    {"person":4,"es":"Si mis amigos dijeran eso, me enojaría.","en":"If my friends said that, I'd get angry."}
   ],
@@ -468,7 +468,7 @@
    {"person":2,"es":"Dudo que haya dicho algo así.","en":"I doubt he has said anything like that."}
   ],
   "subjPluperfect": [
-   {"person":1,"es":"Si me hubieras dicho algo, te habría ayudado.","en":"If you had told me something, I would have helped you."}
+   {"person":1,"es":"Si me hubieras dicho algo, te habría ayudado.","en":"If you had told me something, I would have helped you.","alt":["If you had said something to me, I would have helped you."]}
   ],
   "impAffirmative": [
    {"person":1,"es":"Di la verdad, por favor.","en":"Tell the truth, please."}
