@@ -199,6 +199,9 @@ function Confetti() {
   );
 }
 
+/** The score from which the results screen throws confetti and says ¡Muy bien! */
+const CELEBRATE_SCORE = 80;
+
 /** How long a badge earned mid-drill stays on screen. */
 const CELEBRATION_MS = 4000;
 
@@ -475,13 +478,15 @@ export default function DrillRunner({
     const score = counted ? Math.round((right / counted) * 100) : 100;
     const struggles = saved ? drillStruggles(saved, tallies, { verbs: RESULT_VERBS, items: RESULT_ITEMS }) : null;
     const earned = [...badges, ...streakBadges];
+    // Celebrate a strong score or a new badge, not every finished drill.
+    const celebrate = score >= CELEBRATE_SCORE || earned.length > 0;
     // The confetti sits outside the card: the card's pop-in transform would otherwise trap it inside.
     return (
       <>
-        <Confetti />
+        {celebrate && <Confetti />}
         <section className="animate-pop-in mx-auto max-w-xl space-y-4 rounded-xl border border-t-4 border-stone-200 border-t-accent-500 bg-white p-6 text-center dark:border-stone-800 dark:bg-stone-900">
           <h2 className="font-display text-3xl font-semibold tracking-tight text-accent-800 dark:text-accent-300">
-            {score >= 80 ? "¡Excelente!" : score >= 50 ? "¡Bien hecho!" : "¡Sigue así!"}
+            {score >= 90 ? "¡Excelente!" : score >= CELEBRATE_SCORE ? "¡Muy bien!" : score >= 60 ? "¡Vas bien!" : "¡Sigue practicando!"}
           </h2>
           <p className="font-display text-5xl font-semibold tabular-nums text-accent-700 dark:text-accent-300">{score}%</p>
           <p className="text-lg">
