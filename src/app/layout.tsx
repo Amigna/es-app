@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import SiteShell from "@/components/SiteShell";
 import "./globals.css";
 
@@ -30,11 +31,27 @@ export const metadata: Metadata = {
   openGraph: { title: NAME, description: DESCRIPTION, siteName: NAME, type: "website" },
 };
 
+// Google Analytics, page views only. Set in Amplify and left out locally, so testing doesn't count as visits. GA4's
+// enhanced measurement counts in-app navigation, so nothing else calls gtag. Signals and ad personalization stay off,
+// since the app may be used in schools.
+const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
         <SiteShell>{children}</SiteShell>
+        {GA_ID && (
+          <>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA_ID)}`} />
+            <Script id="google-analytics">
+              {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', ${JSON.stringify(GA_ID)}, { allow_google_signals: false, allow_ad_personalization_signals: false });`}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   );
