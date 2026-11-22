@@ -2345,7 +2345,7 @@
   "present": [
    {"person":0,"es":"Siempre me siento cerca de la ventana.","en":"I always sit near the window."},
    {"person":1,"es":"¿Dónde te sientas en clase?","en":"Where do you sit in class?"},
-   {"person":2,"es":"Mi abuelo se sienta en el portal.","en":"My grandfather sits on the porch."},
+   {"person":2,"es":"Mi abuelo se sienta en el portal.","en":"My grandfather sits on the porch.","altEs":["Mi abuelo se sienta en el porche."]},
    {"person":3,"es":"Nos sentamos a la mesa a las ocho.","en":"We sit down at the table at eight."},
    {"person":4,"es":"Los niños se sientan en el piso.","en":"The kids sit on the floor."}
   ],
@@ -2357,7 +2357,7 @@
    {"person":4,"es":"Los invitados se sentaron a comer.","en":"The guests sat down to eat."}
   ],
   "imperfect": [
-   {"person":3,"es":"Nos sentábamos en el portal por las tardes.","en":"We used to sit on the porch in the afternoons."},
+   {"person":3,"es":"Nos sentábamos en el portal por las tardes.","en":"We used to sit on the porch in the afternoons.","altEs":["Nos sentábamos en el porche por las tardes."]},
    {"person":0,"es":"Yo me sentaba al lado de la ventana.","en":"I used to sit next to the window."},
    {"person":1,"es":"Tú te sentabas siempre junto a mí.","en":"You always sat next to me."},
    {"person":2,"es":"Mi abuela se sentaba a coser por la tarde.","en":"My grandmother would sit down to sew in the afternoon."},

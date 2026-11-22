@@ -3,6 +3,7 @@ import { TENSES, type TenseId } from "./conjugation/types";
 import { COMMON_COUNT, CORE_TENSES, conjugationCard, englishAnswers, makeQuestion, recallCard, personLabel, rareKey, tenseTable, verbForms, verbTrack, type Card } from "./drill";
 import type { CardType, FlashSide, StudySide, VocabKind, WordType } from "./drill-settings";
 import { shuffled } from "./quiz";
+import { lessNaturalVariants } from "./usage-notes";
 import { blankOut, findForm, sentencesFor, type SentenceBank } from "./sentences";
 import { VERBS, findVerb, type Verb } from "./verbs";
 import type { Level } from "./level";
@@ -425,6 +426,12 @@ export function writingCard(bank: SentenceBank, verb: Verb, tense: TenseId, side
   // The sentence's own translation is the one shown; `alt` and `altEs` list others that are just as good.
   const answers = [shown, ...((toEnglish ? sentence.alt : sentence.altEs) ?? [])];
   const pronounless = toEnglish ? { extra: [] } : withoutPronoun(answers, verb, tense, sentence.person);
+  // Understood but less natural, like hablaron a la maestra: accepted, with a note on the better way.
+  const looser = toEnglish ? [] : answers.flatMap(lessNaturalVariants).filter((v) => !answers.includes(v.answer));
+  const rightNotes = [
+    ...("note" in pronounless && pronounless.note ? [pronounless.note] : []),
+    ...looser.flatMap((v) => (v.note ? [{ answers: [v.answer], note: v.note }] : [])),
+  ];
   return {
     id: `write:${side}:${verb.inf}:${tense}:${sentence.person}`,
     badge: toEnglish ? "Spanish to English" : "English to Spanish",
@@ -432,8 +439,8 @@ export function writingCard(bank: SentenceBank, verb: Verb, tense: TenseId, side
     title: toEnglish ? sentence.es : sentence.en,
     titleIsSpanish: toEnglish,
     ask: toEnglish ? "Write it in English" : "Write it in Spanish",
-    answers: [...answers, ...pronounless.extra],
-    ...("note" in pronounless && pronounless.note ? { rightNotes: [pronounless.note] } : {}),
+    answers: [...answers, ...pronounless.extra, ...looser.map((v) => v.answer)],
+    ...(rightNotes.length ? { rightNotes } : {}),
     shown,
     english: toEnglish,
     writing: true,

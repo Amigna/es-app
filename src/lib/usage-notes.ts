@@ -55,6 +55,92 @@ function linkNote(rule: Link, verb: string, wrote: string, infinitive: string): 
   return `${name}${means} takes ${rule.link} before an infinitive, not ${wrote}: ${right}.`;
 }
 
+/** Verbs that take a particular word before a person or thing, with the note for using another one. */
+interface Preposition {
+  stems: RegExp;
+  right: string;
+  wrong: string[];
+  note: (right: string) => string;
+}
+
+const PREPOSITIONS: Preposition[] = [
+  {
+    stems: /^cas/,
+    right: "con",
+    wrong: ["a"],
+    note: (right) => `Casarse takes con: ${right}.`,
+  },
+  {
+    stems: /^(sueñ|soñ)/,
+    right: "con",
+    wrong: ["de", "en"],
+    note: (right) => `Soñar takes con: ${right}.`,
+  },
+  {
+    stems: /^(piens|pens)/,
+    right: "en",
+    wrong: ["de", "sobre"],
+    note: (right) => `Thinking about something is pensar en: ${right}. Pensar de asks for an opinion: ¿qué piensas de...?`,
+  },
+];
+
+// Only hablar: platicar a and conversar a aren't said.
+const HABLAR_CON = /(?<!\p{L})(habl\p{L}*) con (el|la|los|las|mi|mis|tu|tus|su|sus|nuestro|nuestra|nuestros|nuestras)(?!\p{L})/iu;
+
+/**
+ * Other ways to say an answer that are understood but less natural, each accepted with a note on the better one:
+ * hablaron a la maestra for hablaron con la maestra.
+ */
+/** Things you talk with rather than people you talk to: hablar con la boca llena, con el corazón. */
+const NOT_PEOPLE = /^(boca|corazón|voz|verdad|razón|mano|manos|mirada|acento|tono|ojos|mente)$/i;
+
+export function lessNaturalVariants(answer: string): { answer: string; note?: string }[] {
+  const m = answer.match(HABLAR_CON);
+  if (!m) return [];
+  const after = answer.slice((m.index ?? 0) + m[0].length).trim().split(/[\s.,;:!?]+/)[0] ?? "";
+  if (NOT_PEOPLE.test(after)) return [];
+  const [, verb, next] = m;
+  const swapped = answer.replace(HABLAR_CON, (_, v: string, n: string) => (n.toLowerCase() === "el" ? `${v} al` : `${v} a ${n}`));
+  // With a, Spanish usually doubles the person with le or les: le hablaron a la maestra. That one is just right.
+  const plural = /s$/i.test(next);
+  const at = swapped.indexOf(verb);
+  const pronoun = plural ? "les" : "le";
+  const lower = verb.toLowerCase();
+  let doubled: string;
+  if (/ar$/.test(lower) || /ando$/.test(lower)) {
+    // An infinitive or gerund takes it on the end: hablarle, hablándole.
+    const joined = /ando$/.test(lower) ? verb.replace(/ando$/i, `ándo${pronoun}`) : verb + pronoun;
+    doubled = swapped.slice(0, at) + joined + swapped.slice(at + verb.length);
+  } else {
+    // Before the verb, or before haber in a perfect tense (nunca le he hablado), taking the capital if that word
+    // opened the sentence: Les hablé a mis primos, ¿Le hablaste?
+    let ins = at;
+    if (/ado$/.test(lower)) {
+      const aux = swapped.slice(0, at).match(/(\p{L}+)\s+$/u);
+      if (aux && /^(he|has|ha|hemos|han|hab\p{L}*|hay\p{L}*|hub\p{L}*)$/iu.test(aux[1])) ins = at - aux[0].length;
+    }
+    const opens = /^[¿¡]*$/.test(swapped.slice(0, ins));
+    const word = opens ? pronoun[0].toUpperCase() + pronoun.slice(1) : pronoun;
+    const next = swapped.slice(ins);
+    const rest = opens ? next[0].toLowerCase() + next.slice(1) : next;
+    doubled = `${swapped.slice(0, ins)}${word} ${rest}`;
+  }
+  const example = doubled;
+  const note = `This works, but ${verb.toLowerCase()} con is the more natural fit for talking with someone. With a, Spanish usually adds ${plural ? "les" : "le"}: ${example}`;
+  return [{ answer: swapped, note }, { answer: doubled }];
+}
+
+function prepositionNote(mine: string[], theirs: string[], shownWords: string[]): string | null {
+  for (let i = 0; i < theirs.length - 1; i++) {
+    const rule = PREPOSITIONS.find((r) => r.stems.test(theirs[i]) && theirs[i + 1] === r.right);
+    if (!rule) continue;
+    for (let j = 0; j < mine.length - 1; j++) {
+      if (mine[j] === theirs[i] && rule.wrong.includes(mine[j + 1])) return rule.note(`${shownWords[i].toLowerCase()} ${rule.right}`);
+    }
+  }
+  return null;
+}
+
 /** A note on a usage slip in a Spanish answer, like "queríamos a comprar", or null when there's nothing to say. */
 export function usageNote(input: string, answer: string): string | null {
   const mine = words(input);
@@ -79,5 +165,5 @@ export function usageNote(input: string, answer: string): string | null {
       return linkNote(rule, verb, between, shownWords[i + (hasLink ? 2 : 1)].toLowerCase());
     }
   }
-  return null;
+  return prepositionNote(mine, theirs, shownWords);
 }
