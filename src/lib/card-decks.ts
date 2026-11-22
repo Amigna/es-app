@@ -387,6 +387,34 @@ export function verbPracticeDeck(verb: Verb, bank: SentenceBank, tenses: TenseId
   return () => left.shift() ?? null;
 }
 
+// Not before a word that leans on the pronoun: Ella y yo, Yo mismo, Ellos dos.
+const SUBJECT = /^([¿¡]?)(yo|tú|él|ella|usted|nosotros|nosotras|ellos|ellas|ustedes) (?!(?:y|e|o|ni|mism[oa]s?|dos|tres|tod[oa]s|sol[oa]s?),? )(\S)/i;
+/** Who a form could be for, by person. */
+const WHO = [["yo"], ["tú"], ["él", "ella", "usted"], ["nosotros"], ["ellos", "ellas", "ustedes"]];
+const PERSON_OF: Record<string, number> = { yo: 0, tú: 1, él: 2, ella: 2, usted: 2, nosotros: 3, nosotras: 3, ellos: 4, ellas: 4, ustedes: 4 };
+
+/**
+ * Spanish usually leaves out a subject pronoun, so a sentence starting with one is also right without it. When the
+ * form is shared with another person (yo and él in llegaba), the answer says why the pronoun helps.
+ */
+function withoutPronoun(answers: string[], verb: Verb, tense: TenseId, person: number) {
+  const dropped = answers.flatMap((a) => {
+    const m = a.match(SUBJECT);
+    return m ? [a.replace(SUBJECT, (_, mark: string, _p: string, next: string) => mark + next.toUpperCase())] : [];
+  }).filter((a) => !answers.includes(a));
+  if (!dropped.length) return { extra: [] };
+  const forms = conjugate(verb).tenses[tense]?.forms ?? [];
+  const form = forms[person];
+  const sharing = forms.flatMap((f, p) => (f && f === form ? [p] : []));
+  // The pronoun may belong to another verb, like yo in Yo quería que se llamara Rosa; then there's nothing to say.
+  const pronoun = answers[0].match(SUBJECT)?.[2]?.toLowerCase();
+  if (!form || sharing.length < 2 || !pronoun || PERSON_OF[pronoun] !== person) return { extra: dropped };
+  const people = sharing.flatMap((p) => WHO[p]);
+  const who = `${people.slice(0, -1).join(", ")} or ${people.at(-1)}`;
+  const note = `This works, but ${form} could be ${who}, so ${pronoun} makes it clear who it is.`;
+  return { extra: dropped, note: { answers: dropped, note } };
+}
+
 /** One saved item per direction: translations aren't scheduled, so there's nothing to keep per sentence. */
 export function writingCard(bank: SentenceBank, verb: Verb, tense: TenseId, side: FlashSide, random: Random = Math.random): Card | null {
   const sentences = sentencesFor(bank, verb.inf, tense);
@@ -394,6 +422,9 @@ export function writingCard(bank: SentenceBank, verb: Verb, tense: TenseId, side
   const sentence = pick(sentences, random);
   const toEnglish = side === "toEnglish";
   const shown = toEnglish ? sentence.en : sentence.es;
+  // The sentence's own translation is the one shown; `alt` and `altEs` list others that are just as good.
+  const answers = [shown, ...((toEnglish ? sentence.alt : sentence.altEs) ?? [])];
+  const pronounless = toEnglish ? { extra: [] } : withoutPronoun(answers, verb, tense, sentence.person);
   return {
     id: `write:${side}:${verb.inf}:${tense}:${sentence.person}`,
     badge: toEnglish ? "Spanish to English" : "English to Spanish",
@@ -401,8 +432,8 @@ export function writingCard(bank: SentenceBank, verb: Verb, tense: TenseId, side
     title: toEnglish ? sentence.es : sentence.en,
     titleIsSpanish: toEnglish,
     ask: toEnglish ? "Write it in English" : "Write it in Spanish",
-    // The sentence's own translation is the one shown; `alt` and `altEs` list others that are just as good.
-    answers: [shown, ...((toEnglish ? sentence.alt : sentence.altEs) ?? [])],
+    answers: [...answers, ...pronounless.extra],
+    ...("note" in pronounless && pronounless.note ? { rightNotes: [pronounless.note] } : {}),
     shown,
     english: toEnglish,
     writing: true,

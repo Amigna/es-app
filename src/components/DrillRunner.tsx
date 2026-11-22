@@ -8,7 +8,7 @@ import SpeakButton from "@/components/SpeakButton";
 import { conjugate } from "@/lib/conjugation/engine";
 import { markVerb } from "@/lib/conjugation/regular";
 import { TENSES } from "@/lib/conjugation/types";
-import { accentTrap, gradeCard, wordDiff, wrongNote, type Card, type Grade, type TenseTable } from "@/lib/drill";
+import { accentTrap, gradeCard, rightNote, wordDiff, wrongNote, type Card, type Grade, type TenseTable } from "@/lib/drill";
 import BadgeArt from "@/components/Badge";
 import StruggleList from "@/components/Struggles";
 import { streakBadge, type Badge } from "@/lib/badges";
@@ -76,7 +76,8 @@ function Feedback({
   // Only on a miss: an accent that turns the answer into another real word is why it's wrong.
   const trap = result === "wrong" ? accentTrap(card, input) : null;
   // A known mistake, like quinientos y seis, gets the note on the rule it breaks instead of the general one.
-  const note = (result === "wrong" ? wrongNote(card, input) : null) ?? card.explain;
+  // An accepted answer can carry a note too, like a sentence with its subject pronoun left out.
+  const note = (result === "wrong" ? wrongNote(card, input) : rightNote(card, input)) ?? card.explain;
   const trapNote = trap && (
     <p className="mt-1">
       <span lang="es" className="font-semibold">

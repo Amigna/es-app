@@ -3,6 +3,7 @@ import adverbsRaw from "../data/vocab/adverbs.json";
 import levelsRaw from "../data/vocab/levels.json";
 import nounsRaw from "../data/vocab/nouns.json";
 import phrasesRaw from "../data/vocab/phrases.json";
+import placesRaw from "../data/vocab/places.json";
 import smallWordsRaw from "../data/vocab/small-words.json";
 import { nuclei, setStress, stressIndex } from "./conjugation/accent";
 import type { Level } from "./level";
@@ -102,6 +103,13 @@ export const ADJECTIVES = adjectivesRaw as Adjective[];
 export const ADVERBS = adverbsRaw as Adverb[];
 export const SMALL_WORDS = smallWordsRaw as SmallWord[];
 export const PHRASES = phrasesRaw as Phrase[];
+
+/** Cities and landmarks in the readings. Lookup only: a place name isn't worth drilling, so they never reach a drill. */
+export interface Place {
+  es: string;
+  en: string;
+}
+export const PLACES = placesRaw as Place[];
 
 /** The lists that have levels. Phrases don't: they're everyday expressions, open to everyone. */
 export type LeveledType = "noun" | "adjective" | "adverb" | "small";

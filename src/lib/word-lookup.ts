@@ -3,7 +3,7 @@ import { conjugate } from "./conjugation/engine";
 import { TENSES, type TenseId } from "./conjugation/types";
 import { personLabel, verbTrack } from "./drill";
 import { VERBS, verbSlug } from "./verbs";
-import { ADJECTIVES, ADVERBS, NOUNS, PHRASES, SMALL_WORDS, adjectiveForms, isGeoName, nounHeadword, nounPlural, smallWordForms } from "./vocab";
+import { ADJECTIVES, ADVERBS, NOUNS, PHRASES, PLACES, SMALL_WORDS, adjectiveForms, isGeoName, nounHeadword, nounPlural, smallWordForms } from "./vocab";
 
 // Finds a word tapped in a reading passage: which entry it belongs to, and the item to add to the review schedule.
 // Imported on demand, because it pulls in the word lists and conjugates every verb.
@@ -125,6 +125,8 @@ function buildIndex(): Index {
     const word = p.es.replace(/[^\p{L}\s]/gu, "").trim();
     if (oneWord(word)) addWord(index, word, { key: `phrase:${p.es}`, headword: p.es, en: p.en, detail: "Phrase, in the flashcards" });
   }
+  // No item: a place name isn't something to review.
+  for (const p of PLACES) addWord(index, p.es, { key: `place:${p.es}`, headword: p.es, en: p.en, detail: "Place" });
   for (const [short, full] of Object.entries(SHORT_FORMS)) {
     for (const m of index.words.get(full) ?? []) {
       if (m.detail !== "Adjective" && m.detail !== "Small word") continue;

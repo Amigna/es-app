@@ -66,10 +66,17 @@ describe("lookupWord", () => {
     assert.equal(find("gracias", "Gracias.").item, undefined);
   });
 
-  it("finds every word in the readings apart from names and places", () => {
-    // Add a new reading's names here. Any other word it uses needs to be in the word lists.
+  it("finds places, with nothing to add to reviews", () => {
+    const asuncion = find("Asunción", "Asunción");
+    assert.equal(asuncion.detail, "Place");
+    assert.equal(asuncion.item, undefined);
+    assert.match(find("Habana", "La Habana").detail, /part of “La Habana”/);
+  });
+
+  it("finds every word in the readings apart from people's names", () => {
+    // Add a new reading's people here. Places go in places.json, and any other word in the word lists.
     const names = new Set(
-      "américa ana andrés arequipa argentina asunción beatriz bogotá camila canelo caracas carlos carmen centroamérica chile cocibolca cuba cuenca cusco daniela diego elena ernesto europa gabriela habana heredia honduras inés isabel joaquín josefina juan lima luis lupita machu managua marta martina mateo medellín mejía méxico miami montevideo nicaragua oaxaca pablo panamá paula perú picchu puebla quetzalcóatl rafael ramón roatán santiago sofía tijuana titicaca uruguay valentina valparaíso venezuela".split(" "),
+      "américa ana andrés argentina beatriz camila canelo carlos carmen centroamérica chile cuba daniela diego elena ernesto europa gabriela honduras inés isabel joaquín josefina juan luis lupita marta martina mateo mejía méxico nicaragua pablo panamá paula perú quetzalcóatl rafael ramón sofía uruguay valentina venezuela".split(" "),
     );
     const missing = new Set<string>();
     for (const r of READINGS) {
@@ -89,9 +96,9 @@ describe("lookupWord", () => {
     for (const word of words) {
       for (const match of lookupWord(word)) {
         found++;
-        // Verbs are checked against the order with no rare tenses, which is the widest it gets. Phrases offer no item.
+        // Verbs are checked against the order with no rare tenses, which is the widest it gets. Phrases and places offer no item.
         if (match.item) assert.ok(order.has(match.item), `${word}: ${match.item}`);
-        else assert.match(match.key, /^phrase:/, word);
+        else assert.match(match.key, /^(?:phrase|place):/, word);
       }
     }
     assert.ok(found > words.length / 2, `${found} matches for ${words.length} words`);

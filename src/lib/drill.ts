@@ -138,6 +138,8 @@ export interface Card {
   loosePunctuation?: boolean;
   /** Known wrong answers, like quinientos y seis, each with a note on the rule it breaks, shown instead of `explain`. */
   wrongNotes?: { answers: string[]; note: string }[];
+  /** Accepted answers worth a comment, like a sentence without its subject pronoun, shown instead of `explain`. */
+  rightNotes?: { answers: string[]; note: string }[];
 }
 
 /** Pairs where the accent alone tells two common words apart: tú and tu, qué and que, está and esta. */
@@ -324,6 +326,11 @@ export function accentTrap(card: Card, input: string): string | null {
 /** The note for a known wrong answer, compared the way the card is graded, so a missing accent still matches. */
 export function wrongNote(card: Card, input: string): string | null {
   return card.wrongNotes?.find((w) => w.answers.some((a) => compare(card, input, a) !== "wrong"))?.note ?? null;
+}
+
+/** The note for an accepted answer that's worth a comment, compared the way the card is graded. */
+export function rightNote(card: Card, input: string): string | null {
+  return card.rightNotes?.find((w) => w.answers.some((a) => compare(card, input, a) !== "wrong"))?.note ?? null;
 }
 
 export function gradeCard(card: Card, input: string): Grade {

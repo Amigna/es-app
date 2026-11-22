@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { blankCard, blankDeck, listedWordCard, dictationCard, dictationDeck, flashcardDeck, studyCards, newItemOrder, reviewCard, reviewDeck, verbPracticeDeck, vocabDeck, writingCard, writingDeck, type VocabOptions } from "./card-decks";
-import { accentTrap, englishAnswers, englishCore, gradeCard, type Card } from "./drill";
+import { accentTrap, englishAnswers, englishCore, gradeCard, rightNote, type Card } from "./drill";
 import { DEFAULT_SETTINGS, NOUN_TOPICS, parseSettings } from "./drill-settings";
 import { schedulable } from "./schedule";
 import { SENTENCE_BANK } from "./sentence-data";
@@ -187,6 +187,36 @@ describe("writing alternatives", () => {
     assert.equal(toSpanish.shown, spanish.es);
     const toEnglish = writingCard(withEs, findVerb("trabajar")!, "preterite", "toEnglish")!;
     assert.deepEqual(toEnglish.answers, [spanish.en]);
+  });
+  it("accept a Spanish sentence without its subject pronoun, saying why it helps when the form is shared", () => {
+    const yo = { person: 0, es: "Yo llegaba tarde a clase todos los días.", en: "I got to class late every day." };
+    const card = writingCard({ llegar: { imperfect: [yo] } }, findVerb("llegar")!, "imperfect", "toSpanish")!;
+    assert.equal(gradeCard(card, "Llegaba tarde a clase todos los días"), "correct");
+    assert.equal(gradeCard(card, "Yo llegaba tarde a clase todos los días."), "correct");
+    assert.equal(card.shown, yo.es);
+    assert.equal(rightNote(card, "llegaba tarde a clase todos los dias"), "This works, but llegaba could be yo, él, ella or usted, so yo makes it clear who it is.");
+    assert.equal(rightNote(card, "Yo llegaba tarde a clase todos los días"), null);
+
+    // Llegué is only yo, so leaving out the pronoun needs no comment.
+    const preterite = { person: 0, es: "¿Yo llegué tarde?", en: "Was I late?" };
+    const plain = writingCard({ llegar: { preterite: [preterite] } }, findVerb("llegar")!, "preterite", "toSpanish")!;
+    assert.equal(gradeCard(plain, "¿Llegué tarde?"), "correct");
+    assert.equal(plain.rightNotes, undefined);
+
+    // Nor does English, or a sentence with no pronoun to drop.
+    assert.deepEqual(writingCard({ llegar: { imperfect: [yo] } }, findVerb("llegar")!, "imperfect", "toEnglish")!.answers, [yo.en]);
+    const none = { person: 2, es: "Mi abuela llegaba temprano.", en: "My grandmother arrived early." };
+    assert.deepEqual(writingCard({ llegar: { imperfect: [none] } }, findVerb("llegar")!, "imperfect", "toSpanish")!.answers, [none.es]);
+
+    // A pronoun that leans on the next word stays: Y yo llegábamos would be wrong.
+    const pair = { person: 3, es: "Ella y yo llegábamos juntos.", en: "She and I used to arrive together." };
+    assert.deepEqual(writingCard({ llegar: { imperfect: [pair] } }, findVerb("llegar")!, "imperfect", "toSpanish")!.answers, [pair.es]);
+
+    // Yo is quería's subject, not llamara's, so leaving it out is fine but says nothing about llamara.
+    const other = { person: 2, es: "Yo quería que la niña se llamara Rosa.", en: "I wanted the girl to be named Rosa." };
+    const card2 = writingCard({ llamarse: { subjImperfect: [other] } }, findVerb("llamarse")!, "subjImperfect", "toSpanish")!;
+    assert.equal(gradeCard(card2, "Quería que la niña se llamara Rosa."), "correct");
+    assert.equal(card2.rightNotes, undefined);
   });
 });
 
