@@ -21,7 +21,7 @@ export interface LevelInfo {
 
 /** Each level adds to the one before, in the order most courses teach the tenses. */
 export const LEVELS: LevelInfo[] = [
-  { id: "A1", name: "Beginner", hint: "New to Spanish, or know a few words", tenses: ["present"], commonVerbs: 25, pool: "common" },
+  { id: "A1", name: "Beginner", hint: "New to Spanish, or know a few words", tenses: ["present"], commonVerbs: 30, pool: "common" },
   {
     id: "A2",
     name: "Elementary",

@@ -43,7 +43,9 @@ describe("verb seed", () => {
     assert.equal(findVerb("OIR")?.inf, "oír");
     assert.equal(findVerb(" Reir ")?.inf, "reír");
     assert.equal(findVerb("nope"), undefined);
-    assert.equal(searchVerbs("hab")[0].inf, "haber");
+    // Matches come in list order, and hablar is above haber since the 2026-11-22 reorder.
+    assert.equal(searchVerbs("hab")[0].inf, "hablar");
+    assert.ok(searchVerbs("hab").some((v) => v.inf === "haber"));
     assert.ok(searchVerbs("to eat").some((v) => v.inf === "comer"));
   });
 });
