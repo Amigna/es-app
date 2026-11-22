@@ -10,6 +10,8 @@ export interface GuideExample {
 export interface GuideRule {
   rule: string;
   examples: GuideExample[];
+  /** Examples from this index on are a second group (like the imperfect after the preterite), drawn after a divider. */
+  splitAt?: number;
   note?: string;
 }
 

@@ -21,6 +21,8 @@ describe("guides", () => {
         for (const r of s.rules) {
           assert.ok(r.examples.length > 0, r.rule);
           for (const e of r.examples) assert.ok(e.es && e.en, r.rule);
+          // A divider needs examples on both sides of it.
+          if (r.splitAt !== undefined) assert.ok(r.splitAt > 0 && r.splitAt < r.examples.length, r.rule);
         }
       }
     }

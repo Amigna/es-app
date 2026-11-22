@@ -6,8 +6,8 @@ export function RuleCard({ rule }: { rule: GuideRule }) {
     <div className="rounded-xl border border-stone-200 bg-white p-4 dark:border-stone-800 dark:bg-stone-900">
       <h3 className="font-medium">{rule.rule}</h3>
       <ul className="mt-2 space-y-1.5">
-        {rule.examples.map((e) => (
-          <li key={e.es}>
+        {rule.examples.map((e, i) => (
+          <li key={e.es} className={i === rule.splitAt ? "!mt-2.5 border-t border-stone-200 pt-2.5 dark:border-stone-800" : undefined}>
             <span lang="es" className="text-accent-800 dark:text-accent-300">
               {e.es}
             </span>

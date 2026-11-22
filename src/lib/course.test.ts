@@ -5,7 +5,7 @@ import { TENSES, type TenseId } from "./conjugation/types";
 import { conjugate } from "./conjugation/engine";
 import { findReading } from "./reading-data";
 import { CHAPTERS, EXAM_LEVELS, EXAM_REVIEW, EXAM_SIZE, chapterForReading, chapterSteps, levelChapters, levelComplete, mergeCourse, nextStep, parseCourse, stepsLeft, suggestedChapter, type CourseProgress, type StepId } from "./course";
-import { checkpointCards, examCards, examWithReview, practiceDeck, quizCards, writeDeck, type ChapterData, type ChapterQuiz } from "./course-decks";
+import { TENSE_MEANINGS, checkpointCards, examCards, examWithReview, practiceDeck, quizCards, writeDeck, type ChapterData, type ChapterQuiz } from "./course-decks";
 import { findGuide } from "./guides";
 import { LEVELS } from "./level";
 import { quizPlace } from "./quiz";
@@ -199,6 +199,20 @@ describe("chapter decks", () => {
       seen.add(card.track!.tense!);
     }
     assert.deepEqual([...seen].sort(), [...c.tenses].sort());
+  });
+
+  it("tense choice says how conocer, saber, poder and querer change meaning", () => {
+    const c = CHAPTERS.find((ch) => ch.id === "preterite-vs-imperfect")!;
+    const found = new Set<string>();
+    for (let s = 1; s <= 40; s++) {
+      const deck = practiceDeck(chapterData(c), seeded(s));
+      for (let card = deck(); card; card = deck()) {
+        const meaning = TENSE_MEANINGS[card.track!.item];
+        if (meaning) found.add(card.track!.item);
+        assert.ok(!meaning || card.explain!.endsWith(meaning), card.explain);
+      }
+    }
+    assert.ok(found.size > 0, "no meaning-change card dealt");
   });
 
   it("verb choice hides the verb until it's answered", () => {

@@ -41,6 +41,18 @@ function wordQuestion(words: string[], kind: "gender" | "agreement", random: Ran
   return () => (fitting.length ? listedWordCard(fitting[Math.floor(random() * fitting.length)], kind, random) : null);
 }
 
+/** Verbs whose meaning changes with the tense, as the preterite vs. imperfect guide teaches, said after a tense choice. */
+export const TENSE_MEANINGS: Record<string, string> = {
+  "verb:conocer:preterite": "Conocer in the preterite means met.",
+  "verb:conocer:imperfect": "Conocer in the imperfect means knew, as in being familiar with someone or somewhere.",
+  "verb:saber:preterite": "Saber in the preterite means found out.",
+  "verb:saber:imperfect": "Saber in the imperfect means knew, or knew how to.",
+  "verb:poder:preterite": "Poder in the preterite means managed to, and with no it means failed to.",
+  "verb:poder:imperfect": "Poder in the imperfect means was able to, in general.",
+  "verb:querer:preterite": "Querer in the preterite means tried to, and with no it means refused.",
+  "verb:querer:imperfect": "Querer in the imperfect means wanted to, or loved with a person.",
+};
+
 /**
  * Fill in the blank with the tense hidden, so the sentence has to show which of the chapter's tenses it takes. After
  * answering, it says which one. The saved item is still the verb and tense, so stats by tense stay right.
@@ -53,7 +65,9 @@ function chooseTenseDeck({ chapter, verbs, bank }: ChapterData, random: Random):
     const card = blanks();
     const tense = card && TENSES.find((t) => t.id === card.track?.tense);
     if (!card || !tense) return card;
-    return { ...card, id: `choose:${card.id}`, badge: label, context: "Which tense does the sentence need?", explain: `This sentence takes the ${tense.name.toLowerCase()}.` };
+    const meaning = TENSE_MEANINGS[card.track!.item];
+    const explain = `This sentence takes the ${tense.name.toLowerCase()}.${meaning ? ` ${meaning}` : ""}`;
+    return { ...card, id: `choose:${card.id}`, badge: label, context: "Which tense does the sentence need?", explain };
   };
 }
 
