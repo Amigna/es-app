@@ -51,7 +51,7 @@ export const CHECKPOINT_SIZE = CHECKPOINT_MIX.verbs + CHECKPOINT_MIX.quiz + CHEC
 
 export const STEPS: { id: StepId; title: string; hint: string }[] = [
   { id: "learn", title: "Learn", hint: "A short lesson" },
-  { id: "see", title: "See it", hint: "The pattern and real sentences" },
+  { id: "see", title: "See it", hint: "Real sentences using the pattern" },
   // The quiz comes right after the lesson, while it's fresh, and the flashcards and the reading sit between the typed
   // steps, so they don't all run back to back before the checkpoint.
   { id: "quiz", title: "Quiz", hint: "Questions on the lesson" },

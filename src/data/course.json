@@ -6,7 +6,7 @@
     "summary": "Talk about what you do every day with -ar, -er and -ir verbs.",
     "guide": { "slug": "present-regular" },
     "tenses": ["present"],
-    "models": ["hablar", "comer", "vivir"],
+    "models": ["hablar", "trabajar", "estudiar", "comer", "beber", "aprender", "vivir", "escribir", "abrir"],
     "verbs": ["hablar", "trabajar", "estudiar", "llegar", "llamar", "tomar", "mirar", "esperar", "buscar", "necesitar", "comprar", "cocinar", "bailar", "caminar", "escuchar", "comer", "beber", "leer", "correr", "vender", "aprender", "comprender", "vivir", "escribir", "recibir", "abrir"],
     "drills": ["conjugation", "blanks"],
     "words": [
@@ -73,7 +73,7 @@
     "summary": "Verbs like pensar, volver and pedir change their stem, and verbs like tener and hacer have a yo form of their own.",
     "guide": { "slug": "present-irregular" },
     "tenses": ["present"],
-    "models": ["pensar", "volver", "pedir", "tener"],
+    "models": ["pensar", "querer", "volver", "dormir", "pedir", "servir", "tener", "hacer", "salir"],
     "verbs": ["pensar", "querer", "empezar", "cerrar", "preferir", "entender", "poder", "volver", "dormir", "encontrar", "contar", "jugar", "almorzar", "pedir", "servir", "repetir", "seguir", "tener", "venir", "hacer", "poner", "salir", "decir", "conocer", "saber", "traer", "oír", "ver", "dar"],
     "drills": ["conjugation", "blanks"],
     "words": [
@@ -184,7 +184,7 @@
     "summary": "Me levanto, te duchas, se viste: actions you do to yourself, and your daily routine.",
     "guide": { "slug": "reflexive-verbs" },
     "tenses": ["present"],
-    "models": ["levantarse", "vestirse"],
+    "models": ["levantarse", "ducharse", "vestirse"],
     "verbs": ["levantarse", "sentarse", "acostarse", "despertarse", "ducharse", "vestirse", "llamarse", "quedarse", "irse", "ponerse", "sentirse", "divertirse", "acordarse", "lavarse", "peinarse", "bañarse", "dormirse", "casarse", "preocuparse", "enojarse"],
     "drills": ["conjugation", "blanks"],
     "words": [
@@ -201,7 +201,7 @@
     "summary": "Hablé, comí, viví: finished actions in the past.",
     "guide": { "slug": "preterite-regular" },
     "tenses": ["preterite"],
-    "models": ["hablar", "comer", "vivir", "llegar"],
+    "models": ["hablar", "trabajar", "llegar", "comer", "beber", "aprender", "vivir", "escribir", "abrir"],
     "verbs": ["hablar", "trabajar", "estudiar", "llegar", "buscar", "pagar", "tomar", "comprar", "cocinar", "viajar", "comer", "beber", "correr", "vender", "aprender", "volver", "vivir", "escribir", "recibir", "abrir", "salir", "leer"],
     "drills": ["conjugation", "blanks"],
     "words": [
@@ -217,7 +217,7 @@
     "summary": "Fui, tuve, hice, dije: the past tense of the verbs you use most.",
     "guide": { "slug": "preterite-irregular" },
     "tenses": ["preterite"],
-    "models": ["tener", "hacer", "ir", "pedir"],
+    "models": ["ir", "tener", "estar", "hacer", "decir", "poder", "pedir", "dormir"],
     "verbs": ["ser", "ir", "estar", "tener", "hacer", "decir", "poder", "poner", "querer", "saber", "venir", "traer", "dar", "ver", "conducir", "pedir", "dormir", "sentir", "preferir", "seguir"],
     "drills": ["conjugation", "blanks"],
     "words": [
@@ -233,7 +233,7 @@
     "summary": "Hablaba, comía, era: what used to happen and what was going on.",
     "guide": { "slug": "imperfect" },
     "tenses": ["imperfect"],
-    "models": ["hablar", "comer", "ser", "ir"],
+    "models": ["hablar", "trabajar", "comer", "vivir", "ser", "ir", "ver"],
     "verbs": ["ser", "ir", "ver", "estar", "tener", "hacer", "vivir", "jugar", "comer", "hablar", "trabajar", "querer", "poder", "saber", "dormir", "leer", "escuchar", "llevar"],
     "drills": ["conjugation", "blanks"],
     "words": [
@@ -363,7 +363,7 @@
       "quiz": [0, 1, 2, 3, 4, 5, 6, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 28, 29, 30, 31]
     },
     "tenses": ["impAffirmative", "impNegative"],
-    "models": ["hablar", "comer", "tener"],
+    "models": ["hablar", "comer", "escribir", "tener", "hacer", "decir"],
     "verbs": ["hablar", "comer", "escribir", "tener", "venir", "poner", "salir", "hacer", "decir", "ir", "ser", "dar", "abrir", "cerrar", "esperar", "llamar", "traer", "buscar", "sentarse", "levantarse", "dormir", "pedir"],
     "persons": [1],
     "drills": ["conjugation", "blanks"],
@@ -385,7 +385,7 @@
       "quiz": [7, 8, 9, 22, 23, 24, 25, 26, 27, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47]
     },
     "tenses": ["impAffirmative", "impNegative"],
-    "models": ["hablar", "comer", "salir"],
+    "models": ["hablar", "comer", "escribir", "hacer", "salir"],
     "verbs": ["pasar", "escribir", "tomar", "esperar", "abrir", "firmar", "traer", "venir", "poner", "hablar", "hacer", "llamar", "comer", "salir", "buscar", "decir", "cerrar", "llegar", "comprar", "ir"],
     "persons": [2, 3, 4],
     "drills": ["conjugation", "blanks"],
@@ -406,7 +406,7 @@
       "quiz": [0, 1, 2, 3, 4, 5, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]
     },
     "tenses": ["presentPerfect"],
-    "models": ["hablar", "comer", "hacer"],
+    "models": ["hablar", "comer", "vivir", "hacer", "decir", "ver"],
     "verbs": ["hablar", "comer", "vivir", "hacer", "decir", "ver", "escribir", "poner", "volver", "abrir", "romper", "estar", "ser", "tener", "ir", "llegar", "terminar", "leer", "descubrir", "traer"],
     "drills": ["conjugation", "blanks"],
     "words": [
@@ -423,7 +423,7 @@
     "summary": "Hablaré and hablaría: promises, predictions, guesses and what would happen.",
     "guide": { "slug": "talking-about-the-future" },
     "tenses": ["future", "conditional"],
-    "models": ["hablar", "tener", "hacer"],
+    "models": ["hablar", "comer", "vivir", "tener", "hacer", "decir"],
     "verbs": ["tener", "poder", "saber", "querer", "hacer", "decir", "poner", "salir", "venir", "haber", "hablar", "comer", "vivir", "ir", "ser", "estar", "llegar", "viajar", "comprar", "trabajar"],
     "drills": ["conjugation", "blanks"],
     "words": [
@@ -456,7 +456,7 @@
       "quiz": [0, 1, 2, 5, 6, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
     },
     "tenses": ["subjPresent"],
-    "models": ["hablar", "comer", "tener", "ser"],
+    "models": ["hablar", "comer", "vivir", "tener", "hacer", "ser", "ir"],
     "verbs": ["hablar", "comer", "vivir", "tener", "hacer", "decir", "venir", "poner", "salir", "ser", "estar", "ir", "saber", "dar", "haber", "ver", "pedir", "dormir", "llegar", "buscar", "empezar", "poder", "querer", "traer"],
     "drills": ["conjugation", "blanks"],
     "words": [
@@ -511,7 +511,7 @@
     "summary": "Si tuviera dinero, viajaría: the subjunctive in the past, and what you'd do if.",
     "guide": { "slug": "imperfect-subjunctive" },
     "tenses": ["subjImperfect", "conditional"],
-    "models": ["hablar", "tener", "ser"],
+    "models": ["hablar", "comer", "vivir", "tener", "ser"],
     "verbs": ["ser", "ir", "tener", "estar", "hacer", "poder", "saber", "querer", "decir", "venir", "haber", "hablar", "vivir", "comer", "dar", "poner", "ver", "ganar", "comprar", "viajar"],
     "drills": ["conjugation", "blanks"],
     "words": [
@@ -527,7 +527,7 @@
     "summary": "Había comido, habré terminado, habría ido, hubiera sabido: the rest of the perfect tenses.",
     "guide": { "slug": "perfect-tenses" },
     "tenses": ["pluperfect", "futurePerfect", "conditionalPerfect", "subjPresentPerfect", "subjPluperfect"],
-    "models": ["hacer"],
+    "models": ["hablar", "hacer"],
     "verbs": ["hacer", "decir", "ver", "ir", "llegar", "terminar", "salir", "comer", "estar", "ser", "tener", "poder", "saber", "volver", "escribir", "hablar"],
     "drills": ["conjugation", "blanks"],
     "words": [

@@ -55,50 +55,88 @@ function Check({ done }: { done: boolean }) {
   );
 }
 
-/** The tables of the chapter's model verbs, then more sentences from the bank with the form in bold. */
-function SeeIt({ chapter, tables, examples }: { chapter: Chapter; tables: TenseSentences[]; examples: TenseSentences[] }) {
+/** A verb's ending, for grouping tables: -ar, -er or -ir, ignoring a reflexive se. */
+const ending = (inf: string) => inf.replace(/se$/, "").slice(-2);
+
+/** No form of the tense changes its stem or breaks the pattern; spelling changes like llegué still count as regular. */
+function regularIn(inf: string, tense: TenseId): boolean {
+  const verb = findVerb(inf)!;
+  return (markVerb(verb, conjugate(verb))[tense]?.forms ?? []).every((m) => !m || !("change" in m) || m.change === "spelling");
+}
+
+/**
+ * The tables of the chapter's model verbs, from the verb pages, at the top of the lesson. When they're all regular in
+ * the tense and have more than one ending, they're grouped by ending (-ar, -er, -ir), so each pattern shows side by
+ * side. Irregular models keep the chapter's order, which groups them by kind of change.
+ */
+function Tables({ chapter, tables }: { chapter: Chapter; tables: TenseSentences[] }) {
+  if (tables.length === 0) return null;
   return (
     <div className="space-y-8">
       {chapter.tenses.map((tense) => {
         const meta = TENSES.find((t) => t.id === tense)!;
         const shown = tables.filter((t) => t.tense === tense);
-        const more = examples.filter((e) => e.tense === tense);
+        const endings = [...new Set(shown.map((t) => ending(t.inf)))];
+        const byEnding = shown.length > 3 && endings.length > 1 && shown.every((t) => regularIn(t.inf, tense));
+        const groups = byEnding ? endings.map((e) => ({ label: `-${e} verbs`, rows: shown.filter((t) => ending(t.inf) === e) })) : [{ label: "", rows: shown }];
         return (
           <section key={tense} style={moodHue(meta.mood)} className="space-y-4">
-            <h2 className="text-xl font-semibold">{meta.name}</h2>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {shown.map(({ inf, sentences }) => {
-                const verb = findVerb(inf)!;
-                const conjugation = conjugate(verb);
-                const forms = conjugation.tenses[tense];
-                return forms ? (
-                  <TenseCard
-                    key={inf}
-                    title={`${conjugation.infinitive} · ${verb.en}`}
-                    infinitive={conjugation.infinitive}
-                    meta={meta}
-                    forms={forms}
-                    marks={markVerb(verb, conjugation)[tense]}
-                    voseo={false}
-                    sentence={sentences[0]}
-                  />
-                ) : null;
-              })}
-            </div>
-            {more.length > 0 && (
-              <div className="rounded-xl border border-stone-200 bg-white px-4 pb-3 dark:border-stone-800 dark:bg-stone-900">
-                {more.map(({ inf, sentences }) => {
-                  const forms = conjugate(findVerb(inf)!).tenses[tense]?.forms ?? [];
-                  return sentences.map((s) => (forms[s.person] ? <Example key={`${inf}:${s.es}`} sentence={s} form={forms[s.person]!} /> : null));
-                })}
+            <h2 className="text-xl font-semibold">
+              {chapter.tenses.length > 1 ? meta.name : `The pattern: ${meta.name.toLowerCase()}`}
+            </h2>
+            {groups.map(({ label, rows }) => (
+              <div key={label} className="space-y-3">
+                {label && <h3 className="text-lg font-medium text-stone-700 dark:text-stone-300">{label}</h3>}
+                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                  {rows.map(({ inf, sentences }) => {
+                    const verb = findVerb(inf)!;
+                    const conjugation = conjugate(verb);
+                    const forms = conjugation.tenses[tense];
+                    return forms ? (
+                      <TenseCard
+                        key={inf}
+                        title={`${conjugation.infinitive} · ${verb.en}`}
+                        infinitive={conjugation.infinitive}
+                        meta={meta}
+                        forms={forms}
+                        marks={markVerb(verb, conjugation)[tense]}
+                        voseo={false}
+                        sentence={sentences[0]}
+                      />
+                    ) : null;
+                  })}
+                </div>
               </div>
-            )}
+            ))}
           </section>
         );
       })}
       <p className="text-sm text-stone-500">
         Endings in color follow the pattern. Highlighted forms change the stem or break the pattern.
       </p>
+    </div>
+  );
+}
+
+/** More sentences from the bank with the form in bold, by tense. */
+function SeeIt({ chapter, examples }: { chapter: Chapter; examples: TenseSentences[] }) {
+  return (
+    <div className="space-y-8">
+      {chapter.tenses.map((tense) => {
+        const meta = TENSES.find((t) => t.id === tense)!;
+        const more = examples.filter((e) => e.tense === tense);
+        return more.length > 0 ? (
+          <section key={tense} style={moodHue(meta.mood)} className="space-y-4">
+            <h2 className="text-xl font-semibold">{meta.name}</h2>
+            <div className="rounded-xl border border-stone-200 bg-white px-4 pb-3 dark:border-stone-800 dark:bg-stone-900">
+              {more.map(({ inf, sentences }) => {
+                const forms = conjugate(findVerb(inf)!).tenses[tense]?.forms ?? [];
+                return sentences.map((s) => (forms[s.person] ? <Example key={`${inf}:${s.es}`} sentence={s} form={forms[s.person]!} /> : null));
+              })}
+            </div>
+          </section>
+        ) : null;
+      })}
     </div>
   );
 }
@@ -266,6 +304,7 @@ export default function CourseChapter({
 
         {open === "learn" && (
           <article className="space-y-8">
+            <Tables chapter={chapter} tables={tables} />
             <GuideSections sections={sections} />
             <button type="button" onClick={() => finishReading("learn")} className={buttonClass}>
               Done, next step
@@ -275,7 +314,7 @@ export default function CourseChapter({
 
         {open === "see" && (
           <div className="space-y-6">
-            <SeeIt chapter={chapter} tables={tables} examples={examples} />
+            <SeeIt chapter={chapter} examples={examples} />
             <button type="button" onClick={() => finishReading("see")} className={buttonClass}>
               Done, next step
             </button>
@@ -444,7 +483,9 @@ export default function CourseChapter({
                       ? `Best: ${mine.best}%`
                       : id === "practice" && chapter.drills.includes("numbers")
                         ? "Numbers, dates and times"
-                        : info.hint}
+                        : id === "learn" && (chapter.models?.length ?? 0) > 0
+                          ? "The verb tables, then a short lesson"
+                          : info.hint}
                   </span>
                 </span>
                 {id === upcoming && <span className="text-sm font-medium text-accent-700 dark:text-accent-300">Next</span>}

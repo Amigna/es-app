@@ -9,8 +9,8 @@ import { findReading } from "@/lib/reading-data";
 import { SENTENCE_BANK } from "@/lib/sentence-data";
 import { sentencesFor } from "@/lib/sentences";
 
-/** More example sentences shown per tense, beyond the model verbs' tables. */
-const EXAMPLES_PER_TENSE = 6;
+/** Example sentences See it shows per tense. The model verbs' tables are in the lesson. */
+const EXAMPLES_PER_TENSE = 10;
 
 export function generateStaticParams() {
   return CHAPTERS.map((c) => ({ id: c.id }));
