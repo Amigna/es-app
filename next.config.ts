@@ -47,10 +47,10 @@ const cspValue = Object.entries(csp)
   .join("; ");
 
 const securityHeaders = [
-  // Report-only for now: the browser logs what it would block in the console but blocks nothing.
-  // Once a few days of use show nothing real is blocked, rename this to Content-Security-Policy.
-  { key: "Content-Security-Policy-Report-Only", value: cspValue },
-  // Enforced now. Report-only ignores frame-ancestors, so this is what actually stops framing.
+  // Enforced. To try a change without breaking anything, rename it to Content-Security-Policy-Report-Only:
+  // the browser then logs "[Report Only]" messages for what it would block but blocks nothing.
+  { key: "Content-Security-Policy", value: cspValue },
+  // For older browsers that don't know frame-ancestors.
   { key: "X-Frame-Options", value: "DENY" },
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
