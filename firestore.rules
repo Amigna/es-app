@@ -62,9 +62,101 @@ service cloud.firestore {
       allow read, update, delete: if false;
     }
 
-    // Each person's data is private to them.
+    // Each person's data is private to them, and only the paths and fields the app saves can be written (see
+    // progress-store.ts). Rules can't count writes, so this limits what a write holds, not how many there are.
+    // A refused save stays queued in the browser and retries the whole queue, so a check honest data could fail
+    // would block that browser's saves for good. Keep these checks loose enough that real saves never trip them.
+    function mine(uid) {
+      return signedIn() && request.auth.uid == uid && canSaveProgress();
+    }
+
+    // The keys this write adds, changes or removes. Old docs may hold fields from earlier versions, so the
+    // allowed-field lists check only what changes.
+    function changedKeys() {
+      return resource == null
+        ? request.resource.data.keys()
+        : request.resource.data.diff(resource.data).affectedKeys();
+    }
+
+    function optNumber(d, k) {
+      return !(k in d) || d[k] is number;
+    }
+    function optString(d, k, n) {
+      return !(k in d) || (d[k] is string && d[k].size() <= n);
+    }
+    function optMap(d, k, n) {
+      return !(k in d) || (d[k] is map && d[k].size() <= n);
+    }
+    function optList(d, k, n) {
+      return !(k in d) || (d[k] is list && d[k].size() <= n);
+    }
+    function tally(d) {
+      return optNumber(d, 'right') && optNumber(d, 'accent') && optNumber(d, 'wrong');
+    }
+
     match /users/{uid}/{document=**} {
-      allow read, write: if signedIn() && request.auth.uid == uid && canSaveProgress();
+      allow read: if mine(uid);
+    }
+
+    // One per thing practiced, like verb:hablar:preterite: totals and its review schedule.
+    match /users/{uid}/items/{id} {
+      allow delete: if mine(uid);
+      allow create, update: if mine(uid)
+        && id.size() <= 300
+        && changedKeys().hasOnly(['right', 'accent', 'wrong', 'stability', 'difficulty', 'due', 'last'])
+        && tally(request.resource.data)
+        && optNumber(request.resource.data, 'stability')
+        && optNumber(request.resource.data, 'difficulty')
+        && optString(request.resource.data, 'due', 10)
+        && optString(request.resource.data, 'last', 10);
+    }
+
+    // One per calendar day, keyed like 2026-11-21. The list caps are far above a real day's; what's inside each
+    // mistake can't be checked, since rules can't loop over a list.
+    match /users/{uid}/days/{day} {
+      allow delete: if mine(uid);
+      allow create, update: if mine(uid)
+        && day.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$')
+        && changedKeys().hasOnly(['right', 'accent', 'wrong', 'newItems', 'reviews', 'masteredChange', 'recall',
+          'tenses', 'writing', 'listening', 'mistakes', 'hiddenMistakes', 'bestStreak'])
+        && tally(request.resource.data)
+        && optNumber(request.resource.data, 'newItems')
+        && optNumber(request.resource.data, 'reviews')
+        && optNumber(request.resource.data, 'masteredChange')
+        && optNumber(request.resource.data, 'bestStreak')
+        && optMap(request.resource.data, 'recall', 3)
+        && optMap(request.resource.data, 'tenses', 100)
+        && optMap(request.resource.data, 'writing', 100)
+        && optMap(request.resource.data, 'listening', 100)
+        && optList(request.resource.data, 'mistakes', 5000)
+        && optList(request.resource.data, 'hiddenMistakes', 5000);
+    }
+
+    // The summary, scheduled items, settings and records: only these names, each with its own fields.
+    function validStats(name, d, changed) {
+      return (name == 'summary'
+          && changed.hasOnly(['right', 'accent', 'wrong', 'tenses', 'verbs', 'kinds', 'writing', 'listening'])
+          && tally(d)
+          && optMap(d, 'tenses', 100) && optMap(d, 'verbs', 10000) && optMap(d, 'kinds', 1000)
+          && optMap(d, 'writing', 100) && optMap(d, 'listening', 100))
+        || (name == 'seen' && changed.hasOnly(['items']) && optList(d, 'items', 100000))
+        || (name == 'wanted' && changed.hasOnly(['items']) && optList(d, 'items', 10000))
+        || (name == 'struggling' && changed.hasOnly(['built', 'items'])
+          && (!('built' in d) || d.built is bool) && optMap(d, 'items', 10000))
+        || (name == 'records' && changed.hasOnly(['running', 'drillStreak'])
+          && optMap(d, 'running', 10) && optMap(d, 'drillStreak', 10))
+        || (name == 'settings' && changed.hasOnly(['level', 'levelAt', 'levelHistory', 'newPerDay', 'reviewsPerDay'])
+          && optString(d, 'level', 20) && optNumber(d, 'levelAt') && optList(d, 'levelHistory', 1000)
+          && optNumber(d, 'newPerDay') && optNumber(d, 'reviewsPerDay'))
+        // Keyed by chapter ID and exam:A1 and so on, so the keys can't be listed here.
+        || (name == 'course' && d.size() <= 500)
+        // Badge ID to the day it was earned.
+        || (name == 'badges' && d.size() <= 1000);
+    }
+
+    match /users/{uid}/stats/{name} {
+      allow delete: if mine(uid);
+      allow create, update: if mine(uid) && validStats(name, request.resource.data, changedKeys());
     }
   }
 }

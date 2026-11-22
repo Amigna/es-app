@@ -36,6 +36,7 @@ import { watched, watchUpdate } from "./struggles";
 
 // Everything lives under users/{uid}: `items` per thing practiced, `days` per calendar day, and `stats` for the
 // summary, the list of scheduled items, settings and personal records. Pages read those instead of scanning items.
+// firestore.rules lists every path and field written here, so a new field or stats doc needs a rules change too.
 
 export const DAYS_TO_LOAD = 120;
 
