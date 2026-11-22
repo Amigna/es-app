@@ -384,3 +384,22 @@ export async function loadReviewSettings(uid: string): Promise<ReviewSettings> {
 export async function saveReviewSetting(uid: string, setting: Partial<ReviewSettings>) {
   await setDoc(statsDoc(uid, "settings"), setting, { merge: true });
 }
+
+/** Firestore takes at most 500 writes in a batch. */
+const DELETE_BATCH = 450;
+
+/**
+ * Deletes everything saved under users/{uid}: one read and one write per doc, so a big account can use a noticeable
+ * part of the day's free writes. `reports` and `mineWorks` can't be read or deleted from the browser, so they stay
+ * until deleted by hand. Returns how many docs were deleted.
+ */
+export async function deleteAccountData(uid: string): Promise<number> {
+  const found = await Promise.all(["items", "days", "stats"].map((name) => getDocs(collection(db(), "users", uid, name))));
+  const refs = found.flatMap((snapshot) => snapshot.docs.map((d) => d.ref));
+  for (let start = 0; start < refs.length; start += DELETE_BATCH) {
+    const batch = writeBatch(db());
+    for (const ref of refs.slice(start, start + DELETE_BATCH)) batch.delete(ref);
+    await batch.commit();
+  }
+  return refs.length;
+}

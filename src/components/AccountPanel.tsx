@@ -3,6 +3,7 @@
 import { FirebaseError } from "firebase/app";
 import {
   createUserWithEmailAndPassword,
+  deleteUser,
   GoogleAuthProvider,
   isSignInWithEmailLink,
   onAuthStateChanged,
@@ -20,7 +21,8 @@ import { useEffect, useState } from "react";
 import { auth, firebaseConfigured } from "@/lib/firebase";
 import { clearCourse, syncCourse } from "@/lib/course-progress";
 import { setProgressEnabled } from "@/lib/progress-queue";
-import { loadReviewSettings, saveReviewSetting, type ReviewSettings } from "@/lib/progress-store";
+import { MINIMUM_AGE, PRIVACY_EMAIL } from "@/lib/site";
+import { deleteAccountData, loadReviewSettings, saveReviewSetting, type ReviewSettings } from "@/lib/progress-store";
 import { DEFAULT_NEW_PER_DAY, DEFAULT_REVIEWS_PER_DAY, NEW_PER_DAY_OPTIONS, REVIEWS_PER_DAY_OPTIONS } from "@/lib/schedule";
 
 const EMAIL_KEY = "sign-in-email";
@@ -144,6 +146,102 @@ function ReviewSettingsPanel({ uid }: { uid: string }) {
   );
 }
 
+// Firebase only deletes a sign-in made in about the last 5 minutes, so anything older signs in again first.
+const RECENT_SIGN_IN_MS = 4 * 60 * 1000;
+
+const signedInRecently = (user: User) => Date.now() - Date.parse(user.metadata.lastSignInTime ?? "") < RECENT_SIGN_IN_MS;
+
+function forgetThisBrowser() {
+  setProgressEnabled(false);
+  clearCourse();
+}
+
+/** Deletes the saved progress, then the sign-in itself. Answers still queued in this browser are dropped first. */
+function DeleteAccount({ user }: { user: User }) {
+  const [step, setStep] = useState<"closed" | "confirm" | "deleting">("closed");
+  const [error, setError] = useState<string | null>(null);
+
+  async function remove() {
+    setStep("deleting");
+    setError(null);
+    // Stops queued answers from saving again and re-creating what's being deleted.
+    forgetThisBrowser();
+    try {
+      await deleteAccountData(user.uid);
+    } catch {
+      setError("Couldn't delete your progress. Check your connection and try again.");
+      setStep("confirm");
+      return;
+    }
+    try {
+      // Signs out too, so the page goes back to the sign-in form.
+      await deleteUser(user);
+    } catch (err) {
+      setError(
+        err instanceof FirebaseError && err.code === "auth/requires-recent-login"
+          ? "Your progress is deleted. To delete the sign-in as well, sign out, sign in again and press Delete again."
+          : "Your progress is deleted, but the sign-in couldn't be. Try again in a minute.",
+      );
+      setStep("confirm");
+    }
+  }
+
+  if (step === "closed") {
+    return (
+      <button type="button" onClick={() => setStep("confirm")} className="text-sm text-red-700 underline dark:text-red-400">
+        Delete my account
+      </button>
+    );
+  }
+
+  const recent = signedInRecently(user);
+  return (
+    <div className="space-y-3 rounded-lg border border-red-300 bg-red-50 p-4 text-sm dark:border-red-900 dark:bg-red-950">
+      <p className="font-medium text-red-900 dark:text-red-200">Delete your account?</p>
+      <p className="text-red-900 dark:text-red-200">
+        This deletes all your saved progress (answers, mistakes, review schedule, course, badges and settings) and your sign-in. It can&apos;t be
+        undone. Problem reports and &quot;Mine works&quot; translations you sent are kept for review; to have those deleted too, email{" "}
+        <a href={`mailto:${PRIVACY_EMAIL}`} className="underline">
+          {PRIVACY_EMAIL}
+        </a>
+        .
+      </p>
+      {error && (
+        <p role="alert" className="text-red-700 dark:text-red-400">
+          {error}
+        </p>
+      )}
+      {recent ? (
+        <button
+          type="button"
+          onClick={remove}
+          disabled={step === "deleting"}
+          className="h-12 w-full rounded-xl bg-red-700 px-5 font-medium text-white transition hover:bg-red-800 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          {step === "deleting" ? "Deleting…" : "Delete everything"}
+        </button>
+      ) : (
+        <>
+          <p className="text-red-900 dark:text-red-200">For your safety, sign in again first, then come back here to delete.</p>
+          <button
+            type="button"
+            onClick={() => {
+              forgetThisBrowser();
+              signOut(auth());
+            }}
+            className={secondaryClass}
+          >
+            Sign out to sign in again
+          </button>
+        </>
+      )}
+      <button type="button" onClick={() => setStep("closed")} disabled={step === "deleting"} className="text-accent-700 underline dark:text-accent-400">
+        Cancel
+      </button>
+    </div>
+  );
+}
+
 function SignedIn({ user }: { user: User }) {
   useEffect(() => {
     setProgressEnabled(true);
@@ -166,14 +264,16 @@ function SignedIn({ user }: { user: User }) {
       <button
         type="button"
         onClick={() => {
-          setProgressEnabled(false);
-          clearCourse();
+          forgetThisBrowser();
           signOut(auth());
         }}
         className={secondaryClass}
       >
         Sign out
       </button>
+      <div className="border-t border-stone-200 pt-4 dark:border-stone-800">
+        <DeleteAccount user={user} />
+      </div>
     </div>
   );
 }
@@ -319,6 +419,18 @@ function SignInForm({ onError }: { onError: (message: string | null) => void }) 
           Email me a sign-in link instead
         </button>
       </div>
+
+      <p className="text-center text-xs text-stone-500">
+        Accounts are for people {MINIMUM_AGE} or older. By signing in you agree to the{" "}
+        <Link href="/terms" className="underline">
+          terms
+        </Link>{" "}
+        and the{" "}
+        <Link href="/privacy" className="underline">
+          privacy policy
+        </Link>
+        .
+      </p>
     </div>
   );
 }

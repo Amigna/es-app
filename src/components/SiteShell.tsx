@@ -81,6 +81,14 @@ export default function SiteShell({ children }: { children: ReactNode }) {
         {segment !== "drill" && <LevelPrompt className="mb-8" />}
         {children}
       </main>
+      <footer className="mx-auto flex w-full max-w-5xl justify-center gap-4 px-4 pb-6 text-sm text-stone-500">
+        <Link href="/privacy" className="hover:text-accent-700 hover:underline dark:hover:text-accent-400">
+          Privacy
+        </Link>
+        <Link href="/terms" className="hover:text-accent-700 hover:underline dark:hover:text-accent-400">
+          Terms
+        </Link>
+      </footer>
     </div>
   );
 }
