@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import CourseChapter, { type TenseSentences } from "@/components/CourseChapter";
-import type { TenseId } from "@/lib/conjugation/types";
-import { chapterQuiz, chapterSentences } from "@/lib/chapter-quiz";
+import { chapterQuiz, chapterSentences, rareKeys } from "@/lib/chapter-quiz";
 import { CHAPTERS, findChapter, type Chapter } from "@/lib/course";
 import { findGuide } from "@/lib/guides";
 import { findReading } from "@/lib/reading-data";
@@ -55,15 +54,6 @@ function seeItSentences(chapter: Chapter) {
     examples.push(...more.slice(0, EXAMPLES_PER_TENSE));
   }
   return { tables, examples };
-}
-
-/** Rare tenses of the chapter's verbs, which drills skip. Only these keys reach the browser. */
-function rareKeys(chapter: Chapter): string[] {
-  return chapter.verbs.flatMap((inf) =>
-    Object.entries(SENTENCE_BANK[inf] ?? {})
-      .filter(([, entry]) => entry && "rare" in entry)
-      .map(([tense]) => `${inf}:${tense as TenseId}`),
-  );
 }
 
 async function ChapterContent({ params }: { params: PageProps<"/course/[id]">["params"] }) {

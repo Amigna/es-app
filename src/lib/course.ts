@@ -10,10 +10,11 @@ export type StepId = "learn" | "see" | "words" | "quiz" | "practice" | "read" | 
 /**
  * Verb forms; `choose`, fill in the blank with the tense hidden, for chapters about choosing between tenses;
  * `chooseVerb`, the same with the verb hidden, for choosing between verbs like ser and estar; or for
- * chapters about nouns and adjectives, gender and agreement questions on the chapter's words; or `numbers`, generated
- * number, date and time questions, which a short lesson may have too.
+ * chapters about nouns and adjectives, gender and agreement questions on the chapter's words; `numbers`, generated
+ * number, date and time questions, which a short lesson may have too; or `progressive`, estar plus the gerund (estoy
+ * comiendo), from the verb or in the chapter's own sentences.
  */
-export type ChapterDrill = "conjugation" | "blanks" | "choose" | "chooseVerb" | "gender" | "agreement" | "numbers";
+export type ChapterDrill = "conjugation" | "blanks" | "choose" | "chooseVerb" | "gender" | "agreement" | "numbers" | "progressive";
 
 export interface Chapter {
   id: string;
@@ -27,6 +28,8 @@ export interface Chapter {
   models?: string[];
   /** The verbs practice and writing draw from. */
   verbs: string[];
+  /** Only these persons, by slot (for commands: 1 tú, 2 usted, 3 nosotros, 4 ustedes). Without it, every person. */
+  persons?: number[];
   /** Empty when there's nothing to drill beyond the quiz, like object pronouns. */
   drills: ChapterDrill[];
   /** A short lesson between chapters: the guide and its quiz, with no words, and no practice beyond `numbers`. */
@@ -42,6 +45,10 @@ export const CHAPTERS = courseRaw as Chapter[];
 /** A checkpoint score at or above this finishes the chapter. */
 export const PASS_SCORE = 80;
 
+/** Verb, quiz, word and translation questions in a checkpoint, before any are moved to fill a gap. */
+export const CHECKPOINT_MIX = { verbs: 10, quiz: 6, words: 5, write: 4 };
+export const CHECKPOINT_SIZE = CHECKPOINT_MIX.verbs + CHECKPOINT_MIX.quiz + CHECKPOINT_MIX.words + CHECKPOINT_MIX.write;
+
 export const STEPS: { id: StepId; title: string; hint: string }[] = [
   { id: "learn", title: "Learn", hint: "A short lesson" },
   { id: "see", title: "See it", hint: "The pattern and real sentences" },
@@ -52,7 +59,7 @@ export const STEPS: { id: StepId; title: string; hint: string }[] = [
   { id: "practice", title: "Practice", hint: "Conjugation and fill in the blank" },
   { id: "read", title: "Read", hint: "A short story using the chapter" },
   { id: "write", title: "Write", hint: "Translate a few sentences" },
-  { id: "checkpoint", title: "Checkpoint", hint: `A short mixed test. ${PASS_SCORE}% finishes the chapter` },
+  { id: "checkpoint", title: "Checkpoint", hint: `A mixed test on new sentences. ${PASS_SCORE}% finishes the chapter` },
 ];
 
 export const findChapter = (id: string) => CHAPTERS.find((c) => c.id === id);
@@ -214,6 +221,61 @@ export const levelChapters = (level: Level) => CHAPTERS.filter((c) => c.level ==
  */
 export const levelComplete = (level: Level, progress: CourseProgress) =>
   levelChapters(level).every((c) => isDone(progress, c.id) && stepsLeft(c, progress).length === 0);
+
+// Every few chapters, a review checkpoint tests everything up to that point, mostly the chapters since the last review.
+// Like exams, it's always open and its tries are kept with the chapters, under `review:A1-1` and so on. It earns no
+// badge and doesn't count toward finishing a level: the exam does that.
+
+/** The chapter each review follows. Each level's reviews are numbered in order. B2 has none, since its exam reviews. */
+const REVIEW_AFTER = [
+  "ser-and-estar",
+  "gustar",
+  "reflexive-verbs",
+  "imperfect",
+  "preterite-vs-imperfect-meaning",
+  "present-perfect",
+  "present-subjunctive",
+];
+
+export interface Review {
+  /** Its key in course progress, like `review:A1-1`. */
+  id: string;
+  /** Its address under /course/review, like `a1-1`. */
+  slug: string;
+  level: Level;
+  /** Its place among the level's reviews, from 1. */
+  number: number;
+  /** The chapter it follows. */
+  after: string;
+}
+
+export const REVIEWS: Review[] = REVIEW_AFTER.map((after, i) => {
+  const level = findChapter(after)!.level;
+  const number = REVIEW_AFTER.slice(0, i + 1).filter((id) => findChapter(id)!.level === level).length;
+  return { id: `review:${level}-${number}`, slug: `${level.toLowerCase()}-${number}`, level, number, after };
+});
+
+/** Questions in a review checkpoint. */
+export const REVIEW_SIZE = 30;
+/** The share of a review's questions from the chapters since the last review, or since the level began. */
+export const REVIEW_RECENT_SHARE = 0.6;
+
+export const findReview = (slug: string) => REVIEWS.find((r) => r.slug === slug.toLowerCase());
+export const reviewTitle = (review: Review) => `${review.level} review ${review.number}`;
+/** The review right after a chapter, if one follows it. */
+export const reviewAfter = (chapterId: string) => REVIEWS.find((r) => r.after === chapterId);
+
+/** Every chapter a review covers: the whole course up to and including the chapter it follows. */
+export const reviewChapters = (review: Review) => CHAPTERS.slice(0, CHAPTERS.findIndex((c) => c.id === review.after) + 1);
+
+/** The chapters since the review before it, or since its level began, whichever is later. They get most of the questions. */
+export function recentChapters(review: Review): Chapter[] {
+  const covered = reviewChapters(review);
+  const before = REVIEWS[REVIEWS.indexOf(review) - 1];
+  const afterPrevious = before ? CHAPTERS.findIndex((c) => c.id === before.after) + 1 : 0;
+  const levelStart = CHAPTERS.findIndex((c) => c.level === review.level);
+  return covered.slice(Math.max(afterPrevious, levelStart));
+}
 
 /** Chapters finished, counting only chapters still in the course. */
 export const chaptersDone = (progress: CourseProgress) => Object.keys(progress).filter((id) => CHAPTER_IDS.has(id) && isDone(progress, id)).length;

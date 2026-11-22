@@ -71,7 +71,546 @@
         {"person":4,"es":"Mis primos van a llegar mañana.","en":"My cousins are going to arrive tomorrow."},
         {"person":4,"es":"¿Ustedes van a cenar con nosotros?","en":"Are you all going to have dinner with us?"},
         {"person":4,"es":"Los niños van a la escuela a pie.","en":"The kids walk to school."},
-        {"person":4,"es":"Mis amigos van a jugar fútbol esta tarde.","en":"My friends are going to play soccer this afternoon."}
+        {"person":4,"es":"Mis amigos van a jugar fútbol esta tarde.","en":"My friends are going to play soccer this afternoon."},
+        {"person":0,"es":"Esta noche voy a ver una película con mis amigos.","en":"Tonight I'm going to watch a movie with my friends."},
+        {"person":1,"es":"¿A qué hora vas a salir del trabajo?","en":"What time are you going to leave work?"},
+        {"person":2,"es":"Mi hermana va a viajar a Costa Rica en julio.","en":"My sister is going to travel to Costa Rica in July."},
+        {"person":3,"es":"Vamos a comer en casa de los abuelos el domingo.","en":"We're going to eat at our grandparents' house on Sunday."},
+        {"person":4,"es":"Mis primos van a llegar mañana por la tarde.","en":"My cousins are going to arrive tomorrow afternoon."},
+        {"person":0,"es":"Mañana voy a levantarme temprano.","en":"Tomorrow I'm going to get up early."},
+        {"person":1,"es":"¿Vas a venir a mi fiesta?","en":"Are you going to come to my party?"},
+        {"person":2,"es":"Creo que va a llover esta tarde.","en":"I think it's going to rain this afternoon."},
+        {"person":3,"es":"Este verano vamos a ir a la playa.","en":"This summer we're going to go to the beach."},
+        {"person":4,"es":"¿Ustedes van a jugar al fútbol después de clase?","en":"Are you going to play soccer after class?"},
+        {"person":0,"es":"No voy a comprar nada hoy.","en":"I'm not going to buy anything today."},
+        {"person":2,"es":"El partido va a empezar a las ocho.","en":"The game is going to start at eight."},
+        {"person":4,"es":"Mis padres van a pintar la casa este mes.","en":"My parents are going to paint the house this month."},
+        {"person":3,"es":"¿Vamos a tomar el bus o un taxi?","en":"Are we going to take the bus or a taxi?"},
+        {"person":1,"es":"Si sigues así, vas a llegar tarde.","en":"If you keep this up, you're going to be late."}
+      ]
+    }
+  },
+  "ser-and-estar-meanings": {
+    "ser": {
+      "present": [
+        {"person":2,"es":"Esta película es muy aburrida.","en":"This movie is really boring."},
+        {"person":2,"es":"Mi sobrina es muy lista para su edad.","en":"My niece is very clever for her age."},
+        {"person":4,"es":"Los dueños de esa empresa son muy ricos.","en":"The owners of that company are very rich."},
+        {"person":2,"es":"Ese hombre es malo con todo el mundo.","en":"That man is mean to everyone."},
+        {"person":2,"es":"Es una buena maestra y todos la quieren.","en":"She's a good teacher and everyone loves her."},
+        {"person":2,"es":"Mi carro nuevo es verde.","en":"My new car is green."},
+        {"person":2,"es":"Tu hijo es muy despierto y aprende rápido.","en":"Your son is very sharp and learns fast."},
+        {"person":2,"es":"Este barrio es seguro de noche.","en":"This neighborhood is safe at night."},
+        {"person":2,"es":"Mi abuela es una persona muy viva y alegre.","en":"My grandma is a very lively, cheerful person."},
+        {"person":1,"es":"Tú eres muy orgulloso y nunca pides perdón.","en":"You're very proud and you never apologize."},
+        {"person":4,"es":"Ustedes son muy buenos estudiantes.","en":"You're very good students."},
+        {"person":3,"es":"Somos una familia aburrida: nunca salimos.","en":"We're a boring family: we never go out."},
+        {"person":0,"es":"Yo soy feliz en este pueblo.","en":"I'm happy in this town."},
+        {"person":4,"es":"Mis primas son muy guapas.","en":"My cousins are very pretty."},
+        {"person":0,"es":"Soy muy listo con los números.","en":"I'm very good with numbers."},
+        {"person":2,"es":"El invierno en Chicago es muy frío.","en":"Winter in Chicago is very cold."},
+        {"person":2,"es":"La leche es buena para los huesos.","en":"Milk is good for your bones."},
+        {"person":4,"es":"Mis abuelos son muy orgullosos.","en":"My grandparents are very proud."},
+        {"person":2,"es":"Esa calle no es segura de noche.","en":"That street isn't safe at night."},
+        {"person":2,"es":"Tu perro es muy listo.","en":"Your dog is very clever."},
+        {"person":2,"es":"Ese restaurante es muy malo.","en":"That restaurant is really bad."},
+        {"person":3,"es":"Somos muy buenos amigos.","en":"We're very good friends."},
+        {"person":1,"es":"Eres muy aburrido cuando hablas de fútbol.","en":"You're very boring when you talk about soccer."},
+        {"person":4,"es":"Las películas de ese director son muy buenas.","en":"That director's movies are very good."}
+      ]
+    },
+    "estar": {
+      "present": [
+        {"person":4,"es":"Los niños están aburridos porque llueve.","en":"The kids are bored because it's raining."},
+        {"person":1,"es":"¿Ya estás lista para salir?","en":"Are you ready to go yet?"},
+        {"person":2,"es":"¡Esta sopa está muy rica!","en":"This soup is really delicious!"},
+        {"person":2,"es":"No comas ese pescado, está malo.","en":"Don't eat that fish, it's gone bad."},
+        {"person":2,"es":"Mi abuelo está malo y no puede salir.","en":"My grandpa is sick and can't go out."},
+        {"person":4,"es":"Los plátanos todavía están verdes.","en":"The plantains are still unripe."},
+        {"person":0,"es":"Ya estoy despierto desde las seis.","en":"I've been awake since six."},
+        {"person":3,"es":"Estamos muy orgullosos de ti.","en":"We're very proud of you."},
+        {"person":2,"es":"El pez todavía está vivo.","en":"The fish is still alive."},
+        {"person":1,"es":"¿Estás seguro de que es aquí?","en":"Are you sure it's here?"},
+        {"person":4,"es":"Mis tíos están casados desde 1990.","en":"My aunt and uncle have been married since 1990."},
+        {"person":1,"es":"¡Qué guapa estás hoy!","en":"You look so pretty today!"},
+        {"person":2,"es":"El café está frío.","en":"The coffee is cold."},
+        {"person":0,"es":"Yo estoy contento con mi nuevo trabajo.","en":"I'm happy with my new job."},
+        {"person":4,"es":"Las plantas de la cocina están muertas.","en":"The kitchen plants are dead."},
+        {"person":4,"es":"Ustedes están muy cansados hoy.","en":"You're all very tired today."},
+        {"person":2,"es":"¡Este pastel está buenísimo!","en":"This cake is delicious!"},
+        {"person":0,"es":"Todavía estoy despierta y ya es medianoche.","en":"I'm still awake and it's already midnight."},
+        {"person":4,"es":"Los aguacates todavía están verdes.","en":"The avocados aren't ripe yet."},
+        {"person":1,"es":"¿Estás aburrido? Vamos al parque.","en":"Are you bored? Let's go to the park."},
+        {"person":3,"es":"Ya estamos listos para el viaje.","en":"We're ready for the trip now."},
+        {"person":2,"es":"Mi tía está muy orgullosa de su hijo.","en":"My aunt is very proud of her son."},
+        {"person":0,"es":"No estoy seguro de la respuesta.","en":"I'm not sure about the answer."},
+        {"person":4,"es":"Estas uvas están malas, tienen un olor raro.","en":"These grapes have gone bad, they smell strange."}
+      ]
+    }
+  },
+  "preterite-vs-imperfect-story": {
+    "dormir": {
+      "imperfect": [
+        {"person":0,"es":"Yo dormía tranquilo cuando sonó la alarma.","en":"I was sleeping peacefully when the alarm went off."}
+      ]
+    },
+    "leer": {
+      "imperfect": [
+        {"person":2,"es":"Mi papá leía el periódico cuando entramos.","en":"My dad was reading the newspaper when we came in."}
+      ]
+    },
+    "caminar": {
+      "imperfect": [
+        {"person":3,"es":"Caminábamos por la playa cuando empezó a llover.","en":"We were walking on the beach when it started to rain."}
+      ]
+    },
+    "llover": {
+      "imperfect": [
+        {"person":2,"es":"Llovía mucho cuando salimos del cine.","en":"It was raining hard when we left the movie theater."}
+      ]
+    },
+    "hacer": {
+      "imperfect": [
+        {"person":2,"es":"Hacía mucho frío la noche que llegaste.","en":"It was very cold the night you arrived."}
+      ],
+      "preterite": [
+        {"person":0,"es":"Estaba cansado, pero hice la tarea de todos modos.","en":"I was tired, but I did my homework anyway."}
+      ]
+    },
+    "estar": {
+      "imperfect": [
+        {"person":4,"es":"Los niños estaban en el patio cuando oyeron el ruido.","en":"The kids were in the yard when they heard the noise."}
+      ],
+      "preterite": [
+        {"person":3,"es":"Estuvimos dos horas en el tráfico porque había un accidente.","en":"We were stuck in traffic for two hours because there was an accident."}
+      ]
+    },
+    "ser": {
+      "imperfect": [
+        {"person":2,"es":"Era medianoche cuando por fin terminé la tarea.","en":"It was midnight when I finally finished my homework."}
+      ]
+    },
+    "tener": {
+      "imperfect": [
+        {"person":0,"es":"Yo tenía ocho años cuando nos mudamos a Miami.","en":"I was eight years old when we moved to Miami."}
+      ],
+      "preterite": [
+        {"person":3,"es":"Íbamos a la playa, pero tuvimos un problema con el carro.","en":"We were going to the beach, but we had a problem with the car."}
+      ]
+    },
+    "hablar": {
+      "imperfect": [
+        {"person":1,"es":"¿Con quién hablabas cuando entré?","en":"Who were you talking to when I came in?"}
+      ]
+    },
+    "cocinar": {
+      "imperfect": [
+        {"person":4,"es":"Mis tías cocinaban mientras nosotros poníamos la mesa.","en":"My aunts were cooking while we set the table."}
+      ]
+    },
+    "ver": {
+      "imperfect": [
+        {"person":3,"es":"Veíamos la tele cuando se fue la luz.","en":"We were watching TV when the power went out."}
+      ],
+      "preterite": [
+        {"person":0,"es":"Mientras caminaba al trabajo, vi un accidente.","en":"While I was walking to work, I saw an accident."}
+      ]
+    },
+    "estudiar": {
+      "imperfect": [
+        {"person":1,"es":"Mientras tú estudiabas, yo limpié toda la casa.","en":"While you were studying, I cleaned the whole house."}
+      ]
+    },
+    "sonar": {
+      "preterite": [
+        {"person":2,"es":"Estaba en la ducha cuando sonó el teléfono.","en":"I was in the shower when the phone rang."}
+      ]
+    },
+    "empezar": {
+      "preterite": [
+        {"person":2,"es":"Jugábamos al fútbol cuando empezó la tormenta.","en":"We were playing soccer when the storm started."}
+      ]
+    },
+    "llegar": {
+      "preterite": [
+        {"person":0,"es":"Cuando llegué a la fiesta, todos bailaban.","en":"When I got to the party, everyone was dancing."}
+      ]
+    },
+    "entrar": {
+      "preterite": [
+        {"person":4,"es":"Los ladrones entraron mientras dormíamos.","en":"The thieves got in while we were sleeping."}
+      ]
+    },
+    "llamar": {
+      "preterite": [
+        {"person":1,"es":"Me llamaste justo cuando salía de casa.","en":"You called me just as I was leaving the house."}
+      ]
+    },
+    "decir": {
+      "preterite": [
+        {"person":0,"es":"Mi mamá cocinaba cuando le dije la noticia.","en":"My mom was cooking when I told her the news."}
+      ]
+    },
+    "salir": {
+      "preterite": [
+        {"person":3,"es":"Hacía sol cuando salimos, pero luego llovió.","en":"It was sunny when we left, but then it rained."}
+      ]
+    },
+    "ir": {
+      "preterite": [
+        {"person":4,"es":"Como no había comida en casa, mis padres fueron al mercado.","en":"Since there was no food at home, my parents went to the market."}
+      ]
+    }
+  },
+  "preterite-vs-imperfect-meaning": {
+    "conocer": {
+      "preterite": [
+        {"person":0,"es":"Conocí a mi mejor amiga en la escuela primaria.","en":"I met my best friend in elementary school."},
+        {"person":1,"es":"¿Cuándo conociste a tu esposa?","en":"When did you meet your wife?"}
+      ],
+      "imperfect": [
+        {"person":4,"es":"Mis padres conocían a todos en el pueblo.","en":"My parents knew everyone in the town."},
+        {"person":3,"es":"No conocíamos esa ciudad antes del viaje.","en":"We didn't know that city before the trip."}
+      ]
+    },
+    "saber": {
+      "preterite": [
+        {"person":3,"es":"Supimos lo del accidente por un vecino.","en":"We found out about the accident from a neighbor."},
+        {"person":4,"es":"¿Cómo supieron ustedes dónde vivía?","en":"How did you find out where I lived?"}
+      ],
+      "imperfect": [
+        {"person":0,"es":"Yo de niña ya sabía leer.","en":"As a girl, I already knew how to read."},
+        {"person":1,"es":"Tú sabías la respuesta, ¿verdad?","en":"You knew the answer, didn't you?"}
+      ]
+    },
+    "poder": {
+      "preterite": [
+        {"person":3,"es":"Después de mucho esfuerzo, pudimos subir la montaña.","en":"After a lot of effort, we managed to climb the mountain."},
+        {"person":0,"es":"Lo intenté, pero no pude abrir la caja.","en":"I tried, but I couldn't get the box open."}
+      ],
+      "imperfect": [
+        {"person":2,"es":"Antes ella podía nadar por horas.","en":"She used to be able to swim for hours."},
+        {"person":0,"es":"Con mis lentes viejos yo no podía leer nada.","en":"With my old glasses I couldn't read anything."}
+      ]
+    },
+    "querer": {
+      "preterite": [
+        {"person":4,"es":"Mis hermanos quisieron ayudar, pero llegaron tarde.","en":"My brothers tried to help, but they arrived late."},
+        {"person":2,"es":"Le pedí perdón, pero ella no quiso hablar conmigo.","en":"I apologized, but she refused to talk to me."}
+      ],
+      "imperfect": [
+        {"person":0,"es":"Yo de niño quería ser astronauta.","en":"As a kid I wanted to be an astronaut."},
+        {"person":4,"es":"Los niños querían helado, pero no había.","en":"The kids wanted ice cream, but there wasn't any."}
+      ]
+    }
+  },
+  "commands-formal": {
+    "pasar": {
+      "impAffirmative": [
+        {"person":2,"es":"Pase, por favor, la doctora lo espera.","en":"Come in, please, the doctor is expecting you."},
+        {"person":4,"es":"Pasen al comedor, la cena está lista.","en":"Go into the dining room, everyone, dinner is ready."}
+      ]
+    },
+    "escribir": {
+      "impAffirmative": [
+        {"person":2,"es":"Escriba su nombre aquí, por favor.","en":"Write your name here, please."}
+      ],
+      "impNegative": [
+        {"person":4,"es":"No escriban en los libros, por favor.","en":"Please don't write in the books, everyone."}
+      ]
+    },
+    "tomar": {
+      "impAffirmative": [
+        {"person":2,"es":"Tome la segunda calle a la derecha.","en":"Take the second street on the right."},
+        {"person":3,"es":"Tomemos un café antes de la reunión.","en":"Let's have a coffee before the meeting."}
+      ],
+      "impNegative": [
+        {"person":2,"es":"No tome ese bus, señor, va al centro.","en":"Don't take that bus, sir, it goes downtown."}
+      ]
+    },
+    "esperar": {
+      "impAffirmative": [
+        {"person":2,"es":"Espere un momento, por favor, señora.","en":"Wait a moment, please, ma'am."},
+        {"person":4,"es":"Esperen aquí, ya viene el bus.","en":"Wait here, everyone, the bus is coming."}
+      ],
+      "impNegative": [
+        {"person":3,"es":"No esperemos más, ya es tarde.","en":"Let's not wait any longer, it's late already."}
+      ]
+    },
+    "abrir": {
+      "impAffirmative": [
+        {"person":2,"es":"Abra la boca, por favor.","en":"Open your mouth, please."},
+        {"person":4,"es":"Abran sus cuadernos en la página diez.","en":"Open your notebooks to page ten, everyone."}
+      ],
+      "impNegative": [
+        {"person":2,"es":"No abra la ventana, por favor, señor, hace frío.","en":"Please don't open the window, sir, it's cold."}
+      ]
+    },
+    "firmar": {
+      "impAffirmative": [
+        {"person":2,"es":"Firme el documento abajo, por favor.","en":"Sign the document at the bottom, please."}
+      ]
+    },
+    "traer": {
+      "impAffirmative": [
+        {"person":2,"es":"Traiga su pasaporte mañana, señor.","en":"Bring your passport tomorrow, sir."}
+      ]
+    },
+    "venir": {
+      "impAffirmative": [
+        {"person":2,"es":"Venga mañana a las nueve, por favor.","en":"Come tomorrow at nine, please."}
+      ],
+      "impNegative": [
+        {"person":2,"es":"No venga antes de las diez, por favor.","en":"Please don't come before ten."}
+      ]
+    },
+    "poner": {
+      "impAffirmative": [
+        {"person":4,"es":"Niños, pongan los libros en la mesa.","en":"Kids, put the books on the table."}
+      ],
+      "impNegative": [
+        {"person":2,"es":"Señora, no ponga la bolsa en el piso.","en":"Ma'am, don't put your bag on the floor."}
+      ]
+    },
+    "hablar": {
+      "impAffirmative": [
+        {"person":4,"es":"Chicos, hablen más despacio, por favor.","en":"Guys, speak more slowly, please."},
+        {"person":3,"es":"Hablemos con el profesor después de la clase.","en":"Let's talk to the teacher after class."}
+      ],
+      "impNegative": [
+        {"person":4,"es":"Chicos, no hablen durante la película.","en":"Guys, don't talk during the movie."},
+        {"person":3,"es":"No hablemos de trabajo hoy.","en":"Let's not talk about work today."}
+      ]
+    },
+    "hacer": {
+      "impAffirmative": [
+        {"person":4,"es":"Hagan la tarea antes del lunes.","en":"Do the homework before Monday, everyone."}
+      ],
+      "impNegative": [
+        {"person":4,"es":"Niños, no hagan ruido, el bebé está dormido.","en":"Kids, don't make noise, the baby is asleep."}
+      ]
+    },
+    "llamar": {
+      "impAffirmative": [
+        {"person":4,"es":"Chicos, llamen a sus padres cuando lleguen.","en":"Guys, call your parents when you get there."},
+        {"person":3,"es":"Llamemos a la abuela esta noche.","en":"Let's call grandma tonight."}
+      ]
+    },
+    "comer": {
+      "impAffirmative": [
+        {"person":3,"es":"Comamos en ese restaurante nuevo.","en":"Let's eat at that new restaurant."}
+      ],
+      "impNegative": [
+        {"person":4,"es":"No coman en el salón de clase, chicos.","en":"Don't eat in the classroom, guys."}
+      ]
+    },
+    "salir": {
+      "impAffirmative": [
+        {"person":3,"es":"Salgamos temprano para evitar el tráfico.","en":"Let's leave early to avoid the traffic."}
+      ],
+      "impNegative": [
+        {"person":4,"es":"No salgan sin paraguas, va a llover.","en":"Don't go out without an umbrella, everyone, it's going to rain."}
+      ]
+    },
+    "buscar": {
+      "impAffirmative": [
+        {"person":3,"es":"Busquemos un hotel cerca de la playa.","en":"Let's look for a hotel near the beach."}
+      ]
+    },
+    "decir": {
+      "impNegative": [
+        {"person":2,"es":"No diga eso, señor.","en":"Don't say that, sir."},
+        {"person":3,"es":"No digamos nada todavía.","en":"Let's not say anything yet."}
+      ]
+    },
+    "cerrar": {
+      "impNegative": [
+        {"person":2,"es":"No cierre la puerta todavía, señora.","en":"Don't close the door yet, ma'am."}
+      ]
+    },
+    "llegar": {
+      "impNegative": [
+        {"person":4,"es":"No lleguen tarde a la reunión, por favor.","en":"Please don't be late for the meeting, everyone."}
+      ]
+    },
+    "comprar": {
+      "impNegative": [
+        {"person":3,"es":"No compremos más comida, ya tenemos mucha.","en":"Let's not buy more food, we already have a lot."}
+      ]
+    },
+    "ir": {
+      "impNegative": [
+        {"person":3,"es":"No vayamos en carro, hay mucho tráfico.","en":"Let's not go by car, there's a lot of traffic."}
+      ]
+    }
+  },
+  "present-progressive": {
+    "hablar": {
+      "present": [
+        {"person":0,"es":"Ahora estoy hablando con mi jefe.","en":"I'm talking to my boss right now."},
+        {"person":4,"es":"¿De qué están hablando ustedes?","en":"What are you talking about?"}
+      ]
+    },
+    "trabajar": {
+      "present": [
+        {"person":2,"es":"Mi mamá está trabajando en casa hoy.","en":"My mom is working from home today."},
+        {"person":3,"es":"Este mes estamos trabajando mucho.","en":"This month we're working a lot."},
+        {"person":0,"es":"Estoy trabajando en un proyecto nuevo.","en":"I'm working on a new project."}
+      ]
+    },
+    "estudiar": {
+      "present": [
+        {"person":1,"es":"¿Estás estudiando para el examen?","en":"Are you studying for the test?"},
+        {"person":4,"es":"Mis primos están estudiando inglés este año.","en":"My cousins are studying English this year."},
+        {"person":0,"es":"Estoy estudiando para ser enfermera.","en":"I'm studying to be a nurse."}
+      ]
+    },
+    "cocinar": {
+      "present": [
+        {"person":2,"es":"La abuela está cocinando arroz con frijoles.","en":"Grandma is cooking rice and beans."},
+        {"person":0,"es":"No puedo salir, estoy cocinando.","en":"I can't go out, I'm cooking."},
+        {"person":4,"es":"Mis padres están cocinando para la fiesta.","en":"My parents are cooking for the party."}
+      ]
+    },
+    "escuchar": {
+      "present": [
+        {"person":3,"es":"Estamos escuchando la radio en el carro.","en":"We're listening to the radio in the car."},
+        {"person":1,"es":"¿Me estás escuchando?","en":"Are you listening to me?"},
+        {"person":4,"es":"Ellos están escuchando música en su cuarto.","en":"They're listening to music in their room."}
+      ]
+    },
+    "mirar": {
+      "present": [
+        {"person":4,"es":"Los niños están mirando dibujos animados.","en":"The kids are watching cartoons."},
+        {"person":2,"es":"¿Por qué me está mirando ese señor?","en":"Why is that man looking at me?"}
+      ]
+    },
+    "jugar": {
+      "present": [
+        {"person":4,"es":"Mis hermanos están jugando al fútbol en el parque.","en":"My brothers are playing soccer in the park."},
+        {"person":0,"es":"Estoy jugando un videojuego nuevo.","en":"I'm playing a new video game."}
+      ]
+    },
+    "esperar": {
+      "present": [
+        {"person":3,"es":"Estamos esperando el bus.","en":"We're waiting for the bus."},
+        {"person":2,"es":"Tu amigo te está esperando afuera.","en":"Your friend is waiting for you outside."},
+        {"person":0,"es":"Te estoy esperando en la puerta.","en":"I'm waiting for you at the door."}
+      ]
+    },
+    "comer": {
+      "present": [
+        {"person":3,"es":"Estamos comiendo en la cocina.","en":"We're eating in the kitchen."},
+        {"person":1,"es":"¿Qué estás comiendo? Huele muy bien.","en":"What are you eating? It smells great."},
+        {"person":4,"es":"Ustedes están comiendo muy rápido.","en":"You're eating very fast."}
+      ]
+    },
+    "beber": {
+      "present": [
+        {"person":2,"es":"El perro está bebiendo agua.","en":"The dog is drinking water."},
+        {"person":0,"es":"Estoy bebiendo mucha agua por el calor.","en":"I'm drinking a lot of water because of the heat."}
+      ]
+    },
+    "leer": {
+      "present": [
+        {"person":0,"es":"Estoy leyendo una novela muy buena.","en":"I'm reading a really good novel."},
+        {"person":4,"es":"Mis padres están leyendo en la sala.","en":"My parents are reading in the living room."},
+        {"person":3,"es":"Nosotros estamos leyendo el mismo libro.","en":"We're reading the same book."}
+      ]
+    },
+    "correr": {
+      "present": [
+        {"person":2,"es":"Mi vecino está corriendo en el parque.","en":"My neighbor is running in the park."}
+      ]
+    },
+    "escribir": {
+      "present": [
+        {"person":1,"es":"¿A quién le estás escribiendo?","en":"Who are you writing to?"},
+        {"person":3,"es":"Estamos escribiendo una carta a la abuela.","en":"We're writing a letter to grandma."}
+      ]
+    },
+    "vivir": {
+      "present": [
+        {"person":4,"es":"Mis tíos están viviendo en Panamá este año.","en":"My aunt and uncle are living in Panama this year."}
+      ]
+    },
+    "hacer": {
+      "present": [
+        {"person":1,"es":"¿Qué estás haciendo ahora?","en":"What are you doing now?"},
+        {"person":2,"es":"Mi hermana está haciendo la tarea.","en":"My sister is doing her homework."},
+        {"person":4,"es":"Los vecinos están haciendo mucho ruido.","en":"The neighbors are making a lot of noise."}
+      ]
+    },
+    "dormir": {
+      "present": [
+        {"person":2,"es":"El bebé está durmiendo en su cuarto.","en":"The baby is sleeping in his room."},
+        {"person":0,"es":"Estoy durmiendo muy poco estos días.","en":"I'm sleeping very little these days."}
+      ]
+    },
+    "pedir": {
+      "present": [
+        {"person":3,"es":"Estamos pidiendo una pizza. ¿Quieres algo?","en":"We're ordering a pizza. Do you want anything?"},
+        {"person":2,"es":"Mi hermanito está pidiendo un helado.","en":"My little brother is asking for an ice cream."}
+      ]
+    },
+    "decir": {
+      "present": [
+        {"person":1,"es":"No entiendo lo que estás diciendo.","en":"I don't understand what you're saying."}
+      ]
+    },
+    "traer": {
+      "present": [
+        {"person":4,"es":"Los invitados están trayendo la comida.","en":"The guests are bringing the food."}
+      ]
+    },
+    "servir": {
+      "present": [
+        {"person":2,"es":"El mesero está sirviendo el café.","en":"The waiter is serving the coffee."}
+      ]
+    }
+  },
+  "gustar": {
+    "gustar": {
+      "present": [
+        {"person":2,"es":"A mi papá le gusta mucho el béisbol.","en":"My dad really likes baseball."},
+        {"person":4,"es":"¿Te gustan las películas de miedo?","en":"Do you like horror movies?"},
+        {"person":4,"es":"A nosotros nos gustan las frutas tropicales.","en":"We like tropical fruit."}
+      ]
+    },
+    "encantar": {
+      "present": [
+        {"person":2,"es":"Nos encanta la comida de la abuela.","en":"We love grandma's cooking."},
+        {"person":4,"es":"A los niños les encantan los perros.","en":"The kids love dogs."}
+      ]
+    },
+    "interesar": {
+      "present": [
+        {"person":2,"es":"A mi hermana le interesa mucho la historia.","en":"My sister is really interested in history."},
+        {"person":4,"es":"No me interesan los deportes.","en":"I'm not interested in sports."}
+      ]
+    },
+    "importar": {
+      "present": [
+        {"person":2,"es":"¿Te importa si abro la ventana?","en":"Do you mind if I open the window?"},
+        {"person":4,"es":"A mis padres les importan mucho mis notas.","en":"My grades matter a lot to my parents."}
+      ]
+    },
+    "molestar": {
+      "present": [
+        {"person":2,"es":"Me molesta el ruido de la calle.","en":"The noise from the street bothers me."},
+        {"person":4,"es":"¿Te molestan los mosquitos?","en":"Do the mosquitoes bother you?"}
+      ]
+    },
+    "faltar": {
+      "present": [
+        {"person":2,"es":"Nos falta un plato en la mesa.","en":"We're missing a plate on the table."},
+        {"person":4,"es":"Me faltan dos páginas para terminar el libro.","en":"I have two pages left to finish the book."}
+      ]
+    },
+    "doler": {
+      "present": [
+        {"person":2,"es":"A mi abuelo le duele la espalda.","en":"My grandpa's back hurts."},
+        {"person":4,"es":"Me duelen los pies después de caminar tanto.","en":"My feet hurt after walking so much."}
       ]
     }
   }

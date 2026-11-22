@@ -4,8 +4,43 @@ import { listedWordCard } from "./card-decks";
 import { TENSES, type TenseId } from "./conjugation/types";
 import { conjugate } from "./conjugation/engine";
 import { findReading } from "./reading-data";
-import { CHAPTERS, EXAM_LEVELS, EXAM_REVIEW, EXAM_SIZE, chapterForReading, chapterSteps, levelChapters, levelComplete, mergeCourse, nextStep, parseCourse, stepsLeft, suggestedChapter, type CourseProgress, type StepId } from "./course";
-import { TENSE_MEANINGS, checkpointCards, examCards, examWithReview, practiceDeck, quizCards, writeDeck, type ChapterData, type ChapterQuiz } from "./course-decks";
+import {
+  CHAPTERS,
+  CHECKPOINT_SIZE,
+  EXAM_LEVELS,
+  EXAM_REVIEW,
+  EXAM_SIZE,
+  REVIEWS,
+  REVIEW_SIZE,
+  chapterForReading,
+  chapterSteps,
+  findReview,
+  levelChapters,
+  levelComplete,
+  mergeCourse,
+  nextStep,
+  parseCourse,
+  recentChapters,
+  reviewChapters,
+  stepsLeft,
+  suggestedChapter,
+  type CourseProgress,
+  type StepId,
+} from "./course";
+import {
+  TENSE_MEANINGS,
+  checkpointCards,
+  examCards,
+  examWithReview,
+  heldForCheckpoint,
+  practiceDeck,
+  progressiveForm,
+  quizCards,
+  reviewCards,
+  writeDeck,
+  type ChapterData,
+  type ChapterQuiz,
+} from "./course-decks";
 import { findGuide } from "./guides";
 import { LEVELS } from "./level";
 import { quizPlace } from "./quiz";
@@ -111,7 +146,8 @@ describe("course chapters", () => {
           assert.ok(c.tenses.includes(tense), `${id}: ${tense}`);
           const bank = new Set(sentencesFor(SENTENCE_BANK, inf, tense).map((s) => s.es));
           for (const s of rows) {
-            const form = conjugate(findVerb(inf)!).tenses[tense]?.forms[s.person];
+            // The present progressive's sentences are kept under the present, with estar and the gerund in them.
+            const form = c.drills.includes("progressive") ? progressiveForm(findVerb(inf)!, s.person) : conjugate(findVerb(inf)!).tenses[tense]?.forms[s.person];
             assert.ok(form && findForm(s.es, form), `${id}: "${s.es}" lacks ${form}`);
             assert.ok(/[.?!]$/.test(s.es) && /[.?!]$/.test(s.en), s.es);
             assert.ok(!bank.has(s.es), `${id}: "${s.es}" is already in the bank`);
@@ -202,7 +238,7 @@ describe("chapter decks", () => {
   });
 
   it("tense choice says how conocer, saber, poder and querer change meaning", () => {
-    const c = CHAPTERS.find((ch) => ch.id === "preterite-vs-imperfect")!;
+    const c = CHAPTERS.find((ch) => ch.id === "preterite-vs-imperfect-meaning")!;
     const found = new Set<string>();
     for (let s = 1; s <= 40; s++) {
       const deck = practiceDeck(chapterData(c), seeded(s));
@@ -259,16 +295,91 @@ describe("chapter decks", () => {
     }
   });
 
-  it("checkpoints mix about 15 different questions from the chapter", () => {
+  it("checkpoints mix 25 different questions from the chapter only", () => {
     for (const c of CHAPTERS) {
-      const cards = checkpointCards(chapterData(c), seeded(11));
-      assert.ok(cards.length >= 12 && cards.length <= 15, `${c.id}: ${cards.length}`);
+      const data = chapterData(c);
+      const cards = checkpointCards(data, seeded(11));
+      // A short lesson with no practice only has its quiz, which can be smaller than a checkpoint.
+      const quizSize = data.quiz?.questions.length ?? 0;
+      assert.equal(cards.length, c.drills.length === 0 && c.words.length === 0 ? Math.min(CHECKPOINT_SIZE, quizSize) : CHECKPOINT_SIZE, c.id);
       assert.equal(new Set(cards.map((card) => `${card.id}|${card.title}`)).size, cards.length, `${c.id} repeats a question`);
-      const typed = cards.filter((card) => card.badge === "English to Spanish");
-      assert.ok(typed.length >= 4 || c.words.every((w) => w.startsWith("phrase:")), c.id);
-      const words = cards.filter((card) => card.track?.item.startsWith("vocab:"));
-      for (const card of words) assert.ok(c.words.includes(card.track!.item.split(":").slice(1, 3).join(":")), card.track!.item);
+      const sentences = cards.map((card) => card.sentence ?? (card.writing ? (card.titleIsSpanish ? card.title : card.shown) : "")).filter(Boolean);
+      assert.equal(new Set(sentences).size, sentences.length, `${c.id} asks a sentence twice`);
+      const words = cards.filter((card) => card.track?.item.startsWith("vocab:") && card.badge === "English to Spanish");
+      assert.ok(words.length >= 5 || c.words.every((w) => w.startsWith("phrase:")) || c.lesson, c.id);
+      for (const card of cards.filter((x) => x.track?.item.startsWith("vocab:"))) assert.ok(c.words.includes(card.track!.item.split(":").slice(1, 3).join(":")), card.track!.item);
+      if (chapterSteps(c).includes("write")) assert.equal(cards.filter((card) => card.writing).length, 4, `${c.id} translations`);
+      for (const card of cards.filter((x) => x.track?.item.startsWith("verb:"))) assert.ok(c.verbs.includes(card.track!.item.split(":")[1]), `${c.id}: ${card.track!.item}`);
+      for (const card of cards.filter((x) => x.track?.item.startsWith("quiz:"))) assert.ok(card.id.startsWith(`quiz:${c.guide!.slug}:`), card.id);
     }
+  });
+
+  it("checkpoints use only sentences that practice and writing leave out", () => {
+    for (const c of CHAPTERS.filter((ch) => chapterSteps(ch).includes("write"))) {
+      const data = chapterData(c);
+      const shown = new Set<string>();
+      for (let s = 1; s <= 6; s++) {
+        for (const deck of [practiceDeck(data, seeded(s)), writeDeck(data, seeded(s))]) {
+          for (let card = deck(); card; card = deck()) {
+            const es = card.sentence ?? (card.writing ? (card.titleIsSpanish ? card.title : card.shown) : undefined);
+            if (es) shown.add(es);
+          }
+        }
+      }
+      for (let s = 1; s <= 6; s++) {
+        for (const card of checkpointCards(data, seeded(s))) {
+          const es = card.sentence ?? (card.writing ? (card.titleIsSpanish ? card.title : card.shown) : undefined);
+          if (es) {
+            assert.ok(!shown.has(es), `${c.id}: "${es}" was in practice or writing too`);
+            assert.ok(heldForCheckpoint(c.id, es), `${c.id}: "${es}" isn't held back`);
+          }
+        }
+      }
+    }
+  });
+
+  it("keep to the chapter's persons when it names some, like tú for the first commands chapter", () => {
+    for (const c of CHAPTERS.filter((ch) => ch.persons)) {
+      const data = chapterData(c);
+      for (let s = 1; s <= 4; s++) {
+        for (const card of [...checkpointCards(data, seeded(s))]) {
+          if (!card.track?.item.startsWith("verb:")) continue;
+          const person = card.table?.person;
+          assert.ok(person !== undefined && c.persons!.includes(person), `${c.id}: ${card.id}`);
+        }
+        const deck = practiceDeck(data, seeded(s));
+        let count = 0;
+        for (let card = deck(); card; card = deck()) {
+          count++;
+          assert.ok(c.persons!.includes(card.table!.person), `${c.id}: ${card.id}`);
+        }
+        assert.equal(count, 15, c.id);
+      }
+    }
+  });
+
+  it("present progressive practice asks for estar plus the gerund", () => {
+    const c = CHAPTERS.find((ch) => ch.drills.includes("progressive"))!;
+    const data = chapterData(c);
+    const deck = practiceDeck(data, seeded(2));
+    let count = 0;
+    const kinds = new Set<string>();
+    for (let card = deck(); card; card = deck()) {
+      count++;
+      const [, second, inf, person] = card.id.split(":");
+      const verb = findVerb(second === "blank" ? inf : second)!;
+      const p = Number(second === "blank" ? person : inf);
+      kinds.add(second === "blank" ? "blank" : "form");
+      assert.equal(card.answers[0].toLowerCase(), progressiveForm(verb, p), card.id);
+      assert.ok(c.verbs.includes(verb.inf), card.id);
+      assert.equal(card.track?.item, "progressive:present");
+    }
+    assert.equal(count, 15);
+    assert.deepEqual([...kinds].sort(), ["blank", "form"]);
+    assert.equal(progressiveForm(findVerb("leer")!, 0), "estoy leyendo");
+    assert.equal(progressiveForm(findVerb("dormir")!, 3), "estamos durmiendo");
+    const writing = writeDeck(data, seeded(3));
+    for (let card = writing(); card; card = writing()) assert.equal(card.context, "Present progressive");
   });
 
   it("keeps each quiz question's place in the guide, so it's saved as the same item", () => {
@@ -277,6 +388,67 @@ describe("chapter decks", () => {
       quizCards(quiz).map((c) => c.track!.item),
       ["quiz:talking-about-the-future:0", "quiz:talking-about-the-future:4", "quiz:talking-about-the-future:9"],
     );
+  });
+});
+
+describe("review checkpoints", () => {
+  it("each follow a chapter, two or three in a level with none at B2, and none right before an exam", () => {
+    assert.ok(REVIEWS.length > 0);
+    for (const r of REVIEWS) {
+      const c = CHAPTERS.find((ch) => ch.id === r.after);
+      assert.ok(c, r.after);
+      assert.equal(c.level, r.level);
+      assert.notEqual(levelChapters(r.level).at(-1), c, `${r.id} sits right before the exam`);
+      assert.equal(findReview(r.slug), r);
+    }
+    assert.equal(new Set(REVIEWS.map((r) => r.id)).size, REVIEWS.length);
+    assert.ok(!REVIEWS.some((r) => r.level === "B2"));
+    assert.deepEqual(REVIEWS.filter((r) => r.level === "A1").map((r) => r.number), [1, 2]);
+  });
+
+  it("cover the course so far, with the chapters since the last review counted as recent", () => {
+    const [first, second] = REVIEWS;
+    assert.deepEqual(reviewChapters(first).map((c) => c.id), CHAPTERS.slice(0, 3).map((c) => c.id));
+    assert.deepEqual(recentChapters(first), reviewChapters(first));
+    const recent = recentChapters(second);
+    assert.equal(recent[0], CHAPTERS[3]);
+    assert.equal(recent.at(-1)!.id, second.after);
+    // A level's first review starts its recent chapters at the level, not at the last level's review.
+    const firstA2 = REVIEWS.find((r) => r.level === "A2")!;
+    assert.equal(recentChapters(firstA2)[0], levelChapters("A2")[0]);
+  });
+
+  it("ask 30 different questions, mostly from the recent chapters, from held-back sentences", () => {
+    for (const review of REVIEWS) {
+      const chapters = reviewChapters(review);
+      const recent = new Set(recentChapters(review).map((c) => c.id));
+      const cards = reviewCards(chapters.map(chapterData), recent, REVIEW_SIZE, seeded(13));
+      assert.equal(cards.length, REVIEW_SIZE, review.id);
+      assert.equal(new Set(cards.map((card) => `${card.id}|${card.title}`)).size, cards.length, `${review.id} repeats a question`);
+      // A card could have come from a chapter when its guide question, word, or verb and tense is that chapter's.
+      // Recent chapters get 60%, so at least that many cards fit one of them, and some fit only earlier ones.
+      const fits = (card: (typeof cards)[number], c: (typeof chapters)[number]) => {
+        const item = card.track?.item ?? "";
+        const [source, a, b] = item.split(":");
+        if (source === "quiz") return card.id.startsWith(`quiz:${c.guide?.slug}:`) && chapterData(c).quiz!.questions.some((q) => `quiz:${c.guide!.slug}:${q.index}` === card.id);
+        if (source === "vocab") return c.words.includes(`${a}:${b}`);
+        if (source === "verb") return c.verbs.includes(a) && c.tenses.includes(b as TenseId);
+        if (source === "progressive") return c.drills.includes("progressive");
+        if (source === "number") return c.drills.includes("numbers");
+        // Translations: the verb and tense are in the card's id.
+        if (source === "writing") {
+          const [, , inf, tense] = card.id.split(":");
+          return c.verbs.includes(inf) && (c.tenses.includes(tense as TenseId) || (tense === "progressive" && c.drills.includes("progressive")));
+        }
+        return false;
+      };
+      const recentOnes = chapters.filter((c) => recent.has(c.id));
+      const earlierOnes = chapters.filter((c) => !recent.has(c.id));
+      const fromRecent = cards.filter((card) => recentOnes.some((c) => fits(card, c))).length;
+      assert.ok(fromRecent >= REVIEW_SIZE * 0.6, `${review.id}: ${fromRecent} of ${cards.length} from recent chapters`);
+      if (earlierOnes.length) assert.ok(cards.some((card) => !recentOnes.some((c) => fits(card, c)) && earlierOnes.some((c) => fits(card, c))), `${review.id} has nothing earlier`);
+      assert.ok(cards.every((card) => chapters.some((c) => fits(card, c))), `${review.id} asks something from no covered chapter`);
+    }
   });
 });
 

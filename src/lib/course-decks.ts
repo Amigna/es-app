@@ -1,11 +1,12 @@
-import { blankDeck, listedWordCard, writingDeck } from "./card-decks";
-import { EXAM_SIZE, type Chapter, type ChapterDrill } from "./course";
+import { blankDeck, listedWordCard, writingCard, writingDeck } from "./card-decks";
+import { CHECKPOINT_MIX, CHECKPOINT_SIZE, EXAM_SIZE, REVIEW_RECENT_SHARE, REVIEW_SIZE, chapterSteps, type Chapter, type ChapterDrill } from "./course";
+import { conjugate } from "./conjugation/engine";
 import { TENSES } from "./conjugation/types";
-import { conjugationCard, makeQuestion, type Card } from "./drill";
+import { conjugationCard, makeQuestion, personLabel, type Card } from "./drill";
 import { NUMBER_KINDS } from "./drill-settings";
 import { numberDeck } from "./number-cards";
 import { QUIZ_RUN, freshestFirst, quizCard, shuffled, type QuizQuestion, type QuizSeen } from "./quiz";
-import { sentencesFor, sentencesUpTo, type SentenceBank } from "./sentences";
+import { blankOut, findForm, sentencesFor, sentencesUpTo, type Sentence, type SentenceBank } from "./sentences";
 import type { Verb } from "./verbs";
 
 // The drills inside a chapter, locked to its tenses, verbs, words and guide. Imported on demand like card-decks, which
@@ -15,8 +16,6 @@ type Random = () => number;
 
 export const PRACTICE_SIZE = 15;
 export const WRITE_SIZE = 6;
-/** Verb, quiz and word questions in a checkpoint, before any are moved to fill a gap. */
-const CHECKPOINT_MIX = { verbs: 6, quiz: 5, words: 4 };
 
 /** The guide's questions for a chapter, each with its place in the full quiz, so saved items match the guide's own quiz. */
 export interface ChapterQuiz {
@@ -34,6 +33,33 @@ export interface ChapterData {
   /** Quiz questions this browser asked lately, which checkpoints ask last. */
   seen?: QuizSeen;
 }
+
+// About a third of each chapter's sentences are kept for its checkpoint, so the checkpoint never asks a sentence that
+// Practice or Write just showed. Which third depends on the chapter, so a sentence held back in one chapter can be
+// practiced in another.
+
+function hash(text: string): number {
+  let h = 2166136261;
+  for (let i = 0; i < text.length; i++) h = Math.imul(h ^ text.charCodeAt(i), 16777619);
+  return h >>> 0;
+}
+
+/** Whether a sentence is kept for the chapter's checkpoint and left out of its practice and writing. */
+export const heldForCheckpoint = (chapterId: string, es: string) => hash(`${chapterId}|${es}`) % 3 === 0;
+
+/** The chapter's sentences for one part: the checkpoint's held-back third, or the rest for practice and writing. */
+function bankFor(data: ChapterData, part: "practice" | "checkpoint"): SentenceBank {
+  const { chapter, bank } = data;
+  const keep = (s: Sentence) => heldForCheckpoint(chapter.id, s.es) === (part === "checkpoint") && (!chapter.persons || chapter.persons.includes(s.person));
+  return Object.fromEntries(
+    Object.entries(bank).map(([inf, tenses]) => [
+      inf,
+      Object.fromEntries(Object.entries(tenses).map(([tense, entry]) => [tense, Array.isArray(entry) ? entry.filter(keep) : entry])),
+    ]),
+  );
+}
+
+const withBank = (data: ChapterData, part: "practice" | "checkpoint"): ChapterData => ({ ...data, bank: bankFor(data, part) });
 
 /** A chapter word the question fits, like a noun for gender. Null when none does. */
 function wordQuestion(words: string[], kind: "gender" | "agreement", random: Random): () => Card | null {
@@ -94,21 +120,116 @@ function chooseVerbDeck({ chapter, verbs, bank }: ChapterData, random: Random): 
   };
 }
 
+// The present progressive isn't a tense of its own in the engine: it's estar's present plus the gerund. Its sentences
+// are kept under the verb's present, and only the ones with the progressive form count.
+
+const ESTAR = ["estoy", "estás", "está", "estamos", "están"];
+const PROGRESSIVE = "Present progressive";
+const PROGRESSIVE_HINT = "estar + -ando or -iendo";
+/** One tally for the whole chapter, like numbers: it isn't a tense, so it's not scheduled by verb. */
+const PROGRESSIVE_TRACK = { item: "progressive:present" };
+
+export const progressiveForm = (verb: Verb, person: number) => `${ESTAR[person]} ${conjugate(verb).gerund}`;
+
+/** A verb's sentences with the progressive form in them, from the chapter's own sentences. */
+export const progressiveSentences = (bank: SentenceBank, verb: Verb) =>
+  sentencesFor(bank, verb.inf, "present").filter((s) => findForm(s.es, progressiveForm(verb, s.person)));
+
+const pick = <T,>(list: T[], random: Random) => list[Math.floor(random() * list.length)];
+
+function progressiveExplain(verb: Verb, person: number): string {
+  const gerund = conjugate(verb).gerund;
+  return `${ESTAR[person].charAt(0).toUpperCase() + ESTAR[person].slice(1)} plus the gerund ${gerund}.`;
+}
+
+/** Verb forms (comer, nosotros: estamos comiendo) and fill in the blank in the chapter's sentences, in turn. */
+function progressiveDeck({ chapter, verbs, bank }: ChapterData, random: Random): () => Card | null {
+  const persons = chapter.persons ?? [0, 1, 2, 3, 4];
+  let turn = 0;
+  const form = (): Card | null => {
+    const verb = pick(verbs, random);
+    const person = pick(persons, random);
+    const answer = progressiveForm(verb, person);
+    const sentence = progressiveSentences(bank, verb).find((s) => s.person === person);
+    return {
+      id: `progressive:${verb.inf}:${person}`,
+      badge: PROGRESSIVE,
+      context: PROGRESSIVE_HINT,
+      person: personLabel("present", person),
+      title: verb.inf,
+      titleIsSpanish: true,
+      subtitle: verb.en,
+      ...(sentence ? { example: { es: blankOut(sentence.es, answer), en: sentence.en }, sentence: sentence.es } : {}),
+      ask: `${PROGRESSIVE} · ${personLabel("present", person)}`,
+      answers: [answer],
+      shown: answer,
+      explain: progressiveExplain(verb, person),
+      track: PROGRESSIVE_TRACK,
+    };
+  };
+  const blank = (): Card | null => {
+    const options = verbs.flatMap((verb) => progressiveSentences(bank, verb).map((s) => ({ verb, s })));
+    if (options.length === 0) return null;
+    const { verb, s } = pick(options, random);
+    const wanted = progressiveForm(verb, s.person);
+    const hit = findForm(s.es, wanted)!;
+    const answer = s.es.slice(hit.start, hit.end);
+    return {
+      id: `progressive:blank:${verb.inf}:${s.person}`,
+      badge: PROGRESSIVE,
+      context: PROGRESSIVE_HINT,
+      person: personLabel("present", s.person),
+      title: blankOut(s.es, wanted),
+      titleIsSpanish: true,
+      subtitle: s.en,
+      sentence: s.es,
+      ask: `${verb.inf}, ${personLabel("present", s.person)}`,
+      answers: [answer],
+      shown: answer.toLowerCase(),
+      explain: progressiveExplain(verb, s.person),
+      track: PROGRESSIVE_TRACK,
+    };
+  };
+  return () => (verbs.length === 0 ? null : turn++ % 2 === 0 ? form() : (blank() ?? form()));
+}
+
+/** Translations of the chapter's progressive sentences, both ways, labeled as the progressive. */
+function progressiveWritingDeck({ verbs, bank }: ChapterData, random: Random): () => Card | null {
+  return () => {
+    const options = verbs.filter((verb) => progressiveSentences(bank, verb).length > 0);
+    if (options.length === 0) return null;
+    const verb = pick(options, random);
+    const only: SentenceBank = { [verb.inf]: { present: progressiveSentences(bank, verb) } };
+    const card = writingCard(only, verb, "present", random() < 0.5 ? "toEnglish" : "toSpanish", random);
+    return card && { ...card, id: card.id.replace(":present:", ":progressive:"), context: PROGRESSIVE };
+  };
+}
+
+/** Conjugation, with only the chapter's persons when it names some. */
+function conjugationDeck({ chapter, verbs, bank, rare }: ChapterData, random: Random): () => Card | null {
+  return () => {
+    for (let i = 0; i < 40; i++) {
+      const q = makeQuestion(verbs, chapter.tenses, rare, random);
+      if (!q) return null;
+      if (!chapter.persons || chapter.persons.includes(q.person)) return conjugationCard(q, sentencesFor(bank, q.verb.inf, q.tense));
+    }
+    return null;
+  };
+}
+
 /** The chapter's drills in turn: verb forms, or gender and agreement on its words. Endless, so callers limit it. */
 function drillDeck(data: ChapterData, random: Random): () => Card | null {
-  const { chapter, verbs, bank, rare } = data;
+  const { chapter, verbs, bank } = data;
   const decks: Record<ChapterDrill, () => () => Card | null> = {
     blanks: () => blankDeck(bank, verbs, chapter.tenses, random),
-    conjugation: () => () => {
-      const q = makeQuestion(verbs, chapter.tenses, rare, random);
-      return q && conjugationCard(q, sentencesFor(bank, q.verb.inf, q.tense));
-    },
+    conjugation: () => conjugationDeck(data, random),
     gender: () => wordQuestion(chapter.words, "gender", random),
     agreement: () => wordQuestion(chapter.words, "agreement", random),
     choose: () => chooseTenseDeck(data, random),
     chooseVerb: () => chooseVerbDeck(data, random),
     // Up to 1,000, as the A1 lesson covers, with every kind of question.
     numbers: () => numberDeck({ kinds: NUMBER_KINDS, max: 1000 }, random),
+    progressive: () => progressiveDeck(data, random),
   };
   const kinds = chapter.drills.map((d) => decks[d]());
   let turn = Math.floor(random() * Math.max(1, kinds.length));
@@ -123,17 +244,29 @@ function drillDeck(data: ChapterData, random: Random): () => Card | null {
   };
 }
 
+/** The Spanish sentence a card is built on, if any, so one checkpoint doesn't ask the same sentence two ways. */
+function spanishOf(card: Card): string | undefined {
+  if (card.sentence) return card.sentence;
+  if (card.writing) return card.titleIsSpanish ? card.title : card.shown;
+  return undefined;
+}
+
+const cardKey = (card: Card) => `${card.id}|${card.title}`;
+
 /**
  * Up to `count` different cards, so a step never asks the same thing twice. A small chapter gives fewer cards rather
- * than repeats. The prompt counts too, since a verb's sentences for one person share an ID.
+ * than repeats. The prompt counts too, since a verb's sentences for one person share an ID. Cards on a sentence already
+ * in `sentences` are skipped, and the ones taken are added to it.
  */
-function distinct(next: () => Card | null, count: number): Card[] {
+function distinct(next: () => Card | null, count: number, sentences?: Set<string>): Card[] {
   const out = new Map<string, Card>();
   for (let tries = 0; out.size < count && tries < count * 8; tries++) {
     const card = next();
     if (!card) break;
-    const key = `${card.id}|${card.title}`;
-    if (!out.has(key)) out.set(key, card);
+    const es = spanishOf(card);
+    if (out.has(cardKey(card)) || (sentences && es && sentences.has(es))) continue;
+    out.set(cardKey(card), card);
+    if (sentences && es) sentences.add(es);
   }
   return [...out.values()];
 }
@@ -144,7 +277,7 @@ const queue = (cards: Card[]): (() => Card | null) => {
 };
 
 export function practiceDeck(data: ChapterData, random: Random = Math.random): () => Card | null {
-  return queue(distinct(drillDeck(data, random), PRACTICE_SIZE));
+  return queue(distinct(drillDeck(withBank(data, "practice"), random), PRACTICE_SIZE));
 }
 
 export function quizCards(quiz: ChapterQuiz, random: Random = Math.random): Card[] {
@@ -162,27 +295,83 @@ export function wordsDeck(chapter: Chapter, random: Random = Math.random): () =>
   return queue(cards);
 }
 
-export function writeDeck({ chapter, verbs, bank }: ChapterData, random: Random = Math.random): () => Card | null {
-  return queue(distinct(writingDeck(sentencesUpTo(bank, chapter.level), verbs, chapter.tenses, ["toEnglish", "toSpanish"], random), WRITE_SIZE));
+/** Translations from the given part of the chapter's sentences, both ways. */
+function translations(data: ChapterData, random: Random): () => Card | null {
+  const { chapter, verbs, bank } = data;
+  if (chapter.drills.includes("progressive")) return progressiveWritingDeck(data, random);
+  return writingDeck(sentencesUpTo(bank, chapter.level), verbs, chapter.tenses, ["toEnglish", "toSpanish"], random);
+}
+
+export function writeDeck(data: ChapterData, random: Random = Math.random): () => Card | null {
+  return queue(distinct(translations(withBank(data, "practice"), random), WRITE_SIZE));
 }
 
 /**
- * A short mixed test: the chapter's drills, guide questions and its words, typed. When a part has nothing to ask, like
- * phrases, which are never typed, the others take its share. Missed questions don't come back, so the score is a first try.
+ * A mixed test on the chapter only: its drills, guide questions, its words typed, and sentences to translate, all from
+ * the sentences Practice and Write leave out. When a part has nothing to ask, like phrases, which are never typed, the
+ * others take its share. Missed questions don't come back, so the score is a first try.
  */
-export function checkpointCards(data: ChapterData, random: Random = Math.random): Card[] {
+export function checkpointCards(data: ChapterData, random: Random = Math.random, size = CHECKPOINT_SIZE): Card[] {
   const { chapter, quiz, seen } = data;
-  const total = CHECKPOINT_MIX.verbs + CHECKPOINT_MIX.quiz + CHECKPOINT_MIX.words;
+  const held = withBank(data, "checkpoint");
+  const sentences = new Set<string>();
   const quizPool = quiz ? freshestFirst(quizCards(quiz, random), seen, random) : [];
   const typed = shuffled(chapter.words, random).flatMap((id) => listedWordCard(id, "toSpanish", random) ?? []);
   const words = typed.slice(0, CHECKPOINT_MIX.words);
+  const writes = chapterSteps(chapter).includes("write") ? distinct(translations(held, random), CHECKPOINT_MIX.write, sentences) : [];
   const drillShare = chapter.drills.length > 0 ? CHECKPOINT_MIX.verbs : 0;
-  const quizCount = Math.min(quizPool.length, total - words.length - drillShare);
-  const drills = drillShare ? distinct(drillDeck(data, random), total - words.length - quizCount) : [];
-  return shuffled([...drills, ...quizPool.slice(0, quizCount), ...words], random);
+  const quizCount = Math.min(quizPool.length, Math.max(CHECKPOINT_MIX.quiz, size - words.length - writes.length - drillShare));
+  const drills = drillShare ? distinct(drillDeck(held, random), size - words.length - writes.length - quizCount, sentences) : [];
+  // A chapter with few sentences can come up short; more of its quiz, then more words, make up the rest.
+  let short = size - words.length - writes.length - quizCount - drills.length;
+  const moreQuiz = quizPool.slice(quizCount, quizCount + Math.max(0, short));
+  short -= moreQuiz.length;
+  const moreWords = typed.slice(words.length, words.length + Math.max(0, short));
+  return shuffled([...drills, ...quizPool.slice(0, quizCount), ...moreQuiz, ...words, ...moreWords, ...writes], random);
 }
 
 export const checkpointDeck = (data: ChapterData, random: Random = Math.random) => queue(checkpointCards(data, random));
+
+/**
+ * A review checkpoint: questions from every chapter it covers, built like each chapter's checkpoint, so from the
+ * sentences each chapter held back. The recent chapters get REVIEW_RECENT_SHARE of them and the earlier ones the rest,
+ * spread evenly within each group. Missed questions don't come back.
+ */
+export function reviewCards(chapters: ChapterData[], recent: Set<string>, size = REVIEW_SIZE, random: Random = Math.random): Card[] {
+  const pools = chapters.map((data) => ({ recent: recent.has(data.chapter.id), cards: checkpointCards(data, random) }));
+  const taken = new Set<string>();
+  const sentences = new Set<string>();
+  const picked: Card[] = [];
+  const draw = (group: typeof pools, count: number) => {
+    const start = Math.floor(random() * Math.max(1, group.length));
+    const goal = picked.length + count;
+    for (let progress = true; picked.length < goal && progress; ) {
+      progress = false;
+      for (let i = 0; i < group.length && picked.length < goal; i++) {
+        const pool = group[(start + i) % group.length].cards;
+        while (pool.length > 0) {
+          const card = pool.shift()!;
+          const es = spanishOf(card);
+          if (taken.has(cardKey(card)) || (es && sentences.has(es))) continue;
+          taken.add(cardKey(card));
+          if (es) sentences.add(es);
+          picked.push(card);
+          progress = true;
+          break;
+        }
+      }
+    }
+  };
+  const newer = pools.filter((p) => p.recent);
+  const older = pools.filter((p) => !p.recent);
+  draw(newer, older.length ? Math.round(size * REVIEW_RECENT_SHARE) : size);
+  draw(older, size - picked.length);
+  // Either group can run out, and the other makes up the rest.
+  draw(newer, size - picked.length);
+  return shuffled(picked, random);
+}
+
+export const reviewDeck = (chapters: ChapterData[], recent: Set<string>, random: Random = Math.random) => queue(reviewCards(chapters, recent, REVIEW_SIZE, random));
 
 /**
  * A level exam: questions from each chapter's quiz in turn, so every chapter gets about the same share, then shuffled.

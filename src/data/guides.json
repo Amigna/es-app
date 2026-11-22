@@ -216,7 +216,13 @@
           {"rule": "Aburrido: boring with ser, bored with estar", "examples": [{"es": "La clase es aburrida.", "en": "The class is boring."}, {"es": "Estoy aburrido.", "en": "I'm bored."}]},
           {"rule": "Listo: clever with ser, ready with estar", "examples": [{"es": "Tu hija es lista.", "en": "Your daughter is clever."}, {"es": "La comida está lista.", "en": "The food is ready."}]},
           {"rule": "Rico: wealthy with ser, delicious with estar", "examples": [{"es": "Ese hombre es rico.", "en": "That man is rich."}, {"es": "El arroz está rico.", "en": "The rice is delicious."}]},
-          {"rule": "Malo: bad with ser, sick or gone off with estar", "examples": [{"es": "Ese perro es malo.", "en": "That dog is mean."}, {"es": "La leche está mala.", "en": "The milk has gone bad."}]}
+          {"rule": "Malo: bad with ser, sick or gone off with estar", "examples": [{"es": "Ese perro es malo.", "en": "That dog is mean."}, {"es": "La leche está mala.", "en": "The milk has gone bad."}]},
+          {"rule": "Bueno: good with ser, tasty with estar", "examples": [{"es": "Es una buena película.", "en": "It's a good movie."}, {"es": "La sopa está buena.", "en": "The soup is good."}], "splitAt": 1, "note": "Said of a person, estar bueno means good-looking in a crude way, so keep estar bueno for food."},
+          {"rule": "Verde: green with ser, unripe with estar", "examples": [{"es": "Mi carro es verde.", "en": "My car is green."}, {"es": "Los mangos están verdes.", "en": "The mangoes aren't ripe yet."}], "splitAt": 1},
+          {"rule": "Despierto: sharp with ser, awake with estar", "examples": [{"es": "Es un niño muy despierto.", "en": "He's a very sharp kid."}, {"es": "¿Estás despierto?", "en": "Are you awake?"}], "splitAt": 1},
+          {"rule": "Seguro: safe with ser, sure with estar", "examples": [{"es": "El barrio es seguro.", "en": "The neighborhood is safe."}, {"es": "Estoy seguro.", "en": "I'm sure."}], "splitAt": 1},
+          {"rule": "Orgulloso: proud by nature with ser, proud of something with estar", "examples": [{"es": "Es muy orgulloso y nunca pide perdón.", "en": "He's very proud and never apologizes."}, {"es": "Estoy orgulloso de ti.", "en": "I'm proud of you."}], "splitAt": 1},
+          {"rule": "Vivo: lively with ser, alive with estar", "examples": [{"es": "Mi abuela es muy viva.", "en": "My grandmother is very lively."}, {"es": "El pez todavía está vivo.", "en": "The fish is still alive."}], "splitAt": 1}
         ]
       },
       {
@@ -224,7 +230,8 @@
         "rules": [
           {"rule": "Muerto takes estar, even though death is permanent", "examples": [{"es": "Mi abuelo está muerto.", "en": "My grandfather is dead."}]},
           {"rule": "Casado usually takes estar in everyday speech", "examples": [{"es": "Estoy casado.", "en": "I'm married."}]},
-          {"rule": "Contento always takes estar, but feliz can take either", "examples": [{"es": "Estoy contento con el trabajo.", "en": "I'm pleased with the job."}, {"es": "Soy feliz aquí.", "en": "I'm happy here."}, {"es": "Estoy feliz con la noticia.", "en": "I'm happy about the news."}], "note": "Textbooks teach ser with feliz, but estar feliz is very common in Latin America, especially for happiness about something right now."}
+          {"rule": "Contento always takes estar, but feliz can take either", "examples": [{"es": "Estoy contento con el trabajo.", "en": "I'm pleased with the job."}, {"es": "Soy feliz aquí.", "en": "I'm happy here."}, {"es": "Estoy feliz con la noticia.", "en": "I'm happy about the news."}], "note": "Textbooks teach ser with feliz, but estar feliz is very common in Latin America, especially for happiness about something right now."},
+          {"rule": "Estar for how someone looks or how something tastes right now", "examples": [{"es": "Mi hermana es guapa.", "en": "My sister is pretty."}, {"es": "¡Qué guapa estás hoy!", "en": "You look so pretty today!"}, {"es": "La sopa está fría.", "en": "The soup is cold."}], "splitAt": 1, "note": "Ser says what someone or something is like. Estar says how they look, seem or taste at the moment, which is often a compliment."}
         ]
       }
     ]
@@ -464,6 +471,16 @@
         "heading": "Together in one sentence",
         "rules": [
           {"rule": "The imperfect is the background, and the preterite is what happened", "examples": [{"es": "Dormía cuando sonó el teléfono.", "en": "I was sleeping when the phone rang."}, {"es": "Llovía cuando salimos.", "en": "It was raining when we left."}]}
+        ]
+      },
+      {
+        "heading": "Telling a story",
+        "rules": [
+          {"rule": "Scene first, then events", "examples": [{"es": "Era tarde y hacía frío. De repente, alguien tocó la puerta.", "en": "It was late and it was cold. Suddenly, someone knocked on the door."}, {"es": "Estábamos en la playa y los niños jugaban. Entonces empezó a llover.", "en": "We were at the beach and the kids were playing. Then it started to rain."}], "note": "A story usually opens in the imperfect, with the time, the weather and what people were doing, then switches to the preterite for each thing that happens. When the story moves forward, it's the preterite."},
+          {"rule": "Mientras usually goes with the imperfect", "examples": [{"es": "Mientras yo cocinaba, ellos veían la tele.", "en": "While I was cooking, they were watching TV."}, {"es": "Mientras esperaba, leí todo el periódico.", "en": "While I was waiting, I read the whole newspaper."}], "note": "Mientras means while, so whatever it introduces was going on. The other half can be the imperfect too, or the preterite for something that happened and finished in that time."},
+          {"rule": "Cuando with the preterite for the moment something happened", "examples": [{"es": "Cuando llegué, todos dormían.", "en": "When I arrived, everyone was asleep."}, {"es": "Cuando era niño, vivía en Lima.", "en": "When I was a boy, I lived in Lima."}], "splitAt": 1, "note": "Cuando takes the preterite for a single moment, like arriving, and the imperfect for a stretch of time, like being a child."},
+          {"rule": "Words that point to the preterite", "examples": [{"es": "Una vez fui a Panamá.", "en": "Once I went to Panama."}, {"es": "Anoche llovió mucho.", "en": "It rained a lot last night."}, {"es": "De repente se cayó.", "en": "Suddenly she fell."}], "note": "Ayer, anoche, una vez, de repente, el lunes pasado, en 2010. They're hints, not rules: the whole sentence decides."},
+          {"rule": "Words that point to the imperfect", "examples": [{"es": "De niña siempre iba a la playa.", "en": "As a girl I always went to the beach."}, {"es": "Antes vivíamos en el campo.", "en": "We used to live in the country."}, {"es": "A menudo comíamos con los abuelos.", "en": "We often ate with our grandparents."}], "note": "Siempre, todos los días, a menudo, de niño, antes, mientras. Hints again: siempre can go with the preterite for something finished, as in Siempre fue mi mejor amiga."}
         ]
       },
       {
@@ -875,6 +892,45 @@
         "rules": [
           {"rule": "Iba a + infinitive: was going to", "examples": [{"es": "Iba a llamarte, pero se me olvidó.", "en": "I was going to call you, but I forgot."}]},
           {"rule": "The conditional reports what someone said would happen", "examples": [{"es": "Dijo que vendría.", "en": "He said he would come."}]}
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "present-progressive",
+    "level": "A1",
+    "title": "The present progressive",
+    "summary": "Estoy comiendo, estamos hablando: estar plus the gerund, for what's going on right now.",
+    "sections": [
+      {
+        "heading": "How it's built",
+        "rules": [
+          {"rule": "Estar plus the gerund", "examples": [{"es": "Estoy hablando por teléfono.", "en": "I'm talking on the phone."}, {"es": "¿Qué estás haciendo?", "en": "What are you doing?"}, {"es": "Estamos viendo una película.", "en": "We're watching a movie."}], "note": "Only estar changes for the person: estoy, estás, está, estamos, están. The gerund stays the same: estoy comiendo, estamos comiendo."},
+          {"rule": "-ar verbs take -ando", "examples": [{"es": "Ella está cocinando.", "en": "She's cooking."}, {"es": "Están trabajando.", "en": "They're working."}]},
+          {"rule": "-er and -ir verbs take -iendo", "examples": [{"es": "Estoy comiendo.", "en": "I'm eating."}, {"es": "¿Estás escribiendo un mensaje?", "en": "Are you writing a message?"}]}
+        ]
+      },
+      {
+        "heading": "Gerunds that change",
+        "rules": [
+          {"rule": "A vowel before -iendo makes it -yendo", "examples": [{"es": "Estoy leyendo un libro.", "en": "I'm reading a book."}, {"es": "¿Me estás oyendo?", "en": "Can you hear me?"}, {"es": "Están trayendo las sillas.", "en": "They're bringing the chairs."}], "note": "Leer, oír, traer, caer, creer and construir: leyendo, oyendo, trayendo, cayendo, creyendo, construyendo. Ir is yendo, but estar yendo is rare: people say voy or ya voy."},
+          {"rule": "-ir verbs that change their stem change it here too", "examples": [{"es": "Estoy pidiendo una pizza.", "en": "I'm ordering a pizza."}, {"es": "El bebé está durmiendo.", "en": "The baby is sleeping."}, {"es": "¿Qué estás diciendo?", "en": "What are you saying?"}], "note": "E becomes i (pedir, pidiendo; decir, diciendo; servir, sirviendo; repetir, repitiendo) and o becomes u (dormir, durmiendo). -ar and -er verbs never change their stem in the gerund: pensando, volviendo."}
+        ]
+      },
+      {
+        "heading": "When to use it",
+        "rules": [
+          {"rule": "For what's happening right now", "examples": [{"es": "No puedo hablar, estoy manejando.", "en": "I can't talk, I'm driving."}, {"es": "Los niños están jugando en el patio.", "en": "The kids are playing in the yard."}]},
+          {"rule": "For something going on these days", "examples": [{"es": "Estoy estudiando mucho este semestre.", "en": "I'm studying a lot this semester."}, {"es": "Mi hermano está trabajando en un banco.", "en": "My brother is working at a bank."}]},
+          {"rule": "The simple present often works too", "examples": [{"es": "¿Qué haces?", "en": "What are you doing?"}, {"es": "¿Qué estás haciendo?", "en": "What are you doing (right now)?"}], "note": "Spanish uses the progressive less than English does. The simple present is never wrong for right now. The progressive stresses that it's in progress."},
+          {"rule": "Not for plans: use the present or ir a", "examples": [{"es": "Mañana salgo para Lima.", "en": "I'm leaving for Lima tomorrow."}, {"es": "Esta noche voy a cenar con Ana.", "en": "I'm having dinner with Ana tonight."}], "note": "English says I'm leaving tomorrow. Spanish says salgo mañana or voy a salir mañana, not estoy saliendo mañana."},
+          {"rule": "Not for states like being tired or hungry", "examples": [{"es": "Estoy cansado.", "en": "I'm tired."}, {"es": "Tengo frío.", "en": "I'm cold."}], "note": "Ser, estar and tener describe states, so they stay in the simple present: estoy cansado, not estoy estando cansado."}
+        ]
+      },
+      {
+        "heading": "Pronouns",
+        "rules": [
+          {"rule": "Before estar, or attached to the gerund", "examples": [{"es": "Lo estoy leyendo.", "en": "I'm reading it."}, {"es": "Estoy leyéndolo.", "en": "I'm reading it."}, {"es": "Me estoy duchando.", "en": "I'm taking a shower."}, {"es": "Estoy duchándome.", "en": "I'm taking a shower."}], "note": "Both mean the same. Attached, the gerund gets a written accent to keep its stress: leyéndolo, duchándome. Never put the pronoun between estar and the gerund."}
         ]
       }
     ]

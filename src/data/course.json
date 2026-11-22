@@ -37,7 +37,11 @@
     "title": "Ser and estar",
     "level": "A1",
     "summary": "Two verbs for to be: what something is, and how or where it is.",
-    "guide": { "slug": "ser-vs-estar" },
+    "guide": {
+      "slug": "ser-vs-estar",
+      "sections": ["Use ser for", "Use estar for"],
+      "quiz": [0, 1, 2, 3, 4, 5, 8, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 30]
+    },
     "tenses": ["present"],
     "models": ["ser", "estar"],
     "verbs": ["ser", "estar"],
@@ -116,6 +120,21 @@
     "reading": "vacaciones-en-la-costa"
   },
   {
+    "id": "present-progressive",
+    "title": "The present progressive",
+    "level": "A1",
+    "summary": "Estoy comiendo, estamos hablando: estar plus the gerund, for what's going on right now.",
+    "guide": { "slug": "present-progressive" },
+    "tenses": ["present"],
+    "verbs": ["hablar", "trabajar", "estudiar", "cocinar", "escuchar", "mirar", "jugar", "esperar", "comer", "beber", "leer", "correr", "escribir", "vivir", "hacer", "dormir", "pedir", "decir", "traer", "servir"],
+    "drills": ["progressive"],
+    "words": [
+      "noun:televisión", "noun:teléfono", "noun:computadora", "noun:música", "noun:cama", "noun:sofá", "noun:sala", "noun:baño",
+      "noun:dormitorio", "noun:cuarto", "noun:cocina", "noun:ventana", "noun:jardín", "noun:bebé", "adjective:ocupado",
+      "adverb:ahora", "adverb:todavía", "adverb:ya"
+    ]
+  },
+  {
     "id": "por-vs-para-basics",
     "title": "Por vs. para: the basics",
     "level": "A1",
@@ -138,6 +157,25 @@
     "verbs": [],
     "drills": [],
     "words": []
+  },
+  {
+    "id": "ser-and-estar-meanings",
+    "title": "Ser and estar: when the meaning changes",
+    "level": "A2",
+    "summary": "Es aburrido or está aburrido, es listo or está listo: adjectives that mean one thing with ser and another with estar.",
+    "guide": {
+      "slug": "ser-vs-estar",
+      "sections": ["Adjectives that change meaning", "Common traps"],
+      "quiz": [6, 7, 9, 10, 22, 23, 24, 25, 26, 27, 28, 29, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+    },
+    "tenses": ["present"],
+    "verbs": ["ser", "estar"],
+    "drills": ["chooseVerb"],
+    "words": [
+      "adjective:aburrido", "adjective:listo", "adjective:rico", "adjective:malo", "adjective:bueno", "adjective:verde",
+      "adjective:despierto", "adjective:orgulloso", "adjective:seguro", "adjective:vivo", "adjective:muerto", "adjective:casado",
+      "adjective:guapo", "adjective:contento", "adjective:feliz", "adjective:frío", "adjective:caliente", "adjective:cansado"
+    ]
   },
   {
     "id": "reflexive-verbs",
@@ -207,13 +245,36 @@
   },
   {
     "id": "preterite-vs-imperfect",
-    "title": "Preterite vs. imperfect",
+    "title": "Preterite vs. imperfect: what happened and what was going on",
     "level": "A2",
-    "summary": "Telling a story: what happened, and what was going on around it.",
-    "guide": { "slug": "preterite-vs-imperfect" },
+    "summary": "The preterite for finished actions, the imperfect for habits, descriptions and what was in progress.",
+    "guide": {
+      "slug": "preterite-vs-imperfect",
+      "sections": ["Use the preterite for", "Use the imperfect for"],
+      "quiz": [0, 1, 2, 3, 6, 9, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+    },
     "tenses": ["preterite", "imperfect"],
     "models": ["estar", "tener"],
-    "verbs": ["ser", "estar", "tener", "hacer", "ir", "querer", "poder", "saber", "conocer", "llegar", "llover", "hablar", "salir", "ver", "decir"],
+    "verbs": ["ser", "estar", "tener", "hacer", "ir", "llegar", "llover", "hablar", "salir", "ver", "decir", "vivir", "comer", "jugar", "trabajar"],
+    "drills": ["choose"],
+    "words": [
+      "noun:invierno", "noun:primavera", "noun:otoño", "noun:mes", "noun:año", "noun:Navidad", "noun:escuela", "noun:colegio",
+      "noun:maestra", "noun:bicicleta", "noun:árbol", "adverb:una vez", "adverb:antes", "adverb:ayer", "adverb:anoche",
+      "adverb:todos los días", "adverb:siempre"
+    ]
+  },
+  {
+    "id": "preterite-vs-imperfect-story",
+    "title": "Preterite vs. imperfect: telling a story",
+    "level": "A2",
+    "summary": "Mientras, cuando and de repente: setting the scene in the imperfect, then saying what happened in the preterite.",
+    "guide": {
+      "slug": "preterite-vs-imperfect",
+      "sections": ["Together in one sentence", "Telling a story"],
+      "quiz": [3, 4, 5, 9, 16, 17, 18, 23, 25, 26, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56]
+    },
+    "tenses": ["preterite", "imperfect"],
+    "verbs": ["dormir", "leer", "caminar", "llover", "hacer", "estar", "ser", "tener", "hablar", "cocinar", "ver", "estudiar", "sonar", "empezar", "llegar", "entrar", "llamar", "decir", "salir", "ir"],
     "drills": ["choose"],
     "words": [
       "noun:lluvia", "noun:viento", "noun:sol", "noun:nieve", "noun:cielo", "noun:calor", "noun:frío", "noun:bosque", "noun:campo",
@@ -223,17 +284,59 @@
     "reading": "la-tormenta"
   },
   {
-    "id": "object-pronouns",
-    "title": "Object pronouns",
+    "id": "preterite-vs-imperfect-meaning",
+    "title": "Preterite vs. imperfect: verbs that change meaning",
     "level": "A2",
-    "summary": "Lo, la, le, se lo: saying it, giving it to her, without repeating the noun.",
-    "guide": { "slug": "object-pronouns" },
+    "summary": "Conocí or conocía, supe or sabía, pude or podía, quise or quería: the tense changes what these verbs mean.",
+    "guide": {
+      "slug": "preterite-vs-imperfect",
+      "sections": ["Verbs that change meaning"],
+      "quiz": [7, 8, 10, 12, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 57, 58, 59, 60, 61, 62]
+    },
+    "tenses": ["preterite", "imperfect"],
+    "models": ["conocer", "saber", "poder", "querer"],
+    "verbs": ["conocer", "saber", "poder", "querer"],
+    "drills": ["choose"],
+    "words": [
+      "noun:novio", "noun:novia", "noun:esposo", "noun:esposa", "noun:amigo", "noun:primo", "noun:tío", "noun:tía", "noun:nombre",
+      "noun:cita", "noun:verdad", "noun:mentira", "noun:secreto", "noun:respuesta", "noun:examen", "noun:prueba", "noun:ayuda",
+      "adjective:nervioso"
+    ]
+  },
+  {
+    "id": "object-pronouns",
+    "title": "Object pronouns: direct and indirect",
+    "level": "A2",
+    "summary": "Lo, la, le, les: saying it or giving it to her without repeating the noun.",
+    "guide": {
+      "slug": "object-pronouns",
+      "sections": ["The pronouns", "Where they go", "Things that surprise English speakers"],
+      "quiz": [0, 1, 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 28, 29, 30, 31]
+    },
     "tenses": ["present", "preterite"],
-    "verbs": ["dar", "decir", "traer", "llevar", "comprar", "buscar", "ver", "llamar", "ayudar", "explicar", "preguntar", "mostrar", "pedir", "regalar", "mandar"],
+    "verbs": ["ver", "llamar", "buscar", "ayudar", "conocer", "escuchar", "esperar", "invitar", "visitar", "dar", "decir", "escribir", "preguntar", "contestar", "explicar"],
     "drills": [],
     "words": [
       "noun:llave", "noun:teléfono", "noun:celular", "noun:foto", "noun:bolsa", "noun:botella", "noun:caja", "noun:cámara",
-      "noun:computadora", "noun:billetera", "noun:anillo", "noun:reloj", "noun:gafas", "noun:mochila", "noun:dinero"
+      "noun:libro", "noun:carta", "noun:mensaje", "noun:flor", "noun:juguete", "noun:chaqueta", "noun:bolígrafo", "noun:sombrero"
+    ]
+  },
+  {
+    "id": "double-object-pronouns",
+    "title": "Two object pronouns: me lo, se lo",
+    "level": "A2",
+    "summary": "Me lo dio, se las mandé, dámelo: both pronouns together, and why le turns into se.",
+    "guide": {
+      "slug": "object-pronouns",
+      "sections": ["Using two pronouns"],
+      "quiz": [3, 4, 23, 24, 25, 26, 27, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47]
+    },
+    "tenses": ["present", "preterite"],
+    "verbs": ["dar", "decir", "traer", "llevar", "comprar", "mandar", "mostrar", "pedir", "regalar", "explicar", "prestar", "enseñar", "devolver", "vender", "servir"],
+    "drills": [],
+    "words": [
+      "noun:computadora", "noun:billetera", "noun:anillo", "noun:reloj", "noun:gafas", "noun:mochila", "noun:dinero", "noun:regalo",
+      "noun:lámpara", "noun:almohada", "noun:maleta", "noun:pasaporte", "noun:boleto"
     ],
     "reading": "el-apartamento-nuevo"
   },
@@ -251,13 +354,18 @@
   },
   {
     "id": "commands",
-    "title": "Commands",
+    "title": "Commands to tú",
     "level": "B1",
-    "summary": "Habla, no hables, siéntese: telling people what to do, and what not to.",
-    "guide": { "slug": "commands" },
+    "summary": "Habla, no hables, ven, dímelo: telling a friend what to do, and what not to.",
+    "guide": {
+      "slug": "commands",
+      "sections": ["Commands to tú", "Pronouns and accents", "Softening a command"],
+      "quiz": [0, 1, 2, 3, 4, 5, 6, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 28, 29, 30, 31]
+    },
     "tenses": ["impAffirmative", "impNegative"],
     "models": ["hablar", "comer", "tener"],
     "verbs": ["hablar", "comer", "escribir", "tener", "venir", "poner", "salir", "hacer", "decir", "ir", "ser", "dar", "abrir", "cerrar", "esperar", "llamar", "traer", "buscar", "sentarse", "levantarse", "dormir", "pedir"],
+    "persons": [1],
     "drills": ["conjugation", "blanks"],
     "words": [
       "noun:cocina", "noun:olla", "noun:sartén", "noun:horno", "noun:estufa", "noun:plato", "noun:vaso", "noun:cuchillo",
@@ -265,6 +373,27 @@
       "adverb:despacio"
     ],
     "reading": "la-receta-de-la-abuela"
+  },
+  {
+    "id": "commands-formal",
+    "title": "Commands to usted, ustedes and nosotros",
+    "level": "B1",
+    "summary": "Pase, no se preocupen, comamos: polite commands, commands to a group, and let's.",
+    "guide": {
+      "slug": "commands",
+      "sections": ["Commands to usted and ustedes", "Let's: commands to nosotros", "Pronouns and accents"],
+      "quiz": [7, 8, 9, 22, 23, 24, 25, 26, 27, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47]
+    },
+    "tenses": ["impAffirmative", "impNegative"],
+    "models": ["hablar", "comer", "salir"],
+    "verbs": ["pasar", "escribir", "tomar", "esperar", "abrir", "firmar", "traer", "venir", "poner", "hablar", "hacer", "llamar", "comer", "salir", "buscar", "decir", "cerrar", "llegar", "comprar", "ir"],
+    "persons": [2, 3, 4],
+    "drills": ["conjugation", "blanks"],
+    "words": [
+      "noun:mesero", "noun:menú", "noun:cuenta", "noun:propina", "noun:mesa", "noun:paciente", "noun:recepción", "noun:fila",
+      "noun:ascensor", "noun:escalera", "noun:salida", "noun:entrada", "noun:señor", "noun:señora", "noun:cliente", "noun:asiento",
+      "noun:documento", "noun:pasajero", "noun:cinturón"
+    ]
   },
   {
     "id": "present-perfect",

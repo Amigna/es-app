@@ -4,7 +4,24 @@ import Link from "next/link";
 import BadgeArt from "@/components/Badge";
 import { earnedBadges, findBadge } from "@/lib/badges";
 import { useEffect, useState } from "react";
-import { CHAPTERS, EXAM_PASS_SCORE, STEPS, chapterSteps, chaptersDone, examId, isDone, levelComplete, stepsLeft, suggestedChapter, type ChapterProgress, type CourseProgress } from "@/lib/course";
+import {
+  CHAPTERS,
+  EXAM_PASS_SCORE,
+  PASS_SCORE,
+  STEPS,
+  chapterSteps,
+  chaptersDone,
+  examId,
+  isDone,
+  levelComplete,
+  reviewAfter,
+  reviewTitle,
+  stepsLeft,
+  suggestedChapter,
+  type ChapterProgress,
+  type CourseProgress,
+  type Review,
+} from "@/lib/course";
 import { syncCourse, useCourseProgress } from "@/lib/course-progress";
 import { LEVELS, levelInfo, useLevel, type Level } from "@/lib/level";
 
@@ -29,6 +46,36 @@ function examStatus(mine: ChapterProgress | undefined, chapters: number): string
   if (mine?.done) return `Passed · best ${mine.best}% · badge earned`;
   if (mine?.best !== undefined) return `Best ${mine.best}% · ${EXAM_PASS_SCORE}% passes`;
   return `Questions from all ${chapters} chapters · passing earns the badge`;
+}
+
+function reviewStatus(review: Review, mine: ChapterProgress | undefined): string {
+  if (mine?.done) return `Passed · best ${mine.best}%`;
+  if (mine?.best !== undefined) return `Best ${mine.best}% · ${PASS_SCORE}% passes`;
+  const n = CHAPTERS.findIndex((c) => c.id === review.after) + 1;
+  return `Review checkpoint · everything up to chapter ${n}`;
+}
+
+/** A review checkpoint, drawn between chapters like a divider with a check in it. */
+function ReviewRow({ review, mine }: { review: Review; mine: ChapterProgress | undefined }) {
+  return (
+    <Link
+      href={`/course/review/${review.slug}`}
+      className="flex items-center gap-3 border-t border-dashed border-stone-200 bg-stone-50 px-4 py-2.5 transition hover:bg-accent-50 dark:border-stone-800 dark:bg-stone-950 dark:hover:bg-accent-950"
+    >
+      <span
+        aria-hidden
+        className={`mx-1 flex size-7 shrink-0 items-center justify-center rounded-md border-2 text-sm font-bold ${
+          mine?.done ? "border-accent-600 bg-accent-600 text-white" : "border-stone-300 text-stone-400 dark:border-stone-700"
+        }`}
+      >
+        ✓
+      </span>
+      <span className="min-w-0 flex-1">
+        <span className="block font-medium">{reviewTitle(review)}</span>
+        <span className="block text-sm text-stone-500">{reviewStatus(review, mine)}</span>
+      </span>
+    </Link>
+  );
 }
 
 /** Every chapter by level, with progress from this browser and, once synced, the account. */
@@ -138,6 +185,7 @@ export default function CourseList() {
                       </span>
                       {c === suggested && <span className="text-sm font-medium text-accent-700 dark:text-accent-300">Next</span>}
                     </Link>
+                    {reviewAfter(c.id) && <ReviewRow review={reviewAfter(c.id)!} mine={progress[reviewAfter(c.id)!.id]} />}
                   </li>
                 );
               })}

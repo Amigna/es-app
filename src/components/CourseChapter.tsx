@@ -11,7 +11,7 @@ import { conjugate } from "@/lib/conjugation/engine";
 import { markVerb } from "@/lib/conjugation/regular";
 import { TENSES, type TenseId } from "@/lib/conjugation/types";
 import { findBadge } from "@/lib/badges";
-import { CHAPTERS, PASS_SCORE, STEPS, chapterSteps, examId, isDone, levelChapters, nextStep, stepsLeft, type Chapter, type StepId } from "@/lib/course";
+import { CHAPTERS, CHECKPOINT_SIZE, PASS_SCORE, STEPS, chapterSteps, examId, isDone, levelChapters, nextStep, reviewAfter, reviewTitle, stepsLeft, type Chapter, type StepId } from "@/lib/course";
 import { completeStep, recordCheckpointBadges, storedCourse, syncCourse, useCourseProgress } from "@/lib/course-progress";
 import type { Badge } from "@/lib/badges";
 import type { ChapterQuiz } from "@/lib/course-decks";
@@ -137,6 +137,8 @@ export default function CourseChapter({
   const following = CHAPTERS[number];
   const levelChaptersDone = levelChapters(chapter.level).every((c) => isDone(progress, c.id));
   const examPassed = isDone(progress, examId(chapter.level));
+  // A review checkpoint after this chapter, offered once the chapter is done.
+  const review = reviewAfter(chapter.id);
   const verbs = useMemo(() => chapter.verbs.map(findVerb).filter((v): v is Verb => !!v), [chapter]);
   const rareSet = useMemo(() => new Set(rare), [rare]);
 
@@ -331,6 +333,8 @@ export default function CourseChapter({
               {open === "practice" &&
                 (chapter.drills.includes("numbers")
                   ? "15 questions, new each time: numbers up to 1,000 in words and back, with nouns they agree with, ordinals, dates and times. Anything you miss comes back."
+                  : chapter.drills.includes("progressive")
+                  ? "15 questions on the present progressive: type estar and the gerund together, like estamos comiendo, from the verb or in a sentence. Anything you miss comes back."
                   : chapter.tenses.length === 0
                   ? "15 questions on this chapter's words: el or la for each noun, and the right form of each adjective. Anything you miss comes back."
                   : chapter.drills.includes("chooseVerb")
@@ -339,9 +343,9 @@ export default function CourseChapter({
                     ? `15 sentences with the tense hidden. Decide from the sentence whether it needs the ${tenses.replace(" and ", " or ")}, then type the form. Anything you miss comes back.`
                     : `15 questions on the ${tenses}, ${chapter.drills.length > 1 ? "mixing conjugation and fill in the blank" : chapter.drills[0] === "blanks" ? "filling in the blank in real sentences" : "typing the verb form"}. Anything you miss comes back.`)}
               {open === "write" &&
-                `Translate 6 sentences in the ${tenses}, both ways. If yours doesn't match the model answer, you decide whether it counts.`}
+                `Translate 6 sentences in the ${chapter.drills.includes("progressive") ? "present progressive" : tenses}, both ways. If yours doesn't match the model answer, you decide whether it counts.`}
               {open === "checkpoint" &&
-                `A short test mixing ${chapter.drills.length > 0 ? "practice questions, " : ""}questions on the lesson and this chapter's words. Missed questions don't come back. ${PASS_SCORE}% or more finishes the chapter, and you can take it again any time.`}
+                `${CHECKPOINT_SIZE} questions on this chapter, mixing ${chapter.drills.length > 0 ? "practice questions, " : ""}questions on the lesson, this chapter's words${steps.includes("write") ? " and sentences to translate" : ""}. The sentences are ones Practice and Write didn't use, so you won't have seen them yet. Missed questions don't come back. ${PASS_SCORE}% or more finishes the chapter, and you can take it again any time.`}
             </p>
             {open === "checkpoint" && mine?.best !== undefined && (
               <p>
@@ -390,6 +394,11 @@ export default function CourseChapter({
                 Go to {stepInfo(left[0]).title}
               </button>
             </p>
+          )}
+          {review && !isDone(progress, review.id) && (
+            <Link href={`/course/review/${review.slug}`} className={`mr-3 mb-2 inline-flex items-center ${buttonClass.replace("h-11", "min-h-11 py-2")}`}>
+              Take {reviewTitle(review)}
+            </Link>
           )}
           {levelChaptersDone && !examPassed && (
             <Link href={`/course/exam/${chapter.level.toLowerCase()}`} className={`mr-3 inline-flex items-center ${buttonClass.replace("h-11", "min-h-11 py-2")}`}>

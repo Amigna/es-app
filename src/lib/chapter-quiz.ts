@@ -1,5 +1,7 @@
 import courseSentencesRaw from "../data/course-sentences.json";
+import type { TenseId } from "./conjugation/types";
 import type { Chapter } from "./course";
+import { SENTENCE_BANK } from "./sentence-data";
 import type { ChapterQuiz } from "./course-decks";
 import { findGuide } from "./guides";
 import { GUIDE_QUIZZES } from "./quiz-data";
@@ -14,6 +16,15 @@ import type { SentenceBank } from "./sentences";
  */
 const COURSE_SENTENCES = courseSentencesRaw as Record<string, SentenceBank>;
 export const chapterSentences = (id: string): SentenceBank => COURSE_SENTENCES[id] ?? {};
+
+/** Rare tenses of the chapter's verbs, which drills skip. Only these keys reach the browser. */
+export function rareKeys(chapter: Chapter): string[] {
+  return chapter.verbs.flatMap((inf) =>
+    Object.entries(SENTENCE_BANK[inf] ?? {})
+      .filter(([, entry]) => entry && "rare" in entry)
+      .map(([tense]) => `${inf}:${tense as TenseId}`),
+  );
+}
 
 /** The guide questions a chapter uses, each with its place in the full quiz. Null when it has none. */
 export function chapterQuiz(chapter: Chapter): ChapterQuiz | null {

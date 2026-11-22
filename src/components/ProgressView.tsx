@@ -10,7 +10,7 @@ import ReportProblem from "@/components/ReportProblem";
 import StruggleList from "@/components/Struggles";
 import { BADGES, earnedBadges, newestFirst, nextBadges, withSaved } from "@/lib/badges";
 import { TENSES } from "@/lib/conjugation/types";
-import { CHAPTERS, EXAM_LEVELS, EXAM_PASS_SCORE, PASS_SCORE, chaptersDone, examId, levelChapters } from "@/lib/course";
+import { CHAPTERS, EXAM_LEVELS, EXAM_PASS_SCORE, PASS_SCORE, chaptersDone, examId, levelChapters, reviewAfter, reviewTitle } from "@/lib/course";
 import { syncCourse } from "@/lib/course-progress";
 import { useDrillSettings } from "@/lib/drill-settings";
 import { auth, firebaseConfigured } from "@/lib/firebase";
@@ -630,9 +630,15 @@ function BadgesSection({ data }: { data: ProgressData }) {
 /** Checkpoints taken, with the first score beside the best, so improvement shows and not only a total. */
 function CourseSection({ data }: { data: ProgressData }) {
   const today = localDay();
-  // Each level's chapters, then its exam, as they come in the course.
+  // Each level's chapters, with their reviews, then its exam, as they come in the course.
   const rows = EXAM_LEVELS.flatMap((level) => [
-    ...levelChapters(level).map((c) => ({ id: c.id, href: `/course/${c.id}`, name: `${CHAPTERS.indexOf(c) + 1}. ${c.title}` })),
+    ...levelChapters(level).flatMap((c) => {
+      const review = reviewAfter(c.id);
+      return [
+        { id: c.id, href: `/course/${c.id}`, name: `${CHAPTERS.indexOf(c) + 1}. ${c.title}` },
+        ...(review ? [{ id: review.id, href: `/course/review/${review.slug}`, name: reviewTitle(review) }] : []),
+      ];
+    }),
     { id: examId(level), href: `/course/exam/${level.toLowerCase()}`, name: `${level} exam` },
   ]);
   const taken = rows.filter((r) => data.course[r.id]?.tries?.length);
