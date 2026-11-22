@@ -2048,7 +2048,11 @@
    {"person":4,"es":"Ellos vendrían si los invitaras.","en":"They would come if you invited them.","level":"B2"}
   ],
   "presentPerfect": [
-   {"person":2,"es":"Ha venido mucha gente a la fiesta.","en":"A lot of people have come to the party."}
+   {"person":2,"es":"Ha venido mucha gente a la fiesta.","en":"A lot of people have come to the party."},
+   {"person":0,"es":"He venido a despedirme de ustedes.","en":"I've come to say goodbye to you all."},
+   {"person":1,"es":"¿Por qué no has venido a verme?","en":"Why haven't you come to see me?"},
+   {"person":3,"es":"Hemos venido desde Guatemala para la boda.","en":"We've come all the way from Guatemala for the wedding."},
+   {"person":4,"es":"Mis primos todavía no han venido.","en":"My cousins still haven't come."}
   ],
   "pluperfect": [
    {"person":4,"es":"Mis abuelos nunca habían venido a esta ciudad.","en":"My grandparents had never come to this city."}
@@ -2067,7 +2071,11 @@
    {"person":4,"es":"Ojalá vengan todos.","en":"I hope everyone comes."}
   ],
   "subjImperfect": [
-   {"person":4,"es":"Me encantaría que vinieran a cenar.","en":"I'd love for you all to come to dinner."}
+   {"person":4,"es":"Me encantaría que vinieran a cenar.","en":"I'd love for you all to come to dinner."},
+   {"person":0,"es":"Mi abuela quería que yo viniera más seguido.","en":"My grandmother wanted me to come more often."},
+   {"person":1,"es":"Ojalá vinieras a mi graduación.","en":"I wish you'd come to my graduation."},
+   {"person":2,"es":"Le pedimos al plomero que viniera temprano.","en":"We asked the plumber to come early."},
+   {"person":3,"es":"A mis tíos les encantaba que viniéramos en verano.","en":"My aunt and uncle loved it when we came in the summer."}
   ],
   "subjImperfectSe": [
    {"person":2,"es":"Temíamos que no viniese nadie.","en":"We were afraid nobody would come."}
@@ -2122,7 +2130,11 @@
    {"person":4,"es":"Tus amigos pensarían que estás bromeando.","en":"Your friends would think you're joking."}
   ],
   "presentPerfect": [
-   {"person":1,"es":"¿Has pensado en lo que te dije?","en":"Have you thought about what I told you?"}
+   {"person":1,"es":"¿Has pensado en lo que te dije?","en":"Have you thought about what I told you?"},
+   {"person":0,"es":"He pensado mucho en tu propuesta.","en":"I've thought a lot about your proposal."},
+   {"person":2,"es":"Mi papá nunca ha pensado en jubilarse.","en":"My dad has never thought about retiring."},
+   {"person":3,"es":"Hemos pensado en mudarnos a Costa Rica.","en":"We've been thinking about moving to Costa Rica."},
+   {"person":4,"es":"¿Ya han pensado en un nombre para el bebé?","en":"Have you all thought of a name for the baby yet?"}
   ],
   "pluperfect": [
    {"person":3,"es":"Nunca habíamos pensado en vender la casa.","en":"We had never thought about selling the house."}
@@ -2141,7 +2153,11 @@
    {"person":4,"es":"No quiero que piensen que soy grosero.","en":"I don't want them to think I'm rude."}
   ],
   "subjImperfect": [
-   {"person":4,"es":"Me dolió que pensaran así de mí.","en":"It hurt me that they thought that way about me."}
+   {"person":4,"es":"Me dolió que pensaran así de mí.","en":"It hurt me that they thought that way about me."},
+   {"person":0,"es":"Mi mamá no quería que yo pensara mal de ella.","en":"My mom didn't want me to think badly of her."},
+   {"person":1,"es":"Me sorprendió que pensaras eso.","en":"I was surprised you thought that."},
+   {"person":2,"es":"Era raro que mi hermano pensara en el futuro.","en":"It was rare for my brother to think about the future."},
+   {"person":3,"es":"Nos pidieron que pensáramos bien antes de firmar.","en":"They asked us to think carefully before signing."}
   ],
   "subjImperfectSe": [
    {"person":0,"es":"Me pidió que pensase bien mi respuesta.","en":"She asked me to think my answer over carefully."}
@@ -2196,7 +2212,11 @@
    {"person":4,"es":"Ellos saldrían antes si terminaran a tiempo.","en":"They would leave earlier if they finished on time.","level":"B2"}
   ],
   "presentPerfect": [
-   {"person":4,"es":"Los niños ya han salido de la escuela.","en":"The kids have already gotten out of school."}
+   {"person":4,"es":"Los niños ya han salido de la escuela.","en":"The kids have already gotten out of school."},
+   {"person":0,"es":"Hoy no he salido de la casa.","en":"I haven't left the house today."},
+   {"person":1,"es":"¿Has salido alguna vez del país?","en":"Have you ever left the country?"},
+   {"person":2,"es":"Mi hermana ya ha salido para el trabajo.","en":"My sister has already left for work."},
+   {"person":3,"es":"Hemos salido a caminar todas las tardes esta semana.","en":"We've gone out for a walk every afternoon this week."}
   ],
   "pluperfect": [
    {"person":2,"es":"El barco ya había salido cuando llegamos.","en":"The boat had already left when we arrived."}
@@ -2215,7 +2235,11 @@
    {"person":4,"es":"No quiero que los niños salgan solos.","en":"I don't want the kids going out alone."}
   ],
   "subjImperfect": [
-   {"person":1,"es":"Mi mamá no quería que salieras tan tarde.","en":"My mom didn't want you to go out so late."}
+   {"person":1,"es":"Mi mamá no quería que salieras tan tarde.","en":"My mom didn't want you to go out so late."},
+   {"person":0,"es":"Mis padres no dejaban que yo saliera de noche.","en":"My parents didn't let me go out at night."},
+   {"person":2,"es":"Esperamos a que el sol saliera para empezar.","en":"We waited for the sun to come up to start."},
+   {"person":3,"es":"Si saliéramos ahora, llegaríamos a tiempo.","en":"If we left now, we'd get there on time."},
+   {"person":4,"es":"Mi abuela rezaba para que las cosas salieran bien.","en":"My grandmother prayed for things to turn out well."}
   ],
   "subjImperfectSe": [
    {"person":3,"es":"Nos dijeron que saliésemos por la otra puerta.","en":"They told us to leave through the other door."}
@@ -2270,7 +2294,11 @@
    {"person":4,"es":"Ellos volverían si les pagaran mejor.","en":"They would come back if they paid them better.","level":"B2"}
   ],
   "presentPerfect": [
-   {"person":4,"es":"Mis hijos ya han vuelto de la escuela.","en":"My kids have already come back from school."}
+   {"person":4,"es":"Mis hijos ya han vuelto de la escuela.","en":"My kids have already come back from school."},
+   {"person":0,"es":"Nunca he vuelto a mi pueblo desde que me fui.","en":"I've never gone back to my town since I left."},
+   {"person":1,"es":"¿Has vuelto a hablar con él?","en":"Have you talked to him again?"},
+   {"person":2,"es":"Mi papá todavía no ha vuelto del trabajo.","en":"My dad still hasn't come back from work."},
+   {"person":3,"es":"Hemos vuelto al mismo restaurante tres veces.","en":"We've gone back to the same restaurant three times."}
   ],
   "pluperfect": [
    {"person":2,"es":"Ella nunca había vuelto a su país.","en":"She had never gone back to her country."}
@@ -2289,7 +2317,11 @@
    {"person":4,"es":"Espero que no vuelvan tarde.","en":"I hope they aren't back late."}
   ],
   "subjImperfect": [
-   {"person":4,"es":"Mi abuela quería que volvieran para Navidad.","en":"My grandmother wanted them to come back for Christmas."}
+   {"person":4,"es":"Mi abuela quería que volvieran para Navidad.","en":"My grandmother wanted them to come back for Christmas."},
+   {"person":0,"es":"Mi mamá quería que yo volviera antes de las diez.","en":"My mom wanted me to be back before ten."},
+   {"person":1,"es":"Ojalá volvieras pronto.","en":"I wish you'd come back soon."},
+   {"person":2,"es":"El perro esperaba en la puerta hasta que mi hermano volviera.","en":"The dog would wait at the door until my brother came back."},
+   {"person":3,"es":"Si volviéramos a empezar, haríamos todo diferente.","en":"If we started over, we'd do everything differently."}
   ],
   "subjImperfectSe": [
    {"person":2,"es":"Temíamos que no volviese nunca.","en":"We were afraid he would never come back."}
@@ -2344,7 +2376,11 @@
    {"person":4,"es":"Ellos tomarían vacaciones en julio.","en":"They would take vacation in July."}
   ],
   "presentPerfect": [
-   {"person":1,"es":"¿Has tomado la medicina?","en":"Have you taken your medicine?"}
+   {"person":1,"es":"¿Has tomado la medicina?","en":"Have you taken your medicine?"},
+   {"person":0,"es":"Todavía no he tomado café hoy.","en":"I haven't had coffee yet today."},
+   {"person":2,"es":"Mi abuelo nunca ha tomado un avión.","en":"My grandfather has never taken a plane."},
+   {"person":3,"es":"Hemos tomado muchas fotos en este viaje.","en":"We've taken lots of photos on this trip."},
+   {"person":4,"es":"Los vecinos ya han tomado una decisión.","en":"The neighbors have already made a decision."}
   ],
   "pluperfect": [
    {"person":2,"es":"Ella ya había tomado una decisión.","en":"She had already made a decision."}
@@ -2363,7 +2399,11 @@
    {"person":4,"es":"No quiero que los niños tomen tanto refresco.","en":"I don't want the kids drinking so much soda."}
   ],
   "subjImperfect": [
-   {"person":2,"es":"El doctor quería que mi papá tomara vitaminas.","en":"The doctor wanted my dad to take vitamins."}
+   {"person":2,"es":"El doctor quería que mi papá tomara vitaminas.","en":"The doctor wanted my dad to take vitamins."},
+   {"person":0,"es":"El médico quería que yo tomara más agua.","en":"The doctor wanted me to drink more water."},
+   {"person":1,"es":"Te dije que tomaras un taxi.","en":"I told you to take a taxi."},
+   {"person":3,"es":"La maestra quería que tomáramos apuntes.","en":"The teacher wanted us to take notes."},
+   {"person":4,"es":"Les pedí a los niños que tomaran la leche.","en":"I asked the kids to drink their milk."}
   ],
   "subjImperfectSe": [
    {"person":4,"es":"Les pedí que tomasen asiento.","en":"I asked them to take a seat."}
@@ -2418,7 +2458,11 @@
    {"person":4,"es":"Ellos conocerían a tus padres en la boda.","en":"They would meet your parents at the wedding."}
   ],
   "presentPerfect": [
-   {"person":3,"es":"Hemos conocido a gente muy amable aquí.","en":"We've met very kind people here."}
+   {"person":3,"es":"Hemos conocido a gente muy amable aquí.","en":"We've met very kind people here."},
+   {"person":0,"es":"Nunca he conocido a nadie tan generoso.","en":"I've never met anyone so generous."},
+   {"person":1,"es":"¿Has conocido a la novia de tu hermano?","en":"Have you met your brother's girlfriend?"},
+   {"person":2,"es":"Mi tía ha conocido medio mundo.","en":"My aunt has seen half the world."},
+   {"person":4,"es":"Mis hijos nunca han conocido la nieve.","en":"My kids have never seen snow."}
   ],
   "pluperfect": [
    {"person":0,"es":"Nunca había conocido a nadie tan generoso.","en":"I had never met anyone so generous."}
@@ -2437,7 +2481,11 @@
    {"person":4,"es":"Quiero que los niños conozcan a su abuelo.","en":"I want the kids to meet their grandfather."}
   ],
   "subjImperfect": [
-   {"person":2,"es":"Me gustaría que ella conociera La Habana.","en":"I'd like her to see Havana."}
+   {"person":2,"es":"Me gustaría que ella conociera La Habana.","en":"I'd like her to see Havana."},
+   {"person":0,"es":"Mi abuela quería que yo conociera a su familia en Lima.","en":"My grandmother wanted me to meet her family in Lima."},
+   {"person":1,"es":"Me alegró que conocieras a mis amigos.","en":"I was glad you met my friends."},
+   {"person":3,"es":"Nuestros padres querían que conociéramos nuestras raíces.","en":"Our parents wanted us to know our roots."},
+   {"person":4,"es":"Era importante que los niños conocieran a sus abuelos.","en":"It was important for the kids to know their grandparents."}
   ],
   "subjImperfectSe": [
    {"person":3,"es":"Ojalá conociésemos mejor el país.","en":"I wish we knew the country better."}
@@ -2490,7 +2538,11 @@
    {"person":4,"es":"Ellos vivirían aquí si encontraran trabajo.","en":"They would live here if they found work.","level":"B2"}
   ],
   "presentPerfect": [
-   {"person":2,"es":"Mi tía ha vivido siempre en Santiago.","en":"My aunt has always lived in Santiago."}
+   {"person":2,"es":"Mi tía ha vivido siempre en Santiago.","en":"My aunt has always lived in Santiago."},
+   {"person":0,"es":"He vivido en esta casa toda mi vida.","en":"I've lived in this house my whole life."},
+   {"person":1,"es":"¿Has vivido alguna vez fuera del país?","en":"Have you ever lived abroad?"},
+   {"person":3,"es":"Hemos vivido momentos muy bonitos juntos.","en":"We've had some lovely moments together."},
+   {"person":4,"es":"Mis abuelos han vivido en el mismo barrio por cincuenta años.","en":"My grandparents have lived in the same neighborhood for fifty years."}
   ],
   "pluperfect": [
    {"person":3,"es":"Nunca habíamos vivido tan lejos de casa.","en":"We had never lived so far from home."}
@@ -2509,7 +2561,11 @@
    {"person":4,"es":"Ojalá mis hijos vivan cerca de mí.","en":"I hope my kids live near me."}
   ],
   "subjImperfect": [
-   {"person":3,"es":"Mi abuela quería que viviéramos con ella.","en":"My grandmother wanted us to live with her."}
+   {"person":3,"es":"Mi abuela quería que viviéramos con ella.","en":"My grandmother wanted us to live with her."},
+   {"person":0,"es":"Mis padres preferían que yo viviera cerca de ellos.","en":"My parents preferred that I live near them."},
+   {"person":1,"es":"Si vivieras más cerca, nos veríamos más.","en":"If you lived closer, we'd see each other more."},
+   {"person":2,"es":"Mi mamá soñaba con que mi abuela viviera con nosotros.","en":"My mom dreamed of my grandmother living with us."},
+   {"person":4,"es":"Si mis primos vivieran aquí, iríamos juntos a la escuela.","en":"If my cousins lived here, we'd go to school together."}
   ],
   "subjImperfectSe": [
    {"person":2,"es":"Si ella viviese más cerca, la vería más.","en":"If she lived closer, I'd see her more."}
@@ -2564,7 +2620,11 @@
    {"person":4,"es":"Tus padres sentirían mucha pena.","en":"Your parents would feel very sad."}
   ],
   "presentPerfect": [
-   {"person":1,"es":"¿Has sentido alguna vez un temblor?","en":"Have you ever felt an earthquake?"}
+   {"person":1,"es":"¿Has sentido alguna vez un temblor?","en":"Have you ever felt an earthquake?"},
+   {"person":0,"es":"Nunca he sentido tanto frío.","en":"I've never felt so cold."},
+   {"person":2,"es":"Mi abuela siempre ha sentido mucho cariño por ti.","en":"My grandmother has always felt a lot of affection for you."},
+   {"person":3,"es":"Hemos sentido varios temblores esta semana.","en":"We've felt several tremors this week."},
+   {"person":4,"es":"Los vecinos han sentido olor a gas.","en":"The neighbors have smelled gas."}
   ],
   "pluperfect": [
    {"person":2,"es":"Nunca había sentido tanto miedo.","en":"She had never felt so much fear."}
@@ -2583,7 +2643,11 @@
    {"person":4,"es":"Quiero que los invitados se sientan en casa.","en":"I want the guests to feel at home."}
   ],
   "subjImperfect": [
-   {"person":2,"es":"Me dolió que ella no sintiera nada.","en":"It hurt me that she didn't feel anything."}
+   {"person":2,"es":"Me dolió que ella no sintiera nada.","en":"It hurt me that she didn't feel anything."},
+   {"person":0,"es":"Mi papá dejaba la luz prendida para que yo no sintiera miedo.","en":"My dad left the light on so I wouldn't feel scared."},
+   {"person":1,"es":"Quería que sintieras que eras parte de la familia.","en":"I wanted you to feel that you were part of the family."},
+   {"person":3,"es":"El guía quería que sintiéramos la magia del lugar.","en":"The guide wanted us to feel the magic of the place."},
+   {"person":4,"es":"La maestra hizo todo para que los niños se sintieran cómodos.","en":"The teacher did everything so the kids would feel comfortable."}
   ],
   "subjImperfectSe": [
    {"person":4,"es":"Temía que sintiesen frío en la montaña.","en":"I was afraid they would feel cold in the mountains."}
@@ -2638,7 +2702,11 @@
    {"person":4,"es":"Ellos tratarían mejor a los empleados.","en":"They would treat the employees better."}
   ],
   "presentPerfect": [
-   {"person":2,"es":"El médico me ha tratado muy bien.","en":"The doctor has treated me very well."}
+   {"person":2,"es":"El médico me ha tratado muy bien.","en":"The doctor has treated me very well."},
+   {"person":0,"es":"He tratado de llamarte toda la mañana.","en":"I've been trying to call you all morning."},
+   {"person":1,"es":"¿Has tratado de hablar con ella?","en":"Have you tried talking to her?"},
+   {"person":3,"es":"Hemos tratado de ahorrar este año.","en":"We've tried to save money this year."},
+   {"person":4,"es":"Siempre nos han tratado como familia.","en":"They've always treated us like family."}
   ],
   "pluperfect": [
    {"person":4,"es":"Ya habían tratado de arreglar el carro.","en":"They had already tried to fix the car."}
@@ -2657,7 +2725,11 @@
    {"person":4,"es":"No quiero que me traten como a un niño.","en":"I don't want them to treat me like a child."}
   ],
   "subjImperfect": [
-   {"person":2,"es":"Me molestó que me tratara así.","en":"It bothered me that he treated me that way."}
+   {"person":2,"es":"Me molestó que me tratara así.","en":"It bothered me that he treated me that way."},
+   {"person":0,"es":"Mi mamá quería que yo tratara de comer más verduras.","en":"My mom wanted me to try to eat more vegetables."},
+   {"person":1,"es":"Te pedí que trataras de llegar temprano.","en":"I asked you to try to arrive early."},
+   {"person":3,"es":"El médico nos dijo que tratáramos de caminar más.","en":"The doctor told us to try to walk more."},
+   {"person":4,"es":"Me molestaba que trataran mal a los meseros.","en":"It bothered me that they treated the waiters badly."}
   ],
   "subjImperfectSe": [
    {"person":4,"es":"Pidió que tratasen bien a los clientes.","en":"She asked them to treat the customers well."}
@@ -2712,7 +2784,11 @@
    {"person":4,"es":"Ellos mirarían las noticias, pero no tienen televisor.","en":"They would watch the news, but they don't have a TV."}
   ],
   "presentPerfect": [
-   {"person":1,"es":"¿Has mirado el pronóstico del tiempo?","en":"Have you looked at the weather forecast?"}
+   {"person":1,"es":"¿Has mirado el pronóstico del tiempo?","en":"Have you looked at the weather forecast?"},
+   {"person":0,"es":"Todavía no he mirado mi correo.","en":"I still haven't looked at my email."},
+   {"person":2,"es":"El mecánico ya ha mirado el motor.","en":"The mechanic has already looked at the engine."},
+   {"person":3,"es":"Hemos mirado casas en todo el barrio.","en":"We've looked at houses all over the neighborhood."},
+   {"person":4,"es":"Los niños han mirado por la ventana toda la tarde.","en":"The kids have been looking out the window all afternoon."}
   ],
   "pluperfect": [
    {"person":2,"es":"Ya había mirado el reloj tres veces.","en":"He had already looked at the clock three times."}
@@ -2731,7 +2807,11 @@
    {"person":4,"es":"No quiero que los niños miren eso.","en":"I don't want the kids watching that."}
   ],
   "subjImperfect": [
-   {"person":4,"es":"Me gustaría que miraran las fotos.","en":"I'd like you all to look at the photos."}
+   {"person":4,"es":"Me gustaría que miraran las fotos.","en":"I'd like you all to look at the photos."},
+   {"person":0,"es":"La maestra quería que yo mirara la pizarra.","en":"The teacher wanted me to look at the board."},
+   {"person":1,"es":"Te pedí que miraras antes de cruzar.","en":"I asked you to look before crossing."},
+   {"person":2,"es":"Me ponía nervioso que él me mirara así.","en":"It made me nervous when he looked at me like that."},
+   {"person":3,"es":"El guía nos pidió que miráramos hacia arriba.","en":"The guide asked us to look up."}
   ],
   "subjImperfectSe": [
    {"person":2,"es":"Hablaba sin que nadie la mirase.","en":"She spoke without anyone looking at her."}
@@ -2786,7 +2866,11 @@
    {"person":4,"es":"Ellos nos contarían si supieran algo.","en":"They would tell us if they knew anything.","level":"B2"}
   ],
   "presentPerfect": [
-   {"person":4,"es":"Me han contado que el restaurante cerró.","en":"They've told me the restaurant closed."}
+   {"person":4,"es":"Me han contado que el restaurante cerró.","en":"They've told me the restaurant closed."},
+   {"person":0,"es":"Nunca le he contado esto a nadie.","en":"I've never told anyone this."},
+   {"person":1,"es":"¿Le has contado a tu mamá lo del examen?","en":"Have you told your mom about the exam?"},
+   {"person":2,"es":"Mi abuelo nos ha contado esa historia mil veces.","en":"My grandfather has told us that story a thousand times."},
+   {"person":3,"es":"Hemos contado los días para las vacaciones.","en":"We've been counting the days until vacation."}
   ],
   "pluperfect": [
    {"person":2,"es":"Ella ya me había contado el chisme.","en":"She had already told me the gossip."}
@@ -2805,7 +2889,11 @@
    {"person":4,"es":"No quiero que le cuenten a mi mamá.","en":"I don't want them to tell my mom."}
   ],
   "subjImperfect": [
-   {"person":2,"es":"Esperaba que me contara la verdad.","en":"I was hoping she would tell me the truth."}
+   {"person":2,"es":"Esperaba que me contara la verdad.","en":"I was hoping she would tell me the truth."},
+   {"person":0,"es":"Mi abuela quería que yo le contara todo.","en":"My grandmother wanted me to tell her everything."},
+   {"person":1,"es":"Ojalá me contaras qué te pasa.","en":"I wish you'd tell me what's wrong."},
+   {"person":3,"es":"La maestra nos pidió que contáramos hasta cien en español.","en":"The teacher asked us to count to a hundred in Spanish."},
+   {"person":4,"es":"Me encantaba que mis tíos contaran chistes en las fiestas.","en":"I loved it when my uncles told jokes at parties."}
   ],
   "subjImperfectSe": [
    {"person":3,"es":"Nos pidió que contásemos hasta diez.","en":"She asked us to count to ten."}
@@ -2860,7 +2948,11 @@
    {"person":4,"es":"Ellos empezarían mañana.","en":"They would start tomorrow."}
   ],
   "presentPerfect": [
-   {"person":2,"es":"Ya ha empezado a llover.","en":"It has already started to rain."}
+   {"person":2,"es":"Ya ha empezado a llover.","en":"It has already started to rain."},
+   {"person":0,"es":"He empezado a estudiar portugués.","en":"I've started studying Portuguese."},
+   {"person":1,"es":"¿Ya has empezado el libro que te presté?","en":"Have you started the book I lent you yet?"},
+   {"person":3,"es":"Hemos empezado a ahorrar para la casa.","en":"We've started saving for the house."},
+   {"person":4,"es":"Las clases todavía no han empezado.","en":"Classes still haven't started."}
   ],
   "pluperfect": [
    {"person":2,"es":"Cuando llegamos, el juego ya había empezado.","en":"When we arrived, the game had already started."}
@@ -2879,7 +2971,11 @@
    {"person":4,"es":"Espero que las clases empiecen a tiempo.","en":"I hope classes start on time."}
   ],
   "subjImperfect": [
-   {"person":3,"es":"Mi jefe quería que empezáramos el lunes.","en":"My boss wanted us to start on Monday."}
+   {"person":3,"es":"Mi jefe quería que empezáramos el lunes.","en":"My boss wanted us to start on Monday."},
+   {"person":0,"es":"Mi papá no quería que yo empezara a trabajar tan joven.","en":"My dad didn't want me to start working so young."},
+   {"person":1,"es":"Sería bueno que empezaras a hacer ejercicio.","en":"It would be good for you to start exercising."},
+   {"person":2,"es":"Esperamos a que el partido empezara.","en":"We waited for the game to start."},
+   {"person":4,"es":"El profesor pidió que los estudiantes empezaran el examen en silencio.","en":"The teacher asked the students to start the exam in silence."}
   ],
   "subjImperfectSe": [
    {"person":4,"es":"Pidió que empezasen de nuevo.","en":"He asked them to start over."}
@@ -2934,7 +3030,11 @@
    {"person":4,"es":"Ellos esperarían si supieran que vienes.","en":"They would wait if they knew you were coming.","level":"B2"}
   ],
   "presentPerfect": [
-   {"person":1,"es":"¿Has esperado mucho tiempo?","en":"Have you been waiting long?"}
+   {"person":1,"es":"¿Has esperado mucho tiempo?","en":"Have you been waiting long?"},
+   {"person":0,"es":"He esperado este momento toda mi vida.","en":"I've waited for this moment my whole life."},
+   {"person":2,"es":"Mi abuela ha esperado la carta por semanas.","en":"My grandmother has been waiting for the letter for weeks."},
+   {"person":3,"es":"Hemos esperado la guagua por más de una hora.","en":"We've waited for the bus for over an hour."},
+   {"person":4,"es":"Mis padres siempre han esperado lo mejor de mí.","en":"My parents have always expected the best from me."}
   ],
   "pluperfect": [
    {"person":2,"es":"Ella había esperado esa carta durante años.","en":"She had waited for that letter for years."}
@@ -2953,7 +3053,11 @@
    {"person":4,"es":"Quiero que los niños esperen en el carro.","en":"I want the kids to wait in the car."}
   ],
   "subjImperfect": [
-   {"person":0,"es":"Me pidió que esperara afuera.","en":"He asked me to wait outside."}
+   {"person":0,"es":"Me pidió que esperara afuera.","en":"He asked me to wait outside."},
+   {"person":1,"es":"Te pedí que me esperaras en la esquina.","en":"I asked you to wait for me at the corner."},
+   {"person":2,"es":"Le dije al taxista que esperara un momento.","en":"I told the taxi driver to wait a moment."},
+   {"person":3,"es":"Nos pidieron que esperáramos en la sala de espera.","en":"They asked us to wait in the waiting room."},
+   {"person":4,"es":"No quería que los invitados esperaran tanto.","en":"I didn't want the guests to wait so long."}
   ],
   "subjImperfectSe": [
    {"person":4,"es":"Les dije que esperasen en el carro.","en":"I told them to wait in the car."}
@@ -3008,7 +3112,11 @@
    {"person":4,"es":"Ellos buscarían al niño en la escuela.","en":"They would pick the boy up at school."}
   ],
   "presentPerfect": [
-   {"person":4,"es":"Te han buscado por todas partes.","en":"They've looked for you everywhere."}
+   {"person":4,"es":"Te han buscado por todas partes.","en":"They've looked for you everywhere."},
+   {"person":0,"es":"He buscado mis llaves por toda la casa.","en":"I've looked for my keys all over the house."},
+   {"person":1,"es":"¿Has buscado trabajo en el centro?","en":"Have you looked for work downtown?"},
+   {"person":2,"es":"Mi hermano ha buscado apartamento por meses.","en":"My brother has been looking for an apartment for months."},
+   {"person":3,"es":"Hemos buscado al gato por todo el barrio.","en":"We've looked for the cat all over the neighborhood."}
   ],
   "pluperfect": [
    {"person":2,"es":"Ella ya había buscado la dirección en el mapa.","en":"She had already looked up the address on the map."}
@@ -3027,7 +3135,11 @@
    {"person":4,"es":"Dile que me busquen a las ocho.","en":"Tell them to pick me up at eight."}
   ],
   "subjImperfect": [
-   {"person":2,"es":"Necesitaba a alguien que buscara a los niños.","en":"I needed someone to pick up the kids."}
+   {"person":2,"es":"Necesitaba a alguien que buscara a los niños.","en":"I needed someone to pick up the kids."},
+   {"person":0,"es":"Mi mamá quería que yo buscara a mi hermanita en la escuela.","en":"My mom wanted me to pick up my little sister at school."},
+   {"person":1,"es":"Te dije que buscaras en el armario.","en":"I told you to look in the closet."},
+   {"person":3,"es":"El maestro quería que buscáramos las palabras en el diccionario.","en":"The teacher wanted us to look the words up in the dictionary."},
+   {"person":4,"es":"Les pedí que buscaran un lugar para estacionar.","en":"I asked them to find a place to park."}
   ],
   "subjImperfectSe": [
    {"person":4,"es":"Les pedí que buscasen las llaves.","en":"I asked them to look for the keys."}
@@ -3067,7 +3179,8 @@
    {"person":2,"es":"Sin el río no existiría este pueblo.","en":"Without the river this town wouldn't exist."}
   ],
   "presentPerfect": [
-   {"person":2,"es":"Siempre ha existido esa tradición en mi pueblo.","en":"That tradition has always existed in my town."}
+   {"person":2,"es":"Siempre ha existido esa tradición en mi pueblo.","en":"That tradition has always existed in my town."},
+   {"person":4,"es":"Siempre han existido diferencias entre los dos pueblos.","en":"There have always been differences between the two towns."}
   ],
   "pluperfect": [
    {"person":2,"es":"Ese barrio no había existido antes de los años cincuenta.","en":"That neighborhood hadn't existed before the fifties."}
@@ -3081,7 +3194,11 @@
    {"person":4,"es":"Dudo que existan fantasmas.","en":"I doubt ghosts exist."}
   ],
   "subjImperfect": [
-   {"person":2,"es":"Si no existiera la música, la vida sería muy triste.","en":"If music didn't exist, life would be very sad."}
+   {"person":2,"es":"Si no existiera la música, la vida sería muy triste.","en":"If music didn't exist, life would be very sad."},
+   {"person":0,"es":"Para mi jefe, era como si yo no existiera.","en":"To my boss, it was as if I didn't exist."},
+   {"person":1,"es":"Ella siguió hablando como si tú no existieras.","en":"She kept talking as if you didn't exist."},
+   {"person":3,"es":"Para el gobierno, era como si no existiéramos.","en":"To the government, it was as if we didn't exist."},
+   {"person":4,"es":"Si no existieran los celulares, hablaríamos más.","en":"If cell phones didn't exist, we'd talk more."}
   ],
   "subjImperfectSe": [
    {"person":4,"es":"Aunque existiesen otras opciones, elegiría esta.","en":"Even if other options existed, I would choose this one."}
@@ -3132,7 +3249,11 @@
    {"person":4,"es":"Ellos entrarían si tuvieran boletos.","en":"They would go in if they had tickets.","level":"B2"}
   ],
   "presentPerfect": [
-   {"person":4,"es":"Han entrado a robar en la tienda.","en":"They've broken into the store."}
+   {"person":4,"es":"Han entrado a robar en la tienda.","en":"They've broken into the store."},
+   {"person":0,"es":"Nunca he entrado a esa iglesia.","en":"I've never been inside that church."},
+   {"person":1,"es":"¿Has entrado alguna vez a la cueva?","en":"Have you ever gone into the cave?"},
+   {"person":2,"es":"El agua ha entrado por debajo de la puerta.","en":"Water has come in under the door."},
+   {"person":3,"es":"Este año hemos entrado al equipo de fútbol.","en":"This year we've joined the soccer team."}
   ],
   "pluperfect": [
    {"person":2,"es":"Ya había entrado en la iglesia cuando empezó a llover.","en":"She had already gone into the church when it started to rain."}
@@ -3151,7 +3272,11 @@
    {"person":4,"es":"Dile a los niños que entren a comer.","en":"Tell the kids to come in and eat."}
   ],
   "subjImperfect": [
-   {"person":2,"es":"Esperó a que entrara todo el mundo.","en":"He waited for everyone to come in."}
+   {"person":2,"es":"Esperó a que entrara todo el mundo.","en":"He waited for everyone to come in."},
+   {"person":0,"es":"Mi papá no quería que yo entrara a su oficina.","en":"My dad didn't want me to go into his office."},
+   {"person":1,"es":"Te dije que entraras por la puerta de atrás.","en":"I told you to come in through the back door."},
+   {"person":3,"es":"Nos pidieron que entráramos sin zapatos.","en":"They asked us to go in without shoes."},
+   {"person":4,"es":"El portero no dejaba que los niños entraran solos.","en":"The doorman wouldn't let the kids go in alone."}
   ],
   "subjImperfectSe": [
    {"person":4,"es":"Pidieron que entrasen uno por uno.","en":"They asked them to come in one by one."}
@@ -3206,7 +3331,11 @@
    {"person":4,"es":"Ellos trabajarían más cerca si hubiera empleo.","en":"They would work closer to home if there were jobs.","level":"B2"}
   ],
   "presentPerfect": [
-   {"person":4,"es":"Mis padres han trabajado mucho toda la vida.","en":"My parents have worked hard all their lives."}
+   {"person":4,"es":"Mis padres han trabajado mucho toda la vida.","en":"My parents have worked hard all their lives."},
+   {"person":0,"es":"He trabajado en este hospital por diez años.","en":"I've worked at this hospital for ten years."},
+   {"person":1,"es":"¿Has trabajado alguna vez en un restaurante?","en":"Have you ever worked in a restaurant?"},
+   {"person":2,"es":"Mi mamá ha trabajado de enfermera toda su vida.","en":"My mom has worked as a nurse her whole life."},
+   {"person":3,"es":"Hemos trabajado muy duro en este proyecto.","en":"We've worked very hard on this project."}
   ],
   "pluperfect": [
    {"person":2,"es":"Ella había trabajado allí durante veinte años.","en":"She had worked there for twenty years."}
@@ -3225,7 +3354,11 @@
    {"person":3,"es":"Es importante que trabajemos en equipo.","en":"It's important that we work as a team."}
   ],
   "subjImperfect": [
-   {"person":1,"es":"Me gustaría que trabajaras conmigo.","en":"I'd like you to work with me."}
+   {"person":1,"es":"Me gustaría que trabajaras conmigo.","en":"I'd like you to work with me."},
+   {"person":0,"es":"Mis padres querían que yo trabajara en el negocio de la familia.","en":"My parents wanted me to work in the family business."},
+   {"person":2,"es":"Era raro que mi hermano trabajara los domingos.","en":"It was unusual for my brother to work on Sundays."},
+   {"person":3,"es":"Si trabajáramos juntos, terminaríamos antes.","en":"If we worked together, we'd finish sooner."},
+   {"person":4,"es":"El dueño quería que los empleados trabajaran más horas.","en":"The owner wanted the employees to work longer hours."}
   ],
   "subjImperfectSe": [
    {"person":3,"es":"Si trabajásemos juntos, terminaríamos antes.","en":"If we worked together, we'd finish sooner."}
@@ -3280,7 +3413,11 @@
    {"person":4,"es":"Ellos escribirían si tuvieran noticias.","en":"They would write if they had news.","level":"B2"}
   ],
   "presentPerfect": [
-   {"person":4,"es":"Mis estudiantes han escrito cuentos preciosos.","en":"My students have written beautiful stories."}
+   {"person":4,"es":"Mis estudiantes han escrito cuentos preciosos.","en":"My students have written beautiful stories."},
+   {"person":0,"es":"Nunca he escrito un poema.","en":"I've never written a poem."},
+   {"person":1,"es":"¿Le has escrito a tu abuela?","en":"Have you written to your grandmother?"},
+   {"person":2,"es":"Mi tía ha escrito tres libros de cocina.","en":"My aunt has written three cookbooks."},
+   {"person":3,"es":"Este mes hemos escrito un cuento cada semana.","en":"This month we've written a story every week."}
   ],
   "pluperfect": [
    {"person":2,"es":"Él ya había escrito la carta.","en":"He had already written the letter."}
@@ -3299,7 +3436,11 @@
    {"person":4,"es":"Quiero que los niños escriban una carta.","en":"I want the kids to write a letter."}
   ],
   "subjImperfect": [
-   {"person":2,"es":"Esperaba que él escribiera pronto.","en":"I was hoping he would write soon."}
+   {"person":2,"es":"Esperaba que él escribiera pronto.","en":"I was hoping he would write soon."},
+   {"person":0,"es":"La maestra quería que yo escribiera con más cuidado.","en":"The teacher wanted me to write more carefully."},
+   {"person":1,"es":"Me alegró que me escribieras.","en":"I was glad you wrote to me."},
+   {"person":3,"es":"Nos pidieron que escribiéramos nuestros nombres en la lista.","en":"They asked us to write our names on the list."},
+   {"person":4,"es":"Ojalá mis nietos me escribieran más.","en":"I wish my grandchildren would write to me more."}
   ],
   "subjImperfectSe": [
    {"person":4,"es":"Pedimos que escribiesen sus nombres.","en":"We asked them to write their names."}
@@ -3354,7 +3495,11 @@
    {"person":4,"es":"Ellos perderían el trabajo por llegar tarde.","en":"They would lose their jobs for being late."}
   ],
   "presentPerfect": [
-   {"person":1,"es":"¿Has perdido tu celular otra vez?","en":"Have you lost your phone again?"}
+   {"person":1,"es":"¿Has perdido tu celular otra vez?","en":"Have you lost your phone again?"},
+   {"person":0,"es":"He perdido mi paraguas otra vez.","en":"I've lost my umbrella again."},
+   {"person":2,"es":"Nuestro equipo no ha perdido ningún partido este año.","en":"Our team hasn't lost a single game this year."},
+   {"person":3,"es":"Hemos perdido mucho tiempo en el tráfico.","en":"We've lost a lot of time in traffic."},
+   {"person":4,"es":"Mis abuelos nunca han perdido la esperanza.","en":"My grandparents have never lost hope."}
   ],
   "pluperfect": [
    {"person":2,"es":"Ella había perdido el pasaporte antes del viaje.","en":"She had lost her passport before the trip."}
@@ -3373,7 +3518,11 @@
    {"person":4,"es":"Espero que los niños no pierdan las llaves.","en":"I hope the kids don't lose the keys."}
   ],
   "subjImperfect": [
-   {"person":2,"es":"Mi mamá temía que él perdiera el trabajo.","en":"My mom was afraid he would lose his job."}
+   {"person":2,"es":"Mi mamá temía que él perdiera el trabajo.","en":"My mom was afraid he would lose his job."},
+   {"person":0,"es":"Mi mamá tenía miedo de que yo perdiera el pasaporte.","en":"My mom was afraid I would lose my passport."},
+   {"person":1,"es":"No quería que perdieras el vuelo.","en":"I didn't want you to miss your flight."},
+   {"person":3,"es":"Si perdiéramos la guagua, llegaríamos tarde.","en":"If we missed the bus, we'd be late."},
+   {"person":4,"es":"El entrenador no quería que los jugadores perdieran la calma.","en":"The coach didn't want the players to lose their cool."}
   ],
   "subjImperfectSe": [
    {"person":4,"es":"Temíamos que perdiesen el último barco.","en":"We were afraid they would miss the last boat."}
@@ -3428,7 +3577,11 @@
    {"person":4,"es":"Estas plantas producirían más frutos con sol.","en":"These plants would produce more fruit with sun."}
   ],
   "presentPerfect": [
-   {"person":2,"es":"El huracán ha producido muchos daños.","en":"The hurricane has caused a lot of damage."}
+   {"person":2,"es":"El huracán ha producido muchos daños.","en":"The hurricane has caused a lot of damage."},
+   {"person":0,"es":"He producido tres discos con artistas locales.","en":"I've produced three albums with local artists."},
+   {"person":1,"es":"¿Has producido algo nuevo este año?","en":"Have you produced anything new this year?"},
+   {"person":3,"es":"Este año hemos producido más café que nunca.","en":"This year we've produced more coffee than ever."},
+   {"person":4,"es":"Las lluvias han producido inundaciones en la costa.","en":"The rains have caused flooding on the coast."}
   ],
   "pluperfect": [
    {"person":2,"es":"La fábrica había producido miles de zapatos.","en":"The factory had produced thousands of shoes."}
@@ -3447,7 +3600,11 @@
    {"person":4,"es":"Ojalá estos árboles produzcan frutos pronto.","en":"I hope these trees bear fruit soon."}
   ],
   "subjImperfect": [
-   {"person":2,"es":"Esperábamos que la finca produjera más.","en":"We were hoping the farm would produce more."}
+   {"person":2,"es":"Esperábamos que la finca produjera más.","en":"We were hoping the farm would produce more."},
+   {"person":0,"es":"El cantante quería que yo produjera su próximo disco.","en":"The singer wanted me to produce his next album."},
+   {"person":1,"es":"Si produjeras tu propia música, ¿qué estilo harías?","en":"If you produced your own music, what style would you make?"},
+   {"person":3,"es":"Si produjéramos nuestra propia electricidad, ahorraríamos mucho.","en":"If we produced our own electricity, we'd save a lot."},
+   {"person":4,"es":"El granjero quería que las vacas produjeran más leche.","en":"The farmer wanted the cows to produce more milk."}
   ],
   "subjImperfectSe": [
    {"person":4,"es":"Queríamos que produjesen más café.","en":"We wanted them to produce more coffee."}
@@ -3483,7 +3640,8 @@
    {"person":4,"es":"Estos accidentes no ocurrirían con mejores luces.","en":"These accidents wouldn't happen with better lights."}
   ],
   "presentPerfect": [
-   {"person":2,"es":"¿Qué ha ocurrido aquí?","en":"What has happened here?"}
+   {"person":2,"es":"¿Qué ha ocurrido aquí?","en":"What has happened here?"},
+   {"person":4,"es":"Han ocurrido varios accidentes en esta esquina.","en":"Several accidents have happened on this corner."}
   ],
   "pluperfect": [
    {"person":2,"es":"Nunca había ocurrido algo así.","en":"Nothing like that had ever happened."}
@@ -3499,7 +3657,8 @@
    {"person":4,"es":"Ojalá no ocurran más accidentes.","en":"I hope no more accidents happen."}
   ],
   "subjImperfect": [
-   {"person":2,"es":"Si ocurriera algo, llámame.","en":"If anything were to happen, call me."}
+   {"person":2,"es":"Si ocurriera algo, llámame.","en":"If anything were to happen, call me."},
+   {"person":4,"es":"Temíamos que ocurrieran más apagones.","en":"We were afraid more blackouts would happen."}
   ],
   "subjImperfectSe": [
    {"person":2,"es":"Aunque ocurriese un problema, estaríamos listos.","en":"Even if a problem came up, we'd be ready."}
@@ -3550,7 +3709,11 @@
    {"person":3,"es":"Entenderíamos mejor con subtítulos.","en":"We would understand better with subtitles."}
   ],
   "presentPerfect": [
-   {"person":0,"es":"Nunca he entendido las reglas del dominó.","en":"I've never understood the rules of dominoes."}
+   {"person":0,"es":"Nunca he entendido las reglas del dominó.","en":"I've never understood the rules of dominoes."},
+   {"person":1,"es":"¿Has entendido la tarea?","en":"Have you understood the homework?"},
+   {"person":2,"es":"Mi abuela nunca ha entendido cómo funciona el internet.","en":"My grandmother has never understood how the internet works."},
+   {"person":3,"es":"Por fin hemos entendido el problema.","en":"We've finally understood the problem."},
+   {"person":4,"es":"Mis padres siempre han entendido mis decisiones.","en":"My parents have always understood my decisions."}
   ],
   "pluperfect": [
    {"person":2,"es":"Ella no había entendido la pregunta.","en":"She hadn't understood the question."}
@@ -3569,7 +3732,11 @@
    {"person":4,"es":"Ojalá los niños entiendan la lección.","en":"I hope the kids understand the lesson."}
   ],
   "subjImperfect": [
-   {"person":2,"es":"Me sorprendió que no entendiera el chiste.","en":"I was surprised he didn't get the joke."}
+   {"person":2,"es":"Me sorprendió que no entendiera el chiste.","en":"I was surprised he didn't get the joke."},
+   {"person":0,"es":"El profesor repitió todo para que yo entendiera.","en":"The teacher repeated everything so I would understand."},
+   {"person":1,"es":"Te lo expliqué despacio para que entendieras.","en":"I explained it to you slowly so you'd understand."},
+   {"person":3,"es":"El guía hablaba despacio para que entendiéramos.","en":"The guide spoke slowly so we'd understand."},
+   {"person":4,"es":"Era difícil que los turistas entendieran el acento.","en":"It was hard for the tourists to understand the accent."}
   ],
   "subjImperfectSe": [
    {"person":4,"es":"Hablé despacio para que me entendiesen.","en":"I spoke slowly so they would understand me."}
@@ -3624,7 +3791,11 @@
    {"person":4,"es":"Ellos pedirían más tiempo.","en":"They would ask for more time."}
   ],
   "presentPerfect": [
-   {"person":1,"es":"¿Ya has pedido la comida?","en":"Have you ordered the food yet?"}
+   {"person":1,"es":"¿Ya has pedido la comida?","en":"Have you ordered the food yet?"},
+   {"person":0,"es":"Ya he pedido la cuenta.","en":"I've already asked for the check."},
+   {"person":2,"es":"Mi hermana nunca me ha pedido nada.","en":"My sister has never asked me for anything."},
+   {"person":3,"es":"Hemos pedido pizza para todos.","en":"We've ordered pizza for everyone."},
+   {"person":4,"es":"Los vecinos han pedido más luces en la calle.","en":"The neighbors have asked for more streetlights."}
   ],
   "pluperfect": [
    {"person":2,"es":"Él ya había pedido permiso para salir.","en":"He had already asked permission to leave."}
@@ -3643,7 +3814,11 @@
    {"person":4,"es":"No quiero que me pidan nada más.","en":"I don't want them to ask me for anything else."}
   ],
   "subjImperfect": [
-   {"person":2,"es":"Mi mamá quería que el mesero pidiera disculpas.","en":"My mom wanted the waiter to apologize."}
+   {"person":2,"es":"Mi mamá quería que el mesero pidiera disculpas.","en":"My mom wanted the waiter to apologize."},
+   {"person":0,"es":"Mi mamá quería que yo pidiera perdón.","en":"My mom wanted me to apologize."},
+   {"person":1,"es":"Te dije que pidieras ayuda.","en":"I told you to ask for help."},
+   {"person":3,"es":"El mesero esperó a que pidiéramos.","en":"The waiter waited for us to order."},
+   {"person":4,"es":"Les sugerí que pidieran el pescado frito.","en":"I suggested they order the fried fish."}
   ],
   "subjImperfectSe": [
    {"person":4,"es":"Temía que me pidiesen el pasaporte.","en":"I was afraid they would ask for my passport."}
@@ -3698,7 +3873,11 @@
    {"person":4,"es":"Ellos recibirían ayuda del gobierno.","en":"They would get help from the government."}
   ],
   "presentPerfect": [
-   {"person":3,"es":"Hemos recibido muy buenas noticias.","en":"We've received very good news."}
+   {"person":3,"es":"Hemos recibido muy buenas noticias.","en":"We've received very good news."},
+   {"person":0,"es":"Todavía no he recibido el paquete.","en":"I still haven't received the package."},
+   {"person":1,"es":"¿Has recibido mi mensaje?","en":"Have you gotten my message?"},
+   {"person":2,"es":"Mi hermano ha recibido una beca para estudiar en México.","en":"My brother has received a scholarship to study in Mexico."},
+   {"person":4,"es":"Los niños han recibido muchos regalos este año.","en":"The kids have gotten a lot of presents this year."}
   ],
   "pluperfect": [
    {"person":2,"es":"Ella nunca había recibido tantas flores.","en":"She had never received so many flowers."}
@@ -3717,7 +3896,11 @@
    {"person":4,"es":"Quiero que los niños reciban una buena educación.","en":"I want the kids to get a good education."}
   ],
   "subjImperfect": [
-   {"person":2,"es":"Queríamos que la abuela recibiera las flores en su cumpleaños.","en":"We wanted Grandma to get the flowers on her birthday."}
+   {"person":2,"es":"Queríamos que la abuela recibiera las flores en su cumpleaños.","en":"We wanted Grandma to get the flowers on her birthday."},
+   {"person":0,"es":"Mi abuela se alegró de que yo recibiera el premio.","en":"My grandmother was glad I received the award."},
+   {"person":1,"es":"Me alegró que recibieras buenas noticias.","en":"I was glad you got good news."},
+   {"person":3,"es":"Era importante que recibiéramos la invitación a tiempo.","en":"It was important for us to get the invitation in time."},
+   {"person":4,"es":"La escuela quería que todos los estudiantes recibieran almuerzo gratis.","en":"The school wanted all the students to get free lunch."}
   ],
   "subjImperfectSe": [
    {"person":4,"es":"Me alegraría que recibiesen el premio.","en":"I'd be happy if they received the award."}
@@ -3770,7 +3953,11 @@
    {"person":4,"es":"Ellos recordarían la fecha si la anotaran.","en":"They would remember the date if they wrote it down.","level":"B2"}
   ],
   "presentPerfect": [
-   {"person":3,"es":"Hemos recordado viejos tiempos toda la noche.","en":"We've been remembering old times all night."}
+   {"person":3,"es":"Hemos recordado viejos tiempos toda la noche.","en":"We've been remembering old times all night."},
+   {"person":0,"es":"Siempre he recordado ese viaje con cariño.","en":"I've always remembered that trip fondly."},
+   {"person":1,"es":"¿Has recordado dónde dejaste las llaves?","en":"Have you remembered where you left the keys?"},
+   {"person":2,"es":"Mi papá siempre ha recordado el cumpleaños de mi mamá.","en":"My dad has always remembered my mom's birthday."},
+   {"person":4,"es":"Mis primos han recordado anécdotas de la infancia toda la tarde.","en":"My cousins have been remembering childhood stories all afternoon."}
   ],
   "pluperfect": [
    {"person":2,"es":"Ella no había recordado su cita con el dentista.","en":"She hadn't remembered her dentist appointment."}
@@ -3789,7 +3976,11 @@
    {"person":4,"es":"Ojalá los niños recuerden este viaje.","en":"I hope the kids remember this trip."}
   ],
   "subjImperfect": [
-   {"person":2,"es":"Le pedí a mi hermana que me recordara la cita.","en":"I asked my sister to remind me of the appointment."}
+   {"person":2,"es":"Le pedí a mi hermana que me recordara la cita.","en":"I asked my sister to remind me of the appointment."},
+   {"person":0,"es":"La maestra quería que yo recordara las fechas importantes.","en":"The teacher wanted me to remember the important dates."},
+   {"person":1,"es":"Te escribí una nota para que recordaras comprar leche.","en":"I wrote you a note so you'd remember to buy milk."},
+   {"person":3,"es":"Mi mamá guardaba las fotos para que recordáramos a la familia.","en":"My mom kept the photos so we'd remember the family."},
+   {"person":4,"es":"Era importante que los niños recordaran su número de teléfono.","en":"It was important for the kids to remember their phone number."}
   ],
   "subjImperfectSe": [
    {"person":3,"es":"Nos pidió que recordásemos a los que no están.","en":"She asked us to remember those who are gone."}
