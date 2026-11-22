@@ -1,4 +1,5 @@
 import { getApps, initializeApp, type FirebaseApp } from "firebase/app";
+import { initializeAppCheck, ReCaptchaEnterpriseProvider } from "firebase/app-check";
 import { getAuth, type Auth } from "firebase/auth";
 import { doc, getDoc, getFirestore, type Firestore } from "firebase/firestore";
 
@@ -12,9 +13,20 @@ const config = {
 
 export const firebaseConfigured = Object.values(config).every(Boolean);
 
-// Created on first use, so prerendering pages never touches Firebase.
+// The Fraud Defense (reCAPTCHA Enterprise) site key registered in App Check. Public by design, like the config. Without
+// it, App Check stays off, so a build missing the variable still works until Firestore enforcement is turned on.
+const appCheckKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
+// Created on first use, so prerendering pages never touches Firebase. App Check has to start before Auth or Firestore
+// make a request, so it starts here, with the app.
 function app(): FirebaseApp {
-  return getApps()[0] ?? initializeApp(config);
+  const existing = getApps()[0];
+  if (existing) return existing;
+  const created = initializeApp(config);
+  if (appCheckKey && typeof window !== "undefined") {
+    initializeAppCheck(created, { provider: new ReCaptchaEnterpriseProvider(appCheckKey), isTokenAutoRefreshEnabled: true });
+  }
+  return created;
 }
 
 export const auth = (): Auth => getAuth(app());
