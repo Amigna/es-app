@@ -6,7 +6,7 @@ import type { Level } from "./level";
 // has. Every chapter stays open: the level only suggests where to start. Progress is kept in this browser, and for
 // signed-in people merged into users/{uid}/stats/course.
 
-export type StepId = "learn" | "see" | "words" | "quiz" | "practice" | "read" | "write" | "checkpoint";
+export type StepId = "learn" | "see" | "words" | "quiz" | "verbs" | "practice" | "read" | "write" | "checkpoint";
 /**
  * Verb forms; `choose`, fill in the blank with the tense hidden, for chapters about choosing between tenses;
  * `chooseVerb`, the same with the verb hidden, for choosing between verbs like ser and estar; or for
@@ -28,6 +28,11 @@ export interface Chapter {
   models?: string[];
   /** The verbs practice and writing draw from. */
   verbs: string[];
+  /**
+   * Verbs this chapter introduces, each with its meaning and then in a sentence, in the Verbs step. Each verb is new
+   * once in the course, taken in verbs.json order where the chapter's grammar allows. All are among `verbs`.
+   */
+  newVerbs?: string[];
   /** Only these persons, by slot (for commands: 1 tú, 2 usted, 3 nosotros, 4 ustedes). Without it, every person. */
   persons?: number[];
   /** Empty when there's nothing to drill beyond the quiz, like object pronouns. */
@@ -55,6 +60,7 @@ export const STEPS: { id: StepId; title: string; hint: string }[] = [
   // The quiz comes right after the lesson, while it's fresh, and the flashcards and the reading sit between the typed
   // steps, so they don't all run back to back before the checkpoint.
   { id: "quiz", title: "Quiz", hint: "Questions on the lesson" },
+  { id: "verbs", title: "Verbs", hint: "New verbs: what they mean, then in a sentence" },
   { id: "words", title: "Words", hint: "Flashcards for the chapter's theme" },
   { id: "practice", title: "Practice", hint: "Conjugation and fill in the blank" },
   { id: "read", title: "Read", hint: "A short story using the chapter" },
@@ -76,6 +82,7 @@ export function chapterSteps(chapter: Chapter): StepId[] {
     see: (chapter.models?.length ?? 0) > 0,
     words: chapter.words.length > 0,
     quiz: !!chapter.guide && chapter.guide.quiz?.length !== 0,
+    verbs: (chapter.newVerbs?.length ?? 0) > 0,
     practice: chapter.drills.length > 0,
     read: !!chapter.reading,
     write: chapter.tenses.length > 0 && chapter.verbs.length > 0,

@@ -37,6 +37,7 @@ import {
   progressiveForm,
   quizCards,
   reviewCards,
+  verbsDeck,
   writeDeck,
   type ChapterData,
   type ChapterQuiz,
@@ -49,7 +50,7 @@ import { chapterSentences } from "./chapter-quiz";
 import courseSentences from "../data/course-sentences.json";
 import { SENTENCE_BANK } from "./sentence-data";
 import { findForm, sentencesFor, withExtraSentences, type Sentence, type SentenceBank } from "./sentences";
-import { findVerb } from "./verbs";
+import { VERBS, findVerb } from "./verbs";
 import { upToLevel, type LeveledType } from "./vocab";
 
 // Seeded, so a failure can be repeated.
@@ -181,8 +182,8 @@ describe("course chapters", () => {
   it("name steps still to do in a finished chapter, like one added after it was passed", () => {
     const c = CHAPTERS.find((ch) => ch.id === "present-regular")!;
     const before: StepId[] = ["learn", "see", "quiz", "words", "practice", "write", "checkpoint"];
-    assert.deepEqual(stepsLeft(c, { [c.id]: { steps: before, done: "2026-11-10", best: 90 } }), ["read"]);
-    assert.deepEqual(stepsLeft(c, { [c.id]: { steps: [...before, "read"], done: "2026-11-10", best: 90 } }), []);
+    assert.deepEqual(stepsLeft(c, { [c.id]: { steps: before, done: "2026-11-10", best: 90 } }), ["verbs", "read"]);
+    assert.deepEqual(stepsLeft(c, { [c.id]: { steps: [...before, "verbs", "read"], done: "2026-11-10", best: 90 } }), []);
     // Unfinished chapters already show a step count.
     assert.deepEqual(stepsLeft(c, { [c.id]: { steps: ["learn"] } }), []);
   });
@@ -202,7 +203,22 @@ describe("course chapters", () => {
 
   it("put the reading between the typed steps", () => {
     const c = CHAPTERS.find((ch) => ch.id === "present-regular")!;
-    assert.deepEqual(chapterSteps(c), ["learn", "see", "quiz", "words", "practice", "read", "write", "checkpoint"]);
+    assert.deepEqual(chapterSteps(c), ["learn", "see", "quiz", "verbs", "words", "practice", "read", "write", "checkpoint"]);
+  });
+
+  it("introduce each new verb once in the course, from among the chapter's verbs", () => {
+    const seen = new Map<string, string>();
+    for (const c of CHAPTERS.filter((ch) => ch.newVerbs)) {
+      assert.ok(c.newVerbs!.length >= 1 && c.newVerbs!.length <= 15, `${c.id} has ${c.newVerbs!.length} new verbs`);
+      for (const inf of c.newVerbs!) {
+        assert.ok(c.verbs.includes(inf), `${c.id}: new verb ${inf} isn't one of its verbs`);
+        assert.ok(!seen.has(inf), `${inf} is new in ${seen.get(inf)} and ${c.id}`);
+        seen.set(inf, c.id);
+      }
+    }
+    // Most of the top 30, which A1 drills use, are met by the end of A2.
+    const top = VERBS.slice(0, 30).map((v) => v.inf);
+    assert.ok(top.filter((inf) => seen.has(inf)).length >= 25, top.filter((inf) => !seen.has(inf)).join(", "));
   });
 });
 
@@ -354,6 +370,30 @@ describe("chapter decks", () => {
           assert.ok(c.persons!.includes(card.table!.person), `${c.id}: ${card.id}`);
         }
         assert.equal(count, 15, c.id);
+      }
+    }
+  });
+
+  it("verbs step shows each new verb's meaning, then each one in a sentence", () => {
+    for (const c of CHAPTERS.filter((ch) => ch.newVerbs)) {
+      const data = chapterData(c);
+      const deck = verbsDeck(data, seeded(8));
+      const cards = [];
+      for (let card = deck(); card; card = deck()) cards.push(card);
+      const n = c.newVerbs!.length;
+      assert.equal(cards.length, 2 * n, c.id);
+      const meanings = cards.slice(0, n);
+      assert.ok(meanings.every((card) => card.flashcard && !card.track), c.id);
+      assert.deepEqual(meanings.map((card) => card.title).sort(), [...c.newVerbs!].sort(), c.id);
+      for (const card of meanings) assert.equal(card.shown, findVerb(card.title)!.en);
+      const asked = cards.slice(n).map((card) => (card.id.startsWith("progressive:") ? card.id.split(":").at(-2)! : card.track!.item.split(":")[1]));
+      assert.deepEqual(asked.sort(), [...c.newVerbs!].sort(), c.id);
+      for (const card of cards.slice(n)) {
+        assert.ok(card.track, card.id);
+        if (card.track!.tense) assert.ok(c.tenses.includes(card.track!.tense), card.id);
+        if (c.persons && card.table) assert.ok(c.persons.includes(card.table.person), card.id);
+        // From practice's sentences, so the checkpoint's stay unseen.
+        if (card.sentence) assert.ok(!heldForCheckpoint(c.id, card.sentence), `${c.id}: "${card.sentence}" is held for the checkpoint`);
       }
     }
   });

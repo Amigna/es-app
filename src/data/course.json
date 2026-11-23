@@ -8,6 +8,7 @@
     "tenses": ["present"],
     "models": ["hablar", "trabajar", "estudiar", "comer", "beber", "aprender", "vivir", "escribir", "abrir"],
     "verbs": ["hablar", "trabajar", "estudiar", "llegar", "llamar", "tomar", "mirar", "esperar", "buscar", "necesitar", "comprar", "cocinar", "bailar", "caminar", "escuchar", "comer", "beber", "leer", "correr", "vender", "aprender", "comprender", "vivir", "escribir", "recibir", "abrir"],
+    "newVerbs": ["hablar", "comer", "vivir", "trabajar", "estudiar", "escribir", "leer", "comprar", "llegar", "llamar", "necesitar", "beber", "aprender", "abrir"],
     "drills": ["conjugation", "blanks"],
     "words": [
       "noun:escuela", "noun:clase", "noun:libro", "noun:cuaderno", "noun:tarea", "noun:examen", "noun:pregunta", "noun:respuesta",
@@ -45,6 +46,7 @@
     "tenses": ["present"],
     "models": ["ser", "estar"],
     "verbs": ["ser", "estar"],
+    "newVerbs": ["ser", "estar"],
     "drills": ["chooseVerb"],
     "words": [
       "adjective:alto", "adjective:bajo", "adjective:simpático", "adjective:inteligente", "adjective:trabajador", "adjective:cansado",
@@ -75,6 +77,7 @@
     "tenses": ["present"],
     "models": ["pensar", "querer", "volver", "dormir", "pedir", "servir", "tener", "hacer", "salir"],
     "verbs": ["pensar", "querer", "empezar", "cerrar", "preferir", "entender", "poder", "volver", "dormir", "encontrar", "contar", "jugar", "almorzar", "pedir", "servir", "repetir", "seguir", "tener", "venir", "hacer", "poner", "salir", "decir", "conocer", "saber", "traer", "oír", "ver", "dar"],
+    "newVerbs": ["tener", "hacer", "querer", "poder", "decir", "ver", "poner", "pensar", "salir", "saber", "dar", "venir", "volver", "conocer", "empezar"],
     "drills": ["conjugation", "blanks"],
     "words": [
       "noun:día", "noun:semana", "noun:hora", "noun:mañana", "noun:noche", "noun:fin de semana", "noun:lunes", "noun:sábado",
@@ -91,6 +94,7 @@
     "tenses": ["present"],
     "models": ["gustar", "encantar"],
     "verbs": ["gustar", "encantar", "interesar", "importar", "molestar", "faltar", "doler"],
+    "newVerbs": ["gustar", "encantar", "interesar", "importar", "molestar", "faltar", "doler"],
     "drills": ["blanks"],
     "words": [
       "noun:fútbol", "noun:deporte", "noun:música", "noun:película", "noun:juego", "noun:fiesta", "noun:chocolate", "noun:café",
@@ -112,6 +116,7 @@
     "tenses": ["present"],
     "models": ["ir"],
     "verbs": ["ir"],
+    "newVerbs": ["ir"],
     "drills": ["conjugation", "blanks"],
     "words": [
       "noun:playa", "noun:cine", "noun:parque", "noun:museo", "noun:mercado", "noun:tienda", "noun:biblioteca", "noun:restaurante",
@@ -127,6 +132,7 @@
     "guide": { "slug": "present-progressive" },
     "tenses": ["present"],
     "verbs": ["hablar", "trabajar", "estudiar", "cocinar", "escuchar", "mirar", "jugar", "esperar", "comer", "beber", "leer", "correr", "escribir", "vivir", "hacer", "dormir", "pedir", "decir", "traer", "servir"],
+    "newVerbs": ["mirar", "esperar", "jugar", "escuchar", "cocinar", "correr", "dormir", "pedir", "traer", "servir"],
     "drills": ["progressive"],
     "words": [
       "noun:televisión", "noun:teléfono", "noun:computadora", "noun:música", "noun:cama", "noun:sofá", "noun:sala", "noun:baño",
@@ -186,6 +192,7 @@
     "tenses": ["present"],
     "models": ["levantarse", "ducharse", "vestirse"],
     "verbs": ["levantarse", "sentarse", "acostarse", "despertarse", "ducharse", "vestirse", "llamarse", "quedarse", "irse", "ponerse", "sentirse", "divertirse", "acordarse", "lavarse", "peinarse", "bañarse", "dormirse", "casarse", "preocuparse", "enojarse"],
+    "newVerbs": ["levantarse", "sentarse", "acostarse", "despertarse", "ducharse", "vestirse", "llamarse", "quedarse", "irse", "ponerse", "sentirse", "divertirse"],
     "drills": ["conjugation", "blanks"],
     "words": [
       "noun:cara", "noun:pelo", "noun:diente", "noun:mano", "noun:ducha", "noun:toalla", "noun:jabón", "noun:espejo",
@@ -202,7 +209,8 @@
     "guide": { "slug": "preterite-regular" },
     "tenses": ["preterite"],
     "models": ["hablar", "trabajar", "llegar", "comer", "beber", "aprender", "vivir", "escribir", "abrir"],
-    "verbs": ["hablar", "trabajar", "estudiar", "llegar", "buscar", "pagar", "tomar", "comprar", "cocinar", "viajar", "comer", "beber", "correr", "vender", "aprender", "volver", "vivir", "escribir", "recibir", "abrir", "salir", "leer"],
+    "verbs": ["hablar", "trabajar", "estudiar", "llegar", "buscar", "pagar", "tomar", "comprar", "cocinar", "viajar", "comer", "beber", "correr", "vender", "aprender", "volver", "vivir", "escribir", "recibir", "abrir", "salir", "leer", "pasar", "llevar", "dejar", "encontrar", "entrar", "deber", "perder"],
+    "newVerbs": ["pasar", "llevar", "dejar", "encontrar", "tomar", "entrar", "viajar", "buscar", "pagar", "vender", "recibir", "deber", "perder"],
     "drills": ["conjugation", "blanks"],
     "words": [
       "noun:aeropuerto", "noun:avión", "noun:hotel", "noun:boleto", "noun:maleta", "noun:vuelo", "noun:excursión", "noun:turista",
@@ -218,7 +226,8 @@
     "guide": { "slug": "preterite-irregular" },
     "tenses": ["preterite"],
     "models": ["ir", "tener", "estar", "hacer", "decir", "poder", "pedir", "dormir"],
-    "verbs": ["ser", "ir", "estar", "tener", "hacer", "decir", "poder", "poner", "querer", "saber", "venir", "traer", "dar", "ver", "conducir", "pedir", "dormir", "sentir", "preferir", "seguir"],
+    "verbs": ["ser", "ir", "estar", "tener", "hacer", "decir", "poder", "poner", "querer", "saber", "venir", "traer", "dar", "ver", "conducir", "pedir", "dormir", "sentir", "preferir", "seguir", "producir"],
+    "newVerbs": ["seguir", "sentir", "preferir", "conducir", "producir"],
     "drills": ["conjugation", "blanks"],
     "words": [
       "noun:boda", "noun:regalo", "noun:invitado", "noun:ceremonia", "noun:sorpresa", "noun:noticia", "noun:mensaje", "noun:llamada",
@@ -234,7 +243,8 @@
     "guide": { "slug": "imperfect" },
     "tenses": ["imperfect"],
     "models": ["hablar", "trabajar", "comer", "vivir", "ser", "ir", "ver"],
-    "verbs": ["ser", "ir", "ver", "estar", "tener", "hacer", "vivir", "jugar", "comer", "hablar", "trabajar", "querer", "poder", "saber", "dormir", "leer", "escuchar", "llevar"],
+    "verbs": ["ser", "ir", "ver", "estar", "tener", "hacer", "vivir", "jugar", "comer", "hablar", "trabajar", "querer", "poder", "saber", "dormir", "leer", "escuchar", "llevar", "parecer", "quedar", "creer", "contar", "recordar", "entender"],
+    "newVerbs": ["parecer", "quedar", "creer", "contar", "recordar", "entender"],
     "drills": ["conjugation", "blanks"],
     "words": [
       "noun:niño", "noun:juguete", "noun:pelota", "noun:abuelo", "noun:abuela", "noun:pueblo", "noun:barrio", "noun:vecino",
@@ -275,6 +285,7 @@
     },
     "tenses": ["preterite", "imperfect"],
     "verbs": ["dormir", "leer", "caminar", "llover", "hacer", "estar", "ser", "tener", "hablar", "cocinar", "ver", "estudiar", "sonar", "empezar", "llegar", "entrar", "llamar", "decir", "salir", "ir"],
+    "newVerbs": ["caminar", "sonar", "llover"],
     "drills": ["choose"],
     "words": [
       "noun:lluvia", "noun:viento", "noun:sol", "noun:nieve", "noun:cielo", "noun:calor", "noun:frío", "noun:bosque", "noun:campo",
@@ -315,6 +326,7 @@
     },
     "tenses": ["present", "preterite"],
     "verbs": ["ver", "llamar", "buscar", "ayudar", "conocer", "escuchar", "esperar", "invitar", "visitar", "dar", "decir", "escribir", "preguntar", "contestar", "explicar"],
+    "newVerbs": ["ayudar", "invitar", "visitar", "preguntar", "contestar", "explicar"],
     "drills": [],
     "words": [
       "noun:llave", "noun:teléfono", "noun:celular", "noun:foto", "noun:bolsa", "noun:botella", "noun:caja", "noun:cámara",
@@ -333,6 +345,7 @@
     },
     "tenses": ["present", "preterite"],
     "verbs": ["dar", "decir", "traer", "llevar", "comprar", "mandar", "mostrar", "pedir", "regalar", "explicar", "prestar", "enseñar", "devolver", "vender", "servir"],
+    "newVerbs": ["mandar", "mostrar", "regalar", "prestar", "enseñar", "devolver"],
     "drills": [],
     "words": [
       "noun:computadora", "noun:billetera", "noun:anillo", "noun:reloj", "noun:gafas", "noun:mochila", "noun:dinero", "noun:regalo",
@@ -407,7 +420,8 @@
     },
     "tenses": ["presentPerfect"],
     "models": ["hablar", "comer", "vivir", "hacer", "decir", "ver"],
-    "verbs": ["hablar", "comer", "vivir", "hacer", "decir", "ver", "escribir", "poner", "volver", "abrir", "romper", "estar", "ser", "tener", "ir", "llegar", "terminar", "leer", "descubrir", "traer"],
+    "verbs": ["hablar", "comer", "vivir", "hacer", "decir", "ver", "escribir", "poner", "volver", "abrir", "romper", "estar", "ser", "tener", "ir", "llegar", "terminar", "leer", "descubrir", "traer", "cambiar", "olvidar", "decidir"],
+    "newVerbs": ["romper", "terminar", "descubrir", "cambiar", "olvidar", "decidir"],
     "drills": ["conjugation", "blanks"],
     "words": [
       "noun:experiencia", "noun:proyecto", "noun:informe", "noun:reunión", "noun:empresa", "noun:carrera", "noun:error", "noun:éxito",

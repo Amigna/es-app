@@ -234,6 +234,7 @@ export default function DrillRunner({
   badges = [],
   retry = true,
   stopLabel = "Change settings",
+  saves = !!first.track,
 }: {
   first: Card;
   next: () => Card | null;
@@ -247,6 +248,11 @@ export default function DrillRunner({
   /** Off for a test, where a miss shouldn't come back and the score is a first try. */
   retry?: boolean;
   stopLabel?: string;
+  /**
+   * Whether the session saves answers, for the streak and repeated-mistake nudges. Worked out from the first card
+   * unless given, for a session that opens with cards that aren't saved, like a chapter's new-verb flashcards.
+   */
+  saves?: boolean;
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
@@ -260,7 +266,7 @@ export default function DrillRunner({
   const [slips, setSlips] = useState(0);
   const [total, setTotal] = useState(0);
   // Drills that save progress carry on today's streak from the last one, on any device.
-  const [streak, setStreak] = useState(() => (first.track ? drillStreak() : 0));
+  const [streak, setStreak] = useState(() => (saves ? drillStreak() : 0));
   const [bestStreak, setBestStreak] = useState(0);
   const answeredRef = useRef(false);
   const [retries, setRetries] = useState<{ card: Card; dueAt: number }[]>([]);
@@ -271,7 +277,7 @@ export default function DrillRunner({
   const [turn, setTurn] = useState(0);
   // Repeated mistakes: saved totals loaded when the drill starts, plus this drill's first tries. Not in tests, where
   // misses don't come back, and only for signed-in drills that save.
-  const nudges = retry && !!first.track;
+  const nudges = retry && saves;
   const [saved, setSaved] = useState<Saved | null>(null);
   const [tallies, setTallies] = useState<Record<string, Tally>>({});
   const nudgedRef = useRef(new Set<string>());
@@ -311,7 +317,7 @@ export default function DrillRunner({
 
   // A streak carried on another device arrives after the first render, and only replaces this one before any answer.
   useEffect(() => {
-    if (!first.track) return;
+    if (!saves) return;
     syncDrillStreak()
       .then((carried) => {
         if (!answeredRef.current) setStreak(carried);

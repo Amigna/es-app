@@ -211,7 +211,7 @@ export default function CourseChapter({
     try {
       const [decks, { quizSeen, remembering }] = await Promise.all([import("@/lib/course-decks"), import("@/lib/quiz-seen")]);
       const seen = quizSeen();
-      const needsSentences = step === "practice" || step === "write" || step === "checkpoint";
+      const needsSentences = step === "verbs" || step === "practice" || step === "write" || step === "checkpoint";
       const bank = needsSentences ? withExtraSentences(await loadSentences(verbs), extra) : {};
       const data = { chapter, verbs, bank, rare: rareSet, quiz, seen };
       const next =
@@ -219,6 +219,8 @@ export default function CourseChapter({
           ? decks.wordsDeck(chapter)
           : step === "quiz" && quiz
             ? decks.chapterQuizDeck(quiz, seen)
+            : step === "verbs"
+            ? decks.verbsDeck(data)
             : step === "practice"
               ? decks.practiceDeck(data)
               : step === "read" && reading
@@ -265,6 +267,8 @@ export default function CourseChapter({
         badges={earned}
         retry={session.step !== "checkpoint"}
         stopLabel="Back to the chapter"
+        // The Verbs step opens with meaning flashcards that aren't saved, but its fill-in-the-blank cards are.
+        {...(session.step === "verbs" ? { saves: true } : {})}
       />
     );
   }
@@ -368,6 +372,8 @@ export default function CourseChapter({
             <p className="text-stone-600 dark:text-stone-400">
               {open === "words" &&
                 `${chapter.words.length} ${chapter.words.every((w) => w.startsWith("phrase:")) ? "expressions" : "words"} that go with this chapter. Flip each card and say whether you knew it. When you're signed in, they join your review schedule and come back in Today's review.`}
+              {open === "verbs" &&
+                `${chapter.newVerbs!.length} new verb${chapter.newVerbs!.length === 1 ? "" : "s"} in this chapter: ${listNames(chapter.newVerbs!)}. First flip each one and say whether you knew what it means, then fill each one in in a sentence. Anything you miss comes back.`}
               {open === "quiz" && `${Math.min(quiz?.questions.length ?? 0, QUIZ_RUN)} questions on the lesson${(quiz?.questions.length ?? 0) > QUIZ_RUN ? ", starting with ones you haven't seen lately" : ""}. Each answer comes with a short explanation, and anything you miss comes back.`}
               {open === "practice" &&
                 (chapter.drills.includes("numbers")

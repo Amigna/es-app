@@ -1,4 +1,4 @@
-import { blankDeck, listedWordCard, writingCard, writingDeck } from "./card-decks";
+import { blankCard, blankDeck, listedWordCard, writingCard, writingDeck } from "./card-decks";
 import { CHECKPOINT_MIX, CHECKPOINT_SIZE, EXAM_SIZE, REVIEW_RECENT_SHARE, REVIEW_SIZE, chapterSteps, type Chapter, type ChapterDrill } from "./course";
 import { conjugate } from "./conjugation/engine";
 import { TENSES } from "./conjugation/types";
@@ -168,29 +168,35 @@ function progressiveDeck({ chapter, verbs, bank }: ChapterData, random: Random):
     };
   };
   const blank = (): Card | null => {
-    const options = verbs.flatMap((verb) => progressiveSentences(bank, verb).map((s) => ({ verb, s })));
-    if (options.length === 0) return null;
-    const { verb, s } = pick(options, random);
-    const wanted = progressiveForm(verb, s.person);
-    const hit = findForm(s.es, wanted)!;
-    const answer = s.es.slice(hit.start, hit.end);
-    return {
-      id: `progressive:blank:${verb.inf}:${s.person}`,
-      badge: PROGRESSIVE,
-      context: PROGRESSIVE_HINT,
-      person: personLabel("present", s.person),
-      title: blankOut(s.es, wanted),
-      titleIsSpanish: true,
-      subtitle: s.en,
-      sentence: s.es,
-      ask: `${verb.inf}, ${personLabel("present", s.person)}`,
-      answers: [answer],
-      shown: answer.toLowerCase(),
-      explain: progressiveExplain(verb, s.person),
-      track: PROGRESSIVE_TRACK,
-    };
+    const options = verbs.filter((verb) => progressiveSentences(bank, verb).length > 0);
+    return options.length ? progressiveBlank(bank, pick(options, random), random) : null;
   };
   return () => (verbs.length === 0 ? null : turn++ % 2 === 0 ? form() : (blank() ?? form()));
+}
+
+/** One of the verb's progressive sentences with estar and the gerund blanked. Null when it has none. */
+function progressiveBlank(bank: SentenceBank, verb: Verb, random: Random): Card | null {
+  const sentences = progressiveSentences(bank, verb);
+  if (sentences.length === 0) return null;
+  const s = pick(sentences, random);
+  const wanted = progressiveForm(verb, s.person);
+  const hit = findForm(s.es, wanted)!;
+  const answer = s.es.slice(hit.start, hit.end);
+  return {
+    id: `progressive:blank:${verb.inf}:${s.person}`,
+    badge: PROGRESSIVE,
+    context: PROGRESSIVE_HINT,
+    person: personLabel("present", s.person),
+    title: blankOut(s.es, wanted),
+    titleIsSpanish: true,
+    subtitle: s.en,
+    sentence: s.es,
+    ask: `${verb.inf}, ${personLabel("present", s.person)}`,
+    answers: [answer],
+    shown: answer.toLowerCase(),
+    explain: progressiveExplain(verb, s.person),
+    track: PROGRESSIVE_TRACK,
+  };
 }
 
 /** Translations of the chapter's progressive sentences, both ways, labeled as the progressive. */
@@ -287,6 +293,52 @@ export function quizCards(quiz: ChapterQuiz, random: Random = Math.random): Card
 /** A dozen of the chapter's questions, the ones not asked lately first, so a retake isn't a memory test. */
 export function chapterQuizDeck(quiz: ChapterQuiz, seen: QuizSeen = {}, random: Random = Math.random): () => Card | null {
   return queue(shuffled(freshestFirst(quizCards(quiz, random), seen, random).slice(0, QUIZ_RUN), random));
+}
+
+/**
+ * A new verb's meaning to flip and grade yourself, with one of its sentences in the chapter's tense shown with the
+ * answer. Not saved: verbs are scheduled by tense, and the fill-in-the-blank card that follows is.
+ */
+function verbMeaningCard(data: ChapterData, verb: Verb, random: Random): Card {
+  const { chapter, bank } = data;
+  const sentences = chapter.drills.includes("progressive")
+    ? progressiveSentences(bank, verb)
+    : chapter.tenses.flatMap((tense) => sentencesFor(bank, verb.inf, tense));
+  const example = sentences.length ? pick(sentences, random) : undefined;
+  return {
+    id: `newverb:${verb.inf}`,
+    badge: "New verb",
+    title: verb.inf,
+    titleIsSpanish: true,
+    ask: "What does it mean?",
+    answers: [verb.en],
+    shown: verb.en,
+    english: true,
+    flashcard: example ? { example: { es: example.es, en: example.en } } : {},
+  };
+}
+
+/** The new verb in one of its sentences, in the chapter's tense and persons, or as a verb form when it has none. */
+function newVerbBlank(data: ChapterData, verb: Verb, random: Random): Card | null {
+  const { chapter, bank, rare } = data;
+  if (chapter.drills.includes("progressive")) return progressiveBlank(bank, verb, random) ?? progressiveDeck({ ...data, verbs: [verb] }, random)();
+  for (const tense of shuffled(chapter.tenses, random)) {
+    const card = blankCard(bank, verb, tense, random);
+    if (card) return card;
+  }
+  return conjugationDeck({ ...data, verbs: [verb], rare }, random)();
+}
+
+/**
+ * The chapter's new verbs: first each one's meaning as a flashcard, then each one in a sentence to fill in, from the
+ * sentences practice uses, so the checkpoint's stay unseen.
+ */
+export function verbsDeck(data: ChapterData, random: Random = Math.random): () => Card | null {
+  const practice = withBank(data, "practice");
+  const verbs = (data.chapter.newVerbs ?? []).flatMap((inf) => data.verbs.find((v) => v.inf === inf) ?? []);
+  const meanings = shuffled(verbs, random).map((verb) => verbMeaningCard(practice, verb, random));
+  const blanks = shuffled(verbs, random).flatMap((verb) => newVerbBlank(practice, verb, random) ?? []);
+  return queue([...meanings, ...blanks]);
 }
 
 /** Every word once, as flashcards, in random order. */
