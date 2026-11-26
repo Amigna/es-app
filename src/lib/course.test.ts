@@ -386,6 +386,13 @@ describe("chapter decks", () => {
       assert.ok(meanings.every((card) => card.flashcard && !card.track), c.id);
       assert.deepEqual(meanings.map((card) => card.title).sort(), [...c.newVerbs!].sort(), c.id);
       for (const card of meanings) assert.equal(card.shown, findVerb(card.title)!.en);
+      // The forms are shown with the meaning, in each of the chapter's tenses, so they're seen before they're asked.
+      for (const card of meanings) {
+        const tables = card.flashcard!.tables;
+        if (c.drills.includes("progressive")) assert.equal(tables, undefined, c.id);
+        else assert.deepEqual(tables?.map((t) => t.tense), c.tenses, `${c.id}: ${card.title}`);
+        for (const t of tables ?? []) assert.equal(t.verb.inf, card.title);
+      }
       const asked = cards.slice(n).map((card) => (card.id.startsWith("progressive:") ? card.id.split(":").at(-2)! : card.track!.item.split(":")[1]));
       assert.deepEqual(asked.sort(), [...c.newVerbs!].sort(), c.id);
       for (const card of cards.slice(n)) {

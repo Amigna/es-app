@@ -324,6 +324,7 @@ function verbMeaningCard(data: ChapterData, verb: Verb, random: Random): Card {
     ? progressiveSentences(bank, verb)
     : chapter.tenses.flatMap((tense) => sentencesFor(bank, verb.inf, tense));
   const example = sentences.length ? pick(sentences, random) : undefined;
+  const tables = chapter.drills.includes("progressive") ? [] : chapter.tenses.filter((tense) => conjugate(verb).tenses[tense]).map((tense) => ({ verb, tense }));
   return {
     id: `newverb:${verb.inf}`,
     badge: "New verb",
@@ -333,7 +334,12 @@ function verbMeaningCard(data: ChapterData, verb: Verb, random: Random): Card {
     answers: [verb.en],
     shown: verb.en,
     english: true,
-    flashcard: example ? { example: { es: example.es, en: example.en } } : {},
+    flashcard: {
+      ...(example ? { example: { es: example.es, en: example.en } } : {}),
+      // The forms come before the fill-in questions, so an irregular like conozco isn't a first guess. The progressive
+      // isn't a tense of its own, so it has no table.
+      ...(tables.length ? { tables } : {}),
+    },
   };
 }
 

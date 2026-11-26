@@ -126,7 +126,12 @@ export interface Card {
   /** A noun asked in Spanish, whose `shown` has its article. A correct answer typed without it gets the article and the example sentence. */
   articleHint?: boolean;
   /** Present on a card you flip and grade yourself instead of answering. Shown with the answer. */
-  flashcard?: { example?: { es: string; en: string }; note?: string };
+  flashcard?: {
+    example?: { es: string; en: string };
+    note?: string;
+    /** Conjugation tables to show under the answer, like a chapter's new verb in its tense, so the forms are seen before they're asked. */
+    tables?: Pick<TenseTable, "verb" | "tense">[];
+  };
   /** A sentence to translate. Many answers can be right, so one that doesn't match is compared by the learner. */
   writing?: boolean;
   /** A sentence to hear and type. The audio is the prompt, so it's spoken from the start; `en` shows after answering. */

@@ -174,7 +174,7 @@ function Feedback({
 }
 
 /** The missed tense in full, as the verb page shows it. Nothing in it links away, so a stray tap can't end the drill. */
-function MissedTense({ table }: { table: TenseTable }) {
+function MissedTense({ table }: { table: Pick<TenseTable, "verb" | "tense"> & Partial<Pick<TenseTable, "person" | "sentence">> }) {
   const { verb, tense, person, sentence } = table;
   const meta = TENSES.find((t) => t.id === tense)!;
   const conjugation = conjugate(verb);
@@ -683,6 +683,9 @@ export default function DrillRunner({
                     </div>
                   )}
                 </div>
+                {card.flashcard.tables?.map((table) => (
+                  <MissedTense key={table.tense} table={table} />
+                ))}
                 <div className="grid grid-cols-2 gap-3">
                   <button
                     type="button"
