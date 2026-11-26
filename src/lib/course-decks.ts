@@ -12,6 +12,8 @@ import type { Verb } from "./verbs";
 // The drills inside a chapter, locked to its tenses, verbs, words and guide. Imported on demand like card-decks, which
 // it pulls in. Answers count toward progress and the review schedule like any drill.
 
+export { otherWay } from "./card-decks";
+
 type Random = () => number;
 
 export const PRACTICE_SIZE = 15;
@@ -282,8 +284,25 @@ const queue = (cards: Card[]): (() => Card | null) => {
   return () => left.shift() ?? null;
 };
 
+// Drills a chapter's new verbs can have to themselves. Choosing the verb needs every verb the chapter compares, and the
+// others aren't about verbs.
+const NEW_VERB_DRILLS: ChapterDrill[] = ["blanks", "conjugation", "choose", "progressive"];
+
+/** The share of Practice asked on the chapter's new verbs alone, on top of their turns among all its verbs. */
+export const NEW_VERB_SHARE = 0.5;
+
+/** The chapter's drills, about half of them on its new verbs, so the verbs just introduced get the most practice. */
+function practiceDrills(data: ChapterData, random: Random): () => Card | null {
+  const all = drillDeck(data, random);
+  const newVerbs = data.verbs.filter((v) => data.chapter.newVerbs?.includes(v.inf));
+  const drills = data.chapter.drills.filter((d) => NEW_VERB_DRILLS.includes(d));
+  if (newVerbs.length === 0 || drills.length === 0) return all;
+  const fresh = drillDeck({ ...data, verbs: newVerbs, chapter: { ...data.chapter, drills } }, random);
+  return () => (random() < NEW_VERB_SHARE ? (fresh() ?? all()) : all());
+}
+
 export function practiceDeck(data: ChapterData, random: Random = Math.random): () => Card | null {
-  return queue(distinct(drillDeck(withBank(data, "practice"), random), PRACTICE_SIZE));
+  return queue(distinct(practiceDrills(withBank(data, "practice"), random), PRACTICE_SIZE));
 }
 
 export function quizCards(quiz: ChapterQuiz, random: Random = Math.random): Card[] {

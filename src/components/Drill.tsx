@@ -272,7 +272,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
 
   const [settings, update] = useDrillSettings();
   const { mode, pool, tenses, kinds, wordTypes, topics, guides, flashSide, flashTypes, writingSides, studySide, numberKinds, numberMax, verbCue } = settings;
-  const [session, setSession] = useState<{ first: Card; next: () => Card | null } | null>(null);
+  const [session, setSession] = useState<{ first: Card; next: () => Card | null; otherWay: (card: Card) => Card | null } | null>(null);
   const [study, setStudy] = useState<StudyCard[] | null>(null);
   const hasVoice = useSyncExternalStore(subscribeToVoices, canSpeak, noVoiceOnServer);
   const [loading, setLoading] = useState(false);
@@ -373,7 +373,9 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
       }
       const next = target ? limitedDeck(await practiceDeck(target), PRACTICE_SIZE) : await buildDeck();
       const first = next();
-      if (first) setSession({ first, next });
+      // Missed words come back the other way round with it.
+      const { otherWay } = await import("@/lib/card-decks");
+      if (first) setSession({ first, next, otherWay });
       else setError("No questions match that choice. Try selecting more options.");
     } catch {
       setError("Couldn't load the drill. Check your connection and try again.");
@@ -398,6 +400,7 @@ export default function Drill({ rare, guideList }: { rare: string[]; guideList: 
         first={session.first}
         next={session.next}
         onStop={() => setSession(null)}
+        otherWay={session.otherWay}
         // Clearing the session first unmounts this runner, so the practice session starts with fresh counts.
         onPractice={(target) => {
           setSession(null);

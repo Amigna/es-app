@@ -497,6 +497,19 @@ function vocabReviewCard(type: string, es: string, kind: string, random: Random)
 }
 
 /**
+ * The same word asked the other way round, for a missed word to come back as: English to Spanish after Spanish to
+ * English, and the reverse. A flashcard gives a flashcard. Null for anything that isn't a word's meaning, like gender.
+ */
+export function otherWay(card: Card): Card | null {
+  const [source, type, es, kind] = card.track?.item.split(":") ?? [];
+  if (source !== "vocab" || (kind !== "toEnglish" && kind !== "toSpanish")) return null;
+  const side = kind === "toEnglish" ? "toSpanish" : "toEnglish";
+  if (!card.flashcard || type === "phrase") return vocabReviewCard(type, es, side, Math.random);
+  const word = allWords().find((w) => w.type === type && w.es === es);
+  return word ? flashcard(word, side) : null;
+}
+
+/**
  * A card for one word from a hand-picked list, like a course chapter's, written `type:es`. A flashcard shares its item
  * with the typed question, as in the flashcard drill. Null when the word is no longer in the lists, or the question
  * doesn't fit it: gender is only for nouns, agreement only for adjectives, and phrases are flashcards only.

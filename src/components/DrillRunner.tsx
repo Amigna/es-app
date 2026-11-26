@@ -32,6 +32,18 @@ const SPECIAL_LETTERS = ["á", "é", "í", "ó", "ú", "ñ", "ü"];
 
 // A missed question comes back after this many others.
 const RETRY_GAP = 3;
+// A missed word also comes back the other way round after this many, so it's practiced both ways while it's fresh.
+const OTHER_WAY_GAP = 7;
+
+/**
+ * When a miss comes back: the same question soon, and for a word's meaning, the other way round a little later. A miss
+ * on a question that already came back only brings that one back again, so one word can't fill the drill.
+ */
+function comebacks(card: Card, answered: number, isRetry: boolean, otherWay?: (card: Card) => Card | null): { card: Card; dueAt: number }[] {
+  const again = { card, dueAt: answered + RETRY_GAP };
+  const reverse = isRetry ? null : (otherWay?.(card) ?? null);
+  return reverse ? [again, { card: reverse, dueAt: answered + OTHER_WAY_GAP }] : [again];
+}
 
 /** The sentence with each word marked by whether it was caught. */
 function DictationAnswer({ input, card }: { input: string; card: Card }) {
@@ -58,6 +70,7 @@ function Feedback({
   input,
   speak,
   retry,
+  bothWays,
   nudge,
 }: {
   result: Grade;
@@ -65,10 +78,12 @@ function Feedback({
   input: string;
   speak?: string;
   retry: boolean;
+  /** Whether a miss also brings the word back the other way round. */
+  bothWays: boolean;
   /** Says this keeps going wrong. Text only: a link here could end the drill with a stray tap. */
   nudge?: string | null;
 }) {
-  const comesBack = retry ? " This one will come back." : "";
+  const comesBack = !retry ? "" : bothWays ? " This word will come back, and then the other way round." : " This one will come back.";
   const styles = {
     correct: "border-emerald-300 bg-emerald-50 text-emerald-900 dark:border-emerald-800 dark:bg-emerald-950 dark:text-emerald-200",
     accent: "border-amber-300 bg-amber-50 text-amber-900 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-200",
@@ -235,6 +250,7 @@ export default function DrillRunner({
   retry = true,
   stopLabel = "Change settings",
   saves = !!first.track,
+  otherWay,
 }: {
   first: Card;
   next: () => Card | null;
@@ -253,6 +269,11 @@ export default function DrillRunner({
    * unless given, for a session that opens with cards that aren't saved, like a chapter's new-verb flashcards.
    */
   saves?: boolean;
+  /**
+   * A missed word asked the other way round, which comes back a few questions after the word itself. Passed in by
+   * drills that ask words, so the word lists stay out of pages that don't.
+   */
+  otherWay?: (card: Card) => Card | null;
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
@@ -390,7 +411,7 @@ export default function DrillRunner({
     // An accent slip shows the right spelling but doesn't come back or end the streak. It's counted on its own.
     const ok = g !== "wrong";
     const answeredNow = total + 1;
-    const missed = ok || !retry ? retries : [...retries, { card, dueAt: answeredNow + RETRY_GAP }];
+    const missed = ok || !retry ? retries : [...retries, ...comebacks(card, answeredNow, isRetry, otherWay)];
     setResult(g);
     setTotal(answeredNow);
     // Only the first try counts, so a retry can't inflate progress.
@@ -811,6 +832,7 @@ export default function DrillRunner({
               card={card}
               input={input}
               retry={retry}
+              bothWays={!isRetry && !!otherWay?.(card)}
               nudge={nudge}
               speak={(canGiveUp || card.dictation) && !card.english ? card.shown : undefined}
             />

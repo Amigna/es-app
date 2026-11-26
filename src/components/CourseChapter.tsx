@@ -141,7 +141,7 @@ function SeeIt({ chapter, examples }: { chapter: Chapter; examples: TenseSentenc
   );
 }
 
-type Session = { step: StepId; first: Card; next: () => Card | null };
+type Session = { step: StepId; first: Card; next: () => Card | null; otherWay: (card: Card) => Card | null };
 
 export default function CourseChapter({
   chapter,
@@ -233,7 +233,7 @@ export default function CourseChapter({
       if (first) {
         setFinishedStep(null);
         setEarned([]);
-        setSession({ step, first, next: dealt });
+        setSession({ step, first, next: dealt, otherWay: decks.otherWay });
       } else setError("Couldn't find questions for this step.");
     } catch {
       setError("Couldn't load this step. Check your connection and try again.");
@@ -267,6 +267,7 @@ export default function CourseChapter({
         badges={earned}
         retry={session.step !== "checkpoint"}
         stopLabel="Back to the chapter"
+        otherWay={session.otherWay}
         // The Verbs step opens with meaning flashcards that aren't saved, but its fill-in-the-blank cards are.
         {...(session.step === "verbs" ? { saves: true } : {})}
       />

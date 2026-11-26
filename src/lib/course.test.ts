@@ -398,6 +398,31 @@ describe("chapter decks", () => {
     }
   });
 
+  it("practice leans on the chapter's new verbs", () => {
+    const leaning = CHAPTERS.filter((ch) => ch.newVerbs && ch.newVerbs.length < ch.verbs.length && ch.drills.some((d) => ["blanks", "conjugation", "choose", "progressive"].includes(d)));
+    assert.ok(leaning.length >= 5);
+    for (const c of leaning) {
+      let asked = 0;
+      let fresh = 0;
+      for (let s = 1; s <= 20; s++) {
+        const deck = practiceDeck(chapterData(c), seeded(s));
+        for (let card = deck(); card; card = deck()) {
+          const [kind, a, b] = card.id.split(":");
+          const inf = card.track?.item.startsWith("verb:") ? card.track.item.split(":")[1] : kind === "progressive" ? (a === "blank" ? b : a) : undefined;
+          if (!inf) continue;
+          asked++;
+          if (c.newVerbs!.includes(inf)) fresh++;
+        }
+      }
+      // Half the drills are on new verbs alone, and new verbs get their turns in the other half too. A chapter with only
+      // a few new verbs runs short of different questions on them, and its other verbs fill in.
+      const evenShare = c.newVerbs!.length / c.verbs.length;
+      // Halfway from the even share to what an even split with that half on top would give.
+      const wanted = evenShare + 0.25 * (1 - evenShare);
+      assert.ok(fresh / asked > wanted, `${c.id}: ${fresh} of ${asked} on new verbs, even share ${evenShare.toFixed(2)}`);
+    }
+  });
+
   it("present progressive practice asks for estar plus the gerund", () => {
     const c = CHAPTERS.find((ch) => ch.drills.includes("progressive"))!;
     const data = chapterData(c);

@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { blankCard, blankDeck, listedWordCard, dictationCard, dictationDeck, flashcardDeck, studyCards, newItemOrder, reviewCard, reviewDeck, verbPracticeDeck, vocabDeck, writingCard, writingDeck, type VocabOptions } from "./card-decks";
+import { blankCard, blankDeck, listedWordCard, otherWay, dictationCard, dictationDeck, flashcardDeck, studyCards, newItemOrder, reviewCard, reviewDeck, verbPracticeDeck, vocabDeck, writingCard, writingDeck, type VocabOptions } from "./card-decks";
 import { accentTrap, englishAnswers, englishCore, gradeCard, rightNote, type Card } from "./drill";
 import { DEFAULT_SETTINGS, NOUN_TOPICS, parseSettings } from "./drill-settings";
 import { schedulable } from "./schedule";
@@ -30,6 +30,37 @@ function draw(next: () => Card | null, match: (c: Card) => boolean): Card {
   }
   assert.fail("card never came up");
 }
+
+describe("otherWay", () => {
+  it("asks a missed word the other way round, the same kind of card", () => {
+    const cases: [string, string, string][] = [
+      ["noun:casa", "toEnglish", "toSpanish"],
+      ["noun:casa", "toSpanish", "toEnglish"],
+      ["adjective:rojo", "toEnglish", "toSpanish"],
+    ];
+    for (const [id, from, to] of cases) {
+      const [type, es] = id.split(":");
+      const card = reviewCard(`vocab:${type}:${es}:${from}`, SENTENCE_BANK, new Set())!;
+      const back = otherWay(card)!;
+      assert.equal(back.track?.item, `vocab:${type}:${es}:${to}`);
+      assert.equal(!!back.flashcard, false);
+      assert.equal(otherWay(back)!.track?.item, card.track?.item);
+    }
+    const flash = listedWordCard("noun:casa", "flashcard")!;
+    const flipped = otherWay(flash)!;
+    assert.ok(flipped.flashcard);
+    assert.equal(flipped.track?.item, "vocab:noun:casa:toSpanish");
+    // The English it showed is now the prompt.
+    assert.equal(flipped.title, flash.shown);
+  });
+
+  it("has nothing for questions that aren't a word's meaning", () => {
+    const gender = reviewCard("vocab:noun:casa:gender", SENTENCE_BANK, new Set())!;
+    assert.equal(otherWay(gender), null);
+    const verbCard = reviewCard("verb:hablar:present", SENTENCE_BANK, new Set())!;
+    assert.equal(otherWay(verbCard), null);
+  });
+});
 
 describe("English answers", () => {
   it("reduces glosses to their core", () => {
