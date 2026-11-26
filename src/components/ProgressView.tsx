@@ -209,13 +209,18 @@ function SpotList({ title, spots }: { title: string; spots: WeakSpot[] }) {
   );
 }
 
-/** Shown on /progress: the worst few, so the list reads as a nudge rather than a report. */
+/** Shown on /progress: the worst few, so the list reads as a nudge rather than a report. "Show all" opens the rest. */
 const STRUGGLING_VERBS = 3;
 const STRUGGLING_ITEMS = 8;
 
 function StrugglesSection({ data }: { data: ProgressData }) {
-  const verbs = verbStruggles(data.verbs).slice(0, STRUGGLING_VERBS);
-  const items = itemStruggles(data.struggling).slice(0, STRUGGLING_ITEMS);
+  const [showAll, setShowAll] = useState(false);
+  const allVerbs = verbStruggles(data.verbs);
+  const allItems = itemStruggles(data.struggling);
+  const verbs = showAll ? allVerbs : allVerbs.slice(0, STRUGGLING_VERBS);
+  const items = showAll ? allItems : allItems.slice(0, STRUGGLING_ITEMS);
+  const total = allVerbs.length + allItems.length;
+  const hidden = allVerbs.length > STRUGGLING_VERBS || allItems.length > STRUGGLING_ITEMS;
   return (
     <section>
       <h2 className="mb-3 text-xl font-semibold">Keeps tripping you up</h2>
@@ -225,7 +230,12 @@ function StrugglesSection({ data }: { data: ProgressData }) {
         </p>
       ) : (
         <>
-          <StruggleList verbs={verbs} items={items} />
+          <StruggleList verbs={verbs} items={items} practiceItems={allItems} />
+          {(hidden || showAll) && (
+            <button type="button" onClick={() => setShowAll(!showAll)} className={`mt-2 min-h-10 text-sm ${linkClass}`}>
+              {showAll ? "Show fewer" : `Show all ${total.toLocaleString()}`}
+            </button>
+          )}
           <p className="mt-2 text-sm text-stone-500">
             A word or verb tense shows up after {ITEM_MIN_MISSES} or more misses with under {ITEM_BELOW}% right, and a verb after{" "}
             {VERB_MIN_MISSES} misses in {VERB_MIN_ANSWERS} or more answers with under {VERB_BELOW}% right, counting first tries all time.

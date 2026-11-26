@@ -23,6 +23,7 @@ import {
   type Adjective,
   type Example,
   type Noun,
+  type Phrase,
 } from "./vocab";
 
 // Decks for the vocabulary and fill-in-the-blank drills. Imported on demand because it pulls in the word lists.
@@ -68,6 +69,35 @@ const plainWord =
 /** Bonita is as right as bonito for "pretty", so the feminine is accepted too. The list's masculine form is shown. */
 const adjectiveWord = (a: Adjective): Word => ({ ...plainWord("adjective")(a), accepted: [...new Set(adjectiveForms(a).slice(0, 2))] });
 
+const CHOICES = 4;
+
+/**
+ * A phrase as a multiple-choice question, for review: phrases have no single typed answer, and grading yourself on a
+ * flashcard flatters. The wrong options are other phrases, from the same topic first so they're plausible. It shares
+ * its item with the phrase's flashcard, so either one moves the same schedule.
+ */
+export function phraseChoiceCard(phrase: Phrase, side: FlashSide, random: Random = Math.random): Card {
+  const toEnglish = side === "toEnglish";
+  const text = (p: Phrase) => (toEnglish ? p.en : p.es);
+  const answer = text(phrase);
+  const others = PHRASES.filter((p) => text(p) !== answer);
+  const same = shuffled(others.filter((p) => p.topic === phrase.topic), random);
+  const rest = shuffled(others.filter((p) => p.topic !== phrase.topic), random);
+  const wrong = [...new Set([...same, ...rest].map(text))].slice(0, CHOICES - 1);
+  return {
+    id: `choice:${side}:phrase:${phrase.es}`,
+    badge: "Phrase",
+    title: toEnglish ? phrase.es : phrase.en,
+    titleIsSpanish: toEnglish,
+    ask: toEnglish ? "What does it mean?" : "How do you say it in Spanish?",
+    answers: [answer],
+    shown: answer,
+    choices: shuffled([answer, ...wrong], random),
+    ...(phrase.note ? { explain: phrase.note } : {}),
+    track: vocabTrack("phrase", phrase.es, side),
+  };
+}
+
 /** Includes the word type because some spellings are two words: mañana is both "morning" and "tomorrow". */
 const vocabTrack = (type: CardType, es: string, kind: VocabKind) => ({ item: `vocab:${type}:${es}:${kind}` });
 
@@ -105,6 +135,7 @@ function toSpanishCard(word: Word, everyWord: Word[]): Card {
     track: vocabTrack(word.type, word.es, "toSpanish"),
     lookalikes: allSpellings(),
     ...(word.ex ? { missedExample: word.ex } : {}),
+    ...(word.type === "noun" && word.shown !== word.es ? { articleHint: true } : {}),
   };
 }
 
@@ -504,6 +535,10 @@ export function otherWay(card: Card): Card | null {
   const [source, type, es, kind] = card.track?.item.split(":") ?? [];
   if (source !== "vocab" || (kind !== "toEnglish" && kind !== "toSpanish")) return null;
   const side = kind === "toEnglish" ? "toSpanish" : "toEnglish";
+  if (type === "phrase" && !card.flashcard) {
+    const phrase = PHRASES.find((p) => p.es === es);
+    return phrase ? phraseChoiceCard(phrase, side) : null;
+  }
   if (!card.flashcard || type === "phrase") return vocabReviewCard(type, es, side, Math.random);
   const word = allWords().find((w) => w.type === type && w.es === es);
   return word ? flashcard(word, side) : null;
@@ -536,6 +571,10 @@ export function listedWordCard(id: string, kind: "flashcard" | "toSpanish" | "ge
  */
 export function reviewCard(item: string, bank: SentenceBank, rare: Set<string>, random: Random = Math.random, recall = false): Card | null {
   const [source, ...parts] = item.split(":");
+  if (source === "vocab" && parts[0] === "phrase") {
+    const phrase = PHRASES.find((p) => p.es === parts[1]);
+    return phrase ? phraseChoiceCard(phrase, parts[2] === "toSpanish" ? "toSpanish" : "toEnglish", random) : null;
+  }
   if (source === "vocab") return vocabReviewCard(parts[0], parts[1], parts[2], random);
   if (source !== "verb") return null;
   const [inf, tense] = parts as [string, TenseId];

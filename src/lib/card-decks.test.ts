@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { blankCard, blankDeck, listedWordCard, otherWay, dictationCard, dictationDeck, flashcardDeck, studyCards, newItemOrder, reviewCard, reviewDeck, verbPracticeDeck, vocabDeck, writingCard, writingDeck, type VocabOptions } from "./card-decks";
-import { accentTrap, englishAnswers, englishCore, gradeCard, rightNote, type Card } from "./drill";
+import { accentTrap, englishAnswers, englishCore, gradeCard, otherMeanings, rightNote, type Card } from "./drill";
 import { DEFAULT_SETTINGS, NOUN_TOPICS, parseSettings } from "./drill-settings";
 import { schedulable } from "./schedule";
 import { SENTENCE_BANK } from "./sentence-data";
@@ -259,6 +259,27 @@ describe("word cards", () => {
     assert.deepEqual(toSpanish.missedExample, candado.ex);
     assert.deepEqual(toEnglish.missedExample, candado.ex);
   });
+
+  it("flag a noun asked in Spanish so a correct answer without its article can show it", () => {
+    const toSpanish = reviewCard("vocab:noun:investigación:toSpanish", SENTENCE_BANK, new Set())!;
+    assert.equal(toSpanish.articleHint, true);
+    assert.equal(toSpanish.shown, "la investigación");
+    assert.equal(gradeCard(toSpanish, "investigación"), "correct");
+    assert.equal(gradeCard(toSpanish, "la investigación"), "correct");
+    assert.equal(reviewCard("vocab:noun:investigación:toEnglish", SENTENCE_BANK, new Set())!.articleHint, undefined);
+    assert.equal(reviewCard("vocab:adjective:grande:toSpanish", SENTENCE_BANK, new Set())?.articleHint, undefined);
+  });
+});
+
+describe("other meanings", () => {
+  it("list the rest of an English gloss after a correct answer, and nothing for a single meaning", () => {
+    const card = reviewCard("vocab:noun:excursión:toEnglish", SENTENCE_BANK, new Set())!;
+    assert.equal(gradeCard(card, "excursion"), "correct");
+    assert.deepEqual(otherMeanings(card, "excursion"), ["outing", "day trip", "field trip"]);
+    const one = reviewCard("vocab:noun:candado:toEnglish", SENTENCE_BANK, new Set())!;
+    assert.deepEqual(otherMeanings(one, "padlock"), []);
+    assert.deepEqual(otherMeanings(reviewCard("vocab:noun:excursión:toSpanish", SENTENCE_BANK, new Set())!, "la excursión"), []);
+  });
 });
 
 describe("progress IDs", () => {
@@ -481,15 +502,29 @@ describe("flashcardDeck", () => {
     assert.equal(flashcardDeck({ side: "toEnglish", types: [], topics: [] })(), null);
   });
 
-  it("brings phrases back as flashcards, because they aren't typed", () => {
+  it("brings phrases back in review as multiple choice, graded by the app, on the same item as the flashcard", () => {
     for (const side of ["toEnglish", "toSpanish"] as const) {
       for (const card of all(flashcardDeck({ side, types: ["phrase"], topics: [] }))) {
         const rebuilt = reviewCard(card.track!.item, SENTENCE_BANK, new Set());
-        assert.ok(rebuilt?.flashcard, card.id);
-        assert.equal(rebuilt.id, card.id);
+        assert.ok(rebuilt?.choices && !rebuilt.flashcard, card.id);
+        assert.deepEqual(rebuilt.track, card.track);
+        assert.equal(rebuilt.choices.length, 4);
+        assert.equal(new Set(rebuilt.choices).size, 4);
+        assert.ok(rebuilt.choices.includes(rebuilt.shown));
+        assert.equal(gradeCard(rebuilt, rebuilt.shown), "correct");
+        for (const wrong of rebuilt.choices.filter((c) => c !== rebuilt.shown)) assert.equal(gradeCard(rebuilt, wrong), "wrong");
       }
     }
     assert.equal(reviewCard("vocab:phrase:gone:toEnglish", SENTENCE_BANK, new Set()), null);
+  });
+
+  it("brings a missed phrase back the other way as multiple choice too, but a flashcard as a flashcard", () => {
+    const choice = reviewCard("vocab:phrase:¿Qué bolá?:toEnglish", SENTENCE_BANK, new Set())!;
+    const flipped = otherWay(choice)!;
+    assert.equal(flipped.track?.item, "vocab:phrase:¿Qué bolá?:toSpanish");
+    assert.ok(flipped.choices && !flipped.flashcard);
+    const flash = all(flashcardDeck({ side: "toEnglish", types: ["phrase"], topics: [] })).find((c) => c.title === "¿Qué bolá?")!;
+    assert.ok(otherWay(flash)?.flashcard);
   });
 
   it("carries a phrase's note to the answer side", () => {

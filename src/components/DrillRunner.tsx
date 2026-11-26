@@ -8,7 +8,7 @@ import SpeakButton from "@/components/SpeakButton";
 import { conjugate } from "@/lib/conjugation/engine";
 import { markVerb } from "@/lib/conjugation/regular";
 import { TENSES } from "@/lib/conjugation/types";
-import { accentTrap, gradeCard, rightNote, wordDiff, wrongNote, type Card, type Grade, type TenseTable } from "@/lib/drill";
+import { accentTrap, gradeCard, otherMeanings, rightNote, wordDiff, wrongNote, type Card, type Grade, type TenseTable } from "@/lib/drill";
 import BadgeArt from "@/components/Badge";
 import StruggleList from "@/components/Struggles";
 import { streakBadge, type Badge } from "@/lib/badges";
@@ -94,6 +94,7 @@ function Feedback({
   // A known mistake, like quinientos y seis, gets the note on the rule it breaks instead of the general one.
   // An accepted answer can carry a note too, like a sentence with its subject pronoun left out.
   const note = (result === "wrong" ? wrongNote(card, input) : rightNote(card, input)) ?? card.explain;
+  const others = result === "correct" ? otherMeanings(card, input) : [];
   const trapNote = trap && (
     <p className="mt-1">
       <span lang="es" className="font-semibold">
@@ -142,8 +143,22 @@ function Feedback({
       </div>
       {note && <p className="mt-1">{note}</p>}
       {result === "wrong" && nudge && <p className="mt-2 font-medium">{nudge}</p>}
-      {/* Seeing the word in a sentence helps it stick. Only after a miss, since the sentence contains the answer. */}
-      {result === "wrong" && card.missedExample && (
+      {/* A noun typed without its article is right, but the article is part of the word, so show it. Not when another word was typed (enfermera for enfermero), since the article shown would be for a different word. */}
+      {result === "correct" && card.articleHint && input.trim().toLowerCase() === card.shown.toLowerCase().replace(/^\S+ /, "") && (
+        <p className="mt-2">
+          <span className="opacity-80">With the article:</span>{" "}
+          <span lang="es" className="font-semibold">
+            {card.shown.charAt(0).toUpperCase() + card.shown.slice(1)}
+          </span>
+        </p>
+      )}
+      {result === "correct" && others.length > 0 && (
+        <p className="mt-2">
+          <span className="opacity-80">Also accepted:</span> {others.join(", ")}
+        </p>
+      )}
+      {/* Seeing the word in a sentence helps it stick, whatever the result, in both directions. */}
+      {card.missedExample && (
         <div className="mt-3 flex items-start justify-between gap-2 border-l-2 border-current/30 pl-3">
           <p>
             <span lang="es" className="block font-medium">

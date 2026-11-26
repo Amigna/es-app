@@ -123,6 +123,8 @@ export interface Card {
   table?: TenseTable;
   /** A word's example sentence, shown after a miss so the word is seen in use. Never before answering: it contains the word. */
   missedExample?: { es: string; en: string };
+  /** A noun asked in Spanish, whose `shown` has its article. A correct answer typed without it gets the article and the example sentence. */
+  articleHint?: boolean;
   /** Present on a card you flip and grade yourself instead of answering. Shown with the answer. */
   flashcard?: { example?: { es: string; en: string }; note?: string };
   /** A sentence to translate. Many answers can be right, so one that doesn't match is compared by the learner. */
@@ -269,6 +271,16 @@ export function englishCore(text: string): string {
  * "work, job (Argentina, Uruguay)" is work and job, not "job (Argentina" and "Uruguay)".
  */
 export const englishAnswers = (gloss: string) => gloss.split(/[,;](?![^(]*\))/).map(englishCore).filter(Boolean);
+
+/**
+ * The other readings of an English gloss card, for after a correct answer: typing "excursion" for "outing, day trip,
+ * excursion, field trip" lists the rest. Empty when the gloss has one meaning or the card isn't an English one.
+ */
+export function otherMeanings(card: Card, input: string): string[] {
+  if (!card.english) return [];
+  const typed = englishCore(input);
+  return [...new Set(englishAnswers(card.shown))].filter((m) => m !== typed);
+}
 
 /** Sentences are compared on their words, so a missing period or a phone's curly apostrophe doesn't matter. */
 const wordsOnly = (s: string) => s.replace(/[’‘]/g, "'").replace(/[.,;:!?¿¡"“”]/g, " ");

@@ -33,10 +33,13 @@ const itemDetail = (t: Tally) => `${t.right.toLocaleString()} right, ${t.wrong.t
 export default function StruggleList({
   verbs,
   items,
+  practiceItems = items,
   onPractice,
 }: {
   verbs: { verb: string; tally: Tally }[];
   items: Struggle[];
+  /** What the shared practice link covers, when that's more than the rows shown (a collapsed list). */
+  practiceItems?: Struggle[];
   onPractice?: (target: PracticeTarget) => void;
 }) {
   if (verbs.length + items.length === 0) return null;
@@ -74,10 +77,10 @@ export default function StruggleList({
           );
         })}
       </ul>
-      {items.length > 0 && (
+      {practiceItems.length > 0 && (
         <PracticeLink
-          target={{ items: items.map((s) => s.item) }}
-          label={items.length === 1 ? "Practice it" : `Practice ${items.length > MAX_PRACTICE_ITEMS ? `the first ${MAX_PRACTICE_ITEMS}` : `these ${items.length}`}`}
+          target={{ items: practiceItems.map((s) => s.item) }}
+          label={practiceItems.length === 1 ? "Practice it" : `Practice ${practiceItems.length > MAX_PRACTICE_ITEMS ? `the worst ${MAX_PRACTICE_ITEMS}` : `these ${practiceItems.length}`}`}
           onPractice={onPractice}
         />
       )}
